@@ -1,0 +1,8 @@
+openai
+langchain_core
+langchain_openai
+langchain
+langchain_community
+pypdf
+beautifulsoup4
+streamlit
