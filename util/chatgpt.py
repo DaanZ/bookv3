@@ -1,4 +1,6 @@
 import os
+
+from dotenv import load_dotenv
 from openai import OpenAI
 
 from util.history import History
