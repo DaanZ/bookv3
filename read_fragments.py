@@ -59,10 +59,16 @@ def summarize_chunk(pages):
     return llm_chat(history)
 
 
-class DisabilityBookChunk(BaseModel):
+class DisabilityBookFirstChunk(BaseModel):
     summary_chunk: str = Field(..., description="First summarize the chunk into one paragraph for people with ADHD / Dyslexia.")
     summary_title: str = Field(..., description="Title that belongs to the summary")
     dyslextic_highlighted_html: str = Field(..., description="Second formatted the one paragraph in HTML format highlighting important words using bold <b>")
+
+
+class DisabilityBookNextChunk(DisabilityBookFirstChunk):
+    summary_chunk: str = Field(..., description="First summarize the chunk into three paragraphs for people with ADHD / Dyslexia.")
+
+
 
 
 def format_text(answer):
@@ -76,11 +82,16 @@ def format_text(answer):
     return answer.replace("<b>", "<b style='color: forestgreen;'>")
 
 
-def highlight_chunk(pages):
+def highlight_chunk(pages, first=True):
     history = History()
     for page in pages:
         history.system(page.page_content)
-    response = llm_strict(history, base_model=DisabilityBookChunk)
+
+    chunk_model = DisabilityBookFirstChunk
+    if not first:
+        chunk_model = DisabilityBookNextChunk
+    print(chunk_model.__name__)
+    response = llm_strict(history, base_model=chunk_model)
     return {"title": response.summary_title, "body": format_text(response.dyslextic_highlighted_html)}
 
 
@@ -92,7 +103,7 @@ def summarize_book_highlighted(pages: List[Document], n: int = 10):
         history = History()
         for page in subpages:
             history.system(page.page_content)
-        history.user("Summarize the above chunk of the book into a one paragraph, "
+        history.user("Summarize the above chunk of the book into one paragraph, "
                      "don't refer to the summary or the book itself just focus on the chunk "
                      "of the book that is being summarized")
         answer = llm_chat(history)

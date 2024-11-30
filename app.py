@@ -76,6 +76,10 @@ if 'text_box' not in st.session_state:
 if 'button_container' not in st.session_state:
     st.session_state.button_container = st.empty()  # Create an empty container for the Next button
 
+if 'first_chunk' not in st.session_state:
+    st.session_state.first_chunk = True  # Create an empty container for the Next button
+
+
 chunks = 10
 
 # File upload
@@ -102,7 +106,10 @@ if st.session_state.pages:
     if st.session_state.next_highlighted is None:
         with st.spinner("Highlighting chunk..."):
             s = st.session_state.current_index * st.session_state.chunk_size
-            highlighted = highlight_chunk(st.session_state.pages[s:s + st.session_state.chunk_size])
+            page_chunk = st.session_state.pages[s:s + st.session_state.chunk_size]
+            print(st.session_state.first_chunk)
+            highlighted = highlight_chunk(page_chunk, st.session_state.first_chunk)
+            st.session_state.first_chunk = False
     else:
         highlighted = copy.deepcopy(st.session_state.next_highlighted)
         st.session_state.next_highlighted = None
@@ -114,7 +121,8 @@ if st.session_state.pages:
     print(st.session_state.current_index, chunks - 1)
     if st.session_state.current_index < chunks - 1:
         s = (st.session_state.current_index+1)*st.session_state.chunk_size
-        st.session_state.next_highlighted = highlight_chunk(st.session_state.pages[s:s+st.session_state.chunk_size])
+        page_chunk = st.session_state.pages[s:s+st.session_state.chunk_size]
+        st.session_state.next_highlighted = highlighted = highlight_chunk(page_chunk, st.session_state.first_chunk)
 
         if st.session_state.button_container.button("Next"):
             st.session_state.current_index += 1
