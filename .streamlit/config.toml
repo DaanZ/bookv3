@@ -3,4 +3,4 @@ primaryColor = "#228B22"  # Forest green
 backgroundColor = "#000000"  # Black background
 secondaryBackgroundColor = "#2B2B2B"  # Dark gray for sidebar
 textColor = "#FFFFFF"  # White text
-font = "Lexend"  # Optional: You can choose a different font here
+font = "sans serif"  # Optional: You can choose a different font here
