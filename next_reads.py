@@ -2,15 +2,12 @@ import os
 import json
 import shutil
 
-import pygame as pygame
 import streamlit as st
 
 from hardcover.request import mark_book_as_read
 from homework import HomeworkModel, random_answer_model
 from util.chatgpt import llm_strict
 from util.history import History
-
-pygame.mixer.init()
 
 
 # Folder containing the JSON files
