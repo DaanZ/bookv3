@@ -7,3 +7,6 @@ pypdf
 beautifulsoup4
 streamlit
 python-dotenv
+rootpath
+pygame
+spotipy

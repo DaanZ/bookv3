@@ -1,4 +1,5 @@
 [theme]
+base="dark"
 primaryColor = "#228B22"  # Forest green
 backgroundColor = "#000000"  # Black background
 secondaryBackgroundColor = "#2B2B2B"  # Dark gray for sidebar

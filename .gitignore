@@ -4,3 +4,7 @@
 *.pyc
 /.idea
 .env
+.cache
+/pdfs
+/sounds
+/sounds
