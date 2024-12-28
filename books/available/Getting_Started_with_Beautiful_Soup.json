@@ -1,0 +1,35 @@
+{
+    "meta": {
+        "title": "Getting Started with Beautiful Soup",
+        "author": "Vineeth G. Nair",
+        "category": "Web Scraping, Computing",
+        "publisher": "Packt Publishing",
+        "pages": 130
+    },
+    "parts": [
+        {
+            "title": "Installing Beautiful Soup",
+            "body": "In this <b style='color: forestgreen;'>section</b>, you'll learn how to <b style='color: forestgreen;'>install</b> Beautiful Soup on various <b style='color: forestgreen;'>operating systems</b>. Installation is straightforward, and there are several options available depending on whether you're using <b style='color: forestgreen;'>Linux</b>, <b style='color: forestgreen;'>Windows</b>, or <b style='color: forestgreen;'>Mac OS X</b>. For <b style='color: forestgreen;'>Debian</b> or <b style='color: forestgreen;'>Ubuntu</b> users, Beautiful Soup can often be installed using the <b style='color: forestgreen;'>system package manager</b>. For other versions where it's not directly available, alternative methods are <b style='color: forestgreen;'>explained</b>. The examples provided use Python <b style='color: forestgreen;'>2.7.5</b>, which might differ from Python <b style='color: forestgreen;'>3</b>. So, jump to the part that fits your operating system."
+        },
+        {
+            "title": "Installing Beautiful Soup in Linux",
+            "body": "<h3 style='color: forestgreen;'>Installing Beautiful Soup using the package manager </h3>\n\nIn Linux, using a package manager like `apt-get` is the easiest way to install Beautiful Soup. For Ubuntu or Debian, just run `sudo apt-get install python-bs4` in the terminal. This command installs Beautiful Soup version 4. Ensure your package list is updated (`sudo apt-get update`) to avoid any \"Package Not Found\" errors. If it's still not available, consider using other methods like pip or easy_install."
+        },
+        {
+            "title": "Understanding Beautiful Soup Search Techniques",
+            "body": "In Chapter 3, we explore various <b style='color: forestgreen;'>searching methods</b> provided by <b style='color: forestgreen;'>Beautiful Soup</b> to scrape<b style='color: forestgreen;'> HTML</b> documents or webpages. This involves techniques like finding elements by <b style='color: forestgreen;'>tag name, attributes, text</b>, and <b style='color: forestgreen;'>regular expressions</b>. The `<b style='color: forestgreen;'>find()</b>` method returns the first element matching the search criteria, while `<b style='color: forestgreen;'>find<em style='color: forestgreen;'>all()</b>` returns all elements that match. We also discuss <b style='color: forestgreen;'>parent-child relationships</b> (`find</em>parents()`, `find<em style='color: forestgreen;'>parent()`) and <b style='color: forestgreen;'>sibling relationships</b> (`find</em>next<em style='color: forestgreen;'>siblings()`, `find</em>previous_siblings()`). These allow us to navigate through the HTML document based on its structure, enabling more efficient data extraction."
+        },
+        {
+            "title": "Modifying HTML/XML Content with Beautiful Soup",
+            "body": "In this chapter, we explored how <b style='color: forestgreen;'>Beautiful Soup</b> can modify HTML/XML content by adding or changing tags and their properties. This includes altering the <b style='color: forestgreen;'>.name</b> property of a tag, which changes the tag itself in an HTML tree. We also discussed the broader capabilities of Beautiful Soup, such as modifying <b style='color: forestgreen;'>attributes</b> and <b style='color: forestgreen;'>text content</b>, and the idea of programmatically altering large <b style='color: forestgreen;'>HTML documents</b>, like adding columns to <b style='color: forestgreen;'>table rows</b>. \n\nBeautiful Soup makes it possible to handle and restructure HTML/XML documents effectively, comparing to manual edits especially with large data sets. Through the example of an <b style='color: forestgreen;'>ecological pyramid</b>, we saw how <b style='color: forestgreen;'>HTML tags</b> can be altered to reflect these modifications, demonstrating the flexibility and power of Beautiful Soup in managing and transforming web document structures."
+        },
+        {
+            "title": "Encoding Support in Beautiful Soup",
+            "body": "In Chapter 6, we explored <b style='color: forestgreen;'>encoding</b> support in <b style='color: forestgreen;'>Beautiful Soup</b> for web scraping. Each web page has a specific <b style='color: forestgreen;'>character set encoding</b>, such as <b style='color: forestgreen;'>UTF-8</b> or <b style='color: forestgreen;'>Latin-1</b>. Beautiful Soup automatically tries to detect the encoding using the <b style='color: forestgreen;'>UnicodeDammit library</b>. If it misinterprets the encoding, which can happen with short content, we can specify the correct encoding using the <b style='color: forestgreen;'>from_encoding</b> parameter in the BeautifulSoup constructor. <b style='color: forestgreen;'>Prettify()</b> outputs text in <b style='color: forestgreen;'>UTF-8</b> by default but can be customized with a specified encoding."
+        },
+        {
+            "title": "Output Presentation in Beautiful Soup",
+            "body": "<b style='color: forestgreen;'>Beautiful Soup</b> is useful for <b style='color: forestgreen;'>searching</b>, <b style='color: forestgreen;'>navigating</b>, and <b style='color: forestgreen;'>modifying</b> HTML/XML content. It provides two main ways of <b style='color: forestgreen;'>printing</b> - <b style='color: forestgreen;'>formatted</b> and <b style='color: forestgreen;'>unformatted</b>. <b style='color: forestgreen;'>Formatted printing</b> can be achieved using the <b style='color: forestgreen;'>prettify()</b> method, which prints content with proper <b style='color: forestgreen;'>indentation</b> for a neat look. In contrast, <b style='color: forestgreen;'>unformatted printing</b> uses methods like <b style='color: forestgreen;'>str()</b> or <b style='color: forestgreen;'>unicode()</b>, providing plain string outputs without indentation. It's important to understand these methods to view any modifications in the HTML tree correctly. This chapter also explores output <b style='color: forestgreen;'>formatters</b> that control how data is represented, such as <b style='color: forestgreen;'>prettify()</b>, <b style='color: forestgreen;'>encode()</b>, and <b style='color: forestgreen;'>decode()</b> functions, which can take different formatters for <b style='color: forestgreen;'>HTML entities</b> processing."
+        }
+    ]
+}
