@@ -41,8 +41,8 @@ def mark_book_as_read(title, author):
             order_by: {{users_read_count: desc}},
             where: {{
               _and: [
-                {{title: {{_ilike: \"%{title}%\"}}}},
-                {{contributions: {{author: {{name: {{_ilike: \"%{author}%\"}}}}}}}}
+                {{title: {{{title}}}}},
+                {{contributions: {{author: {{name: {{{author}}}}}}}}}
               ]
             }},
             limit: 5

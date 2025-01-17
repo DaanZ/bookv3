@@ -6,7 +6,8 @@ from util.chatgpt import llm_strict
 from util.files import json_read_file
 from util.history import History
 
-book = json_read_file("books/available/How_to_Fight_a_Hydra_Face_Your_Fears,_Pursue_Your_Ambitions,_and_Become_the_Hero_You_Are_Destined_to_Be.json")
+book = json_read_file(
+    "books/read/How_to_Fight_a_Hydra_Face_Your_Fears,_Pursue_Your_Ambitions,_and_Become_the_Hero_You_Are_Destined_to_Be.json")
 
 
 class HomeworkModel(BaseModel):
