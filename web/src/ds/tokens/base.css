@@ -1,0 +1,23 @@
+/* Base rules. Everything else is a token file. */
+body { font-family: var(--font-ui); background: var(--bg-page); color: var(--text-primary); -webkit-font-smoothing: antialiased; }
+p { text-wrap: pretty; max-width: var(--measure); line-height: var(--leading-body); }
+a { color: var(--link); text-decoration: none; border-bottom: 1px solid currentColor; }
+a:hover { color: var(--link-hover); }
+code { font-family: var(--font-data); font-size: .92em; }
+
+/* The three type roles, as classes, so a page never re-declares a stack. */
+.t-display { font-family: var(--font-display); font-weight: 400; letter-spacing: var(--track-display); line-height: var(--leading-title); }
+.t-ui { font-family: var(--font-ui); }
+.t-data { font-family: var(--font-data); }
+.t-eyebrow { font-family: var(--font-data); font-weight: 600; font-size: var(--size-eyebrow); letter-spacing: var(--track-eyebrow); text-transform: uppercase; }
+
+/* The seam. Only ever between two things that disagreed. */
+.seam { height: var(--seam-height); background: var(--seam-rule); border-radius: var(--radius-seam); }
+
+/* Focus is more visible than hover on purpose — the console is keyboard-driven. */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+@media print {
+  body { background: #fff; }
+  * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}

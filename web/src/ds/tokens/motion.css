@@ -1,0 +1,94 @@
+:root {
+  /* ═══ Ground — weather. Cycle length encodes how fast the data changes. ═══ */
+  --tide-geologic: 160; /* @kind other */   /* yearly sources: registry extracts */
+  --tide-slow: 120; /* @kind other */       /* console backdrop */
+  --tide-mid: 90; /* @kind other */         /* per-engagement sources: contracts */
+  --tide-live: 40; /* @kind other */        /* continuously changing: inbox */
+  --tide-static: 0; /* @kind other */       /* print, cards, labels */
+
+  /* Drift amplitude, % of field height. tide.js compensates toward a 640px
+     reference, so one value means the same on a banner and on a hero. */
+  --drift-ground: 3; /* @kind other */
+  --drift-console: .6; /* @kind other */
+  --drift-print: 0; /* @kind other */
+
+  /* ═══ Object — events. Caused by a person, finished within half a second. ═══ */
+  --dur-instant: 90ms; /* @kind other */    /* hover, press, focus */
+  --dur-quick: 160ms; /* @kind other */     /* exits, tab indicator, content fade-in */
+  --dur-settle: 260ms; /* @kind other */    /* enters, expand/collapse, FLIP reorder */
+  --dur-max: 500ms; /* @kind other */       /* ceiling — never exceed */
+
+  --ease-enter: cubic-bezier(.22,.8,.3,1); /* @kind other */
+  --ease-exit: cubic-bezier(.4,0,1,1); /* @kind other */
+  --ease-move: cubic-bezier(.4,0,.2,1); /* @kind other */
+  --ease-shake: cubic-bezier(.36,.07,.19,.97); /* @kind other */
+
+  /* Exit is always two-thirds of enter. */
+  --stagger-step: 40ms; /* @kind other */
+  --stagger-cap: 6; /* @kind other */
+
+  /* ── 01 State · numeric, tied to the elevation ladder ── */
+  --lift-hover: -1px; /* @kind other */          /* plinth -> table */
+  --lift-press: 1px; /* @kind other */           /* table -> plinth */
+  --scale-press: .98; /* @kind other */
+  --shadow-rest: 0 2px 5px rgba(20,10,4,.4); /* @kind other */
+  --shadow-hover: 0 8px 20px rgba(20,10,4,.5); /* @kind other */
+  --shadow-press: 0 1px 3px rgba(20,10,4,.5); /* @kind other */
+  --focus-ring: 2px solid #F6D894; /* @kind other */
+  --focus-offset: 3px; /* @kind other */
+
+  /* ── 03 Expand · geometry leads, content follows ── */
+  --expand-geometry: 260ms; /* @kind other */
+  --expand-content: 160ms; /* @kind other */
+  --expand-offset: 60ms; /* @kind other */
+
+  /* ── 05 Navigation ── */
+  --nav-indicator: 260ms; /* @kind other */      /* indicator travel, ease-move */
+  --nav-fade-out: 90ms; /* @kind other */        /* old peer leaves first */
+  --nav-fade-in: 160ms; /* @kind other */        /* new peer arrives, no overlap */
+  --axis-shift: 24px; /* @kind other */          /* shared-axis travel for hierarchy */
+  --axis-deeper: -1; /* @kind other */           /* going deeper moves left */
+  --axis-back: 1; /* @kind other */              /* coming back moves right */
+  --drawer-dur: 260ms; /* @kind other */
+  --drawer-exit: 160ms; /* @kind other */
+
+  /* ── Data motion · interpolated in JS, not by a keyframe ── */
+  --dur-count: 620ms; /* @kind other */         /* counter interpolation and sparkline draw-on */
+  --drag-scale: 1.015; /* @kind other */        /* a dragged row lifts plinth -> seat */
+
+  /* ── 06 Result ── */
+  --check-draw: 300ms; /* @kind other */
+  --shake-dur: 400ms; /* @kind other */
+  --success-dwell: 3200ms; /* @kind other */
+  --toast-dwell: 4200ms; /* @kind other */
+
+  /* ── Brand motion ── */
+  --mark-reveal: 720ms; /* @kind other */        /* the one animation longer than the ceiling */
+  --mark-rim: 420ms; /* @kind other */           /* phase 1 — the rim drawing from the top vertex */
+  --mark-settle: 260ms; /* @kind other */        /* phase 2 — the fox arriving at 1.5% overshoot */
+  --seam-draw: 420ms; /* @kind other */          /* a reconciliation resolving */
+  --lockup-step: 90ms; /* @kind other */
+
+  /* Legacy surface names — kept so existing components and docs keep resolving.
+     Prefer the timescale names above: a cycle should encode how fast the data changes. */
+  --tide-hero: 72; /* @kind other */
+  --tide-banner: 88; /* @kind other */
+  --tide-divider: 110; /* @kind other */
+  --tide-console: var(--tide-slow); /* @kind other */
+  --tide-close: var(--tide-geologic); /* @kind other */
+  --drift-hero: 3; /* @kind other */
+  --drift-banner: 2.4; /* @kind other */
+  --drift-divider: 2; /* @kind other */
+  --ease-out: var(--ease-enter); /* @kind other */
+  --ease-in-out: var(--ease-move); /* @kind other */
+
+  /* Waiting states */
+  --spin-rim: 2.2s; /* @kind other */       /* 5b, the default */
+  --spin-facet: 2.1s; /* @kind other */     /* 5c, long runs */
+  --spin-seam: 1.9s; /* @kind other */      /* 5d, reconciling only */
+  --wait-threshold: 400ms; /* @kind other */ /* show nothing below this */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --drift-ground: 0; /* @kind other */ --drift-console: 0; /* @kind other */ }
+}

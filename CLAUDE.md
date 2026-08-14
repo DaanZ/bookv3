@@ -4,28 +4,36 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A set of Python scripts that turn book PDFs into short, ADHD/dyslexia-friendly summaries with
-forest-green highlighted keywords, then serve them through Streamlit readers. There is no package,
-no test suite, and no build step — every entry point is a top-level script run directly.
+Python scripts that turn book PDFs into short, ADHD/dyslexia-friendly summaries with highlighted
+keywords, plus a React reading app served by a small FastAPI backend. Two halves that meet at the
+`books/*.json` files: **Streamlit owns ingest**, **the React app owns reading**. The pipeline half
+has no package, no tests and no build step — every entry point is a top-level script run directly.
 
 ## Commands
 
 ```bash
-pip install -r requirements.txt   # note: numpy, pydantic and requests are used but NOT listed
+pip install -r requirements.txt
 
+# Reading (the redesigned tablet reader — see design/ handoff and TODO.md)
+./dev.sh                      # FastAPI :8000 + Vite :5173 with /api proxied; open :5173
+./build.sh                    # bundle web/ into web/dist
+uvicorn api.main:app --port 8000   # serves the API *and* web/dist when it exists
+
+# Ingest (unchanged)
 streamlit run app.py          # upload a PDF and summarize it live, chunk by chunk
-streamlit run next_reads.py   # main reader: read books/available, then move to books/read + Hardcover
-streamlit run all.py          # browse/read already-finished summaries in books/read
-streamlit run dashboard.py    # card grid of books (reads books/*.json — a stale path, see below)
+python prep.py                # batch: summarize every PDF in ./next -> books/available, PDF to ./pdfs
 
-python prep.py                # batch: summarize every PDF in ./next -> books/available, move PDF to ./pdfs
+# Superseded by the reader, still present
+streamlit run next_reads.py   # old reader: books/available -> books/read + Hardcover
+streamlit run all.py          # browse already-finished summaries in books/read
+streamlit run dashboard.py    # card grid (reads books/*.json — a stale path, see below)
 python homework.py            # scratch script: generates a quiz question from one hardcoded book
 python hardcover/request.py   # exercises the Hardcover API against a hardcoded title/author
 ```
 
 `.env` (gitignored) must provide `OPENAI_API_KEY`, and `HARDCOVER_API_KEY` for the Hardcover
 integration. `util/chatgpt.py` reads `OPENAI_API_KEY` at import time, so *any* import of the chunking
-or meta modules fails without it.
+or meta modules fails without it — but `api/` does not import them, so the reader runs without it.
 
 ## Architecture
 
@@ -60,11 +68,42 @@ renderer passes `unsafe_allow_html=True`.
 ```
 
 **Book lifecycle.** `books/available/` holds unread summaries, `books/read/` holds finished ones.
-`next_reads.py` is the piece that moves a file between them: when the reader reaches the last part it
-calls `hardcover.request.mark_book_as_read` (GraphQL search + `insert_user_book` mutation with
-`status_id: 3`) and then `shutil.move`s the JSON into `books/read/`. `prep.py` feeds the other end,
-consuming PDFs from `./next` and parking the originals in `./pdfs` (both gitignored, both absent from
-a fresh clone — `prep.py` creates the output dirs but expects `next/` to exist).
+`POST /api/books/{key}/finish` moves a file between them: it calls
+`hardcover.request.mark_book_as_read` (GraphQL search + `insert_user_book` mutation with
+`status_id: 3`), then `shutil.move`s the JSON into `books/read/`. The move happens either way — the
+book *was* read — but `markedRead` is only true when Hardcover accepted it, and the finish screen
+never paints the green chip otherwise. `next_reads.py` still does the same thing the old way.
+`prep.py` feeds the other end, consuming PDFs from `./next` and parking the originals in `./pdfs`
+(both gitignored, both absent from a fresh clone — `prep.py` creates the output dirs but expects
+`next/` to exist).
+
+## The reader (api/ + web/)
+
+Implements `design_handoff_bookv3_reader`, built on the Tide design system. Three screens — shelf,
+reader, finished — sized for a tablet in portrait (an 834px card on a coloured "desk").
+
+**`api/`** is read-mostly over `books/`. `library.py` scans both folders into shelf entries (the key
+is the filename stem, so a lookup never path-joins caller input); `patches.py` collapses the
+pipeline's free-text `meta.category` onto a patch family; `positions.py` is the only place reading
+history has ever been stored (`data/positions.json`: part, page, lastReadAt, startedAt, sittings,
+and the Hardcover outcome).
+
+**`web/`** is Vite + React. `src/lib/reading.js` is the model and the part worth understanding:
+
+- **Front-weighted progress.** The first 40% of parts carry 80% of the bar. `progressOf` uses
+  `pageIndex`, not `pageIndex + 1` — the page you are on is in progress, not read, and 100% belongs
+  to the finish screen alone.
+- **Pagination.** Two sentences to a paragraph, two paragraphs to a page, so a part is two or three
+  pages and the bar moves inside a chapter.
+- **Highlighting** replaces `chunks.py`'s inline forest-green. The pipeline's `<b>` still decides
+  *what* matters; the UI decides *how* it looks. `normaliseBody` strips the baked-in colour, then
+  phrases take palette bands in reading order, capped at 8 marks per page (counting instances, not
+  distinct phrases), each band mixed toward ink or cream until it clears a luminance threshold.
+
+Colours, type and spacing come from the vendored token layer in `web/src/ds/` — edit tokens, not
+hard-coded values. Two rules from the design system are easy to break by accident: **gold is only
+ever a join** (the resume strip, nothing else), and **the day/night register swap is never
+animated** — it is a different room, it loads.
 
 **Streamlit state.** Each script is a `if __name__ == "__main__"` block that re-executes top to bottom
 on every interaction, so all cross-rerun state lives in `st.session_state`, and `st.empty()`
@@ -82,6 +121,11 @@ Don't treat these as intentional design when editing nearby code:
 - `chunks.format_text` calls `.replace("```")` with one argument — raises `TypeError` if a response
   ever contains a ```` ```html ```` fence.
 - `app.py` writes uploads to `uploaded_files/` but creates `pdfs/`.
-- `hardcover/request.py` interpolates the title/author directly into GraphQL as
-  `{title: {<title>}}`, which is not valid GraphQL comparison syntax; the search path is unproven.
 - Broad `except Exception: print(ex)` blocks in `app.py` swallow errors into the console.
+- 68 of the book JSONs predate `meta.category` and have none; `patches.py` falls back deterministically.
+- The webfonts load from the Google Fonts CDN (`web/src/ds/tokens/fonts.css`). Where that is blocked
+  the reader silently falls back to a system sans, losing the legibility Lexend was chosen for.
+
+`hardcover/request.py` used to interpolate title/author into GraphQL as `{title: {<title>}}`, which
+is not valid comparison syntax — that is fixed (`_ilike` with variables), but the path has still
+never round-tripped against the live API. See TODO.md.

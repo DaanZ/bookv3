@@ -1,3 +1,4 @@
+# Pipeline (PDF -> highlighted JSON summary) and the Streamlit ingest apps
 openai
 langchain_core
 langchain_openai
@@ -9,3 +10,13 @@ streamlit
 python-dotenv
 rootpath
 spotipy
+
+# Imported by the pipeline but previously unlisted: chunks.py uses numpy, every
+# structured-output model is a pydantic BaseModel, hardcover/request.py uses requests.
+numpy
+pydantic
+requests
+
+# The reader's backend (api/), which serves books/*.json to the React app in web/
+fastapi
+uvicorn[standard]

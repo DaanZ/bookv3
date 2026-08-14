@@ -1,0 +1,36 @@
+/* The only rules the design carries outside inline styles: the two transitions, the
+   reset for tappable rows, and the touch-target/print behaviour a tablet needs. */
+
+body {
+  margin: 0;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+
+a { color: var(--link); }
+a:hover { color: var(--link-hover); }
+
+button { font-family: inherit; }
+
+.tap {
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  text-align: left;
+  display: block;
+  width: 100%;
+}
+
+/* Nothing else moves: paragraph opacity at 160ms, progress width at 260ms. */
+.para { transition: opacity 160ms var(--ease-move, ease); }
+.fill { transition: width 260ms var(--ease-move, ease); }
+
+/* Surfaces step one value lighter in Deep, one warmer-darker in Shore. Never lift,
+   never scale, never glow. */
+.row { transition: border-color var(--dur-instant, 90ms) var(--ease-move, ease); }
+.row:hover { border-color: var(--border-strong); }
+
+/* Reduced motion completes, it does not skip. */
+@media (prefers-reduced-motion: reduce) {
+  .para, .fill, .row { transition-duration: 0.01ms !important; }
+}

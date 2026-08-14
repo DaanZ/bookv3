@@ -1,0 +1,41 @@
+/* Tide type — option 1a is the system default.
+   Alternates 1b (IBM Plex trio) and 1c (Instrument Serif + Geist) are documented
+   in readme.md; swapping is three variable changes and nothing else. */
+:root {
+  --font-display: 'Lexend', system-ui, sans-serif;   /* titles, section heads, hero */
+  --font-ui: 'Space Grotesk', system-ui, sans-serif; /* wordmark, controls, body */
+  --font-data: 'IBM Plex Mono', ui-monospace, monospace; /* IDs, dates, provenance */
+
+  /* Lexend carries a width axis; widen tracking for accessibility modes rather
+     than switching families. Deca is the wider cut. */
+  --font-display-wide: 'Lexend Deca', 'Lexend', system-ui, sans-serif;
+
+  --track-display: -.6px;
+  --track-heading: -.4px;
+  --track-eyebrow: 1.1px;
+  --track-chip: .4px;
+
+  /* Deep register: data leads, display is restrained. */
+  --size-hero: 112px;
+  --size-display: 38px;
+  --size-title: 34px;
+  --size-section: 21px;
+  --size-card: 15px;
+  --size-body: 13px;
+  --size-body-lg: 14px;
+  --size-small: 12px;
+  --size-eyebrow: 9.5px;
+  --size-chip: 8.5px;
+
+  --leading-hero: .92;
+  --leading-title: 1.12;
+  --leading-body: 1.62;
+}
+
+/* Shore register flips the ratio: display grows, data shrinks. */
+.shore {
+  --size-title: 34px;
+  --size-body: 14px;
+  --size-body-lg: 16px;
+  --leading-body: 1.68;
+}

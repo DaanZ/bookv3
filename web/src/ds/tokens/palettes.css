@@ -1,0 +1,74 @@
+/* The SNCore palettes, as tokens.
+   Source of truth is _sncore/palettes/index.js — these mirror it for CSS-only surfaces.
+   Five live ramps, not the three the bundle README names; the module is what ships.
+
+   bands    every colour in the ramp, in paint order. A hero shows all of them.
+   sections the subset that can carry type. A scrolling page walks these.
+
+   Nothing about a band is stored painted. The gradient is lift(band) -> band, the cut
+   edge is the same colour +10% HSL lightness, and the ink is whichever of cream and
+   ink-900 measures better per band — all three are derived, never hand-picked. Use the
+   module for those; only the bands themselves are tokens. */
+
+:root {
+  /* Sunrise — the Tide ramp, deep water to shore. Default.
+     The only palette whose section subset the contrast rule reproduces on its own. */
+  --palette-sunrise-1: #0A2F33;
+  --palette-sunrise-2: #12564F;
+  --palette-sunrise-3: #1F7F76;  /* 4.49:1 — carries neither ink; not a section */
+  --palette-sunrise-4: #3EA296;
+  --palette-sunrise-5: #8A4A12;  /* clears at 6.37:1, dropped anyway: five sections cannot walk eight bands */
+  --palette-sunrise-6: #C56A15;  /* 4.34:1 — carries neither ink; not a section */
+  --palette-sunrise-7: #EF8A1E;
+  --palette-sunrise-8: #F7A94A;
+
+  /* Sunset — indigo to amber. Omissions editorial. */
+  --palette-sunset-1: #313575;
+  --palette-sunset-2: #321951;
+  --palette-sunset-3: #633090;
+  --palette-sunset-4: #723466;
+  --palette-sunset-5: #822E37;
+  --palette-sunset-6: #BA5834;
+  --palette-sunset-7: #F68318;
+  --palette-sunset-8: #FDC005;
+
+  /* Coral — handed over at eight and kept in the order it was given, not sorted by
+     luminance: sorting would fix the mid-ramp dark and lose the set. */
+  --palette-coral-1: #6C2E7B;
+  --palette-coral-2: #E75480;
+  --palette-coral-3: #FF8A5B;
+  --palette-coral-4: #FFC857;
+  --palette-coral-5: #1FA7A6;
+  --palette-coral-6: #0D3B66;
+  --palette-coral-7: #8B7FD6;
+  --palette-coral-8: #FFD8C7;
+
+  /* Bee — six given, sorted deepest first. The page's ground must stay deeper than the
+     deepest band, and this ramp is right against that rule. */
+  --palette-bee-1: #1A141A;
+  --palette-bee-2: #423738;
+  --palette-bee-3: #67482F;
+  --palette-bee-4: #8E5915;
+  --palette-bee-5: #B97515;  /* the measured omission, 4.47:1 */
+  --palette-bee-6: #E59312;
+  --palette-bee-7: #D3AF85;
+  --palette-bee-8: #F4B315;
+
+  /* Rainbow — the one that inverts: the excluded amber is the strongest band here at
+     11.60:1 while #108AB1 is kept at 4.21:1, the only section band in any palette that
+     clears no ink. Deliberate, because the mid blue is what this ramp is recognised by. */
+  --palette-rainbow-1: #073A4B;
+  --palette-rainbow-2: #0C617C;
+  --palette-rainbow-3: #108AB1;
+  --palette-rainbow-4: #03B1AB;
+  --palette-rainbow-5: #06D7A0;
+  --palette-rainbow-6: #FFD167;
+  --palette-rainbow-7: #F78C6A;
+  --palette-rainbow-8: #F04770;
+
+  /* The fixed pair every palette is measured against. */
+  --palette-ground: #04181B;
+  --palette-paper: #FFFDF8;
+  --palette-ink-cream: #FDF6EA;
+  --palette-ink-dark: #14201F;
+}

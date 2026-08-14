@@ -1,0 +1,129 @@
+:root {
+  /* ── Deep · cold end of the ramp (console, depth, distance) ── */
+  --deep-950: #04181B;
+  --deep-900: #082427;
+  --deep-800: #0A2F33;
+  --deep-600: #12564F;
+  --deep-400: #1F7F76;
+  --deep-300: #3EA296;
+
+  /* ── Shore · warm end of the ramp (paper, recency, print) ──── */
+  --shore-900: #5C3210;
+  --shore-800: #8A4A12;
+  --shore-700: #C56A15;
+  --shore-600: #C8560F;   /* action on paper — AA on white */
+  --shore-500: #EF8A1E;   /* action on deep surfaces */
+  --shore-400: #F7A94A;
+  --shore-200: #FBC986;
+  --shore-100: #FFE7C6;
+  --shore-50:  #FDF6EA;
+
+  /* ── Neutrals ──────────────────────────────────────────────── */
+  --ink-900: #14201F;
+  --ink-700: #3F4B47;
+  --ink-500: #5D6B66;
+  --ink-400: #7D8A84;
+  --ink-200: #C3B9A6;
+  --paper:   #F3ECE0;
+  --card:    #FFFDF8;
+
+  /* ── Seam · kintsugi gold. Only ever a join. ───────────────── */
+  --seam-700: #8A6512;
+  --seam-600: #A5761C;
+  --seam-500: #C9922E;
+  --seam-300: #E9BD68;
+  --seam-100: #F6D894;
+
+  /* ── Status hues · raw ─────────────────────────────────────── */
+  --green-400: #6FBF8E;
+  --green-600: #3A5C2E;
+  --amber-400: #E0B46A;
+  --amber-600: #8A5F12;
+  --red-400:   #F0A08F;
+  --red-600:   #9C2F1E;
+
+  /* ═══ Semantic · Deep is the default register ═══ */
+  --bg-page: var(--deep-950);
+  --bg-shell: var(--deep-900);
+  --bg-surface: #0B1A1C;
+  --bg-surface-hover: #122A2C;
+
+  --border-subtle: rgba(253,246,234,.07);
+  --border-default: rgba(253,246,234,.12);
+  --border-strong: rgba(253,246,234,.22);
+
+  --text-primary: var(--shore-50);
+  --text-secondary: rgba(253,246,234,.78);
+  --text-muted: rgba(253,246,234,.5);
+
+  --accent: var(--shore-500);
+  --accent-on: var(--ink-900);
+  --accent-hover: var(--shore-400);
+  --link: var(--shore-400);
+  --link-hover: var(--shore-200);
+
+  --seam: var(--seam-500);
+  --seam-core: var(--seam-100);
+  --seam-text: var(--seam-300);
+
+  --status-current: var(--green-400);
+  --status-claimed: var(--amber-400);
+  --status-expired: var(--red-400);
+  --status-seam: var(--seam-300);
+  --status-neutral: rgba(253,246,234,.6);
+
+  --chip-current-bg: rgba(58,92,46,.30);
+  --chip-current-fg: #8FD6A8;
+  --chip-claimed-bg: rgba(138,95,18,.30);
+  --chip-claimed-fg: var(--amber-400);
+  --chip-expired-bg: rgba(156,47,30,.28);
+  --chip-expired-fg: var(--red-400);
+  --chip-seam-bg: rgba(201,146,46,.20);
+  --chip-seam-fg: var(--seam-300);
+  --chip-neutral-bg: rgba(253,246,234,.08);
+  --chip-neutral-fg: rgba(253,246,234,.66);
+}
+
+/* ═══ Shore · public / print register ═══
+   Add class="shore" to any subtree (or <html>) to flip registers. */
+.shore {
+  --bg-page: var(--paper);
+  --bg-shell: var(--paper);
+  --bg-surface: var(--card);
+  --bg-surface-hover: #F7F0E4;
+
+  --border-subtle: rgba(20,32,31,.08);
+  --border-default: rgba(20,32,31,.13);
+  --border-strong: rgba(20,32,31,.24);
+
+  --text-primary: var(--ink-900);
+  --text-secondary: var(--ink-500);
+  --text-muted: var(--ink-400);
+
+  --accent: var(--shore-600);
+  --accent-on: #FFFFFF;
+  --accent-hover: #8A3C08;
+  --link: var(--shore-600);
+  --link-hover: #8A3C08;
+
+  --seam: var(--seam-500);
+  --seam-core: var(--seam-100);
+  --seam-text: var(--seam-600);
+
+  --status-current: var(--green-600);
+  --status-claimed: var(--amber-600);
+  --status-expired: var(--red-600);
+  --status-seam: var(--seam-600);
+  --status-neutral: var(--ink-400);
+
+  --chip-current-bg: rgba(58,92,46,.13);
+  --chip-current-fg: var(--green-600);
+  --chip-claimed-bg: rgba(138,95,18,.14);
+  --chip-claimed-fg: var(--amber-600);
+  --chip-expired-bg: rgba(156,47,30,.13);
+  --chip-expired-fg: var(--red-600);
+  --chip-seam-bg: rgba(201,146,46,.18);
+  --chip-seam-fg: var(--seam-700);
+  --chip-neutral-bg: rgba(20,32,31,.06);
+  --chip-neutral-fg: var(--ink-500);
+}

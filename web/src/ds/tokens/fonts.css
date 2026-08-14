@@ -1,0 +1,4 @@
+/* Webfonts. No binaries were supplied with the brief, so the three faces load from
+   the Google Fonts CDN. Drop TTF/WOFF2 into assets/fonts/ and replace this import
+   with real @font-face rules when the licensed files arrive. */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&family=Lexend+Deca:wght@400;500&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap');

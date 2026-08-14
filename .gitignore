@@ -2,9 +2,14 @@
 
 /data/
 *.pyc
+__pycache__/
 /.idea
 .env
 .cache
 /pdfs
+/next
 /sounds
-/sounds
+
+# Reader frontend
+/web/node_modules/
+/web/dist/

@@ -1,0 +1,19 @@
+:root {
+  --radius-hero: 16px;
+  --radius-card: 14px;
+  --radius-panel: 13px;
+  --radius-control: 10px;
+  --radius-input: 9px;
+  --radius-physical: 4px;   /* labels, printed paper, chips */
+  --radius-seam: 2px;
+
+  /* Shadows are warm-tinted, never neutral grey, and always shallow. */
+  --shadow-subtle: 0 1px 6px rgba(20,32,31,.05);
+  --shadow-raised: 0 3px 12px rgba(20,32,31,.11);
+  --shadow-card: 0 4px 18px rgba(20,32,31,.14);
+  --shadow-deep: 0 6px 22px rgba(20,32,31,.2);
+
+  /* Depth grammar */
+  --layer-step: 10px; /* @kind spacing */       /* each layer is inset this much further */
+  --seam-height: 4px; /* @kind spacing */
+}
