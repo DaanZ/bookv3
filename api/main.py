@@ -105,6 +105,12 @@ def finish_book(key: str):
 if os.path.isdir(WEB_DIST):
     app.mount("/assets", StaticFiles(directory=os.path.join(WEB_DIST, "assets")), name="assets")
 
+    # The ambience beds. Mounted explicitly rather than left to the SPA fallback so
+    # they are served with Range support — Safari will not play audio without it.
+    ambience_dir = os.path.join(WEB_DIST, "ambience")
+    if os.path.isdir(ambience_dir):
+        app.mount("/ambience", StaticFiles(directory=ambience_dir), name="ambience")
+
     @app.get("/{path:path}")
     def spa(path: str):
         candidate = os.path.join(WEB_DIST, path)

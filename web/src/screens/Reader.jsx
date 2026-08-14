@@ -1,13 +1,15 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
+import AmbiencePlayer from '../components/AmbiencePlayer';
 import Patch from '../components/Patch';
 import { Button, ProgressBar, QuietLink } from '../components/ui';
 import { frontCount, newBudget, paginate, paletteFor, progressOf, tokensOf } from '../lib/reading';
 
 // Read one page of a part, then move on with one tap.
 
-export default function Reader({ book, part, page, prefs, onNavigate, onShelf, onFinish }) {
+export default function Reader({ book, part, page, prefs, ambience, onNavigate, onShelf, onFinish }) {
   const [focused, setFocused] = useState(null);
+  const [soundOpen, setSoundOpen] = useState(false);
 
   const day = prefs.theme === 'day';
   const cap = Math.min(8, Math.max(1, prefs.maxHighlights));
@@ -31,6 +33,13 @@ export default function Reader({ book, part, page, prefs, onNavigate, onShelf, o
 
   const showResume =
     book.state === 'reading' && part === book.at && pageIndex === 0 && !!book.resumeRecap;
+
+  // Duck while the resume strip is on screen; the page turn that leaves it restores
+  // the level. The bed is background — it steps back when something asks to be read.
+  const { duck } = ambience;
+  useEffect(() => {
+    duck(showResume);
+  }, [duck, showResume]);
 
   const nextLabel = !lastPage ? 'Next page' : lastPart ? 'Finish book' : 'Next part';
   const backLabel = pageIndex > 0 ? 'Previous page' : part === 0 ? 'Back to shelf' : 'Previous part';
@@ -107,7 +116,12 @@ export default function Reader({ book, part, page, prefs, onNavigate, onShelf, o
             </span>
           </div>
         </div>
-        <QuietLink onClick={onShelf}>Shelf</QuietLink>
+        <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+          <QuietLink onClick={() => setSoundOpen((v) => !v)}>
+            {ambience.on ? 'Sound on' : 'Sound'}
+          </QuietLink>
+          <QuietLink onClick={onShelf}>Shelf</QuietLink>
+        </div>
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 7, marginTop: 26 }}>
@@ -118,6 +132,8 @@ export default function Reader({ book, part, page, prefs, onNavigate, onShelf, o
           front-weighted · the first {frontCount(partCount)} parts carry 80% of the bar
         </span>
       </div>
+
+      <AmbiencePlayer ambience={ambience} open={soundOpen} onClose={() => setSoundOpen(false)} />
 
       {showResume && (
         <div

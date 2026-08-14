@@ -105,6 +105,25 @@ hard-coded values. Two rules from the design system are easy to break by acciden
 ever a join** (the resume strip, nothing else), and **the day/night register swap is never
 animated** — it is a different room, it loads.
 
+**Ambience** (`web/src/lib/ambience.js`) plays one of six natural beds under the reader. Forest,
+river, fireplace and wind are recordings in `web/public/ambience/`; lake and rain are synthesized
+with the Web Audio API by the recipes from the ambience handoff. Three things about it are load
+bearing and not obvious:
+
+- **Recordings stream, they are never decoded.** `decodeAudioData` on a 10-minute stereo file
+  produces roughly 200MB of AudioBuffer. Beds run through `MediaElementAudioSourceNode` instead.
+- **Two lanes crossfade.** A recorded bed builds two media elements and hands over with an
+  equal-power fade before the file ends, because `loop = true` leaves an audible seam — which the
+  22-second wind file would hit every 22 seconds.
+- **`TRIM` is measured, not chosen.** The supplied recordings sit near -50 dBFS RMS while the
+  synthesized beds run at -7, so each bed carries a trim that brings it to a common level.
+  Re-derive them with `web/tools/measure-beds.mjs` if a recording is ever replaced; the header of
+  that file explains the procedure, including that trims must be reset to 1 before measuring.
+
+The wiring rules come from the handoff and are enforced in `web/src/lib/useAmbience.js`: off by
+default, one gesture to start, the choice belongs to the book (persisted per book, not per app),
+duck while the resume strip shows, and silence at the finish screen.
+
 **Streamlit state.** Each script is a `if __name__ == "__main__"` block that re-executes top to bottom
 on every interaction, so all cross-rerun state lives in `st.session_state`, and `st.empty()`
 placeholders captured into session state are reused as render slots (`next_reads.py`). `app.py`

@@ -8,6 +8,12 @@ React app (`web/`) over a small FastAPI service (`api/`) reading the same
 `books/*.json`. Streamlit keeps ingest (`app.py`, `prep.py`); `next_reads.py`,
 `all.py` and `dashboard.py` are superseded by the new reader but left in place.
 
+**Ambience decision:** `design_handoff_bookv3_ambience` ships a synthesizer for all five
+beds and documents a contract for using real recordings instead. Four recordings were
+supplied (forest, river, fireplace, wind), so beds play a recording where one exists and
+fall back to the handoff's synthesized recipe where none does — lake and rain are still
+synthesized. Wind is a sixth bed, added because a file for it arrived.
+
 ---
 
 ## Back-end
@@ -58,6 +64,41 @@ React app (`web/`) over a small FastAPI service (`api/`) reading the same
 - [ ] Empty and error states are plain text; they deserve the same treatment as the
       rest of the surface
 
+### Ambience
+
+- [x] `lib/ambience.js` — the handoff's module, keeping its public contract
+      (`play/stop/toggle/setLevel/duck/dispose`, `PROFILES`, `bedForCategory`) and all
+      six of its rules: 4s in / 2s out, one master gain, level capped at 0.5
+- [x] Recorded beds stream through `MediaElementAudioSourceNode` rather than
+      `decodeAudioData` — a 10-minute stereo file decodes to ~200MB of AudioBuffer,
+      which is not something to hand a tablet
+- [x] Two lanes per recorded bed with an equal-power crossfade, so the loop point is
+      never audible. Verified across two passes of the 22s wind file: no dip
+- [x] Per-bed `TRIM`, measured with `tools/measure-beds.mjs`. The recordings arrived at
+      about -50 dBFS RMS and the synthesized beds ran at -7; without this the same
+      slider position is inaudible on one bed and a soundtrack on the next
+- [x] Gentle compression on recorded beds — the fireplace file's crackle runs ~35dB
+      over its own bed, well past the 12dB the handoff's recording contract allows
+- [x] Player UI: quiet `Sound` control in the reader header, suggested bed marked,
+      all beds one tap away, level slider, off
+- [x] Off by default, one gesture to start, `{bed, level, on}` persisted per book
+- [x] Duck -6dB while the resume strip is on screen; restore on page turn
+- [x] Silence at the finish screen and on the shelf; stop on unmount and after the tab
+      has been hidden for a minute
+- [x] Politically charged categories suggest nothing rather than being scored
+- [x] Fix the category matcher: the handoff's substring test sent "Business/**Art**up
+      Growth" to Forest because `art` is inside `startup`. Single-word keywords now
+      match at a word boundary
+- [ ] **The trims are calibrated against Chromium's decoder in this sandbox.** They are
+      measured, not guessed, but they have never been heard. Listen on the actual
+      tablet and adjust `TRIM` before trusting them.
+- [ ] The fireplace bed lands ~0.7dB under the others; it is peak-limited by its own
+      crackle even after compression. Re-master that file and the trim can come up.
+- [ ] Lake and rain are still synthesized — recordings for them would finish the set
+- [ ] No control for `maxHighlights` or for ambience on the shelf; both are reader-only
+- [ ] Ambience does not survive a page reload mid-book (by design — audio needs a
+      gesture — but a "resume sound" affordance would be kinder than silence)
+
 ## DevOps
 
 - [x] Add the three deps the pipeline always needed but never listed (numpy,
@@ -75,6 +116,14 @@ React app (`web/`) over a small FastAPI service (`api/`) reading the same
       real files into `assets/fonts/`.
 - [ ] No tests anywhere in the repo. The reading model (`weights`, `paginate`,
       `tokensOf`) is pure and the highest-value thing to cover first.
+- [x] Ship the four ambience recordings under `web/public/ambience/`, served by
+      FastAPI from an explicit mount so they get Range support (Safari will not play
+      audio without it — verified 206 Partial Content)
+- [x] Verify playback for real: signal measured on the master for recorded and
+      synthesized beds alike, duck confirmed at exactly -6dB, silence after `stop()`
+- [ ] **The audio is 42MB and it is in git history now.** No mp3 encoder was available
+      here to re-encode; mono at ~96kbps would be roughly a quarter of the size and
+      indistinguishable for a background bed. Worth doing before the repo grows.
 - [ ] Add a `web/dist` build step to whatever deploys this; the API serves the
       bundle only if the directory exists
 - [ ] Decide the fate of `next_reads.py` / `all.py` / `dashboard.py` — all three are

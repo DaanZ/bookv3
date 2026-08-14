@@ -4,6 +4,7 @@ import { Card } from './components/ui';
 import { finishBook, getBook, getShelf, putPosition } from './lib/api';
 import { PALETTE_NAMES } from './lib/reading';
 import { usePrefs } from './lib/prefs';
+import { useAmbience } from './lib/useAmbience';
 import { recommendations } from './lib/recommend';
 import Finished from './screens/Finished';
 import Reader from './screens/Reader';
@@ -21,8 +22,15 @@ export default function App() {
   const [finishResult, setFinishResult] = useState(null);
   const [recIndex, setRecIndex] = useState(0);
   const [error, setError] = useState(null);
+  const ambience = useAmbience(book);
 
   const day = prefs.theme === 'day';
+
+  // Silence at the finish screen: that moment is the reward and should be quiet.
+  const ambienceStop = ambience.stop;
+  useEffect(() => {
+    if (screen === 'finish' || screen === 'shelf') ambienceStop();
+  }, [screen, ambienceStop]);
 
   const loadShelf = useCallback(async () => {
     try {
@@ -159,6 +167,7 @@ export default function App() {
               part={position.part}
               page={position.page}
               prefs={prefs}
+              ambience={ambience}
               onNavigate={navigate}
               onShelf={toShelf}
               onFinish={onFinish}
