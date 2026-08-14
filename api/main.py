@@ -165,9 +165,20 @@ if os.path.isdir(WEB_DIST):
     if os.path.isdir(ambience_dir):
         app.mount("/ambience", StaticFiles(directory=ambience_dir), name="ambience")
 
+    _DIST_ROOT = os.path.realpath(WEB_DIST)
+
     @app.get("/{path:path}")
     def spa(path: str):
-        candidate = os.path.join(WEB_DIST, path)
-        if path and os.path.isfile(candidate):
+        index = os.path.join(_DIST_ROOT, "index.html")
+        if not path:
+            return FileResponse(index)
+
+        # Resolve first, then check the result is still inside web/dist. Joining the
+        # URL straight onto the directory would hand out any file the process can read
+        # given enough "../" — Starlette normalises the path before it reaches here, so
+        # this is not reachable today, but that is its behaviour, not our guarantee.
+        candidate = os.path.realpath(os.path.join(_DIST_ROOT, path))
+        inside = candidate == _DIST_ROOT or candidate.startswith(_DIST_ROOT + os.sep)
+        if inside and os.path.isfile(candidate):
             return FileResponse(candidate)
-        return FileResponse(os.path.join(WEB_DIST, "index.html"))
+        return FileResponse(index)
