@@ -19,7 +19,7 @@ pip install -r requirements.txt
 ./build.sh                    # bundle web/ into web/dist
 uvicorn api.main:app --port 8000   # serves the API *and* web/dist when it exists
 
-# Ingest (unchanged)
+# Ingest — now also available in the reader itself, on the library screen
 streamlit run app.py          # upload a PDF and summarize it live, chunk by chunk
 python prep.py                # batch: summarize every PDF in ./next -> books/available, PDF to ./pdfs
 
@@ -79,14 +79,28 @@ never paints the green chip otherwise. `next_reads.py` still does the same thing
 
 ## The reader (api/ + web/)
 
-Implements `design_handoff_bookv3_reader`, built on the Tide design system. Three screens — shelf,
-reader, finished — sized for a tablet in portrait (an 834px card on a coloured "desk").
+Implements `design_handoff_bookv3_reader`, built on the Tide design system. Four screens — shelf,
+reader, finished and library — sized for a tablet in portrait (an 834px card on a coloured "desk").
 
-**`api/`** is read-mostly over `books/`. `library.py` scans both folders into shelf entries (the key
-is the filename stem, so a lookup never path-joins caller input); `patches.py` collapses the
+The first three come from the handoff and are high fidelity to it. **The library screen has no
+design file**: it is an extension written in the same token language, and it deliberately breaks the
+reader's "one unit of work per screen, never a scroll" rule, because managing a collection needs an
+overview that reading does not. Re-skin it, don't reason from it.
+
+**`api/`** is mostly read-only over `books/`. `library.py` scans both folders into shelf entries (the
+key is the filename stem, so a lookup never path-joins caller input); `patches.py` collapses the
 pipeline's free-text `meta.category` onto a patch family; `positions.py` is the only place reading
 history has ever been stored (`data/positions.json`: part, page, lastReadAt, startedAt, sittings,
 and the Hardcover outcome).
+
+`jobs.py` is the exception — it *writes* books, by running the ingest pipeline for an uploaded PDF.
+One thing there is easy to undo by accident: **the pipeline is imported inside the worker, not at
+module scope.** `util/chatgpt.py` reads `OPENAI_API_KEY` at import time, so a top-level
+`from chunks import ...` in `api/` would take the whole reader down on a machine without a key.
+Hoisting that import is the single change that breaks the reader for everyone who only wants to
+read. Jobs run one at a time on a worker thread, report progress per chunk, and are recorded in
+`data/jobs.json`; a job caught mid-flight by a restart is marked failed on the next boot, because
+nothing resumes it.
 
 **`web/`** is Vite + React. `src/lib/reading.js` is the model and the part worth understanding:
 

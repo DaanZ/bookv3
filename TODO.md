@@ -39,6 +39,35 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
       page boundaries (currently pagination is frontend-only)
 - [ ] Re-summarise or hide the 68 books whose JSON predates `meta.category`
 
+### Ingest and collection management
+
+- [x] `api/jobs.py` — upload a PDF into `next/`, queue it, run the same pipeline
+      `prep.py` runs (`read_book_pages` → `get_page_chunks` → `get_book_meta` →
+      `highlight_chunk`), write to `books/available`, park the original in `pdfs/`
+- [x] Per-chunk progress, so the screen can say "summarizing part 3 of 7" rather than
+      spinning for several minutes
+- [x] The pipeline is imported **inside the worker**, so the reader still starts on a
+      machine with no `OPENAI_API_KEY`; a missing key fails the job with that sentence
+      instead of taking the server down
+- [x] One job at a time on a worker thread — the point is to watch a book finish, not
+      to start six and have them all crawl
+- [x] Jobs persist to `data/jobs.json`; one interrupted by a restart is marked failed
+      on the next boot, since nothing resumes it
+- [x] Upload validation: extension, magic bytes (`%PDF`), 200MB ceiling, and collision
+      -safe filenames; the server-side path never appears in an API response
+- [x] `PATCH /api/books/{key}` to move between available and read, `DELETE` to remove a
+      summary (the source PDF in `pdfs/` is left alone)
+- [ ] **Nothing resumes an interrupted job.** The part summaries already produced are
+      thrown away and the book starts over. Writing partial output would fix that.
+- [ ] No way to cancel a running job, and no way to retry a failed one without
+      re-uploading the file
+- [ ] The chunk count is `ceil(pages / 25)` with no way to choose it from the screen,
+      though the API accepts an override
+- [ ] Uploading the same book twice produces two summaries under slightly different
+      keys; there is no duplicate check
+- [ ] Deleting a book does not remove its PDF from `pdfs/`, by design — but nothing
+      surfaces the orphans either
+
 ## Front-end
 
 - [x] Vite + React scaffold, Tide token layer vendored under `web/src/ds/`
@@ -99,6 +128,22 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
 - [ ] Ambience does not survive a page reload mid-book (by design — audio needs a
       gesture — but a "resume sound" affordance would be kinder than silence)
 
+### Library screen
+
+- [x] Drop or choose PDFs, live job progress, and the collection listed with move and
+      delete, reachable from the shelf footer
+- [x] Filter the collection by title, author or category; 60 rows at a time
+- [x] Warn up front when `OPENAI_API_KEY` is missing, rather than letting every upload
+      fail silently
+- [ ] **This screen has no design file.** It was built in the Tide token language by
+      extending the three screens that do. When the real handoff arrives, the layout is
+      the part to replace — the API underneath it should survive.
+- [ ] Sort options (by title, by date added, by part count) — the order is the shelf's
+      order today
+- [ ] No bulk selection: moving or deleting twenty books is twenty clicks
+- [ ] The collection list is the one place in the app that scrolls a long way; it wants
+      either virtualisation or paging once the library outgrows a few hundred books
+
 ## DevOps
 
 - [x] Add the three deps the pipeline always needed but never listed (numpy,
@@ -114,8 +159,18 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
       reader silently falls back to a system sans — which loses exactly the
       legibility the typeface was chosen for. The DS readme already flags dropping
       real files into `assets/fonts/`.
+- [x] Add `python-multipart` (PDF uploads) to requirements
+- [x] Verify ingest end to end with the LLM stubbed: a generated 12-page PDF through
+      upload → Gaussian chunking → 4 parts → JSON in `books/available` → visible on the
+      shelf with the right patch → PDF parked in `pdfs/`, plus the HTTP validation and
+      missing-key paths
+- [ ] **The ingest pipeline has never run against the real OpenAI API here.** Every
+      part of the path is proven except the LLM call itself, which was stubbed. The
+      first real book is the test that matters.
 - [ ] No tests anywhere in the repo. The reading model (`weights`, `paginate`,
-      `tokensOf`) is pure and the highest-value thing to cover first.
+      `tokensOf`) is pure and the highest-value thing to cover first; the ingest
+      harness used for the verification above is a good second, and would have to be
+      checked in rather than left in a scratch directory.
 - [x] Ship the four ambience recordings under `web/public/ambience/`, served by
       FastAPI from an explicit mount so they get Range support (Safari will not play
       audio without it — verified 206 Partial Content)

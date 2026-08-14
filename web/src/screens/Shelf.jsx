@@ -1,5 +1,5 @@
 import Patch from '../components/Patch';
-import { ProgressBar } from '../components/ui';
+import { ProgressBar, QuietLink } from '../components/ui';
 import { cum } from '../lib/reading';
 
 // Choose what to read; see at a glance what each book is and where you left it.
@@ -106,7 +106,7 @@ function BookRow({ book, onOpen }) {
   );
 }
 
-export default function Shelf({ books, counts, themeLabel, onOpen, filter, onFilter }) {
+export default function Shelf({ books, counts, themeLabel, onOpen, filter, onFilter, onLibrary }) {
   return (
     <div
       style={{
@@ -209,9 +209,12 @@ export default function Shelf({ books, counts, themeLabel, onOpen, filter, onFil
         <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
           books/available · books/read
         </span>
-        <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
-          {themeLabel}
-        </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
+            {themeLabel}
+          </span>
+          <QuietLink onClick={onLibrary}>Library</QuietLink>
+        </div>
       </div>
     </div>
   );

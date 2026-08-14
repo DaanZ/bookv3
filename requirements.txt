@@ -20,3 +20,4 @@ requests
 # The reader's backend (api/), which serves books/*.json to the React app in web/
 fastapi
 uvicorn[standard]
+python-multipart   # PDF uploads on the library screen

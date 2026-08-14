@@ -7,10 +7,13 @@ import { usePrefs } from './lib/prefs';
 import { useAmbience } from './lib/useAmbience';
 import { recommendations } from './lib/recommend';
 import Finished from './screens/Finished';
+import Library from './screens/Library';
 import Reader from './screens/Reader';
 import Shelf from './screens/Shelf';
 
-// screen: 'shelf' | 'reader' | 'finish'. The whole app is one 834px card on a desk.
+// screen: 'shelf' | 'reader' | 'finish' | 'library'. The whole app is one 834px card
+// on a desk. Reading is one unit of work per screen; the library is the one surface
+// that shows everything at once, because managing a collection needs the overview.
 
 export default function App() {
   const [prefs, setPrefs] = usePrefs();
@@ -158,6 +161,16 @@ export default function App() {
               filter={filter}
               onFilter={setFilter}
               onOpen={openBook}
+              onLibrary={() => setScreen('library')}
+            />
+          )}
+
+          {screen === 'library' && (
+            <Library
+              books={shelf.books}
+              counts={shelf.counts}
+              onShelf={toShelf}
+              onChanged={loadShelf}
             />
           )}
 

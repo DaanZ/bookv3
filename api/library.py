@@ -179,6 +179,31 @@ def recap_of(part: dict, limit: int = 190) -> str:
     return f"Last part: {recap}"
 
 
+def move_book(key: str, finished: bool) -> str | None:
+    """Move a book between books/available and books/read by hand.
+
+    The reader moves a book when you finish it; this is for correcting the shelf —
+    putting back something marked read by mistake, or filing one read elsewhere.
+    """
+    entry = index().get(key)
+    if entry is None or entry["finished"] == finished:
+        return None
+    target_dir = FINISHED_DIR if finished else AVAILABLE_DIR
+    os.makedirs(target_dir, exist_ok=True)
+    target = os.path.join(target_dir, os.path.basename(entry["path"]))
+    shutil.move(entry["path"], target)
+    return target
+
+
+def delete_book(key: str) -> bool:
+    """Remove a summary from the library. The source PDF in pdfs/ is left alone."""
+    entry = index().get(key)
+    if entry is None:
+        return False
+    os.remove(entry["path"])
+    return True
+
+
 def move_to_read(key: str) -> str | None:
     """books/available -> books/read. Returns the new path, or None if not applicable."""
     entry = index().get(key)

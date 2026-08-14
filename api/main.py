@@ -9,14 +9,17 @@ the shelf, a book's parts, reading position, and finishing a book. It reads the 
 
 import os
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from api import library, positions
+from api import jobs, library, positions
 from hardcover.request import mark_book_as_read
+
+# A book PDF; anything larger than this is very unlikely to be one.
+MAX_UPLOAD_BYTES = 200 * 1024 * 1024
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WEB_DIST = os.path.join(ROOT, "web", "dist")
@@ -35,6 +38,10 @@ app.add_middleware(
 class PositionIn(BaseModel):
     part: int = Field(ge=0)
     page: int = Field(ge=0)
+
+
+class MoveIn(BaseModel):
+    finished: bool
 
 
 @app.get("/api/shelf")
@@ -99,6 +106,53 @@ def finish_book(key: str):
         "moved": moved is not None,
         "movedTo": "books/read" if moved else None,
     }
+
+
+@app.patch("/api/books/{key}")
+def patch_book(key: str, body: MoveIn):
+    """Move a book between books/available and books/read by hand."""
+    if key not in library.index():
+        raise HTTPException(status_code=404, detail="No such book.")
+    moved = library.move_book(key, body.finished)
+    return {"moved": moved is not None, "finished": body.finished}
+
+
+@app.delete("/api/books/{key}")
+def remove_book(key: str):
+    """Delete a summary. The source PDF, if there is one, stays in pdfs/."""
+    if not library.delete_book(key):
+        raise HTTPException(status_code=404, detail="No such book.")
+    positions.clear_position(key)
+    return {"deleted": True}
+
+
+@app.get("/api/ingest/jobs")
+def get_jobs():
+    return {"jobs": jobs.list_jobs(), "hasKey": bool(os.environ.get("OPENAI_API_KEY"))}
+
+
+@app.post("/api/ingest/upload")
+async def upload(file: UploadFile = File(...), chunks: int | None = None):
+    """Take a PDF and queue it for the pipeline."""
+    name = file.filename or "book.pdf"
+    if not name.lower().endswith(".pdf"):
+        raise HTTPException(status_code=400, detail="Only PDF files can be ingested.")
+
+    data = await file.read()
+    if not data:
+        raise HTTPException(status_code=400, detail="That file is empty.")
+    if len(data) > MAX_UPLOAD_BYTES:
+        raise HTTPException(status_code=413, detail="That file is larger than 200MB.")
+    if not data.startswith(b"%PDF"):
+        raise HTTPException(status_code=400, detail="That file is not a PDF.")
+
+    return jobs.public(jobs.submit(name, data, chunks))
+
+
+@app.delete("/api/ingest/jobs")
+def clear_jobs():
+    """Clear finished and failed jobs from the list; the books they made are kept."""
+    return {"cleared": jobs.clear_finished()}
 
 
 # The built frontend, when there is one. Mounted last so /api always wins.
