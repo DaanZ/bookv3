@@ -9,6 +9,12 @@ A profile is that bookmark, per person. `data/profiles.json` is the list; the re
 itself is one file each under `data/positions/`, so profiles are separate by
 construction rather than by remembering to filter.
 
+What a reader owns beyond their bookmarks is their **preferences** — register, palette,
+pointer focus, how many highlights a page may carry. Those were in the browser's
+localStorage, which made them the tablet's rather than the reader's: two people sharing
+one tablet shared one theme, and the same person on a second tablet started over. They
+live on the profile row now, and the browser keeps only a copy for the first paint.
+
 Two things are deliberately *not* per profile:
 
 * **The books themselves.** `books/available` and `books/read` are one shelf in one
@@ -49,6 +55,23 @@ TONES = ["#1F6F6B", "#B4592B", "#4B5FA8", "#7A6A2F", "#8C3F63", "#3C7A45"]
 MAX_PROFILES = 12
 MAX_NAME = 40
 
+# What a reader owns. The same four the design lists as settings belonging to the reader
+# rather than the app — and the same defaults `web/src/lib/prefs.js` started from, so a
+# profile that has never changed anything looks exactly like the app did before.
+PREF_DEFAULTS = {
+    "theme": "night",
+    "palette": "sunset",
+    "focusMode": True,
+    "maxHighlights": 8,
+}
+
+THEMES = ("day", "night")
+
+# The palette names live in `web/src/lib/reading.js`, and duplicating the list here
+# would be two places to edit for one addition. This stores whatever the UI sends, kept
+# short and to a shape a name can have — the UI already falls back on one it cannot use.
+MAX_PALETTE = 32
+
 _lock = threading.Lock()
 
 
@@ -75,14 +98,48 @@ def _owner_row() -> dict:
         "tone": TONES[0],
         "owner": True,
         "createdAt": _now(),
+        "prefs": dict(PREF_DEFAULTS),
     }
+
+
+def clean_prefs(patch: dict | None) -> dict:
+    """Keep the four settings, drop everything else, and make each one the shape it is
+    meant to be.
+
+    A whitelist rather than a merge: this comes off the wire, it is written to a file
+    the whole app reads, and a browser is free to send anything at all.
+    """
+    out = {}
+    if not isinstance(patch, dict):
+        return out
+
+    if patch.get("theme") in THEMES:
+        out["theme"] = patch["theme"]
+    palette = patch.get("palette")
+    if isinstance(palette, str) and palette.strip():
+        out["palette"] = palette.strip()[:MAX_PALETTE]
+    if "focusMode" in patch:
+        out["focusMode"] = bool(patch["focusMode"])
+    if "maxHighlights" in patch:
+        try:
+            # 0 is meaningful — it turns highlighting off — so the floor is 0, not 1.
+            out["maxHighlights"] = max(0, min(24, int(patch["maxHighlights"])))
+        except (TypeError, ValueError):
+            pass
+    return out
 
 
 def _ensure(rows: list) -> list:
     """There is always an owner. A store with none — deleted by hand, or never written
-    — gets one rather than leaving the app with nobody to be."""
+    — gets one rather than leaving the app with nobody to be.
+
+    Also fills in preferences: rows written before they existed have none, and a reader
+    with no theme is not a reader who chose the dark one.
+    """
     if not any(row.get("owner") for row in rows):
-        return [_owner_row()] + rows
+        rows = [_owner_row()] + rows
+    for row in rows:
+        row["prefs"] = {**PREF_DEFAULTS, **clean_prefs(row.get("prefs"))}
     return rows
 
 
@@ -134,6 +191,8 @@ def create(name: str) -> tuple[dict | None, str | None]:
             "tone": TONES[len(rows) % len(TONES)],
             "owner": False,
             "createdAt": _now(),
+            # A new reader starts from the defaults, never from whoever was here last.
+            "prefs": dict(PREF_DEFAULTS),
         }
         rows.append(row)
         _write(rows)
@@ -154,6 +213,20 @@ def rename(profile_id: str, name: str) -> tuple[dict | None, str | None]:
                for other in rows):
             return None, f"There is already a profile called “{clean}”."
         row["name"] = clean
+        _write(rows)
+        return dict(row), None
+
+
+def set_prefs(profile_id: str, patch: dict) -> tuple[dict | None, str | None]:
+    """Change some of a reader's settings. A patch, not a replacement: the UI sends the
+    one thing that moved, and a key this version does not know is dropped rather than
+    stored for a version that might."""
+    with _lock:
+        rows = _ensure(_read())
+        row = next((r for r in rows if r["id"] == profile_id), None)
+        if row is None:
+            return None, "No such profile."
+        row["prefs"] = {**row["prefs"], **clean_prefs(patch)}
         _write(rows)
         return dict(row), None
 

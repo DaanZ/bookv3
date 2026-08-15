@@ -114,8 +114,13 @@ sittings, and the Hardcover outcome).
 
 `profiles.py` is who that history belongs to. One file each under `data/positions/`, listed in
 `data/profiles.json`, chosen by an `X-Profile` header that every reading endpoint resolves through
-one dependency (`reader` in `main.py`). Four rules:
+one dependency (`reader` in `main.py`). Five rules:
 
+- **The settings are the reader's too.** Register, palette, pointer focus and the highlight cap
+  live on the profile row, not in localStorage — `PUT /api/profiles/{id}/prefs`, whitelisted by
+  `clean_prefs` because it comes off the wire. The browser keeps a copy for the first paint only:
+  the profile's settings arrive a round-trip after mount, and without a cache the app would open
+  in the default register and then swap, which is the one thing the design says is never animated.
 - **The books are one shelf; the reading is not.** `books/available` and `books/read` are the
   house's filing. A book's `state` is the *reader's* — finished by them, or in progress — while
   `filed` is where the JSON actually sits. The owner is the exception the folder exists for: the
@@ -231,7 +236,9 @@ bearing and not obvious:
   that file explains the procedure, including that trims must be reset to 1 before measuring.
 
 The wiring rules come from the handoff and are enforced in `web/src/lib/useAmbience.js`: off by
-default, one gesture to start, the choice belongs to the book (persisted per book, not per app),
+default, one gesture to start, the choice belongs to the book — persisted per book *and per
+profile*, in that reader's position entry (`data/positions/<profile>.json`, under `ambience`), so
+it arrives on the book payload and follows the reader to another tablet —
 duck while the resume strip shows, and silence at the finish screen.
 
 **Streamlit state.** Each script is a `if __name__ == "__main__"` block that re-executes top to bottom

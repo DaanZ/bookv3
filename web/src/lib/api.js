@@ -50,6 +50,20 @@ export const renameProfile = (id, name) =>
 export const deleteProfile = (id) =>
   request(`/profiles/${encodeURIComponent(id)}`, { method: 'DELETE' });
 
+/** The reader's own settings — register, palette, pointer focus, highlight cap. */
+export const setProfilePrefs = (id, patch) =>
+  request(`/profiles/${encodeURIComponent(id)}/prefs`, {
+    method: 'PUT',
+    body: JSON.stringify(patch),
+  });
+
+/** The bed this reader chose for this book, kept beside their bookmark in it. */
+export const putAmbience = (key, settings) =>
+  request(`/books/${encodeURIComponent(key)}/ambience`, {
+    method: 'PUT',
+    body: JSON.stringify(settings),
+  });
+
 export const getBook = (key) => request(`/books/${encodeURIComponent(key)}`);
 
 export const putPosition = (key, part, page) =>

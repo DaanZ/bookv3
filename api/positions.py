@@ -5,6 +5,12 @@ One small JSON file per profile under `data/positions/` (already gitignored) hol
 "paused N days ago" line and the finish screen's "read in N sittings over M days"
 are all computed from this — nothing else in the repo records reading history.
 
+The ambience a reader chose for a book rides in the same entry, under `ambience`. It
+belongs there for the reason the handoff gives for storing it per book at all — the bed
+is a property of *this book for this reader*, not of the app — and keeping it here means
+one store, one file, and a choice that follows the person to another tablet instead of
+staying on the glass they happened to pick it on.
+
 Every function takes the profile whose reading it is. There is no "current" profile
 here on purpose: a module-level one would be a single global on a server two people can
 be using from two tablets at once, and the bug it caused would be somebody else's
@@ -149,6 +155,30 @@ def record_finish(profile: str, key: str, marked_read: bool | None) -> dict:
         # order the moment it was opened again.
         entry.setdefault("finishedAt", _now())
         entry["markedRead"] = None if marked_read is None else bool(marked_read)
+        data[key] = entry
+        _write(profile, data)
+        return entry
+
+
+# The ambience handoff's own shape: which bed, and how loud. `on` is deliberately not
+# kept — nothing may autoplay, so a bed that was playing when the book closed is restored
+# as a choice and not as sound, which is what the reader already does with it.
+def save_ambience(profile: str, key: str, bed: str | None, level: float | None) -> dict:
+    """Remember the bed this reader chose for this book."""
+    with _lock:
+        data = _read(profile)
+        entry = dict(data.get(key) or {})
+        ambience = dict(entry.get("ambience") or {})
+
+        if bed is not None:
+            ambience["bed"] = str(bed)[:32]
+        if level is not None:
+            try:
+                ambience["level"] = max(0.0, min(1.0, float(level)))
+            except (TypeError, ValueError):
+                pass
+
+        entry["ambience"] = ambience
         data[key] = entry
         _write(profile, data)
         return entry

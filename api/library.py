@@ -199,6 +199,10 @@ def summarise(key: str, entry: dict, data: dict, position: dict | None,
         # None means "never recorded", which is not the same as "the call failed".
         summary["markedRead"] = position.get("markedRead")
         summary["finishedAt"] = position.get("finishedAt")
+        # The bed this reader chose for this book, so the reader screen restores it
+        # without a second request — it is stored beside the bookmark and travels with it.
+        if position.get("ambience"):
+            summary["ambience"] = position["ambience"]
         # Which number this book was to be finished. Needs every book's finish date, not
         # just this one's, so it is only filled in when the caller had them all.
         if position.get("finishedAt") and everyone is not None:

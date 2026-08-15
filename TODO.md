@@ -62,9 +62,13 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
 - [x] A book's `state` is the reader's; `filed` is where the JSON sits. Only the owner's
       finish re-files it, and only the owner's finish reaches Hardcover — one key, one
       account — so a guest's finish returns `markedRead: null` and the screen says so
-- [ ] Preferences are still per browser, not per profile: theme, palette, ambience and
-      `maxHighlights` follow the tablet rather than the reader. Ambience in particular
-      is persisted per book, which now means per book *per tablet*
+- [x] Preferences belong to the reader, not the tablet: theme, palette, focusMode and
+      `maxHighlights` are on the profile row (`PUT /api/profiles/{id}/prefs`,
+      whitelisted server-side). localStorage keeps a copy for the first paint only, so
+      the app never opens in the default register and then swaps
+- [x] The ambience bed is per book *per profile*, stored in that reader's position entry
+      and delivered on the book payload — two people reading the same book keep their
+      own bed, and either keeps it on whichever tablet they pick up
 - [ ] Nothing stops a reader picking someone else's profile — by design, there is no
       login — but there is also no way to hide one. A house where that matters wants a
       PIN, and that is a different app
@@ -118,7 +122,8 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
       page → part → finish
 - [x] Finished: status block, "what you kept", far-side recommendation, Show another
 - [x] Pointer focus (siblings to 0.28 at 160ms), tap as the touch equivalent
-- [x] Persist theme / palette / focusMode / maxHighlights to localStorage
+- [x] Persist theme / palette / focusMode / maxHighlights — on the profile, with
+      localStorage as a first-paint cache rather than the source of truth
 - [x] Register swap is never animated; `prefers-reduced-motion` collapses transitions
 - [x] Shelf filter (reading / not started / read) — the design was drawn against
       three books, this shelf holds 264
@@ -146,7 +151,9 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
       over its own bed, well past the 12dB the handoff's recording contract allows
 - [x] Player UI: quiet `Sound` control in the reader header, suggested bed marked,
       all beds one tap away, level slider, off
-- [x] Off by default, one gesture to start, `{bed, level, on}` persisted per book
+- [x] Off by default, one gesture to start, `{bed, level}` persisted per book per
+      profile (`on` is not kept — nothing may autoplay, so a bed is restored as a
+      choice and never as sound)
 - [x] Duck -6dB while the resume strip is on screen; restore on page turn
 - [x] Silence at the finish screen and on the shelf; stop on unmount and after the tab
       has been hidden for a minute

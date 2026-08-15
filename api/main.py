@@ -56,6 +56,21 @@ class ProfileIn(BaseModel):
     name: str
 
 
+class PrefsIn(BaseModel):
+    """A patch, so the UI can send the one setting that moved. Every field is optional
+    and anything unrecognised is dropped by `profiles.clean_prefs`."""
+
+    theme: str | None = None
+    palette: str | None = None
+    focusMode: bool | None = None
+    maxHighlights: int | None = None
+
+
+class AmbienceIn(BaseModel):
+    bed: str | None = None
+    level: float | None = None
+
+
 def reader(x_profile: str | None = Header(default=None)) -> dict:
     """Whose reading this request is.
 
@@ -90,6 +105,20 @@ def edit_profile(profile_id: str, body: ProfileIn):
     row, error = profiles.rename(profile_id, body.name)
     if error:
         raise HTTPException(status_code=404 if error == "No such profile." else 400, detail=error)
+    return row
+
+
+@app.put("/api/profiles/{profile_id}/prefs")
+def set_profile_prefs(profile_id: str, body: PrefsIn):
+    """Register, palette, pointer focus, highlight cap — the settings the design calls
+    the reader's rather than the app's, kept on the reader.
+
+    By id rather than for whoever the header says, because that is what it is: a change
+    to a named profile, which happens to almost always be the one holding the tablet.
+    """
+    row, error = profiles.set_prefs(profile_id, body.model_dump(exclude_none=True))
+    if error:
+        raise HTTPException(status_code=404, detail=error)
     return row
 
 
@@ -146,6 +175,18 @@ def delete_position(key: str, profile: dict = Depends(reader)):
         raise HTTPException(status_code=404, detail="No such book.")
     positions.clear_position(profile["id"], key)
     return {"ok": True}
+
+
+@app.put("/api/books/{key}/ambience")
+def put_ambience(key: str, body: AmbienceIn, profile: dict = Depends(reader)):
+    """Remember the bed this reader chose for this book.
+
+    Beside the bookmark, in the same entry: the handoff's rule is that the choice
+    belongs to the book, and profiles make it belong to the book *for this reader*.
+    """
+    if key not in library.index():
+        raise HTTPException(status_code=404, detail="No such book.")
+    return positions.save_ambience(profile["id"], key, body.bed, body.level)
 
 
 @app.post("/api/books/{key}/finish")

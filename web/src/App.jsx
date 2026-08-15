@@ -31,7 +31,7 @@ import Shelf from './screens/Shelf';
 // one is chosen — that ordering is why profiles load first and the shelf waits on them.
 
 export default function App() {
-  const [prefs, setPrefs] = usePrefs();
+  const [prefs, setPrefs, adoptPrefs] = usePrefs();
   const [shelf, setShelf] = useState({ books: [], counts: { total: 0, read: 0 } });
   const [filter, setFilter] = useState('reading');
   const [screen, setScreen] = useState('shelf');
@@ -91,6 +91,10 @@ export default function App() {
       // A profile deleted from another tablet leaves a stale id here; fall back rather
       // than reading as somebody who no longer exists.
       if (chosen && chosen.id !== prefs.profile) setPrefs({ profile: chosen.id });
+      // The settings are the reader's, and the server is where they live. The cached
+      // copy has already painted; this is the reconcile, and it is silent when they
+      // agree — which on the tablet somebody uses every day is every time.
+      if (chosen?.prefs) adoptPrefs(chosen.prefs);
       loadShelf();
     })();
     return () => {
@@ -150,10 +154,16 @@ export default function App() {
   // Switching reader re-fetches everything: the same books, a different set of
   // bookmarks in them. Nothing is cached across the swap on purpose — a stale "part 3
   // of 7" from the last person is the exact bug profiles exist to prevent.
+  // `rows` is passed by the callers that have just fetched a fresher list than state
+  // has — adding a reader, or deleting the one you are. Without it, switching to a
+  // profile this render has never seen would leave the last reader's register up.
   const pickProfile = useCallback(
-    async (id) => {
+    async (id, rows) => {
       setProfile(id);
       setPrefs({ profile: id });
+      // Their register, their palette, their highlight cap — adopted before the shelf
+      // paints, so switching reader is one change of room rather than two.
+      adoptPrefs((rows || profiles).find((p) => p.id === id)?.prefs);
       setBook(null);
       setFinishResult(null);
       setFilter('reading');
@@ -161,7 +171,7 @@ export default function App() {
       await loadShelf();
       loadProfiles();
     },
-    [loadShelf, loadProfiles, setPrefs],
+    [loadShelf, loadProfiles, setPrefs, adoptPrefs, profiles],
   );
 
   const onAddProfile = useCallback(
@@ -169,8 +179,8 @@ export default function App() {
       setError(null);
       try {
         const created = await addProfile(name);
-        await loadProfiles();
-        pickProfile(created.id);
+        const rows = await loadProfiles();
+        pickProfile(created.id, rows);
       } catch (ex) {
         setError(ex.message);
       }
@@ -202,7 +212,7 @@ export default function App() {
         const rows = await loadProfiles();
         // Deleting the reader you are — fall back to the owner rather than carrying on
         // as an id the server no longer knows.
-        if (id === prefs.profile) pickProfile((rows.find((p) => p.owner) || {}).id);
+        if (id === prefs.profile) pickProfile((rows.find((p) => p.owner) || {}).id, rows);
       } catch (ex) {
         setError(ex.message);
       }
