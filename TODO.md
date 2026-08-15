@@ -30,11 +30,18 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
 - [x] Derive the resume recap from the previous part instead of authoring it, so it
       is true for all 264 books rather than the three in the demo
 - [x] Fix `hardcover/request.py` — the `{title: {<title>}}` comparison was not valid
-      GraphQL and the search never worked; now `_ilike` with query variables
+      GraphQL and the search never worked; then `_ilike` with query variables, which
+      was valid and *also* never worked: the API answers 403 `ilike and related
+      operations are not permitted on this schema`. Now the `search` root field
+      (typesense), sorted `users_count:desc`
 - [x] Treat a GraphQL error inside a 200 as a failure, so the finish screen never
       claims "marked read" when Hardcover refused
-- [ ] Verify the Hardcover path against the live API with a real `HARDCOVER_API_KEY`
-      — the query is correct GraphQL now, but has still never round-tripped
+- [x] Verify the Hardcover path against the live API with a real `HARDCOVER_API_KEY`
+      — round-tripped at last: search resolves 7/7 real titles to the right book, and
+      `insert_user_book` created user_book 17413683 (Make It Stick), read back as
+      `status_id: 3`
+- [ ] Decide what the finish screen should do when `authorMatched` is false — the
+      match was made on title alone and could be the wrong edition
 - [ ] Serve part bodies pre-paginated so the reader and any future surface agree on
       page boundaries (currently pagination is frontend-only)
 - [ ] Re-summarise or hide the 68 books whose JSON predates `meta.category`
