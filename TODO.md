@@ -53,6 +53,24 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
 - [x] `GET /api/enrichment` reports how far the pass has got; the library screen shows
       it while it runs. A book Hardcover does not have now reports `hardcover: null`,
       which is what makes "Add to Hardcover" reachable
+- [x] `api/profiles.py` + one positions store per profile, so a second person can read
+      here without moving somebody else's bookmark. `X-Profile` on every reading
+      endpoint, resolved once in `main.reader`; an unknown id answers as the owner, so
+      a browser that has never picked one behaves exactly as it did before
+- [x] Migrate `data/positions.json` onto `data/positions/owner.json` on first load — the
+      reading from before profiles belongs to whoever made it
+- [x] A book's `state` is the reader's; `filed` is where the JSON sits. Only the owner's
+      finish re-files it, and only the owner's finish reaches Hardcover — one key, one
+      account — so a guest's finish returns `markedRead: null` and the screen says so
+- [ ] Preferences are still per browser, not per profile: theme, palette, ambience and
+      `maxHighlights` follow the tablet rather than the reader. Ambience in particular
+      is persisted per book, which now means per book *per tablet*
+- [ ] Nothing stops a reader picking someone else's profile — by design, there is no
+      login — but there is also no way to hide one. A house where that matters wants a
+      PIN, and that is a different app
+- [ ] The profile is chosen in the browser and sent as a header, so two tabs on one
+      tablet can be two readers. That is either a feature or a surprise; nothing tests
+      which
 - [ ] Serve part bodies pre-paginated so the reader and any future surface agree on
       page boundaries (currently pagination is frontend-only)
 - [ ] Re-summarise or hide the 68 books whose JSON predates `meta.category`
@@ -145,6 +163,17 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
 - [ ] No control for `maxHighlights` or for ambience on the shelf; both are reader-only
 - [ ] Ambience does not survive a page reload mid-book (by design — audio needs a
       gesture — but a "resume sound" affordance would be kinder than silence)
+
+### Profiles screen
+
+- [x] Pick, add, rename and remove readers; each row carries a tone, a name and what
+      they have read, so the list is scannable before it is read
+- [x] The owner can be renamed but not deleted — their reading is the shelf's own
+- [ ] **No design file.** Built in the Tide token language from the shelf's shape.
+- [ ] No avatars or per-profile ambience; a tone square and an initial is the whole of
+      the identity
+- [ ] Switching reader mid-book drops you back on the shelf. Resuming where *that*
+      reader stopped in the same book would be kinder, and is one `getBook` away
 
 ### Library screen
 

@@ -1,19 +1,34 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Card } from './components/ui';
-import { finishBook, getBook, getShelf, putPosition } from './lib/api';
+import {
+  addProfile,
+  deleteProfile,
+  finishBook,
+  getBook,
+  getProfiles,
+  getShelf,
+  putPosition,
+  renameProfile,
+  setProfile,
+} from './lib/api';
 import { PALETTE_NAMES } from './lib/reading';
 import { usePrefs } from './lib/prefs';
 import { useAmbience } from './lib/useAmbience';
 import { recommendations } from './lib/recommend';
 import Finished from './screens/Finished';
 import Library from './screens/Library';
+import Profiles from './screens/Profiles';
 import Reader from './screens/Reader';
 import Shelf from './screens/Shelf';
 
-// screen: 'shelf' | 'reader' | 'finish' | 'library'. The whole app is one 834px card
-// on a desk. Reading is one unit of work per screen; the library is the one surface
-// that shows everything at once, because managing a collection needs the overview.
+// screen: 'shelf' | 'reader' | 'finish' | 'library' | 'profiles'. The whole app is one
+// 834px card on a desk. Reading is one unit of work per screen; the library is the one
+// surface that shows everything at once, because managing a collection needs the
+// overview.
+//
+// Every request carries the reader (`setProfile`), so the shelf cannot be fetched before
+// one is chosen — that ordering is why profiles load first and the shelf waits on them.
 
 export default function App() {
   const [prefs, setPrefs] = usePrefs();
@@ -25,7 +40,11 @@ export default function App() {
   const [finishResult, setFinishResult] = useState(null);
   const [recIndex, setRecIndex] = useState(0);
   const [error, setError] = useState(null);
+  const [profiles, setProfiles] = useState([]);
+  const [busyProfile, setBusyProfile] = useState(null);
   const ambience = useAmbience(book);
+
+  const who = profiles.find((p) => p.id === prefs.profile) || profiles.find((p) => p.owner);
 
   const day = prefs.theme === 'day';
 
@@ -48,9 +67,38 @@ export default function App() {
     }
   }, []);
 
+  const loadProfiles = useCallback(async () => {
+    try {
+      const data = await getProfiles();
+      setProfiles(data.profiles);
+      return data.profiles;
+    } catch (ex) {
+      setError(ex.message);
+      return [];
+    }
+  }, []);
+
+  // Profiles first, then the shelf: the shelf is answered *as* somebody, so fetching it
+  // before the header is set would show the owner's progress to whoever picked up the
+  // tablet — and then quietly swap it a moment later, which is worse than waiting.
   useEffect(() => {
-    loadShelf();
-  }, [loadShelf]);
+    let cancelled = false;
+    (async () => {
+      const rows = await loadProfiles();
+      if (cancelled) return;
+      const chosen = rows.find((p) => p.id === prefs.profile) || rows.find((p) => p.owner);
+      setProfile(chosen?.id || null);
+      // A profile deleted from another tablet leaves a stale id here; fall back rather
+      // than reading as somebody who no longer exists.
+      if (chosen && chosen.id !== prefs.profile) setPrefs({ profile: chosen.id });
+      loadShelf();
+    })();
+    return () => {
+      cancelled = true;
+    };
+    // Only on mount: switching profiles goes through `pickProfile`, which reloads both.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // The desk is outside the card, so it is painted on the document rather than a div.
   useEffect(() => {
@@ -98,6 +146,70 @@ export default function App() {
       setError(ex.message);
     }
   }, [book, loadShelf]);
+
+  // Switching reader re-fetches everything: the same books, a different set of
+  // bookmarks in them. Nothing is cached across the swap on purpose — a stale "part 3
+  // of 7" from the last person is the exact bug profiles exist to prevent.
+  const pickProfile = useCallback(
+    async (id) => {
+      setProfile(id);
+      setPrefs({ profile: id });
+      setBook(null);
+      setFinishResult(null);
+      setFilter('reading');
+      setScreen('shelf');
+      await loadShelf();
+      loadProfiles();
+    },
+    [loadShelf, loadProfiles, setPrefs],
+  );
+
+  const onAddProfile = useCallback(
+    async (name) => {
+      setError(null);
+      try {
+        const created = await addProfile(name);
+        await loadProfiles();
+        pickProfile(created.id);
+      } catch (ex) {
+        setError(ex.message);
+      }
+    },
+    [loadProfiles, pickProfile],
+  );
+
+  const onRenameProfile = useCallback(
+    async (id, name) => {
+      setError(null);
+      setBusyProfile(id);
+      try {
+        await renameProfile(id, name);
+        await loadProfiles();
+      } catch (ex) {
+        setError(ex.message);
+      }
+      setBusyProfile(null);
+    },
+    [loadProfiles],
+  );
+
+  const onDeleteProfile = useCallback(
+    async (id) => {
+      setError(null);
+      setBusyProfile(id);
+      try {
+        await deleteProfile(id);
+        const rows = await loadProfiles();
+        // Deleting the reader you are — fall back to the owner rather than carrying on
+        // as an id the server no longer knows.
+        if (id === prefs.profile) pickProfile((rows.find((p) => p.owner) || {}).id);
+      } catch (ex) {
+        setError(ex.message);
+      }
+      setBusyProfile(null);
+    },
+    [loadProfiles, pickProfile, prefs.profile],
+  );
 
   const toShelf = useCallback(() => {
     setScreen('shelf');
@@ -158,10 +270,26 @@ export default function App() {
               books={visible}
               counts={shelf.counts}
               themeLabel={themeLabel}
+              who={who}
               filter={filter}
               onFilter={setFilter}
               onOpen={openBook}
               onLibrary={() => setScreen('library')}
+              onProfiles={() => setScreen('profiles')}
+            />
+          )}
+
+          {screen === 'profiles' && (
+            <Profiles
+              profiles={profiles}
+              activeId={who?.id}
+              busyId={busyProfile}
+              error={null}
+              onPick={pickProfile}
+              onAdd={onAddProfile}
+              onRename={onRenameProfile}
+              onDelete={onDeleteProfile}
+              onBack={toShelf}
             />
           )}
 
@@ -194,6 +322,7 @@ export default function App() {
           {screen === 'finish' && book && (
             <Finished
               book={book}
+              who={who}
               result={finishResult}
               recommendation={recs.length ? recs[recIndex % recs.length] : null}
               counts={shelf.counts}

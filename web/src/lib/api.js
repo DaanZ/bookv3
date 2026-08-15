@@ -2,9 +2,22 @@
 // the same server hosts this bundle, so a relative path is right in both cases.
 const BASE = '/api';
 
+// Whose reading these requests are. Held here rather than passed to every call: it
+// qualifies all of them and is about none of them, which is the same reason it travels
+// as a header rather than in the path. App sets it before the first shelf load; until
+// then the server answers as the owner, exactly as it did before profiles existed.
+let profileId = null;
+
+export function setProfile(id) {
+  profileId = id || null;
+}
+
 async function request(path, options) {
   const response = await fetch(`${BASE}${path}`, {
-    headers: { 'content-type': 'application/json' },
+    headers: {
+      'content-type': 'application/json',
+      ...(profileId ? { 'x-profile': profileId } : null),
+    },
     ...options,
   });
   if (!response.ok) {
@@ -21,6 +34,21 @@ async function request(path, options) {
 }
 
 export const getShelf = () => request('/shelf');
+
+/** Everyone reading here, and how far each of them has got. */
+export const getProfiles = () => request('/profiles');
+
+export const addProfile = (name) =>
+  request('/profiles', { method: 'POST', body: JSON.stringify({ name }) });
+
+export const renameProfile = (id, name) =>
+  request(`/profiles/${encodeURIComponent(id)}`, {
+    method: 'PATCH',
+    body: JSON.stringify({ name }),
+  });
+
+export const deleteProfile = (id) =>
+  request(`/profiles/${encodeURIComponent(id)}`, { method: 'DELETE' });
 
 export const getBook = (key) => request(`/books/${encodeURIComponent(key)}`);
 

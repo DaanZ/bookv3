@@ -17,6 +17,7 @@ function ordinal(n) {
 
 export default function Finished({
   book,
+  who,
   result,
   recommendation,
   counts,
@@ -33,6 +34,12 @@ export default function Finished({
   const latest = resync ?? result;
   const marked = latest ? latest.markedRead : book.markedRead;
   const number = latest?.finishNumber ?? book.finishNumber;
+
+  // Hardcover is one account, reached with one key, and it is the owner's. A guest's
+  // finish is real and recorded — it is simply theirs and not a write to somebody
+  // else's public shelf, and this block says which rather than showing them a chip
+  // about a call that was never made on their behalf.
+  const guest = who ? !who.owner : false;
 
   const recheck = async () => {
     setSyncing(true);
@@ -131,6 +138,20 @@ export default function Finished({
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          {guest ? (
+            <>
+              <Chip tone="claimed">your finish</Chip>
+              <span
+                style={{
+                  font: "400 12.5px 'Space Grotesk', system-ui",
+                  color: 'var(--text-secondary)',
+                }}
+              >
+                kept for {who.name} · Hardcover is the owner's shelf, so nothing was sent
+              </span>
+            </>
+          ) : (
+            <>
           {/* Green only ever means finished — and never before Hardcover accepted it.
               "Not checked" is never rendered as "correct", so a book finished before
               this was recorded says so rather than claiming either outcome. */}
@@ -155,11 +176,13 @@ export default function Finished({
               {syncing ? 'checking…' : 'check again'}
             </QuietLink>
           )}
+            </>
+          )}
         </div>
 
         {/* Matched on title alone: the author did not line up, so this may be the wrong
             edition — worth saying before it sits on a public shelf. */}
-        {marked === true && latest?.titleOnlyMatch && latest?.hardcoverTitle && (
+        {!guest && marked === true && latest?.titleOnlyMatch && latest?.hardcoverTitle && (
           <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
             matched on title only → “{latest.hardcoverTitle}”
           </span>

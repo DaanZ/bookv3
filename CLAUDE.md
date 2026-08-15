@@ -83,7 +83,9 @@ renderer passes `unsafe_allow_html=True`.
 ```
 
 **Book lifecycle.** `books/available/` holds unread summaries, `books/read/` holds finished ones.
-`POST /api/books/{key}/finish` moves a file between them: it calls
+`POST /api/books/{key}/finish` means two things and profiles pull them apart. It always
+records the finish for the reader who asked. For the **owner** it also moves a file between the
+two folders: it calls
 `hardcover.request.mark_book_as_read` (GraphQL search + `insert_user_book` mutation with
 `status_id: 3`), then `shutil.move`s the JSON into `books/read/`. The move happens either way — the
 book *was* read — but `markedRead` is only true when Hardcover accepted it, and the finish screen
@@ -94,19 +96,41 @@ never paints the green chip otherwise. `next_reads.py` still does the same thing
 
 ## The reader (api/ + web/)
 
-Implements `design_handoff_bookv3_reader`, built on the Tide design system. Four screens — shelf,
-reader, finished and library — sized for a tablet in portrait (an 834px card on a coloured "desk").
+Implements `design_handoff_bookv3_reader`, built on the Tide design system. Five screens — shelf,
+reader, finished, library and profiles — sized for a tablet in portrait (an 834px card on a
+coloured "desk").
 
-The first three come from the handoff and are high fidelity to it. **The library screen has no
-design file**: it is an extension written in the same token language, and it deliberately breaks the
-reader's "one unit of work per screen, never a scroll" rule, because managing a collection needs an
-overview that reading does not. Re-skin it, don't reason from it.
+The first three come from the handoff and are high fidelity to it. **The library and profiles
+screens have no design file**: both are extensions written in the same token language. The library
+deliberately breaks the reader's "one unit of work per screen, never a scroll" rule, because
+managing a collection needs an overview that reading does not; profiles keeps the rule, and is
+built like the shelf — a column of rows to choose between. Re-skin them, don't reason from them.
 
 **`api/`** is mostly read-only over `books/`. `library.py` scans both folders into shelf entries (the
 key is the filename stem, so a lookup never path-joins caller input); `patches.py` collapses the
 pipeline's free-text `meta.category` onto a patch family; `positions.py` is the only place reading
-history has ever been stored (`data/positions.json`: part, page, lastReadAt, startedAt, sittings,
-and the Hardcover outcome).
+history has ever been stored (`data/positions/<profile>.json`: part, page, lastReadAt, startedAt,
+sittings, and the Hardcover outcome).
+
+`profiles.py` is who that history belongs to. One file each under `data/positions/`, listed in
+`data/profiles.json`, chosen by an `X-Profile` header that every reading endpoint resolves through
+one dependency (`reader` in `main.py`). Four rules:
+
+- **The books are one shelf; the reading is not.** `books/available` and `books/read` are the
+  house's filing. A book's `state` is the *reader's* — finished by them, or in progress — while
+  `filed` is where the JSON actually sits. The owner is the exception the folder exists for: the
+  contents of `books/read` are their history, because they filled it before profiles existed.
+- **Hardcover is the owner's.** There is one key and it is one person's account, so only the
+  owner's finish calls `mark_book_as_read`, and `/hardcover` (the re-sync) is 403 for anyone else.
+  A guest's finish returns `markedRead: null` — nothing was sent, which the finish screen says
+  rather than showing them a chip about a call nobody made.
+- **The owner cannot be deleted, only renamed.** Their reading is the shelf's own; handing the
+  tablet over is a rename.
+- **No login.** This is a tablet in a house. Asking who is holding it is the whole model, and
+  `resolve` answers an unknown id with the owner — which is exactly what the app did before.
+
+`data/positions.json`, the single store this replaced, is *moved* onto `data/positions/owner.json`
+the first time `positions.py` loads, so history from before profiles belongs to whoever made it.
 
 `enrich.py` is the Hardcover cache — cover, rating, genres and the link out, in
 `data/hardcover.json`, beside the books and never inside them. Nobody asks for a lookup by hand:

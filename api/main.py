@@ -10,7 +10,7 @@ the shelf, a book's parts, reading position, and finishing a book. It reads the 
 import os
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi import Depends, FastAPI, File, Header, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -18,7 +18,7 @@ from pydantic import BaseModel, Field
 
 from api import enrich as enriching
 from api import estimate as estimating
-from api import jobs, library, positions
+from api import jobs, library, positions, profiles
 from hardcover.request import contribute_edition, edition_payload, mark_book_as_read
 
 # The reader itself needs no key, but this process reports whether one is present and
@@ -52,9 +52,60 @@ class MoveIn(BaseModel):
     finished: bool
 
 
+class ProfileIn(BaseModel):
+    name: str
+
+
+def reader(x_profile: str | None = Header(default=None)) -> dict:
+    """Whose reading this request is.
+
+    The profile travels in a header rather than the path, because it qualifies every
+    endpoint here and none of them is *about* it. An id nobody recognises resolves to
+    the owner: a browser that has never picked a profile is the person who set the
+    tablet up, which is exactly what this app assumed before profiles existed.
+    """
+    return profiles.resolve(x_profile)
+
+
+@app.get("/api/profiles")
+def get_profiles():
+    """Everyone reading here, with enough of their progress to tell them apart."""
+    rows = profiles.all_profiles()
+    return {
+        "profiles": [{**row, **positions.progress_of(row["id"])} for row in rows],
+        "ownerId": profiles.owner()["id"],
+    }
+
+
+@app.post("/api/profiles")
+def add_profile(body: ProfileIn):
+    row, error = profiles.create(body.name)
+    if error:
+        raise HTTPException(status_code=400, detail=error)
+    return row
+
+
+@app.patch("/api/profiles/{profile_id}")
+def edit_profile(profile_id: str, body: ProfileIn):
+    row, error = profiles.rename(profile_id, body.name)
+    if error:
+        raise HTTPException(status_code=404 if error == "No such profile." else 400, detail=error)
+    return row
+
+
+@app.delete("/api/profiles/{profile_id}")
+def drop_profile(profile_id: str):
+    """Delete a profile and the reading it recorded. The books are untouched — they
+    belong to the shelf, not to whoever was holding the tablet."""
+    removed, error = profiles.remove(profile_id)
+    if error:
+        raise HTTPException(status_code=404 if error == "No such profile." else 400, detail=error)
+    return {"deleted": removed}
+
+
 @app.get("/api/shelf")
-def get_shelf():
-    books = library.shelf()
+def get_shelf(profile: dict = Depends(reader)):
+    books = library.shelf(profile)
 
     # Anything nobody has asked Hardcover about goes to the enrichment worker: books
     # that predate the automatic pass, and anything prep.py wrote without going through
@@ -67,53 +118,69 @@ def get_shelf():
             "total": len(books),
             "read": sum(1 for b in books if b["state"] == "read"),
         },
+        # Who these counts are for. The shelf footer says it out loud, because a shelf
+        # that reads "2 read" to one person and "0 read" to another has to.
+        "profile": profile,
     }
 
 
 @app.get("/api/books/{key}")
-def get_book(key: str):
-    detail = library.book(key)
+def get_book(key: str, profile: dict = Depends(reader)):
+    detail = library.book(key, profile)
     if detail is None:
         raise HTTPException(status_code=404, detail="No such book.")
     return detail
 
 
 @app.put("/api/books/{key}/position")
-def put_position(key: str, body: PositionIn):
+def put_position(key: str, body: PositionIn, profile: dict = Depends(reader)):
     if key not in library.index():
         raise HTTPException(status_code=404, detail="No such book.")
-    return positions.save_position(key, body.part, body.page)
+    return positions.save_position(profile["id"], key, body.part, body.page)
 
 
 @app.delete("/api/books/{key}/position")
-def delete_position(key: str):
-    """Start a book again from the beginning."""
+def delete_position(key: str, profile: dict = Depends(reader)):
+    """Start a book again from the beginning — for this reader only."""
     if key not in library.index():
         raise HTTPException(status_code=404, detail="No such book.")
-    positions.clear_position(key)
+    positions.clear_position(profile["id"], key)
     return {"ok": True}
 
 
 @app.post("/api/books/{key}/finish")
-def finish_book(key: str):
-    """Mark read on Hardcover, then move the JSON available -> read.
+def finish_book(key: str, profile: dict = Depends(reader)):
+    """Record the finish for this reader — and, for the owner, mark it read on
+    Hardcover and move the JSON available -> read.
 
-    The move happens either way — the book *was* read — but `markedRead` only comes
-    back true when Hardcover actually accepted it, so the finish screen never paints
-    the green chip on a failed call.
+    Finishing means two different things and profiles pull them apart. It always means
+    "I read this", which is the reader's own record. For the owner it *also* means the
+    house's copy is finished with and their Hardcover shelf should say so; for anyone
+    else it does not, because there is one API key and it is not theirs, and because
+    re-filing a book somebody else is halfway through would be answering for them.
+
+    The move happens either way for the owner — the book *was* read — but `markedRead`
+    only comes back true when Hardcover actually accepted it, so the finish screen never
+    paints the green chip on a failed call. For a guest it comes back null: nothing was
+    sent, which is not the same as sending it and being refused.
     """
-    detail = library.book(key)
+    detail = library.book(key, profile)
     if detail is None:
         raise HTTPException(status_code=404, detail="No such book.")
 
-    already_read = detail["state"] == "read"
-    result = mark_book_as_read(detail["fullTitle"], detail["author"], detail.get("isbn"))
-    marked = "error" not in result
+    owner = bool(profile.get("owner"))
+    result = {}
+    marked = None
+    if owner:
+        result = mark_book_as_read(detail["fullTitle"], detail["author"], detail.get("isbn"))
+        marked = "error" not in result
 
-    moved = None if already_read else library.move_to_read(key)
-    positions.save_position(key, max(0, detail["partCount"] - 1), 0)
-    positions.record_finish(key, marked)
+    already_read = detail["filed"] == "read"
+    moved = None if already_read or not owner else library.move_to_read(key)
+    positions.save_position(profile["id"], key, max(0, detail["partCount"] - 1), 0)
+    positions.record_finish(profile["id"], key, marked)
 
+    mine = positions.all_positions(profile["id"])
     return {
         "markedRead": marked,
         "hardcoverError": result.get("error"),
@@ -124,10 +191,12 @@ def finish_book(key: str):
         # Matched on title alone; the edition could be wrong.
         "titleOnlyMatch": result.get("book") is not None
         and not (result["book"].get("authorMatched") is True),
-        "finishNumber": positions.finish_ordinal(key),
-        "finishedTotal": positions.finished_count(),
+        "finishNumber": positions.finish_ordinal(key, mine),
+        "finishedTotal": positions.finished_count(mine),
         "moved": moved is not None,
         "movedTo": "books/read" if moved else None,
+        # The finish screen says whose count this is, and why nothing went to Hardcover.
+        "profile": profile,
     }
 
 
@@ -148,7 +217,7 @@ def enrich_book(key: str):
     cannot serve — asking again about a book it matched to the wrong edition, or one it
     could not reach Hardcover for.
     """
-    detail = library.book(key)
+    detail = library.book(key, profiles.owner())
     if detail is None:
         raise HTTPException(status_code=404, detail="No such book.")
 
@@ -165,7 +234,7 @@ def preview_contribution(key: str):
     A GET, and it sends nothing: the point is that the payload can be read before anyone
     agrees to publish it.
     """
-    detail = library.book(key)
+    detail = library.book(key, profiles.owner())
     if detail is None:
         raise HTTPException(status_code=404, detail="No such book.")
 
@@ -185,7 +254,7 @@ def submit_contribution(key: str):
     this: the title and author come from a language model reading the first few pages,
     and a shared catalogue is not the place to publish a guess nobody has looked at.
     """
-    detail = library.book(key)
+    detail = library.book(key, profiles.owner())
     if detail is None:
         raise HTTPException(status_code=404, detail="No such book.")
 
@@ -205,28 +274,36 @@ def submit_contribution(key: str):
 
 
 @app.post("/api/books/{key}/hardcover")
-def resync_hardcover(key: str):
+def resync_hardcover(key: str, profile: dict = Depends(reader)):
     """Ask Hardcover again about a book already finished here.
 
     A finish that failed for a reason of the moment — no key, a bad query, the network —
     stored `markedRead: false` forever, and nothing ever revisited it. This re-runs the
     lookup and rewrites only that flag, so the book keeps its place in the finished
     order and its finish date.
+
+    The owner's, like the finish it repairs: the key belongs to one account.
     """
-    detail = library.book(key)
+    if not profile.get("owner"):
+        raise HTTPException(
+            status_code=403,
+            detail="Only the owner profile writes to Hardcover — there is one key, and it is theirs.",
+        )
+
+    detail = library.book(key, profile)
     if detail is None:
         raise HTTPException(status_code=404, detail="No such book.")
 
     result = mark_book_as_read(detail["fullTitle"], detail["author"], detail.get("isbn"))
     marked = "error" not in result
-    positions.set_marked_read(key, marked)
+    positions.set_marked_read(profile["id"], key, marked)
 
     return {
         "markedRead": marked,
         "hardcoverError": result.get("error"),
         "hardcoverTitle": (result.get("book") or {}).get("title"),
         "alreadyRead": result.get("alreadyRead"),
-        "finishNumber": positions.finish_ordinal(key),
+        "finishNumber": positions.finish_ordinal(key, positions.all_positions(profile["id"])),
     }
 
 
@@ -244,7 +321,9 @@ def remove_book(key: str):
     """Delete a summary. The source PDF, if there is one, stays in pdfs/."""
     if not library.delete_book(key):
         raise HTTPException(status_code=404, detail="No such book.")
-    positions.clear_position(key)
+    # Every reader's, not just this one's: the summary is gone for the whole house, and
+    # a bookmark in a book nobody can open is a row the shelf cannot render.
+    positions.forget_everywhere(key)
     enriching.forget(key)
     return {"deleted": True}
 

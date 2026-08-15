@@ -123,9 +123,13 @@ def tidy_name(name: str | None) -> str | None:
 
 def summarise(key: str, entry: dict, data: dict, position: dict | None,
               with_part_titles: bool = False, everyone: dict | None = None,
-              looked_up: dict | None = None) -> dict:
-    """`looked_up` is the whole lookup ledger, read once by the caller — the shelf
-    would otherwise re-read it for every book."""
+              looked_up: dict | None = None, owner: bool = True) -> dict:
+    """`position` and `everyone` are one profile's reading, so every field derived from
+    them — state, progress, sittings, the finish number — is that reader's and nobody
+    else's. `owner` says whether they are the profile the shelf itself belongs to.
+
+    `looked_up` is the whole lookup ledger, read once by the caller — the shelf would
+    otherwise re-read it for every book."""
     meta = data.get("meta", {}) or {}
     parts = data.get("parts", []) or []
     raw_title = meta.get("title") or key.replace("_", " ")
@@ -136,7 +140,11 @@ def summarise(key: str, entry: dict, data: dict, position: dict | None,
     page = int((position or {}).get("page", 0) or 0)
     at = max(0, min(at, max(0, len(parts) - 1)))
 
-    if entry["finished"]:
+    # Whose shelf this is decides what "read" means. A profile that recorded a finish
+    # has read the book; for the owner, so does a book sitting in books/read, because
+    # that folder *is* their history — it predates profiles and was filled by their
+    # finishes. A guest inherits none of it: the house has read Sapiens, they have not.
+    if (position or {}).get("finishedAt") or (owner and entry["finished"]):
         state = "read"
     elif at > 0 or page > 0:
         state = "reading"
@@ -156,6 +164,10 @@ def summarise(key: str, entry: dict, data: dict, position: dict | None,
         "partCount": len(parts),
         "patch": patch_for(category),
         "state": state,
+        # Where the file actually sits, which is the house's filing rather than this
+        # reader's progress. The library screen moves books by it; the shelf does not
+        # use it at all.
+        "filed": "read" if entry["finished"] else "available",
         "at": len(parts) - 1 if state == "read" else at,
         "page": 0 if state == "read" else page,
     }
@@ -194,9 +206,11 @@ def summarise(key: str, entry: dict, data: dict, position: dict | None,
     return summary
 
 
-def shelf() -> list[dict]:
-    """Every book, newest activity first, then unread, then finished."""
-    positions = all_positions()
+def shelf(profile: dict) -> list[dict]:
+    """Every book as one reader sees it, newest activity first, then unread, then
+    finished."""
+    positions = all_positions(profile["id"])
+    owner = bool(profile.get("owner"))
     looked_up = enrich.lookups()
     out = []
     for key, entry in index().items():
@@ -205,7 +219,7 @@ def shelf() -> list[dict]:
             continue
         out.append(
             summarise(key, entry, data, positions.get(key), everyone=positions,
-                      looked_up=looked_up)
+                      looked_up=looked_up, owner=owner)
         )
 
     rank = {"reading": 0, "new": 1, "read": 2}
@@ -213,7 +227,7 @@ def shelf() -> list[dict]:
     return out
 
 
-def book(key: str) -> dict | None:
+def book(key: str, profile: dict) -> dict | None:
     """One book with its parts, plus the recap line the resume strip needs."""
     entry = index().get(key)
     if entry is None:
@@ -222,9 +236,9 @@ def book(key: str) -> dict | None:
     if data is None:
         return None
 
-    everyone = all_positions()
+    everyone = all_positions(profile["id"])
     detail = summarise(key, entry, data, everyone.get(key), with_part_titles=True,
-                       everyone=everyone)
+                       everyone=everyone, owner=bool(profile.get("owner")))
     detail["parts"] = [
         {"title": p.get("title", ""), "body": p.get("body", "")}
         for p in data.get("parts", [])

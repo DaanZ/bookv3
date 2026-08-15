@@ -5,6 +5,9 @@ import { useCallback, useEffect, useState } from 'react';
 const KEY = 'bookv3.prefs';
 
 const DEFAULTS = {
+  // Who is reading. Per browser rather than per profile — this is the tablet's memory
+  // of who picked it up last, not something the profile carries with it.
+  profile: null,
   theme: 'night',
   palette: 'sunset',
   focusMode: true,

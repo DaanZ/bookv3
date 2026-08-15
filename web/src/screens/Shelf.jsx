@@ -106,7 +106,17 @@ function BookRow({ book, onOpen }) {
   );
 }
 
-export default function Shelf({ books, counts, themeLabel, onOpen, filter, onFilter, onLibrary }) {
+export default function Shelf({
+  books,
+  counts,
+  themeLabel,
+  who,
+  onOpen,
+  filter,
+  onFilter,
+  onLibrary,
+  onProfiles,
+}) {
   return (
     <div
       style={{
@@ -126,6 +136,7 @@ export default function Shelf({ books, counts, themeLabel, onOpen, filter, onFil
         }}
       >
         {counts.total} books · {counts.read} read
+        {who ? ` · ${who.name}` : ''}
       </span>
       <h1
         style={{
@@ -150,7 +161,8 @@ export default function Shelf({ books, counts, themeLabel, onOpen, filter, onFil
         }}
       >
         Pick up where you stopped, start something new, or look back at one you finished. The patch
-        tells you the kind of book before you read a word.
+        tells you the kind of book before you read a word, and every page you keep is
+        {who ? ` ${who.name}'s` : ' yours'} alone.
       </p>
 
       {/* The design was drawn against three books; this shelf holds hundreds, so the
@@ -213,6 +225,26 @@ export default function Shelf({ books, counts, themeLabel, onOpen, filter, onFil
           <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
             {themeLabel}
           </span>
+          {/* Who these bookmarks belong to, and the way to be somebody else. Named
+              rather than labelled "profiles": the question the row answers is whose
+              page this is. */}
+          {who && (
+            <QuietLink onClick={onProfiles}>
+              <span
+                aria-hidden="true"
+                style={{
+                  display: 'inline-block',
+                  width: 8,
+                  height: 8,
+                  borderRadius: 2,
+                  marginRight: 7,
+                  background: who.tone,
+                  verticalAlign: 'baseline',
+                }}
+              />
+              {who.name}
+            </QuietLink>
+          )}
           <QuietLink onClick={onLibrary}>Library</QuietLink>
         </div>
       </div>
