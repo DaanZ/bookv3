@@ -38,12 +38,13 @@ BASE_URL = "https://openrouter.ai/api/v1"
 
 # The default model for every pipeline call. Namespaced, as OpenRouter requires.
 #
-# gpt-4o-mini, not gpt-4o: measured over four chunks each, it held the two-paragraph
-# shape 3/3 where gpt-4o managed 2/3, at 1120 chars against the corpus norm of 1017,
-# for about a sixteenth of the price. Cheaper models than this were tested and rejected
-# — mistral-small, llama-3.3-70b, deepseek-v3.1 and gpt-4.1-nano returned summaries with
-# *no* `**` marks at all, which leaves the reader's highlighting with nothing to colour.
-MODEL = os.environ.get("OPENROUTER_MODEL", "openai/gpt-4o-mini")
+# gemini-2.5-flash, and no OpenAI model anywhere by preference. This is the one with
+# production evidence behind it: both books on the shelf were summarized by it, 27 parts,
+# every one highlighted. Models rejected on test returned fluent summaries with *no* `**`
+# marks at all, which leaves the reader's highlighting nothing to colour — see
+# `estimate.KNOWN_UNHIGHLIGHTING`. `jobs.py` now checks the first part for marks before
+# buying the rest, so trying an untested model costs one chunk rather than a book.
+MODEL = os.environ.get("OPENROUTER_MODEL", "google/gemini-2.5-flash")
 
 # Kept as a KeyError so the guard in api/jobs.py still recognises a missing key and
 # fails the one ingest job rather than the whole reader.
@@ -52,7 +53,16 @@ try:
 except KeyError:
     _api_key = os.environ["OPENAI_API_KEY"]  # raises KeyError when neither is set
 
-openai_client = OpenAI(api_key=_api_key, base_url=BASE_URL)
+# A request that never returns wedges everything. Jobs run one at a time on a single
+# worker, so one hung call does not slow a book down — it stops the queue, and the job
+# sits at "0 of 4 parts" with no error to show for it. Seen in practice at ten minutes
+# and counting. The SDK's default is no timeout at all, so this has to be said.
+#
+# Generous rather than tight: a long chunk on a slow model legitimately takes a while,
+# and `_retrying` will try twice more, so the worst case is three of these.
+REQUEST_TIMEOUT_SECONDS = 180
+
+openai_client = OpenAI(api_key=_api_key, base_url=BASE_URL, timeout=REQUEST_TIMEOUT_SECONDS)
 
 
 def llm_question(query):
@@ -103,7 +113,7 @@ def _retrying(call):
     for attempt in range(1, RETRY_ATTEMPTS + 1):
         try:
             return call()
-        except (ValidationError, APIError) as ex:
+        except (ValidationError, APIError, ValueError) as ex:
             last = ex
             if attempt == RETRY_ATTEMPTS:
                 break
@@ -114,13 +124,25 @@ def _retrying(call):
 def llm_strict(history: History, model_name: str = None, base_model: type = None):
     if base_model is None:
         return None
-    completion = _retrying(
-        lambda: openai_client.beta.chat.completions.parse(
+    def parse_once():
+        completion = openai_client.beta.chat.completions.parse(
             model=model_name or MODEL,
             messages=history.logs,
             response_format=base_model,
         )
-    )
+        message = completion.choices[0].message
+        if message.parsed is None:
+            # `parse` returns None rather than raising when the model answered with
+            # something that is not the schema at all — a refusal, a preamble, an empty
+            # message. Checked *inside* the retried call, so a one-off gets another go;
+            # left outside it, this sailed through and surfaced pages later as
+            # "'NoneType' object has no attribute 'summary_title'", which names the
+            # symptom and not the cause.
+            refusal = getattr(message, "refusal", None)
+            raise ValueError(
+                f"{model_name or MODEL} returned no structured answer"
+                + (f": {refusal}" if refusal else " — the reply did not match the schema.")
+            )
+        return message.parsed
 
-    event = completion.choices[0].message.parsed
-    return event
+    return _retrying(parse_once)

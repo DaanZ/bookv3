@@ -73,8 +73,13 @@ class PrefsIn(BaseModel):
 
     theme: str | None = None
     palette: str | None = None
-    focusMode: bool | None = None
     maxHighlights: int | None = None
+
+
+class HardcoverIn(BaseModel):
+    """`token: null` unlinks the account. The token is never read back out."""
+
+    token: str | None = None
 
 
 class AmbienceIn(BaseModel):
@@ -126,6 +131,22 @@ def admin(profile: dict = Depends(reader)) -> dict:
             detail="Only the owner adds, removes or re-files books.",
         )
     return profile
+
+
+@app.middleware("http")
+async def no_store_api(request, call_next):
+    """API answers are never cacheable.
+
+    Without this the browser is free to keep one, and it did: a stale server briefly
+    answered /api/profiles with the SPA's index.html, the browser cached that under a
+    200, and every reload afterwards was served HTML from cache while curl saw correct
+    JSON from the same URL. The app reported "Unexpected token '<'" and read as a guest
+    with no history, long after the server was fixed.
+    """
+    response = await call_next(request)
+    if request.url.path.startswith("/api/"):
+        response.headers["Cache-Control"] = "no-store"
+    return response
 
 
 @app.get("/api/profiles")
@@ -188,13 +209,31 @@ def unlock_profile(profile_id: str, body: UnlockIn):
 
 @app.put("/api/profiles/{profile_id}/prefs")
 def set_profile_prefs(profile_id: str, body: PrefsIn):
-    """Register, palette, pointer focus, highlight cap — the settings the design calls
-    the reader's rather than the app's, kept on the reader.
+    """Register, palette, highlight cap — the settings the design calls the reader's
+    rather than the app's, kept on the reader.
 
     By id rather than for whoever the header says, because that is what it is: a change
     to a named profile, which happens to almost always be the one holding the tablet.
     """
     row, error = profiles.set_prefs(profile_id, body.model_dump(exclude_none=True))
+    if error:
+        raise HTTPException(status_code=404, detail=error)
+    return row
+
+
+@app.put("/api/profiles/{profile_id}/hardcover")
+def set_profile_hardcover(profile_id: str, body: HardcoverIn):
+    """Link a reader's own Hardcover account, or unlink it.
+
+    Per reader, because a finished book belongs to whoever read it. A profile with no
+    token simply never reaches Hardcover — that is a setting, not a failure, and it is
+    what makes the marking automatic for the one person who wants it and silent for
+    everybody else who reads here.
+
+    Like the PIN, the token goes in and does not come back: the response says
+    `hasHardcover` and nothing more.
+    """
+    row, error = profiles.set_hardcover(profile_id, body.token)
     if error:
         raise HTTPException(status_code=404, detail=error)
     return row
@@ -269,29 +308,41 @@ def put_ambience(key: str, body: AmbienceIn, profile: dict = Depends(keeper)):
 
 @app.post("/api/books/{key}/finish")
 def finish_book(key: str, profile: dict = Depends(keeper)):
-    """Record the finish for this reader — and, for the owner, mark it read on
-    Hardcover and move the JSON available -> read.
+    """Record the finish for this reader — mark it on their Hardcover if they have one,
+    and, for the owner, move the JSON available -> read.
 
-    Finishing means two different things and profiles pull them apart. It always means
-    "I read this", which is the reader's own record. For the owner it *also* means the
-    house's copy is finished with and their Hardcover shelf should say so; for anyone
-    else it does not, because there is one API key and it is not theirs, and because
-    re-filing a book somebody else is halfway through would be answering for them.
+    Finishing means two different things and profiles pull them apart:
 
-    The move happens either way for the owner — the book *was* read — but `markedRead`
-    only comes back true when Hardcover actually accepted it, so the finish screen never
-    paints the green chip on a failed call. For a guest it comes back null: nothing was
-    sent, which is not the same as sending it and being refused.
+    * **"I read this"** is the reader's own record, and always happens.
+    * **The shelf entry on Hardcover** belongs to whoever linked their account. It is no
+      longer the owner's privilege — each reader brings their own token, so a finish
+      lands on the account of the person who actually read the book. A reader who has
+      linked nothing never reaches Hardcover, and that is a setting rather than a fault.
+    * **Re-filing the house's copy** stays the owner's, because moving a book somebody
+      else is halfway through would be answering for them.
+
+    `markedRead` is true only when Hardcover accepted it, so the finish screen never
+    paints the green chip on a failed call. It comes back null when nothing was sent at
+    all, which is not the same as sending it and being refused.
     """
     detail = library.book(key, profile)
     if detail is None:
         raise HTTPException(status_code=404, detail="No such book.")
 
     owner = bool(profile.get("owner"))
+
+    # Hardcover follows the *account*, not the office. This used to be the owner's alone
+    # because there was one API key and it belonged to them; now a reader links their
+    # own, so a finish lands on the shelf of whoever actually read the book and on no
+    # other. A reader with no linked account never reaches Hardcover at all, which is
+    # what makes this a personal completion list rather than a household one.
+    token = profiles.hardcover_token(profile["id"])
     result = {}
     marked = None
-    if owner:
-        result = mark_book_as_read(detail["fullTitle"], detail["author"], detail.get("isbn"))
+    if token:
+        result = mark_book_as_read(
+            detail["fullTitle"], detail["author"], detail.get("isbn"), token=token
+        )
         marked = "error" not in result
 
     already_read = detail["filed"] == "read"
@@ -383,7 +434,7 @@ def submit_contribution(key: str, profile: dict = Depends(admin)):
     if error:
         raise HTTPException(status_code=400, detail=error)
 
-    result = contribute_edition(payload)
+    result = contribute_edition(payload, token=profiles.hardcover_token(profile["id"]))
     if "error" in result:
         raise HTTPException(status_code=502, detail=result["error"])
 
@@ -393,7 +444,7 @@ def submit_contribution(key: str, profile: dict = Depends(admin)):
 
 
 @app.post("/api/books/{key}/hardcover")
-def resync_hardcover(key: str, profile: dict = Depends(admin)):
+def resync_hardcover(key: str, profile: dict = Depends(keeper)):
     """Ask Hardcover again about a book already finished here.
 
     A finish that failed for a reason of the moment — no key, a bad query, the network —
@@ -401,13 +452,23 @@ def resync_hardcover(key: str, profile: dict = Depends(admin)):
     lookup and rewrites only that flag, so the book keeps its place in the finished
     order and its finish date.
 
-    The owner's, like the finish it repairs: the key belongs to one account.
+    The reader's own, like the finish it repairs: it rewrites their record against
+    their linked account, so it is not the owner's to run on somebody else's behalf.
     """
     detail = library.book(key, profile)
     if detail is None:
         raise HTTPException(status_code=404, detail="No such book.")
 
-    result = mark_book_as_read(detail["fullTitle"], detail["author"], detail.get("isbn"))
+    token = profiles.hardcover_token(profile["id"])
+    if not token:
+        raise HTTPException(
+            status_code=400,
+            detail="No Hardcover account is linked to this reader — link one in profiles.",
+        )
+
+    result = mark_book_as_read(
+        detail["fullTitle"], detail["author"], detail.get("isbn"), token=token
+    )
     marked = "error" not in result
     positions.set_marked_read(profile["id"], key, marked)
 
@@ -444,22 +505,33 @@ def remove_book(key: str, profile: dict = Depends(admin)):
 @app.get("/api/ingest/jobs")
 def get_jobs(profile: dict = Depends(admin)):
     has_key = bool(os.environ.get("OPENROUTER_API_KEY") or os.environ.get("OPENAI_API_KEY"))
-    return {"jobs": jobs.list_jobs(), "hasKey": has_key}
+    rows = jobs.list_jobs()
+    # What a failed job could resume from — parts already bought, and not re-bought.
+    for row in rows:
+        if row.get("status") == "failed":
+            row["partsBought"] = jobs.partial_parts(row["id"])
+    return {"jobs": rows, "hasKey": has_key}
 
 
 async def _read_pdf_upload(file: UploadFile) -> bytes:
-    """The same four checks for both the estimate and the real upload."""
-    name = file.filename or "book.pdf"
-    if not name.lower().endswith(".pdf"):
-        raise HTTPException(status_code=400, detail="Only PDF files can be ingested.")
+    """The same checks for both the estimate and the real upload.
+
+    PDF and EPUB. The extension decides how it will be read, and the first bytes decide
+    whether to believe it — an EPUB is a zip, so it opens `PK`.
+    """
+    name = (file.filename or "book.pdf").lower()
+    if not name.endswith((".pdf", ".epub")):
+        raise HTTPException(status_code=400, detail="Only PDF and EPUB files can be ingested.")
 
     data = await file.read()
     if not data:
         raise HTTPException(status_code=400, detail="That file is empty.")
     if len(data) > MAX_UPLOAD_BYTES:
         raise HTTPException(status_code=413, detail="That file is larger than 200MB.")
-    if not data.startswith(b"%PDF"):
-        raise HTTPException(status_code=400, detail="That file is not a PDF.")
+
+    expected, label = (b"PK", "EPUB") if name.endswith(".epub") else (b"%PDF", "PDF")
+    if not data.startswith(expected):
+        raise HTTPException(status_code=400, detail=f"That file is not a {label}.")
     return data
 
 
@@ -480,7 +552,10 @@ async def estimate_upload(
 
     data = await _read_pdf_upload(file)
 
-    handle, path = tempfile.mkstemp(suffix=".pdf")
+    # The suffix is not cosmetic: `read_pdf_pages` dispatches on it, so a hardcoded
+    # ".pdf" here handed every EPUB to pypdf and it failed as a corrupt PDF.
+    suffix = ".epub" if (file.filename or "").lower().endswith(".epub") else ".pdf"
+    handle, path = tempfile.mkstemp(suffix=suffix)
     try:
         with os.fdopen(handle, "wb") as temp:
             temp.write(data)
@@ -511,13 +586,32 @@ async def upload(
     changes what is on the shelf rather than what somebody has read of it."""
     data = await _read_pdf_upload(file)
     name = file.filename or "book.pdf"
-    return jobs.public(jobs.submit(name, data, chunks, model, {"cost": cost}))
+    try:
+        return jobs.public(jobs.submit(name, data, chunks, model, {"cost": cost}))
+    except ValueError as ex:
+        raise HTTPException(status_code=400, detail=str(ex))
 
 
 @app.delete("/api/ingest/jobs")
 def clear_jobs(profile: dict = Depends(admin)):
     """Clear finished and failed jobs from the list; the books they made are kept."""
     return {"cleared": jobs.clear_finished()}
+
+
+@app.post("/api/ingest/jobs/{job_id}/resume")
+def resume_job(job_id: str, profile: dict = Depends(admin)):
+    """Run a failed job again from the parts it already bought.
+
+    The alternative was re-buying the whole book: "One Nation Under Blackmail" is 39
+    parts and died at 20, so nineteen paid-for summaries were thrown away because there
+    was nowhere to put them.
+    """
+    job, error = jobs.resume(job_id)
+    if error == "No such job.":
+        raise HTTPException(status_code=404, detail=error)
+    if error:
+        raise HTTPException(status_code=409, detail=error)
+    return job
 
 
 @app.delete("/api/ingest/jobs/{job_id}")

@@ -74,13 +74,46 @@ HIGH_MULTIPLIER = 1.25
 # ("The text appears to be a philosophical work") instead of summarizing it. They are a
 # third of the price and they quietly destroy the thing the reader is for, so offering
 # them as a cheap option would be offering a trap.
-CANDIDATE_MODELS = [
-    "openai/gpt-4o",
-    "openai/gpt-4.1",
-    "openai/gpt-4.1-mini",
-    "openai/gpt-4o-mini",
+# Models that have actually produced a highlighted book here. Nothing goes in this list
+# on reputation or price — only on evidence.
+PROVEN_MODELS = {
+    # Both books on the shelf were summarized by it: 27 parts, every one highlighted.
     "google/gemini-2.5-flash",
+}
+
+_OFFERED = [
+    "google/gemini-2.5-flash",
+    "anthropic/claude-haiku-4.5",
+    "anthropic/claude-sonnet-4.5",
+    "z-ai/glm-4.7-flash",
+    "minimax/minimax-m3",
+    "meta-llama/llama-4-maverick",
+    "deepseek/deepseek-v4-flash",
 ]
+
+# Tried on real chunks and rejected: fluent summaries containing zero `**` marks, which
+# render as a flat wall of text because `reading.js` has nothing to colour. Listed rather
+# than merely deleted so nobody adds them back on price — every one of these is cheap,
+# and that is exactly the temptation.
+KNOWN_UNHIGHLIGHTING = [
+    "mistralai/mistral-small-3.2-24b-instruct",
+    "meta-llama/llama-3.3-70b-instruct",
+    "deepseek/deepseek-chat-v3.1",
+    # Refused "In the Light of Wisdom" at part 1. The first-part guard caught it, so it
+    # cost one chunk rather than the quoted $0.014 and a book of unhighlighted text.
+    "qwen/qwen3-30b-a3b-instruct-2507",
+    # Failed three books in a row: no highlighting on one, no structured answer at all on
+    # another (part 5 of 11, after three attempts), and a request that never returned on
+    # the third. Cheap and unusable.
+    "deepseek/deepseek-v4-flash",
+    # No highlighting on "Boundaries".
+    "meta-llama/llama-4-maverick",
+]
+
+# Derived, not maintained by hand. Adding a model to KNOWN_UNHIGHLIGHTING and forgetting
+# to delete it from the offered list left two rejects still on the picker — twice. One
+# list is the intent, the other is the evidence, and the evidence wins here.
+CANDIDATE_MODELS = [m for m in _OFFERED if m not in KNOWN_UNHIGHLIGHTING]
 
 MODELS_URL = "https://openrouter.ai/api/v1/models"
 _PRICE_TTL_SECONDS = 3600
@@ -153,12 +186,21 @@ def count_tokens(texts):
 
 
 def read_pdf_pages(path):
-    """Page texts, read with pypdf directly.
+    """Page texts, whatever the book arrived as.
 
     Not `fragments.read_book_pages`: that module imports `util.chatgpt` at module scope,
-    so it needs an API key. Pricing a book must work without one. PyPDFLoader wraps this
-    same extractor, so the text is the text the pipeline will send.
+    so it needs an API key. Pricing a book must work without one. PyPDFLoader wraps the
+    same pypdf extractor, so the text is the text the pipeline will send.
+
+    An EPUB has no pages — pagination belongs to the reading device — so `util.epub` cuts
+    it into page-sized blocks. Everything downstream counts pages, and by here the two
+    formats are the same list of strings.
     """
+    if str(path).lower().endswith(".epub"):
+        from util.epub import read_epub_pages
+
+        return read_epub_pages(path)
+
     from pypdf import PdfReader
 
     reader = PdfReader(path)
@@ -223,6 +265,10 @@ def price_options(tokens, models=None):
         ) / 1e6
         options.append({
             **entry,
+            # Whether this model has ever produced a highlighted book here. The picker
+            # says so, because the alternative is finding out one book at a time — and
+            # the failure is silent enough that a guard, not a reader, has to catch it.
+            "proven": model_id in PROVEN_MODELS,
             "cost": round(cost, 4),
             "costLow": round(cost * LOW_MULTIPLIER, 4),
             "costHigh": round(cost * HIGH_MULTIPLIER, 4),
@@ -237,7 +283,7 @@ def estimate_pdf(path, chunks=None, pages_per_chunk=25):
     """Everything the library screen needs to ask 'shall I spend this?'."""
     tokens = estimate_tokens(read_pdf_pages(path), chunks, pages_per_chunk)
     options = price_options(tokens)
-    default = os.environ.get("OPENROUTER_MODEL", "openai/gpt-4o-mini")
+    default = os.environ.get("OPENROUTER_MODEL", "google/gemini-2.5-flash")
     return {
         **tokens,
         "options": options,

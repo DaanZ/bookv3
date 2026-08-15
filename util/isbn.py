@@ -72,6 +72,22 @@ def to_isbn13(digits):
     return core + str(check)
 
 
+def find_isbn_in_name(filename):
+    """An ISBN sitting in the download's filename.
+
+    Library filenames routinely carry one — "… (Alison Gopnik) [2016] 9780374229702" —
+    and for an ebook that is often the only one there is: the ebook the publisher ships
+    has no copyright page, so nothing in the text ever says it. Bare digits are accepted
+    here without a label, which the page scanner refuses, because the checksum is doing
+    the work and a filename has far less passing numeric noise than a copyright page.
+    """
+    for candidate in re.findall(r"(?<!\d)(97[89]\d{10}|\d{9}[\dXx])(?!\d)", filename or ""):
+        digits = normalise(candidate)
+        if valid(digits):
+            return to_isbn13(digits) or digits
+    return None
+
+
 def find_isbn(page_texts):
     """The best ISBN in a book, preferring 13-digit. Returns None when there is none."""
     pages = list(page_texts)

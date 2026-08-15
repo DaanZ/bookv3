@@ -82,8 +82,15 @@ mutation addEdition($edition: EditionInput!) {
 """
 
 
-def _headers():
-    token = os.environ.get("HARDCOVER_API_KEY")
+def _headers(token=None):
+    """Whose Hardcover account this call is for.
+
+    A token passed in wins: a finished book belongs to the reader who finished it, and
+    it should land on their shelf rather than on whoever's key happened to be in the
+    environment. The env key remains the fallback for the command line and for a
+    single-reader setup that never made profiles.
+    """
+    token = token or os.environ.get("HARDCOVER_API_KEY")
     if not token:
         return None
     return {"Authorization": f"Bearer {token}"}
@@ -231,15 +238,15 @@ def _describe(document, matched_author, matched_isbn):
     }
 
 
-def search_book(title, author, isbn=None):
+def search_book(title, author, isbn=None, token=None):
     """Find the Hardcover book that best matches this title and author.
 
     An `isbn` short-circuits the guesswork: a hit carrying the same ISBN is the same
     edition, so it wins outright regardless of how its title reads.
     """
-    headers = _headers()
+    headers = _headers(token)
     if headers is None:
-        return None, "HARDCOVER_API_KEY is not set."
+        return None, "No Hardcover account is linked to this reader."
 
     title, author = _shorten(title, author)
 
@@ -280,12 +287,12 @@ def search_book(title, author, isbn=None):
     return _describe(document, matched_author, False), None
 
 
-def read_status(book_id):
+def read_status(book_id, token=None):
     """The signed-in account's status for a book: `status_id`, or None if it is not on
     their shelf at all. Returns (status_id, error)."""
-    headers = _headers()
+    headers = _headers(token)
     if headers is None:
-        return None, "HARDCOVER_API_KEY is not set."
+        return None, "No Hardcover account is linked to this reader."
 
     data, error = _post(STATUS_QUERY, {"bookId": int(book_id)}, headers)
     if error:
@@ -297,7 +304,7 @@ def read_status(book_id):
     return rows[0].get("status_id"), None
 
 
-def mark_book_as_read(title, author, isbn=None):
+def mark_book_as_read(title, author, isbn=None, token=None):
     """Search for a book by title and author, then mark it read (status_id 3).
 
     Returns the API response on success, or `{"error": ...}` — callers must not
@@ -309,7 +316,7 @@ def mark_book_as_read(title, author, isbn=None):
     a shelf entry — and a book marked read outside this app is recognised rather than
     re-added.
     """
-    book, error = search_book(title, author, isbn=isbn)
+    book, error = search_book(title, author, isbn=isbn, token=token)
     if error:
         return {"error": error}
 
@@ -320,13 +327,13 @@ def mark_book_as_read(title, author, isbn=None):
         "isbnMatched": book.get("isbnMatched", False),
     }
 
-    status, error = read_status(book["id"])
+    status, error = read_status(book["id"], token=token)
     if error:
         return {"error": error}
     if status == STATUS_READ:
         return {"data": None, "book": found, "alreadyRead": True}
 
-    data, error = _post(MARK_READ_MUTATION, {"bookId": int(book["id"])}, _headers())
+    data, error = _post(MARK_READ_MUTATION, {"bookId": int(book["id"])}, _headers(token))
     if error:
         return {"error": error}
 
@@ -352,16 +359,16 @@ def edition_payload(title, author, isbn, pages=None, subtitle=None):
     return {"dto": dto, "author": author}, None
 
 
-def contribute_edition(payload):
+def contribute_edition(payload, token=None):
     """Add an edition to Hardcover's public catalogue.
 
     Only ever called from an explicit user action. The pipeline reads title and author
     off the first pages with a language model, and pushing that into a database other
     people rely on without someone looking at it first would be publishing guesses.
     """
-    headers = _headers()
+    headers = _headers(token)
     if headers is None:
-        return {"error": "HARDCOVER_API_KEY is not set."}
+        return {"error": "No Hardcover account is linked to this reader."}
 
     data, error = _post(INSERT_BOOK_MUTATION, {"edition": {"dto": payload["dto"]}}, headers)
     if error:

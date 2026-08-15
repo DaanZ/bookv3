@@ -1,5 +1,16 @@
 import json
+import os
 import re
+
+# Windows refuses a path over 260 characters, and a book title is long enough to reach it
+# on its own: "The Gardener and the Carpenter: What the New Science of Child Development
+# Tells Us…" landed at exactly 260 and the upload failed with FileNotFoundError, which
+# reads as a missing directory rather than a name that will not fit.
+#
+# 120 leaves room for the repo path, the books/available prefix and the "-2" a duplicate
+# gets. The name is a label — the book's identity lives in its meta — so cutting it costs
+# nothing.
+MAX_FILENAME = 120
 
 
 def write_to_file(path, data):
@@ -41,6 +52,13 @@ def sanitize_filename(filename):
     sanitized = re.sub(invalid_chars, '', filename)
     # Remove leading or trailing spaces and periods
     sanitized = sanitized.strip(' .')
+
+    # Bound the length, keeping the extension: a name that will not fit fails at open()
+    # with an error about the directory, which sends you looking in the wrong place.
+    if len(sanitized) > MAX_FILENAME:
+        stem, extension = os.path.splitext(sanitized)
+        stem = stem[: max(1, MAX_FILENAME - len(extension))].rstrip(' ._-')
+        sanitized = stem + extension
     return sanitized
 
 

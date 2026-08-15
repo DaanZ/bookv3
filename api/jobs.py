@@ -33,6 +33,48 @@ STORE_PATH = os.path.join(ROOT, "data", "jobs.json")
 # Pages per chunk, matching prep.py's `ceil(len(pages) / 25)`.
 PAGES_PER_CHUNK = 25
 
+# How many parts may come back with nothing highlighted before the model is judged unable
+# to do it. Front matter, an index or a page of references can honestly have nothing worth
+# marking, so one is not evidence; three is.
+UNHIGHLIGHTED_LIMIT = 3
+
+# Parts finished so far, kept on disk while the job runs.
+#
+# A book is one API call per part and they are paid for one at a time, so a failure at
+# part 20 of 39 used to throw away nineteen parts that were bought, correct and already
+# written — the only way forward was to buy all thirty-nine again. The parts are check-
+# pointed as they land, and a resumed job reads them back and starts where it stopped.
+PARTIAL_DIR = os.path.join(ROOT, "data", "partials")
+
+
+def _partial_path(job_id):
+    return os.path.join(PARTIAL_DIR, f"{job_id}.json")
+
+
+def _save_partial(job_id, book_info):
+    """Best effort: losing a checkpoint costs money, not correctness."""
+    try:
+        os.makedirs(PARTIAL_DIR, exist_ok=True)
+        json_write_file(_partial_path(job_id), book_info)
+    except OSError:
+        pass
+
+
+def _load_partial(job_id):
+    from util.files import json_read_file
+
+    stored = json_read_file(_partial_path(job_id))
+    if isinstance(stored, dict) and isinstance(stored.get("parts"), list):
+        return stored
+    return None
+
+
+def _drop_partial(job_id):
+    try:
+        os.remove(_partial_path(job_id))
+    except OSError:
+        pass
+
 # One at a time: each job is a long run of API calls, and the point of the screen is to
 # watch a book finish, not to start six and have all of them crawl.
 _executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="ingest")
@@ -118,6 +160,7 @@ def remove(job_id):
         path = job.get("_path")
         del _jobs[job_id]
         _persist()
+    _drop_partial(job_id)
 
     # Only ever the staged copy under next/, never the archive.
     if path and os.path.dirname(os.path.abspath(path)) == os.path.abspath(INBOX_DIR):
@@ -143,8 +186,10 @@ def submit(filename: str, data: bytes, chunks: int | None = None, model: str | N
     os.makedirs(INBOX_DIR, exist_ok=True)
 
     safe = sanitize_filename(filename) or "book.pdf"
-    if not safe.lower().endswith(".pdf"):
-        safe += ".pdf"
+    # Keep the extension the file arrived with: it is what `_read_pages` dispatches on,
+    # so an EPUB saved as .pdf would be handed to pypdf and fail as a corrupt PDF.
+    if not safe.lower().endswith((".pdf", ".epub")):
+        safe += ".epub" if (filename or "").lower().endswith(".epub") else ".pdf"
     path = os.path.join(INBOX_DIR, safe)
     stem, ext = os.path.splitext(path)
     counter = 2
@@ -152,12 +197,21 @@ def submit(filename: str, data: bytes, chunks: int | None = None, model: str | N
         path = f"{stem}-{counter}{ext}"
         counter += 1
 
-    with open(path, "wb") as handle:
-        handle.write(data)
+    try:
+        with open(path, "wb") as handle:
+            handle.write(data)
+    except OSError as ex:
+        # The name is bounded by sanitize_filename now, but the repo could sit somewhere
+        # deep enough that even a bounded one does not fit. Say so, rather than letting a
+        # FileNotFoundError become a 500 that reads as the server being broken.
+        raise ValueError(f"Could not save the upload as {os.path.basename(path)}: {ex}") from ex
 
     job = {
         "id": uuid.uuid4().hex[:12],
         "filename": os.path.basename(path),
+        # The name as uploaded. The saved one is sanitised and length-bounded, which
+        # drops exactly the tail a library filename keeps its ISBN in.
+        "originalName": filename,
         "bytes": len(data),
         "status": "queued",
         "step": "waiting for the worker",
@@ -186,6 +240,83 @@ def submit(filename: str, data: bytes, chunks: int | None = None, model: str | N
     return dict(job)
 
 
+def resume(job_id):
+    """Run a failed job again, continuing from the parts it already bought.
+
+    The same job rather than a new one, deliberately: the checkpoint is keyed by id, and
+    the point of resuming is that the nineteen parts already paid for are still there. A
+    job whose upload has been cleaned up cannot be resumed — say so rather than starting
+    a run that will fail on the first read.
+    """
+    job = get_job(job_id)
+    if job is None:
+        return None, "No such job."
+    if job["status"] in ("queued", "running"):
+        return None, "That job is already running."
+    if not job.get("_path") or not os.path.exists(job["_path"]):
+        return None, "The uploaded PDF is no longer there — upload it again."
+
+    _update(job_id, status="queued", step="waiting for the worker", error=None)
+    _executor.submit(_run, job_id)
+    return public(get_job(job_id)), None
+
+
+def partial_parts(job_id):
+    """How many parts a failed job has already bought, for the screen to offer."""
+    stored = _load_partial(job_id)
+    return len(stored.get("parts", [])) if stored else 0
+
+
+class _Page:
+    """What the pipeline expects a page to be: something with `.page_content`.
+
+    PyPDFLoader hands back LangChain Documents; an EPUB is read as plain strings. The
+    chunker only ever reads this one attribute, so wrapping is enough and no part of the
+    pipeline below needs to know which format it is working on.
+    """
+
+    def __init__(self, content):
+        self.page_content = content
+
+
+def _read_pages(path):
+    """The book as pages, from a PDF or an EPUB."""
+    if str(path).lower().endswith(".epub"):
+        from util.epub import read_epub_pages
+
+        return [_Page(text) for text in read_epub_pages(path)]
+
+    from fragments import read_book_pages
+
+    return read_book_pages(path)
+
+
+def _declared_metadata(path):
+    """The title and author the file carries about itself.
+
+    Typed by whoever produced the file rather than inferred from a page, and present far
+    more often than a readable title page is — all three books here had it, including the
+    ebook whose text never names itself.
+    """
+    if str(path).lower().endswith(".epub"):
+        from util.epub import epub_metadata
+
+        return {k: v for k, v in epub_metadata(path).items() if k in ("title", "author")}
+
+    try:
+        from pypdf import PdfReader
+
+        info = PdfReader(path).metadata or {}
+        return {
+            key: str(info.get(f"/{key.capitalize()}")).strip()
+            for key in ("title", "author")
+            if info.get(f"/{key.capitalize()}")
+        }
+    except Exception:
+        # Never worth failing an ingest over: it is a hint, and the pages are still there.
+        return {}
+
+
 def _run(job_id):
     job = get_job(job_id)
     if job is None:
@@ -200,7 +331,6 @@ def _run(job_id):
         from pypdf.errors import PdfStreamError
 
         from chunks import get_page_chunks, highlight_chunk
-        from fragments import read_book_pages
         from meta import UnreadableCharactersError, get_book_meta
         from util.chatgpt import RETRY_ATTEMPTS
     except KeyError:
@@ -218,7 +348,7 @@ def _run(job_id):
     try:
         model = job.get("model") or None
         _update(job_id, status="running", step="reading the PDF")
-        pages = read_book_pages(path)
+        pages = _read_pages(path)
         if not pages:
             raise UnreadableCharactersError(details="no pages")
 
@@ -239,27 +369,61 @@ def _run(job_id):
             step="identifying the book",
         )
 
-        meta_info = get_book_meta(pages, min(5, len(pages)), model=model)
+        # What the file says about itself, which beats reading page one: an ebook opens
+        # on cover art and the publisher's advertising, so the first readable page is
+        # often "Thank you for buying this <imprint> ebook".
+        declared = _declared_metadata(path)
 
-        # Read off the copyright page, not asked of the model: an ISBN is a checksummed
-        # fact and a model will happily invent a plausible one. It turns the Hardcover
-        # lookup from "a book with a similar title" into "this edition".
-        from util.isbn import find_isbn
+        meta_info = get_book_meta(pages, min(5, len(pages)), model=model, declared=declared)
 
-        isbn = find_isbn(page.page_content for page in pages)
+        # Read off the page or the filename, never asked of the model: an ISBN is a
+        # checksummed fact and a model will happily invent a plausible one. It turns the
+        # Hardcover lookup from "a book with a similar title" into "this edition".
+        from util.isbn import find_isbn, find_isbn_in_name
+
+        isbn = declared.pop("isbn", None) or find_isbn(
+            page.page_content for page in pages
+        ) or find_isbn_in_name(
+            job.get("originalName") or job.get("filename")
+        )
         if isbn:
             meta_info["isbn"] = isbn
 
-        book_info = {"meta": meta_info, "parts": []}
+        # Parts already bought on an earlier attempt. Their page ranges come from the same
+        # split, so part N is the same pages it was — the checkpoint is only reused when
+        # the chunk count matches, because a different count is a different book shape.
+        resumed = _load_partial(job_id) or {}
+        done_parts = resumed.get("parts", []) if resumed.get("chunks") == len(page_chunks) else []
+
+        book_info = {"meta": meta_info, "parts": list(done_parts), "chunks": len(page_chunks)}
         _update(
             job_id,
             title=meta_info.get("title"),
             author=meta_info.get("author"),
-            step=f"summarizing part 1 of {len(page_chunks)}",
+            step=f"summarizing part {len(done_parts) + 1} of {len(page_chunks)}",
+            chunksDone=len(done_parts),
+            resumedFrom=len(done_parts) or None,
         )
 
         first_chunk = True
+        unhighlighted = 0
+        empty_chunks = 0
         for index, page_chunk in enumerate(page_chunks):
+            # Already bought on an earlier run. Nothing is sent and nothing is charged.
+            if index < len(done_parts):
+                first_chunk = False
+                continue
+
+            # A stretch of the book with no extractable text at all — scanned plates, a
+            # photo section, an image-only insert. Sending it produces a request with no
+            # content, which the provider rejects outright: "One Nation Under Blackmail"
+            # has 48 such pages in the middle and died there at part 20 of 39, after
+            # paying for nineteen. There is nothing to summarize, so there is nothing to
+            # send; the part is skipped and counted.
+            if not any(page.page_content.strip() for page in page_chunk):
+                empty_chunks += 1
+                _update(job_id, chunksDone=index + 1, emptyChunks=empty_chunks)
+                continue
             try:
                 highlighted = highlight_chunk(page_chunk, first_chunk, model=model)
             except Exception as ex:
@@ -271,7 +435,31 @@ def _run(job_id):
                     f"Part {index + 1} of {len(page_chunks)} failed after "
                     f"{RETRY_ATTEMPTS} attempts — {type(ex).__name__}: {reason}"
                 ) from ex
+            # A model that returns no highlighting is the failure this pipeline cannot
+            # survive: the summary reads fine and renders as a flat wall of text, because
+            # `reading.js` colours what the pipeline marks as bold and there is nothing to
+            # colour. It is silent, so it has to be caught here rather than by a reader.
+            #
+            # But a single bare part is not that failure. A chunk of front matter, an
+            # index, a page of references — there are parts of a real book with nothing in
+            # them worth marking, and stopping on the first one throws away a model that
+            # would have done the rest properly. Three is the line: two can be the book,
+            # three is the model.
+            if "<b" not in highlighted["body"]:
+                unhighlighted += 1
+                if unhighlighted >= UNHIGHLIGHTED_LIMIT:
+                    raise RuntimeError(
+                        f"{model or 'The default model'} left {unhighlighted} of "
+                        f"{index + 1} parts with no highlighted words, which would render "
+                        "as flat text. Nothing further was spent. "
+                        "google/gemini-2.5-flash has produced highlighted books here — "
+                        "pick that and run it again."
+                    )
             book_info["parts"].append(highlighted)
+            # Checkpointed the moment it lands, because it has been paid for. A crash,
+            # a restart or a provider error after this point costs the parts still to
+            # come, never the ones already bought.
+            _save_partial(job_id, book_info)
             first_chunk = False
             _update(
                 job_id,
@@ -287,6 +475,7 @@ def _run(job_id):
         key = sanitize_filename(meta_info["title"])
         output_path = os.path.join(OUTPUT_DIR, f"{key}.json")
         json_write_file(output_path, book_info)
+        _drop_partial(job_id)
 
         # Indexing: rescan both folders so the written book is checked against the rest
         # of the library before the job reports done. The seam state on the library

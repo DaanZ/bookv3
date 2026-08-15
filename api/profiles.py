@@ -10,7 +10,7 @@ itself is one file each under `data/positions/`, so profiles are separate by
 construction rather than by remembering to filter.
 
 What a reader owns beyond their bookmarks is their **preferences** — register, palette,
-pointer focus, how many highlights a page may carry. Those were in the browser's
+how many highlights a page may carry. Those were in the browser's
 localStorage, which made them the tablet's rather than the reader's: two people sharing
 one tablet shared one theme, and the same person on a second tablet started over. They
 live on the profile row now, and the browser keeps only a copy for the first paint.
@@ -97,7 +97,6 @@ MAX_NAME = 40
 PREF_DEFAULTS = {
     "theme": "night",
     "palette": "sunset",
-    "focusMode": True,
     "maxHighlights": 8,
 }
 
@@ -181,8 +180,6 @@ def clean_prefs(patch: dict | None) -> dict:
     palette = patch.get("palette")
     if isinstance(palette, str) and palette.strip():
         out["palette"] = palette.strip()[:MAX_PALETTE]
-    if "focusMode" in patch:
-        out["focusMode"] = bool(patch["focusMode"])
     if "maxHighlights" in patch:
         try:
             # 0 is meaningful — it turns highlighting off — so the floor is 0, not 1.
@@ -213,8 +210,12 @@ def _public(row: dict) -> dict:
     on a row any other module can reach, so there is no serialiser to forget. What
     callers get instead is `hasPin`, which is the only part of it the UI needs.
     """
-    out = {k: v for k, v in row.items() if k != "pin"}
+    out = {k: v for k, v in row.items() if k not in ("pin", "hardcover")}
     out["hasPin"] = bool(row.get("pin"))
+    # Same discipline as the PIN, for the same reason: a Hardcover token is a credential
+    # that can write to somebody's public shelf. The UI needs to know whether one is set,
+    # never what it is.
+    out["hasHardcover"] = bool(row.get("hardcover"))
     return out
 
 
@@ -301,6 +302,44 @@ def rename(profile_id: str, name: str) -> tuple[dict | None, str | None]:
         row["name"] = clean
         _write(rows)
         return _public(row), None
+
+
+def set_hardcover(profile_id: str, token: str | None) -> tuple[dict | None, str | None]:
+    """Give a reader their own Hardcover account, or take it away.
+
+    Per reader rather than per app, which is the whole point: a finished book belongs to
+    whoever read it, so it should land on *their* shelf and nowhere else. A profile with
+    no token is not an error and not a failure — it is somebody who reads here and keeps
+    their list somewhere else, or nowhere.
+
+    Stored as given, because unlike a PIN it has to be replayed to Hardcover. It lives in
+    `data/profiles.json`, which is gitignored, and `_public` never lets it back out.
+    """
+    token = (token or "").strip() or None
+    with _lock:
+        rows = _ensure(_read())
+        row = next((r for r in rows if r["id"] == profile_id), None)
+        if row is None:
+            return None, "No such profile."
+        if token:
+            row["hardcover"] = token
+        else:
+            row.pop("hardcover", None)
+        _write(rows)
+        return _public(row), None
+
+
+def hardcover_token(profile_id: str | None) -> str | None:
+    """The reader's own token, for the code that actually talks to Hardcover.
+
+    Deliberately not on the public row, so reaching it is a decision a caller makes by
+    name rather than something that rides along in a response by accident.
+    """
+    if not profile_id:
+        return None
+    with _lock:
+        row = next((r for r in _ensure(_read()) if r["id"] == profile_id), None)
+        return (row or {}).get("hardcover")
 
 
 def set_prefs(profile_id: str, patch: dict) -> tuple[dict | None, str | None]:
