@@ -1,5 +1,15 @@
+import { useState } from 'react';
+
 import Patch from '../components/Patch';
 import { Button, Chip, QuietLink } from '../components/ui';
+import { resyncHardcover } from '../lib/api';
+
+/** 1st, 2nd, 3rd, 4th — English ordinals, including the teens that break the rule. */
+function ordinal(n) {
+  const tens = n % 100;
+  if (tens >= 11 && tens <= 13) return `${n}th`;
+  return `${n}${['th', 'st', 'nd', 'rd'][n % 10] || 'th'}`;
+}
 
 // Close the loop and offer a jump to a different topic.
 // "Switching topics beats stopping": when attention is spent, offer the book furthest
@@ -16,7 +26,23 @@ export default function Finished({
 }) {
   // The result of the call just made, or the outcome recorded when it was finished
   // before. undefined/null means neither exists — say that, do not guess.
-  const marked = result ? result.markedRead : book.markedRead;
+  // A re-sync supersedes both: it is the most recent thing Hardcover said.
+  const [resync, setResync] = useState(null);
+  const [syncing, setSyncing] = useState(false);
+
+  const latest = resync ?? result;
+  const marked = latest ? latest.markedRead : book.markedRead;
+  const number = latest?.finishNumber ?? book.finishNumber;
+
+  const recheck = async () => {
+    setSyncing(true);
+    try {
+      setResync(await resyncHardcover(book.key));
+    } catch (ex) {
+      setResync({ markedRead: false, hardcoverError: ex.message });
+    }
+    setSyncing(false);
+  };
 
   const partCount = book.partCount ?? book.parts?.length ?? 0;
   const titles = book.partTitles ?? (book.parts || []).map((p) => p.title);
@@ -49,6 +75,10 @@ export default function Finished({
         }}
       >
         {partCount} of {partCount} parts · 100%
+        {/* Which number this book was to be finished here. Counted from recorded
+            finishes, so it is a fact about this app's history, not a guess about the
+            books that were already sitting in books/read. */}
+        {number ? ` · your ${ordinal(number)} finished book` : ''}
       </span>
 
       <div
@@ -111,20 +141,29 @@ export default function Finished({
             style={{ font: "400 12.5px 'Space Grotesk', system-ui", color: 'var(--text-secondary)' }}
           >
             {marked === true
-              ? 'on Hardcover'
+              ? latest?.alreadyRead
+                ? 'already read on Hardcover'
+                : 'on Hardcover'
               : marked === false
-                ? result?.hardcoverError || 'Hardcover did not accept it'
+                ? latest?.hardcoverError || 'Hardcover did not accept it'
                 : 'no Hardcover record for this book'}
           </span>
+          {/* The outcome was recorded once and never revisited, so a call that failed
+              for a reason of the moment stayed failed. This asks again. */}
+          {marked !== true && (
+            <QuietLink onClick={syncing ? undefined : recheck}>
+              {syncing ? 'checking…' : 'check again'}
+            </QuietLink>
+          )}
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <Chip tone="neutral">{result?.moved ? 'moved' : 'in place'}</Chip>
-          <span
-            style={{ font: "400 12px 'IBM Plex Mono', monospace", color: 'var(--text-secondary)' }}
-          >
-            {result?.moved ? 'books/available → books/read' : 'books/read'}
+
+        {/* Matched on title alone: the author did not line up, so this may be the wrong
+            edition — worth saying before it sits on a public shelf. */}
+        {marked === true && latest?.titleOnlyMatch && latest?.hardcoverTitle && (
+          <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
+            matched on title only → “{latest.hardcoverTitle}”
           </span>
-        </div>
+        )}
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 26 }}>

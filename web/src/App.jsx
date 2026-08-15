@@ -169,6 +169,10 @@ export default function App() {
             <Library
               books={shelf.books}
               counts={shelf.counts}
+              // The summarising bars are drawn from the reading palette, so the library
+              // needs the same two preferences the reader colours highlights with.
+              palette={prefs.palette}
+              day={day}
               onShelf={toShelf}
               onChanged={loadShelf}
             />

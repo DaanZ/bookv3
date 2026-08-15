@@ -25,34 +25,152 @@ function rgb2hex(c) {
   return '#' + c.map((v) => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, '0')).join('');
 }
 
+function toLinear(v) {
+  const s = v / 255;
+  return s <= 0.04045 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+}
+
+function toSrgb(v) {
+  const s = v <= 0.0031308 ? v * 12.92 : 1.055 * Math.pow(v, 1 / 2.4) - 0.055;
+  return Math.max(0, Math.min(1, s)) * 255;
+}
+
 function lum(h) {
-  const [r, g, b] = hex2rgb(h).map((v) => {
-    const s = v / 255;
-    return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
-  });
+  const [r, g, b] = hex2rgb(h).map(toLinear);
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
 
+// Blend in linear light, not in sRGB. Averaging gamma-encoded bytes darkens and muddies
+// the midpoint of two saturated colours, which is exactly where the resampled stops land.
 function mix(a, b, t) {
-  const A = hex2rgb(a);
-  const B = hex2rgb(b);
-  return rgb2hex(A.map((v, i) => v + (B[i] - v) * t));
+  const A = hex2rgb(a).map(toLinear);
+  const B = hex2rgb(b).map(toLinear);
+  return rgb2hex(A.map((v, i) => toSrgb(v + (B[i] - v) * t)));
 }
 
-// Keep the band's hue and its place in the ramp; only move it far enough to be read.
-export function legible(h, day) {
-  let out = h;
-  let t = 0;
-  while (t < 0.9 && (day ? lum(out) > 0.28 : lum(out) < 0.42)) {
-    t += 0.1;
-    out = mix(h, day ? INK_DARK : INK_CREAM, t);
+function rgb2hsl([r, g, b]) {
+  const R = r / 255;
+  const G = g / 255;
+  const B = b / 255;
+  const max = Math.max(R, G, B);
+  const min = Math.min(R, G, B);
+  const l = (max + min) / 2;
+  if (max === min) return [0, 0, l];
+  const d = max - min;
+  const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+  const h =
+    max === R ? ((G - B) / d + (G < B ? 6 : 0)) : max === G ? (B - R) / d + 2 : (R - G) / d + 4;
+  return [h / 6, s, l];
+}
+
+function hsl2hex(h, s, l) {
+  if (s === 0) return rgb2hex([l * 255, l * 255, l * 255]);
+  const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+  const p = 2 * l - q;
+  const channel = (t) => {
+    let x = t;
+    if (x < 0) x += 1;
+    if (x > 1) x -= 1;
+    if (x < 1 / 6) return p + (q - p) * 6 * x;
+    if (x < 1 / 2) return q;
+    if (x < 2 / 3) return p + (q - p) * (2 / 3 - x) * 6;
+    return p;
+  };
+  return rgb2hex([channel(h + 1 / 3) * 255, channel(h) * 255, channel(h - 1 / 3) * 255]);
+}
+
+// How far a band has to clear the ground to be read as a highlight rather than as ink.
+//
+// Deliberately generous rather than maximal. Against the night ground (#0B1A1C) 0.30
+// still measures about 5.5:1, comfortably past WCAG AA, and every point above that is
+// paid for by the dark end of the ramp: a floor of 0.46 shoved sunset's deep purples up
+// until they landed on their own neighbours, ΔE 2. The floor is a backstop for hues that
+// would otherwise vanish, not the thing that sets the palette's brightness.
+const NIGHT_MIN_LUM = 0.3;
+const DAY_MAX_LUM = 0.24;
+
+// Bands are chosen as a ramp, not for contrast, so several sit too close to the ground
+// at one end or the other. Saturation is pushed first so the correction happens in
+// chroma before it happens in lightness.
+const SATURATION_BOOST = 1.3;
+const SATURATION_FLOOR = 0.42;
+
+// Below this a band has no hue worth amplifying — bee's near-black opens at #1A141A, and
+// forcing saturation onto it would invent a colour the palette never had.
+const NEUTRAL = 0.08;
+
+// The lightness window each register gets. Night runs bright on a near-black ground,
+// day runs dark on cream; both are ordered dark-stop-first so the palette's own ramp
+// direction survives.
+const NIGHT_LIGHTNESS = [0.56, 0.86];
+const DAY_LIGHTNESS = [0.16, 0.44];
+
+/**
+ * Make one band readable while keeping it a colour.
+ *
+ * The original mixed toward ink or cream until the luminance cleared, which works for
+ * contrast and ruins the palette: blending with off-white pulls every band toward grey,
+ * so night highlights arrived as pastels of one another. Hue is held and chroma raised
+ * instead, and lightness is supplied by the caller — see `paletteFor`, which sets it
+ * from the palette's own spread rather than per colour.
+ */
+export function legible(hex, day, lightness = null) {
+  const [h, s0, l0] = rgb2hsl(hex2rgb(hex));
+  const s = s0 > NEUTRAL ? Math.max(Math.min(1, s0 * SATURATION_BOOST), SATURATION_FLOOR) : s0;
+
+  let l = lightness == null ? l0 : lightness;
+  let out = hsl2hex(h, s, l);
+
+  // Safety net for a hue whose luminance at that lightness still does not clear the
+  // ground: saturated blues run dark and yellows run bright, and neither may vanish.
+  let guard = 0;
+  while (guard++ < 50) {
+    if (day ? lum(out) <= DAY_MAX_LUM : lum(out) >= NIGHT_MIN_LUM) break;
+    l += day ? -0.02 : 0.02;
+    if (l <= 0.05 || l >= 0.94) break;
+    out = hsl2hex(h, s, l);
   }
   return out;
 }
 
-export function paletteFor(name, day, cap) {
+/** The ramp read as a continuous spectrum: t = 0 is the first band, t = 1 the last. */
+function sampleRamp(bands, t) {
+  const x = Math.max(0, Math.min(1, t)) * (bands.length - 1);
+  const i = Math.min(bands.length - 2, Math.floor(x));
+  return mix(bands[i], bands[i + 1], x - i);
+}
+
+/**
+ * `count` colours spanning the whole palette, in band order.
+ *
+ * It used to take the first `count` bands, so a page with four highlights only ever saw
+ * the dark end of the ramp and the palette's character never arrived. The ramp is a
+ * gradient, so it is sampled: four highlights take four stops evenly across the whole
+ * spectrum, twelve take twelve. Either way the first highlight on the page is the start
+ * of the palette and the last is its end.
+ */
+export function paletteFor(name, day, count) {
   const bands = PALETTES[name] || PALETTES.sunset;
-  return bands.slice(0, cap).map((h) => legible(h, day));
+  const n = Math.max(1, Math.round(count) || 1);
+  const stops = Array.from({ length: n }, (_, i) => sampleRamp(bands, n === 1 ? 0 : i / (n - 1)));
+
+  // Rescale the palette's own lightness spread into the register's window, rather than
+  // handing each stop a lightness by its index. The bands already separate themselves —
+  // sunrise's four oranges run 0.30 to 0.63 — and imposing an even ramp threw that away,
+  // pushing stops that were distinct on top of each other. A linear remap keeps every
+  // gap the palette designed, just moved to where it can be seen.
+  const lightnesses = stops.map((hex) => rgb2hsl(hex2rgb(hex))[2]);
+  const low = Math.min(...lightnesses);
+  const high = Math.max(...lightnesses);
+  const [from, to] = day ? DAY_LIGHTNESS : NIGHT_LIGHTNESS;
+  const span = high - low;
+
+  return stops.map((hex, i) => {
+    // Every stop at the same lightness: nothing to preserve, so sit in the middle and
+    // let hue do the separating.
+    const t = span < 0.01 ? 0.5 : (lightnesses[i] - low) / span;
+    return legible(hex, day, from + (to - from) * t);
+  });
 }
 
 // The first 40% of the parts carry 80% of the progress: the front of a book is where
@@ -82,14 +200,31 @@ export function progressOf(partCount, partIndex, pageIndex, pageCount) {
 
 // Two sentences to a paragraph, two paragraphs to a page, so a part is two or three
 // pages and the bar moves inside a chapter.
+const PARAGRAPHS_PER_PAGE = 2;
+
+// …but never more than this many pages in one part. "Page 6 of 10 in this part" is a
+// chapter that has stopped feeling finishable, which is the opposite of what the page
+// count is for. Past the limit the page gets denser rather than the part getting longer:
+// the number of pages is what the reader is judging distance by, so that is the number
+// held still.
+export const MAX_PAGES_PER_PART = 5;
+
 export function paginate(body) {
   const sentences = normaliseBody(body)
     .split(/\n\n+/)
     .flatMap((par) => par.split(/(?<=[.?!”"])\s+/).filter((s) => s.trim()));
   const paras = [];
   for (let i = 0; i < sentences.length; i += 2) paras.push(sentences.slice(i, i + 2).join(' '));
+
+  // Only long parts are affected. A part that already fits keeps two paragraphs a page,
+  // so the common case reads exactly as it did.
+  const perPage = Math.max(
+    PARAGRAPHS_PER_PAGE,
+    Math.ceil(paras.length / MAX_PAGES_PER_PART),
+  );
+
   const pages = [];
-  for (let i = 0; i < paras.length; i += 2) pages.push(paras.slice(i, i + 2));
+  for (let i = 0; i < paras.length; i += perPage) pages.push(paras.slice(i, i + perPage));
   return pages.length ? pages : [paras];
 }
 
@@ -125,6 +260,21 @@ function plain(text) {
 
 export function newBudget() {
   return { map: new Map(), used: 0 };
+}
+
+/**
+ * How many distinct phrases on this page will actually take a colour.
+ *
+ * The palette is built to this number, so it has to agree with `tokensOf` exactly — a
+ * count that is one too high leaves the last stop unused and shortens the sweep, one too
+ * low reads `palette[n]` as undefined and prints a highlight in body ink. Rather than
+ * restate the budget rules and risk them drifting apart, it runs the real thing over a
+ * throwaway palette and asks the budget what it did.
+ */
+export function highlightCount(sentences, cap) {
+  const budget = newBudget();
+  for (const sentence of sentences || []) tokensOf(sentence, [], cap, budget);
+  return budget.map.size;
 }
 
 // The pipeline stores bodies as HTML, and `chunks.format_text` writes the highlight as
