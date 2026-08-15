@@ -106,11 +106,60 @@ function BookRow({ book, onOpen }) {
   );
 }
 
+/**
+ * One suggestion, with the book it came from named.
+ *
+ * Only on the "not started" filter, because that is the question it answers, and only
+ * one — a shelf that opens with a row of recommendations is a shop.
+ */
+function Suggestion({ entry, onOpen }) {
+  return (
+    <button
+      className="tap row"
+      onClick={onOpen}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 16,
+        padding: '14px 18px',
+        borderRadius: 14,
+        background: 'transparent',
+        border: '1px dashed var(--border-strong)',
+      }}
+    >
+      <Patch patch={entry.book.patch} size={34} />
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0, textAlign: 'left' }}>
+        <span
+          style={{
+            font: "600 9.5px 'IBM Plex Mono', monospace",
+            letterSpacing: 'var(--track-eyebrow)',
+            textTransform: 'uppercase',
+            color: 'var(--text-muted)',
+          }}
+        >
+          because you read {entry.because.title}
+        </span>
+        <span
+          style={{
+            fontFamily: 'var(--font-display-wide)',
+            fontSize: 17,
+            fontWeight: 600,
+            color: 'var(--text-primary)',
+          }}
+        >
+          {entry.book.title}
+        </span>
+      </div>
+    </button>
+  );
+}
+
 export default function Shelf({
   books,
   counts,
   themeLabel,
   who,
+  suggestion,
   onOpen,
   filter,
   onFilter,
@@ -118,6 +167,7 @@ export default function Shelf({
   onProfiles,
   onLock,
 }) {
+  const guest = !who || who.guest;
   return (
     <div
       style={{
@@ -136,7 +186,7 @@ export default function Shelf({
           color: 'var(--text-muted)',
         }}
       >
-        {counts.total} books · {counts.read} read
+        {counts.total} books{guest ? '' : ` · ${counts.read} read`}
         {who ? ` · ${who.name}` : ''}
       </span>
       <h1
@@ -149,7 +199,7 @@ export default function Shelf({
           color: 'var(--text-primary)',
         }}
       >
-        Your shelf
+        {guest ? 'The catalogue' : 'Your shelf'}
       </h1>
       <p
         style={{
@@ -161,14 +211,20 @@ export default function Shelf({
           color: 'var(--text-secondary)',
         }}
       >
-        Pick up where you stopped, start something new, or look back at one you finished. The patch
-        tells you the kind of book before you read a word, and every page you keep is
-        {who ? ` ${who.name}'s` : ' yours'} alone.
+        {guest
+          ? `Read anything here — the catalogue is open and asks nobody who they are. Picking a
+             profile is what makes it yours: a page kept in every book, and books suggested from
+             the ones you have read.`
+          : `Pick up where you stopped, start something new, or look back at one you finished. The
+             patch tells you the kind of book before you read a word, and every page you keep is
+             ${who.name}'s alone.`}
       </p>
 
       {/* The design was drawn against three books; this shelf holds hundreds, so the
-          rows are filtered rather than paged — one unit of work per screen still holds. */}
-      <div style={{ display: 'flex', gap: 8, marginTop: 24 }}>
+          rows are filtered rather than paged — one unit of work per screen still holds.
+          A guest has no reading to filter: two of the three would always be empty, so
+          the catalogue is shown whole instead of behind a control that does nothing. */}
+      <div style={{ display: guest ? 'none' : 'flex', gap: 8, marginTop: 24 }}>
         {[
           ['reading', 'Reading'],
           ['new', 'Not started'],
@@ -193,6 +249,12 @@ export default function Shelf({
           </button>
         ))}
       </div>
+
+      {filter === 'new' && suggestion && (
+        <div style={{ marginTop: 20 }}>
+          <Suggestion entry={suggestion} onOpen={() => onOpen(suggestion.book.key)} />
+        </div>
+      )}
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginTop: 20 }}>
         {books.length === 0 ? (
@@ -249,7 +311,9 @@ export default function Shelf({
           {/* Only where there is something to lock. On a profile with no PIN this
               would be a button that closes the shelf and then opens it again. */}
           {onLock && <QuietLink onClick={onLock}>Lock</QuietLink>}
-          <QuietLink onClick={onLibrary}>Library</QuietLink>
+          {/* Adding and removing books is the owner's. Nobody else is shown the door —
+              and the API refuses it too, so this is the label on a rule, not the rule. */}
+          {who?.owner && <QuietLink onClick={onLibrary}>Library</QuietLink>}
         </div>
       </div>
     </div>

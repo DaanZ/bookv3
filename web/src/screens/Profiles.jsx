@@ -388,10 +388,10 @@ export default function Profiles({
           color: 'var(--text-secondary)',
         }}
       >
-        Everyone keeps their own page in every book — where you stopped, how many
-        sittings it took, which ones you finished. The books are the same shelf; the
-        reading is yours. A PIN on your name means the tablet asks for it before it
-        opens your shelf.
+        The catalogue is open to anyone. A profile is what makes it yours: your own page
+        in every book, how many sittings it took, which ones you finished — and books
+        suggested from the ones you have read. A PIN on your name means the tablet asks
+        for it before it opens your shelf.
       </p>
 
       {error && (
@@ -425,6 +425,41 @@ export default function Profiles({
           />
         ))}
       </div>
+
+      {/* The catalogue is open. A tablet that has been locked must still let somebody
+          read what is on the shelf — otherwise the lock is on the books, and it is not
+          meant to be: it is on one reader's page in them. */}
+      <button
+        className="tap"
+        onClick={() => onPick('guest')}
+        style={{
+          marginTop: 12,
+          padding: '14px 18px',
+          borderRadius: 14,
+          background: 'transparent',
+          border: '1px dashed var(--border-subtle)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          gap: 3,
+          cursor: 'pointer',
+          width: '100%',
+        }}
+      >
+        <span
+          style={{
+            fontFamily: 'var(--font-display-wide)',
+            fontSize: 16,
+            fontWeight: 600,
+            color: 'var(--text-secondary)',
+          }}
+        >
+          Just browsing
+        </span>
+        <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
+          read anything · nothing kept, nothing suggested
+        </span>
+      </button>
 
       <form
         onSubmit={(event) => {

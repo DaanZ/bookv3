@@ -20,7 +20,7 @@ const DEFAULT_LEVEL = 0.3;
 // reading the same book keep their own bed, and either of them keeps it on whichever
 // tablet they pick up. `on` is not stored — nothing may autoplay, so a bed is restored
 // as a choice and never as sound.
-export function useAmbience(book) {
+export function useAmbience(book, keep = true) {
   const engineRef = useRef(null);
   const bookKey = book?.key || null;
 
@@ -54,12 +54,14 @@ export function useAmbience(book) {
 
   const persist = useCallback(
     (patch) => {
-      if (!bookKey) return;
+      // A guest has nowhere to keep it: the sound still plays, it is simply not
+      // remembered, and the server would refuse the write anyway.
+      if (!bookKey || !keep) return;
       // Fire and forget, like the position saves beside it: a bed that failed to
       // record is not worth an error across the reading surface.
       putAmbience(bookKey, { bed, level, ...patch }).catch(() => {});
     },
-    [bookKey, bed, level],
+    [bookKey, keep, bed, level],
   );
 
   /** The user gesture that is allowed to start audio. */

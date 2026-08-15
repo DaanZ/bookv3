@@ -55,8 +55,8 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
       which is what makes "Add to Hardcover" reachable
 - [x] `api/profiles.py` + one positions store per profile, so a second person can read
       here without moving somebody else's bookmark. `X-Profile` on every reading
-      endpoint, resolved once in `main.reader`; an unknown id answers as the owner, so
-      a browser that has never picked one behaves exactly as it did before
+      endpoint, resolved once in `main.reader` (which answered an unknown id with the
+      owner at first, and with the guest since the catalogue was opened — see below)
 - [x] Migrate `data/positions.json` onto `data/positions/owner.json` on first load — the
       reading from before profiles belongs to whoever made it
 - [x] A book's `state` is the reader's; `filed` is where the JSON sits. Only the owner's
@@ -86,6 +86,17 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
 - [ ] The profile is chosen in the browser and sent as a header, so two tabs on one
       tablet can be two readers. That is either a feature or a surprise; nothing tests
       which
+- [x] Three kinds of reader, as three dependencies in `main.py`: `reader` (anyone, the
+      catalogue is open), `keeper` (a profile, for anything kept) and `admin` (the owner,
+      for anything that changes what is on the shelf)
+- [x] An absent or unknown `X-Profile` now resolves to a **guest**, not the owner. It
+      used to hand the owner's reading to any request that left the header off
+- [x] A guest may read the whole catalogue and keep nothing: positions, finishes and
+      beds 403 with the sentence that says what to do, and the app does not offer them —
+      the last page reads "Back to the shelf" rather than "Finish book"
+- [x] Only the owner may upload, price, delete, re-file, look up, contribute or re-sync.
+      Enforced server-side; the Library link is hidden for everyone else, which is the
+      label on the rule and not the rule
 - [ ] Serve part bodies pre-paginated so the reader and any future surface agree on
       page boundaries (currently pagination is frontend-only)
 - [ ] Re-summarise or hide the 68 books whose JSON predates `meta.category`
@@ -138,6 +149,10 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
 - [x] Register swap is never animated; `prefers-reduced-motion` collapses transitions
 - [x] Shelf filter (reading / not started / read) — the design was drawn against
       three books, this shelf holds 264
+- [x] "Because you read X" on the shelf's not-started filter: the unread book nearest
+      this reader's finished ones, named with the book it came from. Nothing for a guest
+- [ ] The suggestion reads one signal — category words, with the patch family as a
+      tie-break. It has no idea what a reader *abandoned*, which is at least as strong
 - [ ] Keyboard navigation (←/→ for pages, Esc to shelf) — the design is touch-first
       but a tablet keyboard is common
 - [ ] `maxHighlights` has no control in the UI yet; it persists but only defaults

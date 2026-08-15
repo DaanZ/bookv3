@@ -17,7 +17,7 @@ import {
 import { PALETTE_NAMES } from './lib/reading';
 import { usePrefs } from './lib/prefs';
 import { useAmbience } from './lib/useAmbience';
-import { recommendations } from './lib/recommend';
+import { fromLibrary, recommendations } from './lib/recommend';
 import Finished from './screens/Finished';
 import Library from './screens/Library';
 import Profiles from './screens/Profiles';
@@ -47,9 +47,15 @@ export default function App() {
   // The tablet is put away, or was opened onto a reader who locked theirs. Nothing is
   // fetched and there is no way off the picker until somebody proves who they are.
   const [locked, setLocked] = useState(false);
-  const ambience = useAmbience(book);
+  const ambience = useAmbience(book, prefs.profile !== 'guest');
 
-  const who = profiles.find((p) => p.id === prefs.profile) || profiles.find((p) => p.owner);
+  // `guest` is not in the list — it is what the server answers with when nobody has
+  // said who they are, so the app holds it as a shape rather than a row.
+  const GUEST = { id: 'guest', name: 'Guest', tone: '#4A5A5C', guest: true };
+  const who =
+    prefs.profile === 'guest'
+      ? GUEST
+      : profiles.find((p) => p.id === prefs.profile) || profiles.find((p) => p.owner);
 
   const day = prefs.theme === 'day';
 
@@ -91,7 +97,10 @@ export default function App() {
     (async () => {
       const rows = await loadProfiles();
       if (cancelled) return;
-      const chosen = rows.find((p) => p.id === prefs.profile) || rows.find((p) => p.owner);
+      const chosen =
+        prefs.profile === 'guest'
+          ? GUEST
+          : rows.find((p) => p.id === prefs.profile) || rows.find((p) => p.owner);
       setProfile(chosen?.id || null);
       // A profile deleted from another tablet leaves a stale id here; fall back rather
       // than reading as somebody who no longer exists.
@@ -144,9 +153,11 @@ export default function App() {
   const navigate = useCallback(
     (part, page) => {
       setPosition({ part, page });
-      if (book) putPosition(book.key, part, page).catch((ex) => setError(ex.message));
+      // A guest reads without leaving a mark. The server would refuse it anyway; not
+      // asking is the difference between a rule and an error message on every turn.
+      if (book && !who?.guest) putPosition(book.key, part, page).catch((ex) => setError(ex.message));
     },
-    [book],
+    [book, who],
   );
 
   const onFinish = useCallback(async () => {
@@ -276,6 +287,10 @@ export default function App() {
     [shelf.books, book],
   );
 
+  // What this reader's own history points at. Empty for a guest by construction: they
+  // have read nothing here, so there is nothing to reason from.
+  const suggestion = useMemo(() => fromLibrary(shelf.books)[0] || null, [shelf.books]);
+
   const themeLabel = day ? 'day · cane paper' : 'night · deep water';
 
   return (
@@ -320,6 +335,7 @@ export default function App() {
               counts={shelf.counts}
               themeLabel={themeLabel}
               who={who}
+              suggestion={suggestion}
               filter={filter}
               onFilter={setFilter}
               onOpen={openBook}
@@ -368,6 +384,7 @@ export default function App() {
               page={position.page}
               prefs={prefs}
               ambience={ambience}
+              canFinish={!who?.guest}
               onNavigate={navigate}
               onShelf={toShelf}
               onFinish={onFinish}

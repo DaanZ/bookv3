@@ -114,7 +114,24 @@ sittings, and the Hardcover outcome).
 
 `profiles.py` is who that history belongs to. One file each under `data/positions/`, listed in
 `data/profiles.json`, chosen by an `X-Profile` header that every reading endpoint resolves through
-one dependency (`reader` in `main.py`). Five rules:
+one dependency (`reader` in `main.py`).
+
+**Three kinds of reader, and the difference is what they may do.** `main.py` says it in three
+dependencies rather than in scattered `if` statements:
+
+- `reader` — anyone, including nobody. The catalogue is open: `GET /api/shelf` and
+  `GET /api/books/{key}` answer without a header, and an unknown or absent id resolves to the
+  **guest** rather than to the owner, so browsing anonymously is never browsing *as* somebody. A
+  guest sees every book as unread, because they are — the owner's finishes are the owner's.
+- `keeper` — a profile. A page, a finish, a chosen bed are records and a record needs a name, so
+  these 403 for a guest with the sentence that says what to do about it. The app does not offer
+  them either: a guest's last page reads "Back to the shelf" instead of "Finish book".
+- `admin` — the owner. Everything that changes what is *on* the shelf: ingest, delete, re-file,
+  the Hardcover re-sync, the contribution. Everything that changes what somebody has *read of* it
+  is the reader's. Same caveat as the PIN, and it matters most here: `X-Profile` is asserted by
+  the client, so this is the house's rule enforced in one place — not a permission system.
+
+Five more rules, about the readers themselves:
 
 - **The settings are the reader's too.** Register, palette, pointer focus and the highlight cap
   live on the profile row, not in localStorage — `PUT /api/profiles/{id}/prefs`, whitelisted by
@@ -197,7 +214,18 @@ that rounds to nothing is a real per-book rate, and the job died on part 13 havi
 twelve. `llm_strict` now retries three times with backoff, and `jobs.py` names the part that gave
 up. Nothing resumes a failed job, so a re-run still pays for every part again.
 
-**`web/`** is Vite + React. `src/lib/reading.js` is the model and the part worth understanding:
+**`web/`** is Vite + React.
+
+`src/lib/recommend.js` holds two suggestions that pull opposite ways on purpose. `fromLibrary` is
+the shelf's — the unread book nearest what this reader has actually finished, shown once on the
+"not started" filter with the book it came from named, and empty for a guest, because a guest has
+read nothing here and inventing a suggestion from the shelf at large would be recommending the
+house's taste back to a stranger. `recommendations` is the finish screen's, and offers the book
+*furthest* from the one just put down, because switching topics beats stopping. `uncategorised` is
+a stop word in both: it is `library.py`'s fallback for the 68 books with no category, and two books
+sharing it share nothing.
+
+`src/lib/reading.js` is the model and the part worth understanding:
 
 - **Front-weighted progress.** The first 40% of parts carry 80% of the bar. `progressOf` uses
   `pageIndex`, not `pageIndex + 1` — the page you are on is in progress, not read, and 100% belongs

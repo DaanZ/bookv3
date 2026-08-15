@@ -17,7 +17,8 @@ import useSwipeNavigation from '../lib/useSwipeNavigation';
 
 // Read one page of a part, then move on with one tap.
 
-export default function Reader({ book, part, page, prefs, ambience, onNavigate, onShelf, onFinish }) {
+export default function Reader({ book, part, page, prefs, ambience, canFinish = true,
+                                 onNavigate, onShelf, onFinish }) {
   const [focused, setFocused] = useState(null);
   const [soundOpen, setSoundOpen] = useState(false);
 
@@ -64,13 +65,22 @@ export default function Reader({ book, part, page, prefs, ambience, onNavigate, 
     duck(showResume);
   }, [duck, showResume]);
 
-  const nextLabel = !lastPage ? 'Next page' : lastPart ? 'Finish book' : 'Next part';
+  // A guest reaches the end of a book and there is nothing to record — no finish, no
+  // sittings, no Hardcover. The last page returns them to the shelf and says so, rather
+  // than offering a button that fails.
+  const nextLabel = !lastPage
+    ? 'Next page'
+    : lastPart
+      ? canFinish
+        ? 'Finish book'
+        : 'Back to the shelf'
+      : 'Next part';
   const backLabel = pageIndex > 0 ? 'Previous page' : part === 0 ? 'Back to shelf' : 'Previous part';
 
   const goNext = () => {
     setFocused(null);
     if (!lastPage) return onNavigate(part, pageIndex + 1);
-    if (lastPart) return onFinish();
+    if (lastPart) return canFinish ? onFinish() : onShelf();
     return onNavigate(part + 1, 0);
   };
 

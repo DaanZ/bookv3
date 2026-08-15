@@ -25,6 +25,20 @@ Two things are deliberately *not* per profile:
   Marking a book read there is the owner's finish and nobody else's — a guest's finish
   says so rather than quietly writing to a stranger's shelf.
 
+Three kinds of reader, and the difference between them is what they may do rather than
+who they are:
+
+* **Guest** — nobody in particular. The catalogue is open: anyone can pick the tablet up
+  and read what is on the shelf without saying who they are, and `resolve` answers an
+  unknown or absent `X-Profile` with the guest rather than with the owner, so browsing
+  anonymously never means browsing *as* somebody. A guest has no store, keeps no page,
+  and gets no recommendations, because a recommendation needs a history to come from.
+* **A profile** — a reader. Keeps a page in every book, its own settings, its own
+  finishes, and gets books suggested from what it has actually read.
+* **The owner, who is the admin.** The only one who may add a book, delete one, re-file
+  one, or write to Hardcover. Everything that changes what is *on* the shelf is theirs;
+  everything that changes what somebody has *read of* it belongs to the reader.
+
 The owner is the profile that already existed: the first one, id `owner`, holding the
 history that was in `data/positions.json` before this.
 
@@ -62,6 +76,12 @@ STORE_PATH = os.path.join(STORE_DIR, "profiles.json")
 # reading history that predates profiles is migrated onto it and that has to be stable.
 OWNER_ID = "owner"
 OWNER_NAME = "Reader"
+
+# Not a row in the store and never written to one: the guest is what the server answers
+# with when nobody has said who they are. Shaped like a profile so every caller can treat
+# it as one, and flagged so the handful that must not — writes — can tell.
+GUEST_ID = "guest"
+GUEST_NAME = "Guest"
 
 # A tone each, so a profile is recognisable before the name is read — the same job the
 # category patch does for a book. Assigned in order and wrapped, never chosen.
@@ -127,6 +147,20 @@ def _owner_row() -> dict:
         "tone": TONES[0],
         "owner": True,
         "createdAt": _now(),
+        "prefs": dict(PREF_DEFAULTS),
+    }
+
+
+def guest_row() -> dict:
+    """Anyone at all. Read-only by construction: nothing here is stored, so there is
+    nothing for a write to land in."""
+    return {
+        "id": GUEST_ID,
+        "name": GUEST_NAME,
+        "tone": "#4A5A5C",
+        "owner": False,
+        "guest": True,
+        "hasPin": False,
         "prefs": dict(PREF_DEFAULTS),
     }
 
@@ -201,10 +235,21 @@ def owner() -> dict:
 
 
 def resolve(profile_id: str | None) -> dict:
-    """The profile a request is for. An unknown or missing id is the owner — a request
-    from a browser that has never picked one is the person who set the tablet up, which
-    is what the app did before profiles existed."""
-    return get(profile_id) or owner()
+    """The reader a request is for.
+
+    An unknown or missing id is the **guest**, not the owner. Reading the catalogue
+    needs nobody's permission, so a request that says nothing about who it is gets the
+    catalogue and nothing personal — rather than quietly being answered as the person
+    who set the tablet up, which would hand their reading to anyone who asked without a
+    header.
+    """
+    if profile_id == GUEST_ID:
+        return guest_row()
+    return get(profile_id) or guest_row()
+
+
+def is_guest(profile: dict | None) -> bool:
+    return bool((profile or {}).get("guest"))
 
 
 def _clean_name(name: str | None) -> str:

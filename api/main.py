@@ -87,10 +87,45 @@ def reader(x_profile: str | None = Header(default=None)) -> dict:
 
     The profile travels in a header rather than the path, because it qualifies every
     endpoint here and none of them is *about* it. An id nobody recognises resolves to
-    the owner: a browser that has never picked a profile is the person who set the
-    tablet up, which is exactly what this app assumed before profiles existed.
+    the guest, so the catalogue answers anyone and nothing personal does.
     """
     return profiles.resolve(x_profile)
+
+
+def keeper(profile: dict = Depends(reader)) -> dict:
+    """A reader who has somewhere to keep things.
+
+    The catalogue is open to read; a page, a finish, a chosen bed are records, and a
+    record needs somebody to belong to. The guest is told to pick a profile rather than
+    having their reading dropped on the floor silently.
+    """
+    if profiles.is_guest(profile):
+        raise HTTPException(
+            status_code=403,
+            detail="Pick a profile to keep your place — the catalogue is open, but a bookmark needs a name.",
+        )
+    return profile
+
+
+def admin(profile: dict = Depends(reader)) -> dict:
+    """The owner, and only them.
+
+    What is *on* the shelf is the house's: adding a book, deleting one, re-filing one,
+    and anything that reaches Hardcover. What somebody has *read of* it is the reader's,
+    and that is the other dependency.
+
+    The same caveat as the PIN applies and is worth repeating here, where it looks most
+    like access control: `X-Profile` is asserted by the client, so this stops the app
+    offering the library screen to a guest — not somebody writing an HTTP request. It is
+    the house's rule about who adds books, enforced in one place instead of hidden in
+    the UI, and it is not a permission system.
+    """
+    if not profile.get("owner"):
+        raise HTTPException(
+            status_code=403,
+            detail="Only the owner adds, removes or re-files books.",
+        )
+    return profile
 
 
 @app.get("/api/profiles")
@@ -205,14 +240,14 @@ def get_book(key: str, profile: dict = Depends(reader)):
 
 
 @app.put("/api/books/{key}/position")
-def put_position(key: str, body: PositionIn, profile: dict = Depends(reader)):
+def put_position(key: str, body: PositionIn, profile: dict = Depends(keeper)):
     if key not in library.index():
         raise HTTPException(status_code=404, detail="No such book.")
     return positions.save_position(profile["id"], key, body.part, body.page)
 
 
 @app.delete("/api/books/{key}/position")
-def delete_position(key: str, profile: dict = Depends(reader)):
+def delete_position(key: str, profile: dict = Depends(keeper)):
     """Start a book again from the beginning — for this reader only."""
     if key not in library.index():
         raise HTTPException(status_code=404, detail="No such book.")
@@ -221,7 +256,7 @@ def delete_position(key: str, profile: dict = Depends(reader)):
 
 
 @app.put("/api/books/{key}/ambience")
-def put_ambience(key: str, body: AmbienceIn, profile: dict = Depends(reader)):
+def put_ambience(key: str, body: AmbienceIn, profile: dict = Depends(keeper)):
     """Remember the bed this reader chose for this book.
 
     Beside the bookmark, in the same entry: the handoff's rule is that the choice
@@ -233,7 +268,7 @@ def put_ambience(key: str, body: AmbienceIn, profile: dict = Depends(reader)):
 
 
 @app.post("/api/books/{key}/finish")
-def finish_book(key: str, profile: dict = Depends(reader)):
+def finish_book(key: str, profile: dict = Depends(keeper)):
     """Record the finish for this reader — and, for the owner, mark it read on
     Hardcover and move the JSON available -> read.
 
@@ -292,7 +327,7 @@ def get_enrichment():
 
 
 @app.post("/api/books/{key}/enrich")
-def enrich_book(key: str):
+def enrich_book(key: str, profile: dict = Depends(admin)):
     """Fetch cover, rating, genres and the link out from Hardcover, and cache them.
 
     Read-only against Hardcover: it looks the book up, it does not touch your shelf.
@@ -312,7 +347,7 @@ def enrich_book(key: str):
 
 
 @app.get("/api/books/{key}/contribution")
-def preview_contribution(key: str):
+def preview_contribution(key: str, profile: dict = Depends(admin)):
     """What would be submitted to Hardcover for a book it does not have.
 
     A GET, and it sends nothing: the point is that the payload can be read before anyone
@@ -331,7 +366,7 @@ def preview_contribution(key: str):
 
 
 @app.post("/api/books/{key}/contribution")
-def submit_contribution(key: str):
+def submit_contribution(key: str, profile: dict = Depends(admin)):
     """Add this book to Hardcover's public catalogue.
 
     Reached only from the confirm step on the library screen. Nothing in ingest calls
@@ -358,7 +393,7 @@ def submit_contribution(key: str):
 
 
 @app.post("/api/books/{key}/hardcover")
-def resync_hardcover(key: str, profile: dict = Depends(reader)):
+def resync_hardcover(key: str, profile: dict = Depends(admin)):
     """Ask Hardcover again about a book already finished here.
 
     A finish that failed for a reason of the moment — no key, a bad query, the network —
@@ -368,12 +403,6 @@ def resync_hardcover(key: str, profile: dict = Depends(reader)):
 
     The owner's, like the finish it repairs: the key belongs to one account.
     """
-    if not profile.get("owner"):
-        raise HTTPException(
-            status_code=403,
-            detail="Only the owner profile writes to Hardcover — there is one key, and it is theirs.",
-        )
-
     detail = library.book(key, profile)
     if detail is None:
         raise HTTPException(status_code=404, detail="No such book.")
@@ -392,7 +421,7 @@ def resync_hardcover(key: str, profile: dict = Depends(reader)):
 
 
 @app.patch("/api/books/{key}")
-def patch_book(key: str, body: MoveIn):
+def patch_book(key: str, body: MoveIn, profile: dict = Depends(admin)):
     """Move a book between books/available and books/read by hand."""
     if key not in library.index():
         raise HTTPException(status_code=404, detail="No such book.")
@@ -401,7 +430,7 @@ def patch_book(key: str, body: MoveIn):
 
 
 @app.delete("/api/books/{key}")
-def remove_book(key: str):
+def remove_book(key: str, profile: dict = Depends(admin)):
     """Delete a summary. The source PDF, if there is one, stays in pdfs/."""
     if not library.delete_book(key):
         raise HTTPException(status_code=404, detail="No such book.")
@@ -413,7 +442,7 @@ def remove_book(key: str):
 
 
 @app.get("/api/ingest/jobs")
-def get_jobs():
+def get_jobs(profile: dict = Depends(admin)):
     has_key = bool(os.environ.get("OPENROUTER_API_KEY") or os.environ.get("OPENAI_API_KEY"))
     return {"jobs": jobs.list_jobs(), "hasKey": has_key}
 
@@ -435,7 +464,11 @@ async def _read_pdf_upload(file: UploadFile) -> bytes:
 
 
 @app.post("/api/ingest/estimate")
-async def estimate_upload(file: UploadFile = File(...), chunks: int | None = None):
+async def estimate_upload(
+    file: UploadFile = File(...),
+    chunks: int | None = None,
+    profile: dict = Depends(admin),
+):
     """Price a PDF without running anything.
 
     The file is read into a temporary path, measured and thrown away — nothing is queued
@@ -472,21 +505,23 @@ async def upload(
     chunks: int | None = None,
     model: str | None = None,
     cost: float | None = None,
+    profile: dict = Depends(admin),
 ):
-    """Take a PDF and queue it for the pipeline."""
+    """Take a PDF and queue it for the pipeline. The owner's, like everything that
+    changes what is on the shelf rather than what somebody has read of it."""
     data = await _read_pdf_upload(file)
     name = file.filename or "book.pdf"
     return jobs.public(jobs.submit(name, data, chunks, model, {"cost": cost}))
 
 
 @app.delete("/api/ingest/jobs")
-def clear_jobs():
+def clear_jobs(profile: dict = Depends(admin)):
     """Clear finished and failed jobs from the list; the books they made are kept."""
     return {"cleared": jobs.clear_finished()}
 
 
 @app.delete("/api/ingest/jobs/{job_id}")
-def remove_job(job_id: str):
+def remove_job(job_id: str, profile: dict = Depends(admin)):
     """Remove one settled job. A running job has to finish or fail first."""
     removed = jobs.remove(job_id)
     if removed is None:
