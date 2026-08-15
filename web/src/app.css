@@ -30,7 +30,19 @@ button { font-family: inherit; }
 .row { transition: border-color var(--dur-instant, 90ms) var(--ease-move, ease); }
 .row:hover { border-color: var(--border-strong); }
 
+/* The live bar in the summarising state, breathing on the same clock as the rim so the
+   composite reads as one thing rather than two. */
+@keyframes w-chunk { 0% { opacity: .2 } 18% { opacity: 1 } 52% { opacity: .38 } 100% { opacity: .2 } }
+.seam-sweep { animation: seam-sweep var(--spin-seam) cubic-bezier(.4, 0, .2, 1) infinite; }
+
 /* Reduced motion completes, it does not skip. */
 @media (prefers-reduced-motion: reduce) {
   .para, .fill, .row { transition-duration: 0.01ms !important; }
+
+  /* Except the waiting states, which are ambient cycles rather than responses: they
+     must stop at their resting frame. The global 0.01ms collapse runs a cycle to its
+     *end*, which would leave the live bar at 20% opacity and the seam swept off the
+     mark — both reading as finished. `animation: none` holds the first frame instead.
+     Position still reads from the bar widths and the numeral, neither of which moves. */
+  [style*="w-chunk"], .seam-sweep { animation: none !important; }
 }

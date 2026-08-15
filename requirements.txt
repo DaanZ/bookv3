@@ -17,6 +17,12 @@ numpy
 pydantic
 requests
 
+# Python validates TLS against certifi, not the OS store, so an intercepting proxy or
+# antivirus (AVG's Web Shield, on at least one machine here) breaks every API call with
+# CERTIFICATE_VERIFY_FAILED. truststore points Python at the OS store instead; it is a
+# no-op where there is nothing intercepting.
+truststore
+
 # The reader's backend (api/), which serves books/*.json to the React app in web/
 fastapi
 uvicorn[standard]

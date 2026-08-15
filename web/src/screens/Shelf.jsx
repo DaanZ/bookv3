@@ -1,4 +1,4 @@
-import Cover from '../components/Cover';
+import Patch from '../components/Patch';
 import { ProgressBar, QuietLink } from '../components/ui';
 import { cum } from '../lib/reading';
 
@@ -45,7 +45,7 @@ function BookRow({ book, onOpen }) {
       }}
     >
       <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
-        <Cover book={book} size={56} />
+        <Patch patch={book.patch} size={56} />
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 12, minWidth: 0 }}>
           <div
             style={{
@@ -149,9 +149,8 @@ export default function Shelf({ books, counts, themeLabel, onOpen, filter, onFil
           color: 'var(--text-secondary)',
         }}
       >
-        Pick up where you stopped, start something new, or look back at one you finished. The
-        patch — on its own, or in the corner of the jacket — tells you the kind of book before you
-        read a word.
+        Pick up where you stopped, start something new, or look back at one you finished. The patch
+        tells you the kind of book before you read a word.
       </p>
 
       {/* The design was drawn against three books; this shelf holds hundreds, so the

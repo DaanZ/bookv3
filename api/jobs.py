@@ -5,10 +5,11 @@ request/response — the job is queued, a worker thread runs it, and the screen 
 
 Two constraints shape this module:
 
-* `util/chatgpt.py` reads `OPENAI_API_KEY` at import time, so importing `chunks` or
+* `util/chatgpt.py` reads `OPENROUTER_API_KEY` at import time, so importing `chunks` or
   `meta` fails outright without a key. The reader must keep working without one, so the
   pipeline is imported inside the worker rather than at module scope — an ingest job
-  fails, the shelf does not.
+  fails, the shelf does not. `api/estimate.py` is deliberately free of that dependency,
+  so a book can be priced on a machine with no key at all.
 * The pipeline is synchronous and blocking, so it runs on a worker thread rather than
   the event loop.
 """
@@ -21,7 +22,6 @@ from collections import OrderedDict
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 
-from api import enrich
 from util.files import json_write_file, sanitize_filename
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -100,17 +100,45 @@ def get_job(job_id):
         return dict(job) if job else None
 
 
+def remove(job_id):
+    """Drop one settled job, and take its abandoned upload with it.
+
+    A job that failed left its PDF in next/ — 22MB for the one that prompted this — and
+    nothing ever collected it, so re-uploading the same book stacked up `-2`, `-3` copies
+    beside it. A job that succeeded has already had its PDF moved to pdfs/ by `_run`, and
+    that archive is deliberately not touched: the summary came from it, and the point of
+    pdfs/ is to keep it.
+    """
+    with _lock:
+        job = _jobs.get(job_id)
+        if job is None:
+            return None
+        if job["status"] in ("queued", "running"):
+            return False
+        path = job.get("_path")
+        del _jobs[job_id]
+        _persist()
+
+    # Only ever the staged copy under next/, never the archive.
+    if path and os.path.dirname(os.path.abspath(path)) == os.path.abspath(INBOX_DIR):
+        try:
+            os.remove(path)
+        except OSError:
+            pass
+    return True
+
+
 def clear_finished():
     """Drop done/failed jobs from the list. The books they produced are untouched."""
+    # Ids first, then remove outside the lock: `remove` takes it too, and it is not
+    # reentrant.
     with _lock:
-        removed = [j for j in _jobs.values() if j["status"] in ("done", "failed")]
-        for job in removed:
-            del _jobs[job["id"]]
-        _persist()
-        return len(removed)
+        settled = [job["id"] for job in _jobs.values() if job["status"] in ("done", "failed")]
+    return sum(1 for job_id in settled if remove(job_id))
 
 
-def submit(filename: str, data: bytes, chunks: int | None = None) -> dict:
+def submit(filename: str, data: bytes, chunks: int | None = None, model: str | None = None,
+           estimate: dict | None = None) -> dict:
     """Save an uploaded PDF into next/ and queue it."""
     os.makedirs(INBOX_DIR, exist_ok=True)
 
@@ -136,6 +164,11 @@ def submit(filename: str, data: bytes, chunks: int | None = None) -> dict:
         "chunksRequested": chunks,
         "chunksDone": 0,
         "chunksTotal": None,
+        "chunkBounds": None,
+        "model": model,
+        # What the library screen quoted before this was queued, kept so the finished job
+        # can be read back against it.
+        "estimatedCost": (estimate or {}).get("cost"),
         "pages": None,
         "title": None,
         "author": None,
@@ -169,12 +202,13 @@ def _run(job_id):
         from chunks import get_page_chunks, highlight_chunk
         from fragments import read_book_pages
         from meta import UnreadableCharactersError, get_book_meta
+        from util.chatgpt import RETRY_ATTEMPTS
     except KeyError:
         _update(
             job_id,
             status="failed",
             step="",
-            error="OPENAI_API_KEY is not set — the pipeline cannot run without it.",
+            error="OPENROUTER_API_KEY is not set — the pipeline cannot run without it.",
         )
         return
     except Exception as ex:
@@ -182,6 +216,7 @@ def _run(job_id):
         return
 
     try:
+        model = job.get("model") or None
         _update(job_id, status="running", step="reading the PDF")
         pages = read_book_pages(path)
         if not pages:
@@ -191,9 +226,30 @@ def _run(job_id):
         total = int(requested) if requested else int(math.ceil(len(pages) / PAGES_PER_CHUNK))
         total = max(1, min(total, len(pages)))
         page_chunks = get_page_chunks(pages, total)
-        _update(job_id, pages=len(pages), chunksTotal=len(page_chunks), step="identifying the book")
+        # The waiting state names the pages each part covers. They come from here rather
+        # than being recomputed in the browser: the split is a Gaussian CDF, and a second
+        # implementation of that curve would drift from the one that cut this book.
+        from util.split import page_chunk_bounds
 
-        meta_info = get_book_meta(pages, min(5, len(pages)))
+        _update(
+            job_id,
+            pages=len(pages),
+            chunksTotal=len(page_chunks),
+            chunkBounds=page_chunk_bounds(len(pages), total),
+            step="identifying the book",
+        )
+
+        meta_info = get_book_meta(pages, min(5, len(pages)), model=model)
+
+        # Read off the copyright page, not asked of the model: an ISBN is a checksummed
+        # fact and a model will happily invent a plausible one. It turns the Hardcover
+        # lookup from "a book with a similar title" into "this edition".
+        from util.isbn import find_isbn
+
+        isbn = find_isbn(page.page_content for page in pages)
+        if isbn:
+            meta_info["isbn"] = isbn
+
         book_info = {"meta": meta_info, "parts": []}
         _update(
             job_id,
@@ -204,7 +260,17 @@ def _run(job_id):
 
         first_chunk = True
         for index, page_chunk in enumerate(page_chunks):
-            highlighted = highlight_chunk(page_chunk, first_chunk)
+            try:
+                highlighted = highlight_chunk(page_chunk, first_chunk, model=model)
+            except Exception as ex:
+                # `llm_strict` has already retried. Say which part gave up and keep the
+                # reason short: a pydantic ValidationError stringifies to the whole
+                # truncated response, which fills the screen and says nothing.
+                reason = str(ex).split("\n")[0][:160]
+                raise RuntimeError(
+                    f"Part {index + 1} of {len(page_chunks)} failed after "
+                    f"{RETRY_ATTEMPTS} attempts — {type(ex).__name__}: {reason}"
+                ) from ex
             book_info["parts"].append(highlighted)
             first_chunk = False
             _update(
@@ -222,10 +288,22 @@ def _run(job_id):
         output_path = os.path.join(OUTPUT_DIR, f"{key}.json")
         json_write_file(output_path, book_info)
 
-        # Look the cover up now, off this thread — the title and author were just read
-        # off the first pages, which is everything the search needs. By the time the
-        # shelf reloads the jacket is usually there, and no one had to ask for it.
-        enrich.queue(key, meta_info.get("title") or key, meta_info.get("author"))
+        # Indexing: rescan both folders so the written book is checked against the rest
+        # of the library before the job reports done. The seam state on the library
+        # screen is showing this step, and gold means two sources meeting — so the step
+        # has to be real work, not a label over a pause.
+        from api import enrich, library
+
+        _update(job_id, step="indexing")
+        indexed = library.index()
+        if key not in indexed:
+            raise RuntimeError("The summary was written but did not appear in the library index.")
+
+        # Ask Hardcover for the cover now, off this thread. The title, author and ISBN
+        # were just read off the first pages, which is everything the search needs — so
+        # the book arrives on the library screen with a jacket rather than a row waiting
+        # to be clicked. Read-only, and nothing here waits for it.
+        enrich.queue(key, meta_info.get("title") or key, meta_info.get("author"), isbn)
 
         # The original PDF is parked in pdfs/, exactly as prep.py does it.
         os.makedirs(ARCHIVE_DIR, exist_ok=True)

@@ -31,10 +31,10 @@ python homework.py            # scratch script: generates a quiz question from o
 python hardcover/request.py   # exercises the Hardcover API against a hardcoded title/author
 ```
 
-`.env` (gitignored) must provide `OPENAI_API_KEY`, and `HARDCOVER_API_KEY` for the Hardcover
-integration — which is now two things: marking a book read when you finish it, and the automatic
-cover lookup (`api/enrich.py`). Without the key the reader runs and simply has no covers. `util/chatgpt.py` reads `OPENAI_API_KEY` at import time, so *any* import of the chunking
-or meta modules fails without it — but `api/` does not import them, so the reader runs without it.
+`.env` (gitignored) must provide `OPENROUTER_API_KEY`, and `HARDCOVER_API_KEY` for the Hardcover
+integration. `util/chatgpt.py` reads it at import time (falling back to `OPENAI_API_KEY`), so *any*
+import of the chunking or meta modules fails without a key — but `api/` does not import them, so the
+reader runs without one. `OPENROUTER_MODEL` overrides the default model.
 
 ## Architecture
 
@@ -45,8 +45,22 @@ book and wider toward the end. `meta.get_book_meta` asks the LLM to identify tit
 publisher from the first ~5 pages (and raises `UnreadableCharactersError` when the pages have zero
 extractable characters, i.e. a scanned PDF). `chunks.highlight_chunk` then summarizes each page range.
 
-**LLM access** goes through `util/chatgpt.py` only. `llm_strict` uses the OpenAI structured-output
-parse API with a Pydantic model as the response schema; `llm_chat` is the plain-text variant. Prompts
+**LLM access** goes through `util/chatgpt.py` only, and it points at **OpenRouter**, which speaks the
+OpenAI wire protocol — same SDK, different `base_url`. Two consequences: model ids are namespaced
+(`openai/gpt-4o`, not `gpt-4o`), and only models whose OpenRouter entry lists `structured_outputs`
+can run this pipeline at all, since `llm_strict` is how every summary is made. `llm_strict` uses the
+structured-output parse API with a Pydantic model as the response schema; `llm_chat` is the
+plain-text variant. Both take an optional `model_name`, threaded from the job so a book can be
+summarized by whichever model was chosen and priced on the library screen.
+
+**Choosing a model is not a price decision.** The default is `openai/gpt-4o-mini`, about a
+sixteenth of `gpt-4o` and measurably no worse at this job. But the cheap tier below it is a trap:
+`gpt-4.1-nano`, `mistral-small-3.2-24b`, `llama-3.3-70b` and `deepseek-chat-v3.1` were all tried on
+real chunks and returned fluent summaries containing **zero `**` marks**, with several describing
+the book from outside rather than summarizing it. The pipeline's `<b>` tags are what
+`web/src/lib/reading.js` colours, so a summary without them renders as a flat wall of text — the
+one thing this project exists to avoid. `estimate.CANDIDATE_MODELS` is filtered on that evidence,
+not on price; re-test before adding to it. Prompts
 are not written as prompt strings — they live in the Pydantic `Field(description=...)` text. That's
 why `chunks.py` has two nearly identical models: `DisabilityBookFirstChunk` (one paragraph) vs
 `DisabilityBookNextChunk` (two paragraphs), swapped by the `first` flag so the opening chunk is
@@ -94,25 +108,35 @@ pipeline's free-text `meta.category` onto a patch family; `positions.py` is the 
 history has ever been stored (`data/positions.json`: part, page, lastReadAt, startedAt, sittings,
 and the Hardcover outcome).
 
-`enrich.py` fetches covers. It writes *beside* the books, never into them: one Hardcover lookup per
-book on a background thread, the outcome in `data/enrichment.json` and the jacket in `data/covers/`,
-served back as `/api/covers/{key}`. Four things about it are deliberate:
+`enrich.py` is the Hardcover cache — cover, rating, genres and the link out, in
+`data/hardcover.json`, beside the books and never inside them. Nobody asks for a lookup by hand:
+a book is queued the moment `jobs.py` writes its JSON, and everything else is queued by the first
+`GET /api/shelf` that sees a book nobody has asked about, which is how books that predate the pass
+and anything `prep.py` writes get covers. Four things about that are deliberate:
 
-- **Read-only against Hardcover.** Only the search queries are reachable from here. `insert_user_book`
-  stays on the finish screen, where a person asked for it — a background pass must not be able to
-  write to someone's reading history.
-- **Nothing triggers it by hand.** A book ingested through `api/jobs.py` is queued the moment its
-  JSON is written; everything else is queued by the first `GET /api/shelf` that sees a book with no
-  entry. That is how the 264 books predating this get covers, and how `prep.py`'s output does too —
-  `prep.py` itself is untouched.
-- **Once per book.** `found`, `nocover` and `missing` are answers and are never re-asked; only
-  `failed` is retried, and not for `RETRY_AFTER_HOURS`. Without that, every shelf load would re-queue
-  the whole library while the network was down.
-- **Never load-bearing.** No key, no network, no match: the shelf renders on the patch exactly as it
-  did before. No request handler waits on any of it.
+- **Read-only.** The automatic pass calls `search_book` and nothing else. `insert_user_book` stays
+  on the finish screen and `insert_book` behind the contribution confirm — a background pass must
+  not write to someone's shelf, still less to a catalogue everyone reads.
+- **Once per book.** Every attempt is recorded in `data/hardcover-lookups.json`; `found` and
+  `missing` are answers and are never re-asked, and only `failed` is retried, not for
+  `RETRY_AFTER_HOURS`. Without that, every shelf load would re-queue the whole library while the
+  network was down.
+- **A miss is a state.** `summarise` sends `hardcover: null` for a book the pass asked about and
+  Hardcover does not have, which is what tells the row apart from one still waiting its turn — and
+  what makes "Add to Hardcover" reachable.
+- **Never load-bearing.** No key, no network, no match: the library renders on the patch exactly as
+  before, and no request handler waits on any of it.
 
-Covers are downloaded rather than hotlinked, for the reason the webfonts are a known rough edge — a
-blocked host must not empty the shelf.
+`POST /api/books/{key}/enrich` stays for the one case the pass cannot serve: asking again about a
+book it matched to the wrong edition.
+
+`estimate.py` prices a book before anything is spent, and is deliberately free of the pipeline's
+imports so it works with no API key: it reads the PDF with `pypdf` directly and shares chunk
+boundaries with `chunks.py` through `util/split.py`. The cost model rests on one fact about the
+pipeline — chunks are contiguous and non-overlapping, so the whole book is sent as input *exactly
+once* whatever the chunk count (the first five pages go twice, for `get_book_meta`). More parts
+therefore cost almost nothing extra; a longer book costs linearly more. Output constants are
+measured from 254 committed summaries, not guessed; the header of that file shows the figures.
 
 `jobs.py` is the exception — it *writes* books, by running the ingest pipeline for an uploaded PDF.
 One thing there is easy to undo by accident: **the pipeline is imported inside the worker, not at
@@ -123,6 +147,14 @@ read. Jobs run one at a time on a worker thread, report progress per chunk, and 
 `data/jobs.json`; a job caught mid-flight by a restart is marked failed on the next boot, because
 nothing resumes it.
 
+**One bad response used to cost a whole book.** A model occasionally returns JSON truncated
+mid-string, which reaches the caller as a pydantic `ValidationError` reading "Invalid JSON: EOF
+while parsing a string" — transport, not a schema the model cannot hold (the same call parsed 12/12
+over real chunks when measured). With one call per part and a dozen parts per book, a per-call rate
+that rounds to nothing is a real per-book rate, and the job died on part 13 having already paid for
+twelve. `llm_strict` now retries three times with backoff, and `jobs.py` names the part that gave
+up. Nothing resumes a failed job, so a re-run still pays for every part again.
+
 **`web/`** is Vite + React. `src/lib/reading.js` is the model and the part worth understanding:
 
 - **Front-weighted progress.** The first 40% of parts carry 80% of the bar. `progressOf` uses
@@ -132,13 +164,27 @@ nothing resumes it.
   pages and the bar moves inside a chapter.
 - **Highlighting** replaces `chunks.py`'s inline forest-green. The pipeline's `<b>` still decides
   *what* matters; the UI decides *how* it looks. `normaliseBody` strips the baked-in colour, then
-  phrases take palette bands in reading order, capped at 8 marks per page (counting instances, not
-  distinct phrases), each band mixed toward ink or cream until it clears a luminance threshold.
+  phrases take palette bands in reading order, capped at 8 marks per page by default (counting
+  instances, not distinct phrases).
 
-`components/Cover.jsx` is where a jacket and a patch meet: the cover if one was found, the patch in
-the jacket's shape if not, so a half-enriched shelf still reads as one column of books. The patch
-never goes away — it says what *kind* of book this is, which a jacket does not at 56px — it just
-moves to the corner of the cover. The reader header keeps the plain square patch.
+  The palette is **sampled to the page, not sliced**. `paletteFor(name, day, n)` reads the eight
+  bands as a gradient and returns `n` stops across the whole of it, so a page with four highlights
+  sweeps the entire ramp instead of showing only its dark end — `highlightCount` runs the real
+  budget to get `n`, so the count cannot drift from what `tokensOf` assigns.
+
+  Making a band legible is where this is easy to get wrong, and there are two traps:
+
+  - **Do not mix toward ink or cream.** That clears contrast by pulling every band toward grey. At
+    night it produced literal greys — sunset opened `#c0bcc7 #c0b4bc #bfa7c6` — with mean saturation
+    0.41. Hue is held and chroma raised instead; the same palette now runs 0.71.
+  - **Do not pin every stop to the contrast floor.** Bands that differ mainly in lightness collapse
+    onto each other: sunrise is four teals then four oranges, and a hard floor put adjacent stops at
+    ΔE 2, which is no visible difference. The palette's own lightness spread is rescaled into the
+    register's window instead, and the floor is only a backstop. It is deliberately not maximal —
+    0.30 at night still measures ~5.5:1, and every point above that is paid for in collapsed stops.
+
+  `node web/tools/check-palettes.mjs` prints contrast, saturation and adjacent ΔE for every palette
+  in both registers, against the previous behaviour. Re-run it if these numbers are touched.
 
 Colours, type and spacing come from the vendored token layer in `web/src/ds/` — edit tokens, not
 hard-coded values. Two rules from the design system are easy to break by accident: **gold is only
@@ -184,7 +230,28 @@ Don't treat these as intentional design when editing nearby code:
 - 68 of the book JSONs predate `meta.category` and have none; `patches.py` falls back deterministically.
 - The webfonts load from the Google Fonts CDN (`web/src/ds/tokens/fonts.css`). Where that is blocked
   the reader silently falls back to a system sans, losing the legibility Lexend was chosen for.
+- Python validates TLS against `certifi`, not the Windows certificate store, so a TLS-intercepting
+  antivirus (AVG's Web Shield, on the main dev machine) makes *every* API call fail with
+  `CERTIFICATE_VERIFY_FAILED` while `curl` keeps working. `truststore` is imported and injected in
+  `util/chatgpt.py` and `api/estimate.py` to fix it; it also unblocks tiktoken, which downloads its
+  vocabulary on first use. Without it the estimator silently falls back to counting characters.
 
-`hardcover/request.py` used to interpolate title/author into GraphQL as `{title: {<title>}}`, which
-is not valid comparison syntax — that is fixed (`_ilike` with variables), but the path has still
-never round-tripped against the live API. See TODO.md.
+`hardcover/request.py` now works against the live API, which took three attempts. Interpolating
+`{title: {<title>}}` was not valid comparison syntax; `_ilike` with variables was valid Hasura and
+still refused, because the API answers **403 `ilike and related operations are not permitted on this
+schema`** — pattern matching on `books` is not available to a token. The working path is the
+`search` root field, which is typesense-backed and returns an untyped JSON blob.
+
+Two things about it are not obvious and were both found the hard way:
+
+- **Sort by `users_count:desc`.** The default ordering is text relevance, under which
+  "Summary of Atomic Habits by James Clear" outranks the real book — a search for any well-known
+  title returns a page of cash-ins. `users_count` is also the number hardcover.app prints as
+  "Readers"; `users_read_count` is a different, smaller number.
+- **A hit must agree with the request.** The index always answers, so an unknown title returns its
+  nearest neighbour — and the caller's next move is to mark that stranger as read on someone's
+  account. `search_book` therefore requires either an author-word match or full title-word
+  containment, and reports which via `authorMatched`. A blank `author_names` is treated as missing
+  information, not disagreement, because the real *Atomic Habits* has one.
+
+Running the module directly now only searches; `--mark` is required to write.

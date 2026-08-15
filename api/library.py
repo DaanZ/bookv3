@@ -9,11 +9,10 @@ import os
 import re
 import shutil
 from datetime import datetime, timezone
-from urllib.parse import quote
 
 from api import enrich
 from api.patches import patch_for, family_of
-from api.positions import get_position, all_positions
+from api.positions import all_positions, finish_ordinal
 from util.files import json_read_file
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -78,22 +77,55 @@ def _load(entry: dict) -> dict | None:
     return data
 
 
-def _cover_of(key: str, record: dict | None) -> str | None:
-    """The jacket, if one has been fetched for this book. A path rather than a flag,
-    already escaped, because the keys carry commas and spaces-turned-underscores.
+# Name fragments that stay lowercase inside a name. Dutch and German surnames arrive
+# with them often enough to be worth the twelve lines.
+PARTICLES = {"van", "der", "den", "de", "di", "da", "du", "del", "della", "von", "zu",
+             "la", "le", "el", "bin", "ibn", "af", "av"}
 
-    No stat call: the shelf asks this 264 times, and a cover file that has gone missing
-    is a broken <img>, which the UI already falls back to the patch for.
+ROMAN = re.compile(r"^[IVXLCDM]+$")
+
+
+def tidy_name(name: str | None) -> str | None:
+    """Fix an author read off a title page in capitals.
+
+    `meta.py` takes the author from the first pages, so a book whose title page shouts
+    gives "MIHALY CSIKSZENTMIHALYI". Only strings with no lowercase at all are touched:
+    a name that already has case is somebody's own spelling — "bell hooks", "danah
+    boyd", "Peter C. Brown" — and re-casing it would be the same mistake in reverse.
     """
-    if not record or not record.get("coverFile"):
-        return None
-    return f"/api/covers/{quote(key, safe='')}"
+    if not name or any(character.islower() for character in name):
+        return name
+
+    def word(token: str, first: bool) -> str:
+        if not token or not token[0].isalpha():
+            return token
+        # II, III, IV after a name are not words to title-case.
+        if ROMAN.match(token) and len(token) > 1:
+            return token
+        if not first and token.lower() in PARTICLES:
+            return token.lower()
+        return token[0].upper() + token[1:].lower()
+
+    # Split on the separators inside names, keeping them: hyphens, apostrophes and the
+    # periods in initials all start a new capital.
+    pieces = re.split(r"([\s\-'’.]+)", name)
+    out = []
+    seen_word = False
+    for piece in pieces:
+        if re.fullmatch(r"[\s\-'’.]+", piece):
+            out.append(piece)
+            continue
+        out.append(word(piece, not seen_word))
+        if piece.strip():
+            seen_word = True
+    return "".join(out)
 
 
 def summarise(key: str, entry: dict, data: dict, position: dict | None,
-              with_part_titles: bool = False, enrichment: dict | None = None) -> dict:
-    """`enrichment` is the whole cover store, read once by the caller; the shelf would
-    otherwise re-read it for every book."""
+              with_part_titles: bool = False, everyone: dict | None = None,
+              looked_up: dict | None = None) -> dict:
+    """`looked_up` is the whole lookup ledger, read once by the caller — the shelf
+    would otherwise re-read it for every book."""
     meta = data.get("meta", {}) or {}
     parts = data.get("parts", []) or []
     raw_title = meta.get("title") or key.replace("_", " ")
@@ -116,19 +148,32 @@ def summarise(key: str, entry: dict, data: dict, position: dict | None,
         "title": title,
         "subtitle": subtitle,
         "fullTitle": raw_title,
-        "author": meta.get("author") or "Unknown author",
+        "author": tidy_name(meta.get("author")) or "Unknown author",
         "category": category or "uncategorised",
         "family": family_of(category),
         "pages": meta.get("pages") or 0,
+        "isbn": meta.get("isbn"),
         "partCount": len(parts),
         "patch": patch_for(category),
-        "cover": _cover_of(
-            key, enrichment.get(key) if enrichment is not None else enrich.entry(key)
-        ),
         "state": state,
         "at": len(parts) - 1 if state == "read" else at,
         "page": 0 if state == "read" else page,
     }
+
+    # Cover, rating and the link out, when this book has been looked up. Absent is a
+    # normal state — it means nobody has asked Hardcover about it yet, not that it failed.
+    card = enrich.get(key)
+    if card:
+        summary["hardcover"] = card
+        summary["cover"] = card.get("cover")
+        summary["coverColor"] = card.get("coverColor")
+    elif (looked_up if looked_up is not None else enrich.lookups()).get(key, {}).get(
+        "status"
+    ) == "missing":
+        # Asked, and Hardcover does not have it. An explicit null rather than an absent
+        # key, because those are different rows: one has been answered for and can be
+        # contributed, the other is still waiting its turn in the background pass.
+        summary["hardcover"] = None
 
     # Only the finish screen lists them, and the shelf carries 250+ books.
     if with_part_titles:
@@ -142,19 +187,26 @@ def summarise(key: str, entry: dict, data: dict, position: dict | None,
         # None means "never recorded", which is not the same as "the call failed".
         summary["markedRead"] = position.get("markedRead")
         summary["finishedAt"] = position.get("finishedAt")
+        # Which number this book was to be finished. Needs every book's finish date, not
+        # just this one's, so it is only filled in when the caller had them all.
+        if position.get("finishedAt") and everyone is not None:
+            summary["finishNumber"] = finish_ordinal(key, everyone)
     return summary
 
 
 def shelf() -> list[dict]:
     """Every book, newest activity first, then unread, then finished."""
     positions = all_positions()
-    covers = enrich.all_entries()
+    looked_up = enrich.lookups()
     out = []
     for key, entry in index().items():
         data = _load(entry)
         if data is None:
             continue
-        out.append(summarise(key, entry, data, positions.get(key), enrichment=covers))
+        out.append(
+            summarise(key, entry, data, positions.get(key), everyone=positions,
+                      looked_up=looked_up)
+        )
 
     rank = {"reading": 0, "new": 1, "read": 2}
     out.sort(key=lambda b: (rank.get(b["state"], 3), b["title"].lower()))
@@ -170,7 +222,9 @@ def book(key: str) -> dict | None:
     if data is None:
         return None
 
-    detail = summarise(key, entry, data, get_position(key), with_part_titles=True)
+    everyone = all_positions()
+    detail = summarise(key, entry, data, everyone.get(key), with_part_titles=True,
+                       everyone=everyone)
     detail["parts"] = [
         {"title": p.get("title", ""), "body": p.get("body", "")}
         for p in data.get("parts", [])
