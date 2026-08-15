@@ -32,7 +32,8 @@ python hardcover/request.py   # exercises the Hardcover API against a hardcoded 
 ```
 
 `.env` (gitignored) must provide `OPENAI_API_KEY`, and `HARDCOVER_API_KEY` for the Hardcover
-integration. `util/chatgpt.py` reads `OPENAI_API_KEY` at import time, so *any* import of the chunking
+integration — which is now two things: marking a book read when you finish it, and the automatic
+cover lookup (`api/enrich.py`). Without the key the reader runs and simply has no covers. `util/chatgpt.py` reads `OPENAI_API_KEY` at import time, so *any* import of the chunking
 or meta modules fails without it — but `api/` does not import them, so the reader runs without it.
 
 ## Architecture
@@ -93,6 +94,26 @@ pipeline's free-text `meta.category` onto a patch family; `positions.py` is the 
 history has ever been stored (`data/positions.json`: part, page, lastReadAt, startedAt, sittings,
 and the Hardcover outcome).
 
+`enrich.py` fetches covers. It writes *beside* the books, never into them: one Hardcover lookup per
+book on a background thread, the outcome in `data/enrichment.json` and the jacket in `data/covers/`,
+served back as `/api/covers/{key}`. Four things about it are deliberate:
+
+- **Read-only against Hardcover.** Only the search queries are reachable from here. `insert_user_book`
+  stays on the finish screen, where a person asked for it — a background pass must not be able to
+  write to someone's reading history.
+- **Nothing triggers it by hand.** A book ingested through `api/jobs.py` is queued the moment its
+  JSON is written; everything else is queued by the first `GET /api/shelf` that sees a book with no
+  entry. That is how the 264 books predating this get covers, and how `prep.py`'s output does too —
+  `prep.py` itself is untouched.
+- **Once per book.** `found`, `nocover` and `missing` are answers and are never re-asked; only
+  `failed` is retried, and not for `RETRY_AFTER_HOURS`. Without that, every shelf load would re-queue
+  the whole library while the network was down.
+- **Never load-bearing.** No key, no network, no match: the shelf renders on the patch exactly as it
+  did before. No request handler waits on any of it.
+
+Covers are downloaded rather than hotlinked, for the reason the webfonts are a known rough edge — a
+blocked host must not empty the shelf.
+
 `jobs.py` is the exception — it *writes* books, by running the ingest pipeline for an uploaded PDF.
 One thing there is easy to undo by accident: **the pipeline is imported inside the worker, not at
 module scope.** `util/chatgpt.py` reads `OPENAI_API_KEY` at import time, so a top-level
@@ -113,6 +134,11 @@ nothing resumes it.
   *what* matters; the UI decides *how* it looks. `normaliseBody` strips the baked-in colour, then
   phrases take palette bands in reading order, capped at 8 marks per page (counting instances, not
   distinct phrases), each band mixed toward ink or cream until it clears a luminance threshold.
+
+`components/Cover.jsx` is where a jacket and a patch meet: the cover if one was found, the patch in
+the jacket's shape if not, so a half-enriched shelf still reads as one column of books. The patch
+never goes away — it says what *kind* of book this is, which a jacket does not at 56px — it just
+moves to the corner of the cover. The reader header keeps the plain square patch.
 
 Colours, type and spacing come from the vendored token layer in `web/src/ds/` — edit tokens, not
 hard-coded values. Two rules from the design system are easy to break by accident: **gold is only

@@ -9,7 +9,9 @@ import os
 import re
 import shutil
 from datetime import datetime, timezone
+from urllib.parse import quote
 
+from api import enrich
 from api.patches import patch_for, family_of
 from api.positions import get_position, all_positions
 from util.files import json_read_file
@@ -76,8 +78,22 @@ def _load(entry: dict) -> dict | None:
     return data
 
 
+def _cover_of(key: str, record: dict | None) -> str | None:
+    """The jacket, if one has been fetched for this book. A path rather than a flag,
+    already escaped, because the keys carry commas and spaces-turned-underscores.
+
+    No stat call: the shelf asks this 264 times, and a cover file that has gone missing
+    is a broken <img>, which the UI already falls back to the patch for.
+    """
+    if not record or not record.get("coverFile"):
+        return None
+    return f"/api/covers/{quote(key, safe='')}"
+
+
 def summarise(key: str, entry: dict, data: dict, position: dict | None,
-              with_part_titles: bool = False) -> dict:
+              with_part_titles: bool = False, enrichment: dict | None = None) -> dict:
+    """`enrichment` is the whole cover store, read once by the caller; the shelf would
+    otherwise re-read it for every book."""
     meta = data.get("meta", {}) or {}
     parts = data.get("parts", []) or []
     raw_title = meta.get("title") or key.replace("_", " ")
@@ -106,6 +122,9 @@ def summarise(key: str, entry: dict, data: dict, position: dict | None,
         "pages": meta.get("pages") or 0,
         "partCount": len(parts),
         "patch": patch_for(category),
+        "cover": _cover_of(
+            key, enrichment.get(key) if enrichment is not None else enrich.entry(key)
+        ),
         "state": state,
         "at": len(parts) - 1 if state == "read" else at,
         "page": 0 if state == "read" else page,
@@ -129,12 +148,13 @@ def summarise(key: str, entry: dict, data: dict, position: dict | None,
 def shelf() -> list[dict]:
     """Every book, newest activity first, then unread, then finished."""
     positions = all_positions()
+    covers = enrich.all_entries()
     out = []
     for key, entry in index().items():
         data = _load(entry)
         if data is None:
             continue
-        out.append(summarise(key, entry, data, positions.get(key)))
+        out.append(summarise(key, entry, data, positions.get(key), enrichment=covers))
 
     rank = {"reading": 0, "new": 1, "read": 2}
     out.sort(key=lambda b: (rank.get(b["state"], 3), b["title"].lower()))

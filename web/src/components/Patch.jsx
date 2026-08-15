@@ -2,12 +2,14 @@
 // this is before a word is read. 56px on the shelf, 34px in the reader header and on
 // the recommendation. Shape and colours come from the API (api/patches.py).
 
-export default function Patch({ patch, size = 56 }) {
+export default function Patch({ patch, size = 56, height = size }) {
   const spec = patch || { shape: 'bands', c1: '#67482F', c2: '#E59312', c3: '#F4B315' };
   const frame = {
     flex: 'none',
     width: size,
-    height: size,
+    // Square everywhere the design draws it; jacket-shaped only where it stands in for
+    // a cover, so the shelf keeps one column of book-shaped things either way.
+    height,
     borderRadius: 'var(--radius-physical)',
     overflow: 'hidden',
     background: spec.c1,

@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import Patch from '../components/Patch';
+import Cover from '../components/Cover';
 import { Button, Chip, ProgressBar, QuietLink } from '../components/ui';
-import { clearJobs, deleteBook, getJobs, moveBook, uploadPdf } from '../lib/api';
+import { clearJobs, deleteBook, getEnrichment, getJobs, moveBook, uploadPdf } from '../lib/api';
 
 // Managing the collection, and feeding the pipeline.
 //
@@ -11,6 +11,21 @@ import { clearJobs, deleteBook, getJobs, moveBook, uploadPdf } from '../lib/api'
 // same 834px card, the same type roles, mono for every count and identifier.
 
 const STATUS_TONE = { done: 'current', running: 'claimed', queued: 'neutral', failed: 'expired' };
+
+// Covers are fetched by the server, once per book, with nobody asking — so the only
+// thing to build here is a line saying so, and how far it has got.
+function coverLine(covers) {
+  if (!covers) return null;
+  if (!covers.enabled) {
+    return 'covers · HARDCOVER_API_KEY is not set, so none are looked up';
+  }
+  const without = (covers.nocover || 0) + (covers.missing || 0);
+  const parts = [`${covers.found || 0} found`];
+  if (without) parts.push(`${without} with no jacket on Hardcover`);
+  if (covers.failed) parts.push(`${covers.failed} failed`);
+  if (covers.pending) parts.push(`${covers.pending} still to look up`);
+  return `covers · ${parts.join(' · ')}`;
+}
 
 function JobRow({ job }) {
   const total = job.chunksTotal;
@@ -86,7 +101,7 @@ function CollectionRow({ book, onMove, onDelete, busy }) {
         opacity: busy ? 0.5 : 1,
       }}
     >
-      <Patch patch={book.patch} size={26} />
+      <Cover book={book} size={26} />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0 }}>
         <span
           style={{
@@ -141,6 +156,7 @@ export default function Library({ books, counts, onShelf, onChanged }) {
   const [uploading, setUploading] = useState(0);
   const [busyKey, setBusyKey] = useState(null);
   const [query, setQuery] = useState('');
+  const [covers, setCovers] = useState(null);
   const inputRef = useRef(null);
 
   const refreshJobs = useCallback(async () => {
@@ -155,9 +171,21 @@ export default function Library({ books, counts, onShelf, onChanged }) {
     }
   }, []);
 
+  const refreshCovers = useCallback(async () => {
+    try {
+      const data = await getEnrichment();
+      setCovers(data);
+      return data;
+    } catch {
+      // The cover pass is not load-bearing, and neither is its status line.
+      return null;
+    }
+  }, []);
+
   useEffect(() => {
     refreshJobs();
-  }, [refreshJobs]);
+    refreshCovers();
+  }, [refreshJobs, refreshCovers]);
 
   // Poll only while something is actually moving; a settled list is left alone.
   const active = jobs.some((j) => j.status === 'queued' || j.status === 'running');
@@ -165,11 +193,27 @@ export default function Library({ books, counts, onShelf, onChanged }) {
     if (!active) return undefined;
     const timer = setInterval(async () => {
       const next = await refreshJobs();
-      // A finished job means a new book on the shelf.
-      if (!next.some((j) => j.status === 'queued' || j.status === 'running')) onChanged();
+      // A finished job means a new book on the shelf — and a cover being looked up.
+      if (!next.some((j) => j.status === 'queued' || j.status === 'running')) {
+        onChanged();
+        refreshCovers();
+      }
     }, 2000);
     return () => clearInterval(timer);
-  }, [active, refreshJobs, onChanged]);
+  }, [active, refreshJobs, refreshCovers, onChanged]);
+
+  // The first shelf load queues every book that has never been looked up, so this can
+  // be a few hundred deep. Follow it while it runs and refresh the collection once at
+  // the end, so the jackets arrive without anyone reloading the page.
+  const enriching = (covers?.pending || 0) > 0;
+  useEffect(() => {
+    if (!enriching) return undefined;
+    const timer = setInterval(async () => {
+      const next = await refreshCovers();
+      if (next && !next.pending) onChanged();
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [enriching, refreshCovers, onChanged]);
 
   const send = useCallback(
     async (files) => {
@@ -420,6 +464,11 @@ export default function Library({ books, counts, onShelf, onChanged }) {
             }}
           />
         </div>
+        {covers && (
+          <span style={{ font: "400 10.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
+            {coverLine(covers)}
+          </span>
+        )}
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           {shown.slice(0, 60).map((book) => (
             <CollectionRow

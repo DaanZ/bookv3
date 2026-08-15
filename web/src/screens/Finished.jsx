@@ -1,4 +1,4 @@
-import Patch from '../components/Patch';
+import Cover from '../components/Cover';
 import { Button, Chip, QuietLink } from '../components/ui';
 
 // Close the loop and offer a jump to a different topic.
@@ -196,7 +196,7 @@ export default function Finished({
             }}
           >
             <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-              <Patch patch={recommendation.patch} size={34} />
+              <Cover book={recommendation} size={34} />
               <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                 <span
                   style={{

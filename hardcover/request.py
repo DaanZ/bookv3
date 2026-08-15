@@ -1,3 +1,4 @@
+import json
 import os
 
 import requests
@@ -42,6 +43,41 @@ query findBookByTitle($title: String!) {
 }
 """
 
+# The same two searches again, asking for what a shelf entry wants: the cover, the
+# slug that links back to Hardcover, the year. Kept separate from the pair above rather
+# than folded into it, because those two are on the path that marks a book read and a
+# richer selection set is one more thing that can be rejected.
+_DETAIL_FIELDS = """
+    id
+    slug
+    title
+    release_year
+    image { url }
+    cached_image
+    contributions { author { name } }
+"""
+
+DETAILS_QUERY = """
+query findBookDetails($title: String!, $author: String!) {
+  books(
+    where: {
+      _and: [
+        {title: {_ilike: $title}},
+        {contributions: {author: {name: {_ilike: $author}}}}
+      ]
+    },
+    order_by: {users_read_count: desc},
+    limit: 5
+  ) {%s}
+}
+""" % _DETAIL_FIELDS
+
+DETAILS_TITLE_ONLY_QUERY = """
+query findBookDetailsByTitle($title: String!) {
+  books(where: {title: {_ilike: $title}}, order_by: {users_read_count: desc}, limit: 5) {%s}
+}
+""" % _DETAIL_FIELDS
+
 MARK_READ_MUTATION = """
 mutation addBook($bookId: Int!) {
   insert_user_book(object: {book_id: $bookId, status_id: 3}) {
@@ -49,6 +85,10 @@ mutation addBook($bookId: Int!) {
   }
 }
 """
+
+# A GraphQL error inside a 200 — the one failure that means "this document is wrong",
+# as opposed to "the network is down", and so the one worth retrying differently.
+REJECTED = "Hardcover rejected the query"
 
 
 def _headers():
@@ -78,7 +118,7 @@ def _post(query, variables, headers):
 
     if payload.get("errors"):
         message = "; ".join(e.get("message", "unknown error") for e in payload["errors"])
-        return None, f"Hardcover rejected the query: {message}"
+        return None, f"{REJECTED}: {message}"
 
     return payload.get("data") or {}, None
 
@@ -93,8 +133,9 @@ def _shorten(title, author):
     return title.strip(), author.strip()
 
 
-def search_book(title, author):
-    """Find the most-read Hardcover book matching this title and author."""
+def _find(pair_query, title_query, title, author):
+    """Most-read match for a title and author, by whichever pair of queries is asked
+    for. Read-only — nothing on this path writes to Hardcover."""
     headers = _headers()
     if headers is None:
         return None, "HARDCOVER_API_KEY is not set."
@@ -102,7 +143,7 @@ def search_book(title, author):
     title, author = _shorten(title, author)
 
     data, error = _post(
-        SEARCH_QUERY, {"title": f"%{title}%", "author": f"%{author}%"}, headers
+        pair_query, {"title": f"%{title}%", "author": f"%{author}%"}, headers
     )
     if error:
         return None, error
@@ -111,7 +152,7 @@ def search_book(title, author):
     if not books:
         # The pipeline infers authors from the first pages and often gets "Not specified".
         # Title alone is a weaker match, so it is only a fallback.
-        data, error = _post(TITLE_ONLY_QUERY, {"title": f"%{title}%"}, headers)
+        data, error = _post(title_query, {"title": f"%{title}%"}, headers)
         if error:
             return None, error
         books = data.get("books") or []
@@ -119,6 +160,45 @@ def search_book(title, author):
     if not books:
         return None, f"Hardcover has no book matching “{title}”."
     return books[0], None
+
+
+def search_book(title, author):
+    """Find the most-read Hardcover book matching this title and author."""
+    return _find(SEARCH_QUERY, TITLE_ONLY_QUERY, title, author)
+
+
+def search_book_details(title, author):
+    """`search_book` plus the cover and the slug.
+
+    If Hardcover rejects the richer selection set — a field renamed, a relation gone —
+    this falls back to the plain search, so a schema change costs the cover rather than
+    the whole lookup.
+    """
+    book, error = _find(DETAILS_QUERY, DETAILS_TITLE_ONLY_QUERY, title, author)
+    if error and error.startswith(REJECTED):
+        return search_book(title, author)
+    return book, error
+
+
+def cover_url_of(book):
+    """The jacket, from whichever of the two image shapes this record carries.
+    `image` is a relation; `cached_image` is jsonb, and has arrived as a JSON string."""
+    if not isinstance(book, dict):
+        return None
+
+    image = book.get("image")
+    if isinstance(image, dict) and image.get("url"):
+        return image["url"]
+
+    cached = book.get("cached_image")
+    if isinstance(cached, str):
+        try:
+            cached = json.loads(cached)
+        except ValueError:
+            return None
+    if isinstance(cached, dict) and cached.get("url"):
+        return cached["url"]
+    return None
 
 
 def mark_book_as_read(title, author):

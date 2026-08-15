@@ -33,6 +33,20 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
       GraphQL and the search never worked; now `_ilike` with query variables
 - [x] Treat a GraphQL error inside a 200 as a failure, so the finish screen never
       claims "marked read" when Hardcover refused
+- [x] `api/enrich.py` — look every book up on Hardcover once, in the background, and
+      keep the cover, so jackets appear on the shelf without a per-book "look up"
+      button. Read-only: the search queries only, never `insert_user_book`
+- [x] Queue on ingest (`api/jobs.py`, the moment the JSON is written) *and* on the first
+      `GET /api/shelf` that sees a book with no entry — which backfills the 264 books
+      that predate this, and anything `prep.py` writes behind the API's back
+- [x] `GET /api/covers/{key}` serves the stored jacket; `GET /api/enrichment` reports how
+      far the pass has got, which the library screen shows while it runs
+- [ ] **The cover lookup has never run against the live API either.** `image { url }` and
+      `cached_image` are what Hardcover's docs and its users describe, not what an
+      introspection of the live schema returned — there is no key here to run one with.
+      `search_book_details` falls back to the plain search if the richer selection set is
+      rejected, so a wrong field name costs the cover and not the lookup, but the first
+      real key is the test that settles it
 - [ ] Verify the Hardcover path against the live API with a real `HARDCOVER_API_KEY`
       — the query is correct GraphQL now, but has still never round-tripped
 - [ ] Serve part bodies pre-paginated so the reader and any future surface agree on
@@ -138,6 +152,12 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
 - [ ] **This screen has no design file.** It was built in the Tide token language by
       extending the three screens that do. When the real handoff arrives, the layout is
       the part to replace — the API underneath it should survive.
+- [x] Covers on the collection rows, and a line saying how far the background lookup has
+      got — an automatic thing should be a visible thing
+- [ ] Nothing re-runs a lookup by hand. A book Hardcover matched to the wrong edition
+      keeps that cover until `data/enrichment.json` is edited; the `force` path exists in
+      `enrich.queue` but nothing calls it. A "wrong book" affordance on the row is the
+      obvious home for it — and the one place a per-book click would be *earned*
 - [ ] Sort options (by title, by date added, by part count) — the order is the shelf's
       order today
 - [ ] No bulk selection: moving or deleting twenty books is twenty clicks
@@ -167,6 +187,10 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
 - [ ] **The ingest pipeline has never run against the real OpenAI API here.** Every
       part of the path is proven except the LLM call itself, which was stubbed. The
       first real book is the test that matters.
+- [x] Verify the cover pass with Hardcover and the image host stubbed: the shelf queues
+      all 264, the store records found / nocover / missing / failed, a cover is written
+      once and served with the right type, a second shelf load re-queues nothing, and the
+      download refuses non-images, anything over 6MB, and a name that escapes data/covers
 - [ ] No tests anywhere in the repo. The reading model (`weights`, `paginate`,
       `tokensOf`) is pure and the highest-value thing to cover first; the ingest
       harness used for the verification above is a good second, and would have to be

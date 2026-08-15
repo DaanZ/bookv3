@@ -21,6 +21,7 @@ from collections import OrderedDict
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 
+from api import enrich
 from util.files import json_write_file, sanitize_filename
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -220,6 +221,11 @@ def _run(job_id):
         key = sanitize_filename(meta_info["title"])
         output_path = os.path.join(OUTPUT_DIR, f"{key}.json")
         json_write_file(output_path, book_info)
+
+        # Look the cover up now, off this thread — the title and author were just read
+        # off the first pages, which is everything the search needs. By the time the
+        # shelf reloads the jacket is usually there, and no one had to ask for it.
+        enrich.queue(key, meta_info.get("title") or key, meta_info.get("author"))
 
         # The original PDF is parked in pdfs/, exactly as prep.py does it.
         os.makedirs(ARCHIVE_DIR, exist_ok=True)

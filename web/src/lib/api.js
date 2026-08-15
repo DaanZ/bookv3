@@ -44,6 +44,9 @@ export const deleteBook = (key) =>
 
 export const getJobs = () => request('/ingest/jobs');
 
+/** How far the background cover lookup has got. Nothing starts it — the shelf does. */
+export const getEnrichment = () => request('/enrichment');
+
 export const clearJobs = () => request('/ingest/jobs', { method: 'DELETE' });
 
 /** Uploads bypass `request`: the body is multipart, so the JSON header must not be set. */

@@ -15,7 +15,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from api import jobs, library, positions
+from api import enrich, jobs, library, positions
 from hardcover.request import mark_book_as_read
 
 # A book PDF; anything larger than this is very unlikely to be one.
@@ -47,6 +47,12 @@ class MoveIn(BaseModel):
 @app.get("/api/shelf")
 def get_shelf():
     books = library.shelf()
+
+    # Anything never looked up goes to the enrichment worker — books ingested before
+    # this existed, and books written by prep.py, which never goes through the API.
+    # It returns immediately; the requests happen one at a time on another thread.
+    enrich.queue_missing(books)
+
     return {
         "books": books,
         "counts": {
@@ -54,6 +60,23 @@ def get_shelf():
             "read": sum(1 for b in books if b["state"] == "read"),
         },
     }
+
+
+@app.get("/api/enrichment")
+def get_enrichment():
+    """How far the background cover pass has got. The library screen shows this so an
+    automatic thing is a visible thing, rather than covers appearing for no reason."""
+    return enrich.summary(total=len(library.index()))
+
+
+@app.get("/api/covers/{key}")
+def get_cover(key: str):
+    """The stored jacket. `enrich.cover_path` resolves the name from our own store and
+    refuses anything that lands outside data/covers, so the key never becomes a path."""
+    path = enrich.cover_path(key)
+    if path is None:
+        raise HTTPException(status_code=404, detail="No cover for that book.")
+    return FileResponse(path, headers={"cache-control": "public, max-age=3600"})
 
 
 @app.get("/api/books/{key}")
@@ -123,6 +146,7 @@ def remove_book(key: str):
     if not library.delete_book(key):
         raise HTTPException(status_code=404, detail="No such book.")
     positions.clear_position(key)
+    enrich.forget(key)
     return {"deleted": True}
 
 
