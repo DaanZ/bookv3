@@ -26,13 +26,29 @@ Two things are deliberately *not* per profile:
   says so rather than quietly writing to a stranger's shelf.
 
 The owner is the profile that already existed: the first one, id `owner`, holding the
-history that was in `data/positions.json` before this. There is no login and no
-password. This is a reading app on a tablet in a house, and asking who is holding it is
-the whole of the security model.
+history that was in `data/positions.json` before this.
+
+**The PIN is a lock on the picker, not on the API.** A profile can carry one, and then
+the app will not switch into it without the four digits — which is the whole of the
+problem it is for: somebody else in the house picking up the tablet and reading as you,
+by accident or by nosiness. It is deliberately not authentication. `X-Profile` is still
+a header a client asserts about itself, so anything that can make an HTTP request can
+still read as anyone; making that untrue needs a token the server issues and checks,
+which is a bigger change than a lock on a tablet warrants. Do not build anything on the
+PIN that would be a problem if it were bypassed.
+
+What it does do properly, because a half-done lock is worse than none: the digits are
+never sent to the browser, the stored form is salted and run through a KDF, changing or
+removing one needs the old one, and guesses are rate limited — 10,000 combinations is
+minutes of scripted tries otherwise.
 """
 
+import hashlib
+import hmac
 import os
+import secrets
 import threading
+import time
 import uuid
 from datetime import datetime, timezone
 
@@ -71,6 +87,19 @@ THEMES = ("day", "night")
 # would be two places to edit for one addition. This stores whatever the UI sends, kept
 # short and to a shape a name can have — the UI already falls back on one it cannot use.
 MAX_PALETTE = 32
+
+# Digits only, and few of them: this is tapped on a tablet by somebody who wants to read
+# a book, not typed on a keyboard by somebody logging in.
+PIN_MIN, PIN_MAX = 4, 8
+
+# Guessing. Five tries, then a pause that doubles — 30s, 60s, 120s… to five minutes.
+# Held in memory, so a restart forgives everything: the point is to make a script slow,
+# not to punish the person who mistyped their own PIN twice.
+PIN_TRIES = 5
+PIN_LOCKOUT_SECONDS = 30
+PIN_LOCKOUT_MAX = 300
+
+_attempts: dict[str, dict] = {}
 
 _lock = threading.Lock()
 
@@ -143,10 +172,22 @@ def _ensure(rows: list) -> list:
     return rows
 
 
+def _public(row: dict) -> dict:
+    """A profile as everything outside this module sees it.
+
+    The stored PIN never leaves here. Not by being stripped at the edge — by never being
+    on a row any other module can reach, so there is no serialiser to forget. What
+    callers get instead is `hasPin`, which is the only part of it the UI needs.
+    """
+    out = {k: v for k, v in row.items() if k != "pin"}
+    out["hasPin"] = bool(row.get("pin"))
+    return out
+
+
 def all_profiles() -> list:
     with _lock:
         rows = _ensure(_read())
-        return [dict(row) for row in rows]
+        return [_public(row) for row in rows]
 
 
 def get(profile_id: str | None) -> dict | None:
@@ -196,7 +237,7 @@ def create(name: str) -> tuple[dict | None, str | None]:
         }
         rows.append(row)
         _write(rows)
-        return dict(row), None
+        return _public(row), None
 
 
 def rename(profile_id: str, name: str) -> tuple[dict | None, str | None]:
@@ -214,7 +255,7 @@ def rename(profile_id: str, name: str) -> tuple[dict | None, str | None]:
             return None, f"There is already a profile called “{clean}”."
         row["name"] = clean
         _write(rows)
-        return dict(row), None
+        return _public(row), None
 
 
 def set_prefs(profile_id: str, patch: dict) -> tuple[dict | None, str | None]:
@@ -228,7 +269,129 @@ def set_prefs(profile_id: str, patch: dict) -> tuple[dict | None, str | None]:
             return None, "No such profile."
         row["prefs"] = {**row["prefs"], **clean_prefs(patch)}
         _write(rows)
-        return dict(row), None
+        return _public(row), None
+
+
+# --- the PIN --------------------------------------------------------------------
+
+def _hash_pin(pin: str, salt: bytes) -> str:
+    """scrypt where the build has it, pbkdf2 where it does not.
+
+    Neither saves four digits from an offline search — 10,000 candidates is 10,000
+    candidates — which is why the rate limit above is the part doing the real work. The
+    KDF and the salt are here so that the file is not a list of PINs in the clear, and
+    so that two readers who chose 1234 do not have the same row.
+    """
+    try:
+        return "scrypt$" + hashlib.scrypt(
+            pin.encode(), salt=salt, n=2 ** 14, r=8, p=1, dklen=32
+        ).hex()
+    except (ValueError, MemoryError):  # pragma: no cover — old or memory-capped builds
+        return "pbkdf2$" + hashlib.pbkdf2_hmac("sha256", pin.encode(), salt, 240_000).hex()
+
+
+def _verify_hash(pin: str, stored: dict) -> bool:
+    salt = bytes.fromhex(stored.get("salt") or "")
+    expected = stored.get("hash") or ""
+    if not salt or not expected:
+        return False
+    algo = expected.split("$", 1)[0]
+    if algo == "pbkdf2":
+        candidate = "pbkdf2$" + hashlib.pbkdf2_hmac("sha256", pin.encode(), salt, 240_000).hex()
+    else:
+        candidate = _hash_pin(pin, salt)
+    # Constant time: the comparison is over a digest, but leaking where two hashes first
+    # differ is a habit worth not having.
+    return hmac.compare_digest(candidate, expected)
+
+
+def _clean_pin(pin: str | None) -> str | None:
+    pin = (pin or "").strip()
+    if not pin.isdigit() or not (PIN_MIN <= len(pin) <= PIN_MAX):
+        return None
+    return pin
+
+
+def _blocked_for(profile_id: str) -> int:
+    """Seconds left before this profile will take another guess."""
+    state = _attempts.get(profile_id)
+    if not state:
+        return 0
+    return max(0, int(state.get("until", 0) - time.monotonic()))
+
+
+def _note_failure(profile_id: str) -> None:
+    state = _attempts.setdefault(profile_id, {"count": 0, "until": 0})
+    state["count"] += 1
+    if state["count"] >= PIN_TRIES:
+        over = state["count"] - PIN_TRIES
+        state["until"] = time.monotonic() + min(
+            PIN_LOCKOUT_MAX, PIN_LOCKOUT_SECONDS * (2 ** over)
+        )
+
+
+def check_pin(profile_id: str, pin: str | None) -> tuple[bool, str | None]:
+    """Is this the profile's PIN? Returns (ok, error).
+
+    The one place the stored form is read. Rate limited per profile, and a profile with
+    no PIN answers yes to anything — there is nothing to be wrong about.
+    """
+    with _lock:
+        row = next((r for r in _ensure(_read()) if r["id"] == profile_id), None)
+    if row is None:
+        return False, "No such profile."
+    if not row.get("pin"):
+        return True, None
+
+    waiting = _blocked_for(profile_id)
+    if waiting:
+        return False, f"Too many tries — wait {waiting} seconds."
+
+    if _verify_hash(_clean_pin(pin) or "", row["pin"]):
+        _attempts.pop(profile_id, None)
+        return True, None
+
+    _note_failure(profile_id)
+    waiting = _blocked_for(profile_id)
+    return False, (f"That is not the PIN. Wait {waiting} seconds." if waiting else "That is not the PIN.")
+
+
+def set_pin(profile_id: str, pin: str | None, current: str | None) -> tuple[dict | None, str | None]:
+    """Set, change or remove a profile's PIN. `pin` of None removes it.
+
+    Changing or removing needs the current one; setting a first PIN does not, because
+    a profile without one is already open to whoever is holding the tablet — requiring
+    proof of something that protects nothing would only be ceremony.
+    """
+    with _lock:
+        rows = _ensure(_read())
+        row = next((r for r in rows if r["id"] == profile_id), None)
+        if row is None:
+            return None, "No such profile."
+        existing = row.get("pin")
+
+    if existing:
+        ok, error = check_pin(profile_id, current)
+        if not ok:
+            return None, error or "That is not the PIN."
+
+    wanted = _clean_pin(pin)
+    if pin is not None and str(pin).strip() and wanted is None:
+        return None, f"A PIN is {PIN_MIN} to {PIN_MAX} digits."
+
+    with _lock:
+        rows = _ensure(_read())
+        row = next((r for r in rows if r["id"] == profile_id), None)
+        if row is None:
+            return None, "No such profile."
+        if wanted is None:
+            row.pop("pin", None)
+        else:
+            salt = secrets.token_bytes(16)
+            row["pin"] = {"salt": salt.hex(), "hash": _hash_pin(wanted, salt), "setAt": _now()}
+        _write(rows)
+        _attempts.pop(profile_id, None)
+        return _public(row), None
 
 
 def remove(profile_id: str) -> tuple[bool, str | None]:

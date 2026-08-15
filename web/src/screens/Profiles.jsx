@@ -8,9 +8,92 @@ import { Button, Chip, QuietLink } from '../components/ui';
 // it is one unit of work, the reader's own rule, so it is built like the shelf: a
 // column of rows you choose between, and one thing to do at the bottom.
 //
-// A profile is a tone and a name. No password: this is a tablet in a house, and asking
-// who is holding it is the whole of it. The tone does the work the category patch does
-// on the shelf — you know which row is yours before you read the name.
+// A profile is a tone and a name, and optionally a PIN. The tone does the work the
+// category patch does on the shelf — you know which row is yours before you read the
+// name.
+//
+// The PIN locks the switch, not the API: it stops the next person to pick up the tablet
+// reading as you, which is the problem a house has. It is not a login, and the screen
+// should not imply one — hence "locked", not "signed out".
+
+/**
+ * Four to eight digits, on a numeric keypad, submitted by pressing enter or the button.
+ *
+ * `type="password"` with `inputMode="numeric"`: a tablet should offer the keypad, and
+ * the digits should not be legible over the shoulder of the person entering them —
+ * which, this being a lock against the room rather than the network, is most of what a
+ * PIN field is for.
+ */
+function PinForm({ label, busy, error, onSubmit, onCancel, confirm = false }) {
+  const [pin, setPin] = useState('');
+  const [again, setAgain] = useState('');
+  const [mismatch, setMismatch] = useState(null);
+
+  const field = {
+    width: confirm ? 96 : 120,
+    padding: '8px 12px',
+    borderRadius: 'var(--radius-input)',
+    border: '1px solid var(--border-strong)',
+    background: 'transparent',
+    color: 'var(--text-primary)',
+    font: "400 14px 'IBM Plex Mono', monospace",
+    letterSpacing: '0.3em',
+    outline: 'none',
+  };
+
+  return (
+    <form
+      style={{ display: 'flex', flexDirection: 'column', gap: 6, alignItems: 'flex-end' }}
+      onSubmit={(event) => {
+        event.preventDefault();
+        if (confirm && pin !== again) {
+          setMismatch('Those do not match.');
+          return;
+        }
+        setMismatch(null);
+        onSubmit(pin);
+      }}
+    >
+      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+        <span style={{ font: "400 11px 'Space Grotesk', system-ui", color: 'var(--text-muted)' }}>
+          {label}
+        </span>
+        <input
+          autoFocus
+          type="password"
+          inputMode="numeric"
+          autoComplete="off"
+          value={pin}
+          maxLength={8}
+          placeholder="····"
+          onChange={(event) => setPin(event.target.value.replace(/\D/g, ''))}
+          style={field}
+        />
+        {confirm && (
+          <input
+            type="password"
+            inputMode="numeric"
+            autoComplete="off"
+            value={again}
+            maxLength={8}
+            placeholder="again"
+            onChange={(event) => setAgain(event.target.value.replace(/\D/g, ''))}
+            style={field}
+          />
+        )}
+        <Button size="sm" type="submit" disabled={busy || pin.length < 4}>
+          {busy ? '…' : 'OK'}
+        </Button>
+        <QuietLink onClick={onCancel}>Cancel</QuietLink>
+      </div>
+      {(mismatch || error) && (
+        <span style={{ font: "400 11px 'Space Grotesk', system-ui", color: 'var(--chip-expired-fg)' }}>
+          {mismatch || error}
+        </span>
+      )}
+    </form>
+  );
+}
 
 function Tone({ profile, size = 44 }) {
   return (
@@ -42,10 +125,61 @@ function progressLine(profile) {
   return parts.join(' · ');
 }
 
-function ProfileRow({ profile, active, busy, onPick, onRename, onDelete }) {
+function ProfileRow({ profile, active, busy, mine, onPick, onRename, onDelete, onSetPin,
+                     onVerify }) {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(profile.name);
   const [confirming, setConfirming] = useState(false);
+  // null | 'unlock' | 'set' | 'current' | 'remove'. Changing a PIN is 'current' and then
+  // 'set': two plain prompts rather than one form asking for three numbers at once.
+  const [asking, setAsking] = useState(null);
+  const [current, setCurrent] = useState(null);
+  const [pinError, setPinError] = useState(null);
+  const [working, setWorking] = useState(false);
+
+  const ask = (mode) => {
+    setPinError(null);
+    setCurrent(null);
+    setAsking(mode);
+  };
+
+  const close = () => {
+    setAsking(null);
+    setCurrent(null);
+    setPinError(null);
+  };
+
+  const submitPin = async (value) => {
+    setWorking(true);
+    setPinError(null);
+    try {
+      if (asking === 'unlock') {
+        await onPick(profile.id, value);
+      } else if (asking === 'current') {
+        // Checked before the new one is asked for, so a wrong current PIN is caught
+        // here rather than after typing a replacement twice.
+        await onVerify(profile.id, value);
+        setCurrent(value);
+        setAsking('set');
+      } else if (asking === 'set') {
+        await onSetPin(profile.id, value, current);
+        close();
+      } else if (asking === 'remove') {
+        await onSetPin(profile.id, null, value);
+        close();
+      }
+    } catch (ex) {
+      setPinError(ex.message);
+    }
+    setWorking(false);
+  };
+
+  const PIN_LABELS = {
+    unlock: `${profile.name}'s PIN`,
+    set: current ? 'New PIN' : 'PIN',
+    current: 'Current PIN',
+    remove: 'Current PIN',
+  };
 
   return (
     <div
@@ -103,7 +237,7 @@ function ProfileRow({ profile, active, busy, onPick, onRename, onDelete }) {
         <>
           <button
             className="tap"
-            onClick={() => onPick(profile.id)}
+            onClick={() => (profile.hasPin ? ask('unlock') : onPick(profile.id))}
             style={{
               flex: 1,
               display: 'flex',
@@ -126,6 +260,14 @@ function ProfileRow({ profile, active, busy, onPick, onRename, onDelete }) {
               }}
             >
               {profile.name}
+              {profile.hasPin && (
+                <span
+                  title="Locked with a PIN"
+                  style={{ marginLeft: 9, fontSize: 13, verticalAlign: 'middle' }}
+                >
+                  🔒
+                </span>
+              )}
             </span>
             <span
               style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}
@@ -134,7 +276,16 @@ function ProfileRow({ profile, active, busy, onPick, onRename, onDelete }) {
             </span>
           </button>
 
-          {confirming ? (
+          {asking ? (
+            <PinForm
+              label={PIN_LABELS[asking]}
+              busy={working}
+              error={pinError}
+              confirm={asking === 'set'}
+              onSubmit={submitPin}
+              onCancel={close}
+            />
+          ) : confirming ? (
             <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
               <span
                 style={{
@@ -158,6 +309,18 @@ function ProfileRow({ profile, active, busy, onPick, onRename, onDelete }) {
                   over; deleting would take the shelf's own history with it. */}
               {profile.owner && <Chip tone="neutral">owner</Chip>}
               <QuietLink onClick={() => setEditing(true)}>Rename</QuietLink>
+              {/* Only on your own row. Setting a PIN on somebody else's profile from
+                  the picker would be locking them out of their own books, which is a
+                  different thing from locking yours. */}
+              {mine &&
+                (profile.hasPin ? (
+                  <>
+                    <QuietLink onClick={() => ask('current')}>Change PIN</QuietLink>
+                    <QuietLink onClick={() => ask('remove')}>Remove PIN</QuietLink>
+                  </>
+                ) : (
+                  <QuietLink onClick={() => ask('set')}>Set a PIN</QuietLink>
+                ))}
               {!profile.owner && <QuietLink onClick={() => setConfirming(true)}>Delete</QuietLink>}
             </div>
           )}
@@ -172,10 +335,13 @@ export default function Profiles({
   activeId,
   busyId,
   error,
+  locked,
   onPick,
   onAdd,
   onRename,
   onDelete,
+  onSetPin,
+  onVerify,
   onBack,
 }) {
   const [name, setName] = useState('');
@@ -198,7 +364,7 @@ export default function Profiles({
           color: 'var(--text-muted)',
         }}
       >
-        {profiles.length} {profiles.length === 1 ? 'reader' : 'readers'}
+        {locked ? 'locked' : `${profiles.length} ${profiles.length === 1 ? 'reader' : 'readers'}`}
       </span>
       <h1
         style={{
@@ -224,7 +390,8 @@ export default function Profiles({
       >
         Everyone keeps their own page in every book — where you stopped, how many
         sittings it took, which ones you finished. The books are the same shelf; the
-        reading is yours.
+        reading is yours. A PIN on your name means the tablet asks for it before it
+        opens your shelf.
       </p>
 
       {error && (
@@ -249,9 +416,12 @@ export default function Profiles({
             profile={profile}
             active={profile.id === activeId}
             busy={busyId === profile.id}
+            mine={profile.id === activeId}
             onPick={onPick}
             onRename={onRename}
             onDelete={onDelete}
+            onSetPin={onSetPin}
+            onVerify={onVerify}
           />
         ))}
       </div>
@@ -300,7 +470,9 @@ export default function Profiles({
         <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
           data/positions/&lt;profile&gt;.json
         </span>
-        <QuietLink onClick={onBack}>Back to shelf</QuietLink>
+        {/* Nowhere to go back to while the tablet is locked: picking a reader is the
+            only way on from here, which is what makes it a lock. */}
+        {!locked && <QuietLink onClick={onBack}>Back to shelf</QuietLink>}
       </div>
     </div>
   );

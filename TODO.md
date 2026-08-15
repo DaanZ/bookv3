@@ -69,9 +69,20 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
 - [x] The ambience bed is per book *per profile*, stored in that reader's position entry
       and delivered on the book payload — two people reading the same book keep their
       own bed, and either keeps it on whichever tablet they pick up
-- [ ] Nothing stops a reader picking someone else's profile — by design, there is no
-      login — but there is also no way to hide one. A house where that matters wants a
-      PIN, and that is a different app
+- [x] An optional PIN per profile: set it on your own row, and the app will not switch
+      into that profile without it, opens onto the picker instead of that reader's
+      shelf, and offers a Lock in the shelf footer. Salted scrypt, never returned to a
+      browser, the old one needed to change or remove it, five tries then a doubling
+      lockout
+- [ ] **The PIN locks the picker, not the API.** `X-Profile` is still self-asserted, so
+      `curl -H 'X-Profile: <id>'` reads a locked profile's shelf. Making it real means
+      the server issuing a token on unlock and every reading endpoint checking it —
+      worth doing only if this ever leaves the house
+- [ ] No idle auto-lock: a locked profile stays open until somebody presses Lock or the
+      app is reopened. A timer is the obvious next turn of the screw
+- [ ] A locked profile can still be renamed, and a guest's can be deleted, without the
+      PIN. Deleting destroys rather than reveals, so it is not a way *in* — but it is a
+      way to lose somebody's reading
 - [ ] The profile is chosen in the browser and sent as a header, so two tabs on one
       tablet can be two readers. That is either a feature or a surprise; nothing tests
       which
@@ -181,6 +192,11 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
       the identity
 - [ ] Switching reader mid-book drops you back on the shelf. Resuming where *that*
       reader stopped in the same book would be kinder, and is one `getBook` away
+
+- [x] An optional PIN, set from your own row: a lock mark on the name, an inline prompt
+      when somebody picks that reader, and Set / Change / Remove on the row itself
+- [ ] The lock screen is the profiles screen with the way out removed. It reads well
+      enough, but a screen whose whole job is one PIN could be drawn as one
 
 ### Library screen
 

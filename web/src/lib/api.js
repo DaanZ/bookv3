@@ -50,6 +50,25 @@ export const renameProfile = (id, name) =>
 export const deleteProfile = (id) =>
   request(`/profiles/${encodeURIComponent(id)}`, { method: 'DELETE' });
 
+/**
+ * Check a profile's PIN before switching into it. Resolves when it is right; rejects
+ * with what the server said when it is not, including how long a run of wrong guesses
+ * has bought. The digits go up and nothing comes back down — the browser is never told
+ * anything about a PIN except whether one exists.
+ */
+export const unlockProfile = (id, pin) =>
+  request(`/profiles/${encodeURIComponent(id)}/unlock`, {
+    method: 'POST',
+    body: JSON.stringify({ pin }),
+  });
+
+/** Set, change or remove a PIN. `pin: null` removes it; `current` is needed to do either. */
+export const setProfilePin = (id, pin, current) =>
+  request(`/profiles/${encodeURIComponent(id)}/pin`, {
+    method: 'PUT',
+    body: JSON.stringify({ pin, current }),
+  });
+
 /** The reader's own settings — register, palette, pointer focus, highlight cap. */
 export const setProfilePrefs = (id, patch) =>
   request(`/profiles/${encodeURIComponent(id)}/prefs`, {

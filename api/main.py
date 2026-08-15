@@ -56,6 +56,17 @@ class ProfileIn(BaseModel):
     name: str
 
 
+class PinIn(BaseModel):
+    """`pin` of null removes it; `current` proves you may change one that exists."""
+
+    pin: str | None = None
+    current: str | None = None
+
+
+class UnlockIn(BaseModel):
+    pin: str | None = None
+
+
 class PrefsIn(BaseModel):
     """A patch, so the UI can send the one setting that moved. Every field is optional
     and anything unrecognised is dropped by `profiles.clean_prefs`."""
@@ -106,6 +117,38 @@ def edit_profile(profile_id: str, body: ProfileIn):
     if error:
         raise HTTPException(status_code=404 if error == "No such profile." else 400, detail=error)
     return row
+
+
+@app.put("/api/profiles/{profile_id}/pin")
+def set_profile_pin(profile_id: str, body: PinIn):
+    """Set, change or remove a profile's PIN.
+
+    The digits are hashed in `profiles.set_pin` and never come back out — the response
+    says `hasPin`, and that is all a browser is ever told about it.
+    """
+    row, error = profiles.set_pin(profile_id, body.pin, body.current)
+    if error:
+        raise HTTPException(status_code=404 if error == "No such profile." else 400, detail=error)
+    return row
+
+
+@app.post("/api/profiles/{profile_id}/unlock")
+def unlock_profile(profile_id: str, body: UnlockIn):
+    """Check a PIN before the app switches into that profile.
+
+    This is the lock on the picker. It is not access control: `X-Profile` remains a
+    header a client asserts about itself, so this stops somebody picking up the tablet
+    and reading as you — not somebody writing an HTTP request. Nothing on the reading
+    endpoints consults it, and nothing should be built as though it did.
+    """
+    ok, error = profiles.check_pin(profile_id, body.pin)
+    if ok:
+        return {"ok": True}
+    if error == "No such profile.":
+        raise HTTPException(status_code=404, detail=error)
+    # 429 for "you are guessing", 401 for "that is wrong" — the screen says different
+    # things about them, and the retry-after only makes sense for one.
+    raise HTTPException(status_code=429 if "wait" in error.lower() else 401, detail=error)
 
 
 @app.put("/api/profiles/{profile_id}/prefs")

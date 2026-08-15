@@ -116,6 +116,7 @@ export default function Shelf({
   onFilter,
   onLibrary,
   onProfiles,
+  onLock,
 }) {
   return (
     <div
@@ -245,6 +246,9 @@ export default function Shelf({
               {who.name}
             </QuietLink>
           )}
+          {/* Only where there is something to lock. On a profile with no PIN this
+              would be a button that closes the shelf and then opens it again. */}
+          {onLock && <QuietLink onClick={onLock}>Lock</QuietLink>}
           <QuietLink onClick={onLibrary}>Library</QuietLink>
         </div>
       </div>

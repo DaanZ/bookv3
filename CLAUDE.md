@@ -131,8 +131,21 @@ one dependency (`reader` in `main.py`). Five rules:
   rather than showing them a chip about a call nobody made.
 - **The owner cannot be deleted, only renamed.** Their reading is the shelf's own; handing the
   tablet over is a rename.
-- **No login.** This is a tablet in a house. Asking who is holding it is the whole model, and
-  `resolve` answers an unknown id with the owner — which is exactly what the app did before.
+- **No login, and the PIN is not one.** This is a tablet in a house. Asking who is holding it is
+  the whole model, and `resolve` answers an unknown id with the owner — which is exactly what the
+  app did before. A profile may carry an optional PIN, and then the app will not switch into it
+  without the digits, will open onto the picker rather than that reader's shelf, and offers a
+  **Lock** in the shelf footer. That guards the picker, not the API: `X-Profile` is still a header
+  a client asserts about itself, so anything that can make an HTTP request can still read as
+  anyone. Do not build anything on the PIN that would be a problem if it were bypassed — making it
+  real needs a token the server issues and every reading endpoint checks, which is the next tier
+  and a bigger change than a tablet warrants.
+
+  What it *does* do properly, because a half-done lock is worse than none: the digits are never
+  sent to a browser (`profiles._public` strips them, so there is no serialiser to forget), the
+  stored form is salted and run through scrypt, changing or removing one needs the old one, and
+  guesses are rate limited per profile — five tries, then a doubling pause, because 10,000
+  combinations is otherwise a minute of scripted tries.
 
 `data/positions.json`, the single store this replaced, is *moved* onto `data/positions/owner.json`
 the first time `positions.py` loads, so history from before profiles belongs to whoever made it.

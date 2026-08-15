@@ -11,6 +11,8 @@ import {
   putPosition,
   renameProfile,
   setProfile,
+  setProfilePin,
+  unlockProfile,
 } from './lib/api';
 import { PALETTE_NAMES } from './lib/reading';
 import { usePrefs } from './lib/prefs';
@@ -42,6 +44,9 @@ export default function App() {
   const [error, setError] = useState(null);
   const [profiles, setProfiles] = useState([]);
   const [busyProfile, setBusyProfile] = useState(null);
+  // The tablet is put away, or was opened onto a reader who locked theirs. Nothing is
+  // fetched and there is no way off the picker until somebody proves who they are.
+  const [locked, setLocked] = useState(false);
   const ambience = useAmbience(book);
 
   const who = profiles.find((p) => p.id === prefs.profile) || profiles.find((p) => p.owner);
@@ -95,6 +100,14 @@ export default function App() {
       // copy has already painted; this is the reconcile, and it is silent when they
       // agree — which on the tablet somebody uses every day is every time.
       if (chosen?.prefs) adoptPrefs(chosen.prefs);
+
+      // A PIN is only a lock if opening the app asks for it. Otherwise the tablet sits
+      // on somebody's shelf all evening and the digits protected one tap nobody made.
+      if (chosen?.hasPin) {
+        setLocked(true);
+        setScreen('profiles');
+        return;
+      }
       loadShelf();
     })();
     return () => {
@@ -154,11 +167,18 @@ export default function App() {
   // Switching reader re-fetches everything: the same books, a different set of
   // bookmarks in them. Nothing is cached across the swap on purpose — a stale "part 3
   // of 7" from the last person is the exact bug profiles exist to prevent.
-  // `rows` is passed by the callers that have just fetched a fresher list than state
-  // has — adding a reader, or deleting the one you are. Without it, switching to a
-  // profile this render has never seen would leave the last reader's register up.
+  // `pin` is what the picker collected, if that profile has one. `rows` is passed by the
+  // callers that have just fetched a fresher list than state has — adding a reader, or
+  // deleting the one you are — because switching to a profile this render has never seen
+  // would otherwise leave the last reader's register up and miss their PIN entirely.
   const pickProfile = useCallback(
-    async (id, rows) => {
+    async (id, pin, rows) => {
+      // Checked before anything else moves: a wrong PIN must leave the app exactly
+      // where it was, still as whoever it was, and the row shows what the server said.
+      const target = (rows || profiles).find((p) => p.id === id);
+      if (target?.hasPin) await unlockProfile(id, pin);
+
+      setLocked(false);
       setProfile(id);
       setPrefs({ profile: id });
       // Their register, their palette, their highlight cap — adopted before the shelf
@@ -174,13 +194,32 @@ export default function App() {
     [loadShelf, loadProfiles, setPrefs, adoptPrefs, profiles],
   );
 
+  // Errors are thrown, not swallowed: the row that asked for the PIN is where the
+  // answer belongs, not a banner across the top of the card.
+  const onVerifyPin = useCallback((id, pin) => unlockProfile(id, pin), []);
+
+  const onSetPin = useCallback(
+    async (id, pin, current) => {
+      await setProfilePin(id, pin, current);
+      await loadProfiles();
+    },
+    [loadProfiles],
+  );
+
+  const lock = useCallback(() => {
+    setLocked(true);
+    setBook(null);
+    setFinishResult(null);
+    setScreen('profiles');
+  }, []);
+
   const onAddProfile = useCallback(
     async (name) => {
       setError(null);
       try {
         const created = await addProfile(name);
         const rows = await loadProfiles();
-        pickProfile(created.id, rows);
+        pickProfile(created.id, null, rows);
       } catch (ex) {
         setError(ex.message);
       }
@@ -212,7 +251,7 @@ export default function App() {
         const rows = await loadProfiles();
         // Deleting the reader you are — fall back to the owner rather than carrying on
         // as an id the server no longer knows.
-        if (id === prefs.profile) pickProfile((rows.find((p) => p.owner) || {}).id, rows);
+        if (id === prefs.profile) pickProfile((rows.find((p) => p.owner) || {}).id, null, rows);
       } catch (ex) {
         setError(ex.message);
       }
@@ -286,19 +325,25 @@ export default function App() {
               onOpen={openBook}
               onLibrary={() => setScreen('library')}
               onProfiles={() => setScreen('profiles')}
+              onLock={who?.hasPin ? lock : null}
             />
           )}
 
           {screen === 'profiles' && (
             <Profiles
               profiles={profiles}
-              activeId={who?.id}
+              // Nobody is the active reader while the tablet is locked, so nobody's row
+              // offers to change a PIN.
+              activeId={locked ? null : who?.id}
               busyId={busyProfile}
               error={null}
+              locked={locked}
               onPick={pickProfile}
               onAdd={onAddProfile}
               onRename={onRenameProfile}
               onDelete={onDeleteProfile}
+              onSetPin={onSetPin}
+              onVerify={onVerifyPin}
               onBack={toShelf}
             />
           )}
