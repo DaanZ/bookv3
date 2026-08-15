@@ -94,11 +94,54 @@ def record_finish(key: str, marked_read: bool) -> dict:
     with _lock:
         data = _read()
         entry = dict(data.get(key) or {})
-        entry["finishedAt"] = _now()
+        # The first finish is the one that counts. Overwriting this on a re-finish would
+        # renumber the shelf — a book read months ago would jump to the end of the
+        # order the moment it was opened again.
+        entry.setdefault("finishedAt", _now())
         entry["markedRead"] = bool(marked_read)
         data[key] = entry
         _write(data)
         return entry
+
+
+def set_marked_read(key: str, marked_read: bool) -> dict | None:
+    """Update only the Hardcover outcome, leaving the finish date — and so the book's
+    place in the completed order — alone."""
+    with _lock:
+        data = _read()
+        entry = data.get(key)
+        if entry is None:
+            return None
+        entry["markedRead"] = bool(marked_read)
+        _write(data)
+        return entry
+
+
+def finish_ordinal(key: str, positions: dict | None = None) -> int | None:
+    """Which number this book was to be finished. None if it never was.
+
+    Counted over the books this app recorded a finish for, in the order they were
+    finished. It deliberately does not count the contents of books/read: those arrived
+    by other routes — a hand move, or the pipeline's own history — with no date to place
+    them in the order, and inventing one would make the number a guess.
+    """
+    data = positions if positions is not None else all_positions()
+    entry = data.get(key) or {}
+    finished = entry.get("finishedAt")
+    if not finished:
+        return None
+
+    earlier = sum(
+        1
+        for other, value in data.items()
+        if other != key and (value or {}).get("finishedAt") and value["finishedAt"] <= finished
+    )
+    return earlier + 1
+
+
+def finished_count(positions: dict | None = None) -> int:
+    data = positions if positions is not None else all_positions()
+    return sum(1 for value in data.values() if (value or {}).get("finishedAt"))
 
 
 def clear_position(key: str) -> None:

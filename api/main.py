@@ -9,14 +9,22 @@ the shelf, a book's parts, reading position, and finishing a book. It reads the 
 
 import os
 
+from dotenv import load_dotenv
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
+from api import enrich as enriching
+from api import estimate as estimating
 from api import jobs, library, positions
-from hardcover.request import mark_book_as_read
+from hardcover.request import contribute_edition, edition_payload, mark_book_as_read
+
+# The reader itself needs no key, but this process reports whether one is present and
+# reads OPENROUTER_MODEL for the default estimate. Nothing else here loads .env: the
+# pipeline's own load_dotenv lives behind an import the API deliberately does not make.
+load_dotenv()
 
 # A book PDF; anything larger than this is very unlikely to be one.
 MAX_UPLOAD_BYTES = 200 * 1024 * 1024
@@ -93,7 +101,7 @@ def finish_book(key: str):
         raise HTTPException(status_code=404, detail="No such book.")
 
     already_read = detail["state"] == "read"
-    result = mark_book_as_read(detail["fullTitle"], detail["author"])
+    result = mark_book_as_read(detail["fullTitle"], detail["author"], detail.get("isbn"))
     marked = "error" not in result
 
     moved = None if already_read else library.move_to_read(key)
@@ -103,8 +111,105 @@ def finish_book(key: str):
     return {
         "markedRead": marked,
         "hardcoverError": result.get("error"),
+        "hardcoverTitle": (result.get("book") or {}).get("title"),
+        # True when Hardcover already had it read — the finish still counts, but nothing
+        # was written, and the screen should not imply it was.
+        "alreadyRead": result.get("alreadyRead"),
+        # Matched on title alone; the edition could be wrong.
+        "titleOnlyMatch": result.get("book") is not None
+        and not (result["book"].get("authorMatched") is True),
+        "finishNumber": positions.finish_ordinal(key),
+        "finishedTotal": positions.finished_count(),
         "moved": moved is not None,
         "movedTo": "books/read" if moved else None,
+    }
+
+
+@app.post("/api/books/{key}/enrich")
+def enrich_book(key: str):
+    """Fetch cover, rating, genres and the link out from Hardcover, and cache them.
+
+    Read-only against Hardcover: it looks the book up, it does not touch your shelf.
+    """
+    detail = library.book(key)
+    if detail is None:
+        raise HTTPException(status_code=404, detail="No such book.")
+
+    card, error = enriching.fetch(key, detail["fullTitle"], detail["author"], detail.get("isbn"))
+    if error:
+        raise HTTPException(status_code=404, detail=error)
+    return card
+
+
+@app.get("/api/books/{key}/contribution")
+def preview_contribution(key: str):
+    """What would be submitted to Hardcover for a book it does not have.
+
+    A GET, and it sends nothing: the point is that the payload can be read before anyone
+    agrees to publish it.
+    """
+    detail = library.book(key)
+    if detail is None:
+        raise HTTPException(status_code=404, detail="No such book.")
+
+    payload, error = edition_payload(
+        detail["fullTitle"], detail["author"], detail.get("isbn"), detail.get("pages")
+    )
+    if error:
+        raise HTTPException(status_code=400, detail=error)
+    return {"payload": payload["dto"], "author": detail["author"]}
+
+
+@app.post("/api/books/{key}/contribution")
+def submit_contribution(key: str):
+    """Add this book to Hardcover's public catalogue.
+
+    Reached only from the confirm step on the library screen. Nothing in ingest calls
+    this: the title and author come from a language model reading the first few pages,
+    and a shared catalogue is not the place to publish a guess nobody has looked at.
+    """
+    detail = library.book(key)
+    if detail is None:
+        raise HTTPException(status_code=404, detail="No such book.")
+
+    payload, error = edition_payload(
+        detail["fullTitle"], detail["author"], detail.get("isbn"), detail.get("pages")
+    )
+    if error:
+        raise HTTPException(status_code=400, detail=error)
+
+    result = contribute_edition(payload)
+    if "error" in result:
+        raise HTTPException(status_code=502, detail=result["error"])
+
+    # It exists on Hardcover now, so the cover and the rest can be fetched.
+    card, _ = enriching.fetch(key, detail["fullTitle"], detail["author"], detail.get("isbn"))
+    return {"added": True, "hardcover": card}
+
+
+@app.post("/api/books/{key}/hardcover")
+def resync_hardcover(key: str):
+    """Ask Hardcover again about a book already finished here.
+
+    A finish that failed for a reason of the moment — no key, a bad query, the network —
+    stored `markedRead: false` forever, and nothing ever revisited it. This re-runs the
+    lookup and rewrites only that flag, so the book keeps its place in the finished
+    order and its finish date.
+    """
+    detail = library.book(key)
+    if detail is None:
+        raise HTTPException(status_code=404, detail="No such book.")
+
+    result = mark_book_as_read(detail["fullTitle"], detail["author"], detail.get("isbn"))
+    marked = "error" not in result
+    positions.set_marked_read(key, marked)
+
+    return {
+        "markedRead": marked,
+        "hardcoverError": result.get("error"),
+        "hardcoverTitle": (result.get("book") or {}).get("title"),
+        "alreadyRead": result.get("alreadyRead"),
+        "finishNumber": positions.finish_ordinal(key),
     }
 
 
@@ -128,12 +233,12 @@ def remove_book(key: str):
 
 @app.get("/api/ingest/jobs")
 def get_jobs():
-    return {"jobs": jobs.list_jobs(), "hasKey": bool(os.environ.get("OPENAI_API_KEY"))}
+    has_key = bool(os.environ.get("OPENROUTER_API_KEY") or os.environ.get("OPENAI_API_KEY"))
+    return {"jobs": jobs.list_jobs(), "hasKey": has_key}
 
 
-@app.post("/api/ingest/upload")
-async def upload(file: UploadFile = File(...), chunks: int | None = None):
-    """Take a PDF and queue it for the pipeline."""
+async def _read_pdf_upload(file: UploadFile) -> bytes:
+    """The same four checks for both the estimate and the real upload."""
     name = file.filename or "book.pdf"
     if not name.lower().endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Only PDF files can be ingested.")
@@ -145,14 +250,69 @@ async def upload(file: UploadFile = File(...), chunks: int | None = None):
         raise HTTPException(status_code=413, detail="That file is larger than 200MB.")
     if not data.startswith(b"%PDF"):
         raise HTTPException(status_code=400, detail="That file is not a PDF.")
+    return data
 
-    return jobs.public(jobs.submit(name, data, chunks))
+
+@app.post("/api/ingest/estimate")
+async def estimate_upload(file: UploadFile = File(...), chunks: int | None = None):
+    """Price a PDF without running anything.
+
+    The file is read into a temporary path, measured and thrown away — nothing is queued
+    and no LLM is called, so this is safe to run on a machine with no API key. The
+    browser sends the file again when the estimate is accepted; that second transfer is
+    the price of never leaving an unconfirmed PDF sitting in next/.
+    """
+    import tempfile
+
+    data = await _read_pdf_upload(file)
+
+    handle, path = tempfile.mkstemp(suffix=".pdf")
+    try:
+        with os.fdopen(handle, "wb") as temp:
+            temp.write(data)
+        try:
+            result = estimating.estimate_pdf(path, chunks)
+        except ValueError as ex:
+            raise HTTPException(status_code=400, detail=str(ex))
+        except Exception as ex:
+            raise HTTPException(status_code=400, detail=f"This file could not be read as a PDF: {ex}")
+    finally:
+        try:
+            os.remove(path)
+        except OSError:
+            pass
+
+    return {"filename": file.filename, "bytes": len(data), **result}
+
+
+@app.post("/api/ingest/upload")
+async def upload(
+    file: UploadFile = File(...),
+    chunks: int | None = None,
+    model: str | None = None,
+    cost: float | None = None,
+):
+    """Take a PDF and queue it for the pipeline."""
+    data = await _read_pdf_upload(file)
+    name = file.filename or "book.pdf"
+    return jobs.public(jobs.submit(name, data, chunks, model, {"cost": cost}))
 
 
 @app.delete("/api/ingest/jobs")
 def clear_jobs():
     """Clear finished and failed jobs from the list; the books they made are kept."""
     return {"cleared": jobs.clear_finished()}
+
+
+@app.delete("/api/ingest/jobs/{job_id}")
+def remove_job(job_id: str):
+    """Remove one settled job. A running job has to finish or fail first."""
+    removed = jobs.remove(job_id)
+    if removed is None:
+        raise HTTPException(status_code=404, detail="No such job.")
+    if removed is False:
+        raise HTTPException(status_code=409, detail="That job is still running.")
+    return {"removed": True}
 
 
 # The built frontend, when there is one. Mounted last so /api always wins.

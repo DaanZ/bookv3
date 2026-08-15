@@ -20,7 +20,7 @@ class BookMeta(BaseModel):
     publisher: str = Field(..., description="Publisher of the book")
 
 
-def get_book_meta(pages: List[Document], n: int = 5):
+def get_book_meta(pages: List[Document], n: int = 5, model: str = None):
     history = History()
     total_characters = 0
     for page in pages[:n]:
@@ -31,6 +31,6 @@ def get_book_meta(pages: List[Document], n: int = 5):
     if total_characters == 0:
         raise UnreadableCharactersError(details="Unable to read characters in book")
     history.user("What is the name of the book?")
-    meta: BookMeta = llm_strict(history, base_model=BookMeta)
+    meta: BookMeta = llm_strict(history, model_name=model, base_model=BookMeta)
     return {"title": meta.title, "author": meta.author, "category": meta.category,
             "publisher": meta.publisher, "pages": len(pages)}
