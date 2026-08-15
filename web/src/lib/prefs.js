@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { setProfilePrefs } from './api';
 
-// theme, palette, focusMode and maxHighlights persist; the design lists them as the
+// theme, palette and maxHighlights persist; the design lists them as the
 // settings a reader owns rather than the app. They now live on the *profile*
 // (api/profiles.py), so they follow the person rather than the glass: two people
 // sharing a tablet no longer share a register, and the same person on a second tablet
@@ -20,13 +20,12 @@ const DEFAULTS = {
   profile: null,
   theme: 'night',
   palette: 'sunset',
-  focusMode: true,
   maxHighlights: 8,
 };
 
 // The keys that belong to the reader and travel to the server. `profile` is not one:
 // it is this tablet's answer to "who is holding me".
-const OWNED = ['theme', 'palette', 'focusMode', 'maxHighlights'];
+const OWNED = ['theme', 'palette', 'maxHighlights'];
 
 function onlyOwned(source) {
   const out = {};

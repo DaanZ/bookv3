@@ -173,20 +173,81 @@ export function paletteFor(name, day, count) {
   });
 }
 
-// The first 40% of the parts carry 80% of the progress: the front of a book is where
-// the information is, so finishing part 4 of 10 should read as most of the way there.
+// Progress is a logistic curve, not two flat rates.
+//
+// The old model split the parts in two and gave each half a constant weight, so the bar
+// moved at one speed and then abruptly at another — a step at the boundary that is an
+// artefact of the arithmetic, not anything about the book. A logistic fits the same
+// intuition without the cliff: understanding accumulates slowly at first, fastest
+// through the early-middle, and tails off as the later parts elaborate what is already
+// known.
+//
+// The introduction is excluded. It sets up the book rather than being part of it, so
+// finishing it should not read as progress through the argument — part 1 carries no
+// weight and the curve is fitted over what remains.
+
+// Where the curve is steepest, as a fraction of the content parts. Early, because that
+// is where the book is doing its work.
+const LOGISTIC_MIDPOINT = 1 / 6;
+
+// The constraint being fitted: the first third of the content carries 80%.
+const FIT_AT = 1 / 3;
+const FIT_TO = 0.8;
+
+const logistic = (x, midpoint, steepness) => 1 / (1 + Math.exp(-steepness * (x - midpoint)));
+
+/** Cumulative share of the book after `x` content parts, for a given steepness. */
+function share(x, span, steepness) {
+  const midpoint = span * LOGISTIC_MIDPOINT;
+  const low = logistic(0, midpoint, steepness);
+  const high = logistic(span, midpoint, steepness);
+  if (high - low < 1e-9) return x / span;
+  return (logistic(x, midpoint, steepness) - low) / (high - low);
+}
+
+/**
+ * The steepness that puts `FIT_TO` of the book in its first `FIT_AT`.
+ *
+ * Solved rather than hard-coded: the constraint is the design, and the value that
+ * satisfies it depends on how many parts a book has. Bisection converges in well under
+ * the iterations given, and the curve is monotonic in steepness, so there is one answer.
+ */
+function steepnessFor(span) {
+  let low = 0.01;
+  let high = 40;
+  for (let i = 0; i < 60; i += 1) {
+    const mid = (low + high) / 2;
+    if (share(span * FIT_AT, span, mid) < FIT_TO) low = mid;
+    else high = mid;
+  }
+  return (low + high) / 2;
+}
+
 export function weights(n) {
-  const front = Math.max(1, Math.round(n * 0.4));
-  const back = Math.max(1, n - front);
-  return Array.from({ length: n }, (_, i) => (i < front ? 0.8 / front : 0.2 / back));
+  if (n <= 1) return Array.from({ length: Math.max(0, n) }, () => (n === 1 ? 1 : 0));
+
+  // Part 1 is the introduction and carries nothing; the curve spans the rest.
+  const span = n - 1;
+  const steepness = steepnessFor(span);
+  return Array.from({ length: n }, (_, i) =>
+    i === 0 ? 0 : share(i, span, steepness) - share(i - 1, span, steepness),
+  );
 }
 
 export function cum(n, i) {
   return weights(n).slice(0, i).reduce((a, b) => a + b, 0);
 }
 
+/** The part by which the bar has reached 80% — the fitted point, reported honestly. */
 export function frontCount(n) {
-  return Math.max(1, Math.round(n * 0.4));
+  if (n <= 1) return n;
+  const w = weights(n);
+  let running = 0;
+  for (let i = 0; i < n; i += 1) {
+    running += w[i];
+    if (running >= FIT_TO - 1e-9) return i + 1;
+  }
+  return n;
 }
 
 // progress = weight of the parts behind you + the part you are in, scaled by how far

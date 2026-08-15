@@ -19,7 +19,6 @@ import useSwipeNavigation from '../lib/useSwipeNavigation';
 
 export default function Reader({ book, part, page, prefs, ambience, canFinish = true,
                                  onNavigate, onShelf, onFinish }) {
-  const [focused, setFocused] = useState(null);
   const [soundOpen, setSoundOpen] = useState(false);
 
   const day = prefs.theme === 'day';
@@ -78,14 +77,12 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
   const backLabel = pageIndex > 0 ? 'Previous page' : part === 0 ? 'Back to shelf' : 'Previous part';
 
   const goNext = () => {
-    setFocused(null);
     if (!lastPage) return onNavigate(part, pageIndex + 1);
     if (lastPart) return canFinish ? onFinish() : onShelf();
     return onNavigate(part + 1, 0);
   };
 
   const goBack = () => {
-    setFocused(null);
     if (pageIndex > 0) return onNavigate(part, pageIndex - 1);
     if (part === 0) return onShelf();
     return onNavigate(part - 1, 0);
@@ -172,11 +169,15 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 7, marginTop: 26 }}>
-        <ProgressBar pct={pct} />
+        {/* The book's own palette, the one its highlights are drawn from. Eight stops
+            rather than the page's count: this bar spans the whole book, so it shows the
+            whole ramp regardless of how many phrases happen to be marked on this page. */}
+        <ProgressBar pct={pct} gradient={paletteFor(prefs.palette, day, 8)} />
         <span
           style={{ font: "400 10.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}
         >
-          front-weighted · the first {frontCount(partCount)} parts carry 80% of the bar
+          logistic · the introduction is not counted · 80% of the bar by part{' '}
+          {frontCount(partCount)}
         </span>
       </div>
 
@@ -262,7 +263,6 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
           </h2>
 
           <div
-            onMouseLeave={() => setFocused(null)}
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -274,9 +274,6 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
               <p
                 key={i}
                 className="para"
-                onMouseEnter={() => prefs.focusMode && setFocused(i)}
-                // On touch there is no hover, so a tap on a paragraph is the same signal.
-                onClick={() => prefs.focusMode && setFocused(focused === i ? null : i)}
                 style={{
                   margin: 0,
                   maxWidth: '46ch',
@@ -286,7 +283,6 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
                   letterSpacing: '.004em',
                   color: 'var(--text-primary)',
                   textWrap: 'pretty',
-                  opacity: !prefs.focusMode || focused === null || focused === i ? 1 : 0.28,
                 }}
               >
                 {/* No whitespace between the spans: a newline here renders as a space and
@@ -323,10 +319,15 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
             page {pageIndex + 1} of {pages.length} in this part · drag the page to turn it
           </span>
         </div>
+        {/* The button turns the page the same way the drag does. The two used to differ
+            — one slid, one swapped instantly — which made them feel like different apps.
+            Where there is no page to slide to (finishing the book, falling off the front
+            onto the shelf) the plain handler runs, because that is a screen change and
+            should not be dressed as a page turn. */}
         <Button
           size="lg"
           full
-          onClick={goNext}
+          onClick={canSwipeNext ? swipe.slideNext : goNext}
           style={{ padding: '19px 22px', fontSize: 16, borderRadius: 13, minHeight: 62 }}
         >
           {nextLabel}
@@ -344,7 +345,7 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
           >
             page {Math.round(progress * book.pages)} of {book.pages}
           </span>
-          <QuietLink onClick={goBack}>{backLabel}</QuietLink>
+          <QuietLink onClick={canSwipeBack ? swipe.slideBack : goBack}>{backLabel}</QuietLink>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import Patch from '../components/Patch';
+import Spinner from '../components/Spinner';
 import { Indexing, Summarising } from '../components/Waiting';
 import { Button, Chip, ProgressBar, QuietLink } from '../components/ui';
 import {
@@ -13,6 +14,7 @@ import {
   moveBook,
   previewContribution,
   removeJob,
+  resumeJob,
   submitContribution,
   uploadPdf,
 } from '../lib/api';
@@ -70,6 +72,10 @@ function ModelChoice({ option, selected, onPick }) {
           {unusable
             ? `context ${thousands(option.contextLength)} — too small for the biggest part`
             : `$${option.inputPerMillion.toFixed(2)} in · $${option.outputPerMillion.toFixed(2)} out per 1M`}
+          {/* Whether this model has ever produced a highlighted book here. Cheap and
+              untried is the combination that wastes a book, so it is said up front
+              rather than discovered. */}
+          {!unusable && (option.proven ? ' · proven here' : ' · never tried here')}
         </span>
       </span>
       <span
@@ -103,8 +109,22 @@ function EstimateRow({ item, onPick, onStart, onCancel, expanded, onToggle }) {
   }
 
   if (!estimate) {
+    // Reading a 20MB PDF and counting its tokens takes a few seconds, and until the
+    // price lands there is nothing to show but a filename. The Spinner keeps the 400ms
+    // threshold itself, so a small file that measures instantly shows nothing at all
+    // rather than a flash.
     return (
-      <div style={{ padding: '14px 16px', borderRadius: 13, background: 'var(--bg-surface-hover)' }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 13,
+          padding: '14px 16px',
+          borderRadius: 13,
+          background: 'var(--bg-surface-hover)',
+        }}
+      >
+        <Spinner variant="rim" size={22} />
         <span style={{ font: `400 12px ${MONO}`, color: 'var(--text-muted)' }}>
           {file.name} · reading and measuring…
         </span>
@@ -193,7 +213,7 @@ function EstimateRow({ item, onPick, onStart, onCancel, expanded, onToggle }) {
   );
 }
 
-function JobRow({ job, onRemove, palette, day }) {
+function JobRow({ job, onRemove, onResume, palette, day }) {
   const total = job.chunksTotal;
   // A running job cannot be removed; the worker is still holding the file.
   const settled = job.status === 'done' || job.status === 'failed';
@@ -231,6 +251,22 @@ function JobRow({ job, onRemove, palette, day }) {
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <Chip tone={STATUS_TONE[job.status] || 'neutral'}>{job.status}</Chip>
+          {/* A failed job can always be run again; whether that *resumes* depends on
+              whether it got far enough to bank anything. Gating the control on having a
+              checkpoint left the jobs that failed earliest — the ones most in need of a
+              second go — with no way to start one. */}
+          {job.status === 'failed' && (
+            <QuietLink
+              title={
+                job.partsBought > 0
+                  ? `Continue from part ${job.partsBought + 1} — the first ${job.partsBought} are already paid for`
+                  : 'Run this book again from the beginning'
+              }
+              onClick={() => onResume(job.id)}
+            >
+              {job.partsBought > 0 ? `Resume from ${job.partsBought + 1}` : 'Run again'}
+            </QuietLink>
+          )}
           {settled && <QuietLink onClick={() => onRemove(job.id)}>Remove</QuietLink>}
         </div>
       </div>
@@ -255,7 +291,7 @@ function JobRow({ job, onRemove, palette, day }) {
         <>
           <ProgressBar pct="100%" fill="var(--shore-400)" />
           <span style={{ font: "400 10.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
-            {total || 0} parts written to books/available
+            {total || 0} parts written
           </span>
         </>
       )}
@@ -555,6 +591,19 @@ export default function Library({ books, counts, palette, day, onShelf, onChange
       }
     },
     [pending, dropPending, refreshJobs],
+  );
+
+  const continueJob = useCallback(
+    async (id) => {
+      setError(null);
+      try {
+        await resumeJob(id);
+      } catch (ex) {
+        setError(ex.message);
+      }
+      refreshJobs();
+    },
+    [refreshJobs],
   );
 
   const dropJob = useCallback(
@@ -890,7 +939,7 @@ export default function Library({ books, counts, palette, day, onShelf, onChange
             )}
           </div>
           {jobs.map((job) => (
-            <JobRow key={job.id} job={job} onRemove={dropJob} palette={palette} day={day} />
+            <JobRow key={job.id} job={job} onRemove={dropJob} onResume={continueJob} palette={palette} day={day} />
           ))}
         </div>
       )}
@@ -959,9 +1008,9 @@ export default function Library({ books, counts, palette, day, onShelf, onChange
           borderTop: '1px solid var(--border-subtle)',
         }}
       >
-        <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
-          next/ → books/available · pdfs/
-        </span>
+        {/* Same reasoning as the shelf: the pipeline's folder names are how this is
+            built, not something the screen needs to say. */}
+        <span />
         <QuietLink onClick={onShelf}>Back to shelf</QuietLink>
       </div>
     </div>

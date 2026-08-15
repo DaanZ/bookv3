@@ -125,8 +125,64 @@ function progressLine(profile) {
   return parts.join(' · ');
 }
 
+/**
+ * A Hardcover token, which is a credential rather than a lock.
+ *
+ * Its own field because `PinForm` strips everything that is not a digit, and this is a
+ * long opaque string. Masked for the same reason a PIN is — it is read off a screen in a
+ * room — but with no length rule of ours to enforce: Hardcover decides what is valid, and
+ * the honest way to find out is to use it.
+ */
+function TokenForm({ busy, error, onSubmit, onCancel }) {
+  const [token, setToken] = useState('');
+
+  return (
+    <form
+      style={{ display: 'flex', flexDirection: 'column', gap: 6, alignItems: 'flex-end' }}
+      onSubmit={(event) => {
+        event.preventDefault();
+        onSubmit(token.trim());
+      }}
+    >
+      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+        <span style={{ font: "400 11px 'Space Grotesk', system-ui", color: 'var(--text-muted)' }}>
+          Hardcover API token
+        </span>
+        <input
+          autoFocus
+          type="password"
+          autoComplete="off"
+          spellCheck="false"
+          value={token}
+          placeholder="eyJhbGciOi…"
+          onChange={(event) => setToken(event.target.value)}
+          style={{
+            width: 220,
+            padding: '8px 12px',
+            borderRadius: 'var(--radius-input)',
+            border: '1px solid var(--border-strong)',
+            background: 'transparent',
+            color: 'var(--text-primary)',
+            font: "400 12px 'IBM Plex Mono', monospace",
+            outline: 'none',
+          }}
+        />
+        <Button size="sm" type="submit" disabled={busy || token.trim().length < 20}>
+          {busy ? '…' : 'Link'}
+        </Button>
+        <QuietLink onClick={onCancel}>Cancel</QuietLink>
+      </div>
+      {error && (
+        <span style={{ font: "400 11px 'Space Grotesk', system-ui", color: 'var(--chip-expired-fg)' }}>
+          {error}
+        </span>
+      )}
+    </form>
+  );
+}
+
 function ProfileRow({ profile, active, busy, mine, onPick, onRename, onDelete, onSetPin,
-                     onVerify }) {
+                     onVerify, onSetHardcover }) {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(profile.name);
   const [confirming, setConfirming] = useState(false);
@@ -166,6 +222,9 @@ function ProfileRow({ profile, active, busy, mine, onPick, onRename, onDelete, o
         close();
       } else if (asking === 'remove') {
         await onSetPin(profile.id, null, value);
+        close();
+      } else if (asking === 'hardcover') {
+        await onSetHardcover(profile.id, value);
         close();
       }
     } catch (ex) {
@@ -276,7 +335,9 @@ function ProfileRow({ profile, active, busy, mine, onPick, onRename, onDelete, o
             </span>
           </button>
 
-          {asking ? (
+          {asking === 'hardcover' ? (
+            <TokenForm busy={working} error={pinError} onSubmit={submitPin} onCancel={close} />
+          ) : asking ? (
             <PinForm
               label={PIN_LABELS[asking]}
               busy={working}
@@ -321,6 +382,22 @@ function ProfileRow({ profile, active, busy, mine, onPick, onRename, onDelete, o
                 ) : (
                   <QuietLink onClick={() => ask('set')}>Set a PIN</QuietLink>
                 ))}
+              {mine &&
+                (profile.hasHardcover ? (
+                  <QuietLink
+                    title="Finished books stop being marked on Hardcover"
+                    onClick={() => onSetHardcover(profile.id, null)}
+                  >
+                    Unlink Hardcover
+                  </QuietLink>
+                ) : (
+                  <QuietLink
+                    title="Finished books get marked read on your Hardcover shelf"
+                    onClick={() => ask('hardcover')}
+                  >
+                    Link Hardcover
+                  </QuietLink>
+                ))}
               {!profile.owner && <QuietLink onClick={() => setConfirming(true)}>Delete</QuietLink>}
             </div>
           )}
@@ -341,6 +418,7 @@ export default function Profiles({
   onRename,
   onDelete,
   onSetPin,
+  onSetHardcover,
   onVerify,
   onBack,
 }) {
@@ -421,6 +499,7 @@ export default function Profiles({
             onRename={onRename}
             onDelete={onDelete}
             onSetPin={onSetPin}
+            onSetHardcover={onSetHardcover}
             onVerify={onVerify}
           />
         ))}

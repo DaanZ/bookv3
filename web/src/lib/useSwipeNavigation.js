@@ -222,6 +222,16 @@ export default function useSwipeNavigation({
   return {
     phase,
     dragging: phase === 'drag',
+    /**
+     * Turn the page the way a drag would, from a control.
+     *
+     * The button and the gesture were doing the same thing by two different routes —
+     * one animated, one an instant swap — which made the buttons feel like a different
+     * app. They share the animation now, and the direction matches the hand: forward
+     * leaves to the left, back leaves to the right.
+     */
+    slideNext: () => (phaseRef.current === 'idle' && canNext ? commit(-1) : undefined),
+    slideBack: () => (phaseRef.current === 'idle' && canPrevious ? commit(1) : undefined),
     handlers: {
       onPointerDown,
       onPointerMove,

@@ -128,12 +128,44 @@ export function Card({ children, elevation = 'table', style, ...rest }) {
 }
 
 // A 4px track with a fill that transitions its width in 260ms. Used on all three screens.
-export function ProgressBar({ pct, fill = 'var(--accent)' }) {
+/**
+ * @param gradient  the reading palette's stops. Given them, the bar wears the book's own
+ *                  colours instead of a flat accent.
+ *
+ * The ramp is painted across the **whole track** and the unread part is covered over,
+ * rather than the gradient being squeezed into the filled portion. That matters: squeezed,
+ * every stop slides leftward as you read, so the bar changes colour under a page you have
+ * already finished. Painted across the track, a position keeps its colour for the whole
+ * book and reading uncovers more of the ramp — the same idea as the highlights, where the
+ * first phrase on a page is the start of the palette and the last is its end.
+ */
+export function ProgressBar({ pct, fill = 'var(--accent)', gradient = null }) {
+  const track = { height: 4, borderRadius: 2, background: 'var(--border-subtle)' };
+
+  if (!gradient || gradient.length < 2) {
+    return (
+      <div style={track}>
+        <div className="fill" style={{ height: 4, width: pct, borderRadius: 2, background: fill }} />
+      </div>
+    );
+  }
+
   return (
-    <div style={{ height: 4, borderRadius: 2, background: 'var(--border-subtle)' }}>
+    <div style={{ ...track, position: 'relative', overflow: 'hidden' }}>
+      {/* The ramp is laid across the whole track and *clipped* to what has been read.
+          It was covered over instead, with `--border-subtle` — which is rgba at .07, so
+          the cover was 7% opaque and the full gradient showed straight through it. A book
+          nobody had opened wore a finished bar. Clipping removes the pixels rather than
+          painting over them, so nothing depends on the track colour being solid. */}
       <div
         className="fill"
-        style={{ height: 4, width: pct, borderRadius: 2, background: fill }}
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: `linear-gradient(90deg, ${gradient.join(', ')})`,
+          clipPath: `inset(0 calc(100% - ${pct}) 0 0)`,
+        }}
       />
     </div>
   );

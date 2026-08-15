@@ -12,11 +12,39 @@ export function setProfile(id) {
   profileId = id || null;
 }
 
+/**
+ * Who to send, falling back to what the browser has stored.
+ *
+ * The module variable above is set once, by App's mount effect. That made it the only
+ * copy of the answer, and anything that re-evaluated this module without re-running that
+ * effect silently reset it to null — which the server reads as the guest, so the shelf
+ * loses its bookmarks and every owner action comes back "Only the owner adds, removes or
+ * re-files books". In development a hot reload does exactly that on every edit to this
+ * file. The stored preference is the durable answer and this is the cache, so when the
+ * cache is empty the stored one stands in rather than the app forgetting who it is.
+ */
+function currentProfile() {
+  if (profileId) return profileId;
+  try {
+    const stored = JSON.parse(localStorage.getItem('bookv3.prefs') || '{}');
+    return stored.profile || null;
+  } catch {
+    return null;
+  }
+}
+
 async function request(path, options) {
   const response = await fetch(`${BASE}${path}`, {
+    // Never read these from the HTTP cache. The server sends no-store, but that only
+    // governs responses stored from now on: a stale server once answered /api/profiles
+    // with the SPA's index.html under a 200, the browser cached it with no directives
+    // at all, and every reload afterwards was served that HTML while the same URL
+    // returned correct JSON to curl. Asking here means a browser already holding a bad
+    // answer recovers on its own rather than needing its cache cleared.
+    cache: 'no-store',
     headers: {
       'content-type': 'application/json',
-      ...(profileId ? { 'x-profile': profileId } : null),
+      ...(currentProfile() ? { 'x-profile': currentProfile() } : null),
     },
     ...options,
   });
@@ -69,7 +97,20 @@ export const setProfilePin = (id, pin, current) =>
     body: JSON.stringify({ pin, current }),
   });
 
-/** The reader's own settings — register, palette, pointer focus, highlight cap. */
+/**
+ * Link this reader's own Hardcover account, or unlink it with `token: null`.
+ *
+ * Finishing a book marks it read on the account of whoever read it, so this is what
+ * makes the completion list personal. The token goes up and never comes back down — the
+ * profile only ever reports `hasHardcover`.
+ */
+export const setProfileHardcover = (id, token) =>
+  request(`/profiles/${encodeURIComponent(id)}/hardcover`, {
+    method: 'PUT',
+    body: JSON.stringify({ token }),
+  });
+
+/** The reader's own settings — register, palette, highlight cap. */
 export const setProfilePrefs = (id, patch) =>
   request(`/profiles/${encodeURIComponent(id)}/prefs`, {
     method: 'PUT',
@@ -126,6 +167,10 @@ export const getEnrichment = () => request('/enrichment');
 
 export const clearJobs = () => request('/ingest/jobs', { method: 'DELETE' });
 
+/** Run a failed job again, continuing from the parts it already paid for. */
+export const resumeJob = (id) =>
+  request(`/ingest/jobs/${encodeURIComponent(id)}/resume`, { method: 'POST' });
+
 /** Remove one settled job, and the abandoned upload it left in next/. */
 export const removeJob = (id) =>
   request(`/ingest/jobs/${encodeURIComponent(id)}`, { method: 'DELETE' });
@@ -134,7 +179,18 @@ export const removeJob = (id) =>
 async function postFile(path, file) {
   const body = new FormData();
   body.append('file', file);
-  const response = await fetch(path, { method: 'POST', body });
+  const response = await fetch(path, {
+    method: 'POST',
+    body,
+    cache: 'no-store',
+    // The profile header, which `request` adds and this had no way of knowing about:
+    // uploads bypass `request` because the body is multipart and the JSON content-type
+    // must not be set. That exemption quietly took the reader's identity off with it,
+    // so every upload arrived as a guest and the server refused it — "Only the owner
+    // adds, removes or re-files books" — on a tablet where the owner was the one
+    // holding it. Only the content-type is special here; who is asking is not.
+    headers: currentProfile() ? { 'x-profile': currentProfile() } : undefined,
+  });
   if (!response.ok) {
     let detail = `${response.status} ${response.statusText}`;
     try {

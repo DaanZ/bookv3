@@ -1,6 +1,6 @@
 import Patch from '../components/Patch';
 import { ProgressBar, QuietLink } from '../components/ui';
-import { cum } from '../lib/reading';
+import { cum, paletteFor } from '../lib/reading';
 
 // Choose what to read; see at a glance what each book is and where you left it.
 
@@ -25,7 +25,7 @@ function metaLine(book, donePct) {
   return `${book.partCount} parts${sittings}`;
 }
 
-function BookRow({ book, onOpen }) {
+function BookRow({ book, gradient, onOpen }) {
   const [chipWord, chipBg, chipFg] = CHIPS[book.state] || CHIPS.new;
   const chip = chipWord ?? `part ${book.at + 1} of ${book.partCount}`;
   const done = book.state === 'read' ? 1 : cum(book.partCount, book.at);
@@ -91,10 +91,7 @@ function BookRow({ book, onOpen }) {
               {chip}
             </span>
           </div>
-          <ProgressBar
-            pct={`${donePct}%`}
-            fill={book.state === 'read' ? 'var(--shore-400)' : 'var(--accent)'}
-          />
+          <ProgressBar pct={`${donePct}%`} gradient={gradient} />
           <span
             style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}
           >
@@ -166,8 +163,12 @@ export default function Shelf({
   onLibrary,
   onProfiles,
   onLock,
+  palette,
+  day,
 }) {
   const guest = !who || who.guest;
+  // One ramp for the whole shelf, built once rather than per row.
+  const gradient = paletteFor(palette || 'sunset', !!day, 8);
   return (
     <div
       style={{
@@ -265,7 +266,7 @@ export default function Shelf({
           </span>
         ) : (
           books.map((book) => (
-            <BookRow key={book.key} book={book} onOpen={() => onOpen(book.key)} />
+            <BookRow key={book.key} book={book} gradient={gradient} onOpen={() => onOpen(book.key)} />
           ))
         )}
       </div>
@@ -281,18 +282,22 @@ export default function Shelf({
           borderTop: '1px solid var(--border-subtle)',
         }}
       >
-        <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
-          books/available · books/read
-        </span>
+        {/* The footer used to name the folders the books are filed in. That is where the
+            implementation keeps them, not anything a reader needs to know — the shelf
+            already says what is read and what is not. */}
+        <span />
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
             {themeLabel}
           </span>
-          {/* Who these bookmarks belong to, and the way to be somebody else. Named
-              rather than labelled "profiles": the question the row answers is whose
-              page this is. */}
+          {/* Who these bookmarks belong to, and the way to be somebody else.
+              The name alone was the whole label here, on the reasoning that the question
+              being answered is whose page this is. It failed: a name in a footer does not
+              read as a control, so the one way to reach the profiles was invisible — and
+              a reader told to "pick a profile" had nowhere to go. The name still leads,
+              because it is the answer, but the destination is now said out loud. */}
           {who && (
-            <QuietLink onClick={onProfiles}>
+            <QuietLink onClick={onProfiles} title="Switch reader, or add one">
               <span
                 aria-hidden="true"
                 style={{
@@ -305,7 +310,7 @@ export default function Shelf({
                   verticalAlign: 'baseline',
                 }}
               />
-              {who.name}
+              {who.name} · profiles
             </QuietLink>
           )}
           {/* Only where there is something to lock. On a profile with no PIN this

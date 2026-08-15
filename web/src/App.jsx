@@ -11,10 +11,11 @@ import {
   putPosition,
   renameProfile,
   setProfile,
+  setProfileHardcover,
   setProfilePin,
   unlockProfile,
 } from './lib/api';
-import { PALETTE_NAMES } from './lib/reading';
+import { PALETTE_NAMES, paletteFor } from './lib/reading';
 import { usePrefs } from './lib/prefs';
 import { useAmbience } from './lib/useAmbience';
 import { fromLibrary, recommendations } from './lib/recommend';
@@ -209,6 +210,23 @@ export default function App() {
   // answer belongs, not a banner across the top of the card.
   const onVerifyPin = useCallback((id, pin) => unlockProfile(id, pin), []);
 
+  // Linking is per reader, and the token never comes back — the row only learns whether
+  // one is set, so the list is reloaded rather than patched in place.
+  const onSetHardcover = useCallback(
+    async (id, token) => {
+      setError(null);
+      setBusyProfile(id);
+      try {
+        await setProfileHardcover(id, token);
+        await loadProfiles();
+      } catch (ex) {
+        setError(ex.message);
+      }
+      setBusyProfile(null);
+    },
+    [loadProfiles],
+  );
+
   const onSetPin = useCallback(
     async (id, pin, current) => {
       await setProfilePin(id, pin, current);
@@ -307,7 +325,13 @@ export default function App() {
         padding: '26px 12px 60px',
       }}
     >
-      <Chrome prefs={prefs} setPrefs={setPrefs} day={day} />
+      <Chrome
+        prefs={prefs}
+        setPrefs={setPrefs}
+        day={day}
+        who={who}
+        onProfiles={() => setScreen('profiles')}
+      />
 
       {error && (
         <div
@@ -318,9 +342,32 @@ export default function App() {
             background: 'var(--chip-expired-bg)',
             color: 'var(--chip-expired-fg)',
             font: "400 12.5px 'Space Grotesk', system-ui",
+            display: 'flex',
+            alignItems: 'center',
           }}
         >
-          {error}
+          <span>{error}</span>
+          {/* An error that names a thing to do should be able to do it. Being told to
+              pick a profile with no way to reach one is how this error was met the first
+              time it appeared. */}
+          {/needs a name|pick a profile/i.test(error) && (
+            <button
+              type="button"
+              onClick={() => setScreen('profiles')}
+              style={{
+                marginLeft: 12,
+                border: 0,
+                background: 'transparent',
+                color: 'inherit',
+                font: "600 12.5px 'Space Grotesk', system-ui",
+                textDecoration: 'underline',
+                textUnderlineOffset: 3,
+                cursor: 'pointer',
+              }}
+            >
+              Choose a profile
+            </button>
+          )}
         </div>
       )}
 
@@ -341,6 +388,8 @@ export default function App() {
               onOpen={openBook}
               onLibrary={() => setScreen('library')}
               onProfiles={() => setScreen('profiles')}
+              palette={prefs.palette}
+              day={day}
               onLock={who?.hasPin ? lock : null}
             />
           )}
@@ -359,6 +408,7 @@ export default function App() {
               onRename={onRenameProfile}
               onDelete={onDeleteProfile}
               onSetPin={onSetPin}
+              onSetHardcover={onSetHardcover}
               onVerify={onVerifyPin}
               onBack={toShelf}
             />
@@ -409,7 +459,107 @@ export default function App() {
   );
 }
 
-function Chrome({ prefs, setPrefs, day }) {
+/**
+ * Day/night as one switch rather than two buttons.
+ *
+ * Two buttons made the register look like a pair of choices, one of which happened to be
+ * lit. It is one setting with two positions, and a switch says that in its shape — where
+ * the knob sits *is* the answer, readable without reading either word.
+ *
+ * The knob moves; the register does not. `--dur-instant` is deliberate: the design
+ * system's rule that the Deep-to-Shore swap is never animated is about the room, not
+ * about the light switch on its wall, and a switch whose knob teleports feels broken
+ * while a page that fades between registers feels cheap.
+ */
+function RegisterSwitch({ day, onChange }) {
+  const edge = day ? 'rgba(20,32,31,.18)' : 'rgba(253,246,234,.2)';
+  const label = (on) => ({
+    flex: 1,
+    zIndex: 1,
+    padding: '6px 12px',
+    textAlign: 'center',
+    font: "500 12px 'Space Grotesk', system-ui",
+    color: on ? 'var(--accent-on)' : day ? 'rgba(20,32,31,.6)' : 'rgba(253,246,234,.6)',
+    transition: 'color var(--dur-instant, 90ms) var(--ease-move, ease)',
+  });
+
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={!day}
+      aria-label={`Register: ${day ? 'day' : 'night'}. Switch to ${day ? 'night' : 'day'}.`}
+      onClick={() => onChange(day ? 'night' : 'day')}
+      style={{
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'center',
+        width: 132,
+        padding: 0,
+        borderRadius: 999,
+        border: `1px solid ${edge}`,
+        background: 'transparent',
+        cursor: 'pointer',
+        overflow: 'hidden',
+      }}
+    >
+      <span
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          top: 0,
+          bottom: 0,
+          left: 0,
+          width: '50%',
+          borderRadius: 999,
+          background: 'var(--accent)',
+          transform: day ? 'translateX(0)' : 'translateX(100%)',
+          transition: 'transform var(--dur-quick, 160ms) var(--ease-move, ease)',
+        }}
+      />
+      <span style={label(day)}>Day</span>
+      <span style={label(!day)}>Night</span>
+    </button>
+  );
+}
+
+/**
+ * Whose reading this is, worn as a mark rather than spelled out.
+ *
+ * The profile lived only in the shelf's footer, so on every other screen there was
+ * nothing at all saying who you were — and the answer changes what the shelf shows and
+ * what you are allowed to do. Its tone is the profile's own colour, so it reads as a
+ * face at a glance before the letter is legible.
+ */
+function ProfileMark({ who, onProfiles, day }) {
+  if (!who) return null;
+  return (
+    <button
+      type="button"
+      onClick={onProfiles}
+      title={`${who.name} — switch reader`}
+      aria-label={`Reading as ${who.name}. Switch reader.`}
+      style={{
+        display: 'grid',
+        placeItems: 'center',
+        width: 28,
+        height: 28,
+        padding: 0,
+        borderRadius: 8,
+        border: `1px solid ${day ? 'rgba(20,32,31,.18)' : 'rgba(253,246,234,.2)'}`,
+        background: who.tone || 'var(--bg-surface-hover)',
+        color: '#FDF6EA',
+        font: "600 12px 'Space Grotesk', system-ui",
+        cursor: 'pointer',
+        flexShrink: 0,
+      }}
+    >
+      {(who.name || '?').trim().charAt(0).toUpperCase()}
+    </button>
+  );
+}
+
+function Chrome({ prefs, setPrefs, day, who, onProfiles }) {
   const ink = day ? 'rgba(20,32,31,.55)' : 'rgba(253,246,234,.5)';
   const style = (on) => ({
     width: 'auto',
@@ -442,23 +592,21 @@ function Chrome({ prefs, setPrefs, day }) {
       >
         bookv3 · {prefs.palette} palette · highlights in band order
       </span>
-      <div style={{ display: 'flex', gap: 6, marginLeft: 'auto' }}>
-        <button className="tap" style={style(day)} onClick={() => setPrefs({ theme: 'day' })}>
-          Day
-        </button>
-        <button className="tap" style={style(!day)} onClick={() => setPrefs({ theme: 'night' })}>
-          Night
-        </button>
+      <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginLeft: 'auto' }}>
+        {/* Who, then how it looks: the mark sits left of the register switch because it
+            qualifies everything to its right. */}
+        <ProfileMark who={who} onProfiles={onProfiles} day={day} />
+        <RegisterSwitch day={day} onChange={(theme) => setPrefs({ theme })} />
+        {/* The palette shown rather than named. "sunset" and "coral" mean nothing until
+            you have seen them, and the point of the control is to choose colours — so it
+            wears the colours it would give you, in the register you are reading in.
+            Sampled through paletteFor, so these are the exact stops a page would use,
+            not the raw bands. The name stays as the accessible label. */}
         <button
           className="tap"
-          style={style(prefs.focusMode)}
-          onClick={() => setPrefs({ focusMode: !prefs.focusMode })}
-        >
-          Pointer focus
-        </button>
-        <button
-          className="tap"
-          style={{ ...style(false), color: ink }}
+          aria-label={`Palette: ${prefs.palette}. Switch to the next palette.`}
+          title={`${prefs.palette} — switch palette`}
+          style={{ ...style(false), color: ink, display: 'flex', alignItems: 'center', gap: 5 }}
           onClick={() =>
             setPrefs({
               palette:
@@ -466,7 +614,15 @@ function Chrome({ prefs, setPrefs, day }) {
             })
           }
         >
-          Next palette
+          <span style={{ display: 'flex', gap: 2 }}>
+            {paletteFor(prefs.palette, day, 6).map((colour) => (
+              <span
+                key={colour}
+                style={{ width: 7, height: 12, borderRadius: 1.5, background: colour }}
+              />
+            ))}
+          </span>
+          {prefs.palette}
         </button>
       </div>
     </div>

@@ -35,6 +35,11 @@ button { font-family: inherit; }
 @keyframes w-chunk { 0% { opacity: .2 } 18% { opacity: 1 } 52% { opacity: .38 } 100% { opacity: .2 } }
 .seam-sweep { animation: seam-sweep var(--spin-seam) cubic-bezier(.4, 0, .2, 1) infinite; }
 
+/* The band turns around a mark that stays still. Linear, because a loading ring that
+   eases is a ring that keeps stopping. */
+@keyframes rim-spin { to { transform: rotate(360deg); } }
+.rim-spin { animation: rim-spin var(--spin-rim) linear infinite; }
+
 /* Reduced motion completes, it does not skip. */
 @media (prefers-reduced-motion: reduce) {
   .para, .fill, .row { transition-duration: 0.01ms !important; }
@@ -44,5 +49,5 @@ button { font-family: inherit; }
      *end*, which would leave the live bar at 20% opacity and the seam swept off the
      mark — both reading as finished. `animation: none` holds the first frame instead.
      Position still reads from the bar widths and the numeral, neither of which moves. */
-  [style*="w-chunk"], .seam-sweep { animation: none !important; }
+  [style*="w-chunk"], .seam-sweep, .rim-spin { animation: none !important; }
 }
