@@ -4,7 +4,9 @@
         "author": "Frank Slootman",
         "category": "Business & Management",
         "publisher": "John Wiley & Sons",
-        "pages": 179
+        "pages": 179,
+        "isbn": "9781119836414",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

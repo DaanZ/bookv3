@@ -3,7 +3,9 @@
         "title": "The Cook's Herb Garden",
         "author": "Jeff Cox & Marie-Pierre Moine",
         "publisher": "DK Publishing",
-        "pages": 193
+        "pages": 193,
+        "isbn": "9781409386551",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

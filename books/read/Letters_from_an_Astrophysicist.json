@@ -3,7 +3,9 @@
         "title": "Letters from an Astrophysicist",
         "author": "Neil deGrasse Tyson",
         "publisher": "W.W. Norton & Company",
-        "pages": 193
+        "pages": 193,
+        "isbn": "9781324003328",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

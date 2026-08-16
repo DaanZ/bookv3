@@ -4,7 +4,9 @@
         "author": "Dr Kutub Thakur & Dr Al-Sakib Khan Pathan",
         "category": "Cybersecurity",
         "publisher": "CRC Press (Taylor & Francis Group)",
-        "pages": 305
+        "pages": 305,
+        "isbn": "9781000059571",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

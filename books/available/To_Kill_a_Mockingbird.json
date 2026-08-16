@@ -3,7 +3,9 @@
         "title": "To Kill a Mockingbird",
         "author": "Harper Lee",
         "publisher": "J.B. Lippincott & Co.",
-        "pages": 315
+        "pages": 315,
+        "isbn": "9781417793068",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

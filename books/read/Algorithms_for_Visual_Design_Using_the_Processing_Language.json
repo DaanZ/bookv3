@@ -4,7 +4,9 @@
         "author": "Kostas Terzidis",
         "category": "Computer Science",
         "publisher": "Wiley",
-        "pages": 385
+        "pages": 385,
+        "isbn": "9780470503188",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

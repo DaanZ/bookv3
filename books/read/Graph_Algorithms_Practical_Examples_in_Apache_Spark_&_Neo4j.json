@@ -4,7 +4,9 @@
         "author": "Mark Needham & Amy E. Hodler",
         "category": "Computer Science",
         "publisher": "O'Reilly Media",
-        "pages": 257
+        "pages": 257,
+        "isbn": "9781492047681",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

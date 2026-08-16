@@ -3,7 +3,9 @@
         "title": "Sacred Geometry",
         "author": "Robert Lawlor",
         "publisher": "Thames & Hudson",
-        "pages": 18
+        "pages": 18,
+        "isbn": "9780500810309",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

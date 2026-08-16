@@ -4,7 +4,9 @@
         "author": "Brant Pinvidic",
         "category": "Business/Communication",
         "publisher": "Penguin Random House",
-        "pages": 190
+        "pages": 190,
+        "isbn": "9780525540724",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

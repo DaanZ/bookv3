@@ -4,7 +4,9 @@
         "author": "Eric Roberts",
         "category": "Recursion Theory",
         "publisher": "John Wiley & Sons, Inc.",
-        "pages": 189
+        "pages": 189,
+        "isbn": "9780471816522",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

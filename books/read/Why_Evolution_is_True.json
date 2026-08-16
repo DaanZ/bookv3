@@ -4,7 +4,9 @@
         "author": "Jerry A. Coyne",
         "category": "Science",
         "publisher": "Oxford University Press",
-        "pages": 330
+        "pages": 330,
+        "isbn": "9780199230846",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

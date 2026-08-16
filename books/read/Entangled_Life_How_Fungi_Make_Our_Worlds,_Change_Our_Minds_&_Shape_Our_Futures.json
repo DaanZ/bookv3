@@ -4,7 +4,9 @@
         "author": "Merlin Sheldrake",
         "category": "Non-fiction, Science",
         "publisher": "Random House",
-        "pages": 220
+        "pages": 220,
+        "isbn": "9786051982342",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

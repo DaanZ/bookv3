@@ -4,7 +4,9 @@
         "author": "Alex Osterwalder, Yves Pigneur, Fred Etiemble, Alan Smith",
         "category": "Business",
         "publisher": "John Wiley & Sons",
-        "pages": 397
+        "pages": 397,
+        "isbn": "9783593444772",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

@@ -4,7 +4,9 @@
         "author": "Daniel Hillis",
         "category": "Computer Science",
         "publisher": "Basic Books",
-        "pages": 482
+        "pages": 482,
+        "isbn": "9780753812624",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

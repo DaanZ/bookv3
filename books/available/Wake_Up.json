@@ -4,7 +4,9 @@
         "author": "Piers Morgan",
         "category": "Non-Fiction",
         "publisher": "HarperCollins",
-        "pages": 279
+        "pages": 279,
+        "isbn": "9780008392611",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

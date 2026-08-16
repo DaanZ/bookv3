@@ -3,7 +3,9 @@
         "title": "The Computer & the Brain",
         "author": "John Von Neumann",
         "publisher": "Yale University Press",
-        "pages": 136
+        "pages": 136,
+        "isbn": "9780300084733",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

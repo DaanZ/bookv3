@@ -3,7 +3,9 @@
         "title": "Brave New World",
         "author": "Aldous Huxley",
         "publisher": "Books & Books Press",
-        "pages": 205
+        "pages": 205,
+        "isbn": "9780809590469",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

@@ -3,7 +3,9 @@
         "title": "Algorithms Are Not Enough",
         "author": "Herbert L. Roitblat",
         "publisher": "The MIT Press",
-        "pages": 340
+        "pages": 340,
+        "isbn": "9780262044127",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

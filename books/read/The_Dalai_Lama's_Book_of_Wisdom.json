@@ -3,7 +3,9 @@
         "title": "The Dalai Lama's Book of Wisdom",
         "author": "His Holiness the Dalai Lama",
         "publisher": "HarperOne",
-        "pages": 117
+        "pages": 117,
+        "isbn": "9780007388363",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

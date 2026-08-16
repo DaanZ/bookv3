@@ -3,7 +3,9 @@
         "title": "The Power of Habit",
         "author": "Charles Duhigg",
         "publisher": "Random House",
-        "pages": 258
+        "pages": 258,
+        "isbn": "9780812981605",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

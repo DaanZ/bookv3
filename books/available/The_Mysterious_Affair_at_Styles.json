@@ -3,7 +3,9 @@
         "title": "The Mysterious Affair at Styles",
         "author": "Agatha Christie",
         "publisher": "John Lane",
-        "pages": 354
+        "pages": 354,
+        "isbn": "9781705800409",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

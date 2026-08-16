@@ -3,7 +3,9 @@
         "title": "The Neuroscience of Intelligence",
         "author": "Richard J. Haier",
         "publisher": "Cambridge University Press",
-        "pages": 346
+        "pages": 346,
+        "isbn": "9781316945278",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

@@ -3,7 +3,9 @@
         "title": "Human Evolution: A Very Short Introduction",
         "author": "Bernard Wood",
         "publisher": "Oxford University Press",
-        "pages": 137
+        "pages": 137,
+        "isbn": "9780192803603",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

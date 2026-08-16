@@ -4,7 +4,9 @@
         "author": "Scott Camazine, Jean-Louis Deneubourg, Nigel R. Franks, James Sneyd, Guy Theraulaz, and Eric Bonabeau",
         "category": "Science - Complexity Theory",
         "publisher": "Princeton University Press",
-        "pages": 548
+        "pages": 548,
+        "isbn": "9780691116242",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

@@ -3,7 +3,9 @@
         "title": "Hello World",
         "author": "Hannah Fry",
         "publisher": "W. W. Norton & Company",
-        "pages": 252
+        "pages": 252,
+        "isbn": "9781473562424",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

@@ -4,7 +4,9 @@
         "author": "John Doe",
         "category": "Non-Fiction",
         "publisher": "Global Publishers",
-        "pages": 268
+        "pages": 268,
+        "isbn": "9780393075571",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

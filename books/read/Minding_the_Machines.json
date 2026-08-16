@@ -3,7 +3,9 @@
         "title": "Minding the Machines",
         "author": "Jeremy Adamson",
         "publisher": "[Publisher's Name]",
-        "pages": 205
+        "pages": 205,
+        "isbn": "9781119785347",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

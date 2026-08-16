@@ -3,7 +3,9 @@
         "title": "The Mating Mind",
         "author": "Geoffrey Miller",
         "publisher": "Doubleday",
-        "pages": 462
+        "pages": 462,
+        "isbn": "9780385495172",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

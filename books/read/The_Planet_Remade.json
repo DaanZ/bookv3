@@ -3,7 +3,9 @@
         "title": "The Planet Remade",
         "author": "Oliver Morton",
         "publisher": "Princeton University Press",
-        "pages": 441
+        "pages": 441,
+        "isbn": "9780691175904",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

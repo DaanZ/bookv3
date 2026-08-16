@@ -4,7 +4,9 @@
         "author": "Dr. Sue Johnson",
         "category": "Non-fiction, Psychology, Relationships",
         "publisher": "Little, Brown and Company",
-        "pages": 331
+        "pages": 331,
+        "isbn": "9780316445108",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

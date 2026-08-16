@@ -3,7 +3,9 @@
         "title": "The Society of Mind",
         "author": "Marvin Minsky",
         "publisher": "Simon & Schuster",
-        "pages": 336
+        "pages": 336,
+        "isbn": "9780434467587",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

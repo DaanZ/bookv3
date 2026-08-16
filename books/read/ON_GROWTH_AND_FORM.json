@@ -4,7 +4,9 @@
         "author": "D'Arcy Wentworth Thompson",
         "category": "Science/Anatomy",
         "publisher": "Cambridge University Press",
-        "pages": 451
+        "pages": 451,
+        "isbn": "9781371927387",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

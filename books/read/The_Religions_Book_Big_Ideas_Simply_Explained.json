@@ -3,7 +3,9 @@
         "title": "The Religions Book: Big Ideas Simply Explained",
         "author": "DK",
         "publisher": "DK Publishing",
-        "pages": 354
+        "pages": 354,
+        "isbn": "9781465408433",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

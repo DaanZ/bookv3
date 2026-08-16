@@ -3,7 +3,9 @@
         "title": "Beyond Good and Evil",
         "author": "Friedrich Nietzsche",
         "publisher": "Oxford University Press",
-        "pages": 940
+        "pages": 940,
+        "isbn": "9781934568217",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

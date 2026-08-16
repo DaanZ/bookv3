@@ -4,7 +4,9 @@
         "author": "George Fairbanks",
         "category": "Software Development",
         "publisher": "Marshall & Brainerd",
-        "pages": 378
+        "pages": 378,
+        "isbn": "9780984618101",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

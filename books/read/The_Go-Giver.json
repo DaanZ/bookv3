@@ -4,7 +4,9 @@
         "author": "Bob Burg and John David Mann",
         "category": "Business/Personal Development",
         "publisher": "Penguin",
-        "pages": 144
+        "pages": 144,
+        "isbn": "9780141049557",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

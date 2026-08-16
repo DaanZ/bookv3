@@ -4,7 +4,9 @@
         "author": "C. G. Jung",
         "category": "Psychology",
         "publisher": "Princeton University Press, part of Bollingen Series XX",
-        "pages": 196
+        "pages": 196,
+        "isbn": "9780415304412",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

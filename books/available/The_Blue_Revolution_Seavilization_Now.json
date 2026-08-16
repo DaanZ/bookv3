@@ -3,7 +3,9 @@
         "title": "The Blue Revolution: Seavilization Now",
         "author": "John Doe",
         "publisher": "Simon & Schuster",
-        "pages": 349
+        "pages": 349,
+        "isbn": "9781642832174",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

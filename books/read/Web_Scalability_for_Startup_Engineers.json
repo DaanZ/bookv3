@@ -4,7 +4,9 @@
         "author": "Artur Ejsmont",
         "category": "Tech & Computer Science",
         "publisher": "McGraw-Hill Education",
-        "pages": 417
+        "pages": 417,
+        "isbn": "9780071843669",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

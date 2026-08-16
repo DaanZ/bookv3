@@ -3,7 +3,9 @@
         "title": "The Miracle of Mindfulness",
         "author": "Thich Nhat Hanh",
         "publisher": "Beacon Press",
-        "pages": 155
+        "pages": 155,
+        "isbn": "9781846044823",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

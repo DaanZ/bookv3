@@ -3,7 +3,9 @@
         "title": "The Master Algorithm: How the Quest for the Ultimate Learning Machine Will Remake Our World",
         "author": "Pedro Domingos",
         "publisher": "Basic Books",
-        "pages": 328
+        "pages": 328,
+        "isbn": "9780465094271",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

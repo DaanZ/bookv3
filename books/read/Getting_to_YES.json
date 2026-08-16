@@ -3,7 +3,9 @@
         "title": "Getting to YES",
         "author": "Roger Fisher and William Ury with Bruce Patton, Editor",
         "publisher": "Random House Business Books",
-        "pages": 90
+        "pages": 90,
+        "isbn": "9780091493714",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

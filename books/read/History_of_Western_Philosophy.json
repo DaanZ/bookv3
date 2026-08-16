@@ -4,7 +4,9 @@
         "author": "Bertrand Russell",
         "category": "Philosophy",
         "publisher": "Routledge Classics",
-        "pages": 947
+        "pages": 947,
+        "isbn": "9780203487976",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

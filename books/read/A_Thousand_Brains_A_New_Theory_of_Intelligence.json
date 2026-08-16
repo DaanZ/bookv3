@@ -3,7 +3,9 @@
         "title": "A Thousand Brains: A New Theory of Intelligence",
         "author": "Jeff Hawkins",
         "publisher": "Basic Books",
-        "pages": 244
+        "pages": 244,
+        "isbn": "9781541675810",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

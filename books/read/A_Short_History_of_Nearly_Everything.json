@@ -4,7 +4,9 @@
         "author": "Bill Bryson",
         "category": "Science, Non-Fiction",
         "publisher": "Broadway Books",
-        "pages": 619
+        "pages": 619,
+        "isbn": "9780385609616",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

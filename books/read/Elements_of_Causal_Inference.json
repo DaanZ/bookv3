@@ -4,7 +4,9 @@
         "author": "Jonas Peters, Dominik Janzing, and Bernhard Sch\u00f6lkopf",
         "category": "Adaptive Computation and Machine Learning",
         "publisher": "The MIT Press",
-        "pages": 289
+        "pages": 289,
+        "isbn": "9780262037310",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

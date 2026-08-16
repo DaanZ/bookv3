@@ -3,7 +3,9 @@
         "title": "A New Earth",
         "author": "Eckhart Tolle",
         "publisher": "Plume",
-        "pages": 261
+        "pages": 261,
+        "isbn": "9780718148102",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

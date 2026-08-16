@@ -4,7 +4,9 @@
         "author": "William Zinsser",
         "category": "Education",
         "publisher": "Harper & Row, Publishers",
-        "pages": 226
+        "pages": 226,
+        "isbn": "9780062720405",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

@@ -3,7 +3,9 @@
         "title": "A Brief History of Everything",
         "author": "Ken Wilber",
         "publisher": "Shambhala Publications",
-        "pages": 782
+        "pages": 782,
+        "isbn": "9781590304501",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

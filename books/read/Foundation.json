@@ -3,7 +3,9 @@
         "title": "Foundation",
         "author": "Isaac Asimov",
         "publisher": "Gnome Press",
-        "pages": 233
+        "pages": 233,
+        "isbn": "9780373195206",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

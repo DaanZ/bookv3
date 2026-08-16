@@ -4,7 +4,9 @@
         "author": "Jeb Blount",
         "category": "Sales and Business",
         "publisher": "Wiley & Sons",
-        "pages": 312
+        "pages": 312,
+        "isbn": "9781531888985",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

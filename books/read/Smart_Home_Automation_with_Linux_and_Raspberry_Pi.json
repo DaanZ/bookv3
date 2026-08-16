@@ -3,7 +3,9 @@
         "title": "Smart Home Automation with Linux and Raspberry Pi",
         "author": "Steven Goodwin",
         "publisher": "Apress",
-        "pages": 317
+        "pages": 317,
+        "isbn": "9781430258872",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

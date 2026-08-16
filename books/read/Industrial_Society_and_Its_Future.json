@@ -4,7 +4,9 @@
         "author": "Theodore Kaczynski",
         "category": "Non-Fiction",
         "publisher": "Self-published (initially printed by newspapers)",
-        "pages": 106
+        "pages": 106,
+        "isbn": "9780963420527",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {

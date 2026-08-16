@@ -3,7 +3,9 @@
         "title": "Cosmos: A Personal Voyage",
         "author": "Carl Sagan",
         "publisher": "Random House",
-        "pages": 347
+        "pages": 347,
+        "isbn": "9782863740750",
+        "isbnSource": "hardcover"
     },
     "parts": [
         {
