@@ -194,6 +194,22 @@ const LOGISTIC_MIDPOINT = 1 / 6;
 const FIT_AT = 1 / 3;
 const FIT_TO = 0.8;
 
+// How much of the bar is shared out evenly, underneath the curve.
+//
+// A pure logistic satisfies the 80% constraint by collapsing everything after it: the
+// last third of a book carried about 1% of the bar, and in a thirty-part book a whole
+// part moved it by 0.015% — a page turn with no visible effect. That is the same
+// dishonesty as a bar that overstates, pointed the other way: it tells a reader with a
+// third of the book left that they are at 99%.
+//
+// So the curve is blended with a flat share before it is fitted. The logistic still
+// decides the shape and the front is still where the weight is; this only guarantees
+// that finishing any part moves the bar somewhere a reader can see. At 0.18 the last
+// third carries about 7% instead of 1%, the smallest part in a long book is worth
+// 0.6%, and the 80%-by-the-first-third constraint is still met exactly, because the
+// steepness is re-solved against the blend rather than against the curve alone.
+const FLAT_SHARE = 0.18;
+
 const logistic = (x, midpoint, steepness) => 1 / (1 + Math.exp(-steepness * (x - midpoint)));
 
 /** Cumulative share of the book after `x` content parts, for a given steepness. */
@@ -201,8 +217,8 @@ function share(x, span, steepness) {
   const midpoint = span * LOGISTIC_MIDPOINT;
   const low = logistic(0, midpoint, steepness);
   const high = logistic(span, midpoint, steepness);
-  if (high - low < 1e-9) return x / span;
-  return (logistic(x, midpoint, steepness) - low) / (high - low);
+  const curve = high - low < 1e-9 ? x / span : (logistic(x, midpoint, steepness) - low) / (high - low);
+  return (1 - FLAT_SHARE) * curve + FLAT_SHARE * (x / span);
 }
 
 /**

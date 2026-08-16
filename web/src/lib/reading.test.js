@@ -73,6 +73,26 @@ describe('weights', () => {
     }
   });
 
+  it('leaves the tail of the book worth reading on the bar', () => {
+    // A pure logistic met the 80% constraint by collapsing everything after it: the
+    // last third carried ~1%, and one part of a thirty-part book moved the bar 0.015%.
+    // Understating is as dishonest as overstating, so the end has to stay visible.
+    for (const n of SIZES.filter((s) => s >= 5)) {
+      const twoThirds = 1 + Math.round((n - 1) * (2 / 3));
+      const tail = 1 - cum(n, twoThirds);
+      assert.ok(tail >= 0.03, `${n} parts: last third carried only ${(tail * 100).toFixed(2)}%`);
+    }
+  });
+
+  it('makes finishing any part move the bar somewhere a reader can see', () => {
+    for (const n of SIZES.filter((s) => s >= 3)) {
+      // Part 1 is the introduction and is meant to carry nothing; the rest must not.
+      const content = weights(n).slice(1);
+      const smallest = Math.min(...content);
+      assert.ok(smallest >= 0.004, `${n} parts: smallest part was ${(smallest * 100).toFixed(3)}%`);
+    }
+  });
+
   it('is front-loaded: the earliest content part outweighs the last', () => {
     for (const n of SIZES.filter((s) => s >= 3)) {
       const w = weights(n);

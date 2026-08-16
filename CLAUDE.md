@@ -232,9 +232,21 @@ sharing it share nothing.
 
 `src/lib/reading.js` is the model and the part worth understanding:
 
-- **Front-weighted progress.** The first 40% of parts carry 80% of the bar. `progressOf` uses
-  `pageIndex`, not `pageIndex + 1` — the page you are on is in progress, not read, and 100% belongs
-  to the finish screen alone.
+- **Front-weighted progress, on a logistic curve.** Understanding accumulates slowly, fastest
+  through the early-middle, then tails off, so the bar follows an S rather than two flat rates —
+  the old model stepped at the boundary between them, which was arithmetic showing through. Part 1
+  is the introduction and carries nothing. The curve is *fitted*, not hard-coded: `steepnessFor`
+  solves for the steepness that puts 80% of the bar in the first third of the content parts, so
+  the constraint is the design and the number follows from it.
+
+  `FLAT_SHARE` is the part that is easy to remove and should not be. A pure logistic met that 80%
+  by collapsing everything after it — the last third of a book carried 1% and a part of a
+  thirty-part book moved the bar 0.015%, which tells a reader with a third left that they are
+  done. Blending a flat share in under the curve keeps the shape and the constraint while leaving
+  the tail visible. Two tests hold that line; both fail if it goes back to zero.
+
+  `progressOf` uses `pageIndex`, not `pageIndex + 1` — the page you are on is in progress, not
+  read, and 100% belongs to the finish screen alone. Within a part, pages interpolate linearly.
 - **Pagination.** Two sentences to a paragraph, two paragraphs to a page, so a part is two or three
   pages and the bar moves inside a chapter.
 - **Highlighting** replaces `chunks.py`'s inline forest-green. The pipeline's `<b>` still decides
