@@ -83,7 +83,13 @@ export const PROFILE_KEYS = Object.keys(PROFILES);
 // "Politically charged material should default to silence — mood music over propaganda
 // reads as manipulation; suggest a bed there, never start one." bedForCategory returns
 // null for these, and the player shows no preselection rather than picking for you.
-const NO_SUGGESTION = ['politic', 'propaganda', 'war', 'genocide', 'extremis', 'terror'];
+//
+// Split by how far each one may reach. A stem is matched as a prefix, because the words
+// it stands for all extend it — politics, political, terrorism. A whole word is matched
+// exactly, because extending it changes the subject: "war" as a prefix silences
+// "warehouse", and a book on logistics is not propaganda.
+const NO_SUGGESTION_STEMS = ['politic', 'propaganda', 'genocide', 'extremis', 'terror'];
+const NO_SUGGESTION_WORDS = ['war', 'wars', 'warfare', 'wartime'];
 
 /**
  * Does this category mention this keyword?
@@ -99,13 +105,19 @@ function mentions(category, keyword) {
   return category.split(/[^a-z]+/).some((word) => word.startsWith(keyword));
 }
 
+/** The stricter form: the category has to use this exact word. */
+function mentionsWord(category, keyword) {
+  return category.split(/[^a-z]+/).some((word) => word === keyword);
+}
+
 /**
  * Category from the book JSON's meta.category → bed key. Falls back to forest, and
  * returns null where a bed should not be suggested at all.
  */
 export function bedForCategory(category = '') {
   const c = String(category).toLowerCase();
-  if (NO_SUGGESTION.some((t) => mentions(c, t))) return null;
+  if (NO_SUGGESTION_STEMS.some((t) => mentions(c, t))) return null;
+  if (NO_SUGGESTION_WORDS.some((t) => mentionsWord(c, t))) return null;
   for (const [key, p] of Object.entries(PROFILES)) {
     if (p.categories.some((t) => mentions(c, t))) return key;
   }

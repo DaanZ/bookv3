@@ -14,6 +14,11 @@ has no package, no tests and no build step — every entry point is a top-level 
 ```bash
 pip install -r requirements.txt
 
+./test.sh                     # every test: python (unittest) + js (node:test)
+python3 -m unittest discover -s tests          # python only
+python3 -m unittest tests.test_positions -v    # one module
+cd web && npm test            # js only — node --test over src/**/*.test.js
+
 # Reading (the redesigned tablet reader — see design/ handoff and TODO.md)
 ./dev.sh                      # FastAPI :8000 + Vite :5173 with /api proxied; open :5173
 ./build.sh                    # bundle web/ into web/dist
@@ -287,6 +292,21 @@ on every interaction, so all cross-rerun state lives in `st.session_state`, and 
 placeholders captured into session state are reused as render slots (`next_reads.py`). `app.py`
 additionally pre-computes the *next* chunk's summary during the current rerun (`next_highlighted`) to
 hide LLM latency behind the user's reading time.
+
+## Tests
+
+`tests/` (Python, `unittest`) and `web/src/**/*.test.js` (JS, `node:test`) — no test
+framework is installed for either, by design: both runners ship with the language, so a
+clean checkout can run the suite with no API key and no `npm install` beyond the app's
+own dependencies.
+
+They cover **pure logic only** — the reading model, the category mappers, the text
+helpers, the history store. Nothing exercises the FastAPI endpoints or the React
+components. Where a number is an implementation choice the tests assert a property
+("the bar sums to 1", "progress never goes backwards") rather than pinning the literal,
+so the model can be retuned without rewriting the suite; where a number is *the design*
+(the introduction carries no weight, 80% by the first third, 8 marks a page) it is
+asserted directly.
 
 ## Known rough edges
 

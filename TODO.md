@@ -257,10 +257,18 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
 - [ ] **The ingest pipeline has never run against the real OpenAI API here.** Every
       part of the path is proven except the LLM call itself, which was stubbed. The
       first real book is the test that matters.
-- [ ] No tests anywhere in the repo. The reading model (`weights`, `paginate`,
-      `tokensOf`) is pure and the highest-value thing to cover first; the ingest
-      harness used for the verification above is a good second, and would have to be
-      checked in rather than left in a scratch directory.
+- [x] **A test suite, where there was none.** 104 tests over the pure logic: the
+      reading model (weights, progress, pagination, highlight budget, palettes), the
+      ambience category mapping, the patch families, the library's text helpers, and
+      the reading-history store. `./test.sh` runs both halves; neither needs a
+      dependency that is not already here (`unittest` is stdlib, `node:test` is built
+      in) and neither needs an API key.
+- [ ] The tests cover pure functions only. Nothing exercises the FastAPI endpoints,
+      the React components, or `library.shelf()` against a real books/ tree — those
+      need fixtures and a client, which is a bigger piece of work.
+- [ ] The ingest harness used to verify the pipeline still lives in a scratch
+      directory rather than the repo. It needs a checked-in sample PDF and a stubbed
+      LLM to become a real test.
 - [x] Ship the four ambience recordings under `web/public/ambience/`, served by
       FastAPI from an explicit mount so they get Range support (Safari will not play
       audio without it — verified 206 Partial Content)
