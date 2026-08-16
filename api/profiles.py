@@ -64,7 +64,7 @@ import secrets
 import threading
 import time
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from util.files import json_read_file, json_write_file
 
@@ -210,8 +210,11 @@ def _public(row: dict) -> dict:
     on a row any other module can reach, so there is no serialiser to forget. What
     callers get instead is `hasPin`, which is the only part of it the UI needs.
     """
-    out = {k: v for k, v in row.items() if k not in ("pin", "hardcover")}
+    out = {k: v for k, v in row.items() if k not in ("pin", "hardcover", "devices")}
     out["hasPin"] = bool(row.get("pin"))
+    # Device tokens are hashes of credentials, so they leave by the same door as the PIN.
+    # The count is what the screen needs: "remembered on 2 devices", and a way to undo it.
+    out["devices"] = len(_live_devices(row))
     # Same discipline as the PIN, for the same reason: a Hardcover token is a credential
     # that can write to somebody's public shelf. The UI needs to know whether one is set,
     # never what it is.
@@ -438,6 +441,88 @@ def check_pin(profile_id: str, pin: str | None) -> tuple[bool, str | None]:
     _note_failure(profile_id)
     waiting = _blocked_for(profile_id)
     return False, (f"That is not the PIN. Wait {waiting} seconds." if waiting else "That is not the PIN.")
+
+
+# How long a device stays trusted once the PIN has been entered on it.
+#
+# A PIN that is asked every time on the tablet in your own house is a PIN that gets
+# turned off, and then it protects nothing at all. Ninety days is long enough that the
+# lock stops being a daily toll, and short enough that a tablet lent out, sold or lost
+# stops opening your shelf within a season.
+DEVICE_DAYS = 90
+
+
+def _device_hash(token: str) -> str:
+    """Plain SHA-256, unlike the PIN.
+
+    A PIN is four digits and needs a slow KDF to make ten thousand guesses expensive.
+    A device token is 256 bits of randomness from `secrets` — there is nothing to guess,
+    so the slow hash would only be a tax paid on every app launch.
+    """
+    return hashlib.sha256(token.encode()).hexdigest()
+
+
+def _live_devices(row: dict) -> list:
+    """Trusted devices with the expired ones dropped."""
+    now = _now()
+    return [d for d in (row.get("devices") or []) if (d.get("expires") or "") > now]
+
+
+def remember_device(profile_id: str) -> tuple[str | None, str | None]:
+    """Trust this device for `DEVICE_DAYS`, and hand back the only copy of the token.
+
+    Minted after a correct PIN and never again: like the PIN itself, the stored form is a
+    hash, so a token lost by the browser cannot be recovered — the reader enters the PIN
+    once more and gets a new one.
+    """
+    token = secrets.token_urlsafe(32)
+    expires = (datetime.now(timezone.utc) + timedelta(days=DEVICE_DAYS)).isoformat(
+        timespec="seconds"
+    )
+    with _lock:
+        rows = _ensure(_read())
+        row = next((r for r in rows if r["id"] == profile_id), None)
+        if row is None:
+            return None, "No such profile."
+        row["devices"] = _live_devices(row) + [
+            {"hash": _device_hash(token), "since": _now(), "expires": expires}
+        ]
+        _write(rows)
+    return token, None
+
+
+def device_trusted(profile_id: str, token: str | None) -> bool:
+    """Does this device still count as unlocked?
+
+    Expiry is checked here rather than trusted from the browser: the device holds a copy
+    of the date only so it can stop asking, and a copy held by the thing being checked is
+    not a check.
+    """
+    if not token:
+        return False
+    with _lock:
+        rows = _ensure(_read())
+        row = next((r for r in rows if r["id"] == profile_id), None)
+        if row is None:
+            return False
+        live = _live_devices(row)
+        if len(live) != len(row.get("devices") or []):
+            row["devices"] = live
+            _write(rows)
+    wanted = _device_hash(token)
+    return any(hmac.compare_digest(d.get("hash") or "", wanted) for d in live)
+
+
+def forget_devices(profile_id: str) -> tuple[dict | None, str | None]:
+    """Stop trusting every device, everywhere. What you reach for when one goes missing."""
+    with _lock:
+        rows = _ensure(_read())
+        row = next((r for r in rows if r["id"] == profile_id), None)
+        if row is None:
+            return None, "No such profile."
+        row["devices"] = []
+        _write(rows)
+        return _public(row), None
 
 
 def set_pin(profile_id: str, pin: str | None, current: str | None) -> tuple[dict | None, str | None]:

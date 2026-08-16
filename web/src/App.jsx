@@ -14,6 +14,10 @@ import {
   setProfileHardcover,
   setProfilePin,
   unlockProfile,
+  unlockWithDevice,
+  deviceTokenFor,
+  rememberDevice,
+  forgetDevice,
 } from './lib/api';
 import { PALETTE_NAMES, paletteFor } from './lib/reading';
 import { usePrefs } from './lib/prefs';
@@ -48,6 +52,10 @@ export default function App() {
   // The tablet is put away, or was opened onto a reader who locked theirs. Nothing is
   // fetched and there is no way off the picker until somebody proves who they are.
   const [locked, setLocked] = useState(false);
+  // Finishing is not instant: it reaches Hardcover, which is a search, a status check and
+  // a write — up to three calls that can each take twenty seconds. Without this the
+  // button simply sat there and the reader was left guessing whether the tap had landed.
+  const [finishing, setFinishing] = useState(false);
   const ambience = useAmbience(book, prefs.profile !== 'guest');
 
   // `guest` is not in the list — it is what the server answers with when nobody has
@@ -114,9 +122,26 @@ export default function App() {
       // A PIN is only a lock if opening the app asks for it. Otherwise the tablet sits
       // on somebody's shelf all evening and the digits protected one tap nobody made.
       if (chosen?.hasPin) {
-        setLocked(true);
-        setScreen('profiles');
-        return;
+        // A device that has already answered the PIN stays answered for ninety days.
+        // Checked against the server rather than trusted from storage: the browser holds
+        // the token, the server holds whether it is still good.
+        const token = deviceTokenFor(chosen.id);
+        let trusted = false;
+        if (token) {
+          try {
+            trusted = Boolean((await unlockWithDevice(chosen.id, token))?.ok);
+          } catch {
+            // Expired, forgotten from the other end, or no server to ask. Either way the
+            // PIN is the fallback, which is the behaviour without this feature at all.
+            trusted = false;
+          }
+          if (!trusted) forgetDevice(chosen.id);
+        }
+        if (!trusted) {
+          setLocked(true);
+          setScreen('profiles');
+          return;
+        }
       }
       loadShelf();
     })();
@@ -163,6 +188,7 @@ export default function App() {
 
   const onFinish = useCallback(async () => {
     if (!book) return;
+    setFinishing(true);
     try {
       const result = await finishBook(book.key);
       setFinishResult(result);
@@ -174,6 +200,7 @@ export default function App() {
     } catch (ex) {
       setError(ex.message);
     }
+    setFinishing(false);
   }, [book, loadShelf]);
 
   // Switching reader re-fetches everything: the same books, a different set of
@@ -188,7 +215,12 @@ export default function App() {
       // Checked before anything else moves: a wrong PIN must leave the app exactly
       // where it was, still as whoever it was, and the row shows what the server said.
       const target = (rows || profiles).find((p) => p.id === id);
-      if (target?.hasPin) await unlockProfile(id, pin);
+      if (target?.hasPin) {
+        // `remember` defaults on: a PIN asked for every time on the tablet in your own
+        // house is a PIN that gets switched off, and then it protects nothing.
+        const result = await unlockProfile(id, pin, true);
+        if (result?.device) rememberDevice(id, result.device);
+      }
 
       setLocked(false);
       setProfile(id);
@@ -438,6 +470,7 @@ export default function App() {
               onNavigate={navigate}
               onShelf={toShelf}
               onFinish={onFinish}
+              finishing={finishing}
             />
           )}
 

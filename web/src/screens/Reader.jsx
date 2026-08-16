@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 
 import AmbiencePlayer from '../components/AmbiencePlayer';
 import Patch from '../components/Patch';
+import Spinner from '../components/Spinner';
 import { Button, ProgressBar, QuietLink } from '../components/ui';
 import { useReducedMotion } from '../lib/prefs';
 import {
@@ -18,7 +19,7 @@ import useSwipeNavigation from '../lib/useSwipeNavigation';
 // Read one page of a part, then move on with one tap.
 
 export default function Reader({ book, part, page, prefs, ambience, canFinish = true,
-                                 onNavigate, onShelf, onFinish }) {
+                                 finishing = false, onNavigate, onShelf, onFinish }) {
   const [soundOpen, setSoundOpen] = useState(false);
 
   const day = prefs.theme === 'day';
@@ -324,13 +325,29 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
             Where there is no page to slide to (finishing the book, falling off the front
             onto the shelf) the plain handler runs, because that is a screen change and
             should not be dressed as a page turn. */}
+        {/* Finishing reaches Hardcover — a search, a status check and a write — so it
+            can take the better part of a minute. The button says so and stops taking
+            taps, because a second tap would mark the book read twice. The Spinner keeps
+            its own 400ms threshold, so a finish that returns quickly shows nothing at
+            all rather than a flash of "finishing". */}
         <Button
           size="lg"
           full
+          disabled={finishing}
           onClick={canSwipeNext ? swipe.slideNext : goNext}
-          style={{ padding: '19px 22px', fontSize: 16, borderRadius: 13, minHeight: 62 }}
+          style={{
+            padding: '19px 22px',
+            fontSize: 16,
+            borderRadius: 13,
+            minHeight: 62,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 12,
+          }}
         >
-          {nextLabel}
+          {finishing && <Spinner variant="rim" size={20} delay={0} />}
+          {finishing ? 'Finishing — telling Hardcover…' : nextLabel}
         </Button>
         <div
           style={{

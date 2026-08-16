@@ -64,7 +64,15 @@ class PinIn(BaseModel):
 
 
 class UnlockIn(BaseModel):
+    """A PIN, or a token from a device that has already answered one.
+
+    `remember` asks for a token back, so the next ninety days on this device skip the
+    digits entirely.
+    """
+
     pin: str | None = None
+    device: str | None = None
+    remember: bool = False
 
 
 class PrefsIn(BaseModel):
@@ -197,14 +205,36 @@ def unlock_profile(profile_id: str, body: UnlockIn):
     and reading as you — not somebody writing an HTTP request. Nothing on the reading
     endpoints consults it, and nothing should be built as though it did.
     """
+    # A remembered device answers for itself. Checked first because it is the common
+    # case on the tablet in your own house, and because a device that is still trusted
+    # should never be rate limited for a PIN it was not asked for.
+    if profiles.device_trusted(profile_id, body.device):
+        return {"ok": True, "remembered": True}
+
     ok, error = profiles.check_pin(profile_id, body.pin)
     if ok:
-        return {"ok": True}
+        token = None
+        if body.remember:
+            token, _ = profiles.remember_device(profile_id)
+        return {"ok": True, "device": token, "days": profiles.DEVICE_DAYS}
     if error == "No such profile.":
         raise HTTPException(status_code=404, detail=error)
     # 429 for "you are guessing", 401 for "that is wrong" — the screen says different
     # things about them, and the retry-after only makes sense for one.
     raise HTTPException(status_code=429 if "wait" in error.lower() else 401, detail=error)
+
+
+@app.post("/api/profiles/{profile_id}/forget-devices")
+def forget_profile_devices(profile_id: str):
+    """Stop trusting every remembered device for this profile.
+
+    What you reach for when a tablet is lost or lent: the next open asks for the PIN
+    again, everywhere.
+    """
+    row, error = profiles.forget_devices(profile_id)
+    if error:
+        raise HTTPException(status_code=404, detail=error)
+    return row
 
 
 @app.put("/api/profiles/{profile_id}/prefs")
