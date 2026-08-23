@@ -41,6 +41,27 @@ function thousands(n) {
   return n.toLocaleString('en-US');
 }
 
+/**
+ * A download's filename, made readable.
+ *
+ * Library filenames carry everything anyone might search on — author, year, ASIN, ISBN,
+ * and the mirror it came from — joined by underscores. Shown raw they are a wall of
+ * text that pushes the status off the row, and the part that identifies the book is the
+ * first few words. The rest is stripped for display only; the file on disk keeps its
+ * name, and the real title replaces this as soon as the pipeline reads it.
+ */
+function readableName(name) {
+  let out = (name || '').replace(/\.(pdf|epub)$/i, '');
+  out = out.replace(/\(([^)]*z-?lib[^)]*)\)/gi, ' ');
+  out = out.replace(/\[[^\]]*\]/g, ' ');
+  out = out.replace(/\([^)]*\)/g, ' ');
+  out = out.replace(/B0[A-Z0-9]{8}/g, ' ');
+  out = out.replace(/97[89]\d{10}/g, ' ');
+  out = out.replace(/[_]+/g, ' ').replace(/\s+/g, ' ').trim();
+  out = out.replace(/[-–—,.\s]+$/, '');
+  return out.length > 56 ? `${out.slice(0, 55).trimEnd()}…` : out || name;
+}
+
 /** One model to spend on, with what it would cost for this book. */
 function ModelChoice({ option, selected, onPick }) {
   const unusable = !option.fits;
@@ -91,15 +112,21 @@ function ModelChoice({ option, selected, onPick }) {
   );
 }
 
-/** A book that has been read and priced, waiting for a yes. */
-function EstimateRow({ item, onPick, onStart, onCancel, expanded, onToggle }) {
-  const { file, estimate, model, starting } = item;
+/**
+ * A book that has been read and priced, waiting for a yes.
+ *
+ * No model picker and no button of its own. Dropping three files used to raise three
+ * identical dialogs asking the same question, so the choice moved out to the batch and
+ * a row is now what it always should have been: this book, this size, this price.
+ */
+function EstimateRow({ item, model, onCancel }) {
+  const { file, estimate } = item;
 
   if (item.error) {
     return (
       <div style={{ padding: '14px 16px', borderRadius: 13, background: 'var(--chip-expired-bg)' }}>
         <span style={{ font: "400 12.5px/1.6 'Space Grotesk', system-ui", color: 'var(--chip-expired-fg)' }}>
-          {file.name}: {item.error}
+          {readableName(file.name)}: {item.error}
         </span>
         <div style={{ marginTop: 8 }}>
           <QuietLink onClick={() => onCancel(item.id)}>Dismiss</QuietLink>
@@ -109,10 +136,8 @@ function EstimateRow({ item, onPick, onStart, onCancel, expanded, onToggle }) {
   }
 
   if (!estimate) {
-    // Reading a 20MB PDF and counting its tokens takes a few seconds, and until the
-    // price lands there is nothing to show but a filename. The Spinner keeps the 400ms
-    // threshold itself, so a small file that measures instantly shows nothing at all
-    // rather than a flash.
+    // Reading a 20MB PDF and counting its tokens takes a few seconds. The Spinner keeps
+    // its own 400ms threshold, so a small file that measures instantly shows nothing.
     return (
       <div
         style={{
@@ -126,7 +151,7 @@ function EstimateRow({ item, onPick, onStart, onCancel, expanded, onToggle }) {
       >
         <Spinner variant="rim" size={22} />
         <span style={{ font: `400 12px ${MONO}`, color: 'var(--text-muted)' }}>
-          {file.name} · reading and measuring…
+          {readableName(file.name)} · reading and measuring…
         </span>
       </div>
     );
@@ -138,82 +163,38 @@ function EstimateRow({ item, onPick, onStart, onCancel, expanded, onToggle }) {
     <div
       style={{
         display: 'flex',
-        flexDirection: 'column',
-        gap: 12,
-        padding: '16px 18px',
+        alignItems: 'center',
+        gap: 16,
+        padding: '14px 16px',
         borderRadius: 13,
         background: 'var(--bg-surface-hover)',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16 }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 4, minWidth: 0 }}>
-          <span
-            style={{
-              fontFamily: 'var(--font-display-wide)',
-              fontSize: 15,
-              fontWeight: 600,
-              color: 'var(--text-primary)',
-            }}
-          >
-            {file.name}
-          </span>
-          <span style={{ font: `400 11.5px ${MONO}`, color: 'var(--text-muted)' }}>
-            {estimate.pages} pages · {estimate.chunks} parts · {estimate.calls} calls ·{' '}
-            {thousands(estimate.inputTokens)} in / {thousands(estimate.outputTokens)} out tokens
-          </span>
-        </div>
-        <Chip tone="claimed">estimate</Chip>
-      </div>
-
-      {estimate.emptyPages > 0 && (
-        <span style={{ font: "400 11.5px/1.6 'Space Grotesk', system-ui", color: 'var(--text-secondary)' }}>
-          {estimate.emptyPages} of {estimate.pages} pages have no extractable text
-          {estimate.emptyPages === estimate.pages
-            ? ' — this looks like a scanned PDF and the pipeline will refuse it.'
-            : '.'}
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 4, minWidth: 0 }}>
+        <span
+          style={{
+            fontFamily: 'var(--font-display-wide)',
+            fontSize: 14.5,
+            fontWeight: 600,
+            color: 'var(--text-primary)',
+          }}
+        >
+          {readableName(file.name)}
         </span>
-      )}
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-        {(expanded ? estimate.options : estimate.options.slice(0, 3)).map((option) => (
-          <ModelChoice
-            key={option.id}
-            option={option}
-            selected={option.id === model}
-            onPick={(id) => onPick(item.id, id)}
-          />
-        ))}
-        {estimate.options.length > 3 && (
-          <QuietLink onClick={() => onToggle(item.id)}>
-            {expanded ? 'Fewer models' : `All ${estimate.options.length} models`}
-          </QuietLink>
-        )}
-        {estimate.options.length === 0 && (
-          <span style={{ font: `400 11.5px ${MONO}`, color: 'var(--text-muted)' }}>
-            OpenRouter prices could not be fetched — token counts above are still good.
-          </span>
-        )}
-      </div>
-
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
         <span style={{ font: `400 11px ${MONO}`, color: 'var(--text-muted)' }}>
-          {chosen ? `likely ${money(chosen.costLow)}–${money(chosen.costHigh)}` : 'no model priced'}
-          {estimate.method === 'characters' ? ' · tokens approximated from characters' : ''}
+          {estimate.pages} pages · {estimate.chunks} parts
+          {estimate.emptyPages > 0 ? ` · ${estimate.emptyPages} pages with no text` : ''}
         </span>
-        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-          <Button size="sm" variant="secondary" onClick={() => onCancel(item.id)} disabled={starting}>
-            Cancel
-          </Button>
-          <Button size="sm" onClick={() => onStart(item.id)} disabled={starting}>
-            {starting ? 'Starting…' : `Summarize · ${money(chosen?.cost)}`}
-          </Button>
-        </div>
       </div>
+      <span style={{ font: `600 13px ${MONO}`, color: 'var(--text-secondary)', whiteSpace: 'nowrap' }}>
+        {money(chosen?.cost)}
+      </span>
+      <QuietLink onClick={() => onCancel(item.id)}>Remove</QuietLink>
     </div>
   );
 }
 
-function JobRow({ job, onRemove, onResume, palette, day }) {
+function JobRow({ job, onRemove, onResume, models = [], proven = [], palette, day }) {
   const total = job.chunksTotal;
   // A running job cannot be removed; the worker is still holding the file.
   const settled = job.status === 'done' || job.status === 'failed';
@@ -239,7 +220,7 @@ function JobRow({ job, onRemove, onResume, palette, day }) {
               color: 'var(--text-primary)',
             }}
           >
-            {job.title || job.filename}
+            {job.title || readableName(job.filename)}
           </span>
           <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
             {job.author ? `${job.author} · ` : ''}
@@ -260,7 +241,7 @@ function JobRow({ job, onRemove, onResume, palette, day }) {
               title={
                 job.partsBought > 0
                   ? `Continue from part ${job.partsBought + 1} — the first ${job.partsBought} are already paid for`
-                  : 'Run this book again from the beginning'
+                  : 'Run this book again on the same model'
               }
               onClick={() => onResume(job.id)}
             >
@@ -306,6 +287,41 @@ function JobRow({ job, onRemove, onResume, palette, day }) {
         <span style={{ font: "400 12px/1.6 'Space Grotesk', system-ui", color: 'var(--chip-expired-fg)' }}>
           {job.error}
         </span>
+      )}
+
+      {/* The usual reason a job fails is the model it was given, and the message says so
+          — so the alternatives belong here, next to the sentence naming the culprit,
+          rather than behind a re-upload. Choosing one drops any parts bought from the old
+          model: half a book in one voice and half in another is worse than paying twice. */}
+      {job.status === 'failed' && models.length > 0 && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+          <span style={{ font: `400 10.5px ${MONO}`, color: 'var(--text-muted)' }}>
+            try again with
+          </span>
+          {models
+            .filter((id) => id !== job.model)
+            .map((id) => (
+              <button
+                key={id}
+                type="button"
+                className="tap"
+                onClick={() => onResume(job.id, id)}
+                title={proven.includes(id) ? 'Has produced a highlighted book here' : 'Never tried here'}
+                style={{
+                  padding: '5px 10px',
+                  borderRadius: 8,
+                  border: `1px solid ${proven.includes(id) ? 'var(--accent)' : 'var(--border-strong)'}`,
+                  background: 'transparent',
+                  color: proven.includes(id) ? 'var(--accent)' : 'var(--text-secondary)',
+                  font: `400 10.5px ${MONO}`,
+                  cursor: 'pointer',
+                }}
+              >
+                {id.split('/')[1] || id}
+                {proven.includes(id) ? ' ✓' : ''}
+              </button>
+            ))}
+        </div>
       )}
     </div>
   );
@@ -450,7 +466,14 @@ export default function Library({ books, counts, palette, day, onShelf, onChange
   const [dragging, setDragging] = useState(false);
   const [uploading, setUploading] = useState(0);
   const [pending, setPending] = useState([]);
-  const [expanded, setExpanded] = useState(null);
+  // One model for everything waiting. Asked once rather than per file, because dropping
+  // three books raised three identical dialogs and the answer was the same every time.
+  const [batchModel, setBatchModel] = useState(null);
+  const [startingAll, setStartingAll] = useState(false);
+  const [showAllModels, setShowAllModels] = useState(false);
+  // What a failed job can be retried with, and which of those have actually worked here.
+  const [jobModels, setJobModels] = useState([]);
+  const [provenModels, setProvenModels] = useState([]);
   const [contribution, setContribution] = useState(null);
   const [busyKey, setBusyKey] = useState(null);
   const [query, setQuery] = useState('');
@@ -461,6 +484,8 @@ export default function Library({ books, counts, palette, day, onShelf, onChange
     try {
       const data = await getJobs();
       setJobs(data.jobs);
+      setJobModels(data.models || []);
+      setProvenModels(data.proven || []);
       setHasKey(data.hasKey);
       return data.jobs;
     } catch (ex) {
@@ -545,10 +570,11 @@ export default function Library({ books, counts, palette, day, onShelf, onChange
           estimate.options.find((o) => o.id === estimate.defaultModel && o.fits) ||
           estimate.options.find((o) => o.fits);
         setPending((list) =>
-          list.map((item) =>
-            item.id === id ? { ...item, estimate, model: preferred?.id ?? null } : item,
-          ),
+          list.map((item) => (item.id === id ? { ...item, estimate } : item)),
         );
+        // The first estimate to land sets the default; later ones leave the choice alone,
+        // so a second file never silently changes what the first one is about to cost.
+        setBatchModel((current) => current || preferred?.id || null);
       } catch (ex) {
         setPending((list) =>
           list.map((item) => (item.id === id ? { ...item, error: ex.message } : item)),
@@ -566,38 +592,41 @@ export default function Library({ books, counts, palette, day, onShelf, onChange
     setPending((list) => list.filter((item) => item.id !== id));
   }, []);
 
-  const startPending = useCallback(
-    async (id) => {
-      const item = pending.find((entry) => entry.id === id);
-      if (!item?.estimate) return;
-      const chosen = item.estimate.options.find((o) => o.id === item.model);
-      setPending((list) =>
-        list.map((entry) => (entry.id === id ? { ...entry, starting: true } : entry)),
-      );
+  /**
+   * Send every priced book at once, on the one model chosen for the batch.
+   *
+   * Sequential rather than parallel: the worker takes one job at a time anyway, and
+   * three uploads racing only means three ways for the same queue to be filled.
+   */
+  const startAll = useCallback(async () => {
+    const ready = pending.filter((entry) => entry.estimate && !entry.error);
+    if (!ready.length || !batchModel) return;
+    setStartingAll(true);
+    for (const item of ready) {
+      const chosen = item.estimate.options.find((o) => o.id === batchModel);
       try {
         await uploadPdf(item.file, {
           chunks: item.estimate.chunks,
-          model: item.model,
+          model: batchModel,
           cost: chosen?.cost,
         });
-        dropPending(id);
-        refreshJobs();
+        setPending((list) => list.filter((entry) => entry.id !== item.id));
       } catch (ex) {
         setPending((list) =>
-          list.map((entry) =>
-            entry.id === id ? { ...entry, starting: false, error: ex.message } : entry,
-          ),
+          list.map((entry) => (entry.id === item.id ? { ...entry, error: ex.message } : entry)),
         );
       }
-    },
-    [pending, dropPending, refreshJobs],
-  );
+    }
+    setStartingAll(false);
+    refreshJobs();
+  }, [pending, batchModel, refreshJobs]);
+
 
   const continueJob = useCallback(
-    async (id) => {
+    async (id, model) => {
       setError(null);
       try {
-        await resumeJob(id);
+        await resumeJob(id, model);
       } catch (ex) {
         setError(ex.message);
       }
@@ -675,6 +704,16 @@ export default function Library({ books, counts, palette, day, onShelf, onChange
     }
     setBusyKey(null);
   };
+
+  // What the batch adds up to. Options come from the first priced book — every estimate
+  // returns the same model list, and the prices differ per book only in the totals below.
+  const priced = pending.filter((item) => item.estimate && !item.error);
+  const modelOptions = priced[0]?.estimate?.options || [];
+  const batchParts = priced.reduce((sum, item) => sum + (item.estimate.chunks || 0), 0);
+  const batchCost = priced.reduce(
+    (sum, item) => sum + (item.estimate.options.find((o) => o.id === batchModel)?.cost || 0),
+    0,
+  );
 
   const needle = query.trim().toLowerCase();
   const shown = needle
@@ -900,17 +939,64 @@ export default function Library({ books, counts, palette, day, onShelf, onChange
           >
             before you spend
           </span>
+
           {pending.map((item) => (
-            <EstimateRow
-              key={item.id}
-              item={item}
-              expanded={expanded === item.id}
-              onToggle={(id) => setExpanded((current) => (current === id ? null : id))}
-              onPick={pickModel}
-              onStart={startPending}
-              onCancel={dropPending}
-            />
+            <EstimateRow key={item.id} item={item} model={batchModel} onCancel={dropPending} />
           ))}
+
+          {/* One question for the whole batch. Every book here is summarized by the same
+              model, so asking per file was asking the same thing three times. */}
+          {priced.length > 0 && (
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 10,
+                marginTop: 4,
+                padding: '14px 16px',
+                borderRadius: 13,
+                border: '1px solid var(--border-strong)',
+              }}
+            >
+              <span style={{ font: `400 11px ${MONO}`, color: 'var(--text-muted)' }}>
+                summarize {priced.length === 1 ? 'this book' : `all ${priced.length} books`} with
+              </span>
+              {(showAllModels ? modelOptions : modelOptions.slice(0, 3)).map((option) => (
+                <ModelChoice
+                  key={option.id}
+                  option={option}
+                  selected={option.id === batchModel}
+                  onPick={setBatchModel}
+                />
+              ))}
+              {modelOptions.length > 3 && (
+                <QuietLink onClick={() => setShowAllModels((v) => !v)}>
+                  {showAllModels ? 'Fewer models' : `All ${modelOptions.length} models`}
+                </QuietLink>
+              )}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: 16,
+                  marginTop: 2,
+                }}
+              >
+                <span style={{ font: `400 11px ${MONO}`, color: 'var(--text-muted)' }}>
+                  {priced.length} {priced.length === 1 ? 'book' : 'books'} · {batchParts} parts
+                </span>
+                <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                  <Button size="sm" variant="secondary" onClick={() => setPending([])} disabled={startingAll}>
+                    Cancel all
+                  </Button>
+                  <Button size="sm" onClick={startAll} disabled={startingAll || !batchModel}>
+                    {startingAll ? 'Starting…' : `Summarize · ${money(batchCost)}`}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -939,7 +1025,16 @@ export default function Library({ books, counts, palette, day, onShelf, onChange
             )}
           </div>
           {jobs.map((job) => (
-            <JobRow key={job.id} job={job} onRemove={dropJob} onResume={continueJob} palette={palette} day={day} />
+            <JobRow
+              key={job.id}
+              job={job}
+              onRemove={dropJob}
+              onResume={continueJob}
+              models={jobModels}
+              proven={provenModels}
+              palette={palette}
+              day={day}
+            />
           ))}
         </div>
       )}

@@ -64,25 +64,22 @@ export default function Spinner({
       </>
     ) : (
       <>
-        {/* The band turns; the mark does not. Rotating the whole thing would spin the
-            face, which the design system forbids and which reads as a toy. The group
-            carries the rotation and the mark sits outside it, so the ring travels around
-            a face that stays still. The dash still runs, so the band both turns and
-            traces — the corners of the hexagon stay legible as it goes. */}
-        <g className="rim-spin" style={{ transformOrigin: '12px 12px', transformBox: 'view-box' }}>
-          <path d={HEX} fill="none" stroke="rgba(201,146,46,.2)" strokeWidth="1.1" strokeLinejoin="round" />
-          <path
-            className="rim-run"
-            d={HEX}
-            pathLength="100"
-            fill="none"
-            stroke={BRASS}
-            strokeWidth="1.4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeDasharray="26 74"
-          />
-        </g>
+        {/* The mark traces its own outline: a dash travels the hexagon by
+            `stroke-dashoffset`, so it turns each of the six corners and the shape stays
+            a hexagon. Nothing rotates. Spinning the whole thing was a mistake — it makes
+            the corners meaningless and reads as a generic loader stuck behind a logo. */}
+        <path d={HEX} fill="none" stroke="rgba(201,146,46,.2)" strokeWidth="1.1" strokeLinejoin="round" />
+        <path
+          className="rim-run"
+          d={HEX}
+          pathLength="100"
+          fill="none"
+          stroke={BRASS}
+          strokeWidth="1.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeDasharray="26 74"
+        />
         <path d={MARK} fill={BRASS} opacity=".9" />
       </>
     );

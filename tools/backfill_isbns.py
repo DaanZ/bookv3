@@ -13,6 +13,8 @@ Two sources, in order of how much they can be trusted:
    page or the EPUB manifest and checksum-validated, so it is a fact about that file.
 2. **Hardcover's search index**, matched on title and author. Good enough to act on, but
    it is somebody else's record of a similar book, so it is marked as such.
+3. **Open Library**, for the books Hardcover has never heard of — which is precisely the
+   set worth contributing, and the set Hardcover cannot help with by definition.
 
 A book that gets neither is reported rather than guessed at. That is the honest answer
 for a summary whose source file is long gone and which Hardcover has never heard of —
@@ -107,7 +109,8 @@ def main():
     sources = source_files()
     print(f"{len(sources)} source files on disk, Hardcover token: {'yes' if token else 'no'}\n")
 
-    from_book = from_index = already = missing = 0
+    counts = {}
+    already = missing = 0
     unmatched = []
 
     paths = sorted(glob.glob("books/*/*.json"))
@@ -136,14 +139,21 @@ def main():
             time.sleep(PAUSE_SECONDS)
 
         if not isbn:
+            # A different catalogue. Asked last because it is the only one of the three
+            # that knows nothing about this library, but it is the one that can answer
+            # for a book Hardcover is missing.
+            from util.booklookup import isbn_from_openlibrary
+
+            isbn = isbn_from_openlibrary(title, author)
+            origin = "openlibrary"
+            time.sleep(PAUSE_SECONDS)
+
+        if not isbn:
             missing += 1
             unmatched.append(title)
             continue
 
-        if origin == "file":
-            from_book += 1
-        else:
-            from_index += 1
+        counts[origin] = counts.get(origin, 0) + 1
 
         if args.write:
             meta["isbn"] = isbn
@@ -154,8 +164,8 @@ def main():
             json_write_file(path, book)
 
     print(f"already had one   : {already}")
-    print(f"read off the book : {from_book}")
-    print(f"from Hardcover    : {from_index}")
+    for origin, n in sorted(counts.items(), key=lambda kv: -kv[1]):
+        print(f"from {origin:<13}: {n}")
     print(f"no ISBN found     : {missing}")
     if unmatched:
         print("\nthese need one by hand — no source file, and Hardcover has no match:")

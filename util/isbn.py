@@ -88,10 +88,20 @@ def find_isbn_in_name(filename):
     return None
 
 
-def find_isbn(page_texts):
-    """The best ISBN in a book, preferring 13-digit. Returns None when there is none."""
+def find_isbn(page_texts, deep=False):
+    """The best ISBN in a book, preferring 13-digit. Returns None when there is none.
+
+    The front and back are searched first because that is where a book states its own
+    number. `deep` then reads the whole text, and is a last resort rather than the
+    default: an ISBN in the middle of a book is usually in a bibliography, and belongs to
+    a book being cited rather than to this one. Worth trying only once the honest places
+    have come up empty — some editions put their copyright page somewhere unexpected, and
+    a cited ISBN is still better than filing the book with none.
+    """
     pages = list(page_texts)
     looked_at = pages[:FRONT_PAGES] + pages[-BACK_PAGES:]
+    if deep:
+        looked_at = pages
 
     found = []
     for text in looked_at:

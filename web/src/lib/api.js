@@ -244,8 +244,11 @@ export const getEnrichment = () => request('/enrichment');
 export const clearJobs = () => request('/ingest/jobs', { method: 'DELETE' });
 
 /** Run a failed job again, continuing from the parts it already paid for. */
-export const resumeJob = (id) =>
-  request(`/ingest/jobs/${encodeURIComponent(id)}/resume`, { method: 'POST' });
+export const resumeJob = (id, model) =>
+  request(
+    `/ingest/jobs/${encodeURIComponent(id)}/resume${model ? `?model=${encodeURIComponent(model)}` : ''}`,
+    { method: 'POST' },
+  );
 
 /** Remove one settled job, and the abandoned upload it left in next/. */
 export const removeJob = (id) =>

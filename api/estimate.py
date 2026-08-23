@@ -108,6 +108,9 @@ KNOWN_UNHIGHLIGHTING = [
     "deepseek/deepseek-v4-flash",
     # No highlighting on "Boundaries".
     "meta-llama/llama-4-maverick",
+    # Three parts, three with no marks at all — the tolerance was raised to allow for an
+    # index or a page of references, and it still failed on every one.
+    "minimax/minimax-m3",
 ]
 
 # Derived, not maintained by hand. Adding a model to KNOWN_UNHIGHLIGHTING and forgetting

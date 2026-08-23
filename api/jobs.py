@@ -240,8 +240,13 @@ def submit(filename: str, data: bytes, chunks: int | None = None, model: str | N
     return dict(job)
 
 
-def resume(job_id):
+def resume(job_id, model=None):
     """Run a failed job again, continuing from the parts it already bought.
+
+    `model` replaces the one the job was queued with. The common reason a job fails is
+    that its model cannot produce highlighting, and retrying with the same one would fail
+    the same way — so the retry has to be able to change it, and any parts already bought
+    from the old model are dropped rather than mixed with the new one.
 
     The same job rather than a new one, deliberately: the checkpoint is keyed by id, and
     the point of resuming is that the nineteen parts already paid for are still there. A
@@ -255,6 +260,11 @@ def resume(job_id):
         return None, "That job is already running."
     if not job.get("_path") or not os.path.exists(job["_path"]):
         return None, "The uploaded PDF is no longer there — upload it again."
+
+    if model and model != job.get("model"):
+        # Half a book in one voice and half in another is worse than paying twice.
+        _drop_partial(job_id)
+        _update(job_id, model=model, chunksDone=0)
 
     _update(job_id, status="queued", step="waiting for the worker", error=None)
     _executor.submit(_run, job_id)
@@ -381,11 +391,29 @@ def _run(job_id):
         # Hardcover lookup from "a book with a similar title" into "this edition".
         from util.isbn import find_isbn, find_isbn_in_name
 
-        isbn = declared.pop("isbn", None) or find_isbn(
-            page.page_content for page in pages
-        ) or find_isbn_in_name(
-            job.get("originalName") or job.get("filename")
+        # Best source first, and each one is weaker than the last:
+        #
+        #   the EPUB's own manifest — the publisher stating its number
+        #   the copyright page      — the book stating it, checksum-validated
+        #   the whole text          — a last resort; mid-book numbers are usually
+        #                             citations, and belong to a book being referenced
+        #   the download's filename — library filenames often carry it
+        #   Open Library            — somebody else's catalogue, author-checked
+        #
+        # Worth all five because an ISBN is the difference between identifying an edition
+        # and guessing from a title: without one, matching sends "Atomic Habits" to a
+        # workbook. Ingest is the only moment the full text is in hand, so anything not
+        # taken here is gone once the PDF is archived.
+        isbn = (
+            declared.pop("isbn", None)
+            or find_isbn(page.page_content for page in pages)
+            or find_isbn((page.page_content for page in pages), deep=True)
+            or find_isbn_in_name(job.get("originalName") or job.get("filename"))
         )
+        if not isbn:
+            from util.booklookup import isbn_from_openlibrary
+
+            isbn = isbn_from_openlibrary(meta_info.get("title"), meta_info.get("author"))
         if isbn:
             meta_info["isbn"] = isbn
 

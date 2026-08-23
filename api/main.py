@@ -540,7 +540,15 @@ def get_jobs(profile: dict = Depends(admin)):
     for row in rows:
         if row.get("status") == "failed":
             row["partsBought"] = jobs.partial_parts(row["id"])
-    return {"jobs": rows, "hasKey": has_key}
+    # The models a failed job could be retried with. Sent here rather than fetched
+    # separately because the reason a job failed is usually the model, and the retry
+    # should not need an estimate round-trip to offer an alternative.
+    return {
+        "jobs": rows,
+        "hasKey": has_key,
+        "models": estimating.CANDIDATE_MODELS,
+        "proven": sorted(estimating.PROVEN_MODELS),
+    }
 
 
 async def _read_pdf_upload(file: UploadFile) -> bytes:
@@ -629,14 +637,14 @@ def clear_jobs(profile: dict = Depends(admin)):
 
 
 @app.post("/api/ingest/jobs/{job_id}/resume")
-def resume_job(job_id: str, profile: dict = Depends(admin)):
+def resume_job(job_id: str, model: str | None = None, profile: dict = Depends(admin)):
     """Run a failed job again from the parts it already bought.
 
     The alternative was re-buying the whole book: "One Nation Under Blackmail" is 39
     parts and died at 20, so nineteen paid-for summaries were thrown away because there
     was nowhere to put them.
     """
-    job, error = jobs.resume(job_id)
+    job, error = jobs.resume(job_id, model)
     if error == "No such job.":
         raise HTTPException(status_code=404, detail=error)
     if error:

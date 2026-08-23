@@ -6,7 +6,10 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 5173,
+    // Whatever port the harness assigns, falling back to the usual one. Nothing here is
+    // pinned to 5173: the app talks to a relative /api through the proxy below, so no
+    // callback URL or CORS origin depends on the number.
+    port: Number(process.env.PORT) || 5173,
     proxy: {
       '/api': {
         target: 'http://127.0.0.1:8000',
