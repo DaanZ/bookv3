@@ -4,7 +4,9 @@
         "author": "Alessandro Minelli",
         "category": "Evolutionary Developmental Biology",
         "publisher": "Cambridge University Press",
-        "pages": 342
+        "pages": 342,
+        "isbn": "9780521808514",
+        "isbnSource": "openlibrary"
     },
     "parts": [
         {

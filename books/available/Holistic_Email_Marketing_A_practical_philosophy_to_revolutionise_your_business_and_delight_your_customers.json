@@ -4,7 +4,9 @@
         "author": "Kath Pay",
         "category": "Marketing",
         "publisher": "Kogan Page",
-        "pages": 219
+        "pages": 219,
+        "isbn": "9781781334911",
+        "isbnSource": "openlibrary"
     },
     "parts": [
         {

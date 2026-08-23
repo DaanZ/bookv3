@@ -4,7 +4,9 @@
         "author": "C. G. Jung",
         "category": "Psychology",
         "publisher": "Princeton University Press",
-        "pages": 149
+        "pages": 149,
+        "isbn": "9780691017945",
+        "isbnSource": "openlibrary"
     },
     "parts": [
         {

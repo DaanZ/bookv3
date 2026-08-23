@@ -4,7 +4,9 @@
         "author": "Eric Grzymkowski",
         "category": "Art History",
         "publisher": "Avon, Massachusetts",
-        "pages": 328
+        "pages": 328,
+        "isbn": "9781440571541",
+        "isbnSource": "openlibrary"
     },
     "parts": [
         {
