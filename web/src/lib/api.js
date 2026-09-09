@@ -22,9 +22,9 @@ export function setProfile(id) {
  *
  * The module variable above is set once, by App's mount effect. That made it the only
  * copy of the answer, and anything that re-evaluated this module without re-running that
- * effect silently reset it to null — which the server reads as the guest, so the shelf
- * loses its bookmarks and every owner action comes back "Only the owner adds, removes or
- * re-files books". In development a hot reload does exactly that on every edit to this
+ * effect silently reset it to null — which the server now refuses outright, so the shelf
+ * fails to load rather than quietly losing its bookmarks. In development a hot reload
+ * does exactly that on every edit to this
  * file. The stored preference is the durable answer and this is the cache, so when the
  * cache is empty the stored one stands in rather than the app forgetting who it is.
  */
@@ -98,6 +98,10 @@ async function send(path, options) {
     headers: {
       'content-type': 'application/json',
       ...(currentProfile() ? { 'x-profile': currentProfile() } : null),
+      // Proof for the claim above. A locked profile is refused without it, so this
+      // rides on every request rather than only on unlock — the token is what turns
+      // `x-profile` from a statement into something the server can check.
+      ...(deviceTokenFor(currentProfile()) ? { 'x-device': deviceTokenFor(currentProfile()) } : null),
     },
       ...options,
     });
@@ -273,10 +277,17 @@ async function postFile(path, file) {
     // The profile header, which `request` adds and this had no way of knowing about:
     // uploads bypass `request` because the body is multipart and the JSON content-type
     // must not be set. That exemption quietly took the reader's identity off with it,
-    // so every upload arrived as a guest and the server refused it — "Only the owner
+    // so every upload arrived unattributed and the server refused it — "Only the owner
     // adds, removes or re-files books" — on a tablet where the owner was the one
     // holding it. Only the content-type is special here; who is asking is not.
-    headers: currentProfile() ? { 'x-profile': currentProfile() } : undefined,
+    // The same pair `send` carries: the claim, and the proof for it. Uploads are the
+    // owner-only endpoints, so this is exactly where a missing token is felt first.
+    headers: currentProfile()
+      ? {
+          'x-profile': currentProfile(),
+          ...(deviceTokenFor(currentProfile()) ? { 'x-device': deviceTokenFor(currentProfile()) } : null),
+        }
+      : undefined,
   });
   if (!response.ok) {
     let detail = `${response.status} ${response.statusText}`;

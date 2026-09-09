@@ -54,7 +54,7 @@ export function useAmbience(book, keep = true) {
 
   const persist = useCallback(
     (patch) => {
-      // A guest has nowhere to keep it: the sound still plays, it is simply not
+      // Without somewhere to keep it the sound still plays, it is simply not
       // remembered, and the server would refuse the write anyway.
       if (!bookKey || !keep) return;
       // Fire and forget, like the position saves beside it: a bed that failed to

@@ -116,20 +116,30 @@ sittings, and the Hardcover outcome).
 `data/profiles.json`, chosen by an `X-Profile` header that every reading endpoint resolves through
 one dependency (`reader` in `main.py`).
 
-**Three kinds of reader, and the difference is what they may do.** `main.py` says it in three
+**Two kinds of reader, and the difference is what they may do.** `main.py` says it in two
 dependencies rather than in scattered `if` statements:
 
-- `reader` — anyone, including nobody. The catalogue is open: `GET /api/shelf` and
-  `GET /api/books/{key}` answer without a header, and an unknown or absent id resolves to the
-  **guest** rather than to the owner, so browsing anonymously is never browsing *as* somebody. A
-  guest sees every book as unread, because they are — the owner's finishes are the owner's.
-- `keeper` — a profile. A page, a finish, a chosen bed are records and a record needs a name, so
-  these 403 for a guest with the sentence that says what to do about it. The app does not offer
-  them either: a guest's last page reads "Back to the shelf" instead of "Finish book".
+- `reader` — a named profile that has proved it. There is no anonymous access and no guest:
+  every endpoint under `/api` except the picker (`GET/POST /api/profiles`) and `unlock` refuses
+  a request that names nobody. `X-Profile` says who, `X-Device` proves it, and a profile with a
+  PIN is refused without a live token from its unlock. A profile with no PIN is still taken at
+  its word — the house model where it still makes sense — so on a public deployment every
+  profile should carry one.
 - `admin` — the owner. Everything that changes what is *on* the shelf: ingest, delete, re-file,
   the Hardcover re-sync, the contribution. Everything that changes what somebody has *read of* it
-  is the reader's. Same caveat as the PIN, and it matters most here: `X-Profile` is asserted by
-  the client, so this is the house's rule enforced in one place — not a permission system.
+  is the reader's.
+
+There used to be a third, `keeper`, separating "the catalogue is open to read" from "a record
+needs a name". Both halves of that distinction collapsed when the catalogue stopped being open:
+every reader is named now, so `keeper` had nothing left to check and is gone.
+
+**This is no longer only the house's rule.** The older note here said `X-Profile` is asserted by
+the client and therefore not a permission system. That was true and is not any more. The device
+token — 32 bytes from `secrets`, stored as a SHA-256 hash with an expiry, minted only by a
+correct PIN — is checked on every request, so a locked profile cannot be claimed by anyone who
+cannot open it. Guesses are rate limited against the profile *and* the caller's address, in
+`data/pin-attempts.json` rather than in memory, because a restart used to forgive everything and
+a deploy is a restart.
 
 Five more rules, about the readers themselves:
 
@@ -144,25 +154,32 @@ Five more rules, about the readers themselves:
   contents of `books/read` are their history, because they filled it before profiles existed.
 - **Hardcover is the owner's.** There is one key and it is one person's account, so only the
   owner's finish calls `mark_book_as_read`, and `/hardcover` (the re-sync) is 403 for anyone else.
-  A guest's finish returns `markedRead: null` — nothing was sent, which the finish screen says
-  rather than showing them a chip about a call nobody made.
+  Another reader's finish returns `markedRead: null` — nothing was sent, which the finish screen
+  says rather than showing them a chip about a call nobody made.
 - **The owner cannot be deleted, only renamed.** Their reading is the shelf's own; handing the
   tablet over is a rename.
-- **No login, and the PIN is not one.** This is a tablet in a house. Asking who is holding it is
-  the whole model, and `resolve` answers an unknown id with the owner — which is exactly what the
-  app did before. A profile may carry an optional PIN, and then the app will not switch into it
-  without the digits, will open onto the picker rather than that reader's shelf, and offers a
-  **Lock** in the shelf footer. That guards the picker, not the API: `X-Profile` is still a header
-  a client asserts about itself, so anything that can make an HTTP request can still read as
-  anyone. Do not build anything on the PIN that would be a problem if it were bypassed — making it
-  real needs a token the server issues and every reading endpoint checks, which is the next tier
-  and a bigger change than a tablet warrants.
+- **The PIN is the login now.** It did not start that way. This was a tablet in a house, the PIN
+  guarded the picker rather than the API, and the note here said plainly that anything able to
+  make an HTTP request could still read as anyone — so do not build on it. Going onto a public
+  URL is exactly the change that made that unacceptable, and the "next tier" it described is
+  what is now built: the server issues a token and every reading endpoint checks it.
 
-  What it *does* do properly, because a half-done lock is worse than none: the digits are never
-  sent to a browser (`profiles._public` strips them, so there is no serialiser to forget), the
-  stored form is salted and run through scrypt, changing or removing one needs the old one, and
-  guesses are rate limited per profile — five tries, then a doubling pause, because 10,000
-  combinations is otherwise a minute of scripted tries.
+  How it holds together. A correct PIN mints a device token — 32 bytes from `secrets`, stored
+  only as a SHA-256 hash, with an expiry the server keeps rather than the browser. Unlock always
+  mints one, because the token *is* the session; "remember this tablet" chooses ninety days
+  instead of twelve hours, not whether you get one. `resolve` checks it on every request for any
+  profile carrying a PIN, so `X-Profile` is a claim and `X-Device` is the proof.
+
+  The rest, because a half-done lock is worse than none: the digits are never sent to a browser
+  (`profiles._public` strips them, so there is no serialiser to forget), the stored form is
+  salted and run through scrypt, changing or removing one needs the old one, and guesses are
+  counted against two budgets — five per profile and twelve per address, each with a doubling
+  pause — in `data/pin-attempts.json`, on disk, because 10,000 combinations is otherwise a
+  minute of scripted tries and an in-memory counter forgives them all at the next restart.
+
+  A profile with no PIN is still taken at its word. That is the house model surviving where it
+  costs nothing, and it is also the one thing to check before a public deploy: an unlocked
+  profile on a public URL is an open door with a name on it.
 
 `data/positions.json`, the single store this replaced, is *moved* onto `data/positions/owner.json`
 the first time `positions.py` loads, so history from before profiles belongs to whoever made it.
@@ -218,9 +235,9 @@ up. Nothing resumes a failed job, so a re-run still pays for every part again.
 
 `src/lib/recommend.js` holds two suggestions that pull opposite ways on purpose. `fromLibrary` is
 the shelf's — the unread book nearest what this reader has actually finished, shown once on the
-"not started" filter with the book it came from named, and empty for a guest, because a guest has
-read nothing here and inventing a suggestion from the shelf at large would be recommending the
-house's taste back to a stranger. `recommendations` is the finish screen's, and offers the book
+"not started" filter with the book it came from named, and empty for a reader who has finished
+nothing, because inventing a suggestion from the shelf at large would be recommending the
+house's taste back to somebody who has not asked for it. `recommendations` is the finish screen's, and offers the book
 *furthest* from the one just put down, because switching topics beats stopping. `uncategorised` is
 a stop word in both: it is `library.py`'s fallback for the 68 books with no category, and two books
 sharing it share nothing.

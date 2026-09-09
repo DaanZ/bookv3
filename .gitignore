@@ -16,3 +16,4 @@ __pycache__/
 
 # Names the deploy host. Not a secret, but close enough not to publish.
 deploy/deploy.env
+data/pin-attempts.json

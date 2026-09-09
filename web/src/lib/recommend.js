@@ -47,7 +47,7 @@ function distance(a, b) {
  * so it offers what their own history points at.
  *
  * That history is the whole input, which is why this needs a profile and returns nothing
- * without one. A guest has read nothing here; there is no honest suggestion to make, and
+ * without one. A reader who has finished nothing has no honest suggestion to make, and
  * inventing one from the shelf at large would be recommending the house's taste back to
  * a stranger.
  */

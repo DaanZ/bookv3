@@ -168,7 +168,6 @@ export default function Shelf({
   palette,
   day,
 }) {
-  const guest = !who || who.guest;
   // One ramp for the whole shelf, built once rather than per row.
   const gradient = paletteFor(palette || 'sunset', !!day, 8);
   return (
@@ -189,7 +188,7 @@ export default function Shelf({
           color: 'var(--text-muted)',
         }}
       >
-        {counts.total} books{guest ? '' : ` · ${counts.read} read`}
+        {counts.total} books · {counts.read} read
         {who ? ` · ${who.name}` : ''}
       </span>
       <h1
@@ -202,7 +201,7 @@ export default function Shelf({
           color: 'var(--text-primary)',
         }}
       >
-        {guest ? 'The catalogue' : 'Your shelf'}
+        Your shelf
       </h1>
       <p
         style={{
@@ -214,19 +213,13 @@ export default function Shelf({
           color: 'var(--text-secondary)',
         }}
       >
-        {guest
-          ? `Read anything here — the catalogue is open and asks nobody who they are. Picking a
-             profile is what makes it yours: a page kept in every book, and books suggested from
-             the ones you have read.`
-          : `Pick up where you stopped, start something new, or look back at one you finished. The
-             patch tells you the kind of book before you read a word, and every page you keep is
-             ${who.name}'s alone.`}
+        {`Pick up where you stopped, start something new, or look back at one you finished. The
+          patch tells you the kind of book before you read a word, and every page you keep is
+          ${who?.name ?? 'yours'} alone.`}
       </p>
 
       {/* The design was drawn against three books; this shelf holds hundreds, so the
-          rows are filtered rather than paged — one unit of work per screen still holds.
-          A guest has no reading to filter: two of the three would always be empty, so
-          the catalogue is shown whole instead of behind a control that does nothing. */}
+          rows are filtered rather than paged — one unit of work per screen still holds. */}
       <div
         style={{
           display: 'flex',
@@ -236,7 +229,7 @@ export default function Shelf({
           marginTop: 24,
         }}
       >
-        <div style={{ display: guest ? 'none' : 'flex', gap: 8 }}>
+        <div style={{ display: 'flex', gap: 8 }}>
           {[
             ['reading', 'Reading'],
             ['new', 'Not started'],
@@ -263,9 +256,7 @@ export default function Shelf({
         </div>
 
         {/* Order, not a filter — so it is one control that names its current state and
-            swaps, rather than a second row of chips competing with the first. A guest
-            gets it too: the catalogue is the one shelf they do see in full, and it is
-            the longest, so ordering it is worth more to them than to anyone. */}
+            swaps, rather than a second row of chips competing with the first. */}
         <button
           type="button"
           className="tap"

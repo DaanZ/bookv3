@@ -80,8 +80,6 @@ OWNER_NAME = "Reader"
 # Not a row in the store and never written to one: the guest is what the server answers
 # with when nobody has said who they are. Shaped like a profile so every caller can treat
 # it as one, and flagged so the handful that must not — writes — can tell.
-GUEST_ID = "guest"
-GUEST_NAME = "Guest"
 
 # A tone each, so a profile is recognisable before the name is read — the same job the
 # category patch does for a book. Assigned in order and wrapped, never chosen.
@@ -118,7 +116,29 @@ PIN_TRIES = 5
 PIN_LOCKOUT_SECONDS = 30
 PIN_LOCKOUT_MAX = 300
 
-_attempts: dict[str, dict] = {}
+# The pause is held on disk, not in memory, and the clock is wall time rather than
+# `time.monotonic`. In memory it was a doorbell: every restart forgave every guess, and
+# a deploy restarts the service — so on a public URL the attacker's move is not to guess
+# faster but to wait for the next release. Wall time is what survives a restart; it is
+# also what an attacker could gain by moving the server's clock, which is a much larger
+# problem than this file.
+ATTEMPTS_PATH = os.path.join(STORE_DIR, "pin-attempts.json")
+
+# Guessing is counted twice, against two different things, and either one can say wait.
+#
+# **Per profile** stops a thousand guesses at one PIN. Alone it is also a way to lock a
+# reader out of their own tablet from anywhere, by guessing their profile wrong five
+# times on purpose — which is why the pause is minutes and not hours.
+#
+# **Per address** stops the other shape: one guess each at every profile in the house,
+# which the per-profile counter never sees because no single profile passed five. On a
+# tablet at home every reader shares one address, so this budget is the looser of the
+# two and exists for the public URL rather than the sofa.
+IP_TRIES = 12
+IP_LOCKOUT_SECONDS = 60
+IP_LOCKOUT_MAX = 900
+
+_attempts_lock = threading.Lock()
 
 _lock = threading.Lock()
 
@@ -146,20 +166,6 @@ def _owner_row() -> dict:
         "tone": TONES[0],
         "owner": True,
         "createdAt": _now(),
-        "prefs": dict(PREF_DEFAULTS),
-    }
-
-
-def guest_row() -> dict:
-    """Anyone at all. Read-only by construction: nothing here is stored, so there is
-    nothing for a write to land in."""
-    return {
-        "id": GUEST_ID,
-        "name": GUEST_NAME,
-        "tone": "#4A5A5C",
-        "owner": False,
-        "guest": True,
-        "hasPin": False,
         "prefs": dict(PREF_DEFAULTS),
     }
 
@@ -238,22 +244,40 @@ def owner() -> dict:
     return next(row for row in all_profiles() if row.get("owner"))
 
 
-def resolve(profile_id: str | None) -> dict:
-    """The reader a request is for.
+def resolve(profile_id: str | None, device: str | None = None) -> tuple[dict, bool]:
+    """The reader a request is for, and whether they proved it.
 
-    An unknown or missing id is the **guest**, not the owner. Reading the catalogue
-    needs nobody's permission, so a request that says nothing about who it is gets the
-    catalogue and nothing personal — rather than quietly being answered as the person
-    who set the tablet up, which would hand their reading to anyone who asked without a
-    header.
+    There is no anonymous reader any more. An unknown or missing id is refused, not
+    answered with an open catalogue: the shelf is going onto a public URL, and "the
+    catalogue needs nobody's permission" was a sentence about a tablet on a kitchen
+    table. Every request now names a profile and proves it.
+
+    **What changed when this stopped being a tablet in a house.** `X-Profile` is a header
+    a client asserts about itself, so on a LAN it was a polite question — "who is
+    holding me?" — and the PIN guarded the picker rather than the API. On a public URL
+    that same header is one line of curl away from reading, and writing, as anybody.
+
+    The fix needed no new mechanism, because the device token already was one:
+    `remember_device` mints 32 bytes from `secrets`, stores only a SHA-256 hash of it,
+    and expires it. It simply was never consulted outside `unlock`. Now it is.
+
+    The rule is narrow on purpose:
+
+    * **A profile with a PIN must prove it.** Claiming one without a live device token
+      returns `verified=False`, and the caller refuses rather than answering as them.
+      The PIN is what mints the token, so guessing it is the only way in — which is what
+      makes the backoff above worth having.
+    * **A profile without a PIN is unchanged.** The open house is still the model: no
+      login, and a reader who has not asked to be locked is not made to log in. What a
+      PIN now means is "and I mean it", which is the promise the screen was already
+      making.
     """
-    if profile_id == GUEST_ID:
-        return guest_row()
-    return get(profile_id) or guest_row()
-
-
-def is_guest(profile: dict | None) -> bool:
-    return bool((profile or {}).get("guest"))
+    row = get(profile_id)
+    if row is None:
+        return None, False
+    if not row.get("hasPin"):
+        return row, True
+    return row, device_trusted(profile_id, device)
 
 
 def _clean_name(name: str | None) -> str:
@@ -399,29 +423,73 @@ def _clean_pin(pin: str | None) -> str | None:
     return pin
 
 
-def _blocked_for(profile_id: str) -> int:
-    """Seconds left before this profile will take another guess."""
-    state = _attempts.get(profile_id)
+def _read_attempts() -> dict:
+    stored = json_read_file(ATTEMPTS_PATH)
+    return stored if isinstance(stored, dict) else {}
+
+
+def _prune_attempts(data: dict, now: float) -> dict:
+    """Drop entries that are neither blocking nor recent.
+
+    Without this the file grows one line per address that ever guessed, forever, and a
+    public URL supplies addresses indefinitely. An entry stops mattering an hour after
+    its last guess: the count is only interesting while it is still climbing toward a
+    pause, and nobody is owed a punishment they have already waited out.
+    """
+    return {
+        key: state
+        for key, state in data.items()
+        if state.get("until", 0) > now or now - state.get("last", 0) < 3600
+    }
+
+
+def _blocked_for(key: str) -> int:
+    """Seconds left before this profile, or this address, will take another guess."""
+    with _attempts_lock:
+        state = _read_attempts().get(key)
     if not state:
         return 0
-    return max(0, int(state.get("until", 0) - time.monotonic()))
+    return max(0, int(state.get("until", 0) - time.time()))
 
 
-def _note_failure(profile_id: str) -> None:
-    state = _attempts.setdefault(profile_id, {"count": 0, "until": 0})
-    state["count"] += 1
-    if state["count"] >= PIN_TRIES:
-        over = state["count"] - PIN_TRIES
-        state["until"] = time.monotonic() + min(
-            PIN_LOCKOUT_MAX, PIN_LOCKOUT_SECONDS * (2 ** over)
-        )
+def _note_failure(key: str, tries: int, base: int, ceiling: int) -> None:
+    """Count one wrong guess against `key` and set the pause it has earned.
+
+    The doubling starts only after `tries`, so mistyping your own PIN twice costs
+    nothing — the pause is meant to make a script slow, not to punish the person whose
+    tablet this is.
+    """
+    now = time.time()
+    with _attempts_lock:
+        data = _prune_attempts(_read_attempts(), now)
+        state = data.setdefault(key, {"count": 0, "until": 0})
+        state["count"] += 1
+        state["last"] = now
+        if state["count"] >= tries:
+            over = state["count"] - tries
+            state["until"] = now + min(ceiling, base * (2 ** over))
+        json_write_file(ATTEMPTS_PATH, data)
 
 
-def check_pin(profile_id: str, pin: str | None) -> tuple[bool, str | None]:
+def _clear_attempts(key: str) -> None:
+    with _attempts_lock:
+        data = _read_attempts()
+        if key in data:
+            del data[key]
+            json_write_file(ATTEMPTS_PATH, data)
+
+
+def check_pin(profile_id: str, pin: str | None, address: str | None = None) -> tuple[bool, str | None]:
     """Is this the profile's PIN? Returns (ok, error).
 
-    The one place the stored form is read. Rate limited per profile, and a profile with
-    no PIN answers yes to anything — there is nothing to be wrong about.
+    The one place the stored form is read. A profile with no PIN answers yes to
+    anything — there is nothing to be wrong about.
+
+    Guesses are counted against the profile *and* against the caller's address, and
+    either budget can refuse. Neither is enough alone: the per-profile count never sees
+    one guess at each of a hundred profiles, and the per-address count is shared by
+    everyone on a home network. `address` is optional so a caller with no idea who is
+    asking still gets the per-profile limit rather than none.
     """
     with _lock:
         row = next((r for r in _ensure(_read()) if r["id"] == profile_id), None)
@@ -430,16 +498,27 @@ def check_pin(profile_id: str, pin: str | None) -> tuple[bool, str | None]:
     if not row.get("pin"):
         return True, None
 
-    waiting = _blocked_for(profile_id)
-    if waiting:
-        return False, f"Too many tries — wait {waiting} seconds."
+    ip_key = f"ip:{address}" if address else None
+    for key in (profile_id, ip_key):
+        if not key:
+            continue
+        waiting = _blocked_for(key)
+        if waiting:
+            return False, f"Too many tries — wait {waiting} seconds."
 
     if _verify_hash(_clean_pin(pin) or "", row["pin"]):
-        _attempts.pop(profile_id, None)
+        # Only the profile's own count is forgiven. The address keeps its tally: one
+        # correct PIN does not undo the ninety wrong ones that came before it, and
+        # clearing it here would hand an attacker a reset for the price of any single
+        # account they do know.
+        _clear_attempts(profile_id)
         return True, None
 
-    _note_failure(profile_id)
-    waiting = _blocked_for(profile_id)
+    _note_failure(profile_id, PIN_TRIES, PIN_LOCKOUT_SECONDS, PIN_LOCKOUT_MAX)
+    if ip_key:
+        _note_failure(ip_key, IP_TRIES, IP_LOCKOUT_SECONDS, IP_LOCKOUT_MAX)
+
+    waiting = max(_blocked_for(profile_id), _blocked_for(ip_key) if ip_key else 0)
     return False, (f"That is not the PIN. Wait {waiting} seconds." if waiting else "That is not the PIN.")
 
 
@@ -450,6 +529,10 @@ def check_pin(profile_id: str, pin: str | None) -> tuple[bool, str | None]:
 # lock stops being a daily toll, and short enough that a tablet lent out, sold or lost
 # stops opening your shelf within a season.
 DEVICE_DAYS = 90
+
+# An unlock that was not asked to be remembered. Long enough to read in, short enough
+# that a borrowed tablet does not stay open for a season.
+SESSION_HOURS = 12
 
 
 def _device_hash(token: str) -> str:
@@ -468,15 +551,21 @@ def _live_devices(row: dict) -> list:
     return [d for d in (row.get("devices") or []) if (d.get("expires") or "") > now]
 
 
-def remember_device(profile_id: str) -> tuple[str | None, str | None]:
-    """Trust this device for `DEVICE_DAYS`, and hand back the only copy of the token.
+def remember_device(profile_id: str, days: float = DEVICE_DAYS) -> tuple[str | None, str | None]:
+    """Trust this device for `days`, and hand back the only copy of the token.
 
     Minted after a correct PIN and never again: like the PIN itself, the stored form is a
     hash, so a token lost by the browser cannot be recovered — the reader enters the PIN
     once more and gets a new one.
+
+    `days` exists because this token stopped being only a convenience. Once `resolve`
+    requires it for a locked profile, it *is* the session — so an unlock always mints
+    one, and what "remember this tablet" now buys is ninety days instead of the length
+    of an afternoon. Declining it no longer means being locked out of the request after
+    the one that let you in.
     """
     token = secrets.token_urlsafe(32)
-    expires = (datetime.now(timezone.utc) + timedelta(days=DEVICE_DAYS)).isoformat(
+    expires = (datetime.now(timezone.utc) + timedelta(days=days)).isoformat(
         timespec="seconds"
     )
     with _lock:
@@ -559,7 +648,7 @@ def set_pin(profile_id: str, pin: str | None, current: str | None) -> tuple[dict
             salt = secrets.token_bytes(16)
             row["pin"] = {"salt": salt.hex(), "hash": _hash_pin(wanted, salt), "setAt": _now()}
         _write(rows)
-        _attempts.pop(profile_id, None)
+        _clear_attempts(profile_id)
         return _public(row), None
 
 

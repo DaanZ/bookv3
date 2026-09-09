@@ -60,15 +60,11 @@ export default function App() {
   // a write — up to three calls that can each take twenty seconds. Without this the
   // button simply sat there and the reader was left guessing whether the tap had landed.
   const [finishing, setFinishing] = useState(false);
-  const ambience = useAmbience(book, prefs.profile !== 'guest');
+  // Every reader is a profile now, so there is always somewhere to keep the bed.
+  const ambience = useAmbience(book, true);
 
-  // `guest` is not in the list — it is what the server answers with when nobody has
-  // said who they are, so the app holds it as a shape rather than a row.
-  const GUEST = { id: 'guest', name: 'Guest', tone: '#4A5A5C', guest: true };
   const who =
-    prefs.profile === 'guest'
-      ? GUEST
-      : profiles.find((p) => p.id === prefs.profile) || profiles.find((p) => p.owner);
+    profiles.find((p) => p.id === prefs.profile) || profiles.find((p) => p.owner);
 
   const day = prefs.theme === 'day';
 
@@ -111,9 +107,7 @@ export default function App() {
       const rows = await loadProfiles();
       if (cancelled) return;
       const chosen =
-        prefs.profile === 'guest'
-          ? GUEST
-          : rows.find((p) => p.id === prefs.profile) || rows.find((p) => p.owner);
+        rows.find((p) => p.id === prefs.profile) || rows.find((p) => p.owner);
       setProfile(chosen?.id || null);
       // A profile deleted from another tablet leaves a stale id here; fall back rather
       // than reading as somebody who no longer exists.
@@ -183,9 +177,7 @@ export default function App() {
   const navigate = useCallback(
     (part, page) => {
       setPosition({ part, page });
-      // A guest reads without leaving a mark. The server would refuse it anyway; not
-      // asking is the difference between a rule and an error message on every turn.
-      if (book && !who?.guest) putPosition(book.key, part, page).catch((ex) => setError(ex.message));
+      if (book) putPosition(book.key, part, page).catch((ex) => setError(ex.message));
     },
     [book, who],
   );
@@ -244,7 +236,14 @@ export default function App() {
 
   // Errors are thrown, not swallowed: the row that asked for the PIN is where the
   // answer belongs, not a banner across the top of the card.
-  const onVerifyPin = useCallback((id, pin) => unlockProfile(id, pin), []);
+  const onVerifyPin = useCallback(async (id, pin) => {
+    const result = await unlockProfile(id, pin);
+    // Kept rather than discarded. Every unlock mints a token now, so throwing this one
+    // away would leave an orphan on the profile until it expired — and the reader has
+    // just proved the PIN, which is precisely when a session is worth holding.
+    if (result?.device) rememberDevice(id, result.device);
+    return result;
+  }, []);
 
   // Linking is per reader, and the token never comes back — the row only learns whether
   // one is set, so the list is reloaded rather than patched in place.
@@ -359,8 +358,8 @@ export default function App() {
     [shelf.books, book],
   );
 
-  // What this reader's own history points at. Empty for a guest by construction: they
-  // have read nothing here, so there is nothing to reason from.
+  // What this reader's own history points at. Empty for a reader who has finished
+  // nothing here, because there is nothing to reason from.
   const suggestion = useMemo(() => fromLibrary(shelf.books)[0] || null, [shelf.books]);
 
   const themeLabel = day ? 'day · cane paper' : 'night · deep water';
@@ -490,7 +489,7 @@ export default function App() {
               page={position.page}
               prefs={prefs}
               ambience={ambience}
-              canFinish={!who?.guest}
+              canFinish
               onNavigate={navigate}
               onShelf={toShelf}
               onFinish={onFinish}
@@ -508,7 +507,7 @@ export default function App() {
               onOpenRec={() => openBook(recs[recIndex % recs.length].key)}
               onNextRec={() => setRecIndex((i) => i + 1)}
               onShelf={toShelf}
-              onReset={who?.guest ? null : onUnfinish}
+              onReset={onUnfinish}
             />
           )}
         </Card>

@@ -10,7 +10,7 @@ the shelf, a book's parts, reading position, and finishing a book. It reads the 
 import os
 
 from dotenv import load_dotenv
-from fastapi import Depends, FastAPI, File, Header, HTTPException, UploadFile
+from fastapi import Depends, FastAPI, File, Header, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -95,27 +95,42 @@ class AmbienceIn(BaseModel):
     level: float | None = None
 
 
-def reader(x_profile: str | None = Header(default=None)) -> dict:
+def reader(
+    x_profile: str | None = Header(default=None),
+    x_device: str | None = Header(default=None),
+) -> dict:
     """Whose reading this request is.
 
     The profile travels in a header rather than the path, because it qualifies every
-    endpoint here and none of them is *about* it. An id nobody recognises resolves to
-    the guest, so the catalogue answers anyone and nothing personal does.
+    endpoint here and none of them is *about* it.
+
+    Two things have to be true, and they fail differently.
+
+    **Somebody has to be asking.** There is no guest: a request with no profile, or one
+    naming a profile that does not exist, is refused rather than handed the catalogue.
+    The open catalogue was a rule about a tablet in a house, where the worst case was a
+    visitor reading a summary. On a public URL it is an open door, and the door is now
+    shut.
+
+    **They have to prove it.** `X-Device` is what makes `X-Profile` more than a claim: a
+    profile carrying a PIN must present the token its unlock minted. A profile with no
+    PIN is taken at its word, which is the house model surviving where it still makes
+    sense — but on a public deployment every profile should carry a PIN, and the two
+    that exist do.
+
+    401 for both, with different sentences, because the app does different things about
+    them: one sends the reader to the picker, the other asks for the digits.
     """
-    return profiles.resolve(x_profile)
-
-
-def keeper(profile: dict = Depends(reader)) -> dict:
-    """A reader who has somewhere to keep things.
-
-    The catalogue is open to read; a page, a finish, a chosen bed are records, and a
-    record needs somebody to belong to. The guest is told to pick a profile rather than
-    having their reading dropped on the floor silently.
-    """
-    if profiles.is_guest(profile):
+    profile, verified = profiles.resolve(x_profile, x_device)
+    if profile is None:
         raise HTTPException(
-            status_code=403,
-            detail="Pick a profile to keep your place — the catalogue is open, but a bookmark needs a name.",
+            status_code=401,
+            detail="Pick a profile to read — the shelf belongs to somebody.",
+        )
+    if not verified:
+        raise HTTPException(
+            status_code=401,
+            detail="That profile is locked. Enter its PIN to continue.",
         )
     return profile
 
@@ -197,7 +212,7 @@ def set_profile_pin(profile_id: str, body: PinIn):
 
 
 @app.post("/api/profiles/{profile_id}/unlock")
-def unlock_profile(profile_id: str, body: UnlockIn):
+def unlock_profile(profile_id: str, body: UnlockIn, request: Request):
     """Check a PIN before the app switches into that profile.
 
     This is the lock on the picker. It is not access control: `X-Profile` remains a
@@ -211,12 +226,23 @@ def unlock_profile(profile_id: str, body: UnlockIn):
     if profiles.device_trusted(profile_id, body.device):
         return {"ok": True, "remembered": True}
 
-    ok, error = profiles.check_pin(profile_id, body.pin)
+    # Behind nginx `request.client.host` is the proxy unless uvicorn is told to trust
+    # it — the unit passes --proxy-headers and --forwarded-allow-ips, without which every
+    # guess in the world would share one bucket and lock the whole site out at try twelve.
+    ok, error = profiles.check_pin(profile_id, body.pin, request.client.host if request.client else None)
     if ok:
-        token = None
-        if body.remember:
-            token, _ = profiles.remember_device(profile_id)
-        return {"ok": True, "device": token, "days": profiles.DEVICE_DAYS}
+        # Always minted, because the token is the session now: the reading endpoints
+        # refuse a locked profile without one, so an unlock that handed back nothing
+        # would let you in and lock the very next request. `remember` chooses how long
+        # it lasts, not whether it exists.
+        days = profiles.DEVICE_DAYS if body.remember else profiles.SESSION_HOURS / 24
+        token, _ = profiles.remember_device(profile_id, days)
+        return {
+            "ok": True,
+            "device": token,
+            "days": profiles.DEVICE_DAYS if body.remember else 0,
+            "remembered": bool(body.remember),
+        }
     if error == "No such profile.":
         raise HTTPException(status_code=404, detail=error)
     # 429 for "you are guessing", 401 for "that is wrong" — the screen says different
@@ -309,14 +335,14 @@ def get_book(key: str, profile: dict = Depends(reader)):
 
 
 @app.put("/api/books/{key}/position")
-def put_position(key: str, body: PositionIn, profile: dict = Depends(keeper)):
+def put_position(key: str, body: PositionIn, profile: dict = Depends(reader)):
     if key not in library.index():
         raise HTTPException(status_code=404, detail="No such book.")
     return positions.save_position(profile["id"], key, body.part, body.page)
 
 
 @app.delete("/api/books/{key}/position")
-def delete_position(key: str, profile: dict = Depends(keeper)):
+def delete_position(key: str, profile: dict = Depends(reader)):
     """Start a book again from the beginning — for this reader only."""
     if key not in library.index():
         raise HTTPException(status_code=404, detail="No such book.")
@@ -325,7 +351,7 @@ def delete_position(key: str, profile: dict = Depends(keeper)):
 
 
 @app.put("/api/books/{key}/ambience")
-def put_ambience(key: str, body: AmbienceIn, profile: dict = Depends(keeper)):
+def put_ambience(key: str, body: AmbienceIn, profile: dict = Depends(reader)):
     """Remember the bed this reader chose for this book.
 
     Beside the bookmark, in the same entry: the handoff's rule is that the choice
@@ -337,7 +363,7 @@ def put_ambience(key: str, body: AmbienceIn, profile: dict = Depends(keeper)):
 
 
 @app.post("/api/books/{key}/finish")
-def finish_book(key: str, profile: dict = Depends(keeper)):
+def finish_book(key: str, profile: dict = Depends(reader)):
     """Record the finish for this reader — mark it on their Hardcover if they have one,
     and, for the owner, move the JSON available -> read.
 
@@ -401,7 +427,7 @@ def finish_book(key: str, profile: dict = Depends(keeper)):
 
 
 @app.post("/api/books/{key}/unfinish")
-def unfinish_book(key: str, profile: dict = Depends(keeper)):
+def unfinish_book(key: str, profile: dict = Depends(reader)):
     """Undo a finish: this reader has not read it after all.
 
     The mirror of `finish`, and it undoes the same two things that one did. The reader's
@@ -504,7 +530,7 @@ def submit_contribution(key: str, profile: dict = Depends(admin)):
 
 
 @app.post("/api/books/{key}/hardcover")
-def resync_hardcover(key: str, profile: dict = Depends(keeper)):
+def resync_hardcover(key: str, profile: dict = Depends(reader)):
     """Ask Hardcover again about a book already finished here.
 
     A finish that failed for a reason of the moment — no key, a bad query, the network —

@@ -65,9 +65,9 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
     duck(showResume);
   }, [duck, showResume]);
 
-  // A guest reaches the end of a book and there is nothing to record — no finish, no
-  // sittings, no Hardcover. The last page returns them to the shelf and says so, rather
-  // than offering a button that fails.
+  // `canFinish` is false when there is nothing to record — no finish, no sittings, no
+  // Hardcover. The last page returns the reader to the shelf and says so, rather than
+  // offering a button that fails.
   const nextLabel = !lastPage
     ? 'Next page'
     : lastPart

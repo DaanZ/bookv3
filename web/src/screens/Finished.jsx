@@ -46,11 +46,13 @@ export default function Finished({
   const marked = latest ? latest.markedRead : book.markedRead;
   const number = latest?.finishNumber ?? book.finishNumber;
 
-  // Hardcover is one account, reached with one key, and it is the owner's. A guest's
-  // finish is real and recorded — it is simply theirs and not a write to somebody
-  // else's public shelf, and this block says which rather than showing them a chip
+  // Hardcover is one account, reached with one key, and it is the owner's. Another
+  // reader's finish is real and recorded — it is simply theirs and not a write to
+  // somebody else's public shelf, and this block says which rather than showing a chip
   // about a call that was never made on their behalf.
-  const guest = who ? !who.owner : false;
+  // Named for what it is: not the owner. There is no guest any more, and this was
+  // never about one — it is about whose Hardcover account the key opens.
+  const notOwner = who ? !who.owner : false;
 
   const recheck = async () => {
     setSyncing(true);
@@ -149,7 +151,7 @@ export default function Finished({
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          {guest ? (
+          {notOwner ? (
             <>
               <Chip tone="claimed">your finish</Chip>
               <span
@@ -193,7 +195,7 @@ export default function Finished({
 
         {/* Matched on title alone: the author did not line up, so this may be the wrong
             edition — worth saying before it sits on a public shelf. */}
-        {!guest && marked === true && latest?.titleOnlyMatch && latest?.hardcoverTitle && (
+        {!notOwner && marked === true && latest?.titleOnlyMatch && latest?.hardcoverTitle && (
           <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
             matched on title only → “{latest.hardcoverTitle}”
           </span>
