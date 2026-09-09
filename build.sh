@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build the reader frontend into web/dist, which api/main.py serves at :8000.
+# Build the reader frontend into web/dist, which api/main.py serves at :8001.
 set -euo pipefail
 
 cd "$(dirname "$0")/web"
@@ -12,4 +12,4 @@ npm run build
 
 echo
 echo "Built web/dist. Serve it with:"
-echo "  uvicorn api.main:app --port 8000   # then open http://localhost:8000"
+echo "  uvicorn api.main:app --port 8001   # then open http://localhost:8001"

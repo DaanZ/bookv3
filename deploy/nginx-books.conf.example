@@ -1,0 +1,41 @@
+# The /books location for singularitynexus.nl. Paste inside the existing `server` block
+# that already serves the site over TLS — this is not a whole server block, because the
+# domain has a site on it already and a second one would fight for :443.
+#
+# The trailing slash on proxy_pass is the whole trick: with it, nginx strips /books
+# before forwarding, so FastAPI sees /api/shelf and its routes match unchanged. Without
+# it the app would receive /books/api/shelf and 404 on everything.
+#
+# The bundle asks for /books/assets/... because it was built with PUBLIC_BASE=/books/;
+# those requests come here too and are served by the app's own StaticFiles mount.
+
+location /books/ {
+    proxy_pass http://127.0.0.1:8001/;
+
+    proxy_http_version 1.1;
+    proxy_set_header Host              $host;
+    proxy_set_header X-Real-IP         $remote_addr;
+    proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-Prefix /books;
+
+    # Ingest accepts whole books. The default 1m rejects a large PDF with a 413 that
+    # looks, from the library screen, like the upload silently failed.
+    client_max_body_size 128m;
+
+    # Summarising a book is minutes of work behind one request, and the library screen
+    # polls a job rather than holding the connection — but the estimate call reads and
+    # counts the whole PDF up front, which on a 500-page book is not a few seconds.
+    proxy_read_timeout 300s;
+    proxy_send_timeout 300s;
+
+    # Range requests, which Safari requires before it will play the ambience beds.
+    proxy_set_header Range $http_range;
+    proxy_set_header If-Range $http_if_range;
+    proxy_no_cache 1;
+}
+
+# /books with no trailing slash would otherwise 404 rather than reaching the block above.
+location = /books {
+    return 301 /books/;
+}

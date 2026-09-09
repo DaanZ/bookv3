@@ -13,3 +13,6 @@ __pycache__/
 # Reader frontend
 /web/node_modules/
 /web/dist/
+
+# Names the deploy host. Not a secret, but close enough not to publish.
+deploy/deploy.env

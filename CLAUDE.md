@@ -15,9 +15,9 @@ has no package, no tests and no build step — every entry point is a top-level 
 pip install -r requirements.txt
 
 # Reading (the redesigned tablet reader — see design/ handoff and TODO.md)
-./dev.sh                      # FastAPI :8000 + Vite :5173 with /api proxied; open :5173
+./dev.sh                      # FastAPI :8001 + Vite :5173 with /api proxied; open :5173
 ./build.sh                    # bundle web/ into web/dist
-uvicorn api.main:app --port 8000   # serves the API *and* web/dist when it exists
+uvicorn api.main:app --port 8001   # serves the API *and* web/dist when it exists
 
 # Ingest — now also available in the reader itself, on the library screen
 streamlit run app.py          # upload a PDF and summarize it live, chunk by chunk

@@ -2,6 +2,13 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "reader-api",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8001"],
+      "port": 8001,
+      "autoPort": false
+    },
+    {
       "name": "reader-web",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],

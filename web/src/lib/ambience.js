@@ -27,6 +27,8 @@
  * never on load. play() resumes a suspended context for you.
  */
 
+import { asset } from './base';
+
 export const PROFILES = {
   forest: {
     name: 'Forest',
@@ -34,7 +36,7 @@ export const PROFILES = {
       'Wind through canopy, no birds. Broadband and even; the drift is slow enough that you never catch it moving.',
     categories: ['gardening', 'nature', 'textiles', 'art', 'botan', 'travel'],
     cycle: 90,
-    src: '/ambience/forest.mp3',
+    src: asset('/ambience/forest.mp3'),
   },
   river: {
     name: 'River',
@@ -42,7 +44,7 @@ export const PROFILES = {
       'Moving water over stone. Brighter than the forest and completely steady — the closest thing to white noise that still sounds like a place.',
     categories: ['software', 'startup', 'architect', 'comput', 'program', 'technolog', 'engineer', 'data'],
     cycle: 40,
-    src: '/ambience/river.mp3',
+    src: asset('/ambience/river.mp3'),
   },
   lake: {
     name: 'Lake',
@@ -57,7 +59,7 @@ export const PROFILES = {
       'Low rumble with a slow breathing swell, and crackle kept far under the bed. Warm, close, and the only profile with any transient at all.',
     categories: ['self-help', 'philosophy', 'poetry', 'psycholog', 'fiction'],
     cycle: 12,
-    src: '/ambience/fireplace.mp3',
+    src: asset('/ambience/fireplace.mp3'),
   },
   wind: {
     // A sixth bed, added because a wind recording was supplied. Its loop is short, so
@@ -67,7 +69,7 @@ export const PROFILES = {
       'Open air with nothing in it. The most abstract of the beds — no water, no fire, nothing that suggests a room.',
     categories: ['science', 'physics', 'space', 'astronom', 'math'],
     cycle: 45,
-    src: '/ambience/wind.mp3',
+    src: asset('/ambience/wind.mp3'),
   },
   rain: {
     name: 'Rain',
