@@ -6,7 +6,9 @@
         "publisher": "Constable, an imprint of Little, Brown Book Group",
         "pages": 104,
         "isbn": "9788491819707",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2025-01-17T23:50:17+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {

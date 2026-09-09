@@ -6,7 +6,9 @@
         "publisher": "Marshall & Brainerd",
         "pages": 378,
         "isbn": "9780984618101",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -43,7 +45,7 @@
         },
         {
             "title": "Key Model Traits and Working with Views",
-            "body": "A <b style='color: forestgreen;'>good model</b> has traits like <b style='color: forestgreen;'>accuracy</b>, precision, and consistency in <b style='color: forestgreen;'>detail level</b> *(not all parts more detailed than others)*. It also <b style='color: forestgreen;'>promotes understanding</b> by <b style='color: forestgreen;'>limiting details</b> and focusing <b style='color: forestgreen;'>attention</b>. Models should be suited to their <b style='color: forestgreen;'>purpose</b>: a favorite view can mislead if it doesn\u2019t fit the problem, and a single diagram for all details can be <b style='color: forestgreen;'>confusing</b>.\n\nUse <b style='color: forestgreen;'>views</b> to <b style='color: forestgreen;'>focus concerns</b> (like performance or security) but remain aware of <b style='color: forestgreen;'>problems</b> caused by extreme <b style='color: forestgreen;'>narrow focus</b> or <b style='color: forestgreen;'>interactions between views</b>. Avoid <b style='color: forestgreen;'>\"favorite view\u201d</b> and <b style='color: forestgreen;'>\"one diagram to rule them all\"</b> anti-patterns. Gather views to build a whole model, using <b style='color: forestgreen;'>scenarios</b> to <b style='color: forestgreen;'>connect views</b>, and <b style='color: forestgreen;'>activity specs</b> to tie together actions."
+            "body": "A <b style='color: forestgreen;'>good model</b> has traits like <b style='color: forestgreen;'>accuracy</b>, precision, and consistency in <b style='color: forestgreen;'>detail level</b> *(not all parts more detailed than others)*. It also <b style='color: forestgreen;'>promotes understanding</b> by <b style='color: forestgreen;'>limiting details</b> and focusing <b style='color: forestgreen;'>attention</b>. Models should be suited to their <b style='color: forestgreen;'>purpose</b>: a favorite view can mislead if it doesn’t fit the problem, and a single diagram for all details can be <b style='color: forestgreen;'>confusing</b>.\n\nUse <b style='color: forestgreen;'>views</b> to <b style='color: forestgreen;'>focus concerns</b> (like performance or security) but remain aware of <b style='color: forestgreen;'>problems</b> caused by extreme <b style='color: forestgreen;'>narrow focus</b> or <b style='color: forestgreen;'>interactions between views</b>. Avoid <b style='color: forestgreen;'>\"favorite view”</b> and <b style='color: forestgreen;'>\"one diagram to rule them all\"</b> anti-patterns. Gather views to build a whole model, using <b style='color: forestgreen;'>scenarios</b> to <b style='color: forestgreen;'>connect views</b>, and <b style='color: forestgreen;'>activity specs</b> to tie together actions."
         },
         {
             "title": "Using Legends and Typographic Elements in Diagrams for Clarity",

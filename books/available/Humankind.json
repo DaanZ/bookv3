@@ -4,7 +4,9 @@
         "author": "Fictional Author",
         "category": "Social Psychology",
         "publisher": "Fictional Publishing House",
-        "pages": 436
+        "pages": 436,
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {

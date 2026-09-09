@@ -6,7 +6,9 @@
         "publisher": "Global Publishers",
         "pages": 268,
         "isbn": "9780393075571",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2025-01-17T23:50:17+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -23,7 +25,7 @@
         },
         {
             "title": "Rise of HR and Its Legal Framework",
-            "body": "<b style='color: forestgreen;'>Human resources (HR)</b> emerged significantly over the decades, growing from only <b style='color: forestgreen;'>140,000 workers in 1968</b> to over <b style='color: forestgreen;'>1.5 million by 2021</b>. This rise reflects an entire industry\u2019s creation, with one in every 102 American workers now employed in HR. The <b style='color: forestgreen;'>American civil rights regime</b>, pivotal in molding this industry, demands corporate HR and compliance measures due to federal civil rights laws' <b style='color: forestgreen;'>ambiguities</b>. Vague legal standards, particularly concerning racial and sexual harassment, lead to <b style='color: forestgreen;'>zero-tolerance policies</b> and widespread bureaucratic adoption of <b style='color: forestgreen;'>\u201cbest practices\u201d.</b> Efforts to avoid litigation often result in <b style='color: forestgreen;'>Bureaucratic Homogenization</b>, making corporate practices uniform and sometimes inefficient without evident enhancement in <b style='color: forestgreen;'>business efficiency</b> or workplace harmony."
+            "body": "<b style='color: forestgreen;'>Human resources (HR)</b> emerged significantly over the decades, growing from only <b style='color: forestgreen;'>140,000 workers in 1968</b> to over <b style='color: forestgreen;'>1.5 million by 2021</b>. This rise reflects an entire industry’s creation, with one in every 102 American workers now employed in HR. The <b style='color: forestgreen;'>American civil rights regime</b>, pivotal in molding this industry, demands corporate HR and compliance measures due to federal civil rights laws' <b style='color: forestgreen;'>ambiguities</b>. Vague legal standards, particularly concerning racial and sexual harassment, lead to <b style='color: forestgreen;'>zero-tolerance policies</b> and widespread bureaucratic adoption of <b style='color: forestgreen;'>“best practices”.</b> Efforts to avoid litigation often result in <b style='color: forestgreen;'>Bureaucratic Homogenization</b>, making corporate practices uniform and sometimes inefficient without evident enhancement in <b style='color: forestgreen;'>business efficiency</b> or workplace harmony."
         },
         {
             "title": "Government's Role in Social Constructs",

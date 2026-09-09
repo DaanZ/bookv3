@@ -4,7 +4,9 @@
         "author": "John Doe",
         "category": "Technology",
         "publisher": "O'Reilly Media",
-        "pages": 333
+        "pages": 333,
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -21,7 +23,7 @@
         },
         {
             "title": "Building a GraphQL API with DynamoDB using AWS Amplify",
-            "body": "In this chapter, you'll <b style='color: forestgreen;'>build a GraphQL API</b> with AWS Amplify that interacts with <b style='color: forestgreen;'>DynamoDB</b> to perform CRUD operations for a notes app. GraphQL is a query language and runtime for APIs, introduced by Facebook, that allows clients to specify the exact data they need, improving efficiency by <b style='color: forestgreen;'>reducing over-fetching</b> and <b style='color: forestgreen;'>under-fetching</b> of data. It offers better type safety compared to REST.\n\nA GraphQL API consists of schemas, resolvers, and data sources. GraphQL schemas are written in Schema Definition Language (SDL) and define the data models and operations like <b style='color: forestgreen;'>queries, mutations</b>, and <b style='color: forestgreen;'>subscriptions</b>\u2014the latter updating data in real-time. Queries fetch data, while mutations create, update, or delete it. They map to HTTP methods, with GraphQL requests looking like JavaScript objects containing only keys."
+            "body": "In this chapter, you'll <b style='color: forestgreen;'>build a GraphQL API</b> with AWS Amplify that interacts with <b style='color: forestgreen;'>DynamoDB</b> to perform CRUD operations for a notes app. GraphQL is a query language and runtime for APIs, introduced by Facebook, that allows clients to specify the exact data they need, improving efficiency by <b style='color: forestgreen;'>reducing over-fetching</b> and <b style='color: forestgreen;'>under-fetching</b> of data. It offers better type safety compared to REST.\n\nA GraphQL API consists of schemas, resolvers, and data sources. GraphQL schemas are written in Schema Definition Language (SDL) and define the data models and operations like <b style='color: forestgreen;'>queries, mutations</b>, and <b style='color: forestgreen;'>subscriptions</b>—the latter updating data in real-time. Queries fetch data, while mutations create, update, or delete it. They map to HTTP methods, with GraphQL requests looking like JavaScript objects containing only keys."
         },
         {
             "title": "Creating a React App with GraphQL API Using AWS Amplify",

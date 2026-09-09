@@ -6,7 +6,9 @@
         "publisher": "Unknown",
         "pages": 62,
         "isbn": "9781370992973",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {

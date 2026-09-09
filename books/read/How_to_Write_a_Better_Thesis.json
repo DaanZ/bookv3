@@ -5,7 +5,9 @@
         "publisher": "Springer International Publishing",
         "pages": 173,
         "isbn": "9780522850307",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -18,7 +20,7 @@
         },
         {
             "title": "Structuring a Thesis",
-            "body": "<b style='color: forestgreen;'>Structuring a Thesis</b> involves deciding on its outline and organization. It often includes <b style='color: forestgreen;'>four parts</b>: an <b style='color: forestgreen;'>Introduction</b>, <b style='color: forestgreen;'>Background</b>, <b style='color: forestgreen;'>Core</b> (main research work), and <b style='color: forestgreen;'>Synthesis</b>. The aim is to guide readers clearly from <b style='color: forestgreen;'>problem definition</b> to <b style='color: forestgreen;'>findings</b>. This is critical across disciplines\u2014though the format may differ, the need for a logical <b style='color: forestgreen;'>narrative structure</b> remains consistent. In different fields, including <b style='color: forestgreen;'>humanities</b> and <b style='color: forestgreen;'>sciences</b>, various structures apply to accommodate <b style='color: forestgreen;'>different types of research</b>, whether <b style='color: forestgreen;'>qualitative</b> or <b style='color: forestgreen;'>quantitative</b>."
+            "body": "<b style='color: forestgreen;'>Structuring a Thesis</b> involves deciding on its outline and organization. It often includes <b style='color: forestgreen;'>four parts</b>: an <b style='color: forestgreen;'>Introduction</b>, <b style='color: forestgreen;'>Background</b>, <b style='color: forestgreen;'>Core</b> (main research work), and <b style='color: forestgreen;'>Synthesis</b>. The aim is to guide readers clearly from <b style='color: forestgreen;'>problem definition</b> to <b style='color: forestgreen;'>findings</b>. This is critical across disciplines—though the format may differ, the need for a logical <b style='color: forestgreen;'>narrative structure</b> remains consistent. In different fields, including <b style='color: forestgreen;'>humanities</b> and <b style='color: forestgreen;'>sciences</b>, various structures apply to accommodate <b style='color: forestgreen;'>different types of research</b>, whether <b style='color: forestgreen;'>qualitative</b> or <b style='color: forestgreen;'>quantitative</b>."
         },
         {
             "title": "Writing Style Tips",
@@ -50,7 +52,7 @@
         },
         {
             "title": "Presentation and Graduate Skills",
-            "body": "<b style='color: forestgreen;'>Presentations</b> should engage the audience and not rely on reading from scripts. Make <b style='color: forestgreen;'>eye contact</b> and involve the audience, avoiding the mistake of turning your back on them. Prepare thoroughly but allow for <b style='color: forestgreen;'>flexibility</b> during the talk. \n\n<b style='color: forestgreen;'>Being a Graduate Student</b> involves developing <b style='color: forestgreen;'>research skills</b> and offers broader benefits like preparing for <b style='color: forestgreen;'>academia</b>. Engage with <b style='color: forestgreen;'>varied tasks</b> like teaching or mentoring, which hone skills essential for <b style='color: forestgreen;'>independent research</b>. \n\nReviewing others\u2019 papers challenges you to make <b style='color: forestgreen;'>informed judgments</b> and helps in understanding <b style='color: forestgreen;'>different perspectives</b> \u2014an invaluable skill for writing successful theses and <b style='color: forestgreen;'>literature reviews</b>."
+            "body": "<b style='color: forestgreen;'>Presentations</b> should engage the audience and not rely on reading from scripts. Make <b style='color: forestgreen;'>eye contact</b> and involve the audience, avoiding the mistake of turning your back on them. Prepare thoroughly but allow for <b style='color: forestgreen;'>flexibility</b> during the talk. \n\n<b style='color: forestgreen;'>Being a Graduate Student</b> involves developing <b style='color: forestgreen;'>research skills</b> and offers broader benefits like preparing for <b style='color: forestgreen;'>academia</b>. Engage with <b style='color: forestgreen;'>varied tasks</b> like teaching or mentoring, which hone skills essential for <b style='color: forestgreen;'>independent research</b>. \n\nReviewing others’ papers challenges you to make <b style='color: forestgreen;'>informed judgments</b> and helps in understanding <b style='color: forestgreen;'>different perspectives</b> —an invaluable skill for writing successful theses and <b style='color: forestgreen;'>literature reviews</b>."
         }
     ]
 }

@@ -1,17 +1,19 @@
 {
     "meta": {
         "title": "How to Take Smart Notes",
-        "author": "S\u00f6nke Ahrens",
+        "author": "Sönke Ahrens",
         "category": "Nonfiction",
         "publisher": "CreateSpace Independent Publishing Platform",
         "pages": 174,
         "isbn": "9787115564672",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
             "title": "Smart Notes: Transform Writing and Learning",
-            "body": "<h3 style='color: forestgreen;'>Smart Notes: Transform Writing and Learning</h3>\n*\n<b style='color: forestgreen;'>Writing</b> is essential in <b style='color: forestgreen;'>academia</b> and for <b style='color: forestgreen;'>nonfiction writers</b>, not only for long papers but everyday tasks too. Ahrens challenges the perception that writing starts with a <b style='color: forestgreen;'>blank page</b> and emphasizes that effective <b style='color: forestgreen;'>note-taking</b> paves the way for productive writing. He argues that most people don\u2019t struggle with crafting papers because of format issues, but due to underestimating the power of smart <b style='color: forestgreen;'>note organization</b>. By creating a systemized method, <b style='color: forestgreen;'>thoughts</b> and insights become more easily transformable into comprehensive pieces, enhancing both writing efficiency and <b style='color: forestgreen;'>learning</b> capacity.*"
+            "body": "<h3 style='color: forestgreen;'>Smart Notes: Transform Writing and Learning</h3>\n*\n<b style='color: forestgreen;'>Writing</b> is essential in <b style='color: forestgreen;'>academia</b> and for <b style='color: forestgreen;'>nonfiction writers</b>, not only for long papers but everyday tasks too. Ahrens challenges the perception that writing starts with a <b style='color: forestgreen;'>blank page</b> and emphasizes that effective <b style='color: forestgreen;'>note-taking</b> paves the way for productive writing. He argues that most people don’t struggle with crafting papers because of format issues, but due to underestimating the power of smart <b style='color: forestgreen;'>note organization</b>. By creating a systemized method, <b style='color: forestgreen;'>thoughts</b> and insights become more easily transformable into comprehensive pieces, enhancing both writing efficiency and <b style='color: forestgreen;'>learning</b> capacity.*"
         },
         {
             "title": "The Importance of Flexible Structure in Note-Taking and Writing",
@@ -35,7 +37,7 @@
         },
         {
             "title": "Understanding Through Connections",
-            "body": "It's important to <b style='color: forestgreen;'>learn by transferring</b> ideas into our existing <b style='color: forestgreen;'>network of thoughts</b> like in a <b style='color: forestgreen;'>slip-box</b>, connecting them to other <b style='color: forestgreen;'>related concepts</b>. The slip-box acts like <b style='color: forestgreen;'>external memory</b>, embedding ideas so we can <b style='color: forestgreen;'>forget and focus</b> on making connections. This reduces <b style='color: forestgreen;'>information overload</b>, acting as a filter for what\u2019s truly important. Unlike cramming or <b style='color: forestgreen;'>memorizing isolated facts</b>, making <b style='color: forestgreen;'>meaningful connections</b> ensures deeper understanding and <b style='color: forestgreen;'>long-term memory</b>. Instead of trying to remember everything like <b style='color: forestgreen;'>Shereshevsky</b>, who could not filter irrelevant details, a mix of <b style='color: forestgreen;'>internal and external memory</b> supports creative and analytical thinking."
+            "body": "It's important to <b style='color: forestgreen;'>learn by transferring</b> ideas into our existing <b style='color: forestgreen;'>network of thoughts</b> like in a <b style='color: forestgreen;'>slip-box</b>, connecting them to other <b style='color: forestgreen;'>related concepts</b>. The slip-box acts like <b style='color: forestgreen;'>external memory</b>, embedding ideas so we can <b style='color: forestgreen;'>forget and focus</b> on making connections. This reduces <b style='color: forestgreen;'>information overload</b>, acting as a filter for what’s truly important. Unlike cramming or <b style='color: forestgreen;'>memorizing isolated facts</b>, making <b style='color: forestgreen;'>meaningful connections</b> ensures deeper understanding and <b style='color: forestgreen;'>long-term memory</b>. Instead of trying to remember everything like <b style='color: forestgreen;'>Shereshevsky</b>, who could not filter irrelevant details, a mix of <b style='color: forestgreen;'>internal and external memory</b> supports creative and analytical thinking."
         },
         {
             "title": "Integrating New Ideas in Slip-Box",

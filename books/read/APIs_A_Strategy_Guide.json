@@ -6,12 +6,14 @@
         "publisher": "O'Reilly Media, Inc.",
         "pages": 148,
         "isbn": "9781449308926",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
             "title": "Understanding the Preface of \"APIs: A Strategy Guide\"",
-            "body": "<b style='color: forestgreen;'>APIs: A Strategy Guide</b> outlines the essential information for understanding APIs and their significance in today's tech landscape. The book, authored by Daniel Jacobson, Greg Brail, and Dan Woods, is part of the O\u2019Reilly Media collection. The preface explains its <b style='color: forestgreen;'>purpose</b>, conventions used, and includes <b style='color: forestgreen;'>acknowledgments</b> for key contributors like John Musser and Sam Ramji. The guide provides both <b style='color: forestgreen;'>practical code usage insights</b> and <b style='color: forestgreen;'>legal considerations</b> while emphasizing its broader utility in expanding technical understanding for developers and businesses alike."
+            "body": "<b style='color: forestgreen;'>APIs: A Strategy Guide</b> outlines the essential information for understanding APIs and their significance in today's tech landscape. The book, authored by Daniel Jacobson, Greg Brail, and Dan Woods, is part of the O’Reilly Media collection. The preface explains its <b style='color: forestgreen;'>purpose</b>, conventions used, and includes <b style='color: forestgreen;'>acknowledgments</b> for key contributors like John Musser and Sam Ramji. The guide provides both <b style='color: forestgreen;'>practical code usage insights</b> and <b style='color: forestgreen;'>legal considerations</b> while emphasizing its broader utility in expanding technical understanding for developers and businesses alike."
         },
         {
             "title": "The Importance and Impact of APIs",
@@ -47,7 +49,7 @@
         },
         {
             "title": "APIs: The Next Step and Considerations",
-            "body": "APIs are not a one-size-fits-all <b style='color: forestgreen;'>solution</b>. They <b style='color: forestgreen;'>transform business</b> but require a clear understanding of the <b style='color: forestgreen;'>business goals</b> and <b style='color: forestgreen;'>target audiences</b>. Pioneering companies show what works and doesn't, offering a new future for businesses. It\u2019s crucial to remember different contexts public vs. private. Use APIs as a <b style='color: forestgreen;'>tactic</b> to implement business <b style='color: forestgreen;'>strategy</b>. Balance tech and business directions, letting them influence each other."
+            "body": "APIs are not a one-size-fits-all <b style='color: forestgreen;'>solution</b>. They <b style='color: forestgreen;'>transform business</b> but require a clear understanding of the <b style='color: forestgreen;'>business goals</b> and <b style='color: forestgreen;'>target audiences</b>. Pioneering companies show what works and doesn't, offering a new future for businesses. It’s crucial to remember different contexts public vs. private. Use APIs as a <b style='color: forestgreen;'>tactic</b> to implement business <b style='color: forestgreen;'>strategy</b>. Balance tech and business directions, letting them influence each other."
         }
     ]
 }

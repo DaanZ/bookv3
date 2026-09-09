@@ -6,7 +6,9 @@
         "publisher": "Addy Osmani and Hassan Djirdeh",
         "pages": 306,
         "isbn": "9781304520883",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -39,7 +41,7 @@
         },
         {
             "title": "Dynamic Locale Switching and Language Pluralization",
-            "body": "Dynamically switching locales improves user experience by allowing smooth language transitions. Not all languages follow English pluralization rules; for example, <b style='color: forestgreen;'>Arabic uses different plural forms</b> based on number ranges. Libraries like <b style='color: forestgreen;'>react-intl handle these plural rules</b> using syntax like ICU Message Formatting, ensuring culturally accurate translations. *FormattedMessage* components adapt to number of items and user locale, providing <b style='color: forestgreen;'>flexible plural handling</b> for diverse languages.\n\nHandling globalized content involves <b style='color: forestgreen;'>localizing dates, times, and numbers</b>. JavaScript\u2019s <b style='color: forestgreen;'>Intl object</b> formats these elements by locale, ensuring correct regional presentation. For example, <b style='color: forestgreen;'>Intl.DateTimeFormat</b> can adapt to \"en-US\" and \"de-DE\" locales, providing consistency in user experiences across different regions. Libraries like <b style='color: forestgreen;'>react-intl offer components</b> for rendering dates, numbers, and times in localized formats, bolster accessibility, and enhance cultural authenticity on platforms."
+            "body": "Dynamically switching locales improves user experience by allowing smooth language transitions. Not all languages follow English pluralization rules; for example, <b style='color: forestgreen;'>Arabic uses different plural forms</b> based on number ranges. Libraries like <b style='color: forestgreen;'>react-intl handle these plural rules</b> using syntax like ICU Message Formatting, ensuring culturally accurate translations. *FormattedMessage* components adapt to number of items and user locale, providing <b style='color: forestgreen;'>flexible plural handling</b> for diverse languages.\n\nHandling globalized content involves <b style='color: forestgreen;'>localizing dates, times, and numbers</b>. JavaScript’s <b style='color: forestgreen;'>Intl object</b> formats these elements by locale, ensuring correct regional presentation. For example, <b style='color: forestgreen;'>Intl.DateTimeFormat</b> can adapt to \"en-US\" and \"de-DE\" locales, providing consistency in user experiences across different regions. Libraries like <b style='color: forestgreen;'>react-intl offer components</b> for rendering dates, numbers, and times in localized formats, bolster accessibility, and enhance cultural authenticity on platforms."
         },
         {
             "title": "Building Scalable Web Architecture",

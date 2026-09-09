@@ -6,7 +6,9 @@
         "publisher": "O'Reilly Media, Inc.",
         "pages": 355,
         "isbn": "9781491915912",
-        "isbnSource": "openlibrary"
+        "isbnSource": "openlibrary",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -15,7 +17,7 @@
         },
         {
             "title": "Understanding Docker Image Layers and Build Context",
-            "body": "When creating Docker images with Dockerfiles using <b style='color: forestgreen;'>docker build</b>, it is essential to understand the <b style='color: forestgreen;'>build context</b>\u2014the local files accessible during build, specified as a directory path. Avoid setting this to a directory with many files to prevent unnecessary delays. Each command in a Dockerfile creates a <b style='color: forestgreen;'>new image layer</b>; these layers stack, where each layer represents the filesystem state after executing that command. Understanding this layered approach can help avoid surprises\u2014since each layer is static, long-lived processes won\u2019t persist to the next layer unless started from an <b style='color: forestgreen;'>ENTRYPOINT</b> or <b style='color: forestgreen;'>CMD</b> instruction."
+            "body": "When creating Docker images with Dockerfiles using <b style='color: forestgreen;'>docker build</b>, it is essential to understand the <b style='color: forestgreen;'>build context</b>—the local files accessible during build, specified as a directory path. Avoid setting this to a directory with many files to prevent unnecessary delays. Each command in a Dockerfile creates a <b style='color: forestgreen;'>new image layer</b>; these layers stack, where each layer represents the filesystem state after executing that command. Understanding this layered approach can help avoid surprises—since each layer is static, long-lived processes won’t persist to the next layer unless started from an <b style='color: forestgreen;'>ENTRYPOINT</b> or <b style='color: forestgreen;'>CMD</b> instruction."
         },
         {
             "title": "Developing a Simple Dockerized Flask Application",
@@ -23,7 +25,7 @@
         },
         {
             "title": "Managing and Distributing Docker Images",
-            "body": "<b style='color: forestgreen;'>Image Distribution</b>: There are multiple methods to distribute Docker images, including rebuilding from Dockerfiles, pulling from a registry, or using `docker load` from an archive. \n\n<b style='color: forestgreen;'>Repository Tagging</b>: Proper tagging like `identidock:0.1` for images is crucial for organization and versioning. \n\n<b style='color: forestgreen;'>Docker Hub</b>: Most straightforward for making images available, with public repositories for free and private ones for paid users. Automation can be set up so images rebuild from GitHub/BitBucket triggers. \n\n<b style='color: forestgreen;'>Registry Alternatives</b>: Other hosting options exist, like `quay.io` for private repositories, and running your own Docker registry can be done easily with Docker\u2019s official image, addressing security by adding self-signed certificates."
+            "body": "<b style='color: forestgreen;'>Image Distribution</b>: There are multiple methods to distribute Docker images, including rebuilding from Dockerfiles, pulling from a registry, or using `docker load` from an archive. \n\n<b style='color: forestgreen;'>Repository Tagging</b>: Proper tagging like `identidock:0.1` for images is crucial for organization and versioning. \n\n<b style='color: forestgreen;'>Docker Hub</b>: Most straightforward for making images available, with public repositories for free and private ones for paid users. Automation can be set up so images rebuild from GitHub/BitBucket triggers. \n\n<b style='color: forestgreen;'>Registry Alternatives</b>: Other hosting options exist, like `quay.io` for private repositories, and running your own Docker registry can be done easily with Docker’s official image, addressing security by adding self-signed certificates."
         },
         {
             "title": "Introduction to Docker Deployment Using Docker Machine",
@@ -35,7 +37,7 @@
         },
         {
             "title": "Using Ambassadors for Cross-Host Connections",
-            "body": "<b style='color: forestgreen;'>Ambassadors</b> are useful for connecting services across <b style='color: forestgreen;'>Docker hosts</b> without changing code by using <b style='color: forestgreen;'>proxy containers</b> that relay traffic to the target service. This can separate different environments (e.g., development and production) without requiring code alterations. The example used here demonstrates how to use Docker Machine to provision two hosts and set up Redis and Identidock using ambassador containers as intermediaries. <b style='color: forestgreen;'>Simplistic to use, ambassadors can be finely tuned</b>\u2014such as configuring environment variables to direct traffic to specific hosts\u2014though this method may become cumbersome with increased connections."
+            "body": "<b style='color: forestgreen;'>Ambassadors</b> are useful for connecting services across <b style='color: forestgreen;'>Docker hosts</b> without changing code by using <b style='color: forestgreen;'>proxy containers</b> that relay traffic to the target service. This can separate different environments (e.g., development and production) without requiring code alterations. The example used here demonstrates how to use Docker Machine to provision two hosts and set up Redis and Identidock using ambassador containers as intermediaries. <b style='color: forestgreen;'>Simplistic to use, ambassadors can be finely tuned</b>—such as configuring environment variables to direct traffic to specific hosts—though this method may become cumbersome with increased connections."
         },
         {
             "title": "Service Discovery & Networking",
@@ -47,7 +49,7 @@
         },
         {
             "title": "Container Security Concerns and Mitigation",
-            "body": "The document emphasizes <b style='color: forestgreen;'>security concerns</b> in container environments, highlighting issues like <b style='color: forestgreen;'>container breakout</b> and <b style='color: forestgreen;'>compromised secrets</b>. A key point is ensuring <b style='color: forestgreen;'>image provenance</b> to avoid <b style='color: forestgreen;'>poisoned images</b>\u2014images that could be tampered with to include vulnerabilities.\n\nTo enhance <b style='color: forestgreen;'>security</b>, it suggests measures like mapping <b style='color: forestgreen;'>container users</b> to non-root <b style='color: forestgreen;'>UIDs</b>, careful <b style='color: forestgreen;'>monitoring</b>, and applying the <b style='color: forestgreen;'>principle of least privilege</b>. This means running containers with minimal rights to prevent escalating issues if a container is compromised. Techniques such as <b style='color: forestgreen;'>dropping unnecessary capabilities</b> and setting <b style='color: forestgreen;'>resource limits</b> are also emphasized. Additionally, concerns around <b style='color: forestgreen;'>kernel keyrings</b> and <b style='color: forestgreen;'>shared kernel resources</b> are discussed, urging for strict <b style='color: forestgreen;'>isolation strategies</b> and security configurations."
+            "body": "The document emphasizes <b style='color: forestgreen;'>security concerns</b> in container environments, highlighting issues like <b style='color: forestgreen;'>container breakout</b> and <b style='color: forestgreen;'>compromised secrets</b>. A key point is ensuring <b style='color: forestgreen;'>image provenance</b> to avoid <b style='color: forestgreen;'>poisoned images</b>—images that could be tampered with to include vulnerabilities.\n\nTo enhance <b style='color: forestgreen;'>security</b>, it suggests measures like mapping <b style='color: forestgreen;'>container users</b> to non-root <b style='color: forestgreen;'>UIDs</b>, careful <b style='color: forestgreen;'>monitoring</b>, and applying the <b style='color: forestgreen;'>principle of least privilege</b>. This means running containers with minimal rights to prevent escalating issues if a container is compromised. Techniques such as <b style='color: forestgreen;'>dropping unnecessary capabilities</b> and setting <b style='color: forestgreen;'>resource limits</b> are also emphasized. Additionally, concerns around <b style='color: forestgreen;'>kernel keyrings</b> and <b style='color: forestgreen;'>shared kernel resources</b> are discussed, urging for strict <b style='color: forestgreen;'>isolation strategies</b> and security configurations."
         }
     ]
 }

@@ -3,7 +3,9 @@
         "title": "Microscope Basics and Beyond",
         "author": "Mortimer Abramowitz",
         "publisher": "Olympus America Inc.",
-        "pages": 50
+        "pages": 50,
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {

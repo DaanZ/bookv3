@@ -70,6 +70,14 @@ def index() -> dict[str, dict]:
     return found
 
 
+def _file_added(path: str) -> str | None:
+    """Last resort for a book with no `meta.addedAt`: when the file was last written."""
+    try:
+        return datetime.fromtimestamp(os.path.getmtime(path), timezone.utc).isoformat()
+    except OSError:
+        return None
+
+
 def _load(entry: dict) -> dict | None:
     data = json_read_file(entry["path"])
     if not isinstance(data, dict) or "parts" not in data:
@@ -161,6 +169,12 @@ def summarise(key: str, entry: dict, data: dict, position: dict | None,
         "family": family_of(category),
         "pages": meta.get("pages") or 0,
         "isbn": meta.get("isbn"),
+        # When the book joined the library. `meta.addedAt` is the answer whenever there
+        # is one — written at ingest, or dug out of git by tools/backfill_added.py. The
+        # fallback is the file's own mtime, which is only trustworthy for the handful of
+        # books added since the last commit: a git restore flattens it for everything
+        # else, which is exactly why the date is stored in the JSON at all.
+        "addedAt": meta.get("addedAt") or _file_added(entry["path"]),
         "partCount": len(parts),
         "patch": patch_for(category),
         "state": state,
@@ -226,8 +240,24 @@ def shelf(profile: dict) -> list[dict]:
                       looked_up=looked_up, owner=owner)
         )
 
+    # Newest first. The shelf is filtered by state rather than paged, so the state rank
+    # only decides the order of the three groups on a screen that shows one of them at a
+    # time; within a group, the question a reader actually asks is "what turned up
+    # lately?". A book with no date at all sorts last rather than first, since an unknown
+    # date is not evidence of a recent one.
+    # Newest first. The shelf is filtered by state rather than paged, so the state rank
+    # only orders the three groups on a screen that shows one at a time; within a group
+    # the question a reader actually asks is "what turned up lately?".
+    #
+    # Three stable sorts rather than one key, because the parts pull in opposite
+    # directions: dates descend, titles ascend, and a single tuple cannot say both about
+    # strings. Later sorts win, so this reads bottom-up — group, then date, then title as
+    # the tie-break for books added the same day. A book with no date at all gets "",
+    # which under `reverse` sorts last: an unknown date is not evidence of a recent one.
     rank = {"reading": 0, "new": 1, "read": 2}
-    out.sort(key=lambda b: (rank.get(b["state"], 3), b["title"].lower()))
+    out.sort(key=lambda b: b["title"].lower())
+    out.sort(key=lambda b: b["addedAt"] or "", reverse=True)
+    out.sort(key=lambda b: rank.get(b["state"], 3))
     return out
 
 

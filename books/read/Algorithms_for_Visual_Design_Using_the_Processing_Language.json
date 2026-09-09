@@ -6,7 +6,9 @@
         "publisher": "Wiley",
         "pages": 385,
         "isbn": "9780470503188",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -67,7 +69,7 @@
         },
         {
             "title": "Arduino Photocell and Servo Motor Feedback System",
-            "body": "<b style='color: forestgreen;'>This section</b> of the <b style='color: forestgreen;'>text</b> introduces a <b style='color: forestgreen;'>program</b> for engaging in a <b style='color: forestgreen;'>feedback system</b> using both a <b style='color: forestgreen;'>photocell</b> and a <b style='color: forestgreen;'>servo motor</b> connected via Arduino. In this setup, the <b style='color: forestgreen;'>photocell</b> reads <b style='color: forestgreen;'>light intensity</b> and communicates this data to <b style='color: forestgreen;'>rotate the servo motor</b> at a specific angle based on the observed light changes. \n\nThe <b style='color: forestgreen;'>code</b> starts by setting pin <b style='color: forestgreen;'>13</b> to <b style='color: forestgreen;'>output mode</b>, reads data from the <b style='color: forestgreen;'>sensor</b> and uses this data to compute an angle to rotate the motor. The differential of the input sensor values guides the motor movement. The motor\u2019s <b style='color: forestgreen;'>angle</b> is first initialized at 90 and adjusts based on differentials assessed from the photocell. The motor engages through the <b style='color: forestgreen;'>servoMove()</b> function, using calculated values for <b style='color: forestgreen;'>pulse width</b> to delay the pulsing of the motor, thus influencing its rotation. Lastly, the text discusses how this setup becomes part of a simple <b style='color: forestgreen;'>feedback system</b> by creating a cycle where input affects output, and vice-versa, leading to a balance of input and output responses."
+            "body": "<b style='color: forestgreen;'>This section</b> of the <b style='color: forestgreen;'>text</b> introduces a <b style='color: forestgreen;'>program</b> for engaging in a <b style='color: forestgreen;'>feedback system</b> using both a <b style='color: forestgreen;'>photocell</b> and a <b style='color: forestgreen;'>servo motor</b> connected via Arduino. In this setup, the <b style='color: forestgreen;'>photocell</b> reads <b style='color: forestgreen;'>light intensity</b> and communicates this data to <b style='color: forestgreen;'>rotate the servo motor</b> at a specific angle based on the observed light changes. \n\nThe <b style='color: forestgreen;'>code</b> starts by setting pin <b style='color: forestgreen;'>13</b> to <b style='color: forestgreen;'>output mode</b>, reads data from the <b style='color: forestgreen;'>sensor</b> and uses this data to compute an angle to rotate the motor. The differential of the input sensor values guides the motor movement. The motor’s <b style='color: forestgreen;'>angle</b> is first initialized at 90 and adjusts based on differentials assessed from the photocell. The motor engages through the <b style='color: forestgreen;'>servoMove()</b> function, using calculated values for <b style='color: forestgreen;'>pulse width</b> to delay the pulsing of the motor, thus influencing its rotation. Lastly, the text discusses how this setup becomes part of a simple <b style='color: forestgreen;'>feedback system</b> by creating a cycle where input affects output, and vice-versa, leading to a balance of input and output responses."
         },
         {
             "title": "Pattern and Graphic Algorithms",

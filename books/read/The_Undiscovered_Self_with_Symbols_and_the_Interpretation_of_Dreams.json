@@ -4,7 +4,9 @@
         "author": "C. G. Jung",
         "category": "Psychology / Philosophy",
         "publisher": "Princeton University Press, Bollingen Series XX",
-        "pages": 162
+        "pages": 162,
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -13,7 +15,7 @@
         },
         {
             "title": "Religion as Individual Empowerment",
-            "body": "<b style='color: forestgreen;'>Religion</b> is seen as a counterbalance to mass-mindedness by emphasizing individual dependence on <b style='color: forestgreen;'>God</b> or a spiritual path rather than solely on the <b style='color: forestgreen;'>State</b>. Without religion, the individual risks becoming merely a function of <b style='color: forestgreen;'>statistics</b> or the State, stripped of personal <b style='color: forestgreen;'>judgment</b> and autonomy. Religion offers a standpoint outside worldly conditions, enabling individuals to <b style='color: forestgreen;'>decide</b> and <b style='color: forestgreen;'>judge</b>, thereby counteracting external influences that dominate those living only by worldly measures.\n\nReligions can often become just <b style='color: forestgreen;'>creeds</b>, focusing on collective beliefs rather than individual, spiritual relationships. These creeds may externalize religious experiences and align with <b style='color: forestgreen;'>State</b> interests, leading to ethical systems lacking true personal <b style='color: forestgreen;'>responsibility</b> before God. The individual\u2019s psyche requires grounding in something beyond worldly order, or else risks succumbing to <b style='color: forestgreen;'>external pressures</b>. Real religious feeling empowers individual <b style='color: forestgreen;'>dignity</b> and freedom, unlike mass-oriented belief systems that restrict even moral and <b style='color: forestgreen;'>free judgment</b>."
+            "body": "<b style='color: forestgreen;'>Religion</b> is seen as a counterbalance to mass-mindedness by emphasizing individual dependence on <b style='color: forestgreen;'>God</b> or a spiritual path rather than solely on the <b style='color: forestgreen;'>State</b>. Without religion, the individual risks becoming merely a function of <b style='color: forestgreen;'>statistics</b> or the State, stripped of personal <b style='color: forestgreen;'>judgment</b> and autonomy. Religion offers a standpoint outside worldly conditions, enabling individuals to <b style='color: forestgreen;'>decide</b> and <b style='color: forestgreen;'>judge</b>, thereby counteracting external influences that dominate those living only by worldly measures.\n\nReligions can often become just <b style='color: forestgreen;'>creeds</b>, focusing on collective beliefs rather than individual, spiritual relationships. These creeds may externalize religious experiences and align with <b style='color: forestgreen;'>State</b> interests, leading to ethical systems lacking true personal <b style='color: forestgreen;'>responsibility</b> before God. The individual’s psyche requires grounding in something beyond worldly order, or else risks succumbing to <b style='color: forestgreen;'>external pressures</b>. Real religious feeling empowers individual <b style='color: forestgreen;'>dignity</b> and freedom, unlike mass-oriented belief systems that restrict even moral and <b style='color: forestgreen;'>free judgment</b>."
         },
         {
             "title": "Self-Knowledge as a Path to Spiritual Fulfillment",

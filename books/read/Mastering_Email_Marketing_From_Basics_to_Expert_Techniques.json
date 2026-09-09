@@ -4,7 +4,9 @@
         "author": "Alicia Brandt",
         "category": "Business & Marketing",
         "publisher": "Innovate Press",
-        "pages": 54
+        "pages": 54,
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -17,7 +19,7 @@
         },
         {
             "title": "GetResponse Features and Pricing Overview",
-            "body": "<b style='color: forestgreen;'>A/B Testing</b> helps you find the best email campaigns by experimenting. Use <b style='color: forestgreen;'>spam checker tools</b> to ensure your emails don\u2019t end up in junk folders. Also, avoid buying email lists as they can harm your long-term reputation. \n\n<b style='color: forestgreen;'>GetResponse</b> has a rich history, starting as the first autoresponder in 1997. Today, it supports over <b style='color: forestgreen;'>350K customers worldwide</b>, offering automated tools for businesses. Their pricing is based on list size, with the cheapest at <b style='color: forestgreen;'>$15/month</b> for up to 1000 contacts, including discounts for longer billing periods."
+            "body": "<b style='color: forestgreen;'>A/B Testing</b> helps you find the best email campaigns by experimenting. Use <b style='color: forestgreen;'>spam checker tools</b> to ensure your emails don’t end up in junk folders. Also, avoid buying email lists as they can harm your long-term reputation. \n\n<b style='color: forestgreen;'>GetResponse</b> has a rich history, starting as the first autoresponder in 1997. Today, it supports over <b style='color: forestgreen;'>350K customers worldwide</b>, offering automated tools for businesses. Their pricing is based on list size, with the cheapest at <b style='color: forestgreen;'>$15/month</b> for up to 1000 contacts, including discounts for longer billing periods."
         }
     ]
 }

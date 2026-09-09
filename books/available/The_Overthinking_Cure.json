@@ -6,7 +6,9 @@
         "publisher": "Not Available",
         "pages": 128,
         "isbn": "9798498940847",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2025-01-17T23:50:17+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -19,7 +21,7 @@
         },
         {
             "title": "Valued Action & Managing Rumination",
-            "body": "This section explains how <b style='color: forestgreen;'>committed action</b> is more than just performing tasks, it's <b style='color: forestgreen;'>valued action</b> that aligns with what truly matters to you. By being guided by your <b style='color: forestgreen;'>values</b>, your actions become <b style='color: forestgreen;'>meaningful</b>. For instance, when dealing with a cancer diagnosis, staying informed rather than being led by fear is a <b style='color: forestgreen;'>proactive choice</b> that reflects responsibility for your health. Such actions signify <b style='color: forestgreen;'>empowerment</b>, as they stem from clear values over external control.\n\nFurthermore, the section touches on combating <b style='color: forestgreen;'>rumination</b>\u2014when you overthink without solving problems. Unlike helpful, problem-solving thinking, <b style='color: forestgreen;'>rumination</b> causes distress without benefit. To manage this, recognize it doesn\u2019t help and aim to shift your focus to <b style='color: forestgreen;'>valuable actions</b> instead. This is part of Acceptance and Commitment Therapy (ACT), where after acknowledging a thought, you decide <b style='color: forestgreen;'>if it aligns with your values</b> before taking action."
+            "body": "This section explains how <b style='color: forestgreen;'>committed action</b> is more than just performing tasks, it's <b style='color: forestgreen;'>valued action</b> that aligns with what truly matters to you. By being guided by your <b style='color: forestgreen;'>values</b>, your actions become <b style='color: forestgreen;'>meaningful</b>. For instance, when dealing with a cancer diagnosis, staying informed rather than being led by fear is a <b style='color: forestgreen;'>proactive choice</b> that reflects responsibility for your health. Such actions signify <b style='color: forestgreen;'>empowerment</b>, as they stem from clear values over external control.\n\nFurthermore, the section touches on combating <b style='color: forestgreen;'>rumination</b>—when you overthink without solving problems. Unlike helpful, problem-solving thinking, <b style='color: forestgreen;'>rumination</b> causes distress without benefit. To manage this, recognize it doesn’t help and aim to shift your focus to <b style='color: forestgreen;'>valuable actions</b> instead. This is part of Acceptance and Commitment Therapy (ACT), where after acknowledging a thought, you decide <b style='color: forestgreen;'>if it aligns with your values</b> before taking action."
         },
         {
             "title": "Reframing Automatic Negative Thoughts",

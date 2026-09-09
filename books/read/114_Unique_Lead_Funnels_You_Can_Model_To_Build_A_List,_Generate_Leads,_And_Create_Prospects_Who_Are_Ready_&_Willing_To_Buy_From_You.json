@@ -4,7 +4,9 @@
         "author": "Not specified",
         "category": "Marketing",
         "publisher": "Not specified",
-        "pages": 172
+        "pages": 172,
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -13,7 +15,7 @@
         },
         {
             "title": "Creating Lead Magnets & Email Lists",
-            "body": "To create lead magnets and info products effortlessly, start by recording a <b style='color: forestgreen;'>workshop or video</b> that provides value. This can double as a lead magnet by offering a sneak peek or first hour for free, creating <b style='color: forestgreen;'>FOMO</b> among your audience. By utilizing different mediums like screen recordings or iPhone videos, you can diversify your content delivery, ensuring you reach your audience effectively and increase perceived value.\n\nAfter crafting a <b style='color: forestgreen;'>lead magnet</b>, move onto building your <b style='color: forestgreen;'>email list</b> starting with a <b style='color: forestgreen;'>simple, curiosity-driven landing page</b>. Using minimal design\u2014just a headline, an image, and an opt-in box\u2014increases the conversion rate of visitors providing their email address. Through interviews and guest blog posts, you can attract ideal customers without spending on ads, offering valuable insights or free content in exchange for email addresses. Landing pages should emphasize <b style='color: forestgreen;'>simplicity, curiosity, and clear calls-to-action</b> to guide users smoothly through the opt-in process."
+            "body": "To create lead magnets and info products effortlessly, start by recording a <b style='color: forestgreen;'>workshop or video</b> that provides value. This can double as a lead magnet by offering a sneak peek or first hour for free, creating <b style='color: forestgreen;'>FOMO</b> among your audience. By utilizing different mediums like screen recordings or iPhone videos, you can diversify your content delivery, ensuring you reach your audience effectively and increase perceived value.\n\nAfter crafting a <b style='color: forestgreen;'>lead magnet</b>, move onto building your <b style='color: forestgreen;'>email list</b> starting with a <b style='color: forestgreen;'>simple, curiosity-driven landing page</b>. Using minimal design—just a headline, an image, and an opt-in box—increases the conversion rate of visitors providing their email address. Through interviews and guest blog posts, you can attract ideal customers without spending on ads, offering valuable insights or free content in exchange for email addresses. Landing pages should emphasize <b style='color: forestgreen;'>simplicity, curiosity, and clear calls-to-action</b> to guide users smoothly through the opt-in process."
         },
         {
             "title": "HubSpot Infographic Templates Overview",
@@ -33,7 +35,7 @@
         },
         {
             "title": "Dark Side & Legal Notice Summary",
-            "body": "<b style='color: forestgreen;'>The \u2018Dark Side\u2019 of DotComSecrets</b> offers insights with \"black hat\" techniques for traffic generation, claiming <b style='color: forestgreen;'>easier alternatives</b> to traditional methods like PPC and SEO. The hook uses visual elements like <b style='color: forestgreen;'>dark imagery and crossbones</b> to attract attention, and promises a <b style='color: forestgreen;'>significant profit</b> of $7,231.63 from a strategy described as a \"search engine loophole.\" The offer invites users to enter their email to access these strategies for free.\n\nThe <b style='color: forestgreen;'>Legal Disclaimer</b> emphasizes that all <b style='color: forestgreen;'>content and designs are copyrighted</b> and cannot be reproduced. The book claims that its techniques are lucrative, but <b style='color: forestgreen;'>income and results are not assured</b> and subject to change with the evolving internet landscape. Users are advised that they bear the risk of relying on income examples provided, and <b style='color: forestgreen;'>responsibility for the use</b> of materials falls on them. There is a <b style='color: forestgreen;'>caution</b> about perceived slights, emphasizing they are unintentional, and no guarantees of income are made."
+            "body": "<b style='color: forestgreen;'>The ‘Dark Side’ of DotComSecrets</b> offers insights with \"black hat\" techniques for traffic generation, claiming <b style='color: forestgreen;'>easier alternatives</b> to traditional methods like PPC and SEO. The hook uses visual elements like <b style='color: forestgreen;'>dark imagery and crossbones</b> to attract attention, and promises a <b style='color: forestgreen;'>significant profit</b> of $7,231.63 from a strategy described as a \"search engine loophole.\" The offer invites users to enter their email to access these strategies for free.\n\nThe <b style='color: forestgreen;'>Legal Disclaimer</b> emphasizes that all <b style='color: forestgreen;'>content and designs are copyrighted</b> and cannot be reproduced. The book claims that its techniques are lucrative, but <b style='color: forestgreen;'>income and results are not assured</b> and subject to change with the evolving internet landscape. Users are advised that they bear the risk of relying on income examples provided, and <b style='color: forestgreen;'>responsibility for the use</b> of materials falls on them. There is a <b style='color: forestgreen;'>caution</b> about perceived slights, emphasizing they are unintentional, and no guarantees of income are made."
         }
     ]
 }

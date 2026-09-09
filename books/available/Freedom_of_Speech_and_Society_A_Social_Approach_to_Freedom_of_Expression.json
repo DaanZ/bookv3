@@ -2,11 +2,13 @@
     "meta": {
         "title": "Freedom of Speech and Society: A Social Approach to Freedom of Expression",
         "author": "Harry Melkonian",
-        "category": "Freedom of Speech\u2014Social Aspects\u2014United States",
+        "category": "Freedom of Speech—Social Aspects—United States",
         "publisher": "Cambria Press",
         "pages": 249,
         "isbn": "9781604978209",
-        "isbnSource": "openlibrary"
+        "isbnSource": "openlibrary",
+        "addedAt": "2025-01-17T23:50:17+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -23,7 +25,7 @@
         },
         {
             "title": "Legal Theories and Validity Claims",
-            "body": "<h3 style='color: forestgreen;'>Legal Theories and Validity Claims</h3>\n\nLegal scholars Lord Devlin and H.L.A. <b style='color: forestgreen;'>Hart</b> debated Durkheim's theory on criminal punishment for undermining <b style='color: forestgreen;'>society's cohesion</b>. Devlin saw punishments as essential to reflect majority <b style='color: forestgreen;'>morality</b>, while Hart argued against using <b style='color: forestgreen;'>law</b> to enforce public prejudices. Durkheim\u2019s views suggest <b style='color: forestgreen;'>punishment</b> should sustain societal morality by addressing outraged sentiments rather than repressing conduct. Though criticized, Durkheim\u2019s concepts support the necessity for laws to parallel societal values for <b style='color: forestgreen;'>social cohesion</b>."
+            "body": "<h3 style='color: forestgreen;'>Legal Theories and Validity Claims</h3>\n\nLegal scholars Lord Devlin and H.L.A. <b style='color: forestgreen;'>Hart</b> debated Durkheim's theory on criminal punishment for undermining <b style='color: forestgreen;'>society's cohesion</b>. Devlin saw punishments as essential to reflect majority <b style='color: forestgreen;'>morality</b>, while Hart argued against using <b style='color: forestgreen;'>law</b> to enforce public prejudices. Durkheim’s views suggest <b style='color: forestgreen;'>punishment</b> should sustain societal morality by addressing outraged sentiments rather than repressing conduct. Though criticized, Durkheim’s concepts support the necessity for laws to parallel societal values for <b style='color: forestgreen;'>social cohesion</b>."
         },
         {
             "title": "Decline of Criminal Defamation & Durkheim's Theories",
@@ -39,7 +41,7 @@
         },
         {
             "title": "Freedom of Speech Theories Embracing Mill and Kant",
-            "body": "\n<h3 style='color: forestgreen;'>Embracing <b style='color: forestgreen;'>Mill</b> and <b style='color: forestgreen;'>Kant</b></h3>\n\nIn this section, it's argued that among classic theories, <b style='color: forestgreen;'>Mill's</b> idea of truth and <b style='color: forestgreen;'>Kant's</b> concept of autonomy are pivotal for freedom of speech. While <b style='color: forestgreen;'>truth</b> may not be the outright result of free speech, it enables societies to make <b style='color: forestgreen;'>good choices</b> and promotes <b style='color: forestgreen;'>critical thinking</b>. Allowing for errors, free speech should foster <b style='color: forestgreen;'>informed decision-making</b> instead of relying on absolute truths. <b style='color: forestgreen;'>Kant\u2019s</b> idea of <b style='color: forestgreen;'>autonomy</b>, crucially tied to human dignity, supports individuals' ability to choose and debate, showing how free speech <b style='color: forestgreen;'>nurtures autonomy</b> and enhances <b style='color: forestgreen;'>self-fulfillment</b>."
+            "body": "\n<h3 style='color: forestgreen;'>Embracing <b style='color: forestgreen;'>Mill</b> and <b style='color: forestgreen;'>Kant</b></h3>\n\nIn this section, it's argued that among classic theories, <b style='color: forestgreen;'>Mill's</b> idea of truth and <b style='color: forestgreen;'>Kant's</b> concept of autonomy are pivotal for freedom of speech. While <b style='color: forestgreen;'>truth</b> may not be the outright result of free speech, it enables societies to make <b style='color: forestgreen;'>good choices</b> and promotes <b style='color: forestgreen;'>critical thinking</b>. Allowing for errors, free speech should foster <b style='color: forestgreen;'>informed decision-making</b> instead of relying on absolute truths. <b style='color: forestgreen;'>Kant’s</b> idea of <b style='color: forestgreen;'>autonomy</b>, crucially tied to human dignity, supports individuals' ability to choose and debate, showing how free speech <b style='color: forestgreen;'>nurtures autonomy</b> and enhances <b style='color: forestgreen;'>self-fulfillment</b>."
         },
         {
             "title": "Sociology in Legal Decisions",

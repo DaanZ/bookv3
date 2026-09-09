@@ -6,7 +6,9 @@
         "publisher": "John Wiley & Sons, Inc.",
         "pages": 189,
         "isbn": "9780471816522",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -27,7 +29,7 @@
         },
         {
             "title": "Sorting and Algorithms",
-            "body": "<b style='color: forestgreen;'>Sorting</b>: This chapter explores sorting methods to arrange data in sequence, such as selection sort and merge sort. <b style='color: forestgreen;'>Selection sort</b> iteratively selects the smallest element from an unsorted list and swaps it to its correct position. This method, although intuitive, is inefficient for large datasets because its <b style='color: forestgreen;'>complexity</b> is <b style='color: forestgreen;'>O(N\u00b2)</b>. As the size increases, the time required becomes impractical due to the number of comparisons needing to be performed, growing significantly with larger data sets. \n\nOn the other hand, <b style='color: forestgreen;'>merge sort</b>, a recursive sorting algorithm, is proposed. It splits the array in half, recursively sorts each piece, then merges them back. This divide-and-conquer strategy allows for a much more efficient sort compared to selection sorting, particularly for large datasets. The chapter introduces the MERGESORT procedure within the SORT interface and explores the logic behind the merging procedure, emphasizing the efficiency gained through this recursive sorting approach."
+            "body": "<b style='color: forestgreen;'>Sorting</b>: This chapter explores sorting methods to arrange data in sequence, such as selection sort and merge sort. <b style='color: forestgreen;'>Selection sort</b> iteratively selects the smallest element from an unsorted list and swaps it to its correct position. This method, although intuitive, is inefficient for large datasets because its <b style='color: forestgreen;'>complexity</b> is <b style='color: forestgreen;'>O(N²)</b>. As the size increases, the time required becomes impractical due to the number of comparisons needing to be performed, growing significantly with larger data sets. \n\nOn the other hand, <b style='color: forestgreen;'>merge sort</b>, a recursive sorting algorithm, is proposed. It splits the array in half, recursively sorts each piece, then merges them back. This divide-and-conquer strategy allows for a much more efficient sort compared to selection sorting, particularly for large datasets. The chapter introduces the MERGESORT procedure within the SORT interface and explores the logic behind the merging procedure, emphasizing the efficiency gained through this recursive sorting approach."
         },
         {
             "title": "Recursive Backtracking for Maze Solving",

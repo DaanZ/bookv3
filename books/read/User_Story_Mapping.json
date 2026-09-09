@@ -6,7 +6,9 @@
         "publisher": "O'Reilly Media, Inc.",
         "pages": 324,
         "isbn": "9781491904886",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -15,7 +17,7 @@
         },
         {
             "title": "Understanding the True Role of User Stories and Effective Communication",
-            "body": "<b style='color: forestgreen;'>Stories Aren't Written</b>: The goal is to tell stories, not just write them. Writing on <b style='color: forestgreen;'>cards</b> or <b style='color: forestgreen;'>sticky notes</b> with keywords sparks <b style='color: forestgreen;'>discussion</b> and helps build <b style='color: forestgreen;'>shared understanding</b>. This system allows closer <b style='color: forestgreen;'>collaboration</b> to list needs and prioritize work, turning ideas into software effectively. \\n\\n<b style='color: forestgreen;'>Communication Model</b>: The chapter highlights that merely writing requirements often leads to misunderstandings\u2014like playing a \"telephone game\" as kids. Key ideas include \"<b style='color: forestgreen;'>Shared documents aren\u2019t shared understanding</b>.\" Interactions and <b style='color: forestgreen;'>visuals</b> (such as sketches or index cards) are crucial for evolving a shared perspective which <b style='color: forestgreen;'>collaboratively</b> turns into a unified outcome."
+            "body": "<b style='color: forestgreen;'>Stories Aren't Written</b>: The goal is to tell stories, not just write them. Writing on <b style='color: forestgreen;'>cards</b> or <b style='color: forestgreen;'>sticky notes</b> with keywords sparks <b style='color: forestgreen;'>discussion</b> and helps build <b style='color: forestgreen;'>shared understanding</b>. This system allows closer <b style='color: forestgreen;'>collaboration</b> to list needs and prioritize work, turning ideas into software effectively. \\n\\n<b style='color: forestgreen;'>Communication Model</b>: The chapter highlights that merely writing requirements often leads to misunderstandings—like playing a \"telephone game\" as kids. Key ideas include \"<b style='color: forestgreen;'>Shared documents aren’t shared understanding</b>.\" Interactions and <b style='color: forestgreen;'>visuals</b> (such as sketches or index cards) are crucial for evolving a shared perspective which <b style='color: forestgreen;'>collaboratively</b> turns into a unified outcome."
         },
         {
             "title": "Understand to Own",
@@ -27,7 +29,7 @@
         },
         {
             "title": "User Tasks and Variability in Routines",
-            "body": "When describing <b style='color: forestgreen;'>user tasks</b> for your software, start with a <b style='color: forestgreen;'>verb</b> like \"Brush teeth\" or \"Take a shower.\" These tasks are actions we perform to reach a goal, which we call <b style='color: forestgreen;'>user tasks</b> in story mapping. It\u2019s crucial because they help us understand users' interactions with software, and most naturally flow out of our minds. Make sure tasks start with short verb phrases.\n\nCounting your tasks reveals variations because everyone has different routines and circumstances, such as having children or owning a pet, which affects their tasks. Tasks vary in <b style='color: forestgreen;'>goal level</b> and importance; some are detailed, others are summary tasks."
+            "body": "When describing <b style='color: forestgreen;'>user tasks</b> for your software, start with a <b style='color: forestgreen;'>verb</b> like \"Brush teeth\" or \"Take a shower.\" These tasks are actions we perform to reach a goal, which we call <b style='color: forestgreen;'>user tasks</b> in story mapping. It’s crucial because they help us understand users' interactions with software, and most naturally flow out of our minds. Make sure tasks start with short verb phrases.\n\nCounting your tasks reveals variations because everyone has different routines and circumstances, such as having children or owning a pet, which affects their tasks. Tasks vary in <b style='color: forestgreen;'>goal level</b> and importance; some are detailed, others are summary tasks."
         },
         {
             "title": "The Birth of Story Template at Connextra",

@@ -4,7 +4,9 @@
         "author": "Emrah Yayici",
         "category": "Business Analysis, UX Design, Project Management",
         "publisher": "[Publisher details are not specified, but the book is copyrighted by EMRAH YAYICI]",
-        "pages": 105
+        "pages": 105,
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -21,7 +23,7 @@
         },
         {
             "title": "Choosing the Right Method",
-            "body": "<b style='color: forestgreen;'>Project Methodologies:</b> To avoid confusion in projects, <b style='color: forestgreen;'>Teams Should Use Appropriate Methodologies</b>. Some managers try to use the same method for all projects\u2014calling them \"Xagile\" or \"Scrumfall\"\u2014resulting in a mismatch of methods and projects.\n\n<b style='color: forestgreen;'>Waterfall vs. Agile:</b> Waterfall is <b style='color: forestgreen;'>sequential</b>, fitting static environments, while Agile is <b style='color: forestgreen;'>flexible</b>, suiting dynamic settings. Agile prioritizes customer feedback with \"sprints\", delivering work quickly, building trust through early results. <b style='color: forestgreen;'>Each Project Needs a Suitable Method</b>, often combining both for optimal gains."
+            "body": "<b style='color: forestgreen;'>Project Methodologies:</b> To avoid confusion in projects, <b style='color: forestgreen;'>Teams Should Use Appropriate Methodologies</b>. Some managers try to use the same method for all projects—calling them \"Xagile\" or \"Scrumfall\"—resulting in a mismatch of methods and projects.\n\n<b style='color: forestgreen;'>Waterfall vs. Agile:</b> Waterfall is <b style='color: forestgreen;'>sequential</b>, fitting static environments, while Agile is <b style='color: forestgreen;'>flexible</b>, suiting dynamic settings. Agile prioritizes customer feedback with \"sprints\", delivering work quickly, building trust through early results. <b style='color: forestgreen;'>Each Project Needs a Suitable Method</b>, often combining both for optimal gains."
         },
         {
             "title": "Feature Impact and Requirements Management",
@@ -29,7 +31,7 @@
         },
         {
             "title": "Requirements & Use Case Techniques",
-            "body": "In waterfall methodology, <b style='color: forestgreen;'>user requirements</b> are detailed using <b style='color: forestgreen;'>use case techniques</b>. First, define the <b style='color: forestgreen;'>actors</b> involved, then outline their <b style='color: forestgreen;'>goals</b> (use cases). The main activities or <b style='color: forestgreen;'>functional requirements</b> that actors perform are shown in <b style='color: forestgreen;'>scenario steps</b>. Example: in the \"View and Order a Product\" use case, \"category selection\" is a functional requirement. Different <b style='color: forestgreen;'>scenarios</b> are differentiated: <b style='color: forestgreen;'>main</b> (happy path), <b style='color: forestgreen;'>alternative</b> (other ways to achieve goals), and <b style='color: forestgreen;'>exception</b> (error conditions). It\u2019s crucial to define <b style='color: forestgreen;'>exception scenarios</b> separately since they are critical to address errors."
+            "body": "In waterfall methodology, <b style='color: forestgreen;'>user requirements</b> are detailed using <b style='color: forestgreen;'>use case techniques</b>. First, define the <b style='color: forestgreen;'>actors</b> involved, then outline their <b style='color: forestgreen;'>goals</b> (use cases). The main activities or <b style='color: forestgreen;'>functional requirements</b> that actors perform are shown in <b style='color: forestgreen;'>scenario steps</b>. Example: in the \"View and Order a Product\" use case, \"category selection\" is a functional requirement. Different <b style='color: forestgreen;'>scenarios</b> are differentiated: <b style='color: forestgreen;'>main</b> (happy path), <b style='color: forestgreen;'>alternative</b> (other ways to achieve goals), and <b style='color: forestgreen;'>exception</b> (error conditions). It’s crucial to define <b style='color: forestgreen;'>exception scenarios</b> separately since they are critical to address errors."
         },
         {
             "title": "Role of Business Analysts in Agile Projects",
@@ -45,7 +47,7 @@
         },
         {
             "title": "Leveraging Lean for Effective Project Management",
-            "body": "<b style='color: forestgreen;'>Project Managers</b> in the <b style='color: forestgreen;'>lean approach</b> should focus on <b style='color: forestgreen;'>whole optimization</b> rather than <b style='color: forestgreen;'>suboptimization</b>. This means avoiding <b style='color: forestgreen;'>silos</b> among team members such as <b style='color: forestgreen;'>business analysts</b> and <b style='color: forestgreen;'>developers</b>. Instead of focusing solely on <b style='color: forestgreen;'>output KPIs</b>, they should aim to ensure the <b style='color: forestgreen;'>whole team's objectives</b> are aligned, keeping stakeholders motivated toward delivering actual <b style='color: forestgreen;'>value</b>.\n\nIn the <b style='color: forestgreen;'>CEC company</b> project, applying this approach led to better <b style='color: forestgreen;'>customer satisfaction</b> and efficient use of resources, meeting all of the company\u2019s goals. Despite challenges, persistence with these practices resulted in completing the project on time, fulfilling both the <b style='color: forestgreen;'>market and internal demands</b>."
+            "body": "<b style='color: forestgreen;'>Project Managers</b> in the <b style='color: forestgreen;'>lean approach</b> should focus on <b style='color: forestgreen;'>whole optimization</b> rather than <b style='color: forestgreen;'>suboptimization</b>. This means avoiding <b style='color: forestgreen;'>silos</b> among team members such as <b style='color: forestgreen;'>business analysts</b> and <b style='color: forestgreen;'>developers</b>. Instead of focusing solely on <b style='color: forestgreen;'>output KPIs</b>, they should aim to ensure the <b style='color: forestgreen;'>whole team's objectives</b> are aligned, keeping stakeholders motivated toward delivering actual <b style='color: forestgreen;'>value</b>.\n\nIn the <b style='color: forestgreen;'>CEC company</b> project, applying this approach led to better <b style='color: forestgreen;'>customer satisfaction</b> and efficient use of resources, meeting all of the company’s goals. Despite challenges, persistence with these practices resulted in completing the project on time, fulfilling both the <b style='color: forestgreen;'>market and internal demands</b>."
         }
     ]
 }

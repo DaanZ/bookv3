@@ -6,7 +6,9 @@
         "publisher": "FreelanceFolder.com",
         "pages": 200,
         "isbn": "9780578022529",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -39,7 +41,7 @@
         },
         {
             "title": "About Dreams and Ambition",
-            "body": "<b style='color: forestgreen;'>You</b> can reach big dreams by being <b style='color: forestgreen;'>productive</b> with your current <b style='color: forestgreen;'>resources</b>. Improve <b style='color: forestgreen;'>your business</b> consistently, and one day <b style='color: forestgreen;'>you\u2019ll</b> be able to pursue those <b style='color: forestgreen;'>ambitious dreams</b> you've set aside. The aim should be to <b style='color: forestgreen;'>create great products</b> rather than chase <b style='color: forestgreen;'>perfection</b>. Perfection is <b style='color: forestgreen;'>subjective</b> and often <b style='color: forestgreen;'>impossible</b> to achieve; instead, focus on offering <b style='color: forestgreen;'>useful solutions</b> to <b style='color: forestgreen;'>customers</b>. Recognizing when <b style='color: forestgreen;'>you've</b> done a good job and learning to <b style='color: forestgreen;'>stop</b> is essential. Give yourself <b style='color: forestgreen;'>permission</b> to be <b style='color: forestgreen;'>human</b> rather than striving for the myth of <b style='color: forestgreen;'>perfection</b>."
+            "body": "<b style='color: forestgreen;'>You</b> can reach big dreams by being <b style='color: forestgreen;'>productive</b> with your current <b style='color: forestgreen;'>resources</b>. Improve <b style='color: forestgreen;'>your business</b> consistently, and one day <b style='color: forestgreen;'>you’ll</b> be able to pursue those <b style='color: forestgreen;'>ambitious dreams</b> you've set aside. The aim should be to <b style='color: forestgreen;'>create great products</b> rather than chase <b style='color: forestgreen;'>perfection</b>. Perfection is <b style='color: forestgreen;'>subjective</b> and often <b style='color: forestgreen;'>impossible</b> to achieve; instead, focus on offering <b style='color: forestgreen;'>useful solutions</b> to <b style='color: forestgreen;'>customers</b>. Recognizing when <b style='color: forestgreen;'>you've</b> done a good job and learning to <b style='color: forestgreen;'>stop</b> is essential. Give yourself <b style='color: forestgreen;'>permission</b> to be <b style='color: forestgreen;'>human</b> rather than striving for the myth of <b style='color: forestgreen;'>perfection</b>."
         }
     ]
 }

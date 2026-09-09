@@ -6,7 +6,9 @@
         "publisher": "Oxford University Press",
         "pages": 657,
         "isbn": "9780198502449",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {

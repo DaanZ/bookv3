@@ -5,7 +5,9 @@
         "publisher": "DK Publishing",
         "pages": 193,
         "isbn": "9781409386551",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -18,7 +20,7 @@
         },
         {
             "title": "Herbs and How to Cultivate, Use, and Harvest",
-            "body": "<b style='color: forestgreen;'>Hardy Herbs and Their Care:</b> This guide introduces a variety of <b style='color: forestgreen;'>hardy herbs</b> that you can grow in your garden. These herbs, such as sage, rosemary, and Roman chamomile, are resilient to cold climates, withstanding temperatures as low as <b style='color: forestgreen;'>-20\u00b0F (-29\u00b0C)</b>. Care tips include planting in well-drained soil, adding compost, and replacing old soil in spring to boost growth. You can divide and pot surplus plants in fall or early spring. <br><br><b style='color: forestgreen;'>Uses of Hardy Herbs:</b> Each herb has unique uses. Roman chamomile's flower buds are perfect for teas, while sorrel leaves add a tangy taste to dishes. Rosemary is great for seasoning potatoes and lamb, while sage leaves can enhance sauces and even make tea. Oregano adds intense flavors to meals, better than its common counterpart, making it a must in culinary dishes.<br><br><b style='color: forestgreen;'>Maintaining and Harvesting Herbal Teas:</b> Growing herbal tea plants like lemon balm, Moroccan mint, and fennel is easy. They thrive in moist, well-drained soil, and you can pinch and trim for better growth. Sweet woodruff adds a vanilla essence to teas with just a few leaves. These herbs should be harvested when their flavors peak, providing elegant, aromatic teas fresh from your garden."
+            "body": "<b style='color: forestgreen;'>Hardy Herbs and Their Care:</b> This guide introduces a variety of <b style='color: forestgreen;'>hardy herbs</b> that you can grow in your garden. These herbs, such as sage, rosemary, and Roman chamomile, are resilient to cold climates, withstanding temperatures as low as <b style='color: forestgreen;'>-20°F (-29°C)</b>. Care tips include planting in well-drained soil, adding compost, and replacing old soil in spring to boost growth. You can divide and pot surplus plants in fall or early spring. <br><br><b style='color: forestgreen;'>Uses of Hardy Herbs:</b> Each herb has unique uses. Roman chamomile's flower buds are perfect for teas, while sorrel leaves add a tangy taste to dishes. Rosemary is great for seasoning potatoes and lamb, while sage leaves can enhance sauces and even make tea. Oregano adds intense flavors to meals, better than its common counterpart, making it a must in culinary dishes.<br><br><b style='color: forestgreen;'>Maintaining and Harvesting Herbal Teas:</b> Growing herbal tea plants like lemon balm, Moroccan mint, and fennel is easy. They thrive in moist, well-drained soil, and you can pinch and trim for better growth. Sweet woodruff adds a vanilla essence to teas with just a few leaves. These herbs should be harvested when their flavors peak, providing elegant, aromatic teas fresh from your garden."
         },
         {
             "title": "Exploring Mint Varieties",

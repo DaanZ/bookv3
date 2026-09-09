@@ -6,7 +6,9 @@
         "publisher": "Cambridge University Press",
         "pages": 913,
         "isbn": "9780521729451",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {

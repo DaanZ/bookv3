@@ -6,7 +6,9 @@
         "publisher": "O'Reilly Media, Inc.",
         "pages": 306,
         "isbn": "9781491985571",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -23,11 +25,11 @@
         },
         {
             "title": "Building a Resilient Web Crawler",
-            "body": "When building a web scraper that visits *multiple websites* or *unknown sites* via crawling, developers must *plan cautiously*. Questions to ask include: *specific data needed*, *legal restrictions*, and *scraping strategy*. A Python *function set* under 60 lines can handle web crawling, but due care is important to enhance resilience against pitfalls, such as hitting Python\u2019s recursion limit if a site lacks external links. Always prepare *error handling functions* to tackle potential exceptions when operating a crawler at scale."
+            "body": "When building a web scraper that visits *multiple websites* or *unknown sites* via crawling, developers must *plan cautiously*. Questions to ask include: *specific data needed*, *legal restrictions*, and *scraping strategy*. A Python *function set* under 60 lines can handle web crawling, but due care is important to enhance resilience against pitfalls, such as hitting Python’s recursion limit if a site lacks external links. Always prepare *error handling functions* to tackle potential exceptions when operating a crawler at scale."
         },
         {
             "title": "Storing and Downloading Media Files",
-            "body": "<b style='color: forestgreen;'>Storing Data from Web Scraping</b>\n\nWhen working with <b style='color: forestgreen;'>web scraping</b>, it\u2019s crucial to determine how the data will be stored. This decision impacts both the speed of your application and the load on the target server. While <b style='color: forestgreen;'>storing URLs</b> of media files (such as images) is <b style='color: forestgreen;'>efficient and less burdensome</b> on servers, direct <b style='color: forestgreen;'>file downloads</b> might be preferable if you anticipate frequent access or potential changes to the files on the server. Libraries like <b style='color: forestgreen;'>urllib</b> in Python can help download files directly by providing functions like <b style='color: forestgreen;'>urlretrieve</b> that store files locally. This method of downloading is <b style='color: forestgreen;'>simple and effective</b> for small-scale projects or needs."
+            "body": "<b style='color: forestgreen;'>Storing Data from Web Scraping</b>\n\nWhen working with <b style='color: forestgreen;'>web scraping</b>, it’s crucial to determine how the data will be stored. This decision impacts both the speed of your application and the load on the target server. While <b style='color: forestgreen;'>storing URLs</b> of media files (such as images) is <b style='color: forestgreen;'>efficient and less burdensome</b> on servers, direct <b style='color: forestgreen;'>file downloads</b> might be preferable if you anticipate frequent access or potential changes to the files on the server. Libraries like <b style='color: forestgreen;'>urllib</b> in Python can help download files directly by providing functions like <b style='color: forestgreen;'>urlretrieve</b> that store files locally. This method of downloading is <b style='color: forestgreen;'>simple and effective</b> for small-scale projects or needs."
         },
         {
             "title": "Downloading, CSV Handling, and File Cautions",
@@ -55,11 +57,11 @@
         },
         {
             "title": "Running Web Scrapers on Remote Servers",
-            "body": "<b style='color: forestgreen;'>Web Scraping on Remote Servers</b> \nRunning web scrapers on local machines is common, but shifting to remote platforms can offer several advantages like <b style='color: forestgreen;'>greater power</b>, <b style='color: forestgreen;'>flexibility</b>, and importantly, avoiding IP address blocks by using different IP addresses. IP addresses can\u2019t be faked \n<b style='color: forestgreen;'>Blocking challenges</b>: Although IP blocking is a last resort, it can affect legitimate users due to <b style='color: forestgreen;'>clustering</b> offenses. Hence, you need tools to run Python scrapers on remote servers, which are not very hard to set up and make life easier, especially when dealing with IP blocking issues.\n<b style='color: forestgreen;'>Reasons for Remote Scraping</b>: \n- <b style='color: forestgreen;'>Power & Flexibility</b>: Scripts aren\u2019t bound by personal computer limitations.\n- <b style='color: forestgreen;'>IP Address Usage</b>: Prevents IP blocking by using different server addresses."
+            "body": "<b style='color: forestgreen;'>Web Scraping on Remote Servers</b> \nRunning web scrapers on local machines is common, but shifting to remote platforms can offer several advantages like <b style='color: forestgreen;'>greater power</b>, <b style='color: forestgreen;'>flexibility</b>, and importantly, avoiding IP address blocks by using different IP addresses. IP addresses can’t be faked \n<b style='color: forestgreen;'>Blocking challenges</b>: Although IP blocking is a last resort, it can affect legitimate users due to <b style='color: forestgreen;'>clustering</b> offenses. Hence, you need tools to run Python scrapers on remote servers, which are not very hard to set up and make life easier, especially when dealing with IP blocking issues.\n<b style='color: forestgreen;'>Reasons for Remote Scraping</b>: \n- <b style='color: forestgreen;'>Power & Flexibility</b>: Scripts aren’t bound by personal computer limitations.\n- <b style='color: forestgreen;'>IP Address Usage</b>: Prevents IP blocking by using different server addresses."
         },
         {
             "title": "Understanding Tor for Scraping",
-            "body": "<b style='color: forestgreen;'>Tor</b> is a network used for routing traffic through <b style='color: forestgreen;'>multiple servers</b> to <b style='color: forestgreen;'>hide origins</b> and <b style='color: forestgreen;'>obscure communications</b>. It is popular among <b style='color: forestgreen;'>human rights workers</b> and <b style='color: forestgreen;'>whistleblowers</b> for maintaining <b style='color: forestgreen;'>anonymity</b>. However, anonymity isn't perfect\u2014actions like <b style='color: forestgreen;'>logging in</b> can reveal your identity. For instance, a Harvard student was identified after sending a bomb threat using Tor because they were the only one logged into Tor at that time. <b style='color: forestgreen;'>Logging into Tor</b> doesn't mean you have <b style='color: forestgreen;'>complete invisibility</b>; use it cautiously and ethically."
+            "body": "<b style='color: forestgreen;'>Tor</b> is a network used for routing traffic through <b style='color: forestgreen;'>multiple servers</b> to <b style='color: forestgreen;'>hide origins</b> and <b style='color: forestgreen;'>obscure communications</b>. It is popular among <b style='color: forestgreen;'>human rights workers</b> and <b style='color: forestgreen;'>whistleblowers</b> for maintaining <b style='color: forestgreen;'>anonymity</b>. However, anonymity isn't perfect—actions like <b style='color: forestgreen;'>logging in</b> can reveal your identity. For instance, a Harvard student was identified after sending a bomb threat using Tor because they were the only one logged into Tor at that time. <b style='color: forestgreen;'>Logging into Tor</b> doesn't mean you have <b style='color: forestgreen;'>complete invisibility</b>; use it cautiously and ethically."
         }
     ]
 }

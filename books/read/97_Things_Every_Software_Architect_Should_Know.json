@@ -6,7 +6,9 @@
         "publisher": "O'Reilly Media",
         "pages": 222,
         "isbn": "9780596522698",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -47,7 +49,7 @@
         },
         {
             "title": "Growing Software Systems",
-            "body": "When it comes to software projects, bigger systems are more prone to fail. As an <b style='color: forestgreen;'>architect</b>, resist the temptation to design large complete systems upfront. Although it's tempting to build a <b style='color: forestgreen;'>grand design</b> that meets all <b style='color: forestgreen;'>requirements</b> and desired properties from the start, opt for a <b style='color: forestgreen;'>grand vision</b> instead. Begin with a small, working subset of the intended <b style='color: forestgreen;'>architecture</b> \u2013 the simplest thing that could possibly work. This smaller system can evolve over time, be more <b style='color: forestgreen;'>testable</b>, less <b style='color: forestgreen;'>fragile</b>, and cheaper to maintain.\n\nLetting a system grow naturally allows it to adapt to changing <b style='color: forestgreen;'>requirements</b> and situations and helps avoid incidental complexity and inertia of large designs. This approach <b style='color: forestgreen;'>teaches</b> you its strengths and weaknesses promptly. Such a system can also be more <b style='color: forestgreen;'>observable</b> and <b style='color: forestgreen;'>compliant</b> to its stakeholders, ensuring it meets their evolving needs. Ultimately, taking a <b style='color: forestgreen;'>modular</b> approach feels like relinquishing control but helps achieve more <b style='color: forestgreen;'>robust</b> and <b style='color: forestgreen;'>flexible</b> software systems."
+            "body": "When it comes to software projects, bigger systems are more prone to fail. As an <b style='color: forestgreen;'>architect</b>, resist the temptation to design large complete systems upfront. Although it's tempting to build a <b style='color: forestgreen;'>grand design</b> that meets all <b style='color: forestgreen;'>requirements</b> and desired properties from the start, opt for a <b style='color: forestgreen;'>grand vision</b> instead. Begin with a small, working subset of the intended <b style='color: forestgreen;'>architecture</b> – the simplest thing that could possibly work. This smaller system can evolve over time, be more <b style='color: forestgreen;'>testable</b>, less <b style='color: forestgreen;'>fragile</b>, and cheaper to maintain.\n\nLetting a system grow naturally allows it to adapt to changing <b style='color: forestgreen;'>requirements</b> and situations and helps avoid incidental complexity and inertia of large designs. This approach <b style='color: forestgreen;'>teaches</b> you its strengths and weaknesses promptly. Such a system can also be more <b style='color: forestgreen;'>observable</b> and <b style='color: forestgreen;'>compliant</b> to its stakeholders, ensuring it meets their evolving needs. Ultimately, taking a <b style='color: forestgreen;'>modular</b> approach feels like relinquishing control but helps achieve more <b style='color: forestgreen;'>robust</b> and <b style='color: forestgreen;'>flexible</b> software systems."
         }
     ]
 }

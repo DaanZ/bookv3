@@ -5,7 +5,9 @@
         "publisher": "Gnome Press",
         "pages": 233,
         "isbn": "9780373195206",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -18,7 +20,7 @@
         },
         {
             "title": "Trial and Purpose of Psychohistory",
-            "body": "<b style='color: forestgreen;'>Gaal</b> is on <b style='color: forestgreen;'>Trantor</b> for the trial of <b style='color: forestgreen;'>Dr. Seldon</b>, who remains <b style='color: forestgreen;'>unperturbed</b> despite being the focus of the hearings. The trial is private, focused on <b style='color: forestgreen;'>Seldon\u2019s prediction</b> of the <b style='color: forestgreen;'>Empire\u2019s downfall</b>. Seldon argues scientifically that <b style='color: forestgreen;'>Trantor</b> will be ruined within three centuries due to various social factors. He employs psychohistory, a branch of mathematics that accounts for large human groups, to support his predictions. He stresses the <b style='color: forestgreen;'>importance</b> of preparing for this by gathering an army of thinkers to <b style='color: forestgreen;'>compile an \"Encyclopedia Galactica.\"</b> The <b style='color: forestgreen;'>Commission's Advocate</b> attempts to trap Seldon by questioning the practicable <b style='color: forestgreen;'>purpose</b> of his project, suggesting insurrection, but Seldon insists the purpose is to <b style='color: forestgreen;'>\"minimize the effects of Trantor's destruction.\"</b>"
+            "body": "<b style='color: forestgreen;'>Gaal</b> is on <b style='color: forestgreen;'>Trantor</b> for the trial of <b style='color: forestgreen;'>Dr. Seldon</b>, who remains <b style='color: forestgreen;'>unperturbed</b> despite being the focus of the hearings. The trial is private, focused on <b style='color: forestgreen;'>Seldon’s prediction</b> of the <b style='color: forestgreen;'>Empire’s downfall</b>. Seldon argues scientifically that <b style='color: forestgreen;'>Trantor</b> will be ruined within three centuries due to various social factors. He employs psychohistory, a branch of mathematics that accounts for large human groups, to support his predictions. He stresses the <b style='color: forestgreen;'>importance</b> of preparing for this by gathering an army of thinkers to <b style='color: forestgreen;'>compile an \"Encyclopedia Galactica.\"</b> The <b style='color: forestgreen;'>Commission's Advocate</b> attempts to trap Seldon by questioning the practicable <b style='color: forestgreen;'>purpose</b> of his project, suggesting insurrection, but Seldon insists the purpose is to <b style='color: forestgreen;'>\"minimize the effects of Trantor's destruction.\"</b>"
         },
         {
             "title": "Seldon's Exile Negotiation",
@@ -50,7 +52,7 @@
         },
         {
             "title": "Mallow's Political Aspirations and Strategies with Jael",
-            "body": "<b style='color: forestgreen;'>Mallow</b> is quite <b style='color: forestgreen;'>relaxed</b>, enjoying a break after long efforts. He discusses his <b style='color: forestgreen;'>political aims</b> with <b style='color: forestgreen;'>Ankor Jael</b>, mentioning his <b style='color: forestgreen;'>plan</b> to gain a <b style='color: forestgreen;'>council seat</b>. <b style='color: forestgreen;'>Jael</b> is a former politician with experience, who lost his position to <b style='color: forestgreen;'>Jorane Sutt</b>, an opponent of Mallow. Jael acknowledges Mallow\u2019s difficulties in becoming a councilman due to <b style='color: forestgreen;'>prejudice</b>. He emphasizes that Mallow needs to <b style='color: forestgreen;'>convince</b> the public, which is <b style='color: forestgreen;'>prejudiced</b>, especially as he is a <b style='color: forestgreen;'>Smyrnian</b>. Mallow has resources and is determined to pursue his goals. The situation is complex because <b style='color: forestgreen;'>Sutt</b>, a clever politician, is against him. Mallow relies on <b style='color: forestgreen;'>wealth</b> and political strategy, including an <b style='color: forestgreen;'>eventual alliance</b> with Jael to reach his <b style='color: forestgreen;'>ambitions</b>."
+            "body": "<b style='color: forestgreen;'>Mallow</b> is quite <b style='color: forestgreen;'>relaxed</b>, enjoying a break after long efforts. He discusses his <b style='color: forestgreen;'>political aims</b> with <b style='color: forestgreen;'>Ankor Jael</b>, mentioning his <b style='color: forestgreen;'>plan</b> to gain a <b style='color: forestgreen;'>council seat</b>. <b style='color: forestgreen;'>Jael</b> is a former politician with experience, who lost his position to <b style='color: forestgreen;'>Jorane Sutt</b>, an opponent of Mallow. Jael acknowledges Mallow’s difficulties in becoming a councilman due to <b style='color: forestgreen;'>prejudice</b>. He emphasizes that Mallow needs to <b style='color: forestgreen;'>convince</b> the public, which is <b style='color: forestgreen;'>prejudiced</b>, especially as he is a <b style='color: forestgreen;'>Smyrnian</b>. Mallow has resources and is determined to pursue his goals. The situation is complex because <b style='color: forestgreen;'>Sutt</b>, a clever politician, is against him. Mallow relies on <b style='color: forestgreen;'>wealth</b> and political strategy, including an <b style='color: forestgreen;'>eventual alliance</b> with Jael to reach his <b style='color: forestgreen;'>ambitions</b>."
         }
     ]
 }

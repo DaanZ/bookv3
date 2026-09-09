@@ -5,7 +5,9 @@
         "publisher": "Cambridge University Press",
         "pages": 346,
         "isbn": "9781316945278",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -38,7 +40,7 @@
         },
         {
             "title": "The Pursuit of Increasing Intelligence: Debunking Myths with Scientific Evidence",
-            "body": "In this chapter, we explore the question of whether it is possible to <b style='color: forestgreen;'>increase intelligence</b>. The discussion highlights how neuroscience might eventually enhance our brain's capability by understanding brain mechanisms. However, many existing claims about increasing intelligence today are <b style='color: forestgreen;'>na\u00efve, wrong, or misrepresentations</b>. These claims often appear in respected scientific journals, not just on the internet. Understanding why these misleading claims persist is crucial, especially for those aiming to enhance their cognitive abilities or address cognitive disabilities in children. \n\nOne classical example discussed in this chapter is the <b style='color: forestgreen;'>Mozart Effect</b>, based on a 1993 study claiming that listening to Mozart's music for 10 minutes could <b style='color: forestgreen;'>temporarily increase IQ</b> by eight points. This claim gained a lot of popularity but was eventually debunked after critical reviews and meta-analyses showed no significant effect on enhancing intelligence. The initial study involved college students performing spatial reasoning tasks after listening to music, which was flawed in various ways, such as measuring the tests wrongly, and lacked replication. This issue underlines the importance of <b style='color: forestgreen;'>independent replication</b> and <b style='color: forestgreen;'>critical evidence evaluation</b> before accepting such dramatic claims about cognitive enhancement."
+            "body": "In this chapter, we explore the question of whether it is possible to <b style='color: forestgreen;'>increase intelligence</b>. The discussion highlights how neuroscience might eventually enhance our brain's capability by understanding brain mechanisms. However, many existing claims about increasing intelligence today are <b style='color: forestgreen;'>naïve, wrong, or misrepresentations</b>. These claims often appear in respected scientific journals, not just on the internet. Understanding why these misleading claims persist is crucial, especially for those aiming to enhance their cognitive abilities or address cognitive disabilities in children. \n\nOne classical example discussed in this chapter is the <b style='color: forestgreen;'>Mozart Effect</b>, based on a 1993 study claiming that listening to Mozart's music for 10 minutes could <b style='color: forestgreen;'>temporarily increase IQ</b> by eight points. This claim gained a lot of popularity but was eventually debunked after critical reviews and meta-analyses showed no significant effect on enhancing intelligence. The initial study involved college students performing spatial reasoning tasks after listening to music, which was flawed in various ways, such as measuring the tests wrongly, and lacked replication. This issue underlines the importance of <b style='color: forestgreen;'>independent replication</b> and <b style='color: forestgreen;'>critical evidence evaluation</b> before accepting such dramatic claims about cognitive enhancement."
         },
         {
             "title": "Advancing Intelligence Research: New Methods and Technologies",

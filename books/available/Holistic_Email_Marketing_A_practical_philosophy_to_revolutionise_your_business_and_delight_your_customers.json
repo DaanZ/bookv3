@@ -6,7 +6,9 @@
         "publisher": "Kogan Page",
         "pages": 219,
         "isbn": "9781781334911",
-        "isbnSource": "openlibrary"
+        "isbnSource": "openlibrary",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -35,7 +37,7 @@
         },
         {
             "title": "Importance of Testing in Email Marketing",
-            "body": "<b style='color: forestgreen;'>Testing</b> is crucial in email marketing for <b style='color: forestgreen;'>better decision-making</b> and <b style='color: forestgreen;'>increased revenue</b>. It replaces <b style='color: forestgreen;'>guesswork</b> with <b style='color: forestgreen;'>empirical results</b>. The <b style='color: forestgreen;'>easiest test</b> is an <b style='color: forestgreen;'>A/B split</b> test, but more complex <b style='color: forestgreen;'>multivariate testing</b> also exists. Tests help achieve a better <b style='color: forestgreen;'>ROI</b>, with studies showing tested programs can generate a <b style='color: forestgreen;'>48:1 ROI</b>. Testing leads to <b style='color: forestgreen;'>continuous improvement</b> and removes <b style='color: forestgreen;'>opinion-based decisions</b>. Starting with email is advantageous because you have a <b style='color: forestgreen;'>built-in audience</b> of subscribers. <b style='color: forestgreen;'>Holistic Testing</b>, focusing on the <b style='color: forestgreen;'>customer's motivations</b>, uses a <b style='color: forestgreen;'>hypothesis-driven method</b>. It\u2019s beneficial because it provides <b style='color: forestgreen;'>long-term insights</b> and results that are more reliable and comprehensive, influencing not just the email campaign but also other marketing channels. <b style='color: forestgreen;'>A/B/n testing</b> underpins Holistic Testing to consider various <b style='color: forestgreen;'>variables</b> for better results. Creating a testing plan with clear <b style='color: forestgreen;'>objectives, hypotheses,</b> and <b style='color: forestgreen;'>questions</b> guides the testing process efficiently."
+            "body": "<b style='color: forestgreen;'>Testing</b> is crucial in email marketing for <b style='color: forestgreen;'>better decision-making</b> and <b style='color: forestgreen;'>increased revenue</b>. It replaces <b style='color: forestgreen;'>guesswork</b> with <b style='color: forestgreen;'>empirical results</b>. The <b style='color: forestgreen;'>easiest test</b> is an <b style='color: forestgreen;'>A/B split</b> test, but more complex <b style='color: forestgreen;'>multivariate testing</b> also exists. Tests help achieve a better <b style='color: forestgreen;'>ROI</b>, with studies showing tested programs can generate a <b style='color: forestgreen;'>48:1 ROI</b>. Testing leads to <b style='color: forestgreen;'>continuous improvement</b> and removes <b style='color: forestgreen;'>opinion-based decisions</b>. Starting with email is advantageous because you have a <b style='color: forestgreen;'>built-in audience</b> of subscribers. <b style='color: forestgreen;'>Holistic Testing</b>, focusing on the <b style='color: forestgreen;'>customer's motivations</b>, uses a <b style='color: forestgreen;'>hypothesis-driven method</b>. It’s beneficial because it provides <b style='color: forestgreen;'>long-term insights</b> and results that are more reliable and comprehensive, influencing not just the email campaign but also other marketing channels. <b style='color: forestgreen;'>A/B/n testing</b> underpins Holistic Testing to consider various <b style='color: forestgreen;'>variables</b> for better results. Creating a testing plan with clear <b style='color: forestgreen;'>objectives, hypotheses,</b> and <b style='color: forestgreen;'>questions</b> guides the testing process efficiently."
         },
         {
             "title": "Mastering Personalisation in Email Marketing",

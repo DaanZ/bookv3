@@ -3,7 +3,9 @@
         "title": "Machine Super Intelligence",
         "author": "Shane Legg",
         "publisher": "Faculty of Informatics of the University of Lugano",
-        "pages": 200
+        "pages": 200,
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {

@@ -6,12 +6,14 @@
         "publisher": "Rethink Press",
         "pages": 125,
         "isbn": "9781781335048",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
             "title": "The Value of Essential Email Skills",
-            "body": "<b style='color: forestgreen;'>Kim Arnold</b>'s book on becoming better at <b style='color: forestgreen;'>email</b> communication is crucial because many spend <b style='color: forestgreen;'>years</b> (six on average) buried in their <b style='color: forestgreen;'>inbox</b>. With little training, people struggle with <b style='color: forestgreen;'>inefficient</b> emails that waste time and cause <b style='color: forestgreen;'>frustration</b>. Good news\u2014<b style='color: forestgreen;'>email</b> can be incredibly <b style='color: forestgreen;'>effective</b>, saving you time if done <b style='color: forestgreen;'>correctly</b>. The book aims to help you become \"The Big Email Enchilada,\" turning your email skills into a <b style='color: forestgreen;'>superpower</b> to cut down those six years to even two or one by improving your <b style='color: forestgreen;'>communication</b> strategy."
+            "body": "<b style='color: forestgreen;'>Kim Arnold</b>'s book on becoming better at <b style='color: forestgreen;'>email</b> communication is crucial because many spend <b style='color: forestgreen;'>years</b> (six on average) buried in their <b style='color: forestgreen;'>inbox</b>. With little training, people struggle with <b style='color: forestgreen;'>inefficient</b> emails that waste time and cause <b style='color: forestgreen;'>frustration</b>. Good news—<b style='color: forestgreen;'>email</b> can be incredibly <b style='color: forestgreen;'>effective</b>, saving you time if done <b style='color: forestgreen;'>correctly</b>. The book aims to help you become \"The Big Email Enchilada,\" turning your email skills into a <b style='color: forestgreen;'>superpower</b> to cut down those six years to even two or one by improving your <b style='color: forestgreen;'>communication</b> strategy."
         },
         {
             "title": "Avoid Emotional Emails & Effective Email Communication",
@@ -27,7 +29,7 @@
         },
         {
             "title": "Proofread Before Sending",
-            "body": "Imagine crafting an email and being ready to hit <b style='color: forestgreen;'>send</b>. Hold on! Reviewing and editing your email is crucial. A slip of the keyboard, like missing an \u2018l\u2019 in \u2018public\u2019, can lead to <b style='color: forestgreen;'>embarrassing typos</b>. Research indicates typos can make us appear less <b style='color: forestgreen;'>intelligent</b>. Like dating, people often judge others by their <b style='color: forestgreen;'>grammar</b>, so it\u2019s worth ensuring your email is error-free.\n\nTo perfect your email, try these steps: Reading it <b style='color: forestgreen;'>out loud</b> helps spot awkward phrasing or mistakes. Aim for an email length of about <b style='color: forestgreen;'>eighty words</b>, focusing on the necessary. Apply the <b style='color: forestgreen;'>HEC Hamburger</b> technique with a <b style='color: forestgreen;'>hook</b>, <b style='color: forestgreen;'>explanation</b>, and <b style='color: forestgreen;'>CTA</b>. Check its appearance and use tools like <b style='color: forestgreen;'>Grammarly</b> for spellcheck, but do a manual <b style='color: forestgreen;'>proofread</b> too. Editing enhances your credibility and effectiveness significantly."
+            "body": "Imagine crafting an email and being ready to hit <b style='color: forestgreen;'>send</b>. Hold on! Reviewing and editing your email is crucial. A slip of the keyboard, like missing an ‘l’ in ‘public’, can lead to <b style='color: forestgreen;'>embarrassing typos</b>. Research indicates typos can make us appear less <b style='color: forestgreen;'>intelligent</b>. Like dating, people often judge others by their <b style='color: forestgreen;'>grammar</b>, so it’s worth ensuring your email is error-free.\n\nTo perfect your email, try these steps: Reading it <b style='color: forestgreen;'>out loud</b> helps spot awkward phrasing or mistakes. Aim for an email length of about <b style='color: forestgreen;'>eighty words</b>, focusing on the necessary. Apply the <b style='color: forestgreen;'>HEC Hamburger</b> technique with a <b style='color: forestgreen;'>hook</b>, <b style='color: forestgreen;'>explanation</b>, and <b style='color: forestgreen;'>CTA</b>. Check its appearance and use tools like <b style='color: forestgreen;'>Grammarly</b> for spellcheck, but do a manual <b style='color: forestgreen;'>proofread</b> too. Editing enhances your credibility and effectiveness significantly."
         }
     ]
 }

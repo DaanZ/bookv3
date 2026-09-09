@@ -6,7 +6,9 @@
         "publisher": "Not specified",
         "pages": 103,
         "isbn": "9780578599281",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -23,7 +25,7 @@
         },
         {
             "title": "Startup Growth Strategies and Management",
-            "body": "The text outlines various strategies and considerations for managing the growth and operational structure of a startup. <b style='color: forestgreen;'>PR</b> is emphasized as an effective way to build legitimacy, but not to rely too much on <b style='color: forestgreen;'>PR agencies</b> due to their high cost and remote way of working. Instead, it's recommended to engage <b style='color: forestgreen;'>directly with journalists</b> to share compelling stories and potentially use <b style='color: forestgreen;'>data</b> to capture media attention. Additionally, there's a suggestion to consolidate media coverage in a concentrated period to maximize impact, rather than spread out over time. This consolidated approach creates momentum and benefits from a kind of <b style='color: forestgreen;'>\"viral\" effect</b>, enhancing visibility and awareness of your startup.\n\nThe section on <b style='color: forestgreen;'>advertising</b> stresses understanding where your customer\u2019s attention lies and crafting content that resonates with their interests in those specific places. For the <b style='color: forestgreen;'>CEO's office</b>, the focus is on hiring a <b style='color: forestgreen;'>Chief of Staff (COS)</b>, if the CEO feels overwhelmed and needs support. This role is crucial for maintaining efficiency by assisting in tasks until the CEO is focused only on strategic duties she particularly excels at and enjoys."
+            "body": "The text outlines various strategies and considerations for managing the growth and operational structure of a startup. <b style='color: forestgreen;'>PR</b> is emphasized as an effective way to build legitimacy, but not to rely too much on <b style='color: forestgreen;'>PR agencies</b> due to their high cost and remote way of working. Instead, it's recommended to engage <b style='color: forestgreen;'>directly with journalists</b> to share compelling stories and potentially use <b style='color: forestgreen;'>data</b> to capture media attention. Additionally, there's a suggestion to consolidate media coverage in a concentrated period to maximize impact, rather than spread out over time. This consolidated approach creates momentum and benefits from a kind of <b style='color: forestgreen;'>\"viral\" effect</b>, enhancing visibility and awareness of your startup.\n\nThe section on <b style='color: forestgreen;'>advertising</b> stresses understanding where your customer’s attention lies and crafting content that resonates with their interests in those specific places. For the <b style='color: forestgreen;'>CEO's office</b>, the focus is on hiring a <b style='color: forestgreen;'>Chief of Staff (COS)</b>, if the CEO feels overwhelmed and needs support. This role is crucial for maintaining efficiency by assisting in tasks until the CEO is focused only on strategic duties she particularly excels at and enjoys."
         },
         {
             "title": "Legal Efficiency and Cost Management",

@@ -6,7 +6,9 @@
         "publisher": "To be Announced",
         "pages": 175,
         "isbn": "9780999184745",
-        "isbnSource": "openlibrary"
+        "isbnSource": "openlibrary",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -23,7 +25,7 @@
         },
         {
             "title": "Harnessing Personalization on Your Website for Better Engagement",
-            "body": "<h3 style='color: forestgreen;'>Personalization Strategies</h3>\n\nPersonalizing your website can massively boost lead generation by <b style='color: forestgreen;'>tailoring experiences</b> to visitor segments. Using tools such as <b style='color: forestgreen;'>marketing automation</b> and <b style='color: forestgreen;'>IP detection software</b>, you can customize messaging, imagery, and calls-to-action (CTAs) based on the visitor's <b style='color: forestgreen;'>geolocation</b> or <b style='color: forestgreen;'>expressed interests</b>. For instance, you can refine pages in your account-based marketing (ABM) campaigns to ensure they meet the <b style='color: forestgreen;'>specific needs</b> of your target companies. Tools like interactive <b style='color: forestgreen;'>wizards</b> or <b style='color: forestgreen;'>surveys</b> can further customize experiences by capturing visitor details, enhancing segmentation and personalization.\n\n<h3 style='color: forestgreen;'>Efficient Personalization Techniques</h3>\n\nEven without advanced tools, basic personalization in your website\u2014targeting <b style='color: forestgreen;'>different industries</b> or <b style='color: forestgreen;'>job roles</b>\u2014can elevate user experience and conversion rates. This results in a more satisfying engagement, leading to an increase in on-site time and better interaction. It not only forms a <b style='color: forestgreen;'>personal connection</b> with visitors but can significantly <b style='color: forestgreen;'>boost site performance</b>. Continual refinement and A/B testing of personalized elements will continuously enhance outcomes and optimize user journeys."
+            "body": "<h3 style='color: forestgreen;'>Personalization Strategies</h3>\n\nPersonalizing your website can massively boost lead generation by <b style='color: forestgreen;'>tailoring experiences</b> to visitor segments. Using tools such as <b style='color: forestgreen;'>marketing automation</b> and <b style='color: forestgreen;'>IP detection software</b>, you can customize messaging, imagery, and calls-to-action (CTAs) based on the visitor's <b style='color: forestgreen;'>geolocation</b> or <b style='color: forestgreen;'>expressed interests</b>. For instance, you can refine pages in your account-based marketing (ABM) campaigns to ensure they meet the <b style='color: forestgreen;'>specific needs</b> of your target companies. Tools like interactive <b style='color: forestgreen;'>wizards</b> or <b style='color: forestgreen;'>surveys</b> can further customize experiences by capturing visitor details, enhancing segmentation and personalization.\n\n<h3 style='color: forestgreen;'>Efficient Personalization Techniques</h3>\n\nEven without advanced tools, basic personalization in your website—targeting <b style='color: forestgreen;'>different industries</b> or <b style='color: forestgreen;'>job roles</b>—can elevate user experience and conversion rates. This results in a more satisfying engagement, leading to an increase in on-site time and better interaction. It not only forms a <b style='color: forestgreen;'>personal connection</b> with visitors but can significantly <b style='color: forestgreen;'>boost site performance</b>. Continual refinement and A/B testing of personalized elements will continuously enhance outcomes and optimize user journeys."
         },
         {
             "title": "Using Creativity in Content Marketing",

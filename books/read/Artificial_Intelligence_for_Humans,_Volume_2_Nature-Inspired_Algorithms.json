@@ -6,7 +6,9 @@
         "publisher": "Heaton Research, Inc.",
         "pages": 203,
         "isbn": "9781499720570",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -39,7 +41,7 @@
         },
         {
             "title": "Exploring Cellular Automata and Game of Life",
-            "body": "<b style='color: forestgreen;'>Conway\u2019s Game of Life</b> is a famous <b style='color: forestgreen;'>cellular automation</b> that follows four deterministic rules. Live cells die based on their neighbor's count, reproduce, or stay alive. Its patterns like \"<b style='color: forestgreen;'>Methuselahs</b>\" converge slowly, and \"<b style='color: forestgreen;'>gliders</b>\" move diagonally through phases. Multiverse viewers allow evolving unique <b style='color: forestgreen;'>cellular automata</b> using <b style='color: forestgreen;'>human-based genetic algorithms</b> (HBGA) by adjusting the 16-vector physical constants, exploring fascinating patterns. <b style='color: forestgreen;'>Merge physics</b> as cellular automata can also generate complex universes with <b style='color: forestgreen;'>unique patterns</b> like \"purple blob\" and \"red universe\" by utilizing floating-point vectors for evolving complex <b style='color: forestgreen;'>patterns</b>."
+            "body": "<b style='color: forestgreen;'>Conway’s Game of Life</b> is a famous <b style='color: forestgreen;'>cellular automation</b> that follows four deterministic rules. Live cells die based on their neighbor's count, reproduce, or stay alive. Its patterns like \"<b style='color: forestgreen;'>Methuselahs</b>\" converge slowly, and \"<b style='color: forestgreen;'>gliders</b>\" move diagonally through phases. Multiverse viewers allow evolving unique <b style='color: forestgreen;'>cellular automata</b> using <b style='color: forestgreen;'>human-based genetic algorithms</b> (HBGA) by adjusting the 16-vector physical constants, exploring fascinating patterns. <b style='color: forestgreen;'>Merge physics</b> as cellular automata can also generate complex universes with <b style='color: forestgreen;'>unique patterns</b> like \"purple blob\" and \"red universe\" by utilizing floating-point vectors for evolving complex <b style='color: forestgreen;'>patterns</b>."
         },
         {
             "title": "Sun, Water, and Plant Circulation",

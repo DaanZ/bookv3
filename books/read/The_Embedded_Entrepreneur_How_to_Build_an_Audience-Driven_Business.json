@@ -6,7 +6,9 @@
         "publisher": "Arvid Kahl",
         "pages": 306,
         "isbn": "9783982195766",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -19,7 +21,7 @@
         },
         {
             "title": "Understanding Embedded Exploration",
-            "body": "<b style='color: forestgreen;'>Embedded Exploration</b> involves joining and observing communities where your audience interacts. Start by <b style='color: forestgreen;'>lurking</b>\u2014passively listening without engaging too soon. Note <b style='color: forestgreen;'>common problems and themes</b> within the community. Over time, actively <b style='color: forestgreen;'>engage</b> with meaningful contributions to build a reputation.\n\nUse tools like <b style='color: forestgreen;'>TweetDeck</b> for monitoring conversations and following community influencers. For example, on <b style='color: forestgreen;'>Twitter</b>, identify community <b style='color: forestgreen;'>influencers</b> by following their followers and lists. Be mindful of the <b style='color: forestgreen;'>social dynamics</b> on each platform to navigate and participate effectively."
+            "body": "<b style='color: forestgreen;'>Embedded Exploration</b> involves joining and observing communities where your audience interacts. Start by <b style='color: forestgreen;'>lurking</b>—passively listening without engaging too soon. Note <b style='color: forestgreen;'>common problems and themes</b> within the community. Over time, actively <b style='color: forestgreen;'>engage</b> with meaningful contributions to build a reputation.\n\nUse tools like <b style='color: forestgreen;'>TweetDeck</b> for monitoring conversations and following community influencers. For example, on <b style='color: forestgreen;'>Twitter</b>, identify community <b style='color: forestgreen;'>influencers</b> by following their followers and lists. Be mindful of the <b style='color: forestgreen;'>social dynamics</b> on each platform to navigate and participate effectively."
         },
         {
             "title": "Social Media Engagement and Audience Research",

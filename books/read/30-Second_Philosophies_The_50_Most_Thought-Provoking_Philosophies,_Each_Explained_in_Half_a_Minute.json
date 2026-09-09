@@ -5,7 +5,9 @@
         "publisher": "Published in the UK by Icon Books Ltd in 2010.",
         "pages": 190,
         "isbn": "9781435109575",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {

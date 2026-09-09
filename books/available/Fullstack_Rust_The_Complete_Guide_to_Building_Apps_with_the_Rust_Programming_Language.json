@@ -4,7 +4,9 @@
         "author": "Andrew Weiss",
         "category": "Programming",
         "publisher": "Fullstack.io",
-        "pages": 320
+        "pages": 320,
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -13,7 +15,7 @@
         },
         {
             "title": "Cargo and Initial Rust Project Setup",
-            "body": "<b style='color: forestgreen;'>Cargo</b> is Rust's package manager used to manage dependencies and compile code. Familiarize with `cargo new numbers` to create a new binary project, which compiles into an executable file. Use <b style='color: forestgreen;'>main.rs</b> as the entry point for binary projects, with a `main` function executed when the binary runs. When changing features, Cargo allows for smooth transitions: redefine functions or create libraries for broad compatibility. Using <b style='color: forestgreen;'>`Vec`</b> instead of arrays can allow dynamic sizing, making it easier to manage collections. This way, code evolves from simple \"Hello, World!\" examples to more complex tasks, like printing a sequence of numbers. \n\n<b style='color: forestgreen;'>Performance and Reliability</b> in Rust are balanced by design, allowing you to perform safe memory management without sacrificing speed. By integrating `println` macros and `for` loops, you can iterate over collections and print elements. Rust's flexibility regarding types and memory allocation shines through - there are several ways to pass variables and manage ownership. With <b style='color: forestgreen;'>slices</b> and vectors (`&[u8]` and `Vec<u8>`), you can manipulate data structures, making Rust adaptable for various coding situations and reflecting the language\u2019s strong emphasis on <b style='color: forestgreen;'>ownership and type inference</b> to prevent errors at compile time."
+            "body": "<b style='color: forestgreen;'>Cargo</b> is Rust's package manager used to manage dependencies and compile code. Familiarize with `cargo new numbers` to create a new binary project, which compiles into an executable file. Use <b style='color: forestgreen;'>main.rs</b> as the entry point for binary projects, with a `main` function executed when the binary runs. When changing features, Cargo allows for smooth transitions: redefine functions or create libraries for broad compatibility. Using <b style='color: forestgreen;'>`Vec`</b> instead of arrays can allow dynamic sizing, making it easier to manage collections. This way, code evolves from simple \"Hello, World!\" examples to more complex tasks, like printing a sequence of numbers. \n\n<b style='color: forestgreen;'>Performance and Reliability</b> in Rust are balanced by design, allowing you to perform safe memory management without sacrificing speed. By integrating `println` macros and `for` loops, you can iterate over collections and print elements. Rust's flexibility regarding types and memory allocation shines through - there are several ways to pass variables and manage ownership. With <b style='color: forestgreen;'>slices</b> and vectors (`&[u8]` and `Vec<u8>`), you can manipulate data structures, making Rust adaptable for various coding situations and reflecting the language’s strong emphasis on <b style='color: forestgreen;'>ownership and type inference</b> to prevent errors at compile time."
         },
         {
             "title": "Implicit Returns and Simplifying with Collect",

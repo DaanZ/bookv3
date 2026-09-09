@@ -5,7 +5,9 @@
         "publisher": "[Publisher's Name]",
         "pages": 205,
         "isbn": "9781119785347",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -42,7 +44,7 @@
         },
         {
             "title": "Leadership and Team Dynamics in Data Science",
-            "body": "<b style='color: forestgreen;'>Leadership</b> in <b style='color: forestgreen;'>data</b> science is about <b style='color: forestgreen;'>supporting</b> your team, <b style='color: forestgreen;'>removing roadblocks</b>, and building strong <b style='color: forestgreen;'>relationships</b>. Good leaders are <b style='color: forestgreen;'>emotionally intelligent</b>, respectful, and care about personal development. They should facilitate <b style='color: forestgreen;'>constructive conflict</b> to drive innovation and prevent complacency.\n\n<b style='color: forestgreen;'>Data scientists</b> should be viewed as <b style='color: forestgreen;'>craftspeople</b>, not just <b style='color: forestgreen;'>mechanical executors</b> of tasks. They bring creativity to building <b style='color: forestgreen;'>new products</b> and processes. High-performing teams also need to build and maintain <b style='color: forestgreen;'>strong internal conventions</b>, such as <b style='color: forestgreen;'>end-to-end project involvement</b> and <b style='color: forestgreen;'>egalitarian management</b> approaches, while respecting team members\u2019 <b style='color: forestgreen;'>personal idiosyncrasies</b>.\n\nBuilding a successful team involves <b style='color: forestgreen;'>establishing conventions</b> that support engagement, respect, and job satisfaction. Team rituals and respecting individual preferences can help foster a sense of identity. Leaders should <b style='color: forestgreen;'>prioritize communication, remove administrative obstacles</b>, and create a supportive environment, where <b style='color: forestgreen;'>authenticity</b> and mutual respect are encouraged over rigid hierarchies."
+            "body": "<b style='color: forestgreen;'>Leadership</b> in <b style='color: forestgreen;'>data</b> science is about <b style='color: forestgreen;'>supporting</b> your team, <b style='color: forestgreen;'>removing roadblocks</b>, and building strong <b style='color: forestgreen;'>relationships</b>. Good leaders are <b style='color: forestgreen;'>emotionally intelligent</b>, respectful, and care about personal development. They should facilitate <b style='color: forestgreen;'>constructive conflict</b> to drive innovation and prevent complacency.\n\n<b style='color: forestgreen;'>Data scientists</b> should be viewed as <b style='color: forestgreen;'>craftspeople</b>, not just <b style='color: forestgreen;'>mechanical executors</b> of tasks. They bring creativity to building <b style='color: forestgreen;'>new products</b> and processes. High-performing teams also need to build and maintain <b style='color: forestgreen;'>strong internal conventions</b>, such as <b style='color: forestgreen;'>end-to-end project involvement</b> and <b style='color: forestgreen;'>egalitarian management</b> approaches, while respecting team members’ <b style='color: forestgreen;'>personal idiosyncrasies</b>.\n\nBuilding a successful team involves <b style='color: forestgreen;'>establishing conventions</b> that support engagement, respect, and job satisfaction. Team rituals and respecting individual preferences can help foster a sense of identity. Leaders should <b style='color: forestgreen;'>prioritize communication, remove administrative obstacles</b>, and create a supportive environment, where <b style='color: forestgreen;'>authenticity</b> and mutual respect are encouraged over rigid hierarchies."
         },
         {
             "title": "Future of Business Analytics",

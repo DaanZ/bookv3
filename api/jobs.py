@@ -417,6 +417,13 @@ def _run(job_id):
         if isbn:
             meta_info["isbn"] = isbn
 
+        # When this book joined the library. Recorded here because nowhere downstream can
+        # work it out later: a git restore rewrites every file's timestamps, so the 266
+        # books that predate this field had to have their dates dug out of git history
+        # (tools/backfill_added.py). Written once, at ingest, and never touched again.
+        meta_info["addedAt"] = datetime.now(timezone.utc).isoformat()
+        meta_info["addedFrom"] = "ingest"
+
         # Parts already bought on an earlier attempt. Their page ranges come from the same
         # split, so part N is the same pages it was — the checkpoint is only reused when
         # the chunk count matches, because a different count is a different book shape.

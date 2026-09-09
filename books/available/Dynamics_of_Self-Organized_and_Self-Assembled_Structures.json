@@ -6,7 +6,9 @@
         "publisher": "University of Toronto",
         "pages": 344,
         "isbn": "9780521883610",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {

@@ -6,7 +6,9 @@
         "publisher": "Wiley",
         "pages": 209,
         "isbn": "9781118214305",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -31,7 +33,7 @@
         },
         {
             "title": "Direct Messages, Hashtags, and Finding B2B Leads on Twitter",
-            "body": "<h3 style='color: forestgreen;'><b style='color: forestgreen;'>Direct Messages</b></h3>\nDirect messages on Twitter are private and only work if the recipient follows the sender. <b style='color: forestgreen;'>They\u2019re good</b> for exchanging <b style='color: forestgreen;'>contact information</b> but <b style='color: forestgreen;'>avoid sharing very private info</b> as they might pass through third-party apps and are stored on Twitter\u2019s server.\n\n<h3 style='color: forestgreen;'><b style='color: forestgreen;'>Hashtags</b></h3>\n<b style='color: forestgreen;'>Hashtags</b> such as <b style='color: forestgreen;'>#smb2b</b> help join conversations around topics. However, incorrect use like #companyname if rarely searched offers <b style='color: forestgreen;'>no value</b>. Overuse and spam can also drown important tweets. Argyle Social found tweets with hashtags can get fewer clicks than those without."
+            "body": "<h3 style='color: forestgreen;'><b style='color: forestgreen;'>Direct Messages</b></h3>\nDirect messages on Twitter are private and only work if the recipient follows the sender. <b style='color: forestgreen;'>They’re good</b> for exchanging <b style='color: forestgreen;'>contact information</b> but <b style='color: forestgreen;'>avoid sharing very private info</b> as they might pass through third-party apps and are stored on Twitter’s server.\n\n<h3 style='color: forestgreen;'><b style='color: forestgreen;'>Hashtags</b></h3>\n<b style='color: forestgreen;'>Hashtags</b> such as <b style='color: forestgreen;'>#smb2b</b> help join conversations around topics. However, incorrect use like #companyname if rarely searched offers <b style='color: forestgreen;'>no value</b>. Overuse and spam can also drown important tweets. Argyle Social found tweets with hashtags can get fewer clicks than those without."
         },
         {
             "title": "Adapting B2B Marketing for Mobile",
@@ -39,7 +41,7 @@
         },
         {
             "title": "Achieving Marketing Success in the Digital Era",
-            "body": "#<h3 style='color: forestgreen;'><b style='color: forestgreen;'>Achieving Marketing Success in the Digital Era</b></h3>\n\nIn today's world, <b style='color: forestgreen;'>network-based social connections</b> and being active on social platforms can extend a company's reach dramatically. However, <b style='color: forestgreen;'>many B2B organizations block access</b> to social sites, limiting the efficiency and reach of their employees. If faced with this, identify those responsible for the decision, and address their concerns with <b style='color: forestgreen;'>examples and benefits</b>. Highlight that using social sites can actually improve productivity and <b style='color: forestgreen;'>generate leads</b>, rather than being a waste of time.\n\nMarketers must also face executives who may <b style='color: forestgreen;'>lack understanding</b> of social media's business value. Overcome this by demonstrating <b style='color: forestgreen;'>ROI using concrete data</b>, like customer acquisition costs and revenue metrics. Furthermore, even if customers or industry partners aren't currently using social media, use <b style='color: forestgreen;'>social tools and tactics</b> to still create valuable engagement with your target audience \u2013 even if not through typical social networks."
+            "body": "#<h3 style='color: forestgreen;'><b style='color: forestgreen;'>Achieving Marketing Success in the Digital Era</b></h3>\n\nIn today's world, <b style='color: forestgreen;'>network-based social connections</b> and being active on social platforms can extend a company's reach dramatically. However, <b style='color: forestgreen;'>many B2B organizations block access</b> to social sites, limiting the efficiency and reach of their employees. If faced with this, identify those responsible for the decision, and address their concerns with <b style='color: forestgreen;'>examples and benefits</b>. Highlight that using social sites can actually improve productivity and <b style='color: forestgreen;'>generate leads</b>, rather than being a waste of time.\n\nMarketers must also face executives who may <b style='color: forestgreen;'>lack understanding</b> of social media's business value. Overcome this by demonstrating <b style='color: forestgreen;'>ROI using concrete data</b>, like customer acquisition costs and revenue metrics. Furthermore, even if customers or industry partners aren't currently using social media, use <b style='color: forestgreen;'>social tools and tactics</b> to still create valuable engagement with your target audience – even if not through typical social networks."
         },
         {
             "title": "B2B Social Media Resources and Community Support",

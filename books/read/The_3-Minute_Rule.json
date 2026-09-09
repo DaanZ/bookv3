@@ -6,7 +6,9 @@
         "publisher": "Penguin Random House",
         "pages": 190,
         "isbn": "9780525540724",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2025-01-17T23:50:17+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -23,7 +25,7 @@
         },
         {
             "title": "Crafting an Effective Three-Minute Pitch",
-            "body": "This section discusses the importance of <b style='color: forestgreen;'>simplifying a pitch</b> to make it more effective. By focusing on the core <b style='color: forestgreen;'>three minutes</b> of a pitch, one can convey the most <b style='color: forestgreen;'>informative and engaging</b> statements effectively. It\u2019s essential to separate <b style='color: forestgreen;'>information from engagement</b> to prevent confusing the audience and to ensure the message is received clearly and impactfully. Developing a <b style='color: forestgreen;'>logline</b> can help refine the essence of a proposal, just as in the example with TV shows like \"The Biggest Loser.\" \n\nThe narrative illustrates how to <b style='color: forestgreen;'>reorganize and filter</b> the statements of value using <b style='color: forestgreen;'>WHAC</b> (What is it? How does it work? Are you sure? Can you do it?) to create a pitch that informs the audience before engaging them. An exercise called the <b style='color: forestgreen;'>Fire Alarm Test</b> is suggested to ensure your pitch is effective enough that the audience wants to hear more, thereby confirming its impact and clarity. This helps in cutting down unnecessary details and focusing on the <b style='color: forestgreen;'>essence of the pitch</b>."
+            "body": "This section discusses the importance of <b style='color: forestgreen;'>simplifying a pitch</b> to make it more effective. By focusing on the core <b style='color: forestgreen;'>three minutes</b> of a pitch, one can convey the most <b style='color: forestgreen;'>informative and engaging</b> statements effectively. It’s essential to separate <b style='color: forestgreen;'>information from engagement</b> to prevent confusing the audience and to ensure the message is received clearly and impactfully. Developing a <b style='color: forestgreen;'>logline</b> can help refine the essence of a proposal, just as in the example with TV shows like \"The Biggest Loser.\" \n\nThe narrative illustrates how to <b style='color: forestgreen;'>reorganize and filter</b> the statements of value using <b style='color: forestgreen;'>WHAC</b> (What is it? How does it work? Are you sure? Can you do it?) to create a pitch that informs the audience before engaging them. An exercise called the <b style='color: forestgreen;'>Fire Alarm Test</b> is suggested to ensure your pitch is effective enough that the audience wants to hear more, thereby confirming its impact and clarity. This helps in cutting down unnecessary details and focusing on the <b style='color: forestgreen;'>essence of the pitch</b>."
         },
         {
             "title": "Essential Elements of a Compelling Hook",
@@ -31,7 +33,7 @@
         },
         {
             "title": "Leveraging Potential Weaknesses in Pitches",
-            "body": "<b style='color: forestgreen;'>Pitch strategies</b> should balance strengths <b style='color: forestgreen;'>and weaknesses</b>. If a pitch only highlights positive aspects, audiences might feel distrustful and focus on finding flaws. Hence, <b style='color: forestgreen;'>identifying potential problems</b> beforehand is crucial. Explaining these negatives <b style='color: forestgreen;'>upfront redirects audience concerns</b> positively\u2014converting criticism into strength. This technique helped a <b style='color: forestgreen;'>TV show pitch succeed</b> by <b style='color: forestgreen;'>openly addressing</b> authenticity doubts, leading to constructive solutions from the network. In essence, embracing reality within pitches <b style='color: forestgreen;'>enhances credibility</b> and audience engagement."
+            "body": "<b style='color: forestgreen;'>Pitch strategies</b> should balance strengths <b style='color: forestgreen;'>and weaknesses</b>. If a pitch only highlights positive aspects, audiences might feel distrustful and focus on finding flaws. Hence, <b style='color: forestgreen;'>identifying potential problems</b> beforehand is crucial. Explaining these negatives <b style='color: forestgreen;'>upfront redirects audience concerns</b> positively—converting criticism into strength. This technique helped a <b style='color: forestgreen;'>TV show pitch succeed</b> by <b style='color: forestgreen;'>openly addressing</b> authenticity doubts, leading to constructive solutions from the network. In essence, embracing reality within pitches <b style='color: forestgreen;'>enhances credibility</b> and audience engagement."
         },
         {
             "title": "Testing and Refining a Pitch",

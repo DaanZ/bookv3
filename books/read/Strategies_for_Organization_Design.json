@@ -6,7 +6,9 @@
         "publisher": "[Publisher Name Placeholder]",
         "pages": 237,
         "isbn": "9781394170968",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -31,7 +33,7 @@
         },
         {
             "title": "Shared Fate and Group Success",
-            "body": "<b style='color: forestgreen;'>Membership and Organization Design:</b>\n  \nA <b style='color: forestgreen;'>shared sense of fate</b> in organizations can explain people's <b style='color: forestgreen;'>cooperative behavior</b>. Haidt discusses evolutionary psychology \u2014 humans are wired for <b style='color: forestgreen;'>group work</b> and <b style='color: forestgreen;'>cooperation</b>. People with a shared fate <b style='color: forestgreen;'>cooperate</b> more, while free riders disrupt this balance. <b style='color: forestgreen;'>Reputation and shame</b> are key evolutionary traits that motivate individuals to <b style='color: forestgreen;'>align with group goals</b>. For example, Bregman suggests our actions are driven by our concern for <b style='color: forestgreen;'>others' opinions</b>.\n\nDarwin's theory of <b style='color: forestgreen;'>multilevel selection</b> implies that those who hold social virtues, such as concern for reputation, tend to succeed. Evolutionary psychology suggests humans seek <b style='color: forestgreen;'>group membership instinctively</b>, which increases survival chances. <b style='color: forestgreen;'>Roles and social capital</b> are pivotal, engulfed in a network of social norms and obligations that elevate group goals. In the workplace, roles change behavior patterns, creating <b style='color: forestgreen;'>bridging ties</b> vital for advancement. Thus, well-defined <b style='color: forestgreen;'>jobs</b> allow predictable, productive interaction, whereas <b style='color: forestgreen;'>roles</b> reinforce social identity, paving ways for connection, support, and <b style='color: forestgreen;'>trust</b>."
+            "body": "<b style='color: forestgreen;'>Membership and Organization Design:</b>\n  \nA <b style='color: forestgreen;'>shared sense of fate</b> in organizations can explain people's <b style='color: forestgreen;'>cooperative behavior</b>. Haidt discusses evolutionary psychology — humans are wired for <b style='color: forestgreen;'>group work</b> and <b style='color: forestgreen;'>cooperation</b>. People with a shared fate <b style='color: forestgreen;'>cooperate</b> more, while free riders disrupt this balance. <b style='color: forestgreen;'>Reputation and shame</b> are key evolutionary traits that motivate individuals to <b style='color: forestgreen;'>align with group goals</b>. For example, Bregman suggests our actions are driven by our concern for <b style='color: forestgreen;'>others' opinions</b>.\n\nDarwin's theory of <b style='color: forestgreen;'>multilevel selection</b> implies that those who hold social virtues, such as concern for reputation, tend to succeed. Evolutionary psychology suggests humans seek <b style='color: forestgreen;'>group membership instinctively</b>, which increases survival chances. <b style='color: forestgreen;'>Roles and social capital</b> are pivotal, engulfed in a network of social norms and obligations that elevate group goals. In the workplace, roles change behavior patterns, creating <b style='color: forestgreen;'>bridging ties</b> vital for advancement. Thus, well-defined <b style='color: forestgreen;'>jobs</b> allow predictable, productive interaction, whereas <b style='color: forestgreen;'>roles</b> reinforce social identity, paving ways for connection, support, and <b style='color: forestgreen;'>trust</b>."
         },
         {
             "title": "Leveraging Teams and Diversity Effectively",

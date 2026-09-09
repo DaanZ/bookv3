@@ -6,7 +6,9 @@
         "publisher": "Morgan Kaufmann is an imprint of Elsevier",
         "pages": 228,
         "isbn": "9780128040416",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {

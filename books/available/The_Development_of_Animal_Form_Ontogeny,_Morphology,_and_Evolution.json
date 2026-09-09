@@ -6,7 +6,9 @@
         "publisher": "Cambridge University Press",
         "pages": 342,
         "isbn": "9780521808514",
-        "isbnSource": "openlibrary"
+        "isbnSource": "openlibrary",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -31,7 +33,7 @@
         },
         {
             "title": "Cell Differentiation and Developmental Complexity",
-            "body": "This text explores the <b style='color: forestgreen;'>complexity of animal development</b> and <b style='color: forestgreen;'>differentiation</b>. It highlights how <b style='color: forestgreen;'>cell cycle length</b> plays a crucial role in forming organizational patterns within organisms, affecting both <b style='color: forestgreen;'>cell proliferation</b> and <b style='color: forestgreen;'>differentiation</b>. Importantly, the embryonic development period is characterized by <b style='color: forestgreen;'>rapid cell divisions</b>, leaving little time for simultaneous differentiation. This restricts certain genetic activities, as slower transcription is required for longer genes, affecting how <b style='color: forestgreen;'>organisms develop</b>. \n\nIn terms of <b style='color: forestgreen;'>cellular differentiation</b>, the text discusses the <b style='color: forestgreen;'>stable states</b> that cells enter during development. It emphasizes that although differentiation typically follows a set path, there\u2019s potential for <b style='color: forestgreen;'>reprogramming</b> in specific contexts, as seen in certain experiments. It challenges traditional distinctions between <b style='color: forestgreen;'>autonomous</b> and <b style='color: forestgreen;'>inductive</b> development, suggesting that even in organisms with supposedly strict lineage-dependent development like <b style='color: forestgreen;'>Caenorhabditis elegans</b>, numerous <b style='color: forestgreen;'>inductive events</b> occur."
+            "body": "This text explores the <b style='color: forestgreen;'>complexity of animal development</b> and <b style='color: forestgreen;'>differentiation</b>. It highlights how <b style='color: forestgreen;'>cell cycle length</b> plays a crucial role in forming organizational patterns within organisms, affecting both <b style='color: forestgreen;'>cell proliferation</b> and <b style='color: forestgreen;'>differentiation</b>. Importantly, the embryonic development period is characterized by <b style='color: forestgreen;'>rapid cell divisions</b>, leaving little time for simultaneous differentiation. This restricts certain genetic activities, as slower transcription is required for longer genes, affecting how <b style='color: forestgreen;'>organisms develop</b>. \n\nIn terms of <b style='color: forestgreen;'>cellular differentiation</b>, the text discusses the <b style='color: forestgreen;'>stable states</b> that cells enter during development. It emphasizes that although differentiation typically follows a set path, there’s potential for <b style='color: forestgreen;'>reprogramming</b> in specific contexts, as seen in certain experiments. It challenges traditional distinctions between <b style='color: forestgreen;'>autonomous</b> and <b style='color: forestgreen;'>inductive</b> development, suggesting that even in organisms with supposedly strict lineage-dependent development like <b style='color: forestgreen;'>Caenorhabditis elegans</b>, numerous <b style='color: forestgreen;'>inductive events</b> occur."
         },
         {
             "title": "Differentiation, Patterning, and Zootype Concepts",

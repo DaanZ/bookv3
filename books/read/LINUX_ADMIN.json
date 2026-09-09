@@ -6,7 +6,9 @@
         "publisher": "Unknown",
         "pages": 192,
         "isbn": "9798655429123",
-        "isbnSource": "hardcover"
+        "isbnSource": "hardcover",
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -15,7 +17,7 @@
         },
         {
             "title": "Linux User and Group Management",
-            "body": "To manage <b style='color: forestgreen;'>users</b> on Linux, you use the <b style='color: forestgreen;'>adduser</b> command which has options like `-c` for comments, `-m` for home directories, etc. After adding a user, don't forget to set their password with the <b style='color: forestgreen;'>passwd</b> command. To manage <b style='color: forestgreen;'>groups</b>, Linux uses commands like `chgrp` for changing group ownership and `groupadd` for creating new groups. Groups can have passwords for user self-addition, though this method isn\u2019t often used for security reasons. The <b style='color: forestgreen;'>usermod</b> command is essential for updating user accounts, offering switches to modify attributes like group memberships. For complex setups, user accounts can be temporarily <b style='color: forestgreen;'>disabled</b> by changing expiration dates using `chage` or notes with `usermod`."
+            "body": "To manage <b style='color: forestgreen;'>users</b> on Linux, you use the <b style='color: forestgreen;'>adduser</b> command which has options like `-c` for comments, `-m` for home directories, etc. After adding a user, don't forget to set their password with the <b style='color: forestgreen;'>passwd</b> command. To manage <b style='color: forestgreen;'>groups</b>, Linux uses commands like `chgrp` for changing group ownership and `groupadd` for creating new groups. Groups can have passwords for user self-addition, though this method isn’t often used for security reasons. The <b style='color: forestgreen;'>usermod</b> command is essential for updating user accounts, offering switches to modify attributes like group memberships. For complex setups, user accounts can be temporarily <b style='color: forestgreen;'>disabled</b> by changing expiration dates using `chage` or notes with `usermod`."
         },
         {
             "title": "Linux Firewall Management with firewalld",

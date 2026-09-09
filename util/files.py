@@ -37,8 +37,12 @@ def read_file(file_path):
 
 
 def json_read_file(file_path):
+    # `encoding` is not optional here even though every file this reads is written
+    # ASCII-escaped: without it Python opens in the platform codepage, so one book
+    # containing a literal non-ASCII byte takes down the whole shelf with a
+    # UnicodeDecodeError from cp1252 rather than a bad row.
     try:
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r', encoding='utf-8') as file:
             return json.load(file)
     except FileNotFoundError:
         return None

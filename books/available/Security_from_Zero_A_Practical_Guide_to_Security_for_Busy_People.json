@@ -4,7 +4,9 @@
         "author": "Eric Higgins",
         "category": "Technology & Security",
         "publisher": "Fullstack.io",
-        "pages": 131
+        "pages": 131,
+        "addedAt": "2024-12-28T12:18:57+07:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
@@ -21,7 +23,7 @@
         },
         {
             "title": "Planning a Security Budget",
-            "body": "When planning a security budget, <b style='color: forestgreen;'>alignment</b> between goals, resources, and growth expectations is key. A <b style='color: forestgreen;'>budget</b> should earmark funds to achieve specific goals and consider factors like short and long-term goals, input from accounting, and employee numbers. A small or even <b style='color: forestgreen;'>zero budget</b> is common at the start, but understanding available <b style='color: forestgreen;'>resources</b> is crucial. First-year budgets should focus on high-impact expenses, such as <b style='color: forestgreen;'>antivirus software</b>, <b style='color: forestgreen;'>password managers</b>, or <b style='color: forestgreen;'>security audits</b>. Creating a detailed <b style='color: forestgreen;'>budget exercise</b> can help clarify goals and expected costs; adjustments to include expected <b style='color: forestgreen;'>growth</b> is also necessary. At the year\u2019s end, review budget utilization to refine future planning."
+            "body": "When planning a security budget, <b style='color: forestgreen;'>alignment</b> between goals, resources, and growth expectations is key. A <b style='color: forestgreen;'>budget</b> should earmark funds to achieve specific goals and consider factors like short and long-term goals, input from accounting, and employee numbers. A small or even <b style='color: forestgreen;'>zero budget</b> is common at the start, but understanding available <b style='color: forestgreen;'>resources</b> is crucial. First-year budgets should focus on high-impact expenses, such as <b style='color: forestgreen;'>antivirus software</b>, <b style='color: forestgreen;'>password managers</b>, or <b style='color: forestgreen;'>security audits</b>. Creating a detailed <b style='color: forestgreen;'>budget exercise</b> can help clarify goals and expected costs; adjustments to include expected <b style='color: forestgreen;'>growth</b> is also necessary. At the year’s end, review budget utilization to refine future planning."
         },
         {
             "title": "Understanding Bug Bounty Programs",
