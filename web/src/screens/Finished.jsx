@@ -24,12 +24,23 @@ export default function Finished({
   onOpenRec,
   onNextRec,
   onShelf,
+  onReset,
 }) {
   // The result of the call just made, or the outcome recorded when it was finished
   // before. undefined/null means neither exists — say that, do not guess.
   // A re-sync supersedes both: it is the most recent thing Hardcover said.
   const [resync, setResync] = useState(null);
   const [syncing, setSyncing] = useState(false);
+  const [resetting, setResetting] = useState(false);
+
+  const reset = async () => {
+    setResetting(true);
+    try {
+      await onReset();
+    } finally {
+      setResetting(false);
+    }
+  };
 
   const latest = resync ?? result;
   const marked = latest ? latest.markedRead : book.markedRead;
@@ -320,7 +331,20 @@ export default function Finished({
         <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
           {counts.total} books · {counts.read} read
         </span>
-        <QuietLink onClick={onShelf}>Back to shelf</QuietLink>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+          {/* A finish can be a mistake — the wrong row tapped, or a book marked read
+              from the library that was never actually read. Undoing it is the reader's
+              own record, so it sits here rather than only in the library, and it is a
+              quiet link rather than a button: it is the rare correction, not the way
+              out of this screen. Hardcover keeps whatever it was told; retracting a
+              public shelf entry is done on Hardcover. */}
+          {onReset && (
+            <QuietLink onClick={resetting ? undefined : reset}>
+              {resetting ? 'Putting it back…' : 'I have not finished this'}
+            </QuietLink>
+          )}
+          <QuietLink onClick={onShelf}>Back to shelf</QuietLink>
+        </div>
       </div>
     </div>
   );

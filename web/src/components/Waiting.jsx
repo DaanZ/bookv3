@@ -35,7 +35,7 @@ export function Summarising({ done, total, bounds, palette = 'sunset', day = fal
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-      <Spinner variant="rim" size={46} />
+      <Spinner variant="mark" size={46} palette={palette} />
 
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 9, minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, height: 48 }}>

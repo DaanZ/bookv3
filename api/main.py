@@ -4,7 +4,7 @@ Streamlit still owns ingest (`app.py`, `prep.py`); this serves the reading surfa
 the shelf, a book's parts, reading position, and finishing a book. It reads the same
 `books/*.json` the pipeline writes, and adds nothing to that format.
 
-    uvicorn api.main:app --reload --port 8000
+    uvicorn api.main:app --reload --port 8001
 """
 
 import os
@@ -397,6 +397,36 @@ def finish_book(key: str, profile: dict = Depends(keeper)):
         "movedTo": "books/read" if moved else None,
         # The finish screen says whose count this is, and why nothing went to Hardcover.
         "profile": profile,
+    }
+
+
+@app.post("/api/books/{key}/unfinish")
+def unfinish_book(key: str, profile: dict = Depends(keeper)):
+    """Undo a finish: this reader has not read it after all.
+
+    The mirror of `finish`, and it undoes the same two things that one did. The reader's
+    record goes — the bookmark, the finish and its place in the numbering — and for the
+    **owner** the JSON moves back from `books/read` to `books/available`, because for
+    them the folder *is* the history and leaving the file behind would leave the shelf
+    still calling it read.
+
+    One thing it deliberately does not undo: **nothing is sent to Hardcover.** A finish
+    writes `status_id: 3` to a real, public shelf that other people read, and quietly
+    retracting that on a local correction is a bigger act than the mistake it is fixing.
+    Hardcover is edited on Hardcover. The response says so, so the screen can too.
+    """
+    if key not in library.index():
+        raise HTTPException(status_code=404, detail="No such book.")
+
+    positions.clear_position(profile["id"], key)
+    refiled = library.move_book(key, False) if profile.get("owner") else None
+    return {
+        "reset": True,
+        "refiled": refiled is not None,
+        # Whether a finish was ever sent to Hardcover for this book is not knowable from
+        # here once the record is gone, so the screen says the general truth instead:
+        # nothing was retracted.
+        "hardcoverUntouched": True,
     }
 
 

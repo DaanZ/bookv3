@@ -12,6 +12,7 @@ import {
   getEnrichment,
   getJobs,
   moveBook,
+  unfinishBook,
   previewContribution,
   removeJob,
   resumeJob,
@@ -149,7 +150,7 @@ function EstimateRow({ item, model, onCancel }) {
           background: 'var(--bg-surface-hover)',
         }}
       >
-        <Spinner variant="rim" size={22} />
+        <Spinner variant="mark" size={22} />
         <span style={{ font: `400 12px ${MONO}`, color: 'var(--text-muted)' }}>
           {readableName(file.name)} · reading and measuring…
         </span>
@@ -686,7 +687,11 @@ export default function Library({ books, counts, palette, day, onShelf, onChange
   const onMove = async (book, finished) => {
     setBusyKey(book.key);
     try {
-      await moveBook(book.key, finished);
+      // Marking read here is filing. *Un*marking is a correction, and filing alone was
+      // not enough: it moved the JSON back but left the reader's finish record standing,
+      // so the row said unread while the profile still counted it read. Undo goes
+      // through the same endpoint the finish screen uses, which clears both.
+      await (finished ? moveBook(book.key, true) : unfinishBook(book.key));
       onChanged();
     } catch (ex) {
       setError(ex.message);

@@ -1,6 +1,9 @@
+import { BASE_PATH } from './base';
+
 // In dev, Vite proxies /api to the FastAPI server (see vite.config.js). In production
-// the same server hosts this bundle, so a relative path is right in both cases.
-const BASE = '/api';
+// the same server hosts this bundle, so a path relative to the app's own mount is right
+// in both cases — and under a subpath deploy the mount is not the domain root.
+const BASE = `${BASE_PATH}/api`;
 
 import { cacheGet, cachePut, drain, enqueue, pin, pinnedKeys, queuedCount, unpin } from './offline';
 
@@ -227,6 +230,11 @@ export const previewContribution = (key) =>
 export const submitContribution = (key) =>
   request(`/books/${encodeURIComponent(key)}/contribution`, { method: 'POST' });
 
+/** Undo a finish for this reader: clears their record, and refiles for the owner.
+ *  Nothing is retracted on Hardcover — see the endpoint. */
+export const unfinishBook = (key) =>
+  request(`/books/${encodeURIComponent(key)}/unfinish`, { method: 'POST' });
+
 export const moveBook = (key, finished) =>
   request(`/books/${encodeURIComponent(key)}`, {
     method: 'PATCH',
@@ -285,7 +293,7 @@ async function postFile(path, file) {
 
 /** What this book would cost. Reads the PDF, calls no model, queues nothing. */
 export const estimatePdf = (file, chunks) =>
-  postFile(`/api/ingest/estimate${chunks ? `?chunks=${chunks}` : ''}`, file);
+  postFile(`${BASE_PATH}/api/ingest/estimate${chunks ? `?chunks=${chunks}` : ''}`, file);
 
 export function uploadPdf(file, { chunks, model, cost } = {}) {
   const params = new URLSearchParams();
@@ -293,7 +301,7 @@ export function uploadPdf(file, { chunks, model, cost } = {}) {
   if (model) params.set('model', model);
   if (cost != null) params.set('cost', cost);
   const query = params.toString();
-  return postFile(`/api/ingest/upload${query ? `?${query}` : ''}`, file);
+  return postFile(`${BASE_PATH}/api/ingest/upload${query ? `?${query}` : ''}`, file);
 }
 
 // ── offline ────────────────────────────────────────────────────────────────────

@@ -160,6 +160,8 @@ export default function Shelf({
   onOpen,
   filter,
   onFilter,
+  sort,
+  onSort,
   onLibrary,
   onProfiles,
   onLock,
@@ -225,30 +227,68 @@ export default function Shelf({
           rows are filtered rather than paged — one unit of work per screen still holds.
           A guest has no reading to filter: two of the three would always be empty, so
           the catalogue is shown whole instead of behind a control that does nothing. */}
-      <div style={{ display: guest ? 'none' : 'flex', gap: 8, marginTop: 24 }}>
-        {[
-          ['reading', 'Reading'],
-          ['new', 'Not started'],
-          ['read', 'Read'],
-        ].map(([value, label]) => (
-          <button
-            key={value}
-            type="button"
-            className="tap"
-            onClick={() => onFilter(value)}
-            style={{
-              width: 'auto',
-              padding: '7px 13px',
-              borderRadius: 10,
-              font: "500 12px 'Space Grotesk', system-ui",
-              background: filter === value ? 'var(--accent)' : 'transparent',
-              color: filter === value ? 'var(--accent-on)' : 'var(--text-secondary)',
-              border: `1px solid ${filter === value ? 'var(--accent)' : 'var(--border-strong)'}`,
-            }}
-          >
-            {label}
-          </button>
-        ))}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 12,
+          marginTop: 24,
+        }}
+      >
+        <div style={{ display: guest ? 'none' : 'flex', gap: 8 }}>
+          {[
+            ['reading', 'Reading'],
+            ['new', 'Not started'],
+            ['read', 'Read'],
+          ].map(([value, label]) => (
+            <button
+              key={value}
+              type="button"
+              className="tap"
+              onClick={() => onFilter(value)}
+              style={{
+                width: 'auto',
+                padding: '7px 13px',
+                borderRadius: 10,
+                font: "500 12px 'Space Grotesk', system-ui",
+                background: filter === value ? 'var(--accent)' : 'transparent',
+                color: filter === value ? 'var(--accent-on)' : 'var(--text-secondary)',
+                border: `1px solid ${filter === value ? 'var(--accent)' : 'var(--border-strong)'}`,
+              }}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
+        {/* Order, not a filter — so it is one control that names its current state and
+            swaps, rather than a second row of chips competing with the first. A guest
+            gets it too: the catalogue is the one shelf they do see in full, and it is
+            the longest, so ordering it is worth more to them than to anyone. */}
+        <button
+          type="button"
+          className="tap"
+          onClick={() => onSort(sort === 'added' ? 'title' : 'added')}
+          title={
+            sort === 'added'
+              ? 'Sorted by date added, newest first. Switch to A–Z.'
+              : 'Sorted A–Z. Switch to recently added.'
+          }
+          style={{
+            width: 'auto',
+            marginLeft: 'auto',
+            padding: '7px 13px',
+            borderRadius: 10,
+            font: "500 12px 'Space Grotesk', system-ui",
+            background: 'transparent',
+            color: 'var(--text-secondary)',
+            border: '1px solid var(--border-strong)',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {sort === 'added' ? 'Recently added' : 'A–Z'}
+        </button>
       </div>
 
       {filter === 'new' && suggestion && (

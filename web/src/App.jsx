@@ -13,6 +13,7 @@ import {
   setProfile,
   setProfileHardcover,
   setProfilePin,
+  unfinishBook,
   unlockProfile,
   unlockWithDevice,
   deviceTokenFor,
@@ -41,6 +42,9 @@ export default function App() {
   const [prefs, setPrefs, adoptPrefs] = usePrefs();
   const [shelf, setShelf] = useState({ books: [], counts: { total: 0, read: 0 } });
   const [filter, setFilter] = useState('reading');
+  // How the rows are ordered, independent of which group is shown. The server already
+  // returns them newest-first, so 'added' is simply that order left alone.
+  const [sort, setSort] = useState('added');
   const [screen, setScreen] = useState('shelf');
   const [book, setBook] = useState(null);
   const [position, setPosition] = useState({ part: 0, page: 0 });
@@ -327,10 +331,28 @@ export default function App() {
     loadShelf();
   }, [loadShelf]);
 
-  const visible = useMemo(
-    () => shelf.books.filter((b) => b.state === filter),
-    [shelf.books, filter],
-  );
+  // The finish undone. Clears this reader's record and, for the owner, refiles the book
+  // — then lands on the shelf, because the screen it was called from is about a finish
+  // that no longer happened.
+  const onUnfinish = useCallback(async () => {
+    if (!book) return;
+    try {
+      await unfinishBook(book.key);
+      setFinishResult(null);
+      toShelf();
+    } catch (ex) {
+      setError(ex.message);
+    }
+  }, [book, toShelf]);
+
+  const visible = useMemo(() => {
+    const rows = shelf.books.filter((b) => b.state === filter);
+    // 'added' is the order the shelf endpoint already sorted them into, so leave it
+    // alone rather than re-deriving it here from a date the client would have to parse.
+    return sort === 'title'
+      ? [...rows].sort((a, b) => a.title.localeCompare(b.title))
+      : rows;
+  }, [shelf.books, filter, sort]);
 
   const recs = useMemo(
     () => (book ? recommendations(shelf.books, book.key, book.category, book.family) : []),
@@ -417,6 +439,8 @@ export default function App() {
               suggestion={suggestion}
               filter={filter}
               onFilter={setFilter}
+              sort={sort}
+              onSort={setSort}
               onOpen={openBook}
               onLibrary={() => setScreen('library')}
               onProfiles={() => setScreen('profiles')}
@@ -484,6 +508,7 @@ export default function App() {
               onOpenRec={() => openBook(recs[recIndex % recs.length].key)}
               onNextRec={() => setRecIndex((i) => i + 1)}
               onShelf={toShelf}
+              onReset={who?.guest ? null : onUnfinish}
             />
           )}
         </Card>

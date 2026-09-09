@@ -346,7 +346,7 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
             gap: 12,
           }}
         >
-          {finishing && <Spinner variant="rim" size={20} delay={0} />}
+          {finishing && <Spinner variant="mark" size={20} delay={0} />}
           {finishing ? 'Finishing — telling Hardcover…' : nextLabel}
         </Button>
         <div
