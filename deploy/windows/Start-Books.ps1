@@ -32,6 +32,10 @@
 .PARAMETER OpenReader
     Also open the reader in the default browser once the server answers.
 
+.PARAMETER WithTray
+    Also start the notification-area icon (scripts/tray.py). It is a window onto
+    the service, not part of it: if it fails to start, the reader carries on.
+
 .EXAMPLE
     .\deploy\windows\Start-Books.ps1 -Port 8770 -OpenReader
 #>
@@ -39,7 +43,8 @@
 param(
     [int]$Port = 0,
     [string]$Bind = "",
-    [switch]$OpenReader
+    [switch]$OpenReader,
+    [switch]$WithTray
 )
 
 Set-StrictMode -Version Latest
@@ -95,7 +100,7 @@ function Read-DotEnv {
 New-Item -ItemType Directory -Path $LogDir -Force | Out-Null
 
 # Rotate before writing, so a machine left running does not fill the disk.
-foreach ($file in @($RunnerLog, $OutFile, $ErrFile)) {
+foreach ($file in @($RunnerLog, $OutFile, $ErrFile, (Join-Path $LogDir "tray.err.log"))) {
     if ((Test-Path $file) -and ((Get-Item $file).Length -gt $MaxLogBytes)) {
         $previous = "$file.1"
         if (Test-Path $previous) { Remove-Item $previous -Force }
@@ -180,6 +185,25 @@ if (Wait-BooksHealthy -Port $Port -Probe $Probe -TimeoutSeconds 45) {
     Write-Line "Answering on http://${Probe}:${Port}/api/health"
 } else {
     Write-Line "It did not answer within 45s. See $ErrFile"
+}
+
+if ($WithTray) {
+    # Fire and forget. The tray polls /api/health like any other client, so it can
+    # come and go without the server noticing, and a missing pystray must not stop
+    # anyone reading. Forward slashes in the path deliberately: a backslash before a
+    # letter is an escape waiting to be interpreted, and "scripts	ray.py" becoming
+    # "scripts<TAB>ray.py" is the playbook's seventh trap.
+    try {
+        $trayLog = Join-Path $LogDir "tray.err.log"
+        $tray = Start-Process -FilePath $Python `
+            -ArgumentList @("scripts/tray.py", "--port", "$Port", "--bind", $Probe) `
+            -WorkingDirectory $RepoRoot `
+            -RedirectStandardError $trayLog `
+            -WindowStyle Hidden -PassThru
+        Write-Line "tray started as pid $($tray.Id)"
+    } catch {
+        Write-Line "tray could not start ($($_.Exception.Message)); continuing without it."
+    }
 }
 
 if ($OpenReader) { Start-Process "http://${Probe}:${Port}/" }

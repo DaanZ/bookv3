@@ -182,7 +182,20 @@ def health():
     a reader, and a 401 is not the same as "down". It says nothing a stranger could not
     learn by loading the page.
     """
-    return {"ok": True, "books": len(library.index())}
+    # Counts, never titles. This endpoint answers strangers, and "how many books are
+    # on the shelf" tells them nothing; "which book is being summarised right now"
+    # would. The tray needs only the counts to choose a colour.
+    from collections import Counter
+
+    tally = Counter(job.get("status") for job in jobs.list_jobs(limit=200))
+    return {
+        "ok": True,
+        "books": len(library.index()),
+        "jobs": {
+            "running": tally.get("running", 0) + tally.get("queued", 0),
+            "failed": tally.get("failed", 0),
+        },
+    }
 
 
 @app.get("/api/profiles")

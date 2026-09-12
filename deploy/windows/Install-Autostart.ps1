@@ -25,6 +25,10 @@
 .PARAMETER TaskName
     Name in Task Scheduler. Defaults to "BookReader".
 
+.PARAMETER NoTray
+    Skip the notification-area icon. It is registered by default, since a
+    background service with no visible sign of life is hard to trust.
+
 .PARAMETER OpenReader
     Also open the reader in a browser at every logon. Off by default - a
     browser window opening itself each morning gets old quickly.
@@ -38,7 +42,8 @@ param(
     [int]$Port = 8770,
     [int]$DelaySeconds = 30,
     [string]$TaskName = "BookReader",
-    [switch]$OpenReader
+    [switch]$OpenReader,
+    [switch]$NoTray
 )
 
 Set-StrictMode -Version Latest
@@ -64,6 +69,7 @@ if (-not (Test-Path (Join-Path $RepoRoot "web/dist/index.html"))) {
 
 $runnerArgs = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$Runner`" -Port $Port"
 if ($OpenReader) { $runnerArgs += " -OpenReader" }
+if (-not $NoTray) { $runnerArgs += " -WithTray" }
 
 $action = New-ScheduledTaskAction -Execute "powershell.exe" `
     -Argument $runnerArgs -WorkingDirectory $RepoRoot
@@ -103,6 +109,7 @@ Write-Output @"
 
 Registered '$TaskName'. The reader will start $DelaySeconds seconds after you log on,
 with no window, serving on http://127.0.0.1:$Port/
+$(if ($NoTray) { "" } else { "A tray icon appears with it - Windows files new icons under the ^ overflow." })
 
 Right now:
     Start-ScheduledTask -TaskName $TaskName        # start it without rebooting
