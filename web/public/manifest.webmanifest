@@ -1,6 +1,6 @@
 {
-  "name": "bookv3 reader",
-  "short_name": "bookv3",
+  "name": "Snippers",
+  "short_name": "Snippers",
   "display": "standalone",
   "start_url": ".",
   "theme_color": "#EF8A1E",

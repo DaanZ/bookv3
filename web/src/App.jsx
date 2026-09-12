@@ -663,7 +663,7 @@ function Chrome({ prefs, setPrefs, day, who, onProfiles }) {
           color: ink,
         }}
       >
-        bookv3 · {prefs.palette} palette · highlights in band order
+        Snippers · {prefs.palette} palette · highlights in band order
       </span>
       <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginLeft: 'auto' }}>
         {/* Who, then how it looks: the mark sits left of the register switch because it
