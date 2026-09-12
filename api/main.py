@@ -172,6 +172,19 @@ async def no_store_api(request, call_next):
     return response
 
 
+@app.get("/api/health")
+def health():
+    """Is the server up? Deliberately the one endpoint that asks nobody who they are.
+
+    Everything else under `/api` now requires a named profile and a device token, which
+    is right for reading and wrong for a readiness check: the Windows autostart scripts,
+    the deploy script and anything watching the process need an answer *before* there is
+    a reader, and a 401 is not the same as "down". It says nothing a stranger could not
+    learn by loading the page.
+    """
+    return {"ok": True, "books": len(library.index())}
+
+
 @app.get("/api/profiles")
 def get_profiles():
     """Everyone reading here, with enough of their progress to tell them apart."""
