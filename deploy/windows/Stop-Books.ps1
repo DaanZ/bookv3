@@ -36,6 +36,12 @@ $Port = Get-BooksPort -Port $Port -RepoRoot $RepoRoot -TaskName $TaskName
 
 $stoppedPid = Stop-BooksListener -Port $Port -RepoRoot $RepoRoot -TaskName $TaskName
 
+# The tray is a separate process that holds no port, so nothing above went looking for
+# it. Stopping the reader without it leaves an icon polling a server that is gone.
+# @() because Set-StrictMode makes .Count an error on a single unrolled pid.
+$trays = @(Stop-BooksTray -RepoRoot $RepoRoot)
+if ($trays.Count -gt 0) { Write-Output "Stopped $($trays.Count) tray process(es)." }
+
 if ($stoppedPid -eq -1) { exit 1 }
 if ($stoppedPid -eq 0) {
     Write-Output "Nothing was running on port $Port."

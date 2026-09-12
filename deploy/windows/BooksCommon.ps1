@@ -167,6 +167,39 @@ function Stop-BooksListener {
     return $listener.ProcessId
 }
 
+function Stop-BooksTray {
+    <#
+        Stop every tray process belonging to this repository. Returns the pids stopped.
+
+        This exists because the tray is not the server and nothing else goes looking for
+        it. `Stop-BooksListener` stops whatever holds the port; the tray holds no port,
+        is a detached child of a wrapper that has already exited, and therefore survives
+        every stop and every restart. One more icon appears each time, all identical,
+        and the extras poll a server that has been replaced.
+
+        Ownership is the same two-part test used for the server, and for the same
+        reason: the repository path and the entry point must both appear. The runner
+        passes tray.py by absolute path precisely so the first half can match — with a
+        relative path the command line names no repository at all, and this could not
+        tell our tray from any other project's.
+    #>
+    param([string]$RepoRoot)
+
+    $stopped = @()
+    Get-CimInstance Win32_Process -Filter "Name LIKE 'python%'" -ErrorAction SilentlyContinue |
+        Where-Object {
+            $_.CommandLine -and
+            ($_.CommandLine.IndexOf($RepoRoot, [StringComparison]::OrdinalIgnoreCase) -ge 0) -and
+            ($_.CommandLine.IndexOf("tray.py", [StringComparison]::OrdinalIgnoreCase) -ge 0)
+        } |
+        ForEach-Object {
+            Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue
+            $stopped += $_.ProcessId
+        }
+    return $stopped
+}
+
+
 function Wait-BooksHealthy {
     <#
         Poll /api/health until it answers. Returns $true if it came up.

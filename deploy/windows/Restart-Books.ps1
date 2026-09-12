@@ -85,6 +85,13 @@ if ($Rebuild) {
 Write-Output ""
 $oldPid = Stop-BooksListener -Port $Port -RepoRoot $RepoRoot -TaskName $TaskName
 
+# The runner sweeps leftover trays before starting its own, so a restart does not have
+# to. It is done here as well because a restart that fails at the health check would
+# otherwise leave the old tray behind with nothing to poll.
+# @() because Set-StrictMode makes .Count an error on a single unrolled pid.
+$trays = @(Stop-BooksTray -RepoRoot $RepoRoot)
+if ($trays.Count -gt 0) { Write-Output "Stopped $($trays.Count) tray process(es)." }
+
 if ($oldPid -eq -1) { exit 1 }
 if ($oldPid -eq 0) {
     Write-Output "Nothing was running on $Port."

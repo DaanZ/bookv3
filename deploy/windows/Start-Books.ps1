@@ -193,10 +193,17 @@ if ($WithTray) {
     # anyone reading. Forward slashes in the path deliberately: a backslash before a
     # letter is an escape waiting to be interpreted, and "scripts	ray.py" becoming
     # "scripts<TAB>ray.py" is the playbook's seventh trap.
+    # Any tray left over from a previous run goes first. Without this every restart
+    # adds an icon: the old tray is a detached child, so stopping the *listener* — which
+    # is all a restart does — leaves it sitting in the notification area polling a pid
+    # that no longer exists. Four identical icons is how that looks by lunchtime.
+    $strays = @(Stop-BooksTray -RepoRoot $RepoRoot)
+    if ($strays.Count -gt 0) { Write-Line "stopped $($strays.Count) leftover tray process(es)" }
+
     try {
         $trayLog = Join-Path $LogDir "tray.err.log"
         $tray = Start-Process -FilePath $Python `
-            -ArgumentList @("scripts/tray.py", "--port", "$Port", "--bind", $Probe) `
+            -ArgumentList @("$RepoRoot/scripts/tray.py", "--port", "$Port", "--bind", $Probe) `
             -WorkingDirectory $RepoRoot `
             -RedirectStandardError $trayLog `
             -WindowStyle Hidden -PassThru

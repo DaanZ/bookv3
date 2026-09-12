@@ -46,6 +46,9 @@ if ($KeepRunning) { exit 0 }
 $RepoRoot = Get-BooksRepoRoot
 $Port = Get-BooksPort -RepoRoot $RepoRoot -TaskName $TaskName
 $stoppedPid = Stop-BooksListener -Port $Port -RepoRoot $RepoRoot -TaskName $TaskName
+# @() because Set-StrictMode makes .Count an error on a single unrolled pid.
+$trays = @(Stop-BooksTray -RepoRoot $RepoRoot)
+if ($trays.Count -gt 0) { Write-Output "Stopped $($trays.Count) tray process(es)." }
 
 if ($stoppedPid -gt 0) {
     Write-Output "Stopped the running instance (pid $stoppedPid) on port $Port."
