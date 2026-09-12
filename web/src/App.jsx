@@ -7,6 +7,7 @@ import {
   finishBook,
   getBook,
   getProfiles,
+  getSession,
   getShelf,
   putPosition,
   renameProfile,
@@ -106,8 +107,21 @@ export default function App() {
     (async () => {
       const rows = await loadProfiles();
       if (cancelled) return;
-      const chosen =
-        rows.find((p) => p.id === prefs.profile) || rows.find((p) => p.owner);
+      // Does this machine log itself in? Asked before anything is chosen, because on a
+      // trusted computer the PIN screen below must never paint at all — discovering
+      // afterwards that it was not needed is the flicker this avoids.
+      let session = null;
+      try {
+        session = await getSession();
+      } catch {
+        // Offline, or an older server with no /api/session. Fall through to the PIN,
+        // which is the behaviour without this feature.
+      }
+      if (cancelled) return;
+
+      const chosen = session?.auto && session.profile
+        ? rows.find((p) => p.id === session.profile.id) || session.profile
+        : rows.find((p) => p.id === prefs.profile) || rows.find((p) => p.owner);
       setProfile(chosen?.id || null);
       // A profile deleted from another tablet leaves a stale id here; fall back rather
       // than reading as somebody who no longer exists.
@@ -119,7 +133,9 @@ export default function App() {
 
       // A PIN is only a lock if opening the app asks for it. Otherwise the tablet sits
       // on somebody's shelf all evening and the digits protected one tap nobody made.
-      if (chosen?.hasPin) {
+      // A trusted machine has already been answered for; asking for its own PIN would
+      // be asking it to prove something the server has stopped asking about.
+      if (chosen?.hasPin && !session?.auto) {
         // A device that has already answered the PIN stays answered for ninety days.
         // Checked against the server rather than trusted from storage: the browser holds
         // the token, the server holds whether it is still good.

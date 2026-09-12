@@ -96,6 +96,7 @@ class AmbienceIn(BaseModel):
 
 
 def reader(
+    request: Request,
     x_profile: str | None = Header(default=None),
     x_device: str | None = Header(default=None),
 ) -> dict:
@@ -120,8 +121,13 @@ def reader(
 
     401 for both, with different sentences, because the app does different things about
     them: one sends the reader to the picker, the other asks for the digits.
+
+    **Unless this machine is trusted.** `BOOKS_TRUSTED_PROFILE` names a reader that
+    requests from this computer are answered as, with no PIN — see `trusted_profile_for`
+    for why that is opt-in and why a proxied deployment does not accidentally qualify.
     """
-    profile, verified = profiles.resolve(x_profile, x_device)
+    address = request.client.host if request.client else None
+    profile, verified = profiles.resolve(x_profile, x_device, address)
     if profile is None:
         raise HTTPException(
             status_code=401,
@@ -195,6 +201,33 @@ def health():
             "running": tally.get("running", 0) + tally.get("queued", 0),
             "failed": tally.get("failed", 0),
         },
+    }
+
+
+@app.get("/api/session")
+def session(
+    request: Request,
+    x_profile: str | None = Header(default=None),
+    x_device: str | None = Header(default=None),
+):
+    """Who the server would answer this caller as, without refusing anybody.
+
+    The app cannot work this out for itself. It knows whether it holds a device token,
+    but not whether this machine is trusted — and without asking, a trusted computer
+    would still paint the PIN screen before discovering it did not need one. This is
+    the one question `reader` cannot answer, because `reader`'s answer to "nobody" is
+    a 401.
+
+    `auto` is true when the answer came from the address rather than from anything the
+    caller presented, which is what lets the picker say so rather than looking like a
+    lock that failed to engage.
+    """
+    address = request.client.host if request.client else None
+    profile, verified = profiles.resolve(x_profile, x_device, address)
+    trusted = profiles.trusted_profile_for(address)
+    return {
+        "profile": profile if (profile and verified) else None,
+        "auto": bool(trusted) and (profile or {}).get("id") == trusted,
     }
 
 

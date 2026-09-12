@@ -130,6 +130,10 @@ async function send(path, options) {
 export const getShelf = () => request('/shelf');
 
 /** Everyone reading here, and how far each of them has got. */
+/** Who the server would answer as, before anything is claimed. `auto` means this
+ *  machine is trusted and no PIN is coming. */
+export const getSession = () => request('/session');
+
 export const getProfiles = () => request('/profiles');
 
 export const addProfile = (name) =>

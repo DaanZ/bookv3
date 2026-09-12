@@ -36,6 +36,13 @@ integration. `util/chatgpt.py` reads it at import time (falling back to `OPENAI_
 import of the chunking or meta modules fails without a key — but `api/` does not import them, so the
 reader runs without one. `OPENROUTER_MODEL` overrides the default model.
 
+Three more, all optional and all about this machine rather than the app: `BOOKS_PORT`
+and `BOOKS_BIND` for the Windows autostart (`deploy/windows/`), and
+`BOOKS_TRUSTED_PROFILE`, which logs requests from this computer in as that reader with
+no PIN. The last is opt-in for a reason - behind nginx every proxied request arrives
+from 127.0.0.1, so setting it on a public deployment would hand the owner's account to
+the internet. `api/profiles.py`'s `trusted_profile_for` says so at length.
+
 ## Architecture
 
 **Pipeline (PDF → JSON summary).** `fragments.read_book_pages` loads a PDF into LangChain `Document`
@@ -180,6 +187,13 @@ Five more rules, about the readers themselves:
   A profile with no PIN is still taken at its word. That is the house model surviving where it
   costs nothing, and it is also the one thing to check before a public deploy: an unlocked
   profile on a public URL is an open door with a name on it.
+
+  **One address may skip the PIN.** `BOOKS_TRUSTED_PROFILE=owner` answers requests from this
+  computer as the owner without asking: the machine serving the library does not need to
+  prove to itself who is sitting at it. `GET /api/session` is how the app learns that before
+  painting a lock screen it does not need - `reader` cannot answer it, because its answer to
+  "nobody" is a 401. Measured both ways: from loopback the shelf answers 200 with no headers
+  at all, and from the LAN address the same request is 401, so the tablet still enters a PIN.
 
 `data/positions.json`, the single store this replaced, is *moved* onto `data/positions/owner.json`
 the first time `positions.py` loads, so history from before profiles belongs to whoever made it.

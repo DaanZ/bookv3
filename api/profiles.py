@@ -244,7 +244,41 @@ def owner() -> dict:
     return next(row for row in all_profiles() if row.get("owner"))
 
 
-def resolve(profile_id: str | None, device: str | None = None) -> tuple[dict, bool]:
+# This machine, and only this machine. Set BOOKS_TRUSTED_PROFILE to a profile id and
+# requests arriving from BOOKS_TRUSTED_FROM are answered as that reader with no PIN —
+# which is what "if I launch it on my own computer, log me in" means.
+#
+# **Off unless set, and that matters more than it looks.** The obvious implementation
+# is "trust 127.0.0.1", and behind nginx every proxied request arrives from 127.0.0.1:
+# switching this on for a public deployment would hand the owner's account to the
+# internet. Two things guard against it. It is opt-in, so a server that never sets the
+# variable never trusts anybody. And the systemd unit runs uvicorn with
+# `--proxy-headers --forwarded-allow-ips 127.0.0.1`, which rewrites the client address
+# to the real remote one before it reaches here, so even if it were set the proxy's own
+# address would not be what is compared.
+#
+# It is a convenience on a personal machine, not a security boundary: anything that can
+# make an HTTP request from this address is the owner. That is the trade being asked for.
+TRUSTED_PROFILE_VAR = "BOOKS_TRUSTED_PROFILE"
+TRUSTED_FROM_VAR = "BOOKS_TRUSTED_FROM"
+DEFAULT_TRUSTED_FROM = ("127.0.0.1", "::1", "localhost")
+
+
+def trusted_profile_for(address: str | None) -> str | None:
+    """The profile this address is logged in as without asking, or None."""
+    wanted = (os.environ.get(TRUSTED_PROFILE_VAR) or "").strip()
+    if not wanted or not address:
+        return None
+    allowed = os.environ.get(TRUSTED_FROM_VAR)
+    addresses = (
+        tuple(part.strip() for part in allowed.split(",") if part.strip())
+        if allowed
+        else DEFAULT_TRUSTED_FROM
+    )
+    return wanted if address in addresses else None
+
+
+def resolve(profile_id: str | None, device: str | None = None, address: str | None = None) -> tuple[dict, bool]:
     """The reader a request is for, and whether they proved it.
 
     There is no anonymous reader any more. An unknown or missing id is refused, not
@@ -272,6 +306,15 @@ def resolve(profile_id: str | None, device: str | None = None) -> tuple[dict, bo
       PIN now means is "and I mean it", which is the promise the screen was already
       making.
     """
+    # The machine this is running on, when it has been told to trust itself. Claiming
+    # somebody else from here still needs their PIN: the trust is "this address is
+    # Daan", not "this address is anybody it says it is".
+    trusted = trusted_profile_for(address)
+    if trusted and (not profile_id or profile_id == trusted):
+        row = get(trusted)
+        if row is not None:
+            return row, True
+
     row = get(profile_id)
     if row is None:
         return None, False

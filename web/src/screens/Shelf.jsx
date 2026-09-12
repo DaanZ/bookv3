@@ -215,7 +215,7 @@ export default function Shelf({
       >
         {`Pick up where you stopped, start something new, or look back at one you finished. The
           patch tells you the kind of book before you read a word, and every page you keep is
-          ${who?.name ?? 'yours'} alone.`}
+          ${who?.name ? `${who.name}'s` : 'yours'} alone.`}
       </p>
 
       {/* The design was drawn against three books; this shelf holds hundreds, so the
