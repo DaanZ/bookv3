@@ -8,10 +8,15 @@ legibly, and the question a tray icon actually answers is *is it up, is it busy,
 it need me*. So that is what the colour says, and the words go in the tooltip and the
 menu, where there is room:
 
-    grey    the reader is unreachable
+    orange  the app's own mark: up, and either idle or summarising (a pale bar
+            under the book says which)
     red     a summarising job failed and is waiting for you
-    amber   a book is being summarised right now
-    green   up, with nothing to do
+    grey    the reader is unreachable
+
+The silhouette is always the mark, and only the ground changes. Two of the four states
+keep the brand colour on purpose: "up and idle" and "up and working" are not problems,
+and an icon that only looks like itself when nothing is happening is one you stop
+recognising in a tray that also holds Ambience.
 
 **It reads counts, not titles.** `/api/health` is the one endpoint that asks nobody
 who they are, which is exactly why it must not say which book is being summarised.
@@ -42,13 +47,50 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 POLL_SECONDS = 20
 REQUEST_TIMEOUT = 8
 
-# Tide-ish, so the tray sits beside the reader rather than clashing with it.
+# The mark's own two colours, read out of the icon file rather than guessed:
+# #EF8A1E ground, #04181B ink. The tray recolours the first and never the second.
+BRAND_GROUND = (239, 138, 30)
+BRAND_INK = (4, 24, 27)
+
+# The ground carries the state. At sixteen pixels a corner badge is a handful of
+# pixels and the colour of the whole shape is the only thing that reads at a glance —
+# so the silhouette stays the app's mark and the background says how it is doing.
+#
+# Two of the four are the brand colour on purpose. "Up and idle" and "up and working"
+# are not problems, and an icon that only looks like itself when nothing is happening
+# is an icon you stop recognising. Only the two states worth interrupting for take a
+# colour of their own.
 COLOURS = {
     "unreachable": (110, 110, 110),
     "failed": (200, 60, 50),
-    "working": (239, 138, 30),
-    "idle": (46, 160, 110),
+    "working": BRAND_GROUND,
+    "idle": BRAND_GROUND,
 }
+
+ICON_PATH = REPO_ROOT / "assets" / "bookv3.ico"
+FALLBACK_PATH = REPO_ROOT / "web" / "public" / "assets" / "favicon-512.png"
+
+_base_icon = None
+
+
+def _base():
+    """The app mark, the same file a window or the taskbar would show. Loaded once."""
+    global _base_icon
+    if _base_icon is None:
+        from PIL import Image, ImageDraw
+
+        for path in (ICON_PATH, FALLBACK_PATH):
+            try:
+                image = Image.open(path)
+                _base_icon = image.convert("RGBA").resize((64, 64), Image.LANCZOS)
+                return _base_icon.copy()
+            except Exception:
+                continue
+        # No icon file at all: a plain rounded square beats no tray.
+        fallback = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
+        ImageDraw.Draw(fallback).rounded_rectangle((2, 2, 61, 61), 14, fill=BRAND_GROUND + (255,))
+        _base_icon = fallback
+    return _base_icon.copy()
 
 
 class TrayState:
@@ -69,43 +111,51 @@ class TrayState:
             return self.health, self.error
 
 
-def make_icon(colour, working=False):
-    """A filled hexagon — the reader's own mark — with a bar across it while busy.
+def _luminance(rgb):
+    r, g, b = rgb[:3]
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b
 
-    A hexagon rather than the disc Ambience uses, so the two are told apart at a
-    glance in a tray that now holds both.
+
+def make_icon(colour, working=False):
+    """The mark, with `colour` swapped in for its orange ground.
+
+    Recoloured per pixel rather than by pasting a shape, so the rounded corners and the
+    curve of the book keep their antialiasing: an edge pixel is part ground and part
+    ink, and it has to stay part ground and part ink after the swap or the whole mark
+    grows a fringe. How much ink a pixel holds is read from its luminance, because the
+    two brand colours are far enough apart for that to be unambiguous.
     """
     from PIL import Image, ImageDraw
 
-    size = 64
-    image = Image.new("RGBA", (size, size), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(image)
+    image = _base()
+    if colour == BRAND_GROUND and not working:
+        return image
 
-    centre = size / 2
-    radius = size / 2 - 4
-    points = []
-    for step in range(6):
-        angle = (-90 + step * 60) * 3.14159265 / 180
-        points.append((centre + radius * _cos(angle), centre + radius * _sin(angle)))
-    draw.polygon(points, fill=colour + (255,))
+    ink_lum = _luminance(BRAND_INK)
+    ground_lum = _luminance(BRAND_GROUND)
+    span = ground_lum - ink_lum
+
+    pixels = image.load()
+    width, height = image.size
+    for y in range(height):
+        for x in range(width):
+            r, g, b, a = pixels[x, y]
+            if a == 0:
+                continue
+            # 1 where the pixel is ink, 0 where it is ground, between on an edge.
+            ink = (ground_lum - _luminance((r, g, b))) / span
+            ink = 0.0 if ink < 0 else (1.0 if ink > 1 else ink)
+            pixels[x, y] = (
+                round(BRAND_INK[0] * ink + colour[0] * (1 - ink)),
+                round(BRAND_INK[1] * ink + colour[1] * (1 - ink)),
+                round(BRAND_INK[2] * ink + colour[2] * (1 - ink)),
+                a,
+            )
 
     if working:
-        # A pale bar reads as "in progress" at 16px, where anything finer turns to mush.
-        draw.rectangle((14, size // 2 - 4, size - 14, size // 2 + 4),
-                       fill=(255, 255, 255, 230))
+        # A pale bar under the book, which reads at 16px where a spinner turns to mush.
+        ImageDraw.Draw(image).rounded_rectangle((14, 50, 49, 56), 3, fill=(255, 248, 238, 235))
     return image
-
-
-def _cos(x):
-    import math
-
-    return math.cos(x)
-
-
-def _sin(x):
-    import math
-
-    return math.sin(x)
 
 
 def describe(health, error, base):
