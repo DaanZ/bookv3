@@ -287,6 +287,12 @@ sharing it share nothing.
   `node web/tools/check-palettes.mjs` prints contrast, saturation and adjacent ΔE for every palette
   in both registers, against the previous behaviour. Re-run it if these numbers are touched.
 
+  `node web/tools/export-theme.mjs` writes `docs/colour-themes.md`, which is how another project
+  takes these colours: the register tokens, the raw bands, and — the part that cannot be copied by
+  hand — the eight stops each palette is actually painted in, computed by calling `paletteFor`
+  rather than transcribed. Generated and idempotent, so regenerate it rather than editing it, and
+  regenerate it whenever a palette or a constant above changes.
+
 Colours, type and spacing come from the vendored token layer in `web/src/ds/` — edit tokens, not
 hard-coded values. Two rules from the design system are easy to break by accident: **gold is only
 ever a join** (the resume strip, nothing else), and **the day/night register swap is never
