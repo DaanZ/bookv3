@@ -540,16 +540,18 @@ export default function Profiles({
         style={{
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between',
+          justifyContent: 'flex-end',
           gap: 16,
           marginTop: 'auto',
           paddingTop: 26,
           borderTop: '1px solid var(--border-subtle)',
         }}
       >
-        <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
-          data/positions/&lt;profile&gt;.json
-        </span>
+        {/* The footer used to name the file each reader's history is kept in. That is
+            true and it is nobody's business on the screen where you hand the tablet to
+            somebody: a path is a thing to reassure the person who built it, not the
+            person choosing their own name. The shelf footer lost its folder names for
+            the same reason. */}
         {/* Nowhere to go back to while the tablet is locked: picking a reader is the
             only way on from here, which is what makes it a lock. */}
         {!locked && <QuietLink onClick={onBack}>Back to shelf</QuietLink>}
