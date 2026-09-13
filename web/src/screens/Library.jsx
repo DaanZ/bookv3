@@ -447,6 +447,16 @@ function CollectionRow({ book, onMove, onDelete, onEnrich, onContribute, busy })
           {book.hardcover === null && book.isbn && (
             <QuietLink onClick={() => onContribute(book)}>Add to Hardcover</QuietLink>
           )}
+          {/* Opened in a tab rather than navigated to: printing is a detour, and the
+              library you were managing should still be there when the dialog closes.
+              A hash URL, so it is also the thing you send somebody who wants the PDF. */}
+          <QuietLink
+            onClick={() =>
+              window.open(`${window.location.pathname}#print/${encodeURIComponent(book.key)}`, '_blank')
+            }
+          >
+            Print
+          </QuietLink>
           <Chip tone={book.state === 'read' ? 'current' : 'neutral'}>
             {book.state === 'read' ? 'read' : book.state === 'reading' ? 'reading' : 'unread'}
           </Chip>
