@@ -155,30 +155,47 @@ export default function Print({ bookKey }) {
   return (
     <>
       <style>{`
-        @page { size: A4; margin: 20mm 18mm 18mm; }
+        /* The page margin is zero and the sheet supplies it as padding instead. That is
+           the whole trick of this stylesheet: screen and print then lay out *identically*
+           and there is no second geometry to get wrong. An earlier version put the width
+           and padding inside @media screen, and a printer driver that rendered screen
+           styles produced a shrunken text block floating on a coloured ground — which is
+           exactly the failure this arrangement cannot have. */
+        @page { size: A4; margin: 0; }
 
-        /* The browser's print dialog draws its own header and footer, including page
-           numbers, so this does not try to. Fighting it produces two of everything. */
+        .sheet {
+          box-sizing: border-box;
+          width: 210mm;
+          margin: 0 auto;
+          padding: 20mm 18mm;
+          background: #FFFFFF;
+          color: #14201F;
+        }
+        .sheet a { color: #8A6512; text-decoration: none; }
+
+        /* The desk is decoration and lives on its own element, never on body, so nothing
+           has to be undone later. Backgrounds are not printed by default, but "background
+           graphics" is one checkbox away in every print dialog — so print also says so
+           outright rather than trusting the default. */
+        .desk { background: #E6E2DA; padding: 24px 0; }
+        @media screen {
+          .sheet { box-shadow: 0 2px 18px rgba(0,0,0,.14); }
+        }
+
         @media print {
           .no-print { display: none !important; }
+          .desk { background: transparent !important; padding: 0 !important; }
+          .sheet { width: auto; box-shadow: none; }
+          /* The token layer paints body the app's deep-water #04181B, and this view
+             borrows that stylesheet. The desk hides it on screen; in print the desk is
+             transparent, so with "background graphics" ticked the whole sheet would come
+             out black. Stated rather than left to the default that usually saves us. */
           html, body { background: #FFFFFF !important; }
+          /* Marks are the point of the document; letting the driver drop their colour to
+             save ink would leave a grey wall, which is what this app exists to avoid.
+             They stay bold as well, so a black-and-white printer still shows them. */
+          .sheet span { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
-
-        /* On screen this is a preview of the sheet, so it is shown as one: a white page
-           on a grey desk, at the width it will actually print. */
-        @media screen {
-          body { background: #E6E2DA !important; }
-          .sheet {
-            width: 174mm;
-            margin: 24px auto;
-            padding: 20mm 18mm;
-            background: #FFFFFF;
-            box-shadow: 0 2px 18px rgba(0,0,0,.14);
-          }
-        }
-
-        .sheet { color: #14201F; }
-        .sheet a { color: #8A6512; text-decoration: none; }
       `}</style>
 
       <div
@@ -199,6 +216,15 @@ export default function Print({ bookKey }) {
         <span style={{ opacity: 0.7 }}>
           {book.parts.length} parts · {marks} marks · {readerPalette()} on paper
         </span>
+        {/* Said here because here is where the mistake is made. Choosing the Windows
+            "Microsoft Print to PDF" printer instead of the browser's own destination
+            hands the page to a printer driver, which converts every letter to outlines:
+            a 9MB file of drawings with no text to select, search or read aloud, on
+            whatever paper size the driver defaults to. The browser's own exporter keeps
+            the text and honours the A4 above. One dropdown, forty times the file size. */}
+        <span style={{ opacity: 0.7, borderLeft: '1px solid rgba(253,246,234,.25)', paddingLeft: 14 }}>
+          Destination: <strong>Save as PDF</strong>, not “Microsoft Print to PDF”
+        </span>
         <button
           type="button"
           onClick={() => window.print()}
@@ -217,6 +243,7 @@ export default function Print({ bookKey }) {
         </button>
       </div>
 
+      <div className="desk">
       <article className="sheet">
         {/* Front matter. It says what this is before the first paragraph, because a
             summary handed to somebody with no context reads as a very short book, and
@@ -302,6 +329,7 @@ export default function Print({ bookKey }) {
           )}
         </footer>
       </article>
+      </div>
     </>
   );
 }
