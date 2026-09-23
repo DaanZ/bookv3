@@ -159,9 +159,11 @@ REMOTE
 echo
 echo "==> checking the live site"
 if curl -fsS -o /dev/null -w '    %{http_code}  %{url_effective}\n' \
-     "https://$DEPLOY_HOST${PUBLIC_BASE}api/shelf"; then
+     "https://$DEPLOY_HOST${PUBLIC_BASE}api/health"; then
   echo "done."
 else
-  echo "    the shelf did not answer — check nginx and the service." >&2
+  # /api/health, not /api/shelf: since the PIN lock every reading endpoint answers 401
+  # to a request that names nobody, which would fail a deploy that had worked.
+  echo "    the reader did not answer — check nginx and the service." >&2
   exit 1
 fi

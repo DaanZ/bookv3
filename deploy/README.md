@@ -41,7 +41,8 @@ cp deploy/deploy.env.example deploy/deploy.env   # then edit; it is gitignored
 
 The script builds the frontend with `PUBLIC_BASE=/books/`, refuses to ship if the prefix
 did not take, syncs, installs, restarts, and finishes by asking the live site for
-`/books/api/shelf`. A non-200 there fails the deploy loudly rather than leaving you to
+`/books/api/health` — the one endpoint that answers without a profile, so it means "up"
+rather than "locked". A non-200 there fails the deploy loudly rather than leaving you to
 discover it.
 
 ## What is not sent, and why
