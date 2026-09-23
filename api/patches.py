@@ -21,6 +21,7 @@ FAMILIES: dict[str, dict] = {
     "business": {"shape": "bands", "c1": "#0A2F33", "c2": "#12564F", "c3": "#3EA296"},
     "marketing": {"shape": "bands", "c1": "#822E37", "c2": "#BA5834", "c3": "#F68318"},
     "technology": {"shape": "checks", "c1": "#073A4B", "c2": "#03B1AB", "c3": "#0C617C"},
+    "engineering": {"shape": "bands", "c1": "#423738", "c2": "#F4B315", "c3": "#108AB1"},
     "science": {"shape": "rings", "c1": "#313575", "c2": "#633090", "c3": "#FDC005"},
     "psychology": {"shape": "rings", "c1": "#321951", "c2": "#723466", "c3": "#E75480"},
     "history": {"shape": "checks", "c1": "#5C3210", "c2": "#FFE7C6", "c3": "#8A4A12"},
@@ -31,8 +32,12 @@ FAMILIES: dict[str, dict] = {
     "fiction": {"shape": "rings", "c1": "#423738", "c2": "#8B7FD6", "c3": "#FFC857"},
 }
 
-# Longest match wins, so "self-help / productivity" lands on self-help, not productivity.
+# The first needle found in the list wins, so order is precedence: "self-help /
+# productivity" lands on self-help because self-help is listed first. Engineering sits
+# above technology for the same reason — "Technology & Engineering" is an engineering
+# shelf, and the reader colours engineering's highlights differently.
 KEYWORDS: list[tuple[str, str]] = [
+    ("engineer", "engineering"),
     ("spiritual", "spirituality"), ("buddhis", "spirituality"), ("religio", "spirituality"),
     ("philosoph", "spirituality"), ("mindful", "spirituality"), ("medit", "spirituality"),
     ("textile", "textiles"), ("weav", "textiles"), ("craft", "textiles"),
@@ -45,7 +50,7 @@ KEYWORDS: list[tuple[str, str]] = [
     ("manage", "business"), ("leader", "business"), ("finance", "business"),
     ("negoti", "business"), ("startup", "business"),
     ("comput", "technology"), ("program", "technology"), ("software", "technology"),
-    ("technolog", "technology"), ("engineer", "technology"), ("security", "technology"),
+    ("technolog", "technology"), ("security", "technology"),
     ("data", "technology"), ("ux", "design"), ("interior", "design"),
     ("architect", "design"), ("design", "design"),
     ("psycholog", "psychology"), ("behavio", "psychology"), ("mind control", "psychology"),

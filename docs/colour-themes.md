@@ -57,17 +57,20 @@ survives a change of palette; `--shore-500` is a fact about one ramp.
 | `--amber-600` | `#8A5F12` |  |
 | `--red-400` | `#F0A08F` |  |
 | `--red-600` | `#9C2F1E` |  |
-| `--bg-page` | `var(--deep-950)` |  |
-| `--bg-shell` | `var(--deep-900)` |  |
-| `--bg-surface` | `#0B1A1C` |  |
-| `--bg-surface-hover` | `#122A2C` |  |
+| `--graphite-950` | `#141414` | the desk around the card |
+| `--graphite-900` | `#1C1C1C` | the card |
+| `--graphite-800` | `#252422` | a raised strip, a hovered row |
+| `--bg-page` | `var(--graphite-950)` |  |
+| `--bg-shell` | `var(--graphite-900)` |  |
+| `--bg-surface` | `var(--graphite-900)` |  |
+| `--bg-surface-hover` | `var(--graphite-800)` |  |
 | `--border-subtle` | `rgba(253,246,234,.07)` |  |
 | `--border-default` | `rgba(253,246,234,.12)` |  |
 | `--border-strong` | `rgba(253,246,234,.22)` |  |
 | `--text-primary` | `var(--shore-50)` |  |
 | `--text-secondary` | `rgba(253,246,234,.78)` |  |
 | `--text-muted` | `rgba(253,246,234,.5)` |  |
-| `--accent` | `var(--shore-500)` |  |
+| `--accent` | `#F68318` |  |
 | `--accent-on` | `var(--ink-900)` |  |
 | `--accent-hover` | `var(--shore-400)` |  |
 | `--link` | `var(--shore-400)` |  |

@@ -6,11 +6,13 @@ import Spinner from '../components/Spinner';
 import { Button, ProgressBar, QuietLink } from '../components/ui';
 import { useReducedMotion } from '../lib/prefs';
 import {
-  frontCount,
-  highlightCount,
+  coalsFor,
+  heatsOf,
+  highlightKeys,
   newBudget,
   paginate,
   paletteFor,
+  phraseCounter,
   progressOf,
   tokensOf,
 } from '../lib/reading';
@@ -33,18 +35,19 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
   const pages = useMemo(() => paginate(current?.body), [current]);
   const pageIndex = Math.min(page, Math.max(0, pages.length - 1));
 
-  // The palette is cut to this page. Six highlights get six stops spanning the whole
-  // ramp, so every page sweeps the full palette instead of stopping partway along it.
-  const marks = useMemo(
-    () => highlightCount(pages[pageIndex] || [], cap),
-    [pages, pageIndex, cap],
+  // Highlights are coals: each phrase on the page takes a heat from how often the book
+  // returns to it, and the book's category picks the colours its coals burn in. The
+  // palette array is still indexed by slot, so `tokensOf` spends its budget as before.
+  const counter = useMemo(() => phraseCounter(book.parts), [book.parts]);
+  const heats = useMemo(
+    () => heatsOf(highlightKeys(pages[pageIndex] || [], cap).map(counter)),
+    [pages, pageIndex, cap, counter],
   );
-  const palette = useMemo(
-    () => paletteFor(prefs.palette, day, marks || 1),
-    [prefs.palette, day, marks],
-  );
+  const family = book.patch?.family;
+  const coals = useMemo(() => coalsFor(family, day), [family, day]);
+  const palette = useMemo(() => heats.map((heat) => coals.ink[heat]), [heats, coals]);
 
-  // One budget per page, spent in reading order: the first distinct phrase takes band 1.
+  // One budget per page, spent in reading order: the first distinct phrase takes slot 1.
   const paras = useMemo(() => {
     const budget = newBudget();
     return (pages[pageIndex] || []).map((text) => tokensOf(text, palette, cap, budget));
@@ -159,6 +162,21 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
             >
               {book.author} · {book.category} · {book.pages} pages
             </span>
+            {/* The shelf's three coals, so a change of colour between books reads as meant. */}
+            <span
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                marginTop: 2,
+              }}
+            >
+              <span style={{ display: 'flex', gap: 3 }}>
+                {coals.ink.map((colour) => (
+                  <span key={colour} style={{ width: 8, height: 8, background: colour }} />
+                ))}
+              </span>
+            </span>
           </div>
         </div>
         <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
@@ -174,12 +192,6 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
             rather than the page's count: this bar spans the whole book, so it shows the
             whole ramp regardless of how many phrases happen to be marked on this page. */}
         <ProgressBar pct={pct} gradient={paletteFor(prefs.palette, day, 8)} />
-        <span
-          style={{ font: "400 10.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}
-        >
-          logistic · the introduction is not counted · 80% of the bar by part{' '}
-          {frontCount(partCount)}
-        </span>
       </div>
 
       <AmbiencePlayer ambience={ambience} open={soundOpen} onClose={() => setSoundOpen(false)} />
@@ -288,9 +300,14 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
               >
                 {/* No whitespace between the spans: a newline here renders as a space and
                     puts a gap before every comma. */}
-                {tokens.map((tk, j) => (
-                  <span key={j} style={{ color: tk.color, fontWeight: tk.weight }}>{tk.text}</span>
-                ))}
+                {tokens.map((tk, j) =>
+                  tk.slot == null ? (
+                    <span key={j} style={{ color: tk.color, fontWeight: tk.weight }}>{tk.text}</span>
+                  ) : (
+                    <Coal key={j} text={tk.text} color={tk.color} heat={heats[tk.slot]}
+                          slot={tk.slot} glow={coals.glow[heats[tk.slot]]} day={day} />
+                  ),
+                )}
               </p>
             ))}
           </div>
@@ -366,5 +383,32 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
         </div>
       </div>
     </div>
+  );
+}
+
+// Day carries heat in weight, because light does not glow on paper.
+const DAY_WEIGHT = [500, 600, 700];
+
+/**
+ * One highlighted phrase, burning at its heat.
+ *
+ * The flicker is CSS (`.coal-*` in app.css): each heat breathes at its own pace, and the
+ * delay is staggered by slot so a page never pulses as one block. It stops for anyone
+ * whose system asks for reduced motion, and in the day register, where there is no glow
+ * to breathe.
+ */
+function Coal({ text, color, heat, slot, glow, day }) {
+  return (
+    <span
+      className={day ? undefined : `coal coal-${heat}`}
+      style={{
+        color,
+        fontWeight: day ? DAY_WEIGHT[heat] : 600,
+        textShadow: day ? undefined : glow,
+        animationDelay: `-${((slot * 1.37) % 4.9).toFixed(2)}s`,
+      }}
+    >
+      {text}
+    </span>
   );
 }

@@ -21,6 +21,15 @@ button { font-family: inherit; }
   width: 100%;
 }
 
+/* A quiet link is a word with a dotted underline, about 19px tall: fine for a mouse, a
+   miss for a thumb. On a touch screen it gets an invisible hit area reaching 12px above
+   and below, so it is a 44px target that still looks like a word. Vertical only, because
+   these links sit 16px apart in a row and a sideways halo would overlap the next one. */
+.tap-halo { position: relative; }
+@media (pointer: coarse) {
+  .tap-halo::after { content: ''; position: absolute; left: 0; right: 0; top: -12px; bottom: -12px; }
+}
+
 /* Nothing else moves: paragraph opacity at 160ms, progress width at 260ms. */
 .para { transition: opacity 160ms var(--ease-move, ease); }
 .fill { transition: width 260ms var(--ease-move, ease); }
@@ -35,6 +44,19 @@ button { font-family: inherit; }
 @keyframes w-chunk { 0% { opacity: .2 } 18% { opacity: 1 } 52% { opacity: .38 } 100% { opacity: .2 } }
 .seam-sweep { animation: seam-sweep var(--spin-seam) cubic-bezier(.4, 0, .2, 1) infinite; }
 
+/* Coals: highlighted phrases breathing like embers. Brightness only, never size or
+   position, so a line of text never shifts under the eye. Each heat keeps its own pace
+   — the hot ones quickest — and Reader.jsx staggers the delay per phrase. The glow
+   itself is the inline text-shadow; this only makes it breathe. */
+@keyframes coal-breathe {
+  0%, 100% { filter: brightness(1); }
+  35% { filter: brightness(1.22); }
+  60% { filter: brightness(.9); }
+  80% { filter: brightness(1.1); }
+}
+.coal-2 { animation: coal-breathe 2.8s ease-in-out infinite; }
+.coal-1 { animation: coal-breathe 4.2s ease-in-out infinite; }
+.coal-0 { animation: coal-breathe 6.5s ease-in-out infinite; }
 
 /* Reduced motion completes, it does not skip. */
 @media (prefers-reduced-motion: reduce) {
@@ -46,4 +68,7 @@ button { font-family: inherit; }
      mark — both reading as finished. `animation: none` holds the first frame instead.
      Position still reads from the bar widths and the numeral, neither of which moves. */
   [style*="w-chunk"], .seam-sweep { animation: none !important; }
+
+  /* The coals keep their glow and stop breathing. */
+  .coal { animation: none !important; }
 }

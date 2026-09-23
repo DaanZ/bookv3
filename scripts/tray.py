@@ -8,12 +8,12 @@ legibly, and the question a tray icon actually answers is *is it up, is it busy,
 it need me*. So that is what the colour says, and the words go in the tooltip and the
 menu, where there is room:
 
-    orange  the app's own mark: up, and either idle or summarising (a pale bar
-            under the book says which)
-    red     a summarising job failed and is waiting for you
-    grey    the reader is unreachable
+    graphite  the app's own mark: up, and either idle or summarising (a pale bar
+              along the foot says which)
+    red       a summarising job failed and is waiting for you
+    grey      the reader is unreachable
 
-The silhouette is always the mark, and only the ground changes. Two of the four states
+The silhouette is always the mark, and only the tile changes. Two of the four states
 keep the brand colour on purpose: "up and idle" and "up and working" are not problems,
 and an icon that only looks like itself when nothing is happening is one you stop
 recognising in a tray that also holds Ambience.
@@ -47,19 +47,19 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 POLL_SECONDS = 20
 REQUEST_TIMEOUT = 8
 
-# The mark's own two colours, read out of the icon file rather than guessed:
-# #EF8A1E ground, #04181B ink. The tray recolours the first and never the second.
-BRAND_GROUND = (239, 138, 30)
-BRAND_INK = (4, 24, 27)
+# The tile the mark sits on in the app: the night register's graphite.
+BRAND_GROUND = (28, 28, 28)
+SILHOUETTE = (255, 252, 242)
 
-# The ground carries the state. At sixteen pixels a corner badge is a handful of
-# pixels and the colour of the whole shape is the only thing that reads at a glance —
-# so the silhouette stays the app's mark and the background says how it is doing.
+# The tile carries the state. At sixteen pixels a corner badge is a handful of pixels
+# and the colour of the whole shape is the only thing that reads at a glance — so the
+# S stays the app's mark and the tile behind it says how it is doing.
 #
-# Two of the four are the brand colour on purpose. "Up and idle" and "up and working"
+# Two of the four are the brand tile on purpose. "Up and idle" and "up and working"
 # are not problems, and an icon that only looks like itself when nothing is happening
 # is an icon you stop recognising. Only the two states worth interrupting for take a
-# colour of their own.
+# colour of their own, and there the S turns to a plain cream silhouette: its own
+# orange and red would disappear into a red tile.
 COLOURS = {
     "unreachable": (110, 110, 110),
     "failed": (200, 60, 50),
@@ -67,94 +67,47 @@ COLOURS = {
     "idle": BRAND_GROUND,
 }
 
-ICON_PATH = REPO_ROOT / "assets" / "bookv3.ico"
-FALLBACK_PATH = REPO_ROOT / "web" / "public" / "assets" / "favicon-512.png"
+# The mark alone, no tile, exported by web/tools/export-mark.mjs. The tray paints the
+# tile itself, so the state colour never has to be separated back out of an icon.
+MARK_PATH = REPO_ROOT / "assets" / "tray-mark.png"
 
-_base_icon = None
-
-
-def _base():
-    """The app mark, the same file a window or the taskbar would show. Loaded once."""
-    global _base_icon
-    if _base_icon is None:
-        from PIL import Image, ImageDraw
-
-        for path in (ICON_PATH, FALLBACK_PATH):
-            try:
-                image = Image.open(path)
-                _base_icon = image.convert("RGBA").resize((64, 64), Image.LANCZOS)
-                return _base_icon.copy()
-            except Exception:
-                continue
-        # No icon file at all: a plain rounded square beats no tray.
-        fallback = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
-        ImageDraw.Draw(fallback).rounded_rectangle((2, 2, 61, 61), 14, fill=BRAND_GROUND + (255,))
-        _base_icon = fallback
-    return _base_icon.copy()
+_mark = None
 
 
-class TrayState:
-    """The last reading, shared between the poller and the menu callbacks."""
+def _mark_image():
+    """The transparent 64px mark, or None if it has not been exported. Loaded once."""
+    global _mark
+    if _mark is None:
+        from PIL import Image
 
-    def __init__(self):
-        self.lock = threading.Lock()
-        self.health = None
-        self.error = None
-
-    def update(self, health=None, error=None):
-        with self.lock:
-            self.health = health
-            self.error = error
-
-    def read(self):
-        with self.lock:
-            return self.health, self.error
-
-
-def _luminance(rgb):
-    r, g, b = rgb[:3]
-    return 0.2126 * r + 0.7152 * g + 0.0722 * b
+        try:
+            _mark = Image.open(MARK_PATH).convert("RGBA").resize((64, 64), Image.LANCZOS)
+        except Exception:
+            _mark = False
+    return _mark or None
 
 
 def make_icon(colour, working=False):
-    """The mark, with `colour` swapped in for its orange ground.
-
-    Recoloured per pixel rather than by pasting a shape, so the rounded corners and the
-    curve of the book keep their antialiasing: an edge pixel is part ground and part
-    ink, and it has to stay part ground and part ink after the swap or the whole mark
-    grows a fringe. How much ink a pixel holds is read from its luminance, because the
-    two brand colours are far enough apart for that to be unambiguous.
-    """
+    """A 64px tile in `colour` with the mark on it."""
     from PIL import Image, ImageDraw
 
-    image = _base()
-    if colour == BRAND_GROUND and not working:
-        return image
+    image = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(image)
+    draw.rounded_rectangle((0, 0, 63, 63), 14, fill=colour + (255,))
 
-    ink_lum = _luminance(BRAND_INK)
-    ground_lum = _luminance(BRAND_GROUND)
-    span = ground_lum - ink_lum
-
-    pixels = image.load()
-    width, height = image.size
-    for y in range(height):
-        for x in range(width):
-            r, g, b, a = pixels[x, y]
-            if a == 0:
-                continue
-            # 1 where the pixel is ink, 0 where it is ground, between on an edge.
-            ink = (ground_lum - _luminance((r, g, b))) / span
-            ink = 0.0 if ink < 0 else (1.0 if ink > 1 else ink)
-            pixels[x, y] = (
-                round(BRAND_INK[0] * ink + colour[0] * (1 - ink)),
-                round(BRAND_INK[1] * ink + colour[1] * (1 - ink)),
-                round(BRAND_INK[2] * ink + colour[2] * (1 - ink)),
-                a,
-            )
+    mark = _mark_image()
+    if mark is not None:
+        if colour != BRAND_GROUND:
+            # Same shape, one colour: keep the alpha, which carries the antialiased edge.
+            flat = Image.new("RGBA", mark.size, SILHOUETTE + (255,))
+            flat.putalpha(mark.getchannel("A"))
+            mark = flat
+        image.alpha_composite(mark)
 
     if working:
-        # A pale bar under the book, which reads at 16px where a spinner turns to mush.
-        ImageDraw.Draw(image).rounded_rectangle((14, 50, 49, 56), 3, fill=(255, 248, 238, 235))
+        # A pale bar along the foot, which reads at 16px where a spinner turns to mush.
+        draw = ImageDraw.Draw(image)
+        draw.rounded_rectangle((14, 54, 49, 59), 3, fill=(255, 252, 242, 235))
     return image
 
 

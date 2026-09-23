@@ -247,14 +247,15 @@ up. Nothing resumes a failed job, so a re-run still pays for every part again.
 
 **`web/`** is Vite + React.
 
-`src/lib/recommend.js` holds two suggestions that pull opposite ways on purpose. `fromLibrary` is
-the shelf's — the unread book nearest what this reader has actually finished, shown once on the
-"not started" filter with the book it came from named, and empty for a reader who has finished
-nothing, because inventing a suggestion from the shelf at large would be recommending the
-house's taste back to somebody who has not asked for it. `recommendations` is the finish screen's, and offers the book
-*furthest* from the one just put down, because switching topics beats stopping. `uncategorised` is
-a stop word in both: it is `library.py`'s fallback for the 68 books with no category, and two books
-sharing it share nothing.
+`src/lib/recommend.js` holds the finish screen's suggestion, `recommendations`, which offers
+the book *furthest* from the one just put down, because switching topics beats stopping.
+`uncategorised` is a stop word there: it is `library.py`'s fallback for the 68 books with no
+category, and two books sharing it share nothing. The shelf has no suggestion any more — it
+had `fromLibrary`, the unread book nearest what the reader had finished, and it was removed in
+favour of shuffling: the shelf's default order is `shuffled` (App.jsx), a new order each time
+the app opens and a stable one while filters change, so there is always something new in
+view. "Recently added" is the other order; A–Z is gone. On a phone (`useNarrow`, below
+600px) the shelf drops its introduction and the order toggle, leaving the three filters.
 
 `src/lib/reading.js` is the model and the part worth understanding:
 
@@ -284,6 +285,26 @@ sharing it share nothing.
     register's window instead, and the floor is only a backstop. It is deliberately not maximal —
     0.30 at night still measures ~5.5:1, and every point above that is paid for in collapsed stops.
 
+  **In the reader, highlights are coals, not a sweep.** `paletteFor`'s band-order sweep
+  still colours the progress bar, the shelf and the print sheet, but on the reading page
+  each phrase takes one of three heats — smouldering, glowing, hot — and the *book's
+  category* decides the colours (`CATEGORY_COALS` in `reading.js`, keyed by the family
+  `api/patches.py` assigns). Psychology, technology, engineering, business and self-help
+  have their own; every other shelf, and a book with no category, burns in `fire`
+  (red, orange, gold). The reader's palette choice does not touch the coals. The room
+  stays graphite and orange whatever the book, so the only thing that changes between
+  books is the colour of what matters. Heat comes from `phraseCounter`: how often the
+  book mentions the phrase anywhere, so a subject burns hot and an aside smoulders. The
+  pipeline's `<b>` is binary and carries no importance of its own; this is the proxy, and
+  it is relative to the page (`heatsOf`: top quarter hot, bottom quarter smouldering). At
+  night each heat glows (a layered text-shadow) and breathes (`.coal-*` in `app.css`, off
+  under reduced motion); the inks are used as designed, every one above 4.5:1 on
+  graphite. By day there is no glow, heat is carried by weight, and the inks go through
+  `legible` to reach cream.
+
+  `patches.py`'s keyword list is first-match-wins, so order is precedence: `engineer` sits
+  above the technology needles or "Technology & Engineering" would never reach its family.
+
   `node web/tools/check-palettes.mjs` prints contrast, saturation and adjacent ΔE for every palette
   in both registers, against the previous behaviour. Re-run it if these numbers are touched.
 
@@ -294,7 +315,18 @@ sharing it share nothing.
   regenerate it whenever a palette or a constant above changes.
 
 Colours, type and spacing come from the vendored token layer in `web/src/ds/` — edit tokens, not
-hard-coded values. Two rules from the design system are easy to break by accident: **gold is only
+hard-coded values. The night register is **graphite** (`--graphite-*` in `colors.css`: desk
+`#141414`, card `#1C1C1C`), not Tide's deep-water teal: a neutral ground so the coals are the
+only colour in the room. The accent is the mark's orange, `#F68318`.
+
+**The mark** is an S from Space Grotesk Bold with the pages it came from fanned out behind it,
+cooling orange → red → purple → indigo. `web/src/lib/mark.js` is its source of truth — the glyph
+is stored as an outline so no icon depends on a webfont — and `components/Mark.jsx` draws it.
+`node web/tools/export-mark.mjs` regenerates every icon file from it (favicons, maskable icon,
+`assets/bookv3.ico`, and `assets/tray-mark.png`); it needs Python with cairosvg and Pillow.
+Page count drops with size by design: five pages from 128px, one from 32px, none below.
+`scripts/tray.py` paints its own tile in the state colour and lays the mark on it, so the
+state never has to be separated back out of a multi-colour icon. Two rules from the design system are easy to break by accident: **gold is only
 ever a join** (the resume strip, nothing else), and **the day/night register swap is never
 animated** — it is a different room, it loads.
 

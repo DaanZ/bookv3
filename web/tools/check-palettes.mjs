@@ -44,7 +44,7 @@ function baseline(name, day, count) {
 }
 
 // From web/src/ds/tokens/colors.css.
-const NIGHT_BG = '#0B1A1C';
+const NIGHT_BG = '#1C1C1C';
 const DAY_BG = '#FDF6EA';
 
 const hex2rgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));

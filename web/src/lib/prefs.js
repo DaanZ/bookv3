@@ -79,6 +79,25 @@ export function usePrefs() {
   return [prefs, update, adopt];
 }
 
+// Below this the 834px tablet layout is on a phone: its padding and side-by-side rows
+// were drawn for twice the width, and a book title ends up one word to a line.
+const NARROW = '(max-width: 600px)';
+
+/** True on a phone-width screen. Tracks rotation and window resizes. */
+export function useNarrow() {
+  const [narrow, setNarrow] = useState(
+    () => typeof matchMedia === 'function' && matchMedia(NARROW).matches,
+  );
+  useEffect(() => {
+    if (typeof matchMedia !== 'function') return undefined;
+    const query = matchMedia(NARROW);
+    const onChange = (event) => setNarrow(event.matches);
+    query.addEventListener('change', onChange);
+    return () => query.removeEventListener('change', onChange);
+  }, []);
+  return narrow;
+}
+
 export function useReducedMotion() {
   const [reduced, setReduced] = useState(
     () => typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches,

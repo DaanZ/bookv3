@@ -176,7 +176,7 @@ export function QuietLink({ children, ...rest }) {
   return (
     <button
       type="button"
-      className="tap"
+      className="tap tap-halo"
       style={{
         width: 'auto',
         font: "500 12px 'Space Grotesk', system-ui",

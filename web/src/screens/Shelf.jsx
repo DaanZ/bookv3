@@ -1,5 +1,6 @@
 import Patch from '../components/Patch';
 import { ProgressBar, QuietLink } from '../components/ui';
+import { useNarrow } from '../lib/prefs';
 import { cum, paletteFor } from '../lib/reading';
 
 // Choose what to read; see at a glance what each book is and where you left it.
@@ -25,7 +26,7 @@ function metaLine(book, donePct) {
   return `${book.partCount} parts${sittings}`;
 }
 
-function BookRow({ book, gradient, onOpen }) {
+function BookRow({ book, gradient, onOpen, narrow }) {
   const [chipWord, chipBg, chipFg] = CHIPS[book.state] || CHIPS.new;
   const chip = chipWord ?? `part ${book.at + 1} of ${book.partCount}`;
   const done = book.state === 'read' ? 1 : cum(book.partCount, book.at);
@@ -36,7 +37,7 @@ function BookRow({ book, gradient, onOpen }) {
       className="tap row"
       onClick={onOpen}
       style={{
-        padding: '22px 24px',
+        padding: narrow ? '16px' : '22px 24px',
         borderRadius: 14,
         background: 'var(--bg-surface-hover)',
         border: `1px solid ${
@@ -44,22 +45,25 @@ function BookRow({ book, gradient, onOpen }) {
         }`,
       }}
     >
-      <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
-        <Patch patch={book.patch} size={56} />
+      <div style={{ display: 'flex', gap: narrow ? 14 : 20, alignItems: 'flex-start' }}>
+        <Patch patch={book.patch} size={narrow ? 40 : 56} />
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 12, minWidth: 0 }}>
+          {/* Side by side the chip takes a column the title needs; on a phone it goes
+              above the title instead, so a long title wraps across the whole row. */}
           <div
             style={{
               display: 'flex',
+              flexDirection: narrow ? 'column-reverse' : 'row',
               alignItems: 'flex-start',
               justifyContent: 'space-between',
-              gap: 18,
+              gap: narrow ? 8 : 18,
             }}
           >
             <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
               <span
                 style={{
                   fontFamily: 'var(--font-display-wide)',
-                  fontSize: 20,
+                  fontSize: narrow ? 17 : 20,
                   fontWeight: 600,
                   lineHeight: 1.3,
                   color: 'var(--text-primary)',
@@ -103,60 +107,11 @@ function BookRow({ book, gradient, onOpen }) {
   );
 }
 
-/**
- * One suggestion, with the book it came from named.
- *
- * Only on the "not started" filter, because that is the question it answers, and only
- * one — a shelf that opens with a row of recommendations is a shop.
- */
-function Suggestion({ entry, onOpen }) {
-  return (
-    <button
-      className="tap row"
-      onClick={onOpen}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: 16,
-        padding: '14px 18px',
-        borderRadius: 14,
-        background: 'transparent',
-        border: '1px dashed var(--border-strong)',
-      }}
-    >
-      <Patch patch={entry.book.patch} size={34} />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0, textAlign: 'left' }}>
-        <span
-          style={{
-            font: "600 9.5px 'IBM Plex Mono', monospace",
-            letterSpacing: 'var(--track-eyebrow)',
-            textTransform: 'uppercase',
-            color: 'var(--text-muted)',
-          }}
-        >
-          because you read {entry.because.title}
-        </span>
-        <span
-          style={{
-            fontFamily: 'var(--font-display-wide)',
-            fontSize: 17,
-            fontWeight: 600,
-            color: 'var(--text-primary)',
-          }}
-        >
-          {entry.book.title}
-        </span>
-      </div>
-    </button>
-  );
-}
-
 export default function Shelf({
   books,
   counts,
   themeLabel,
   who,
-  suggestion,
   onOpen,
   filter,
   onFilter,
@@ -170,14 +125,28 @@ export default function Shelf({
 }) {
   // One ramp for the whole shelf, built once rather than per row.
   const gradient = paletteFor(palette || 'sunset', !!day, 8);
+  const narrow = useNarrow();
+
+  // Filters are the controls a phone reaches for most, so there they are full touch
+  // targets (44px) rather than the tablet's compact chips.
+  const control = (on) => ({
+    width: 'auto',
+    padding: narrow ? '12px 16px' : '7px 13px',
+    borderRadius: 10,
+    font: `500 ${narrow ? 14 : 12}px 'Space Grotesk', system-ui`,
+    whiteSpace: 'nowrap',
+    background: on ? 'var(--accent)' : 'transparent',
+    color: on ? 'var(--accent-on)' : 'var(--text-secondary)',
+    border: `1px solid ${on ? 'var(--accent)' : 'var(--border-strong)'}`,
+  });
   return (
     <div
       style={{
         display: 'flex',
         flexDirection: 'column',
-        minHeight: 1112,
+        minHeight: narrow ? 0 : 1112,
         boxSizing: 'border-box',
-        padding: '40px 44px 34px',
+        padding: narrow ? '26px 18px 24px' : '40px 44px 34px',
       }}
     >
       <span
@@ -195,7 +164,7 @@ export default function Shelf({
         style={{
           margin: '10px 0 0',
           fontFamily: 'var(--font-display-wide)',
-          fontSize: 36,
+          fontSize: narrow ? 30 : 36,
           fontWeight: 600,
           lineHeight: 1.14,
           color: 'var(--text-primary)',
@@ -203,13 +172,16 @@ export default function Shelf({
       >
         Your shelf
       </h1>
+      {/* On a phone the introduction costs a screenful before the first book, and says
+          nothing a reader needs twice. */}
+      {!narrow && (
       <p
         style={{
           margin: '12px 0 0',
           maxWidth: '44ch',
           fontFamily: 'var(--font-display-wide)',
-          fontSize: 16,
-          lineHeight: 1.8,
+          fontSize: narrow ? 15 : 16,
+          lineHeight: narrow ? 1.65 : 1.8,
           color: 'var(--text-secondary)',
         }}
       >
@@ -217,6 +189,7 @@ export default function Shelf({
           patch tells you the kind of book before you read a word, and every page you keep is
           ${who?.name ? `${who.name}'s` : 'yours'} alone.`}
       </p>
+      )}
 
       {/* The design was drawn against three books; this shelf holds hundreds, so the
           rows are filtered rather than paged — one unit of work per screen still holds. */}
@@ -225,11 +198,12 @@ export default function Shelf({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: 12,
+          flexWrap: 'wrap',
+          gap: narrow ? 8 : 12,
           marginTop: 24,
         }}
       >
-        <div style={{ display: 'flex', gap: 8 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
           {[
             ['reading', 'Reading'],
             ['new', 'Not started'],
@@ -240,15 +214,7 @@ export default function Shelf({
               type="button"
               className="tap"
               onClick={() => onFilter(value)}
-              style={{
-                width: 'auto',
-                padding: '7px 13px',
-                borderRadius: 10,
-                font: "500 12px 'Space Grotesk', system-ui",
-                background: filter === value ? 'var(--accent)' : 'transparent',
-                color: filter === value ? 'var(--accent-on)' : 'var(--text-secondary)',
-                border: `1px solid ${filter === value ? 'var(--accent)' : 'var(--border-strong)'}`,
-              }}
+              style={control(filter === value)}
             >
               {label}
             </button>
@@ -256,37 +222,25 @@ export default function Shelf({
         </div>
 
         {/* Order, not a filter — so it is one control that names its current state and
-            swaps, rather than a second row of chips competing with the first. */}
+            swaps, rather than a second row of chips competing with the first. Not on a
+            phone: there the three filters get the line to themselves, and the order is
+            the default shuffle. */}
+        {!narrow && (
         <button
           type="button"
           className="tap"
-          onClick={() => onSort(sort === 'added' ? 'title' : 'added')}
+          onClick={() => onSort(sort === 'added' ? 'shuffled' : 'added')}
           title={
             sort === 'added'
-              ? 'Sorted by date added, newest first. Switch to A–Z.'
-              : 'Sorted A–Z. Switch to recently added.'
+              ? 'Sorted by date added, newest first. Switch to a shuffled order.'
+              : 'Shuffled, a new order every visit. Switch to recently added.'
           }
-          style={{
-            width: 'auto',
-            marginLeft: 'auto',
-            padding: '7px 13px',
-            borderRadius: 10,
-            font: "500 12px 'Space Grotesk', system-ui",
-            background: 'transparent',
-            color: 'var(--text-secondary)',
-            border: '1px solid var(--border-strong)',
-            whiteSpace: 'nowrap',
-          }}
+          style={{ ...control(false), marginLeft: 'auto' }}
         >
-          {sort === 'added' ? 'Recently added' : 'A–Z'}
+          {sort === 'added' ? 'Recently added' : 'Shuffled'}
         </button>
+        )}
       </div>
-
-      {filter === 'new' && suggestion && (
-        <div style={{ marginTop: 20 }}>
-          <Suggestion entry={suggestion} onOpen={() => onOpen(suggestion.book.key)} />
-        </div>
-      )}
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginTop: 20 }}>
         {books.length === 0 ? (
@@ -297,7 +251,8 @@ export default function Shelf({
           </span>
         ) : (
           books.map((book) => (
-            <BookRow key={book.key} book={book} gradient={gradient} onOpen={() => onOpen(book.key)} />
+            <BookRow key={book.key} book={book} gradient={gradient} narrow={narrow}
+                     onOpen={() => onOpen(book.key)} />
           ))
         )}
       </div>
@@ -307,8 +262,9 @@ export default function Shelf({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
+          flexWrap: 'wrap',
           gap: 16,
-          marginTop: 'auto',
+          marginTop: narrow ? 28 : 'auto',
           paddingTop: 26,
           borderTop: '1px solid var(--border-subtle)',
         }}
@@ -317,7 +273,7 @@ export default function Shelf({
             implementation keeps them, not anything a reader needs to know — the shelf
             already says what is read and what is not. */}
         <span />
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
           <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
             {themeLabel}
           </span>

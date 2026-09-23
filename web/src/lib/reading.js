@@ -81,8 +81,8 @@ function hsl2hex(h, s, l) {
 
 // How far a band has to clear the ground to be read as a highlight rather than as ink.
 //
-// Deliberately generous rather than maximal. Against the night ground (#0B1A1C) 0.30
-// still measures about 5.5:1, comfortably past WCAG AA, and every point above that is
+// Deliberately generous rather than maximal. Against the night ground (#1C1C1C) 0.30
+// still measures about 5.7:1, comfortably past WCAG AA, and every point above that is
 // paid for by the dark end of the ramp: a floor of 0.46 shoved sunset's deep purples up
 // until they landed on their own neighbours, ΔE 2. The floor is a backstop for hues that
 // would otherwise vanish, not the thing that sets the palette's brightness.
@@ -171,6 +171,139 @@ export function paletteFor(name, day, count) {
     const t = span < 0.01 ? 0.5 : (lightnesses[i] - low) / span;
     return legible(hex, day, from + (to - from) * t);
   });
+}
+
+// ── Coals ──────────────────────────────────────────────────────────────────────────
+//
+// Highlights are drawn as coals in a fire: the most important phrases on a page burn
+// hottest and draw the eye first, the rest glow or smoulder. Staring into the hearth,
+// but what you are watching is the part of the page that matters.
+//
+// Three heats, and the colours they burn in belong to the book's shelf. The room is
+// always graphite and orange; the category decides what its coals look like, so a
+// psychology book and a programming book feel different before a word is read, and
+// nothing else on the page changes. Families are `api/patches.py`'s, the same grouping
+// the shelf patches use.
+export const HEATS = ['smouldering', 'glowing', 'hot'];
+
+/**
+ * Coal colours per category family: `ink` is the text, `glow` the light behind it,
+ * each smouldering -> glowing -> hot.
+ *
+ * Designed on the night ground (#1C1C1C), where every ink clears 4.5:1 as it stands, so
+ * night uses them unaltered. `fire` is every other shelf, and a book with no category.
+ */
+export const CATEGORY_COALS = {
+  psychology: {
+    mood: 'the inner room · dusk · a lit window',
+    ink: ['#9A8FD1', '#D98BB5', '#FFB27A'],
+    glow: ['#4B3E8F', '#9C3F74', '#D9642A'],
+  },
+  technology: {
+    mood: 'screen light · signal · phosphor',
+    ink: ['#6FA8DC', '#4FD6E0', '#9CFF8A'],
+    glow: ['#2B5F94', '#138A96', '#3DAE2C'],
+  },
+  engineering: {
+    mood: 'steel · safety yellow · the arc of a weld',
+    ink: ['#A8B3BF', '#F2C94C', '#8FDBFF'],
+    glow: ['#56606B', '#B3860F', '#2A8FD1'],
+  },
+  business: {
+    mood: 'the ledger · slate · growth · gold',
+    ink: ['#8AA6C8', '#5FC9A8', '#F5CF5B'],
+    glow: ['#3D5A80', '#1E8A6B', '#C99A12'],
+  },
+  'self-help': {
+    mood: 'morning · dawn · the sun coming up',
+    ink: ['#F0A3A3', '#FFB85C', '#FFE66B'],
+    glow: ['#B04A4A', '#D07A12', '#D9B400'],
+  },
+  fire: {
+    mood: 'the fire itself',
+    ink: ['#E65A64', '#F68318', '#FDC005'],
+    glow: ['#B22E37', '#C95F0C', '#E0A200'],
+  },
+};
+
+function alpha(hex, a) {
+  return hex + Math.round(a * 255).toString(16).padStart(2, '0');
+}
+
+/**
+ * The ink and glow for each heat in a book's family, index = heat.
+ *
+ * The glow is layered the way a coal looks: a smouldering one has a haze of its own
+ * colour, a hot one a bright core that cools outward through the glowing colour. By day
+ * there is no glow — light does not glow on paper, so heat is carried by weight — and the
+ * inks, designed for night, are pulled dark enough to read on cream by `legible`.
+ */
+export function coalsFor(family, day) {
+  const coals = CATEGORY_COALS[family] || CATEGORY_COALS.fire;
+  const [ink, glow] = [coals.ink, coals.glow];
+  if (day) return { ink: ink.map((hex) => legible(hex, true)), glow: ['none', 'none', 'none'] };
+  return {
+    ink,
+    glow: [
+      `0 0 10px ${alpha(glow[0], 0.9)}`,
+      `0 0 4px ${alpha(ink[1], 0.55)}, 0 0 16px ${alpha(glow[1], 0.7)}`,
+      `0 0 3px ${alpha(ink[2], 0.75)}, 0 0 12px ${alpha(glow[2], 0.65)}, 0 0 28px ${alpha(glow[1], 0.55)}`,
+    ],
+  };
+}
+
+// The same normalisation `tokensOf` gives a phrase to use as its key: lower case, letters
+// and spaces only. Whitespace becomes a space rather than vanishing, so the last word of
+// one paragraph does not fuse with the first of the next.
+function keyText(text) {
+  return text.toLowerCase().replace(/\s+/g, ' ').replace(/[^a-z ]/g, '');
+}
+
+/**
+ * How often each highlighted phrase occurs across the whole book, as a lookup.
+ *
+ * This is what decides heat, because the pipeline's `<b>` says only *that* a phrase
+ * matters, not how much. A phrase the book keeps returning to is one of its subjects;
+ * one it mentions once is colour. "Brainwashing" in a book about brainwashing burns hot
+ * and "hogwash" smoulders, which is the right way round. Counted in the plain text,
+ * highlighted or not, so a subject that is only bolded once still counts every mention.
+ */
+export function phraseCounter(parts) {
+  const text = ` ${keyText((parts || []).map((part) => normaliseBody(part.body).replace(/<\/?b>/g, ' ')).join(' '))} `;
+  const cache = new Map();
+  return (key) => {
+    if (cache.has(key)) return cache.get(key);
+    let count = 0;
+    const needle = key.trim();
+    if (needle) {
+      for (let at = text.indexOf(needle); at >= 0; at = text.indexOf(needle, at + needle.length)) {
+        count += 1;
+      }
+    }
+    cache.set(key, count);
+    return count;
+  };
+}
+
+/**
+ * A heat for each highlighted phrase on a page, in slot order, from how often each
+ * recurs in the book.
+ *
+ * Relative to the page, not absolute: every page has something hottest, because the
+ * point is where to look *here*. The top quarter burns hot, the bottom quarter
+ * smoulders, the rest glow — so a full page of eight has two of each extreme, and a
+ * page with one highlight has one hot coal. Ties go to the phrase met first.
+ */
+export function heatsOf(counts) {
+  const n = counts.length;
+  const hot = Math.ceil(n / 4);
+  const cold = Math.floor(n / 4);
+  const ranked = counts.map((count, slot) => ({ count, slot })).sort((a, b) => b.count - a.count || a.slot - b.slot);
+  const heats = new Array(n);
+  ranked.forEach(({ slot }, rank) => {
+    heats[slot] = rank < hot ? 2 : rank >= n - cold ? 0 : 1;
+  });
+  return heats;
 }
 
 // Progress is a logistic curve, not two flat rates.
@@ -303,7 +436,8 @@ export function tokensOf(text, palette, cap, budget) {
     if (budget.used < cap && (known || budget.map.size < cap)) {
       if (!known) budget.map.set(key, budget.map.size);
       budget.used += 1;
-      out.push({ text: m[1], weight: 600, color: palette[budget.map.get(key)] });
+      const slot = budget.map.get(key);
+      out.push({ text: m[1], weight: 600, color: palette[slot], slot });
     } else {
       out.push({ text: m[1], weight: 400, color: 'inherit' });
     }
@@ -333,9 +467,14 @@ export function newBudget() {
  * throwaway palette and asks the budget what it did.
  */
 export function highlightCount(sentences, cap) {
+  return highlightKeys(sentences, cap).length;
+}
+
+/** The phrases on this page that will take a colour, keyed as `tokensOf` keys them, in slot order. */
+export function highlightKeys(sentences, cap) {
   const budget = newBudget();
   for (const sentence of sentences || []) tokensOf(sentence, [], cap, budget);
-  return budget.map.size;
+  return [...budget.map.keys()];
 }
 
 // The pipeline stores bodies as HTML, and `chunks.format_text` writes the highlight as

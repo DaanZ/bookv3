@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
+import Mark from './components/Mark';
 import { Card } from './components/ui';
 import {
   addProfile,
@@ -22,9 +23,9 @@ import {
   forgetDevice,
 } from './lib/api';
 import { PALETTE_NAMES, paletteFor } from './lib/reading';
-import { usePrefs } from './lib/prefs';
+import { useNarrow, usePrefs } from './lib/prefs';
 import { useAmbience } from './lib/useAmbience';
-import { fromLibrary, recommendations } from './lib/recommend';
+import { recommendations } from './lib/recommend';
 import Finished from './screens/Finished';
 import Library from './screens/Library';
 import Profiles from './screens/Profiles';
@@ -45,7 +46,11 @@ export default function App() {
   const [filter, setFilter] = useState('reading');
   // How the rows are ordered, independent of which group is shown. The server already
   // returns them newest-first, so 'added' is simply that order left alone.
-  const [sort, setSort] = useState('added');
+  // Shuffled by default, so the shelf keeps offering something not yet noticed. The seed
+  // is drawn once per visit: a new order every time the app opens, but a stable one while
+  // you switch filters, so a book does not jump away from under your finger.
+  const [sort, setSort] = useState('shuffled');
+  const [shuffleSeed] = useState(() => Math.floor(Math.random() * 2 ** 31));
   const [screen, setScreen] = useState('shelf');
   const [book, setBook] = useState(null);
   const [position, setPosition] = useState({ part: 0, page: 0 });
@@ -168,7 +173,7 @@ export default function App() {
 
   // The desk is outside the card, so it is painted on the document rather than a div.
   useEffect(() => {
-    document.body.style.background = day ? '#E6DED0' : '#04181B';
+    document.body.style.background = day ? '#E6DED0' : '#141414';
   }, [day]);
 
   const openBook = useCallback(async (key) => {
@@ -364,29 +369,23 @@ export default function App() {
     const rows = shelf.books.filter((b) => b.state === filter);
     // 'added' is the order the shelf endpoint already sorted them into, so leave it
     // alone rather than re-deriving it here from a date the client would have to parse.
-    return sort === 'title'
-      ? [...rows].sort((a, b) => a.title.localeCompare(b.title))
-      : rows;
-  }, [shelf.books, filter, sort]);
+    return sort === 'shuffled' ? shuffled(rows, shuffleSeed) : rows;
+  }, [shelf.books, filter, sort, shuffleSeed]);
 
   const recs = useMemo(
     () => (book ? recommendations(shelf.books, book.key, book.category, book.family) : []),
     [shelf.books, book],
   );
 
-  // What this reader's own history points at. Empty for a reader who has finished
-  // nothing here, because there is nothing to reason from.
-  const suggestion = useMemo(() => fromLibrary(shelf.books)[0] || null, [shelf.books]);
-
-  const themeLabel = day ? 'day · cane paper' : 'night · deep water';
+  const themeLabel = day ? 'day · cane paper' : 'night · by the fire';
 
   return (
-    // A register change is never animated — Deep to Shore is a different room; it loads.
+    // A register change is never animated — night to day is a different room; it loads.
     <div
       className={day ? 'shore' : ''}
       style={{
         minHeight: '100vh',
-        background: day ? '#E6DED0' : '#04181B',
+        background: day ? '#E6DED0' : '#141414',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -451,7 +450,6 @@ export default function App() {
               counts={shelf.counts}
               themeLabel={themeLabel}
               who={who}
-              suggestion={suggestion}
               filter={filter}
               onFilter={setFilter}
               sort={sort}
@@ -544,12 +542,12 @@ export default function App() {
  * about the light switch on its wall, and a switch whose knob teleports feels broken
  * while a page that fades between registers feels cheap.
  */
-function RegisterSwitch({ day, onChange }) {
+function RegisterSwitch({ day, onChange, narrow }) {
   const edge = day ? 'rgba(20,32,31,.18)' : 'rgba(253,246,234,.2)';
   const label = (on) => ({
     flex: 1,
     zIndex: 1,
-    padding: '6px 12px',
+    padding: narrow ? '13px 12px' : '6px 12px',
     textAlign: 'center',
     font: "500 12px 'Space Grotesk', system-ui",
     color: on ? 'var(--accent-on)' : day ? 'rgba(20,32,31,.6)' : 'rgba(253,246,234,.6)',
@@ -604,7 +602,7 @@ function RegisterSwitch({ day, onChange }) {
  * what you are allowed to do. Its tone is the profile's own colour, so it reads as a
  * face at a glance before the letter is legible.
  */
-function ProfileMark({ who, onProfiles, day }) {
+function ProfileMark({ who, onProfiles, day, narrow }) {
   if (!who) return null;
   return (
     <button
@@ -615,10 +613,10 @@ function ProfileMark({ who, onProfiles, day }) {
       style={{
         display: 'grid',
         placeItems: 'center',
-        width: 28,
-        height: 28,
+        width: narrow ? 44 : 28,
+        height: narrow ? 44 : 28,
         padding: 0,
-        borderRadius: 8,
+        borderRadius: narrow ? 10 : 8,
         border: `1px solid ${day ? 'rgba(20,32,31,.18)' : 'rgba(253,246,234,.2)'}`,
         background: who.tone || 'var(--bg-surface-hover)',
         color: '#FDF6EA',
@@ -633,10 +631,13 @@ function ProfileMark({ who, onProfiles, day }) {
 }
 
 function Chrome({ prefs, setPrefs, day, who, onProfiles }) {
+  // On a phone the strip keeps the name and drops the description: at full length it
+  // wraps to two lines above controls that already need a line of their own.
+  const narrow = useNarrow();
   const ink = day ? 'rgba(20,32,31,.55)' : 'rgba(253,246,234,.5)';
   const style = (on) => ({
     width: 'auto',
-    padding: '7px 13px',
+    padding: narrow ? '13px 13px' : '7px 13px',
     borderRadius: 10,
     font: "500 12px 'Space Grotesk', system-ui",
     background: on ? 'var(--accent)' : 'transparent',
@@ -657,19 +658,24 @@ function Chrome({ prefs, setPrefs, day, who, onProfiles }) {
     >
       <span
         style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 8,
           font: "600 10px 'IBM Plex Mono', monospace",
           letterSpacing: 'var(--track-eyebrow)',
           textTransform: 'uppercase',
           color: ink,
         }}
       >
-        Snippers · {prefs.palette} palette · highlights in band order
+        {/* The word beside it names the product, so the mark itself stays silent. */}
+        <Mark pages="small" size={18} />
+        {narrow ? 'Snippers' : `Snippers · ${prefs.palette} palette · highlights as coals`}
       </span>
       <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginLeft: 'auto' }}>
         {/* Who, then how it looks: the mark sits left of the register switch because it
             qualifies everything to its right. */}
-        <ProfileMark who={who} onProfiles={onProfiles} day={day} />
-        <RegisterSwitch day={day} onChange={(theme) => setPrefs({ theme })} />
+        <ProfileMark who={who} onProfiles={onProfiles} day={day} narrow={narrow} />
+        <RegisterSwitch day={day} narrow={narrow} onChange={(theme) => setPrefs({ theme })} />
         {/* The palette shown rather than named. "sunset" and "coral" mean nothing until
             you have seen them, and the point of the control is to choose colours — so it
             wears the colours it would give you, in the register you are reading in.
@@ -700,4 +706,18 @@ function Chrome({ prefs, setPrefs, day, who, onProfiles }) {
       </div>
     </div>
   );
+}
+
+/**
+ * `rows` in an order fixed by `seed`: the same seed always gives the same order, so a
+ * re-render or a filter change never reshuffles. Each book is ranked by a hash of its key
+ * and the seed, which also keeps a book's place when others are added or removed.
+ */
+function shuffled(rows, seed) {
+  const rank = (key) => {
+    let h = seed ^ 0x9e3779b9;
+    for (let i = 0; i < key.length; i += 1) h = Math.imul(h ^ key.charCodeAt(i), 0x85ebca6b);
+    return (h ^ (h >>> 13)) >>> 0;
+  };
+  return rows.map((row) => [rank(row.key), row]).sort((a, b) => a[0] - b[0]).map(([, row]) => row);
 }

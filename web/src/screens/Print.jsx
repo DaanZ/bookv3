@@ -186,7 +186,7 @@ export default function Print({ bookKey }) {
           .no-print { display: none !important; }
           .desk { background: transparent !important; padding: 0 !important; }
           .sheet { width: auto; box-shadow: none; }
-          /* The token layer paints body the app's deep-water #04181B, and this view
+          /* The token layer paints body the app's night graphite, and this view
              borrows that stylesheet. The desk hides it on screen; in print the desk is
              transparent, so with "background graphics" ticked the whole sheet would come
              out black. Stated rather than left to the default that usually saves us. */

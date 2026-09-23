@@ -83,7 +83,7 @@ export default function Design() {
   const [done, setDone] = useState(4);
 
   useEffect(() => {
-    document.body.style.background = day ? '#E6DED0' : '#04181B';
+    document.body.style.background = day ? '#E6DED0' : '#141414';
   }, [day]);
 
   const stops = paletteFor(palette, day, 8);
@@ -118,7 +118,7 @@ export default function Design() {
           {/* The register is a different room, so it loads rather than animating —
               the same rule the app follows. */}
           <Button size="sm" variant="secondary" onClick={() => setDay((d) => !d)}>
-            {day ? 'Day · cane paper' : 'Night · deep water'}
+            {day ? 'Day · cane paper' : 'Night · by the fire'}
           </Button>
           {PALETTE_NAMES.map((name) => (
             <button

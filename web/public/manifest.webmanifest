@@ -3,8 +3,8 @@
   "short_name": "Snippers",
   "display": "standalone",
   "start_url": ".",
-  "theme_color": "#EF8A1E",
-  "background_color": "#04181B",
+  "theme_color": "#141414",
+  "background_color": "#141414",
   "icons": [
     { "src": "assets/favicon-512.png", "sizes": "512x512", "type": "image/png" },
     { "src": "assets/favicon-maskable.svg", "sizes": "any", "purpose": "maskable" }
