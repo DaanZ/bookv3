@@ -6,7 +6,7 @@ reader: shelf, reader, finished). Updated as each step lands.
 **Decision, per the handoff's "pick one and say which":** option 2 — the reader is a
 React app (`web/`) over a small FastAPI service (`api/`) reading the same
 `books/*.json`. Streamlit keeps ingest (`app.py`, `prep.py`); `next_reads.py`,
-`all.py` and `dashboard.py` are superseded by the new reader but left in place.
+`all.py` and `dashboard.py` were superseded by the new reader and have since been deleted.
 
 **Ambience decision:** `design_handoff_bookv3_ambience` ships a synthesizer for all five
 beds and documents a contract for using real recordings instead. Four recordings were
@@ -271,5 +271,5 @@ synthesized. Wind is a sixth bed, added because a file for it arrived.
       indistinguishable for a background bed. Worth doing before the repo grows.
 - [ ] Add a `web/dist` build step to whatever deploys this; the API serves the
       bundle only if the directory exists
-- [ ] Decide the fate of `next_reads.py` / `all.py` / `dashboard.py` — all three are
-      now superseded, and `dashboard.py` still points at a folder with no JSON in it
+- [x] Decide the fate of `next_reads.py` / `all.py` / `dashboard.py` — deleted: all three
+      were superseded by the reader, and `dashboard.py` pointed at a folder with no JSON
