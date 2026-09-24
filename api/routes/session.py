@@ -3,7 +3,6 @@
 from fastapi import APIRouter, Header, Request
 
 from api import jobs, library, profiles
-from api.deps import reader
 
 router = APIRouter()
 

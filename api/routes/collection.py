@@ -5,7 +5,7 @@ from pydantic import BaseModel
 
 from api import enrich as enriching
 from api import library, positions
-from api.deps import admin, reader
+from api.deps import admin
 
 router = APIRouter()
 

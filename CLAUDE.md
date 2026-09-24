@@ -23,8 +23,9 @@ uvicorn api.main:app --port 8001   # serves the API *and* web/dist when it exist
 streamlit run app.py          # upload a PDF and summarize it live, chunk by chunk
 python prep.py                # batch: summarize every PDF in ./next -> books/available, PDF to ./pdfs
 
-# Tests: the reading model's rules (Node's own runner; asks Python for the coal colours)
-cd web && npm test
+# Tests. Two suites, both run by hand — there is no CI. Read the counts, not just the colour:
+cd web && npm test                      # the reading model's rules (Node's runner; asks Python for the coals)
+python -m unittest discover tests       # who may change a profile (stdlib; runs against a temp data/)
 
 # Scratch
 python homework.py            # scratch script: generates a quiz question from one hardcoded book
@@ -119,9 +120,9 @@ built like the shelf — a column of rows to choose between. Re-skin them, don't
 routers, the built frontend — and the routes live in `api/routes/`, one module per area:
 `session` (health, who this machine answers as), `profiles`, `reading` (shelf, book,
 position, ambience, finish), `hardcover`, `collection` (re-file, delete) and `ingest`. A
-route's permission is its `Depends(reader)` or `Depends(admin)` from `api/deps.py`; a route
-with neither is open, which is right for health, session and the picker and is worth
-checking before anything else is added to that list. `library.py` scans both folders into shelf entries (the
+route's permission is its `Depends(reader)`, `Depends(admin)` or `Depends(self_or_owner)` from
+`api/deps.py`; a route with none is open, which is right for health, session, the picker and
+unlock and is worth checking before anything else is added to that list. `library.py` scans both folders into shelf entries (the
 key is the filename stem, so a lookup never path-joins caller input); `patches.py` collapses the
 pipeline's free-text `meta.category` onto a patch family; `positions.py` is the only place reading
 history has ever been stored (`data/positions/<profile>.json`: part, page, lastReadAt, startedAt,
@@ -131,18 +132,24 @@ sittings, and the Hardcover outcome).
 `data/profiles.json`, chosen by an `X-Profile` header that every reading endpoint resolves through
 one dependency (`reader` in `api/deps.py`).
 
-**Two kinds of reader, and the difference is what they may do.** `api/deps.py` says it in two
+**Two kinds of reader, and the difference is what they may do.** `api/deps.py` says it in three
 dependencies rather than in scattered `if` statements:
 
 - `reader` — a named profile that has proved it. There is no anonymous access and no guest:
-  every endpoint under `/api` except the picker (`GET/POST /api/profiles`) and `unlock` refuses
-  a request that names nobody. `X-Profile` says who, `X-Device` proves it, and a profile with a
+  every endpoint under `/api` except health, session, the picker (`GET /api/profiles`),
+  `unlock` and the cover counts (`/api/enrichment`) refuses a request that names nobody. `X-Profile` says who, `X-Device` proves it, and a profile with a
   PIN is refused without a live token from its unlock. A profile with no PIN is still taken at
   its word — the house model where it still makes sense — so on a public deployment every
   profile should carry one.
 - `admin` — the owner. Everything that changes what is *on* the shelf: ingest, delete, re-file,
-  the Hardcover re-sync, the contribution. Everything that changes what somebody has *read of* it
-  is the reader's.
+  the Hardcover re-sync, the contribution — and adding a reader, since a new profile has no PIN
+  and would otherwise be anybody's way in. Everything that changes what somebody has *read of*
+  it is the reader's.
+- `self_or_owner` — changing one profile: its name, PIN, settings, Hardcover link, remembered
+  devices, or deleting it. Only that profile's own proven reader, or the owner. These were open
+  until the public deploy made that a hole (anyone could delete a reader, or point somebody's
+  finishes at their own Hardcover account); `tests/test_profile_permissions.py` pins it, and
+  the picker only offers Rename, Delete and Add where the server would allow them.
 
 There used to be a third, `keeper`, separating "the catalogue is open to read" from "a record
 needs a name". Both halves of that distinction collapsed when the catalogue stopped being open:

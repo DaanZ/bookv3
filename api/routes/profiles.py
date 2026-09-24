@@ -1,10 +1,10 @@
 """The profile picker and each profile's settings: names, PINs, unlocking, devices, preferences, the Hardcover link."""
 
-from fastapi import APIRouter, HTTPException, Request
+from fastapi import APIRouter, Depends, HTTPException, Request
 from pydantic import BaseModel
 
 from api import positions, profiles
-from api.deps import reader
+from api.deps import admin, self_or_owner
 
 router = APIRouter()
 
@@ -57,7 +57,10 @@ def get_profiles():
     }
 
 
-@router.post("/api/profiles")
+# Owner only. A new profile has no PIN, and a profile with no PIN is taken at its word, so
+# an open "add a reader" on a public URL was a way for anybody to name themselves into the
+# shelf. Adding a reader is the house deciding who reads here.
+@router.post("/api/profiles", dependencies=[Depends(admin)])
 def add_profile(body: ProfileIn):
     row, error = profiles.create(body.name)
     if error:
@@ -65,7 +68,7 @@ def add_profile(body: ProfileIn):
     return row
 
 
-@router.patch("/api/profiles/{profile_id}")
+@router.patch("/api/profiles/{profile_id}", dependencies=[Depends(self_or_owner)])
 def edit_profile(profile_id: str, body: ProfileIn):
     row, error = profiles.rename(profile_id, body.name)
     if error:
@@ -73,7 +76,7 @@ def edit_profile(profile_id: str, body: ProfileIn):
     return row
 
 
-@router.put("/api/profiles/{profile_id}/pin")
+@router.put("/api/profiles/{profile_id}/pin", dependencies=[Depends(self_or_owner)])
 def set_profile_pin(profile_id: str, body: PinIn):
     """Set, change or remove a profile's PIN.
 
@@ -125,7 +128,7 @@ def unlock_profile(profile_id: str, body: UnlockIn, request: Request):
     raise HTTPException(status_code=429 if "wait" in error.lower() else 401, detail=error)
 
 
-@router.post("/api/profiles/{profile_id}/forget-devices")
+@router.post("/api/profiles/{profile_id}/forget-devices", dependencies=[Depends(self_or_owner)])
 def forget_profile_devices(profile_id: str):
     """Stop trusting every remembered device for this profile.
 
@@ -138,7 +141,7 @@ def forget_profile_devices(profile_id: str):
     return row
 
 
-@router.put("/api/profiles/{profile_id}/prefs")
+@router.put("/api/profiles/{profile_id}/prefs", dependencies=[Depends(self_or_owner)])
 def set_profile_prefs(profile_id: str, body: PrefsIn):
     """Register, palette, highlight cap — the settings the design calls the reader's
     rather than the app's, kept on the reader.
@@ -152,7 +155,7 @@ def set_profile_prefs(profile_id: str, body: PrefsIn):
     return row
 
 
-@router.put("/api/profiles/{profile_id}/hardcover")
+@router.put("/api/profiles/{profile_id}/hardcover", dependencies=[Depends(self_or_owner)])
 def set_profile_hardcover(profile_id: str, body: HardcoverIn):
     """Link a reader's own Hardcover account, or unlink it.
 
@@ -170,7 +173,7 @@ def set_profile_hardcover(profile_id: str, body: HardcoverIn):
     return row
 
 
-@router.delete("/api/profiles/{profile_id}")
+@router.delete("/api/profiles/{profile_id}", dependencies=[Depends(self_or_owner)])
 def drop_profile(profile_id: str):
     """Delete a profile and the reading it recorded. The books are untouched — they
     belong to the shelf, not to whoever was holding the tablet."""

@@ -181,7 +181,7 @@ function TokenForm({ busy, error, onSubmit, onCancel }) {
   );
 }
 
-function ProfileRow({ profile, active, busy, mine, onPick, onRename, onDelete, onSetPin,
+function ProfileRow({ profile, active, busy, mine, manage, onPick, onRename, onDelete, onSetPin,
                      onVerify, onSetHardcover }) {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(profile.name);
@@ -369,7 +369,10 @@ function ProfileRow({ profile, active, busy, mine, onPick, onRename, onDelete, o
               {/* The owner's books are the shelf's books. Renaming hands the tablet
                   over; deleting would take the shelf's own history with it. */}
               {profile.owner && <Chip tone="neutral">owner</Chip>}
-              <QuietLink onClick={() => setEditing(true)}>Rename</QuietLink>
+              {/* Rename and Delete only where the server allows them: on your own row, or
+                  on any row when the owner is reading. They used to show on every row,
+                  locked or not, because the server let anybody do either. */}
+              {manage && <QuietLink onClick={() => setEditing(true)}>Rename</QuietLink>}
               {/* Only on your own row. Setting a PIN on somebody else's profile from
                   the picker would be locking them out of their own books, which is a
                   different thing from locking yours. */}
@@ -398,7 +401,9 @@ function ProfileRow({ profile, active, busy, mine, onPick, onRename, onDelete, o
                     Link Hardcover
                   </QuietLink>
                 ))}
-              {!profile.owner && <QuietLink onClick={() => setConfirming(true)}>Delete</QuietLink>}
+              {manage && !profile.owner && (
+                <QuietLink onClick={() => setConfirming(true)}>Delete</QuietLink>
+              )}
             </div>
           )}
         </>
@@ -410,6 +415,7 @@ function ProfileRow({ profile, active, busy, mine, onPick, onRename, onDelete, o
 export default function Profiles({
   profiles,
   activeId,
+  ownerReading,
   busyId,
   error,
   locked,
@@ -495,6 +501,7 @@ export default function Profiles({
             active={profile.id === activeId}
             busy={busyId === profile.id}
             mine={profile.id === activeId}
+            manage={profile.id === activeId || ownerReading}
             onPick={onPick}
             onRename={onRename}
             onDelete={onDelete}
@@ -506,6 +513,9 @@ export default function Profiles({
       </div>
 
 
+      {/* Adding a reader is the owner's: a new profile has no PIN yet, so an open form
+          on a public URL was a way to name yourself into the shelf. */}
+      {ownerReading && (
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -535,6 +545,7 @@ export default function Profiles({
           Add
         </Button>
       </form>
+      )}
 
       <div
         style={{

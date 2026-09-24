@@ -470,6 +470,9 @@ export default function App() {
               // Nobody is the active reader while the tablet is locked, so nobody's row
               // offers to change a PIN.
               activeId={locked ? null : who?.id}
+              // Everything the server lets the owner do to other profiles — rename,
+              // delete, add — is only offered while the owner is the one reading.
+              ownerReading={!locked && !!who?.owner}
               busyId={busyProfile}
               error={null}
               locked={locked}
