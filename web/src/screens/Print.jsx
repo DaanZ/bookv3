@@ -92,15 +92,15 @@ function Part({ part, index, total, palette }) {
           breakInside: 'avoid',
           margin: '0 0 0.55em',
           font: "600 13pt/1.3 'Space Grotesk', system-ui, sans-serif",
-          color: '#14201F',
+          color: 'var(--ink-900)',
         }}
       >
-        <span style={{ color: '#8A6512', marginRight: '0.6em', fontVariantNumeric: 'tabular-nums' }}>
+        <span style={{ color: 'var(--seam-700)', marginRight: '0.6em', fontVariantNumeric: 'tabular-nums' }}>
           {String(index + 1).padStart(2, '0')}
         </span>
         {part.title}
         <span
-          style={{ float: 'right', font: "400 8.5pt 'IBM Plex Mono', monospace", color: '#7D8A84' }}
+          style={{ float: 'right', font: "400 8.5pt 'IBM Plex Mono', monospace", color: 'var(--ink-400)' }}
         >
           {index + 1}/{total}
         </span>
@@ -207,8 +207,8 @@ export default function Print({ bookKey }) {
           alignItems: 'center',
           gap: 14,
           padding: '12px 18px',
-          background: '#14201F',
-          color: '#FDF6EA',
+          background: 'var(--ink-900)',
+          color: 'var(--shore-50)',
           font: "400 12px 'IBM Plex Mono', monospace",
         }}
       >
@@ -222,7 +222,7 @@ export default function Print({ bookKey }) {
             a 9MB file of drawings with no text to select, search or read aloud, on
             whatever paper size the driver defaults to. The browser's own exporter keeps
             the text and honours the A4 above. One dropdown, forty times the file size. */}
-        <span style={{ opacity: 0.7, borderLeft: '1px solid rgba(253,246,234,.25)', paddingLeft: 14 }}>
+        <span style={{ opacity: 0.7, borderLeft: '1px solid color-mix(in srgb, var(--shore-50) 25%, transparent)', paddingLeft: 14 }}>
           Destination: <strong>Save as PDF</strong>, not “Microsoft Print to PDF”
         </span>
         <button
@@ -234,8 +234,8 @@ export default function Print({ bookKey }) {
             borderRadius: 9,
             border: 0,
             cursor: 'pointer',
-            background: '#EF8A1E',
-            color: '#14201F',
+            background: 'var(--shore-500)',
+            color: 'var(--ink-900)',
             font: "500 12px 'Space Grotesk', system-ui",
           }}
         >
@@ -254,7 +254,7 @@ export default function Print({ bookKey }) {
               font: "400 8.5pt 'IBM Plex Mono', monospace",
               letterSpacing: '.08em',
               textTransform: 'uppercase',
-              color: '#8A6512',
+              color: 'var(--seam-700)',
             }}
           >
             Snippers · a summary, not the book
@@ -268,7 +268,7 @@ export default function Print({ bookKey }) {
             {book.title}
           </h1>
           {book.subtitle && (
-            <div style={{ font: "400 12pt/1.35 'Space Grotesk', system-ui", color: '#5D6B66' }}>
+            <div style={{ font: "400 12pt/1.35 'Space Grotesk', system-ui", color: 'var(--ink-500)' }}>
               {book.subtitle}
             </div>
           )}
@@ -279,7 +279,7 @@ export default function Print({ bookKey }) {
             style={{
               marginTop: '0.35em',
               font: "400 8.5pt 'IBM Plex Mono', monospace",
-              color: '#7D8A84',
+              color: 'var(--ink-400)',
             }}
           >
             {[
@@ -294,9 +294,9 @@ export default function Print({ bookKey }) {
             style={{
               margin: '1.4em 0 0',
               paddingTop: '1em',
-              borderTop: '1px solid #C3B9A6',
+              borderTop: '1px solid var(--ink-200)',
               font: "400 9pt/1.55 'Space Grotesk', system-ui",
-              color: '#5D6B66',
+              color: 'var(--ink-500)',
               maxWidth: '58ch',
             }}
           >
@@ -315,9 +315,9 @@ export default function Print({ bookKey }) {
           style={{
             marginTop: '2.4em',
             paddingTop: '1em',
-            borderTop: '1px solid #C3B9A6',
+            borderTop: '1px solid var(--ink-200)',
             font: "400 8.5pt 'IBM Plex Mono', monospace",
-            color: '#7D8A84',
+            color: 'var(--ink-400)',
           }}
         >
           {book.hardcover?.url ? (

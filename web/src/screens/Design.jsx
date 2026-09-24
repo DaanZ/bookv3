@@ -83,7 +83,7 @@ export default function Design() {
   const [done, setDone] = useState(4);
 
   useEffect(() => {
-    document.body.style.background = day ? '#E6DED0' : '#141414';
+    document.body.classList.toggle('shore', day);
   }, [day]);
 
   const stops = paletteFor(palette, day, 8);

@@ -4,6 +4,9 @@
 body {
   margin: 0;
   font-family: 'Space Grotesk', system-ui, sans-serif;
+  /* The desk. The register class goes on <body> as well as on the app's root (App.jsx),
+     because the desk is outside the card and would otherwise never see .shore. */
+  background: var(--bg-desk);
 }
 
 a { color: var(--link); }

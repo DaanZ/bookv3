@@ -109,7 +109,7 @@ function Tone({ profile, size = 44 }) {
         alignItems: 'center',
         justifyContent: 'center',
         font: `600 ${Math.round(size * 0.4)}px 'Space Grotesk', system-ui`,
-        color: 'rgba(253,246,234,.92)',
+        color: 'var(--shore-50)',
       }}
     >
       {(profile.name || '?').trim().charAt(0).toUpperCase()}

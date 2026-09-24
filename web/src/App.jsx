@@ -171,9 +171,10 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // The desk is outside the card, so it is painted on the document rather than a div.
+  // The desk is outside the card, so the register goes on <body> too: app.css paints
+  // it var(--bg-desk), which only flips if .shore is on an ancestor of the body itself.
   useEffect(() => {
-    document.body.style.background = day ? '#E6DED0' : '#141414';
+    document.body.classList.toggle('shore', day);
   }, [day]);
 
   const openBook = useCallback(async (key) => {
@@ -385,7 +386,7 @@ export default function App() {
       className={day ? 'shore' : ''}
       style={{
         minHeight: '100vh',
-        background: day ? '#E6DED0' : '#141414',
+        background: 'var(--bg-desk)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -543,14 +544,14 @@ export default function App() {
  * while a page that fades between registers feels cheap.
  */
 function RegisterSwitch({ day, onChange, narrow }) {
-  const edge = day ? 'rgba(20,32,31,.18)' : 'rgba(253,246,234,.2)';
+  const edge = 'var(--border-strong)';
   const label = (on) => ({
     flex: 1,
     zIndex: 1,
     padding: narrow ? '13px 12px' : '6px 12px',
     textAlign: 'center',
     font: "500 12px 'Space Grotesk', system-ui",
-    color: on ? 'var(--accent-on)' : day ? 'rgba(20,32,31,.6)' : 'rgba(253,246,234,.6)',
+    color: on ? 'var(--accent-on)' : 'var(--text-quiet)',
     transition: 'color var(--dur-instant, 90ms) var(--ease-move, ease)',
   });
 
@@ -602,7 +603,7 @@ function RegisterSwitch({ day, onChange, narrow }) {
  * what you are allowed to do. Its tone is the profile's own colour, so it reads as a
  * face at a glance before the letter is legible.
  */
-function ProfileMark({ who, onProfiles, day, narrow }) {
+function ProfileMark({ who, onProfiles, narrow }) {
   if (!who) return null;
   return (
     <button
@@ -617,9 +618,9 @@ function ProfileMark({ who, onProfiles, day, narrow }) {
         height: narrow ? 44 : 28,
         padding: 0,
         borderRadius: narrow ? 10 : 8,
-        border: `1px solid ${day ? 'rgba(20,32,31,.18)' : 'rgba(253,246,234,.2)'}`,
+        border: '1px solid var(--border-strong)',
         background: who.tone || 'var(--bg-surface-hover)',
-        color: '#FDF6EA',
+        color: 'var(--shore-50)',
         font: "600 12px 'Space Grotesk', system-ui",
         cursor: 'pointer',
         flexShrink: 0,
@@ -634,15 +635,15 @@ function Chrome({ prefs, setPrefs, day, who, onProfiles }) {
   // On a phone the strip keeps the name and drops the description: at full length it
   // wraps to two lines above controls that already need a line of their own.
   const narrow = useNarrow();
-  const ink = day ? 'rgba(20,32,31,.55)' : 'rgba(253,246,234,.5)';
+  const ink = 'var(--text-muted)';
   const style = (on) => ({
     width: 'auto',
     padding: narrow ? '13px 13px' : '7px 13px',
     borderRadius: 10,
     font: "500 12px 'Space Grotesk', system-ui",
     background: on ? 'var(--accent)' : 'transparent',
-    color: on ? 'var(--accent-on)' : day ? 'rgba(20,32,31,.6)' : 'rgba(253,246,234,.6)',
-    border: `1px solid ${on ? 'var(--accent)' : day ? 'rgba(20,32,31,.18)' : 'rgba(253,246,234,.2)'}`,
+    color: on ? 'var(--accent-on)' : 'var(--text-quiet)',
+    border: `1px solid ${on ? 'var(--accent)' : 'var(--border-strong)'}`,
   });
 
   return (
@@ -674,7 +675,7 @@ function Chrome({ prefs, setPrefs, day, who, onProfiles }) {
       <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginLeft: 'auto' }}>
         {/* Who, then how it looks: the mark sits left of the register switch because it
             qualifies everything to its right. */}
-        <ProfileMark who={who} onProfiles={onProfiles} day={day} narrow={narrow} />
+        <ProfileMark who={who} onProfiles={onProfiles} narrow={narrow} />
         <RegisterSwitch day={day} narrow={narrow} onChange={(theme) => setPrefs({ theme })} />
         {/* The palette shown rather than named. "sunset" and "coral" mean nothing until
             you have seen them, and the point of the control is to choose colours — so it

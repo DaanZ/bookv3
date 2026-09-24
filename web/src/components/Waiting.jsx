@@ -53,7 +53,7 @@ export function Summarising({ done, total, bounds, palette = 'sunset', day = fal
                   // A part that is done or running wears its own colour; one that has
                   // not started stays the faint ground, so the row still reads as a
                   // position at a glance and not as a stripe of decoration.
-                  background: finished || live ? stops[i] : 'rgba(253,246,234,.10)',
+                  background: finished || live ? stops[i] : 'var(--border-default)',
                   // The live bar breathes in time with the rim, so the composite reads
                   // as one thing rather than two clocks.
                   animation: live ? 'w-chunk var(--spin-rim) var(--ease-move) infinite' : 'none',
