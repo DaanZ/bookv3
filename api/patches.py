@@ -32,6 +32,48 @@ FAMILIES: dict[str, dict] = {
     "fiction": {"shape": "rings", "c1": "#423738", "c2": "#8B7FD6", "c3": "#FFC857"},
 }
 
+# The colours a book's highlights burn in on the reading page, per family: smouldering,
+# glowing, hot. `ink` is the text and `glow` the light behind it. They live here, beside
+# the families, so the two cannot drift apart: this file is the one list of families, and
+# the reader is sent the answer (`coals_for`) rather than keeping a copy keyed by name —
+# a family renamed on one side used to fall through to the fire without a sound.
+#
+# Designed on the night ground, #1C1C1C, where every ink clears 4.5:1 as it stands
+# (web/test/reading.test.mjs checks it). The `mood` is the brief each set was chosen to;
+# it is not sent. `fire` is every family without its own, and a book with no category.
+COALS: dict[str, dict] = {
+    "psychology": {
+        "mood": "the inner room · dusk · a lit window",
+        "ink": ["#9A8FD1", "#D98BB5", "#FFB27A"],
+        "glow": ["#4B3E8F", "#9C3F74", "#D9642A"],
+    },
+    "technology": {
+        "mood": "screen light · signal · phosphor",
+        "ink": ["#6FA8DC", "#4FD6E0", "#9CFF8A"],
+        "glow": ["#2B5F94", "#138A96", "#3DAE2C"],
+    },
+    "engineering": {
+        "mood": "steel · safety yellow · the arc of a weld",
+        "ink": ["#A8B3BF", "#F2C94C", "#8FDBFF"],
+        "glow": ["#56606B", "#B3860F", "#2A8FD1"],
+    },
+    "business": {
+        "mood": "the ledger · slate · growth · gold",
+        "ink": ["#8AA6C8", "#5FC9A8", "#F5CF5B"],
+        "glow": ["#3D5A80", "#1E8A6B", "#C99A12"],
+    },
+    "self-help": {
+        "mood": "morning · dawn · the sun coming up",
+        "ink": ["#F0A3A3", "#FFB85C", "#FFE66B"],
+        "glow": ["#B04A4A", "#D07A12", "#D9B400"],
+    },
+    "fire": {
+        "mood": "the fire itself",
+        "ink": ["#E65A64", "#F68318", "#FDC005"],
+        "glow": ["#B22E37", "#C95F0C", "#E0A200"],
+    },
+}
+
 # The first needle found in the list wins, so order is precedence: "self-help /
 # productivity" lands on self-help because self-help is listed first. Engineering sits
 # above technology for the same reason — "Technology & Engineering" is an engineering
@@ -103,3 +145,9 @@ def patch_for(category: str | None) -> dict:
         ["#423738", "#8E5915", "#F4B315"],
     ][digest[1] % 5]
     return {"family": fam, "shape": shape, "c1": ramp[0], "c2": ramp[1], "c3": ramp[2]}
+
+
+def coals_for(family: str | None) -> dict:
+    """The coal colours for a family, as the reader draws them: `ink` and `glow`."""
+    coals = COALS.get(family or "", COALS["fire"])
+    return {"ink": list(coals["ink"]), "glow": list(coals["glow"])}

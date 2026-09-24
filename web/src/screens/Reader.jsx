@@ -36,15 +36,14 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
   const pageIndex = Math.min(page, Math.max(0, pages.length - 1));
 
   // Highlights are coals: each phrase on the page takes a heat from how often the book
-  // returns to it, and the book's category picks the colours its coals burn in. The
+  // returns to it, and the book brings the colours its coals burn in (`book.coals`). The
   // palette array is still indexed by slot, so `tokensOf` spends its budget as before.
   const counter = useMemo(() => phraseCounter(book.parts), [book.parts]);
   const heats = useMemo(
     () => heatsOf(highlightKeys(pages[pageIndex] || [], cap).map(counter)),
     [pages, pageIndex, cap, counter],
   );
-  const family = book.patch?.family;
-  const coals = useMemo(() => coalsFor(family, day), [family, day]);
+  const coals = useMemo(() => coalsFor(book.coals, day), [book.coals, day]);
   const palette = useMemo(() => heats.map((heat) => coals.ink[heat]), [heats, coals]);
 
   // One budget per page, spent in reading order: the first distinct phrase takes slot 1.

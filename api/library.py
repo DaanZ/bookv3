@@ -11,7 +11,7 @@ import shutil
 from datetime import datetime, timezone
 
 from api import enrich
-from api.patches import patch_for, family_of
+from api.patches import coals_for, family_of, patch_for
 from api.positions import all_positions, finish_ordinal
 from util.files import json_read_file
 
@@ -277,6 +277,9 @@ def book(key: str, profile: dict) -> dict | None:
         {"title": p.get("title", ""), "body": p.get("body", "")}
         for p in data.get("parts", [])
     ]
+    # Only the book being read needs its highlight colours, so the shelf list does not
+    # carry them 275 times over.
+    detail["coals"] = coals_for(detail["family"])
 
     # "Last part: ..." — derived from the previous part rather than authored, so it
     # stays true for every book in the shelf, not just the three in the design.
