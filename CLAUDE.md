@@ -23,10 +23,10 @@ uvicorn api.main:app --port 8001   # serves the API *and* web/dist when it exist
 streamlit run app.py          # upload a PDF and summarize it live, chunk by chunk
 python prep.py                # batch: summarize every PDF in ./next -> books/available, PDF to ./pdfs
 
-# Superseded by the reader, still present
-streamlit run next_reads.py   # old reader: books/available -> books/read + Hardcover
-streamlit run all.py          # browse already-finished summaries in books/read
-streamlit run dashboard.py    # card grid (reads books/*.json — a stale path, see below)
+# Tests: the reading model's rules (Node's own runner; asks Python for the coal colours)
+cd web && npm test
+
+# Scratch
 python homework.py            # scratch script: generates a quiz question from one hardcoded book
 python hardcover/request.py   # exercises the Hardcover API against a hardcoded title/author
 ```
@@ -96,7 +96,7 @@ two folders: it calls
 `hardcover.request.mark_book_as_read` (GraphQL search + `insert_user_book` mutation with
 `status_id: 3`), then `shutil.move`s the JSON into `books/read/`. The move happens either way — the
 book *was* read — but `markedRead` is only true when Hardcover accepted it, and the finish screen
-never paints the green chip otherwise. `next_reads.py` still does the same thing the old way.
+never paints the green chip otherwise.
 `prep.py` feeds the other end, consuming PDFs from `./next` and parking the originals in `./pdfs`
 (both gitignored, both absent from a fresh clone — `prep.py` creates the output dirs but expects
 `next/` to exist).
@@ -107,13 +107,21 @@ Implements `design_handoff_bookv3_reader`, built on the Tide design system. Five
 reader, finished, library and profiles — sized for a tablet in portrait (an 834px card on a
 coloured "desk").
 
-The first three come from the handoff and are high fidelity to it. **The library and profiles
-screens have no design file**: both are extensions written in the same token language. The library
+The first three come from the handoff and are high fidelity to it. The library's row
+components (estimates, jobs, the collection, covers) live in `web/src/screens/library/`, with
+their shared formatting in `format.js`; `screens/Library.jsx` is the screen that composes them.
+**The library and profiles screens have no design file**: both are extensions written in the same token language. The library
 deliberately breaks the reader's "one unit of work per screen, never a scroll" rule, because
 managing a collection needs an overview that reading does not; profiles keeps the rule, and is
 built like the shelf — a column of rows to choose between. Re-skin them, don't reason from them.
 
-**`api/`** is mostly read-only over `books/`. `library.py` scans both folders into shelf entries (the
+**`api/`** is mostly read-only over `books/`. `main.py` is only the app — middleware, the
+routers, the built frontend — and the routes live in `api/routes/`, one module per area:
+`session` (health, who this machine answers as), `profiles`, `reading` (shelf, book,
+position, ambience, finish), `hardcover`, `collection` (re-file, delete) and `ingest`. A
+route's permission is its `Depends(reader)` or `Depends(admin)` from `api/deps.py`; a route
+with neither is open, which is right for health, session and the picker and is worth
+checking before anything else is added to that list. `library.py` scans both folders into shelf entries (the
 key is the filename stem, so a lookup never path-joins caller input); `patches.py` collapses the
 pipeline's free-text `meta.category` onto a patch family; `positions.py` is the only place reading
 history has ever been stored (`data/positions/<profile>.json`: part, page, lastReadAt, startedAt,
@@ -121,9 +129,9 @@ sittings, and the Hardcover outcome).
 
 `profiles.py` is who that history belongs to. One file each under `data/positions/`, listed in
 `data/profiles.json`, chosen by an `X-Profile` header that every reading endpoint resolves through
-one dependency (`reader` in `main.py`).
+one dependency (`reader` in `api/deps.py`).
 
-**Two kinds of reader, and the difference is what they may do.** `main.py` says it in two
+**Two kinds of reader, and the difference is what they may do.** `api/deps.py` says it in two
 dependencies rather than in scattered `if` statements:
 
 - `reader` — a named profile that has proved it. There is no anonymous access and no guest:
@@ -257,7 +265,13 @@ the app opens and a stable one while filters change, so there is always somethin
 view. "Recently added" is the other order; A–Z is gone. On a phone (`useNarrow`, below
 600px) the shelf drops its introduction and the order toggle, leaving the three filters.
 
-`src/lib/reading.js` is the model and the part worth understanding:
+`src/lib/reading.js` is the model and the part worth understanding. It is an index over four
+modules — `colour.js` (conversion, linear-light blending, `legible`), `palettes.js` (the five
+palettes and `paletteFor`), `coals.js` (the reading page's highlights) and `pages.js`
+(pagination, the progress curve, the highlight budget) — and callers import from it, not from
+them. `web/test/reading.test.mjs` pins the rules below; run `npm test` in `web/` after touching
+any of them. There is no CI: a suite that collected zero tests, or failed to start, would also
+look quiet, so read the `tests N / pass N` line rather than the absence of a red one.
 
 - **Front-weighted progress.** The first 40% of parts carry 80% of the bar. `progressOf` uses
   `pageIndex`, not `pageIndex + 1` — the page you are on is in progress, not read, and 100% belongs
@@ -288,8 +302,12 @@ view. "Recently added" is the other order; A–Z is gone. On a phone (`useNarrow
   **In the reader, highlights are coals, not a sweep.** `paletteFor`'s band-order sweep
   still colours the progress bar, the shelf and the print sheet, but on the reading page
   each phrase takes one of three heats — smouldering, glowing, hot — and the *book's
-  category* decides the colours (`CATEGORY_COALS` in `reading.js`, keyed by the family
-  `api/patches.py` assigns). Psychology, technology, engineering, business and self-help
+  category* decides the colours. They live in `api/patches.py` as `COALS`, beside the
+  family list they are keyed by, and arrive on the book payload as `book.coals` (from
+  `coals_for`); the reader draws what it is sent. They used to be a second table in the JS,
+  keyed by family name, where a rename on one side fell through to the fire without a
+  sound. The web app keeps one copy of `fire`, only for a book kept offline from before
+  the payload carried coals, and a test holds it equal to the API's. Psychology, technology, engineering, business and self-help
   have their own; every other shelf, and a book with no category, burns in `fire`
   (red, orange, gold). The reader's palette choice does not touch the coals. The room
   stays graphite and orange whatever the book, so the only thing that changes between
@@ -317,7 +335,12 @@ view. "Recently added" is the other order; A–Z is gone. On a phone (`useNarrow
 Colours, type and spacing come from the vendored token layer in `web/src/ds/` — edit tokens, not
 hard-coded values. The night register is **graphite** (`--graphite-*` in `colors.css`: desk
 `#141414`, card `#1C1C1C`), not Tide's deep-water teal: a neutral ground so the coals are the
-only colour in the room. The accent is the mark's orange, `#F68318`.
+only colour in the room. The accent is the mark's orange, `#F68318`. The desk is its own token,
+`--bg-desk`, painted on `<body>` by `app.css`; for that to flip, `.shore` goes on `<body>` as
+well as on the app's root (`App.jsx`, `Design.jsx`), because the desk sits outside the card.
+Screens use the semantic tokens (`--text-*`, `--border-*`, `--bg-*`), which follow the
+register by themselves — no `day ? … : …` for a colour. The print sheet is the exception:
+it is always ink on paper, so it uses the raw palette (`--ink-*`, `--seam-*`).
 
 **The mark** is an S from Space Grotesk Bold with the pages it came from fanned out behind it,
 cooling orange → red → purple → indigo. `web/src/lib/mark.js` is its source of truth — the glyph
@@ -353,7 +376,7 @@ duck while the resume strip shows, and silence at the finish screen.
 
 **Streamlit state.** Each script is a `if __name__ == "__main__"` block that re-executes top to bottom
 on every interaction, so all cross-rerun state lives in `st.session_state`, and `st.empty()`
-placeholders captured into session state are reused as render slots (`next_reads.py`). `app.py`
+placeholders captured into session state are reused as render slots. `app.py`
 additionally pre-computes the *next* chunk's summary during the current rerun (`next_highlighted`) to
 hide LLM latency behind the user's reading time.
 
@@ -361,9 +384,6 @@ hide LLM latency behind the user's reading time.
 
 Don't treat these as intentional design when editing nearby code:
 
-- `dashboard.py` and `all.py` duplicate `get_json_files`/`extract_book_details` from `next_reads.py`,
-  and `dashboard.py` points at `books/` (no JSON at that level) rather than a subfolder.
-- Both dict literals in `extract_book_details` contain a stray `""` element between keys.
 - `chunks.format_text` calls `.replace("```")` with one argument — raises `TypeError` if a response
   ever contains a ```` ```html ```` fence.
 - `app.py` writes uploads to `uploaded_files/` but creates `pdfs/`.
