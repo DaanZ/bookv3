@@ -673,7 +673,7 @@ function Chrome({ prefs, setPrefs, day, who, onProfiles }) {
       >
         {/* The word beside it names the product, so the mark itself stays silent. */}
         <Mark pages="small" size={18} />
-        {narrow ? 'Snippers' : `Snippers · ${prefs.palette} palette · highlights as coals`}
+        {narrow ? 'Snippers' : `Snippers · ${prefs.palette} palette`}
       </span>
       <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginLeft: 'auto' }}>
         {/* Who, then how it looks: the mark sits left of the register switch because it

@@ -75,11 +75,18 @@ if os.path.isdir(WEB_DIST):
 
     _DIST_ROOT = os.path.realpath(WEB_DIST)
 
+    # The page must always ask before reusing its index.html. Sent with no caching
+    # header, a browser kept serving an old copy after a rebuild, and with it the old
+    # bundle: after highlights moved to the reader's palette, Daan still saw the three
+    # coal colours, and switching palette changed nothing. The bundles are named by
+    # hash, so a fresh index.html is all it takes to load the current code.
+    def _index():
+        return FileResponse(os.path.join(_DIST_ROOT, "index.html"), headers={"Cache-Control": "no-cache"})
+
     @app.get("/{path:path}")
     def spa(path: str):
-        index = os.path.join(_DIST_ROOT, "index.html")
         if not path:
-            return FileResponse(index)
+            return _index()
 
         # Resolve first, then check the result is still inside web/dist. Joining the
         # URL straight onto the directory would hand out any file the process can read
@@ -89,4 +96,4 @@ if os.path.isdir(WEB_DIST):
         inside = candidate == _DIST_ROOT or candidate.startswith(_DIST_ROOT + os.sep)
         if inside and os.path.isfile(candidate):
             return FileResponse(candidate)
-        return FileResponse(index)
+        return _index()
