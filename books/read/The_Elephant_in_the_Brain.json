@@ -55,7 +55,7 @@
                 },
                 {
                     "sentences": [
-                        "The text then delves into **cheating**, arguing that everyone does it, often violating subtle norms like **bragging** or **currying favor**.",
+                        "Everyone engages in **cheating**, the authors argue, often by violating subtle norms like **bragging** or **currying favor**.",
                         "Humans have developed **adaptations for detecting cheaters** and for **evading norms**, such as being attuned to others' gaze and feeling **shame**.",
                         "A key concept for understanding cheating is **common knowledge**, which is information known by everyone, and everyone knows that everyone else knows it.",
                         "Cheaters use **discretion** (pretexts, discreet communication, skirting norms, subtlety) to prevent their violations from becoming common knowledge, thus making enforcement difficult.",
@@ -162,9 +162,9 @@
             "paragraphs": [
                 {
                     "sentences": [
-                        "This text discusses the **signaling model** of education, arguing that its primary value isn't always **learning**, but rather **certification**\u2014showing off a student's existing attractive qualities like diligence and reliability.",
+                        "Under the **signaling model**, the authors argue, education's primary value isn't always **learning** but **certification**\u2014showing off a student's existing attractive qualities like diligence and reliability.",
                         "Good grades and degrees from prestigious institutions signal a student's ability to **get things done** and manage workload, rather than just retaining information.",
-                        "The text uses an analogy of selling a diamond: education can either *improve* the diamond (traditional view) or *certify* its existing quality (signaling model).",
+                        "Like a diamond for sale, a student can be improved by education (the traditional view) or simply certified as already valuable (the signaling model).",
                         "While some learning occurs, especially in technical fields, signaling is often more important and can account for a significant portion of education's perceived value."
                     ]
                 },

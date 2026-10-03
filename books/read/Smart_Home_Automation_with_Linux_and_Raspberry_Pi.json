@@ -259,7 +259,7 @@
                 },
                 {
                     "sentences": [
-                        "Lastly, the chapter introduces the idea of **Mashmodes** and **routines** that determine the overall state of the home, simplifying **automated scheduling**.",
+                        "**Mashmodes** and **routines** determine the overall state of the home, simplifying **automated scheduling**.",
                         "They allow the house to switch between modes like **\"holiday\" or \"work\"**, triggering specific sequences of actions through **routine scripts** that can adapt based on conditions like time or weather.",
                         "This adaptable system can manage a wide array of tasks without manual intervention, optimizing for daily life patterns and events.",
                         "Methods such as **Minty**, ensure devices automatically switch off if idle, addressing energy efficiency.",

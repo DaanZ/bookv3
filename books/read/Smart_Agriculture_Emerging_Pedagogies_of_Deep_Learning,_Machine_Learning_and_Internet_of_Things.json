@@ -61,7 +61,7 @@
                 },
                 {
                     "sentences": [
-                        "The text also reviews **advantages** and **disadvantages** of using these technologies, noting that while deep learning models provide high accuracy, they often require large datasets and can be expensive.",
+                        "The **advantages** and **disadvantages** of using these technologies include the high accuracy of deep learning models, which often require large datasets and can be expensive.",
                         "**Ethical** concerns about potential **automation** of human jobs are also raised.",
                         "Finally, it lists **companies** involved in agriculture, using AI to improve productivity, such as **Blue River Technology** and **Harvest CROO Robotics**."
                     ]

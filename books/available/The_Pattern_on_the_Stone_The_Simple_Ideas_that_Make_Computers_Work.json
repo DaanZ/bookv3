@@ -94,7 +94,7 @@
                 {
                     "sentences": [
                         "The creation and visualization of **fractal images** uses a technique called **Multiple Reduction Copy Machine** (**MRCM**) algorithm.",
-                        "The text explains how **affine linear transformations**, which are essentially mathematical operations described by matrices, can be used to recursively create complex fractal images.",
+                        "**Affine linear transformations**, which are essentially mathematical operations described by matrices, can be used to recursively create complex fractal images.",
                         "This is achieved by scaling and copying smaller versions of a **seed image** into specified positions, building increasingly detailed images with recursive passes."
                     ]
                 },
@@ -160,7 +160,7 @@
                 },
                 {
                     "sentences": [
-                        "The chapter describes how **chaotic systems** evolve over time using examples like the **Henon map** and exploring their properties.",
+                        "**Chaotic systems** evolve over time, as exemplified by the **Henon map**, and their properties can be explored.",
                         "The Henon map illustrates how a chaotic system can create a **fractal attractor** through continuous **stretching and folding** operations, similar to making layered pastry.",
                         "At specific parameter values, the Henon map enters a **chaotic regime** exemplified by erratic behavior with **embedded unstable fixed points**."
                     ]

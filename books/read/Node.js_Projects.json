@@ -15,7 +15,7 @@
             "paragraphs": [
                 {
                     "sentences": [
-                        "This chapter is a **guide** to setting up a Node.js **development environment**.",
+                        "This is a **guide** to setting up a Node.js **development environment**.",
                         "It covers **core tools** like **VS Code**, **Node.js**, and **Fastify**, along with optional components.",
                         "You'll find various **installation methods** (GUI, third-party, binary) explained for different operating systems.",
                         "While instructions are tailored, you can use alternatives.",
@@ -72,7 +72,7 @@
             "paragraphs": [
                 {
                     "sentences": [
-                        "This section discusses enhancing the **UI** of your Fastify application, even though the primary focus for Node engineers is often the **backend**.",
+                        "Enhancing the **UI** of your Fastify application, even though the primary focus for Node engineers is often the **backend**, is a topic.",
                         "While being fluent in **HTML, CSS**, or related frameworks isn't a strict requirement, adding some basic styling can significantly improve the user experience.",
                         "To quickly add **CSS libraries**, you'll need to create a **public folder** at your project's root and install the **@fastify/static** plug-in using `npm install @fastify/static@^7.0.4`.",
                         "This plug-in, once registered in your `index.js` file, allows you to **serve static assets** like CSS files and images from the public directory.",

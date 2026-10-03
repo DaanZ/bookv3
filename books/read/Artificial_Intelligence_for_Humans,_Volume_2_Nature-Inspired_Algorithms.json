@@ -155,7 +155,7 @@
                         "For instance, if a light vector of 0.5 crosses a cell with a leafiness of **0.9**, decay equals **0.045**, reducing the vector value to **0.045**.",
                         "Similarly, water decays.",
                         "This decay accounts for shade and **water absorption**, not **circulation**, which distributes energy to roots and nourishment to leaves.",
-                        "**Circulation** is illustrated in Figure **9.5**."
+                        "Circulation is illustrated."
                     ]
                 },
                 {

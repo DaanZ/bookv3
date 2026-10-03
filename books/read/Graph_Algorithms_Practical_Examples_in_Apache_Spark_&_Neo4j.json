@@ -182,7 +182,7 @@
                 {
                     "heading": "Summary of Key Concepts:",
                     "sentences": [
-                        "The document discusses various **graph algorithms** like **Centrality** and **Community Detection**, highlighting their applications within machine learning and data analysis.",
+                        "Various **graph algorithms** like **Centrality** and **Community Detection** have applications within machine learning and data analysis.",
                         "Techniques such as **feature extraction** and tools like **Apache Spark** and **Neo4j** enhance predictions by analyzing complex data structures."
                     ]
                 },

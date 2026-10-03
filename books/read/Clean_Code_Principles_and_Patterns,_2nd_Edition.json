@@ -21,7 +21,7 @@
                 },
                 {
                     "sentences": [
-                        "In Petri Sil\u00e9n's comprehensive book on creating efficient and manageable software, key **topics** include the balance between **monolithic** and **microservice architectures**, the importance of **modular development**, and **strategic decision making** for architectural design.",
+                        "Key **topics** in creating efficient and manageable software include the balance between **monolithic** and **microservice architectures**, the importance of **modular development**, and **strategic decision making** for architectural design.",
                         "It introduces valuable principles such as the **single responsibility principle**, the merits of **cloud-native computing**, and creating **modular monoliths** which can later be divided into microservices.",
                         "The book emphasizes the significance of understanding **microservice design principles** for future adaptability and highlights technologies like **Docker** and **Kubernetes**.",
                         "If you're **new to microservices**, this section provides foundational knowledge of architectural strategies that support adaptable and sustainable software systems."
