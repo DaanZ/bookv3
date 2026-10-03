@@ -7,17 +7,24 @@ from unittest import mock
 
 from api import quests
 
-QUEST = {"title": "Citrus peel oil", "action": "Steep orange peel in oil.", "doneWhen": "A bottle of oil exists.", "minutes": 90}
+QUEST = {
+    "title": "Citrus peel oil", "short": "Steep orange peel in oil.", "source": "Maceration, part 2",
+    "needs": ["an orange", "a jar"], "steps": ["Peel the orange.", "Cover the peel with oil."],
+    "doneWhen": "A bottle of oil exists.", "minutes": 90,
+}
 
 
 class QuestStore(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
-        self.patch = mock.patch.object(quests, "STORE_DIR", self.tmp.name)
-        self.patch.start()
+        self.patches = [mock.patch.object(quests, "STORE_DIR", self.tmp.name),
+                        mock.patch.object(quests, "STARTED_DIR", os.path.join(self.tmp.name, "started"))]
+        for patch in self.patches:
+            patch.start()
 
     def tearDown(self):
-        self.patch.stop()
+        for patch in self.patches:
+            patch.stop()
         self.tmp.cleanup()
 
     def write(self, key, record):
@@ -44,6 +51,18 @@ class QuestStore(unittest.TestCase):
     def test_a_bad_estimate_is_dropped_not_fatal(self):
         self.write("Book", {"small": dict(QUEST, minutes="soon"), "medium": QUEST, "large": QUEST})
         self.assertIsNone(quests.load("Book")["small"]["minutes"])
+
+    def test_a_set_from_before_steps_is_no_set(self):
+        old = {"title": "T", "action": "One paragraph.", "doneWhen": "D", "minutes": 9}
+        self.write("Book", {"small": old, "medium": old, "large": old})
+        self.assertIsNone(quests.load("Book"))
+
+    def test_starting_and_undoing_a_quest_is_per_reader(self):
+        quests.set_started("owner", "Book", "medium", "2026-10-03T08:00:00+00:00")
+        self.assertEqual(quests.started("owner"), {"Book": {"medium": "2026-10-03T08:00:00+00:00"}})
+        self.assertEqual(quests.started("someone-else"), {})
+        quests.set_started("owner", "Book", "medium", None)
+        self.assertEqual(quests.started("owner"), {})
 
     def test_an_unreadable_file_is_no_set(self):
         with open(os.path.join(self.tmp.name, "Book.json"), "w", encoding="utf-8") as file:

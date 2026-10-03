@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import Patch from '../components/Patch';
 import { Button, Chip, QuietLink } from '../components/ui';
-import { getQuests, resyncHardcover } from '../lib/api';
+import { getQuests, resyncHardcover, startQuest } from '../lib/api';
 
 const QUEST_SIZES = [
   ['small', 'today'],
@@ -23,6 +23,153 @@ function ordinal(n) {
   const tens = n % 100;
   if (tens >= 11 && tens <= 13) return `${n}th`;
   return `${n}${['th', 'st', 'nd', 'rd'][n % 10] || 'th'}`;
+}
+
+const EYEBROW = {
+  font: "600 9.5px 'IBM Plex Mono', monospace",
+  letterSpacing: 'var(--track-eyebrow)',
+  textTransform: 'uppercase',
+  color: 'var(--text-muted)',
+};
+
+/**
+ * Three quests in a row; the one picked opens into its plan beneath it.
+ *
+ * The open card and its plan are one container, like a tab and its page (the design on
+ * the Quests canvas): the card drops its bottom edge and overlaps the plan's top border
+ * by a pixel, the plan's corner under it goes square, and the other two cards lift away.
+ * So the plan does not repeat the card's title: it starts where the card ends.
+ */
+function Quests({ quests, started, open, onOpen, onStart, starting }) {
+  const index = QUEST_SIZES.findIndex(([size]) => size === open);
+  const active = open ? quests[open] : null;
+  const planRadius = ['0 14px 14px 14px', '14px', '14px 0 14px 14px'][index] || '14px';
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 24 }}>
+      <span style={EYEBROW}>three ways to use it · pick one to see the plan</span>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 12, alignItems: 'stretch' }}>
+          {QUEST_SIZES.map(([size, when]) => {
+            const quest = quests[size];
+            const chosen = size === open;
+            return (
+              <button
+                key={size}
+                type="button"
+                aria-expanded={chosen}
+                onClick={() => onOpen(chosen ? null : size)}
+                style={{
+                  boxSizing: 'border-box',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 8,
+                  textAlign: 'left',
+                  padding: '16px 16px 18px',
+                  font: 'inherit',
+                  color: 'var(--text-primary)',
+                  cursor: 'pointer',
+                  background: 'var(--bg-surface)',
+                  border: `1px solid ${chosen ? 'var(--accent)' : 'var(--border-default)'}`,
+                  borderBottom: `1px solid ${chosen ? 'var(--bg-surface)' : 'var(--border-default)'}`,
+                  borderRadius: chosen ? '14px 14px 0 0' : 14,
+                  marginBottom: chosen ? -1 : open ? 12 : 0,
+                  position: 'relative',
+                  zIndex: chosen ? 1 : 0,
+                }}
+              >
+                <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <Chip tone={started[size] ? 'current' : 'neutral'}>{started[size] ? 'started' : size}</Chip>
+                  <span style={{ font: "400 11px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
+                    {[when, duration(quest.minutes)].filter(Boolean).join(' · ')}
+                  </span>
+                </span>
+                <span style={{ fontFamily: 'var(--font-display-wide)', fontSize: 15.5, fontWeight: 600, lineHeight: 1.3 }}>
+                  {quest.title}
+                </span>
+                <span style={{ font: "400 13px 'Space Grotesk', system-ui", lineHeight: 1.5, color: 'var(--text-secondary)' }}>
+                  {quest.short}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {active && (
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 14,
+              padding: '18px 22px 20px',
+              border: '1px solid var(--accent)',
+              borderRadius: planRadius,
+              background: 'var(--bg-surface)',
+            }}
+          >
+            <span style={{ font: "400 12.5px 'Space Grotesk', system-ui", color: 'var(--text-muted)' }}>
+              From the book: {active.source}
+            </span>
+            {active.needs.length > 0 && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <span style={EYEBROW}>what you need</span>
+                <span style={{ font: "400 13.5px 'Space Grotesk', system-ui", lineHeight: 1.55, color: 'var(--text-secondary)' }}>
+                  {active.needs.join(' · ')}
+                </span>
+              </div>
+            )}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <span style={EYEBROW}>the plan</span>
+              <ol style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {active.steps.map((step, i) => (
+                  <li
+                    key={i}
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: '24px minmax(0, 1fr)',
+                      gap: 10,
+                      alignItems: 'baseline',
+                      fontFamily: "'Lexend Deca', 'Lexend', system-ui",
+                      fontSize: 14,
+                      lineHeight: 1.55,
+                    }}
+                  >
+                    <span style={{ font: "600 11px 'IBM Plex Mono', monospace", color: 'var(--accent)' }}>
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span>{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <div style={{ display: 'flex', gap: 10, alignItems: 'baseline', paddingTop: 12, borderTop: '1px solid var(--border-subtle)' }}>
+              <span style={{ ...EYEBROW, flex: 'none' }}>done when</span>
+              <span style={{ font: "500 13.5px 'Space Grotesk', system-ui", lineHeight: 1.5 }}>{active.doneWhen}</span>
+            </div>
+            <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
+              {started[open] ? (
+                <>
+                  <Chip tone="current">started</Chip>
+                  <span style={{ font: "400 12.5px 'Space Grotesk', system-ui", color: 'var(--text-secondary)' }}>
+                    on {new Date(started[open]).toLocaleDateString(undefined, { day: 'numeric', month: 'long' })}
+                  </span>
+                  <QuietLink onClick={starting ? undefined : () => onStart(open)}>
+                    {starting ? 'undoing…' : 'Undo'}
+                  </QuietLink>
+                </>
+              ) : (
+                <Button size="lg" onClick={starting ? undefined : () => onStart(open)} style={{ minHeight: 48 }}>
+                  {starting ? 'Starting…' : 'Start this quest'}
+                </Button>
+              )}
+              <span style={{ flexGrow: 1 }} />
+              <QuietLink onClick={() => onOpen(null)}>Close</QuietLink>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
 
 // Close the loop and offer a jump to a different topic.
@@ -50,15 +197,35 @@ export default function Finished({
   // Three quests made from this book's summary by quests.py, or null when none were made
   // yet. Never waited on: the screen renders without them and they arrive after.
   const [quests, setQuests] = useState(null);
+  // Which ones this reader started, {size: startedAt}: the hand-off to a daily quest list.
+  const [started, setStarted] = useState({});
+  // The card that is open. One at a time, and none until the reader picks one.
+  const [open, setOpen] = useState(null);
+  const [starting, setStarting] = useState(false);
   useEffect(() => {
     let live = true;
+    setOpen(null);
     getQuests(book.key)
-      .then((answer) => live && setQuests(answer?.quests || null))
+      .then((answer) => {
+        if (!live) return;
+        setQuests(answer?.quests || null);
+        setStarted(answer?.started || {});
+      })
       .catch(() => {});
     return () => {
       live = false;
     };
   }, [book.key]);
+
+  const toggleStart = async (size) => {
+    setStarting(true);
+    try {
+      const answer = await startQuest(book.key, size, !started[size]);
+      setStarted(answer?.started || {});
+    } finally {
+      setStarting(false);
+    }
+  };
 
   const reset = async () => {
     setResetting(true);
@@ -94,14 +261,14 @@ export default function Finished({
   const partCount = book.partCount ?? book.parts?.length ?? 0;
   const titles = book.partTitles ?? (book.parts || []).map((p) => p.title);
 
-  const sittings =
-    book.sittings && book.days != null
-      ? ` · read in ${book.sittings} sitting${book.sittings === 1 ? '' : 's'} over ${book.days} day${
-          book.days === 1 ? '' : 's'
-        }`
-      : book.sittings
-        ? ` · read in ${book.sittings} sitting${book.sittings === 1 ? '' : 's'}`
-        : '';
+  // "read in 1 sitting over 0 days" is what this printed for a book read in one day.
+  // A single day is not a span, so it is left out; one sitting is said as a word.
+  const sittingsText = book.sittings === 1 ? 'one sitting' : `${book.sittings} sittings`;
+  const sittings = !book.sittings
+    ? ''
+    : book.days >= 2
+      ? ` · read in ${sittingsText} over ${book.days} days`
+      : ` · read in ${sittingsText}`;
 
   return (
     <div
@@ -144,7 +311,7 @@ export default function Finished({
           margin: '28px 0 0',
           maxWidth: '24ch',
           fontFamily: 'var(--font-display-wide)',
-          fontSize: 38,
+          fontSize: 34,
           fontWeight: 600,
           lineHeight: 1.16,
           color: 'var(--text-primary)',
@@ -233,67 +400,14 @@ export default function Finished({
           project. They take the place of the part list, which only recaps; a book with
           no quests yet keeps the list. */}
       {quests ? (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 26 }}>
-          <span
-            style={{
-              font: "600 9.5px 'IBM Plex Mono', monospace",
-              letterSpacing: 'var(--track-eyebrow)',
-              textTransform: 'uppercase',
-              color: 'var(--text-muted)',
-            }}
-          >
-            three ways to use it
-          </span>
-          {QUEST_SIZES.map(([size, when]) => {
-            const quest = quests[size];
-            return (
-              <div
-                key={size}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 7,
-                  padding: '16px 20px',
-                  borderRadius: 'var(--radius-card)',
-                  border: '1px solid var(--border-default)',
-                  borderTopColor: 'var(--border-strong)',
-                  background: 'var(--bg-surface)',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <Chip tone="neutral">{size}</Chip>
-                  <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
-                    {[when, duration(quest.minutes)].filter(Boolean).join(' · ')}
-                  </span>
-                </div>
-                <span
-                  style={{
-                    fontFamily: 'var(--font-display-wide)',
-                    fontSize: 17,
-                    fontWeight: 600,
-                    lineHeight: 1.3,
-                    color: 'var(--text-primary)',
-                  }}
-                >
-                  {quest.title}
-                </span>
-                <span
-                  style={{
-                    fontFamily: "'Lexend Deca', 'Lexend', system-ui",
-                    fontSize: 14,
-                    lineHeight: 1.6,
-                    color: 'var(--text-secondary)',
-                  }}
-                >
-                  {quest.action}
-                </span>
-                <span style={{ font: "400 12.5px 'Space Grotesk', system-ui", color: 'var(--text-muted)' }}>
-                  Done when: {quest.doneWhen}
-                </span>
-              </div>
-            );
-          })}
-        </div>
+        <Quests
+          quests={quests}
+          started={started}
+          open={open}
+          onOpen={setOpen}
+          onStart={toggleStart}
+          starting={starting}
+        />
       ) : (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 26 }}>
         <span
@@ -343,72 +457,57 @@ export default function Finished({
       </div>
       )}
 
+      {/* One slim row, so the quests above have the room: the open plan and this used
+          to push the screen past the tablet's height. Same two actions as before. */}
       {recommendation && (
         <div
           style={{
             display: 'flex',
-            flexDirection: 'column',
-            gap: 12,
-            marginTop: 24,
-            padding: '22px 24px',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: 16,
+            marginTop: 20,
+            padding: '16px 20px',
             borderRadius: 14,
             border: '1px solid var(--border-default)',
             background: 'var(--bg-surface)',
           }}
         >
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'flex-start',
-              justifyContent: 'space-between',
-              gap: 16,
-            }}
-          >
-            <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-              <Patch patch={recommendation.patch} size={34} />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                <span
-                  style={{
-                    font: "600 9.5px 'IBM Plex Mono', monospace",
-                    letterSpacing: 'var(--track-eyebrow)',
-                    textTransform: 'uppercase',
-                    color: 'var(--text-muted)',
-                  }}
-                >
-                  as far from {book.category} as your shelf goes
-                </span>
-                <span
-                  style={{
-                    fontFamily: 'var(--font-display-wide)',
-                    fontSize: 19,
-                    fontWeight: 600,
-                    lineHeight: 1.3,
-                    color: 'var(--text-primary)',
-                  }}
-                >
-                  {recommendation.subtitle
-                    ? `${recommendation.title}: ${recommendation.subtitle}`
-                    : recommendation.title}
-                </span>
-                <span
-                  style={{
-                    font: "400 12.5px 'Space Grotesk', system-ui",
-                    color: 'var(--text-secondary)',
-                  }}
-                >
-                  {recommendation.author} · {recommendation.category} ·{' '}
-                  {recommendation.partCount} parts
-                </span>
-              </div>
+          <div style={{ display: 'flex', gap: 14, alignItems: 'center', minWidth: 0 }}>
+            <Patch patch={recommendation.patch} size={34} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0 }}>
+              <span
+                style={{
+                  font: "600 9.5px 'IBM Plex Mono', monospace",
+                  letterSpacing: 'var(--track-eyebrow)',
+                  textTransform: 'uppercase',
+                  color: 'var(--text-muted)',
+                }}
+              >
+                as far from {book.category} as your shelf goes
+              </span>
+              <span
+                style={{
+                  fontFamily: 'var(--font-display-wide)',
+                  fontSize: 16,
+                  fontWeight: 600,
+                  lineHeight: 1.3,
+                  color: 'var(--text-primary)',
+                }}
+              >
+                {recommendation.subtitle
+                  ? `${recommendation.title}: ${recommendation.subtitle}`
+                  : recommendation.title}
+              </span>
+              <span style={{ font: "400 12px 'Space Grotesk', system-ui", color: 'var(--text-secondary)' }}>
+                {recommendation.author} · {recommendation.partCount} parts
+              </span>
             </div>
-            <Chip tone="seam">far side</Chip>
           </div>
-          <div style={{ display: 'flex', gap: 11, marginTop: 4 }}>
-            <Button size="lg" onClick={onOpenRec} style={{ minHeight: 52 }}>
+          <div style={{ display: 'flex', gap: 16, alignItems: 'center', flex: 'none' }}>
+            <QuietLink onClick={onNextRec}>Show another</QuietLink>
+            <Button variant="secondary" onClick={onOpenRec} style={{ minHeight: 44 }}>
               Read one part
-            </Button>
-            <Button size="lg" variant="secondary" onClick={onNextRec} style={{ minHeight: 52 }}>
-              Show another
             </Button>
           </div>
         </div>

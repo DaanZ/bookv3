@@ -273,14 +273,20 @@ and anything `prep.py` writes get covers. Four things about that are deliberate:
 - **Never load-bearing.** No key, no network, no match: the library renders on the patch exactly as
   before, and no request handler waits on any of it.
 
-**Quests on the finish screen.** `quests.py --book <substring> --write` reads a book's
-summary and makes three quests (small: minutes with what is in the house; medium: an
-evening; large: several days combining two of the book's methods), each with an
-observable "done when". They are kept in `data/quests/<key>.json` (`api/quests.py`),
-served by `GET /api/books/{key}/quests`, and shown by `Finished.jsx` in place of the
-part list. A set is all three or nothing. The sizes are checked in code, because the
-first run on *The Art of Perfumery* made a "small" quest that needed cascarilla bark.
-Nothing generates them automatically yet.
+**Quests on the finish screen.** `quests.py --book <substring> --write` makes three quests
+per book: small (minutes, with what is in the house), medium (an evening), large (several
+days). It first lists the *methods the summary itself describes*, with their parts, and
+every quest must name one, checked in code, plus three different ones when the list has
+three. Asked in words, both Gemini Flash and GPT-4o built quests on topics the summary only
+names (a worm bin from "building living soil"). A second call (`review`, GPT-4o) then
+judges season, food safety and practice-not-decoration, and a failing set is asked for
+again with the reasons, three tries, else nothing is saved. It still lets an out-of-season
+quest through sometimes (Three Sisters in October). Stored in `data/quests/<key>.json`
+(`api/quests.py`): title and a one-line `short` for the card, then `source`, `needs`,
+`steps` and `doneWhen` for the plan the card opens into. `Finished.jsx` shows them as a
+row of three; the picked one joins its plan like a tab. "Start this quest" records the
+start per reader in `data/quests-started/<profile>.json`: the hand-off a daily quest list,
+here or in Roads, will read. Nothing generates quests when a book is finished yet.
 
 `POST /api/books/{key}/enrich` stays for the one case the pass cannot serve: asking again about a
 book it matched to the wrong edition.

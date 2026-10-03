@@ -1,5 +1,7 @@
 """A reader's own reading: the shelf, a book, where they are in it, its ambience, and finishing it."""
 
+from datetime import datetime, timezone
+
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field
 
@@ -56,7 +58,34 @@ def get_quests(key: str, profile: dict = Depends(reader)):
     """The book's three quests for its finish screen, or null when none were made yet."""
     if key not in library.index():
         raise HTTPException(status_code=404, detail="No such book.")
-    return {"quests": quest_store.load(key)}
+    return {
+        "quests": quest_store.load(key),
+        # When this reader started each of them, if they did: {"medium": "<timestamp>"}.
+        "started": quest_store.started(profile["id"]).get(key, {}),
+    }
+
+
+def _quest_size(key: str, size: str):
+    if key not in library.index():
+        raise HTTPException(status_code=404, detail="No such book.")
+    if size not in quest_store.SIZES:
+        raise HTTPException(status_code=404, detail="No such quest.")
+    if not quest_store.load(key):
+        raise HTTPException(status_code=404, detail="This book has no quests yet.")
+
+
+@router.post("/api/books/{key}/quests/{size}/start")
+def start_quest(key: str, size: str, profile: dict = Depends(reader)):
+    """Start one of the book's quests for this reader: what a daily quest list picks up."""
+    _quest_size(key, size)
+    stamp = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    return {"started": quest_store.set_started(profile["id"], key, size, stamp)}
+
+
+@router.delete("/api/books/{key}/quests/{size}/start")
+def unstart_quest(key: str, size: str, profile: dict = Depends(reader)):
+    _quest_size(key, size)
+    return {"started": quest_store.set_started(profile["id"], key, size, None)}
 
 
 @router.put("/api/books/{key}/position")
