@@ -76,6 +76,30 @@ shorter. `homework.py` uses the same trick for multiple choice: four models, `Ho
 `HomeworkDModel`, differing only in which answer field is described as correct, picked at random by
 `random_answer_model()` so the correct letter is uniformly distributed.
 
+**Every summary is checked before it is kept** (`util/summary_checks.py`, applied in
+`highlight_chunk`). The descriptions set a length (120 words for the first part, 220 after)
+because "two paragraphs" alone let a few parts run past 1,300 words, which the reader then
+packed five walls deep. Over `MAX_SUMMARY_WORDS` (350, just past the library's 99th
+percentile) a summary gets one `condense` call; a result that is cut off mid-sentence or
+keeps under a quarter of the words is retried once and otherwise discarded, because two
+parts of *One Nation Under Blackmail* came back truncated and were nearly saved that way.
+A summary that reports on the text ("This text explores…", "In this section…", 12% of the
+library) gets `make_direct`, which is **surgical, never a rewrite**: the model returns only
+the offending sentences with replacements, and the swap is refused if a paragraph, a `**`
+pair or any HTML tag would change. A whole-summary rewrite was tried first and dropped the
+point of *Deep Work* part 2. Two rules in `DIRECT`/`HEDGES` pull against each other on
+purpose: drop the text-as-document framing, **keep every hedge and attribution** ("alleged",
+"Grabbe suggests"). Without the second, "the suspicious circumstances of Vince Foster's
+death" became a flat claim about a real person.
+
+`tidy_parts.py` applies the same checks to books already on the shelf: dry run by default,
+`--write` to spend, `--only long|openers`, `--book <substring>`. It backs every file up to
+`data/backups/tidy-<time>/` before writing. **Do not rely on git for that** — a book
+ingested since the last commit is not in git, and *The Art of Perfumery* was rewritten in
+that state with no way back. It only converts `<b>` ↔ `**` (checked byte-identical for
+3,042 of 3,071 parts; the rest are skipped), because a full HTML↔markdown round trip lost
+headings and glued `<br><br>` paragraphs.
+
 Conversation state is a `util.history.History` — a thin list of `{role, content}` dicts. The pattern
 throughout is to push each page's raw text as a `system` message, then a single `user` instruction.
 
@@ -284,7 +308,9 @@ look quiet, so read the `tests N / pass N` line rather than the absence of a red
   `pageIndex`, not `pageIndex + 1` — the page you are on is in progress, not read, and 100% belongs
   to the finish screen alone.
 - **Pagination.** Two sentences to a paragraph, two paragraphs to a page, so a part is two or three
-  pages and the bar moves inside a chapter.
+  pages and the bar moves inside a chapter. At most `MAX_PAGES_PER_PART` (5) pages; past that
+  pages get denser, which is why an overlong summary reads as walls of text. A last page under
+  `LAST_PAGE_MIN_SHARE` of the one before is a fragment and is folded into it.
 - **Highlighting** replaces `chunks.py`'s inline forest-green. The pipeline's `<b>` still decides
   *what* matters; the UI decides *how* it looks. `normaliseBody` strips the baked-in colour, then
   phrases take palette bands in reading order, capped at 8 marks per page by default (counting

@@ -86,6 +86,19 @@ describe('paginate', () => {
     assert.equal(pages.flat().join(' '), sentences(80));
   });
 
+  test('a fragment left over at the end joins the page before it', () => {
+    // "Ess. Bouquet." splits after the abbreviation, stranding one word.
+    const body = `${sentences(7)} Used in Ess. Bouquet.`;
+    const pages = paginate(body);
+    assert.equal(pages.length, 2);
+    assert.equal(pages.flat().join(' '), body);
+  });
+
+  test('a last page with a real sentence on it stays its own page', () => {
+    const body = `${sentences(8)} This closing sentence has more than enough words to stand on a page of its own.`;
+    assert.equal(paginate(body).length, 3);
+  });
+
   test('an empty part is one empty page, not no pages', () => {
     assert.deepEqual(paginate(''), [[]]);
   });

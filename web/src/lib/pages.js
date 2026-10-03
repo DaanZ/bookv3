@@ -114,7 +114,28 @@ export function paginate(body) {
 
   const pages = [];
   for (let i = 0; i < paras.length; i += perPage) pages.push(paras.slice(i, i + perPage));
+
+  // A last page this thin is a fragment, not a page: it joins the one before it. The
+  // sentence split cannot tell an abbreviation from a full stop, so "used in Ess.
+  // Bouquet." ended The Art of Perfumery's part 2 on a page holding the single word
+  // "Bouquet." — a whole page turn for one word.
+  if (
+    pages.length > 1 &&
+    wordsOn(pages[pages.length - 1]) < LAST_PAGE_MIN_SHARE * wordsOn(pages[pages.length - 2])
+  ) {
+    const last = pages.pop();
+    pages[pages.length - 1] = pages[pages.length - 1].concat(last);
+  }
   return pages.length ? pages : [paras];
+}
+
+// A final page shorter than this share of the page before it is a fragment and is folded
+// in. Relative rather than a word count, because what counts as thin depends on how full
+// the other pages are.
+export const LAST_PAGE_MIN_SHARE = 0.25;
+
+function wordsOn(page) {
+  return plain(page.join(' ')).split(/\s+/).filter(Boolean).length;
 }
 
 // The cap counts marks on the page, not distinct phrases: after the budget is spent the
