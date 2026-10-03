@@ -109,13 +109,18 @@ const ABBREVIATION = /(?:^|[\s(“"])(?:Ess|St|Dr|Mr|Mrs|Ms|Prof|Jr|Sr|Mt|vs|No|
 /** Sentences of one paragraph, without breaking at abbreviations or initials. */
 export function sentencesOf(paragraph) {
   const sentences = [];
-  for (const piece of paragraph.split(/(?<=[.?!”"])\s+/)) {
+  // A sentence ends at . ? ! or …, optionally followed by closing quotes, brackets or the
+  // end of a highlight, and then a space. A closing quote on its own is not an ending: the
+  // split used to accept one, which cut 'some "churn" | (subscription cancellations).'
+  // and '"silly voices," | "falling down comically,"' in two, 49 times in the library
+  // even after the lowercase rule below. The </b> is new too: a sentence whose last word
+  // was highlighted ("...reduces <b>monitoring.</b> Next...") never split at all.
+  for (const piece of paragraph.split(/(?<=[.?!…](?:[”"’')\]]|<\/b>)*)\s+/)) {
     if (!piece.trim()) continue;
     const previous = sentences[sentences.length - 1];
     // No sentence starts lowercase, so "H. habilis" and "U.S. corporate" stay together.
-    // This also mends a quieter bug, the larger one by count: the split treats any closing
-    // quote as an ending, so 'known as the "coffee belt," which includes...' was cut in
-    // two mid-sentence. 970 such cuts in the library, against 159 at abbreviations.
+    // It was also the first fix for quotes, before the split above stopped treating a bare
+    // closing quote as an ending: 970 cuts like 'known as the "coffee belt," | which'.
     if (previous && (ABBREVIATION.test(previous) || /^(?:<b>)?[a-z]/.test(piece))) {
       sentences[sentences.length - 1] = `${previous} ${piece}`;
     } else {

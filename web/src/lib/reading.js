@@ -11,7 +11,7 @@
 
 export { legible } from './colour.js';
 export { PALETTES, PALETTE_NAMES, paletteFor } from './palettes.js';
-export { HEATS, coalsFor, heatsOf, phraseCounter } from './coals.js';
+export { HEATS, coalsFor, glowOf, heatsOf, phraseCounter } from './coals.js';
 export {
   MAX_PAGES_PER_PART,
   cum,

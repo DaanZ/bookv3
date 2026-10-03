@@ -49,6 +49,24 @@ export function coalsFor(coals, day) {
   };
 }
 
+/**
+ * The night glow for one highlight, in its own colour, at its heat.
+ *
+ * Highlights used to take their colour from the heat itself — three coals per book
+ * category, red, orange and gold for most shelves — so a page only ever showed those
+ * three. The colour now comes from the reader's palette, swept across the page, and heat
+ * keeps the part it is good at: how strongly a phrase burns. Same layering as the coals:
+ * a smouldering phrase has a haze, a hot one a bright core with a wide halo.
+ */
+export function glowOf(colour, heat) {
+  if (!/^#[0-9a-f]{6}$/i.test(colour || '')) return undefined;
+  return [
+    `0 0 10px ${alpha(colour, 0.5)}`,
+    `0 0 4px ${alpha(colour, 0.5)}, 0 0 16px ${alpha(colour, 0.55)}`,
+    `0 0 3px ${alpha(colour, 0.75)}, 0 0 12px ${alpha(colour, 0.6)}, 0 0 28px ${alpha(colour, 0.45)}`,
+  ][heat];
+}
+
 // The same normalisation `tokensOf` gives a phrase to use as its key: lower case, letters
 // and spaces only. Whitespace becomes a space rather than vanishing, so the last word of
 // one paragraph does not fuse with the first of the next.

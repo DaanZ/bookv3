@@ -6,7 +6,7 @@ import Spinner from '../components/Spinner';
 import { Button, ProgressBar, QuietLink } from '../components/ui';
 import { useReducedMotion } from '../lib/prefs';
 import {
-  coalsFor,
+  glowOf,
   heatsOf,
   highlightKeys,
   newBudget,
@@ -35,16 +35,19 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
   const pages = useMemo(() => paginate(current?.body), [current]);
   const pageIndex = Math.min(page, Math.max(0, pages.length - 1));
 
-  // Highlights are coals: each phrase on the page takes a heat from how often the book
-  // returns to it, and the book brings the colours its coals burn in (`book.coals`). The
-  // palette array is still indexed by slot, so `tokensOf` spends its budget as before.
+  // Colour and heat are two things. The colour is the reader's palette swept across the
+  // page: the first phrase is the start of the ramp and the last its end, whatever the
+  // count, so every page shows the whole spectrum. It used to be the book category's three
+  // coals (red, orange, gold for most shelves), and the palette only reached the progress
+  // bar. Heat — how often the book returns to a phrase — still decides how hard it burns:
+  // the glow at night, the weight by day.
   const counter = useMemo(() => phraseCounter(book.parts), [book.parts]);
-  const heats = useMemo(
-    () => heatsOf(highlightKeys(pages[pageIndex] || [], cap).map(counter)),
-    [pages, pageIndex, cap, counter],
+  const keys = useMemo(() => highlightKeys(pages[pageIndex] || [], cap), [pages, pageIndex, cap]);
+  const heats = useMemo(() => heatsOf(keys.map(counter)), [keys, counter]);
+  const palette = useMemo(
+    () => paletteFor(prefs.palette, day, Math.max(1, keys.length)),
+    [prefs.palette, day, keys.length],
   );
-  const coals = useMemo(() => coalsFor(book.coals, day), [book.coals, day]);
-  const palette = useMemo(() => heats.map((heat) => coals.ink[heat]), [heats, coals]);
 
   // One budget per page, spent in reading order: the first distinct phrase takes slot 1.
   const paras = useMemo(() => {
@@ -160,21 +163,6 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
               }}
             >
               {book.author} · {book.category} · {book.pages} pages
-            </span>
-            {/* The shelf's three coals, so a change of colour between books reads as meant. */}
-            <span
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 8,
-                marginTop: 2,
-              }}
-            >
-              <span style={{ display: 'flex', gap: 3 }}>
-                {coals.ink.map((colour) => (
-                  <span key={colour} style={{ width: 8, height: 8, background: colour }} />
-                ))}
-              </span>
             </span>
           </div>
         </div>
@@ -304,7 +292,7 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
                     <span key={j} style={{ color: tk.color, fontWeight: tk.weight }}>{tk.text}</span>
                   ) : (
                     <Coal key={j} text={tk.text} color={tk.color} heat={heats[tk.slot]}
-                          slot={tk.slot} glow={coals.glow[heats[tk.slot]]} day={day} />
+                          slot={tk.slot} glow={glowOf(tk.color, heats[tk.slot])} day={day} />
                   ),
                 )}
               </p>

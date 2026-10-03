@@ -340,26 +340,20 @@ look quiet, so read the `tests N / pass N` line rather than the absence of a red
     register's window instead, and the floor is only a backstop. It is deliberately not maximal —
     0.30 at night still measures ~5.5:1, and every point above that is paid for in collapsed stops.
 
-  **In the reader, highlights are coals, not a sweep.** `paletteFor`'s band-order sweep
-  still colours the progress bar, the shelf and the print sheet, but on the reading page
-  each phrase takes one of three heats — smouldering, glowing, hot — and the *book's
-  category* decides the colours. They live in `api/patches.py` as `COALS`, beside the
-  family list they are keyed by, and arrive on the book payload as `book.coals` (from
-  `coals_for`); the reader draws what it is sent. They used to be a second table in the JS,
-  keyed by family name, where a rename on one side fell through to the fire without a
-  sound. The web app keeps one copy of `fire`, only for a book kept offline from before
-  the payload carried coals, and a test holds it equal to the API's. Psychology, technology, engineering, business and self-help
-  have their own; every other shelf, and a book with no category, burns in `fire`
-  (red, orange, gold). The reader's palette choice does not touch the coals. The room
-  stays graphite and orange whatever the book, so the only thing that changes between
-  books is the colour of what matters. Heat comes from `phraseCounter`: how often the
-  book mentions the phrase anywhere, so a subject burns hot and an aside smoulders. The
-  pipeline's `<b>` is binary and carries no importance of its own; this is the proxy, and
-  it is relative to the page (`heatsOf`: top quarter hot, bottom quarter smouldering). At
-  night each heat glows (a layered text-shadow) and breathes (`.coal-*` in `app.css`, off
-  under reduced motion); the inks are used as designed, every one above 4.5:1 on
-  graphite. By day there is no glow, heat is carried by weight, and the inks go through
-  `legible` to reach cream.
+  **In the reader, colour and heat are separate.** The colour of a highlight is the
+  reader's palette swept across the page — `paletteFor(prefs.palette, day, n)` with `n` the
+  page's distinct phrases, so the first is the start of the ramp and the last its end and
+  every page shows the whole spectrum. Until October 2026 the colour came from three
+  *coals* per book category (`COALS` in `api/patches.py`, red/orange/gold for most
+  shelves), and the palette reached only the progress bar; Daan asked for the full
+  spectrum. `book.coals` is still sent and `coalsFor` still exists, but the reader no
+  longer draws from them. Heat comes from `phraseCounter`: how often the book mentions the
+  phrase anywhere, so a subject burns hot and an aside smoulders. The pipeline's `<b>` is
+  binary and carries no importance of its own; this is the proxy, and it is relative to the
+  page (`heatsOf`: top quarter hot, bottom quarter smouldering). Heat now decides only how
+  hard a phrase burns: at night a layered glow in the phrase's own colour (`glowOf`) that
+  breathes (`.coal-*` in `app.css`, off under reduced motion), by day its weight.
+  `paletteFor` already moves every stop into the register's legible window.
 
   `patches.py`'s keyword list is first-match-wins, so order is precedence: `engineer` sits
   above the technology needles or "Technology & Engineering" would never reach its family.

@@ -9,6 +9,7 @@ import { describe, test } from 'node:test';
 
 import {
   coalsFor,
+  glowOf,
   cum,
   frontCount,
   heatsOf,
@@ -71,6 +72,13 @@ describe('normaliseBody', () => {
     assert.equal(normaliseBody('he concludes that **passion is'), 'he concludes that passion is');
   });
 
+  test('a highlight glows in its own colour, harder the hotter it is', () => {
+    const [smoulder, glowing, hot] = [0, 1, 2].map((heat) => glowOf('#2ddef1', heat));
+    assert.ok(smoulder.includes('#2ddef1') && hot.includes('#2ddef1'));
+    assert.ok(hot.split(',').length > glowing.split(',').length && glowing.split(',').length > smoulder.split(',').length);
+    assert.equal(glowOf('inherit', 1), undefined);
+  });
+
   test('treats a missing body as empty', () => {
     assert.equal(normaliseBody(undefined), '');
   });
@@ -96,6 +104,24 @@ describe('sentencesOf', () => {
     assert.deepEqual(sentencesOf('Fossils of H. habilis were found. Rivals e.g. rivers matter.'), [
       'Fossils of H. habilis were found.',
       'Rivals e.g. rivers matter.',
+    ]);
+  });
+
+  test('a closing quote is not a sentence end unless a full stop comes before it', () => {
+    assert.deepEqual(sentencesOf('Income grows despite some "churn" (subscription cancellations). It involves "silly voices," "falling down," or "faces."'), [
+      'Income grows despite some "churn" (subscription cancellations).',
+      'It involves "silly voices," "falling down," or "faces."',
+    ]);
+    assert.deepEqual(sentencesOf('He said “done is better than good.” Then he shipped it.'), [
+      'He said “done is better than good.”',
+      'Then he shipped it.',
+    ]);
+  });
+
+  test('a sentence whose last word is highlighted still ends', () => {
+    assert.deepEqual(sentencesOf('Teams reduce <b>monitoring.</b> Next comes testing.'), [
+      'Teams reduce <b>monitoring.</b>',
+      'Next comes testing.',
     ]);
   });
 
