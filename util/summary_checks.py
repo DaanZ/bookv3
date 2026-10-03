@@ -27,7 +27,7 @@ _DESCRIBES_TEXT = re.compile(
     re.IGNORECASE,
 )
 _REPORTING_PASSIVE = re.compile(
-    r"\b(is|are)\s+(also\s+)?(discussed|explored|covered|provided|presented|outlined|examined|addressed|introduced)\b",
+    r"\b(is|are)\s+(also\s+)?(discussed|explored|covered|provided|presented|outlined|examined|addressed|introduced|delved\s+into)\b",
     re.IGNORECASE,
 )
 
