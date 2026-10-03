@@ -21,6 +21,7 @@ export {
   newBudget,
   normaliseBody,
   paginate,
+  paragraphsOf,
   progressOf,
   sentencesOf,
   tokensOf,

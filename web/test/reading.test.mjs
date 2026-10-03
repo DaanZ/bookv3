@@ -20,6 +20,7 @@ import {
   newBudget,
   normaliseBody,
   paginate,
+  paragraphsOf,
   PALETTE_NAMES,
   PALETTES,
   paletteFor,
@@ -65,7 +66,15 @@ describe('normaliseBody', () => {
   });
 
   test('drops every other tag but keeps its text', () => {
-    assert.equal(normaliseBody('<h3>Title</h3> and <em>this</em>'), 'Title and this');
+    assert.equal(normaliseBody('a <em>this</em> b'), 'a this b');
+  });
+
+  test('a <br> or a heading is a paragraph break, not glue', () => {
+    assert.deepEqual(paragraphsOf('One effort.<br><br>Charisma grows.'), [['One effort.'], ['Charisma grows.']]);
+    assert.deepEqual(paragraphsOf('<h3>Lessons from Experience</h3>\n\nJaja are sweets. They are eaten.'), [
+      ['Lessons from Experience'],
+      ['Jaja are sweets.', 'They are eaten.'],
+    ]);
   });
 
   test('never prints a ** the pipeline left unpaired', () => {
@@ -118,6 +127,13 @@ describe('sentencesOf', () => {
     ]);
   });
 
+  test('never ends a sentence inside a highlight', () => {
+    assert.deepEqual(sentencesOf('He wrote to the <b>U.S. Department</b> of Justice. It replied.'), [
+      'He wrote to the <b>U.S. Department</b> of Justice.',
+      'It replied.',
+    ]);
+  });
+
   test('a sentence whose last word is highlighted still ends', () => {
     assert.deepEqual(sentencesOf('Teams reduce <b>monitoring.</b> Next comes testing.'), [
       'Teams reduce <b>monitoring.</b>',
@@ -156,6 +172,15 @@ describe('paginate', () => {
   test('a last page with a real sentence on it stays its own page', () => {
     const body = `${sentences(8)} This closing sentence has more than enough words to stand on a page of its own.`;
     assert.equal(paginate(body).length, 3);
+  });
+
+  test('sentences pair within a paragraph, never across one', () => {
+    const pages = paginate('<h3>Heading</h3>\n\nSentence 1. Sentence 2. Sentence 3.\n\nSentence 4.');
+    assert.deepEqual(pages.flat(), ['Heading', 'Sentence 1. Sentence 2.', 'Sentence 3.', 'Sentence 4.']);
+  });
+
+  test('takes paragraphs that are already sentences, the structured format', () => {
+    assert.deepEqual(paginate([['A.', 'B.', 'C.'], ['D.']]).flat(), ['A. B.', 'C.', 'D.']);
   });
 
   test('an empty part is one empty page, not no pages', () => {

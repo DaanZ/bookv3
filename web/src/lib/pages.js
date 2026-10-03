@@ -121,7 +121,11 @@ export function sentencesOf(paragraph) {
     // No sentence starts lowercase, so "H. habilis" and "U.S. corporate" stay together.
     // It was also the first fix for quotes, before the split above stopped treating a bare
     // closing quote as an ending: 970 cuts like 'known as the "coffee belt," | which'.
-    if (previous && (ABBREVIATION.test(previous) || /^(?:<b>)?[a-z]/.test(piece))) {
+    // And never inside a highlight: "...to the <b>U.S. Department</b>" cut after "U.S."
+    // split the highlight across two paragraphs, 87 times in the library.
+    const openHighlight =
+      previous && (previous.match(/<b>/g) || []).length > (previous.match(/<\/b>/g) || []).length;
+    if (previous && (openHighlight || ABBREVIATION.test(previous) || /^(?:<b>)?[a-z]/.test(piece))) {
       sentences[sentences.length - 1] = `${previous} ${piece}`;
     } else {
       sentences.push(piece);
@@ -130,12 +134,29 @@ export function sentencesOf(paragraph) {
   return sentences;
 }
 
-export function paginate(body) {
-  const sentences = normaliseBody(body)
+/** A stored HTML body as paragraphs of sentences: the guesswork the structured format ends. */
+export function paragraphsOf(body) {
+  return normaliseBody(body)
     .split(/\n\n+/)
-    .flatMap(sentencesOf);
+    .map(sentencesOf)
+    .filter((sentences) => sentences.length);
+}
+
+/**
+ * Pages of a part: an HTML body (books not yet migrated), or paragraphs that are already
+ * arrays of sentences (the structured format, where nothing has to be guessed).
+ *
+ * Sentences pair up within a paragraph and never across one. Pairing across them put a
+ * subheading such as "Lessons from Experience" in the same paragraph as the sentence
+ * after it, read as one run-on line; a paragraph with an odd count now ends on one
+ * sentence instead.
+ */
+export function paginate(source) {
+  const paragraphs = Array.isArray(source) ? source : paragraphsOf(source);
   const paras = [];
-  for (let i = 0; i < sentences.length; i += 2) paras.push(sentences.slice(i, i + 2).join(' '));
+  for (const sentences of paragraphs) {
+    for (let i = 0; i < sentences.length; i += 2) paras.push(sentences.slice(i, i + 2).join(' '));
+  }
 
   // Only long parts are affected. A part that already fits keeps two paragraphs a page,
   // so the common case reads exactly as it did.
@@ -232,6 +253,11 @@ export function highlightKeys(sentences, cap) {
 // but keep their text; anything else would print as literal angle brackets on the page.
 export function normaliseBody(html) {
   return (html || '')
+    // Structure first, before every other tag is stripped. Stripped like the rest, <br>
+    // glued "conscious effort.<br><br>Charisma" into "effort.Charisma" (32 parts), and an
+    // <h3> heading ran into the sentence after it (108 parts). Both are paragraph breaks.
+    .replace(/<br\s*\/?>/gi, '\n\n')
+    .replace(/<h3\b[^>]*>([\s\S]*?)<\/h3\s*>/gi, '\n\n$1\n\n')
     .replace(/<b\b[^>]*>/gi, '<b>')
     .replace(/<\/b\s*>/gi, '</b>')
     .replace(/<(?!\/?b>)[^>]*>/g, '')
