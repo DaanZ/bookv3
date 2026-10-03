@@ -229,5 +229,9 @@ export function normaliseBody(html) {
   return (html || '')
     .replace(/<b\b[^>]*>/gi, '<b>')
     .replace(/<\/b\s*>/gi, '</b>')
-    .replace(/<(?!\/?b>)[^>]*>/g, '');
+    .replace(/<(?!\/?b>)[^>]*>/g, '')
+    // A ** the pipeline could not pair (an answer cut off inside a highlight) is markdown
+    // that never became HTML. It means nothing here, and printed it read as part of the
+    // sentence: "he concludes that **passion is".
+    .replace(/\*\*/g, '');
 }

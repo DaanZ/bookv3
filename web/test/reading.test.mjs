@@ -67,6 +67,10 @@ describe('normaliseBody', () => {
     assert.equal(normaliseBody('<h3>Title</h3> and <em>this</em>'), 'Title and this');
   });
 
+  test('never prints a ** the pipeline left unpaired', () => {
+    assert.equal(normaliseBody('he concludes that **passion is'), 'he concludes that passion is');
+  });
+
   test('treats a missing body as empty', () => {
     assert.equal(normaliseBody(undefined), '');
   });

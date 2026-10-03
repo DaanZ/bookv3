@@ -32,6 +32,39 @@ _REPORTING_PASSIVE = re.compile(
 )
 
 
+# A summary that stops mid-sentence: the model's answer was cut off. 14 committed parts
+# ended like that, How to Fail at Almost Everything part 2 on "he concludes that
+# **passion is" with its highlight left open, which the reader then printed as "**".
+_SENTENCE_END = re.compile(r"[.!?…](?:[\"'”’)\]]|</b>|\*\*)*(?=\s|<br|$)")
+
+
+def is_finished(text):
+    # Every *, not just **: three parts end "...financial losses.*", a complete sentence
+    # with a leftover italic mark, and are not cut off.
+    plain = re.sub(r"<[^>]+>|\*+", "", text).strip()
+    return not plain or bool(re.search(r"[.!?…][\"'”’)\]]*$", plain))
+
+
+def trim_to_last_sentence(text):
+    """(trimmed, dropped): `text` cut back to its last complete sentence.
+
+    Works on stored HTML or on markdown. A highlight left open by the cut is closed, and a
+    lone ** is removed. Returns the text unchanged, with nothing dropped, when there is no
+    complete sentence to fall back to.
+    """
+    ends = list(_SENTENCE_END.finditer(text))
+    if not ends:
+        return text, ""
+    cut = ends[-1].end()
+    trimmed, dropped = text[:cut].rstrip(), text[cut:].strip()
+    if trimmed.count("<b") > trimmed.count("</b>"):
+        trimmed += "</b>"
+    if trimmed.count("**") % 2:
+        head, _, tail = trimmed.rpartition("**")
+        trimmed = head + tail
+    return trimmed, re.sub(r"<[^>]+>|\*\*", "", dropped).strip()
+
+
 def word_count(text):
     return len(re.sub(r"<[^>]+>", " ", text).split())
 

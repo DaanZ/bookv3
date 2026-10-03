@@ -5,7 +5,14 @@ from pydantic import Field, BaseModel
 from util.chatgpt import llm_strict
 from util.history import History
 from util.split import page_chunk_bounds
-from util.summary_checks import MAX_SUMMARY_WORDS, clean_title, describes_the_text, word_count
+from util.summary_checks import (
+    MAX_SUMMARY_WORDS,
+    clean_title,
+    describes_the_text,
+    is_finished,
+    trim_to_last_sentence,
+    word_count,
+)
 
 
 # Define the number of chunks
@@ -121,9 +128,6 @@ def make_direct(summary, model=None):
     return result
 
 
-_FINISHED = re.compile(r"[.!?…][\"'”’)\]*]*\s*$")
-
-
 def condense(summary, model=None):
     """One more call that shortens an overlong summary, keeping its ** highlights.
 
@@ -135,7 +139,7 @@ def condense(summary, model=None):
     """
     for _ in range(2):
         shorter = _rewrite(summary, CondensedChunk, model)
-        if _FINISHED.search(shorter.strip()) and word_count(shorter) >= word_count(summary) / 4:
+        if is_finished(shorter) and word_count(shorter) >= word_count(summary) / 4:
             return shorter
     return summary
 
@@ -170,7 +174,16 @@ def highlight_chunk(pages, first=True, model=None):
         chunk_model = DisabilityBookNextChunk
     print(chunk_model.__name__)
     response = llm_strict(history, model_name=model, base_model=chunk_model)
+    if not is_finished(response.summary_chunk):
+        # Cut off mid-sentence. llm_strict only retries when parsing fails, and a cut-off
+        # string parses fine, so 14 parts were saved ending "he concludes that **passion
+        # is". One more try, then the last complete sentence, never a dangling half.
+        print("Summary was cut off mid-sentence; asking again.")
+        response = llm_strict(history, model_name=model, base_model=chunk_model)
     summary = response.summary_chunk
+    if not is_finished(summary):
+        summary, dropped = trim_to_last_sentence(summary)
+        print(f"Still cut off; dropped the unfinished tail: {dropped!r}")
     if word_count(summary) > MAX_SUMMARY_WORDS:
         print(f"Summary ran to {word_count(summary)} words; condensing.")
         summary = condense(summary, model=model)

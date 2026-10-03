@@ -83,6 +83,10 @@ packed five walls deep. Over `MAX_SUMMARY_WORDS` (350, just past the library's 9
 percentile) a summary gets one `condense` call; a result that is cut off mid-sentence or
 keeps under a quarter of the words is retried once and otherwise discarded, because two
 parts of *One Nation Under Blackmail* came back truncated and were nearly saved that way.
+A summary **cut off mid-sentence** parses fine, so `llm_strict`'s retries never see it: 14
+parts were saved that way, one ending "he concludes that **passion is". It is asked for
+once more and then trimmed to its last complete sentence (`trim_to_last_sentence`), and the
+reader drops any `**` left unpaired.
 A summary that reports on the text ("This text explores…", "In this section…", 12% of the
 library) gets `make_direct`, which is **surgical, never a rewrite**: the model returns only
 the offending sentences with replacements, and the swap is refused if a paragraph, a `**`
