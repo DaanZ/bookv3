@@ -273,6 +273,15 @@ and anything `prep.py` writes get covers. Four things about that are deliberate:
 - **Never load-bearing.** No key, no network, no match: the library renders on the patch exactly as
   before, and no request handler waits on any of it.
 
+**Quests on the finish screen.** `quests.py --book <substring> --write` reads a book's
+summary and makes three quests (small: minutes with what is in the house; medium: an
+evening; large: several days combining two of the book's methods), each with an
+observable "done when". They are kept in `data/quests/<key>.json` (`api/quests.py`),
+served by `GET /api/books/{key}/quests`, and shown by `Finished.jsx` in place of the
+part list. A set is all three or nothing. The sizes are checked in code, because the
+first run on *The Art of Perfumery* made a "small" quest that needed cascarilla bark.
+Nothing generates them automatically yet.
+
 `POST /api/books/{key}/enrich` stays for the one case the pass cannot serve: asking again about a
 book it matched to the wrong edition.
 

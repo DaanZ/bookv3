@@ -213,6 +213,9 @@ export const putAmbience = (key, settings) =>
 
 export const getBook = (key) => request(`/books/${encodeURIComponent(key)}`);
 
+/** The book's three quests for its finish screen: {quests: {small, medium, large} | null}. */
+export const getQuests = (key) => request(`/books/${encodeURIComponent(key)}/quests`);
+
 export const putPosition = (key, part, page) =>
   request(`/books/${encodeURIComponent(key)}/position`, {
     method: 'PUT',

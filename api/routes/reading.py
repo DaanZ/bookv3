@@ -5,6 +5,7 @@ from pydantic import BaseModel, Field
 
 from api import enrich as enriching
 from api import library, positions, profiles
+from api import quests as quest_store
 from api.deps import reader
 from hardcover.request import mark_book_as_read
 
@@ -48,6 +49,14 @@ def get_book(key: str, profile: dict = Depends(reader)):
     if detail is None:
         raise HTTPException(status_code=404, detail="No such book.")
     return detail
+
+
+@router.get("/api/books/{key}/quests")
+def get_quests(key: str, profile: dict = Depends(reader)):
+    """The book's three quests for its finish screen, or null when none were made yet."""
+    if key not in library.index():
+        raise HTTPException(status_code=404, detail="No such book.")
+    return {"quests": quest_store.load(key)}
 
 
 @router.put("/api/books/{key}/position")

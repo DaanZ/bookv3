@@ -1,8 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Patch from '../components/Patch';
 import { Button, Chip, QuietLink } from '../components/ui';
-import { resyncHardcover } from '../lib/api';
+import { getQuests, resyncHardcover } from '../lib/api';
+
+const QUEST_SIZES = [
+  ['small', 'today'],
+  ['medium', 'this week'],
+  ['large', 'a project'],
+];
+
+/** "15 min", "1½ h", "5 h": an estimate, said the way a person would. */
+function duration(minutes) {
+  if (!minutes) return null;
+  if (minutes < 60) return `${minutes} min`;
+  const hours = minutes / 60;
+  return `${Number.isInteger(hours) ? hours : (Math.round(hours * 2) / 2).toString().replace('.5', '½')} h`;
+}
 
 /** 1st, 2nd, 3rd, 4th — English ordinals, including the teens that break the rule. */
 function ordinal(n) {
@@ -32,6 +46,19 @@ export default function Finished({
   const [resync, setResync] = useState(null);
   const [syncing, setSyncing] = useState(false);
   const [resetting, setResetting] = useState(false);
+
+  // Three quests made from this book's summary by quests.py, or null when none were made
+  // yet. Never waited on: the screen renders without them and they arrive after.
+  const [quests, setQuests] = useState(null);
+  useEffect(() => {
+    let live = true;
+    getQuests(book.key)
+      .then((answer) => live && setQuests(answer?.quests || null))
+      .catch(() => {});
+    return () => {
+      live = false;
+    };
+  }, [book.key]);
 
   const reset = async () => {
     setResetting(true);
@@ -202,6 +229,72 @@ export default function Finished({
         )}
       </div>
 
+      {/* The book's last word: three things to do with it, from a few minutes to a
+          project. They take the place of the part list, which only recaps; a book with
+          no quests yet keeps the list. */}
+      {quests ? (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 26 }}>
+          <span
+            style={{
+              font: "600 9.5px 'IBM Plex Mono', monospace",
+              letterSpacing: 'var(--track-eyebrow)',
+              textTransform: 'uppercase',
+              color: 'var(--text-muted)',
+            }}
+          >
+            three ways to use it
+          </span>
+          {QUEST_SIZES.map(([size, when]) => {
+            const quest = quests[size];
+            return (
+              <div
+                key={size}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 7,
+                  padding: '16px 20px',
+                  borderRadius: 'var(--radius-card)',
+                  border: '1px solid var(--border-default)',
+                  borderTopColor: 'var(--border-strong)',
+                  background: 'var(--bg-surface)',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <Chip tone="neutral">{size}</Chip>
+                  <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
+                    {[when, duration(quest.minutes)].filter(Boolean).join(' · ')}
+                  </span>
+                </div>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-display-wide)',
+                    fontSize: 17,
+                    fontWeight: 600,
+                    lineHeight: 1.3,
+                    color: 'var(--text-primary)',
+                  }}
+                >
+                  {quest.title}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "'Lexend Deca', 'Lexend', system-ui",
+                    fontSize: 14,
+                    lineHeight: 1.6,
+                    color: 'var(--text-secondary)',
+                  }}
+                >
+                  {quest.action}
+                </span>
+                <span style={{ font: "400 12.5px 'Space Grotesk', system-ui", color: 'var(--text-muted)' }}>
+                  Done when: {quest.doneWhen}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 26 }}>
         <span
           style={{
@@ -248,6 +341,7 @@ export default function Finished({
           ))}
         </div>
       </div>
+      )}
 
       {recommendation && (
         <div
