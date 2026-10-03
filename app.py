@@ -7,6 +7,7 @@ from pypdf.errors import PdfStreamError
 from streamlit.runtime.uploaded_file_manager import UploadedFile
 
 from chunks import get_page_chunks, highlight_chunk
+from util.parts import part_markdown
 from fragments import read_book_pages
 from meta import get_book_meta, UnreadableCharactersError
 from util.files import json_write_file, sanitize_filename
@@ -26,7 +27,7 @@ def reset_app():
 def render_chunk(chunk):
     # Define the custom CSS styles
     st.title(chunk["title"])
-    st.markdown(chunk["body"].replace(chunk["title"], ""), unsafe_allow_html=True)
+    st.markdown(part_markdown(chunk))
     print("rendering chunk", chunk["title"])
 
 

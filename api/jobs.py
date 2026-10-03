@@ -23,6 +23,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 
 from util.files import json_write_file, sanitize_filename
+from util.parts import has_highlights
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INBOX_DIR = os.path.join(ROOT, "next")          # where prep.py looks for PDFs
@@ -480,7 +481,7 @@ def _run(job_id):
             # them worth marking, and stopping on the first one throws away a model that
             # would have done the rest properly. Three is the line: two can be the book,
             # three is the model.
-            if "<b" not in highlighted["body"]:
+            if not has_highlights(highlighted):
                 unhighlighted += 1
                 if unhighlighted >= UNHIGHLIGHTED_LIMIT:
                     raise RuntimeError(

@@ -22,6 +22,8 @@ export {
   normaliseBody,
   paginate,
   paragraphsOf,
+  partParagraphs,
+  partText,
   progressOf,
   sentencesOf,
   tokensOf,

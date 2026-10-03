@@ -14,6 +14,7 @@ from api import enrich
 from api.patches import coals_for, family_of, patch_for
 from api.positions import all_positions, finish_ordinal
 from util.files import json_read_file
+from util.parts import all_sentences
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AVAILABLE_DIR = os.path.join(ROOT, "books", "available")
@@ -273,8 +274,13 @@ def book(key: str, profile: dict) -> dict | None:
     everyone = all_positions(profile["id"])
     detail = summarise(key, entry, data, everyone.get(key), with_part_titles=True,
                        everyone=everyone, owner=bool(profile.get("owner")))
+    # Structured parts go out as they are stored; a part that still has only an HTML
+    # body (a file written before the format changed) goes out as that, and the reader
+    # handles both.
     detail["parts"] = [
-        {"title": p.get("title", ""), "body": p.get("body", "")}
+        {"title": p.get("title", ""), "paragraphs": p["paragraphs"]}
+        if isinstance(p.get("paragraphs"), list)
+        else {"title": p.get("title", ""), "body": p.get("body", "")}
         for p in data.get("parts", [])
     ]
     # Only the book being read needs its highlight colours, so the shelf list does not
@@ -292,10 +298,13 @@ def book(key: str, profile: dict) -> dict | None:
 
 
 def recap_of(part: dict, limit: int = 190) -> str:
-    text = _plain(part.get("body", ""))
-    if not text:
+    if "paragraphs" in part:
+        sentences = all_sentences(part)
+    else:
+        sentences = re.split(r"(?<=[.!?])\s+", _plain(part.get("body", "")))
+    sentences = [s.replace("**", "") for s in sentences if s]
+    if not sentences:
         return ""
-    sentences = re.split(r"(?<=[.!?])\s+", text)
     recap = ""
     for sentence in sentences:
         if recap and len(recap) + len(sentence) + 1 > limit:

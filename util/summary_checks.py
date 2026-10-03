@@ -32,37 +32,15 @@ _REPORTING_PASSIVE = re.compile(
 )
 
 
-# A summary that stops mid-sentence: the model's answer was cut off. 14 committed parts
-# ended like that, How to Fail at Almost Everything part 2 on "he concludes that
-# **passion is" with its highlight left open, which the reader then printed as "**".
-_SENTENCE_END = re.compile(r"[.!?…](?:[\"'”’)\]]|</b>|\*\*)*(?=\s|<br|$)")
-
-
+# A sentence that stops mid-way: the model's answer was cut off. 14 committed parts ended
+# like that, How to Fail at Almost Everything part 2 on "he concludes that **passion is"
+# with its highlight left open, which the reader then printed as "**". Checked on the last
+# stored sentence (`util.parts.last_sentence_finished`).
 def is_finished(text):
     # Every *, not just **: three parts end "...financial losses.*", a complete sentence
     # with a leftover italic mark, and are not cut off.
     plain = re.sub(r"<[^>]+>|\*+", "", text).strip()
     return not plain or bool(re.search(r"[.!?…][\"'”’)\]]*$", plain))
-
-
-def trim_to_last_sentence(text):
-    """(trimmed, dropped): `text` cut back to its last complete sentence.
-
-    Works on stored HTML or on markdown. A highlight left open by the cut is closed, and a
-    lone ** is removed. Returns the text unchanged, with nothing dropped, when there is no
-    complete sentence to fall back to.
-    """
-    ends = list(_SENTENCE_END.finditer(text))
-    if not ends:
-        return text, ""
-    cut = ends[-1].end()
-    trimmed, dropped = text[:cut].rstrip(), text[cut:].strip()
-    if trimmed.count("<b") > trimmed.count("</b>"):
-        trimmed += "</b>"
-    if trimmed.count("**") % 2:
-        head, _, tail = trimmed.rpartition("**")
-        trimmed = head + tail
-    return trimmed, re.sub(r"<[^>]+>|\*\*", "", dropped).strip()
 
 
 # A pointer at the book's layout, which a reader of the summary cannot follow: "In CHAPTER
@@ -89,6 +67,19 @@ def points_at_layout(text):
 def needs_direct(text):
     """Reports on the text, or points at its layout: both are fixed by `make_direct`."""
     return describes_the_text(text) or points_at_layout(text)
+
+
+# Words that say a claim is someone's view rather than fact. A fix may move them ("The
+# text argues" to "The author argues") but not drop them.
+_ATTRIBUTION = re.compile(
+    r"\b(argu\w*|suggest\w*|claim\w*|alleg\w*|believ\w*|contend\w*|maintain\w*|assert\w*"
+    r"|posit\w*|according to|reportedly|purported\w*|insist\w*)\b",
+    re.IGNORECASE,
+)
+
+
+def attributes(text):
+    return bool(_ATTRIBUTION.search(text))
 
 
 def word_count(text):

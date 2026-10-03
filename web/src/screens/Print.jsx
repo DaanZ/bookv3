@@ -7,6 +7,7 @@ import {
   highlightCount,
   newBudget,
   paginate,
+  partParagraphs,
   paletteFor,
   tokensOf,
 } from '../lib/reading';
@@ -80,7 +81,7 @@ function Block({ paragraphs, palette }) {
 }
 
 function Part({ part, index, total, palette }) {
-  const blocks = useMemo(() => paginate(part.body), [part.body]);
+  const blocks = useMemo(() => paginate(partParagraphs(part)), [part]);
   return (
     <section style={{ breakInside: 'auto', marginTop: index === 0 ? 0 : '1.6em' }}>
       <h2
@@ -148,7 +149,7 @@ export default function Print({ bookKey }) {
   }
 
   const marks = book.parts.reduce(
-    (sum, part) => sum + paginate(part.body).reduce((n, block) => n + highlightCount(block, MARKS_PER_BLOCK), 0),
+    (sum, part) => sum + paginate(partParagraphs(part)).reduce((n, block) => n + highlightCount(block, MARKS_PER_BLOCK), 0),
     0,
   );
 

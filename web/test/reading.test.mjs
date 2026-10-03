@@ -21,6 +21,8 @@ import {
   normaliseBody,
   paginate,
   paragraphsOf,
+  partParagraphs,
+  partText,
   PALETTE_NAMES,
   PALETTES,
   paletteFor,
@@ -177,6 +179,21 @@ describe('paginate', () => {
   test('sentences pair within a paragraph, never across one', () => {
     const pages = paginate('<h3>Heading</h3>\n\nSentence 1. Sentence 2. Sentence 3.\n\nSentence 4.');
     assert.deepEqual(pages.flat(), ['Heading', 'Sentence 1. Sentence 2.', 'Sentence 3.', 'Sentence 4.']);
+  });
+
+  test('reads a structured part as stored: headings alone, ** as highlights, no guessing', () => {
+    const part = {
+      paragraphs: [
+        { sentences: ['Done at the **U.S. Dept.** of Justice.', 'It said "churn" (cancellations).'] },
+        { heading: 'Lessons from Experience', sentences: ['Ess. Bouquet sold well.'] },
+      ],
+    };
+    assert.deepEqual(partParagraphs(part), [
+      ['Done at the <b>U.S. Dept.</b> of Justice.', 'It said "churn" (cancellations).'],
+      ['Lessons from Experience'],
+      ['Ess. Bouquet sold well.'],
+    ]);
+    assert.equal(partText(part).includes('<b>'), false);
   });
 
   test('takes paragraphs that are already sentences, the structured format', () => {

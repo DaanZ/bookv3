@@ -101,26 +101,35 @@ purpose: drop the text-as-document framing, **keep every hedge and attribution**
 death" became a flat claim about a real person.
 
 `tidy_parts.py` applies the same checks to books already on the shelf: dry run by default,
-`--write` to spend, `--only long|openers`, `--book <substring>`. It backs every file up to
-`data/backups/tidy-<time>/` before writing. **Do not rely on git for that** — a book
+`--write` to spend, `--only cutoff|long|openers`, `--book <substring>`. It backs every file
+up to `data/backups/tidy-<time>/` before writing. **Do not rely on git for that** — a book
 ingested since the last commit is not in git, and *The Art of Perfumery* was rewritten in
-that state with no way back. It only converts `<b>` ↔ `**` (checked byte-identical for
-3,042 of 3,071 parts; the rest are skipped), because a full HTML↔markdown round trip lost
-headings and glued `<br><br>` paragraphs.
+that state with no way back. On the structured format every fix replaces or drops whole
+sentences, so there is no HTML to convert back and nothing to skip.
 
 Conversation state is a `util.history.History` — a thin list of `{role, content}` dicts. The pattern
 throughout is to push each page's raw text as a `system` message, then a single `user` instruction.
 
-**Highlighting.** `chunks.format_text` converts the model's markdown (`**bold**`, `###`, `_em_`) into
-inline-styled HTML with `color: forestgreen`. Summary bodies are therefore stored as HTML and every
-renderer passes `unsafe_allow_html=True`.
-
-**Storage format.** Each book is one JSON file, named `sanitize_filename(title).json`:
+**Storage format: paragraphs of sentences, no HTML.** Each book is one JSON file, named
+`sanitize_filename(title).json`:
 
 ```json
 {"meta": {"title", "author", "category", "publisher", "pages"},
- "parts": [{"title": "...", "body": "<html>"}]}
+ "parts": [{"title": "...",
+            "paragraphs": [{"sentences": ["Grit beats **talent**.", "..."]},
+                           {"heading": "Lessons from Experience", "sentences": ["..."]}]}]}
 ```
+
+A highlight is `**` inside one sentence, and that is the only markup. The model returns this
+shape directly (`summary_paragraphs` in `chunks.py`), so **sentence boundaries are the
+model's, never guessed**. Until October 2026 a part was one HTML `body` from
+`chunks.format_text`, and the reader cut it into sentences itself: every wrong cut (an
+abbreviation, a closing quote, a `<br>`, an `<h3>`, a highlight spanning a full stop) became
+a paragraph break in the middle of a sentence. `web/tools/migrate-structured.mjs` converted
+the library using the reader's own splitter, so every book read exactly as before, and
+checked each part kept its words. A part that still has only a `body` is read through
+`util/parts.py` (Python) and `partParagraphs` (`web/src/lib/pages.js`), which every
+consumer goes through: the API, reader, print sheet, Streamlit and `homework.py`.
 
 **Book lifecycle.** `books/available/` holds unread summaries, `books/read/` holds finished ones.
 `POST /api/books/{key}/finish` means two things and profiles pull them apart. It always
@@ -319,8 +328,8 @@ look quiet, so read the `tests N / pass N` line rather than the absence of a red
   pages and the bar moves inside a chapter. At most `MAX_PAGES_PER_PART` (5) pages; past that
   pages get denser, which is why an overlong summary reads as walls of text. A last page under
   `LAST_PAGE_MIN_SHARE` of the one before is a fragment and is folded into it.
-- **Highlighting** replaces `chunks.py`'s inline forest-green. The pipeline's `<b>` still decides
-  *what* matters; the UI decides *how* it looks. `normaliseBody` strips the baked-in colour, then
+- **Highlighting.** The pipeline's `**` decides *what* matters; the UI decides *how* it looks.
+  `partParagraphs` turns each `**` into the `<b>` the reader's tokens use, then
   phrases take palette bands in reading order, capped at 8 marks per page by default (counting
   instances, not distinct phrases).
 
@@ -419,8 +428,6 @@ hide LLM latency behind the user's reading time.
 
 Don't treat these as intentional design when editing nearby code:
 
-- `chunks.format_text` calls `.replace("```")` with one argument — raises `TypeError` if a response
-  ever contains a ```` ```html ```` fence.
 - `app.py` writes uploads to `uploaded_files/` but creates `pdfs/`.
 - Broad `except Exception: print(ex)` blocks in `app.py` swallow errors into the console.
 - 68 of the book JSONs predate `meta.category` and have none; `patches.py` falls back deterministically.

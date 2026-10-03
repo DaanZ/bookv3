@@ -134,6 +134,34 @@ export function sentencesOf(paragraph) {
   return sentences;
 }
 
+// A stored sentence marks highlights with **; the rest of this module speaks <b>.
+const markup = (sentence) =>
+  String(sentence || '').replace(/\*\*([\s\S]+?)\*\*/g, '<b>$1</b>').replace(/\*\*/g, '');
+
+/**
+ * A part as paragraphs of sentences, whichever way it is stored.
+ *
+ * Structured parts (`paragraphs: [{heading?, sentences}]`) are read as they are: the
+ * sentence boundaries are the model's, so nothing is guessed and no break can fall
+ * inside a sentence. A heading becomes a paragraph of its own. A part that still has
+ * only an HTML `body` goes through `paragraphsOf`, the old guesswork.
+ */
+export function partParagraphs(part) {
+  if (!Array.isArray(part?.paragraphs)) return paragraphsOf(part?.body);
+  const out = [];
+  for (const paragraph of part.paragraphs) {
+    if (paragraph?.heading) out.push([String(paragraph.heading)]);
+    const sentences = (paragraph?.sentences || []).map(markup).filter((s) => s.trim());
+    if (sentences.length) out.push(sentences);
+  }
+  return out;
+}
+
+/** The part's words with no marks, for counting phrases across a book. */
+export function partText(part) {
+  return partParagraphs(part).flat().join('\n\n').replace(/<\/?b>/g, '');
+}
+
 /** A stored HTML body as paragraphs of sentences: the guesswork the structured format ends. */
 export function paragraphsOf(body) {
   return normaliseBody(body)

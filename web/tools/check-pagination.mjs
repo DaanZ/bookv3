@@ -7,7 +7,7 @@
 
 import { readFileSync } from 'node:fs';
 
-import { MAX_PAGES_PER_PART, paginate, normaliseBody } from '../src/lib/reading.js';
+import { MAX_PAGES_PER_PART, paginate, partParagraphs, normaliseBody } from '../src/lib/reading.js';
 
 const book = JSON.parse(readFileSync(process.argv[2], 'utf8'));
 
@@ -17,7 +17,7 @@ console.log('part  pages  paras/page  chars/page (max)');
 let worst = 0;
 let over = 0;
 for (const [i, part] of (book.parts || []).entries()) {
-  const pages = paginate(part.body);
+  const pages = paginate(partParagraphs(part));
   const perPage = Math.max(...pages.map((p) => p.length));
   const chars = Math.max(...pages.map((p) => normaliseBody(p.join(' ')).length));
   worst = Math.max(worst, chars);

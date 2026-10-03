@@ -4,6 +4,7 @@ from pydantic import Field, BaseModel
 
 from util.chatgpt import llm_strict
 from util.files import json_read_file
+from util.parts import part_markdown
 from util.history import History
 
 book = json_read_file(
@@ -52,8 +53,8 @@ def random_answer_model():
 
 for part in book["parts"]:
     history = History()
-    history.system(part["body"])
-    print(part["body"])
+    history.system(part_markdown(part))
+    print(part_markdown(part))
     homework: HomeworkModel = llm_strict(history, base_model=random_answer_model())
 
     print("Question: ", homework.question)

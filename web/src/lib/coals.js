@@ -1,5 +1,5 @@
 import { legible } from './colour.js';
-import { normaliseBody } from './pages.js';
+import { partText } from './pages.js';
 
 // ── Coals ──────────────────────────────────────────────────────────────────────────
 //
@@ -84,7 +84,7 @@ function keyText(text) {
  * highlighted or not, so a subject that is only bolded once still counts every mention.
  */
 export function phraseCounter(parts) {
-  const text = ` ${keyText((parts || []).map((part) => normaliseBody(part.body).replace(/<\/?b>/g, ' ')).join(' '))} `;
+  const text = ` ${keyText((parts || []).map(partText).join(' '))} `;
   const cache = new Map();
   return (key) => {
     if (cache.has(key)) return cache.get(key);

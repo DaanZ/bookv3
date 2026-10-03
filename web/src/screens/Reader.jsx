@@ -11,6 +11,7 @@ import {
   highlightKeys,
   newBudget,
   paginate,
+  partParagraphs,
   paletteFor,
   phraseCounter,
   progressOf,
@@ -32,7 +33,7 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
 
   const partCount = book.parts.length;
   const current = book.parts[part];
-  const pages = useMemo(() => paginate(current?.body), [current]);
+  const pages = useMemo(() => paginate(partParagraphs(current)), [current]);
   const pageIndex = Math.min(page, Math.max(0, pages.length - 1));
 
   // Colour and heat are two things. The colour is the reader's palette swept across the
