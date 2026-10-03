@@ -13,59 +13,284 @@
     "parts": [
         {
             "title": "Simplified Guide to Art History and Concepts",
-            "body": "<b style='color: forestgreen;'>Art 101</b> is a user-friendly book for art enthusiasts, aiming to make art accessible and enjoyable without the intimidation of overly technical art books. It covers a broad spectrum of techniques, movements, and artists in art history, like <b style='color: forestgreen;'><em style='color: forestgreen;'>Leonardo da Vinci's</em> Mona Lisa</b> and <b style='color: forestgreen;'><em style='color: forestgreen;'>Van Gogh's</em> struggles</b> for fame. The book presents information in a digestible format, allowing readers to learn important art concepts and stories in an easy-going manner. It promises to be a resource that both enlightens and equips readers with insightful knowledge about the world of art, from <b style='color: forestgreen;'>color theory</b> to <b style='color: forestgreen;'>typography</b> and beyond."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Art 101** is a user-friendly book for art enthusiasts, aiming to make art accessible and enjoyable without the intimidation of overly technical art books.",
+                        "It covers a broad spectrum of techniques, movements, and artists in art history, like **Leonardo da Vinci's Mona Lisa** and **Van Gogh's struggles** for fame.",
+                        "The book presents information in a digestible format, allowing readers to learn important art concepts and stories in an easy-going manner.",
+                        "It promises to be a resource that both enlightens and equips readers with insightful knowledge about the world of art, from **color theory** to **typography** and beyond."
+                    ]
+                }
+            ]
         },
         {
             "title": "Claude Monet: The Pioneer of Impressionism",
-            "body": "<b style='color: forestgreen;'>Claude Monet</b> was a <b style='color: forestgreen;'>founding member</b> of the <b style='color: forestgreen;'>Impressionist movement</b> and is known for his iconic <b style='color: forestgreen;'>water lilies</b> paintings from his garden in Giverny, France. His early life was marked by a <b style='color: forestgreen;'>dislike for classroom learning</b>, preferring to <b style='color: forestgreen;'>draw caricatures</b> and later attending the <b style='color: forestgreen;'>Le Havre secondary school of the arts</b>. Meeting <b style='color: forestgreen;'>Eugène Boudin</b> was pivotal, as Boudin introduced Monet to the <b style='color: forestgreen;'>en plein air</b> style of painting. Monet moved to <b style='color: forestgreen;'>Paris</b> in 1859, where he remained committed to painting outdoors despite traditionalist views in the city’s art circles.\n\nAfter the <b style='color: forestgreen;'>Franco-Prussian War</b>, Monet returned to France and in 1874 exhibited \"<b style='color: forestgreen;'>Impression, Soleil Levant</b>,\" giving birth to the term <b style='color: forestgreen;'>\"Impressionism.\"</b> Despite initial criticism, Monet’s popularity grew. His wife, <b style='color: forestgreen;'>Camille Doncieux,</b> was a key muse in his early works and continued to influence him until her death. After her death, Monet moved to <b style='color: forestgreen;'>Giverny</b>, where he thrived, creating some of his best works. Even as he faced health issues like <b style='color: forestgreen;'>cataracts,</b> Monet continued to paint until his death in 1926. His legacy has only grown, with his artwork reaching high auction prices and being featured globally."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Claude Monet** was a **founding member** of the **Impressionist movement** and is known for his iconic **water lilies** paintings from his garden in Giverny, France.",
+                        "His early life was marked by a **dislike for classroom learning**, preferring to **draw caricatures** and later attending the **Le Havre secondary school of the arts**.",
+                        "Meeting **Eug\u00e8ne Boudin** was pivotal, as Boudin introduced Monet to the **en plein air** style of painting.",
+                        "Monet moved to **Paris** in 1859, where he remained committed to painting outdoors despite traditionalist views in the city\u2019s art circles."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "After the **Franco-Prussian War**, Monet returned to France and in 1874 exhibited \"**Impression, Soleil Levant**,\" giving birth to the term **\"Impressionism.\"**",
+                        "Despite initial criticism, Monet\u2019s popularity grew.",
+                        "His wife, **Camille Doncieux,** was a key muse in his early works and continued to influence him until her death.",
+                        "After her death, Monet moved to **Giverny**, where he thrived, creating some of his best works.",
+                        "Even as he faced health issues like **cataracts,** Monet continued to paint until his death in 1926.",
+                        "His legacy has only grown, with his artwork reaching high auction prices and being featured globally."
+                    ]
+                }
+            ]
         },
         {
             "title": "Man Ray: Versatile Creator and Innovator",
-            "body": "<b style='color: forestgreen;'>Man Ray</b>, born <b style='color: forestgreen;'>Emmanuel Radnitzky</b>, emerged as a <b style='color: forestgreen;'>versatile artist</b> excelling in multiple mediums. Despite opportunities in architecture, he pursued <b style='color: forestgreen;'>painting</b>, joining influential <b style='color: forestgreen;'>artists</b> at the <b style='color: forestgreen;'>Armory Show</b>, which inspired him. His associations included <b style='color: forestgreen;'>Marcel Duchamp</b>, uniting them in both friendship and creativity, leading to <b style='color: forestgreen;'>Dadaist</b> collaborations in New York. <b style='color: forestgreen;'>Photography</b> became a passion in the <b style='color: forestgreen;'>1910s</b>, establishing him in the <b style='color: forestgreen;'>avant-garde</b> scene with influential exhibitions and collaborations, later expanding into <b style='color: forestgreen;'>Surrealism</b> in Paris.\n\nIn Paris, <b style='color: forestgreen;'>Man Ray's</b> work matured, including his innovative <b style='color: forestgreen;'>'rayograph'</b> technique—a <b style='color: forestgreen;'>photographic</b> form without cameras, fitting into <b style='color: forestgreen;'>Surrealism</b>. Supporting himself through <b style='color: forestgreen;'>fashion photography</b>, he interacted with literary giants, enhancing his cultural impact. His legacy includes <b style='color: forestgreen;'>surreal films</b> and impressive <b style='color: forestgreen;'>installations</b>, maintaining artistic <b style='color: forestgreen;'>freedom</b> despite challenges in America during <b style='color: forestgreen;'>World War II</b>. <b style='color: forestgreen;'>Returning</b> to Paris, he continued creating art and published his <b style='color: forestgreen;'>autobiography</b>. His work in diverse mediums left a lasting mark in the art world until his death in <b style='color: forestgreen;'>1976</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Man Ray**, born **Emmanuel Radnitzky**, emerged as a **versatile artist** excelling in multiple mediums.",
+                        "Despite opportunities in architecture, he pursued **painting**, joining influential **artists** at the **Armory Show**, which inspired him.",
+                        "His associations included **Marcel Duchamp**, uniting them in both friendship and creativity, leading to **Dadaist** collaborations in New York.",
+                        "**Photography** became a passion in the **1910s**, establishing him in the **avant-garde** scene with influential exhibitions and collaborations, later expanding into **Surrealism** in Paris."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "In Paris, **Man Ray's** work matured, including his innovative **'rayograph'** technique\u2014a **photographic** form without cameras, fitting into **Surrealism**.",
+                        "Supporting himself through **fashion photography**, he interacted with literary giants, enhancing his cultural impact.",
+                        "His legacy includes **surreal films** and impressive **installations**, maintaining artistic **freedom** despite challenges in America during **World War II**.",
+                        "**Returning** to Paris, he continued creating art and published his **autobiography**.",
+                        "His work in diverse mediums left a lasting mark in the art world until his death in **1976**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Perspective in Art: Different Types and Historical Developments",
-            "body": "<h3 style='color: forestgreen;'>Four-Point and Zero-Point Perspective</h3>\n\n<b style='color: forestgreen;'>Four-Point Perspective</b> involves more than three <b style='color: forestgreen;'>vanishing points</b> on a horizon, creating curved or spherical images that may form <b style='color: forestgreen;'>impossible scenes</b> beyond 360 degrees. Meanwhile, <b style='color: forestgreen;'>Zero-Point Perspective</b> contains no parallel lines or vanishing points, depicting natural scenes like valleys or ponds. Though no vanishing points are present, artists can still convey <b style='color: forestgreen;'>depth and distance</b> effectively. This perspective often enhances the <b style='color: forestgreen;'>natural feel</b> of artwork.\n\n<h3 style='color: forestgreen;'>History of Perspective</h3>\n\nIn ancient times, artists often didn't use perspective as we know today. They sized figures based on <b style='color: forestgreen;'>importance</b> instead of their distance. Medieval artists sometimes varied <b style='color: forestgreen;'>figure sizes</b> illogically, depicting humans as both larger and smaller than buildings they stood near. The <b style='color: forestgreen;'>Renaissance</b> changed this; around the early 1400s, Brunelleschi advanced the geometric concept of perspective by making<b style='color: forestgreen;'> realistic scenes</b>, like his painting of the <b style='color: forestgreen;'>Florence Baptistery</b>. The use of perspective enabled artists from the Renaissance onwards to create more evocative scenes. Intriguingly, ancient methods sometimes reversed today’s practice by making distant objects appear <b style='color: forestgreen;'>larger</b> than those closer."
+            "paragraphs": [
+                {
+                    "heading": "Four-Point and Zero-Point Perspective",
+                    "sentences": [
+                        "**Four-Point Perspective** involves more than three **vanishing points** on a horizon, creating curved or spherical images that may form **impossible scenes** beyond 360 degrees.",
+                        "Meanwhile, **Zero-Point Perspective** contains no parallel lines or vanishing points, depicting natural scenes like valleys or ponds.",
+                        "Though no vanishing points are present, artists can still convey **depth and distance** effectively.",
+                        "This perspective often enhances the **natural feel** of artwork."
+                    ]
+                },
+                {
+                    "heading": "History of Perspective",
+                    "sentences": [
+                        "In ancient times, artists often didn't use perspective as we know today.",
+                        "They sized figures based on **importance** instead of their distance.",
+                        "Medieval artists sometimes varied **figure sizes** illogically, depicting humans as both larger and smaller than buildings they stood near.",
+                        "The **Renaissance** changed this; around the early 1400s, Brunelleschi advanced the geometric concept of perspective by making** realistic scenes**, like his painting of the **Florence Baptistery**.",
+                        "The use of perspective enabled artists from the Renaissance onwards to create more evocative scenes.",
+                        "Intriguingly, ancient methods sometimes reversed today\u2019s practice by making distant objects appear **larger** than those closer."
+                    ]
+                }
+            ]
         },
         {
             "title": "Renoir's Artistic Transformation and Late Career",
-            "body": "<b style='color: forestgreen;'>Renoir</b> was attracted to <b style='color: forestgreen;'>Raphael's</b> classical qualities during his travels in 1881, impacting his painting style. His pieces from 1883-1884 are part of the \"<b style='color: forestgreen;'>Ingres Period</b>,\" marked by a focus on <b style='color: forestgreen;'>line</b> and <b style='color: forestgreen;'>form</b>, although still using a colorful <b style='color: forestgreen;'>palette</b>. From around 1890, Renoir distanced himself from <b style='color: forestgreen;'>Impressionism</b> and revisited <b style='color: forestgreen;'>nudes</b> and <b style='color: forestgreen;'>domestic</b> scenes, while thin brush strokes returned to his paintings. Financial improvements came with marrying <b style='color: forestgreen;'>Aline Charigot</b> and exhibiting with <b style='color: forestgreen;'>Paul Durand-Ruel</b> in 1892 and marked a significant turn in Renoir's career. \n\nRenoir's later years involved adapting to <b style='color: forestgreen;'>rheumatoid arthritis</b> by moving to <b style='color: forestgreen;'>Cagnes-sur-Mer</b> for a better <b style='color: forestgreen;'>climate</b>, a place where he continued to paint until his death in 1919. This period included creating <b style='color: forestgreen;'>self-portraits</b>, with earlier ones being dark and later ones more vibrant in color. Despite health challenges, Renoir continued to serve his art, ultimately bringing his life to a satisfying close with notable visits to the Louvre to see how he had evolved alongside the great painters."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Renoir** was attracted to **Raphael's** classical qualities during his travels in 1881, impacting his painting style.",
+                        "His pieces from 1883-1884 are part of the \"**Ingres Period**,\" marked by a focus on **line** and **form**, although still using a colorful **palette**.",
+                        "From around 1890, Renoir distanced himself from **Impressionism** and revisited **nudes** and **domestic** scenes, while thin brush strokes returned to his paintings.",
+                        "Financial improvements came with marrying **Aline Charigot** and exhibiting with **Paul Durand-Ruel** in 1892 and marked a significant turn in Renoir's career."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Renoir's later years involved adapting to **rheumatoid arthritis** by moving to **Cagnes-sur-Mer** for a better **climate**, a place where he continued to paint until his death in 1919.",
+                        "This period included creating **self-portraits**, with earlier ones being dark and later ones more vibrant in color.",
+                        "Despite health challenges, Renoir continued to serve his art, ultimately bringing his life to a satisfying close with notable visits to the Louvre to see how he had evolved alongside the great painters."
+                    ]
+                }
+            ]
         },
         {
             "title": "Edward Hopper: Capturing Quiet Moments in American Life",
-            "body": "<b style='color: forestgreen;'>Edward Hopper</b> was a New York-based American <b style='color: forestgreen;'>realist painter</b> and <b style='color: forestgreen;'>printmaker</b>. Best known for his <b style='color: forestgreen;'>oil paintings</b> of <b style='color: forestgreen;'>seascapes</b> and <b style='color: forestgreen;'>rural landscapes</b>, he depicted scenes of <b style='color: forestgreen;'>American life</b> featuring <b style='color: forestgreen;'>quiet moments</b>. Often, these moments centered around a <b style='color: forestgreen;'>solitary woman</b>, projecting <b style='color: forestgreen;'>ambiguous loneliness</b>. Born to a <b style='color: forestgreen;'>middle-class family</b> in <b style='color: forestgreen;'>Nyack, New York</b>, his parents encouraged his talent from a young age, helping him to create his first signed painting, *Rowboat in Rocky Cove*, in 1895. Hopper’s parents provided art supplies, fostering his growth."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Edward Hopper** was a New York-based American **realist painter** and **printmaker**.",
+                        "Best known for his **oil paintings** of **seascapes** and **rural landscapes**, he depicted scenes of **American life** featuring **quiet moments**.",
+                        "Often, these moments centered around a **solitary woman**, projecting **ambiguous loneliness**.",
+                        "Born to a **middle-class family** in **Nyack, New York**, his parents encouraged his talent from a young age, helping him to create his first signed painting, *Rowboat in Rocky Cove*, in 1895.",
+                        "Hopper\u2019s parents provided art supplies, fostering his growth."
+                    ]
+                }
+            ]
         },
         {
             "title": "Banksy: The Anonymity of Artistic Revolution",
-            "body": "In the realm of <b style='color: forestgreen;'>art</b>, it's often debated how much <b style='color: forestgreen;'>medium</b> matters. <b style='color: forestgreen;'>Banksy</b>, the renowned, yet anonymous, street artist from <b style='color: forestgreen;'>Bristol</b> who rose to fame in the 1990s, demonstrates that it can be both transformative and controversial. While his <b style='color: forestgreen;'>graffiti</b> is considered vandalism by some, others view his <b style='color: forestgreen;'>politically charged</b> stencils as powerful. In 2005, he created art along the <b style='color: forestgreen;'>Israeli West Bank barrier</b>, urging viewers to <b style='color: forestgreen;'>rethink</b> society's constructs.\n\nBanksy's <b style='color: forestgreen;'>art</b> often challenges the <b style='color: forestgreen;'>status quo</b>, mixing <b style='color: forestgreen;'>satire</b> and <b style='color: forestgreen;'>social commentary</b>. While some critics demean his use of <b style='color: forestgreen;'>stencils</b> as unorthodox, they also acknowledge that his <b style='color: forestgreen;'>innovative techniques</b> make his pieces accessible and widely recognized. His works, like those depicting a protester throwing a bouquet or ancient figures pushing a shopping cart, provoke thought by blending <b style='color: forestgreen;'>humor</b> and <b style='color: forestgreen;'>critique</b>. Despite the <b style='color: forestgreen;'>non-traditional medium</b>, Banksy's art has transitioned to <b style='color: forestgreen;'>galleries</b>, though its <b style='color: forestgreen;'>ephemeral nature</b> keeps it unique."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In the realm of **art**, it's often debated how much **medium** matters.",
+                        "**Banksy**, the renowned, yet anonymous, street artist from **Bristol** who rose to fame in the 1990s, demonstrates that it can be both transformative and controversial.",
+                        "While his **graffiti** is considered vandalism by some, others view his **politically charged** stencils as powerful.",
+                        "In 2005, he created art along the **Israeli West Bank barrier**, urging viewers to **rethink** society's constructs."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Banksy's **art** often challenges the **status quo**, mixing **satire** and **social commentary**.",
+                        "While some critics demean his use of **stencils** as unorthodox, they also acknowledge that his **innovative techniques** make his pieces accessible and widely recognized.",
+                        "His works, like those depicting a protester throwing a bouquet or ancient figures pushing a shopping cart, provoke thought by blending **humor** and **critique**.",
+                        "Despite the **non-traditional medium**, Banksy's art has transitioned to **galleries**, though its **ephemeral nature** keeps it unique."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Rise of Surrealism",
-            "body": "<b style='color: forestgreen;'>Surrealism</b> was a movement that began with André Breton's <b style='color: forestgreen;'>Manifesto of Surrealism</b> in 1924. Its core idea was to abandon common perceptions of reality, spurning logic and tradition, and instead, exploring the <b style='color: forestgreen;'>unconscious mind</b> through <b style='color: forestgreen;'>artistic expression</b>. By creating art that defied pre-existing reality, artists sought to discover an unrestrained appreciation of art. Notable works such as René Magritte's <b style='color: forestgreen;'>\"The Treachery of Images,\"</b> showed this approach by presenting familiar objects with contradictory messages to challenge the viewer's perceptions. Surrealism thrived by <b style='color: forestgreen;'>integrating dreamlike elements</b> and <b style='color: forestgreen;'>symbolism</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Surrealism** was a movement that began with Andr\u00e9 Breton's **Manifesto of Surrealism** in 1924.",
+                        "Its core idea was to abandon common perceptions of reality, spurning logic and tradition, and instead, exploring the **unconscious mind** through **artistic expression**.",
+                        "By creating art that defied pre-existing reality, artists sought to discover an unrestrained appreciation of art.",
+                        "Notable works such as Ren\u00e9 Magritte's **\"The Treachery of Images,\"** showed this approach by presenting familiar objects with contradictory messages to challenge the viewer's perceptions.",
+                        "Surrealism thrived by **integrating dreamlike elements** and **symbolism**."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Evolution and Impact of Public Art",
-            "body": "<h3 style='color: forestgreen;'>Public Art Evolution</h3>\n\n<b style='color: forestgreen;'>Public art</b> can be anything from <b style='color: forestgreen;'>sidewalk chalk drawings</b> to <b style='color: forestgreen;'>massive sculptures</b> intended for group experiences, not just private viewing. The earliest examples were <b style='color: forestgreen;'>monuments, memorials, and architecture</b>, serving both <b style='color: forestgreen;'>aesthetic and historical purposes</b>. The term popularized in the 1960s, encompassed any <b style='color: forestgreen;'>art in the public sphere</b>, funded by the public. Initially, artists like <b style='color: forestgreen;'>Isamu Noguchi, Henry Moore, and Alexander Calder</b> weren't as focused on the community, but rather their <b style='color: forestgreen;'>artistic visions</b>.\n\nA shift in the 1970s began with funding from the <b style='color: forestgreen;'>NEA</b> and <b style='color: forestgreen;'>GSA</b>, where public art started to incorporate more <b style='color: forestgreen;'>community and environmental considerations</b>, as seen with the likes of <b style='color: forestgreen;'>Niki de Saint Phalle and Richard Serra</b>. Controversies such as the <b style='color: forestgreen;'>Tilted Arc</b> by Serra highlighted the community's role in public art— it was removed due to public dissent despite its intentional design for a specific location. <b style='color: forestgreen;'>Modern public spaces</b> for art installations can be anywhere accessible to the public, from <b style='color: forestgreen;'>city squares to libraries</b>. <h3 style='color: forestgreen;'>Evolution and Influence </h3>\n\nThe definition of <b style='color: forestgreen;'>public art</b> continued evolving into <b style='color: forestgreen;'>anti-monument movements</b> aiming to address public issues more transparently through art, with pioneers like <b style='color: forestgreen;'>Jenny Holtzer and Félix González-Torres</b> focusing on <b style='color: forestgreen;'>personal narratives and societal issues</b>. Modern public art doesn’t stay static—it continually <b style='color: forestgreen;'>changes and influences</b> the public spaces people inhabit. Public art blends different <b style='color: forestgreen;'>cultures and ideas</b>, representing a universal trend of <b style='color: forestgreen;'>constant transformation and engagement</b>. Art is not restricted to any one form but continues to expand into <b style='color: forestgreen;'>participatory, environmental, and activist domains.</b>"
+            "paragraphs": [
+                {
+                    "heading": "Public Art Evolution",
+                    "sentences": [
+                        "**Public art** can be anything from **sidewalk chalk drawings** to **massive sculptures** intended for group experiences, not just private viewing.",
+                        "The earliest examples were **monuments, memorials, and architecture**, serving both **aesthetic and historical purposes**.",
+                        "The term popularized in the 1960s, encompassed any **art in the public sphere**, funded by the public.",
+                        "Initially, artists like **Isamu Noguchi, Henry Moore, and Alexander Calder** weren't as focused on the community, but rather their **artistic visions**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "A shift in the 1970s began with funding from the **NEA** and **GSA**, where public art started to incorporate more **community and environmental considerations**, as seen with the likes of **Niki de Saint Phalle and Richard Serra**.",
+                        "Controversies such as the **Tilted Arc** by Serra highlighted the community's role in public art\u2014 it was removed due to public dissent despite its intentional design for a specific location.",
+                        "**Modern public spaces** for art installations can be anywhere accessible to the public, from **city squares to libraries**."
+                    ]
+                },
+                {
+                    "heading": "Evolution and Influence",
+                    "sentences": [
+                        "The definition of **public art** continued evolving into **anti-monument movements** aiming to address public issues more transparently through art, with pioneers like **Jenny Holtzer and F\u00e9lix Gonz\u00e1lez-Torres** focusing on **personal narratives and societal issues**.",
+                        "Modern public art doesn\u2019t stay static\u2014it continually **changes and influences** the public spaces people inhabit.",
+                        "Public art blends different **cultures and ideas**, representing a universal trend of **constant transformation and engagement**.",
+                        "Art is not restricted to any one form but continues to expand into **participatory, environmental, and activist domains.**"
+                    ]
+                }
+            ]
         },
         {
             "title": "Piet Mondrian and Neoplasticism",
-            "body": "<b style='color: forestgreen;'>Piet Mondrian</b> was encouraged from a young age to pursue <b style='color: forestgreen;'>art</b>, with lessons from family and formal education. He <b style='color: forestgreen;'>forewent</b> teaching to study at the Royal Academy of Visual Arts. Influenced by <b style='color: forestgreen;'>Hague School</b> and later Cubism, Mondrian moved to <b style='color: forestgreen;'>Paris</b>. In 1912, he <b style='color: forestgreen;'>embraced Cubism</b> after being inspired by the likes of Picasso. Mondrian sought <b style='color: forestgreen;'>greater abstraction</b> by stripping forms to flat lines and shapes, laying the groundwork for his <b style='color: forestgreen;'>Neoplasticism</b> theory. \n\nDuring his return to <b style='color: forestgreen;'>Holland</b> due to WWI, he refined <b style='color: forestgreen;'>Neoplasticism</b> alongside Theo van Doesburg in the <b style='color: forestgreen;'>De Stijl</b> movement, aiming for a universal art \"language.\" Mondrian’s work balanced <b style='color: forestgreen;'>opposing forces</b>, emphasizing elements such as positive versus negative and dynamic versus static. With his ideas gaining <b style='color: forestgreen;'>worldwide recognition</b> and American support, Mondrian moved to <b style='color: forestgreen;'>New York</b> during rising Nazi aggression, which banned his art. In NY, he found success and inspiration before his death in 1944, with his work, like his piece *Composition with Yellow, Blue, and Red*, achieving <b style='color: forestgreen;'>iconic status</b> in modern art."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Piet Mondrian** was encouraged from a young age to pursue **art**, with lessons from family and formal education.",
+                        "He **forewent** teaching to study at the Royal Academy of Visual Arts.",
+                        "Influenced by **Hague School** and later Cubism, Mondrian moved to **Paris**.",
+                        "In 1912, he **embraced Cubism** after being inspired by the likes of Picasso.",
+                        "Mondrian sought **greater abstraction** by stripping forms to flat lines and shapes, laying the groundwork for his **Neoplasticism** theory."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "During his return to **Holland** due to WWI, he refined **Neoplasticism** alongside Theo van Doesburg in the **De Stijl** movement, aiming for a universal art \"language.\"",
+                        "Mondrian\u2019s work balanced **opposing forces**, emphasizing elements such as positive versus negative and dynamic versus static.",
+                        "With his ideas gaining **worldwide recognition** and American support, Mondrian moved to **New York** during rising Nazi aggression, which banned his art.",
+                        "In NY, he found success and inspiration before his death in 1944, with his work, like his piece *Composition with Yellow, Blue, and Red*, achieving **iconic status** in modern art."
+                    ]
+                }
+            ]
         },
         {
             "title": "Advancements in Early Photography",
-            "body": "<b style='color: forestgreen;'>Camera photography</b> advanced significantly from early <b style='color: forestgreen;'>pinhole cameras</b> to more intricate <b style='color: forestgreen;'>reproduction techniques</b>. <b style='color: forestgreen;'>Niépce</b> created the first permanent photograph using a <b style='color: forestgreen;'>camera obscura</b> in 1826, though it required eight-hour exposure. Niépce later partnered with <b style='color: forestgreen;'>Daguerre</b> to reduce the exposure time. Daguerre took the first-ever photo of a person in 1838. <b style='color: forestgreen;'>Talbot's calotype process</b> introduced <b style='color: forestgreen;'>negative images</b>, while the <b style='color: forestgreen;'>cyanotype</b> or \"<b style='color: forestgreen;'>blueprint</b>\" was developed by <b style='color: forestgreen;'>John Herschel</b>.\n\n<b style='color: forestgreen;'>Color photography</b> evolved from <b style='color: forestgreen;'>monochrome</b> origins. The first permanent color photo was taken using <b style='color: forestgreen;'>Maxwell’s principle</b> in 1861. <b style='color: forestgreen;'>Autochrome</b> by the <b style='color: forestgreen;'>Lumière brothers</b> was the first successful commercial color process, followed by <b style='color: forestgreen;'>Kodak’s Kodachrome</b> in 1935. The <b style='color: forestgreen;'>Polaroid</b> introduced instant color photography in 1963. Previous methods required long exposures, leading to tools like the <b style='color: forestgreen;'>\"Brady stand\"</b> to provide stability, named after photographer <b style='color: forestgreen;'>Mathew Brady</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Camera photography** advanced significantly from early **pinhole cameras** to more intricate **reproduction techniques**.",
+                        "**Ni\u00e9pce** created the first permanent photograph using a **camera obscura** in 1826, though it required eight-hour exposure.",
+                        "Ni\u00e9pce later partnered with **Daguerre** to reduce the exposure time.",
+                        "Daguerre took the first-ever photo of a person in 1838.",
+                        "**Talbot's calotype process** introduced **negative images**, while the **cyanotype** or \"**blueprint**\" was developed by **John Herschel**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Color photography** evolved from **monochrome** origins.",
+                        "The first permanent color photo was taken using **Maxwell\u2019s principle** in 1861.",
+                        "**Autochrome** by the **Lumi\u00e8re brothers** was the first successful commercial color process, followed by **Kodak\u2019s Kodachrome** in 1935.",
+                        "The **Polaroid** introduced instant color photography in 1963.",
+                        "Previous methods required long exposures, leading to tools like the **\"Brady stand\"** to provide stability, named after photographer **Mathew Brady**."
+                    ]
+                }
+            ]
         },
         {
             "title": "David Hockney's Art and Life Journey",
-            "body": "<b style='color: forestgreen;'>David Hockney</b> was a significant contributor to the 1960s <b style='color: forestgreen;'>Pop art movement</b>, known for his diverse exploration of <b style='color: forestgreen;'>mediums</b> such as prints and stage designs. His work, noted for blending naturalism and realism, often tackled themes of human <b style='color: forestgreen;'>sexuality</b> and love, while his lifestyle accentuated his reputation as a <b style='color: forestgreen;'>playboy of the art world</b>. Hockney's devotion to his artwork remained consistent throughout his career. Born in <b style='color: forestgreen;'>Bradford, England</b>, he explored art from an early age, developing a dual passion for <b style='color: forestgreen;'>musical theatre</b> due to his <b style='color: forestgreen;'>synesthesia</b>, a condition that causes him to see music as colors."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**David Hockney** was a significant contributor to the 1960s **Pop art movement**, known for his diverse exploration of **mediums** such as prints and stage designs.",
+                        "His work, noted for blending naturalism and realism, often tackled themes of human **sexuality** and love, while his lifestyle accentuated his reputation as a **playboy of the art world**.",
+                        "Hockney's devotion to his artwork remained consistent throughout his career.",
+                        "Born in **Bradford, England**, he explored art from an early age, developing a dual passion for **musical theatre** due to his **synesthesia**, a condition that causes him to see music as colors."
+                    ]
+                }
+            ]
         },
         {
             "title": "Vincent van Gogh's Turbulent Artistic Life",
-            "body": "Vincent van Gogh was <b style='color: forestgreen;'>largely unknown</b> in his lifetime, selling possibly only one painting. He created around <b style='color: forestgreen;'>1,000 watercolors and sketches</b> and about 900 oil paintings, which are now worth <b style='color: forestgreen;'>millions</b>. Born in 1853 in Holland, he showed early interest in art but pursued it seriously after <b style='color: forestgreen;'>art dealership and ministry</b> didn't suit him. Van Gogh experimented at <b style='color: forestgreen;'>Académie Royale des Beaux-Arts</b> but preferred real-life portraiture, struggling financially along the way.\n\nMentored by <b style='color: forestgreen;'>Anton Mauve</b>, Van Gogh embraced oil paintings and famously painted <b style='color: forestgreen;'>The Potato Eaters</b> focusing on the working class. Though it was deemed a <b style='color: forestgreen;'>failure</b>, Van Gogh was proud, painted with <b style='color: forestgreen;'>earth tones</b>, and moved to <b style='color: forestgreen;'>Antwerp</b> immersed in his work despite ignoring public interest. His letters to his brother <b style='color: forestgreen;'>Theo</b> reveal insights into his struggles. A move to France led to influence by <b style='color: forestgreen;'>Impressionists</b>, brightening his palette, but also precipitated his mental health decline, leading to a <b style='color: forestgreen;'>razor incident</b> with Gauguin and self-mutilation. Entering a <b style='color: forestgreen;'>hospital</b> he painted masterpieces like <b style='color: forestgreen;'>Starry Night</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Vincent van Gogh was **largely unknown** in his lifetime, selling possibly only one painting.",
+                        "He created around **1,000 watercolors and sketches** and about 900 oil paintings, which are now worth **millions**.",
+                        "Born in 1853 in Holland, he showed early interest in art but pursued it seriously after **art dealership and ministry** didn't suit him.",
+                        "Van Gogh experimented at **Acad\u00e9mie Royale des Beaux-Arts** but preferred real-life portraiture, struggling financially along the way."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Mentored by **Anton Mauve**, Van Gogh embraced oil paintings and famously painted **The Potato Eaters** focusing on the working class.",
+                        "Though it was deemed a **failure**, Van Gogh was proud, painted with **earth tones**, and moved to **Antwerp** immersed in his work despite ignoring public interest.",
+                        "His letters to his brother **Theo** reveal insights into his struggles.",
+                        "A move to France led to influence by **Impressionists**, brightening his palette, but also precipitated his mental health decline, leading to a **razor incident** with Gauguin and self-mutilation.",
+                        "Entering a **hospital** he painted masterpieces like **Starry Night**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Golden Ratio in Modern Applications",
-            "body": "In <b style='color: forestgreen;'>modern architecture</b>, the use of the <b style='color: forestgreen;'>Golden Ratio</b> is clearly noticeable, especially through Le Corbusier's work. His <b style='color: forestgreen;'>Modulor system</b> applies <b style='color: forestgreen;'>mathematical proportions</b> from the human body to buildings. Notable examples are the <b style='color: forestgreen;'>United Nations Headquarters</b> and <b style='color: forestgreen;'>Villa Stein</b> with Golden Rectangles.\n\nIn <b style='color: forestgreen;'>art and music</b>, the Golden Ratio's presence is debated, with some claiming it's a matter of intent, like in Da Vinci’s <b style='color: forestgreen;'>Mona Lisa</b>. It's also seen in works like <b style='color: forestgreen;'>The Sacrament of the Last Supper</b> by <b style='color: forestgreen;'>Dalí</b> and <b style='color: forestgreen;'>Michelangelo’s David</b>. In <b style='color: forestgreen;'>music</b>, <b style='color: forestgreen;'>Mozart</b> may have used the Golden Ratio in his <b style='color: forestgreen;'>sonata-form</b> compositions, evidenced by the proportions in Sonata No. 1 in C Major."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In **modern architecture**, the use of the **Golden Ratio** is clearly noticeable, especially through Le Corbusier's work.",
+                        "His **Modulor system** applies **mathematical proportions** from the human body to buildings.",
+                        "Notable examples are the **United Nations Headquarters** and **Villa Stein** with Golden Rectangles."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "In **art and music**, the Golden Ratio's presence is debated, with some claiming it's a matter of intent, like in Da Vinci\u2019s **Mona Lisa**.",
+                        "It's also seen in works like **The Sacrament of the Last Supper** by **Dal\u00ed** and **Michelangelo\u2019s David**.",
+                        "In **music**, **Mozart** may have used the Golden Ratio in his **sonata-form** compositions, evidenced by the proportions in Sonata No. 1 in C Major."
+                    ]
+                }
+            ]
         }
     ]
 }

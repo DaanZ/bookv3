@@ -11,43 +11,181 @@
     "parts": [
         {
             "title": "Lean Methodology for Efficient Product Development",
-            "body": "<b style='color: forestgreen;'>Companies</b> need to quickly develop <b style='color: forestgreen;'>high-quality products</b> to stay ahead of competition but face <b style='color: forestgreen;'>tight deadlines</b> and <b style='color: forestgreen;'>limited budgets</b>. Emrah Yayici's book offers a \"<b style='color: forestgreen;'>lean</b>\" approach throughout the <b style='color: forestgreen;'>product development</b> life-cycle to address these challenges. Lean techniques help foster <b style='color: forestgreen;'>innovation</b>, achieve faster <b style='color: forestgreen;'>market entry</b>, and improve <b style='color: forestgreen;'>profitability</b> by removing waste. This methodology is advantageous for not just <b style='color: forestgreen;'>start-ups</b>, but <b style='color: forestgreen;'>enterprises</b> too, across varied industries, enhancing product <b style='color: forestgreen;'>design</b>, <b style='color: forestgreen;'>requirements gathering</b>, <b style='color: forestgreen;'>UX</b>, and <b style='color: forestgreen;'>project management</b>. The book is a useful resource for <b style='color: forestgreen;'>business analysts</b>, <b style='color: forestgreen;'>entrepreneurs</b>, <b style='color: forestgreen;'>UX designers</b>, and more."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Companies** need to quickly develop **high-quality products** to stay ahead of competition but face **tight deadlines** and **limited budgets**.",
+                        "Emrah Yayici's book offers a \"**lean**\" approach throughout the **product development** life-cycle to address these challenges.",
+                        "Lean techniques help foster **innovation**, achieve faster **market entry**, and improve **profitability** by removing waste.",
+                        "This methodology is advantageous for not just **start-ups**, but **enterprises** too, across varied industries, enhancing product **design**, **requirements gathering**, **UX**, and **project management**.",
+                        "The book is a useful resource for **business analysts**, **entrepreneurs**, **UX designers**, and more."
+                    ]
+                }
+            ]
         },
         {
             "title": "Lean Product Development Principles",
-            "body": "<b style='color: forestgreen;'>Lean principles</b> encourage companies to develop <b style='color: forestgreen;'>innovative products</b> faster by eliminating waste in the <b style='color: forestgreen;'>Product Development Lifecycle (PDLC)</b>. Firms should focus on being <b style='color: forestgreen;'>value-oriented</b> by prioritizing essential product features and <b style='color: forestgreen;'>becoming customer-centered</b>, prioritizing customer needs over competitors. They should adopt an <b style='color: forestgreen;'>iterative approach</b>, starting with basic versions and improving through customer feedback, and maintain <b style='color: forestgreen;'>simplicity</b>, focusing only on necessary features. Lastly, companies should not fear <b style='color: forestgreen;'>early failure</b> but use it for <b style='color: forestgreen;'>continuous improvement</b> and optimize work flow by creating <b style='color: forestgreen;'>artifacts just in time</b> to avoid unnecessary work-in-process inventory."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Lean principles** encourage companies to develop **innovative products** faster by eliminating waste in the **Product Development Lifecycle (PDLC)**.",
+                        "Firms should focus on being **value-oriented** by prioritizing essential product features and **becoming customer-centered**, prioritizing customer needs over competitors.",
+                        "They should adopt an **iterative approach**, starting with basic versions and improving through customer feedback, and maintain **simplicity**, focusing only on necessary features.",
+                        "Lastly, companies should not fear **early failure** but use it for **continuous improvement** and optimize work flow by creating **artifacts just in time** to avoid unnecessary work-in-process inventory."
+                    ]
+                }
+            ]
         },
         {
             "title": "Project Documentation and Definition Essentials",
-            "body": "<h3 style='color: forestgreen;'>Creating Effective Documentations for Projects</h3>\n\n<b style='color: forestgreen;'>Understanding the Purpose</b> of product requirements is essential to guide all stakeholders in the <b style='color: forestgreen;'>same direction</b> and minimize risks like scope creep. Depending on <b style='color: forestgreen;'>project size</b>, different documentation is used: <b style='color: forestgreen;'>Type-A projects</b> use <b style='color: forestgreen;'>Business-Case Documents</b> detailing business requirements, scope, context, and a <b style='color: forestgreen;'>cost vs benefit</b> analysis. Type-B projects employ <b style='color: forestgreen;'>Vision and Scope Documents</b> to outline <b style='color: forestgreen;'>project scope</b> and high-level integration. <b style='color: forestgreen;'>Type-C projects</b>, being shorter, use a succinct <b style='color: forestgreen;'>SOW document</b> (Statement of Work).\n\nA <b style='color: forestgreen;'>clear definition</b> of business requirements is fundamental as it affects all <b style='color: forestgreen;'>functional</b>, <b style='color: forestgreen;'>non-functional</b>, and <b style='color: forestgreen;'>technical requirements</b> later. Misdefining them leads to unnecessary changes and defects - essentially <b style='color: forestgreen;'>wastage</b>."
+            "paragraphs": [
+                {
+                    "heading": "Creating Effective Documentations for Projects",
+                    "sentences": [
+                        "**Understanding the Purpose** of product requirements is essential to guide all stakeholders in the **same direction** and minimize risks like scope creep.",
+                        "Depending on **project size**, different documentation is used: **Type-A projects** use **Business-Case Documents** detailing business requirements, scope, context, and a **cost vs benefit** analysis.",
+                        "Type-B projects employ **Vision and Scope Documents** to outline **project scope** and high-level integration.",
+                        "**Type-C projects**, being shorter, use a succinct **SOW document** (Statement of Work)."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "A **clear definition** of business requirements is fundamental as it affects all **functional**, **non-functional**, and **technical requirements** later.",
+                        "Misdefining them leads to unnecessary changes and defects - essentially **wastage**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Choosing the Right Method",
-            "body": "<b style='color: forestgreen;'>Project Methodologies:</b> To avoid confusion in projects, <b style='color: forestgreen;'>Teams Should Use Appropriate Methodologies</b>. Some managers try to use the same method for all projects—calling them \"Xagile\" or \"Scrumfall\"—resulting in a mismatch of methods and projects.\n\n<b style='color: forestgreen;'>Waterfall vs. Agile:</b> Waterfall is <b style='color: forestgreen;'>sequential</b>, fitting static environments, while Agile is <b style='color: forestgreen;'>flexible</b>, suiting dynamic settings. Agile prioritizes customer feedback with \"sprints\", delivering work quickly, building trust through early results. <b style='color: forestgreen;'>Each Project Needs a Suitable Method</b>, often combining both for optimal gains."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Project Methodologies:** To avoid confusion in projects, **Teams Should Use Appropriate Methodologies**.",
+                        "Some managers try to use the same method for all projects\u2014calling them \"Xagile\" or \"Scrumfall\"\u2014resulting in a mismatch of methods and projects."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Waterfall vs. Agile:** Waterfall is **sequential**, fitting static environments, while Agile is **flexible**, suiting dynamic settings.",
+                        "Agile prioritizes customer feedback with \"sprints\", delivering work quickly, building trust through early results.",
+                        "**Each Project Needs a Suitable Method**, often combining both for optimal gains."
+                    ]
+                }
+            ]
         },
         {
             "title": "Feature Impact and Requirements Management",
-            "body": "In recent sprints, the marketing <b style='color: forestgreen;'>unit</b> noticed <b style='color: forestgreen;'>important shifts</b> in customer behavior. The introduction of <b style='color: forestgreen;'>coupon codes</b> when connecting with products via the app was a <b style='color: forestgreen;'>hit</b>, enhancing <b style='color: forestgreen;'>customer loyalty</b> and <b style='color: forestgreen;'>cross-selling opportunities</b>. However, customers reacted <b style='color: forestgreen;'>less positively</b> to <b style='color: forestgreen;'>contextual offers</b>, leading to a decision to <b style='color: forestgreen;'>remove</b> this feature due to its lack of <b style='color: forestgreen;'>value</b>. Additionally, <b style='color: forestgreen;'>customers</b> were <b style='color: forestgreen;'>impacting sales</b> negatively by posting low <b style='color: forestgreen;'>ratings</b> for dealer service quality. To <b style='color: forestgreen;'>mitigate</b> this, ratings for dealer services are now only visible to management, preventing this feedback from affecting potential customers' decisions.\n\nTo <b style='color: forestgreen;'>ensure</b> that product development aligns with business goals and <b style='color: forestgreen;'>customer needs</b>, it's critical to focus on <b style='color: forestgreen;'>consistent requirement gathering</b>. This involves understanding <b style='color: forestgreen;'>user, functional, nonfunctional</b>, and <b style='color: forestgreen;'>business requirements</b> clearly. Failing to do so can lead to <b style='color: forestgreen;'>costly change requests</b> and <b style='color: forestgreen;'>project inefficiencies</b>. Thus, business analysts should prioritize translating <b style='color: forestgreen;'>business needs</b> accurately and managing <b style='color: forestgreen;'>stakeholder conflicts</b> proactively during this stage. Techniques such as <b style='color: forestgreen;'>functional decomposition</b> and <b style='color: forestgreen;'>prototyping</b>, along with strategies to avoid biased questions and unplanned changes, should be employed to streamline the process."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In recent sprints, the marketing **unit** noticed **important shifts** in customer behavior.",
+                        "The introduction of **coupon codes** when connecting with products via the app was a **hit**, enhancing **customer loyalty** and **cross-selling opportunities**.",
+                        "However, customers reacted **less positively** to **contextual offers**, leading to a decision to **remove** this feature due to its lack of **value**.",
+                        "Additionally, **customers** were **impacting sales** negatively by posting low **ratings** for dealer service quality.",
+                        "To **mitigate** this, ratings for dealer services are now only visible to management, preventing this feedback from affecting potential customers' decisions."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "To **ensure** that product development aligns with business goals and **customer needs**, it's critical to focus on **consistent requirement gathering**.",
+                        "This involves understanding **user, functional, nonfunctional**, and **business requirements** clearly.",
+                        "Failing to do so can lead to **costly change requests** and **project inefficiencies**.",
+                        "Thus, business analysts should prioritize translating **business needs** accurately and managing **stakeholder conflicts** proactively during this stage.",
+                        "Techniques such as **functional decomposition** and **prototyping**, along with strategies to avoid biased questions and unplanned changes, should be employed to streamline the process."
+                    ]
+                }
+            ]
         },
         {
             "title": "Requirements & Use Case Techniques",
-            "body": "In waterfall methodology, <b style='color: forestgreen;'>user requirements</b> are detailed using <b style='color: forestgreen;'>use case techniques</b>. First, define the <b style='color: forestgreen;'>actors</b> involved, then outline their <b style='color: forestgreen;'>goals</b> (use cases). The main activities or <b style='color: forestgreen;'>functional requirements</b> that actors perform are shown in <b style='color: forestgreen;'>scenario steps</b>. Example: in the \"View and Order a Product\" use case, \"category selection\" is a functional requirement. Different <b style='color: forestgreen;'>scenarios</b> are differentiated: <b style='color: forestgreen;'>main</b> (happy path), <b style='color: forestgreen;'>alternative</b> (other ways to achieve goals), and <b style='color: forestgreen;'>exception</b> (error conditions). It’s crucial to define <b style='color: forestgreen;'>exception scenarios</b> separately since they are critical to address errors."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In waterfall methodology, **user requirements** are detailed using **use case techniques**.",
+                        "First, define the **actors** involved, then outline their **goals** (use cases).",
+                        "The main activities or **functional requirements** that actors perform are shown in **scenario steps**.",
+                        "Example: in the \"View and Order a Product\" use case, \"category selection\" is a functional requirement.",
+                        "Different **scenarios** are differentiated: **main** (happy path), **alternative** (other ways to achieve goals), and **exception** (error conditions).",
+                        "It\u2019s crucial to define **exception scenarios** separately since they are critical to address errors."
+                    ]
+                }
+            ]
         },
         {
             "title": "Role of Business Analysts in Agile Projects",
-            "body": "In agile projects, the role of <b style='color: forestgreen;'>business analysts</b> is crucial despite the theoretical framework suggesting otherwise. Product owners often struggle with translating business needs into technical specifications due to a lack of technical expertise. Business analysts bridge this <b style='color: forestgreen;'>communication gap</b>, becoming essential in guiding the agile development team. While the *lean principle* of producing \"<b style='color: forestgreen;'>just enough</b>\" documentation is important for efficiency, business analysis tools like <b style='color: forestgreen;'>diagrams</b> can ensure clarity. These documents not only aid in current project development but also serve as a reference for <b style='color: forestgreen;'>future enhancements</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In agile projects, the role of **business analysts** is crucial despite the theoretical framework suggesting otherwise.",
+                        "Product owners often struggle with translating business needs into technical specifications due to a lack of technical expertise.",
+                        "Business analysts bridge this **communication gap**, becoming essential in guiding the agile development team.",
+                        "While the *lean principle* of producing \"**just enough**\" documentation is important for efficiency, business analysis tools like **diagrams** can ensure clarity.",
+                        "These documents not only aid in current project development but also serve as a reference for **future enhancements**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Effective UX Design Principles",
-            "body": "Designing \n\n<b style='color: forestgreen;'>Effective UX</b> requires understanding <b style='color: forestgreen;'>user profiles</b> by gathering feedback on current products using techniques like <b style='color: forestgreen;'>interviews, task analysis, and shadowing</b>. Emotional elements are crucial, as demonstrated by personas, which help predict user interactions. Focus on <b style='color: forestgreen;'>interaction design</b> ensures ease of use, relying on <b style='color: forestgreen;'>flow charts</b> to outline use scenarios, creating intuitive navigation through user interfaces. \n\nTo achieve a harmonious design, both <b style='color: forestgreen;'>interaction and information architecture</b> must work together. <b style='color: forestgreen;'>Information architecture</b> involves techniques like card sorting to determine content placement, ensuring interfaces are <b style='color: forestgreen;'>concise</b> and <b style='color: forestgreen;'>useful</b>, facilitating smooth user interaction."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Designing"
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Effective UX** requires understanding **user profiles** by gathering feedback on current products using techniques like **interviews, task analysis, and shadowing**.",
+                        "Emotional elements are crucial, as demonstrated by personas, which help predict user interactions.",
+                        "Focus on **interaction design** ensures ease of use, relying on **flow charts** to outline use scenarios, creating intuitive navigation through user interfaces."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "To achieve a harmonious design, both **interaction and information architecture** must work together.",
+                        "**Information architecture** involves techniques like card sorting to determine content placement, ensuring interfaces are **concise** and **useful**, facilitating smooth user interaction."
+                    ]
+                }
+            ]
         },
         {
             "title": "Simplicity & Customer Experience Insights",
-            "body": "<b style='color: forestgreen;'>Simplistic</b> design requires extra time and effort. Quoting Antoine de Saint Exupery, \"a designer achieves <b style='color: forestgreen;'>perfection</b> not when there's nothing left to add, but when there's nothing left to <b style='color: forestgreen;'>take away</b>.\" However, over-simplifying can lead to false simplicity, as reminded by <b style='color: forestgreen;'>Einstein</b>: \"Everything should be made <b style='color: forestgreen;'>as simple as possible</b>, but not simpler.\" Removing unnecessary parts is ideal unless it affects product <b style='color: forestgreen;'>functionality</b>. \n\nFor the CEC mobile app project, <b style='color: forestgreen;'>customer journey mapping</b> was used alongside traditional usability testing to understand the end-to-end customer <b style='color: forestgreen;'>experience</b> and evaluate it from the <b style='color: forestgreen;'>customers' perspective</b>. This technique helped in visualizing the customers' <b style='color: forestgreen;'>emotions</b> and satisfaction levels at different <b style='color: forestgreen;'>touch points</b>. This comprehensive evaluation uncovered additional features that could enhance the <b style='color: forestgreen;'>user experience</b>, such as the ability for customers to <b style='color: forestgreen;'>rate and comment</b> on service quality."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Simplistic** design requires extra time and effort.",
+                        "Quoting Antoine de Saint Exupery, \"a designer achieves **perfection** not when there's nothing left to add, but when there's nothing left to **take away**.\"",
+                        "However, over-simplifying can lead to false simplicity, as reminded by **Einstein**: \"Everything should be made **as simple as possible**, but not simpler.\"",
+                        "Removing unnecessary parts is ideal unless it affects product **functionality**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "For the CEC mobile app project, **customer journey mapping** was used alongside traditional usability testing to understand the end-to-end customer **experience** and evaluate it from the **customers' perspective**.",
+                        "This technique helped in visualizing the customers' **emotions** and satisfaction levels at different **touch points**.",
+                        "This comprehensive evaluation uncovered additional features that could enhance the **user experience**, such as the ability for customers to **rate and comment** on service quality."
+                    ]
+                }
+            ]
         },
         {
             "title": "Leveraging Lean for Effective Project Management",
-            "body": "<b style='color: forestgreen;'>Project Managers</b> in the <b style='color: forestgreen;'>lean approach</b> should focus on <b style='color: forestgreen;'>whole optimization</b> rather than <b style='color: forestgreen;'>suboptimization</b>. This means avoiding <b style='color: forestgreen;'>silos</b> among team members such as <b style='color: forestgreen;'>business analysts</b> and <b style='color: forestgreen;'>developers</b>. Instead of focusing solely on <b style='color: forestgreen;'>output KPIs</b>, they should aim to ensure the <b style='color: forestgreen;'>whole team's objectives</b> are aligned, keeping stakeholders motivated toward delivering actual <b style='color: forestgreen;'>value</b>.\n\nIn the <b style='color: forestgreen;'>CEC company</b> project, applying this approach led to better <b style='color: forestgreen;'>customer satisfaction</b> and efficient use of resources, meeting all of the company’s goals. Despite challenges, persistence with these practices resulted in completing the project on time, fulfilling both the <b style='color: forestgreen;'>market and internal demands</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Project Managers** in the **lean approach** should focus on **whole optimization** rather than **suboptimization**.",
+                        "This means avoiding **silos** among team members such as **business analysts** and **developers**.",
+                        "Instead of focusing solely on **output KPIs**, they should aim to ensure the **whole team's objectives** are aligned, keeping stakeholders motivated toward delivering actual **value**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "In the **CEC company** project, applying this approach led to better **customer satisfaction** and efficient use of resources, meeting all of the company\u2019s goals.",
+                        "Despite challenges, persistence with these practices resulted in completing the project on time, fulfilling both the **market and internal demands**."
+                    ]
+                }
+            ]
         }
     ]
 }

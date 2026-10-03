@@ -13,51 +13,240 @@
     "parts": [
         {
             "title": "Mastering the Dissertation Proposal",
-            "body": "Writing a dissertation <b style='color: forestgreen;'>proposal</b> is tough, and it's the starting point of your doctoral <b style='color: forestgreen;'>journey</b>\u2014crucial for <b style='color: forestgreen;'>success</b> but where many students stall. This book emphasizes proposal writing, which consists of defining a clear <b style='color: forestgreen;'>research problem</b>, stating its <b style='color: forestgreen;'>purpose</b>, asking relevant <b style='color: forestgreen;'>questions</b>, and laying out a <b style='color: forestgreen;'>detailed plan</b> for your study. You'll find support for finding and developing your problem statement, reviewing <b style='color: forestgreen;'>literature</b>, and choosing between <b style='color: forestgreen;'>quantitative</b> and <b style='color: forestgreen;'>qualitative</b> research methods. A strong proposal is critical as half of students don't graduate because they can't clarify what they want to research. If you're struggling to start, it's likely because the \"problem is the problem\" \u2013 meaning students struggle to focus their research into a precise problem statement."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Writing a dissertation **proposal** is tough, and it's the starting point of your doctoral **journey**\u2014crucial for **success** but where many students stall.",
+                        "This book emphasizes proposal writing, which consists of defining a clear **research problem**, stating its **purpose**, asking relevant **questions**, and laying out a **detailed plan** for your study.",
+                        "You'll find support for finding and developing your problem statement, reviewing **literature**, and choosing between **quantitative** and **qualitative** research methods.",
+                        "A strong proposal is critical as half of students don't graduate because they can't clarify what they want to research.",
+                        "If you're struggling to start, it's likely because the \"problem is the problem\" \u2013 meaning students struggle to focus their research into a precise problem statement."
+                    ]
+                }
+            ]
         },
         {
             "title": "Crafting a Strong Problem Statement",
-            "body": "<b style='color: forestgreen;'>Writing problem statements</b> for research proposals is important. To formulate a <b style='color: forestgreen;'>good problem statement</b>, it should have the following characteristics: it must be <b style='color: forestgreen;'>clear and concise</b>, include all <b style='color: forestgreen;'>variables</b> considered, and omit any <b style='color: forestgreen;'>researcher bias</b>. For instance, a problem statement can focus on the <b style='color: forestgreen;'>high failure rate</b> of algebra students at a specific institution, providing <b style='color: forestgreen;'>background</b> and <b style='color: forestgreen;'>significance</b> supported by <b style='color: forestgreen;'>literature</b>, to justify its investigation.\n\n<b style='color: forestgreen;'>Attributes of a good problem statement</b> include its relevance to the <b style='color: forestgreen;'>researcher</b>, a <b style='color: forestgreen;'>manageable scope</b>, the <b style='color: forestgreen;'>researcher's preparedness</b> with knowledge and resources, the feasibility to <b style='color: forestgreen;'>collect and analyze data</b>, <b style='color: forestgreen;'>practical or theoretical significance</b>, and adherence to <b style='color: forestgreen;'>ethical standards</b>. Following these criteria ensures the study's <b style='color: forestgreen;'>viability</b>. Ultimately, a well-crafted problem statement acts as a <b style='color: forestgreen;'>cornerstone</b> for your proposal, completed with structured purpose, research questions, and hypotheses for validation."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Writing problem statements** for research proposals is important.",
+                        "To formulate a **good problem statement**, it should have the following characteristics: it must be **clear and concise**, include all **variables** considered, and omit any **researcher bias**.",
+                        "For instance, a problem statement can focus on the **high failure rate** of algebra students at a specific institution, providing **background** and **significance** supported by **literature**, to justify its investigation."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Attributes of a good problem statement** include its relevance to the **researcher**, a **manageable scope**, the **researcher's preparedness** with knowledge and resources, the feasibility to **collect and analyze data**, **practical or theoretical significance**, and adherence to **ethical standards**.",
+                        "Following these criteria ensures the study's **viability**.",
+                        "Ultimately, a well-crafted problem statement acts as a **cornerstone** for your proposal, completed with structured purpose, research questions, and hypotheses for validation."
+                    ]
+                }
+            ]
         },
         {
             "title": "Reflections on Mixed Methodologies and Adapting to Unsuccessful Research Outcomes",
-            "body": "A professor\u2019s research journey involved <b style='color: forestgreen;'>mixed methodologies</b> and tackling a failed <b style='color: forestgreen;'>intervention study</b>.\nIn <b style='color: forestgreen;'>mixed methods research</b>, both <b style='color: forestgreen;'>quantitative</b> and <b style='color: forestgreen;'>qualitative</b> approaches are merged to deeply understand a research question. For instance, quantitative data might imply one thing, but qualitative interviews can explain unexpected results. Here, it\u2019s crucial to examine\n\n<b style='color: forestgreen;'>what happens when a research plan fails</b> - it's part of research reality. A failed hypothesis doesn\u2019t necessarily mean failure\u2014it shows what doesn\u2019t work and paves the way for future studies. The core lesson is designing a <b style='color: forestgreen;'>good study</b> by strictly following a well-crafted proposal, regardless of outcome.\n\nWhen developing your research questions, integrate them with problem and purpose statements, ensuring coherence. Observing how a researcher adjusted their approach and learned from an unplanned outcome emphasizes adaptability in valid research design."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A professor\u2019s research journey involved **mixed methodologies** and tackling a failed **intervention study**.",
+                        "In **mixed methods research**, both **quantitative** and **qualitative** approaches are merged to deeply understand a research question.",
+                        "For instance, quantitative data might imply one thing, but qualitative interviews can explain unexpected results.",
+                        "Here, it\u2019s crucial to examine"
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**what happens when a research plan fails** - it's part of research reality.",
+                        "A failed hypothesis doesn\u2019t necessarily mean failure\u2014it shows what doesn\u2019t work and paves the way for future studies.",
+                        "The core lesson is designing a **good study** by strictly following a well-crafted proposal, regardless of outcome."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "When developing your research questions, integrate them with problem and purpose statements, ensuring coherence.",
+                        "Observing how a researcher adjusted their approach and learned from an unplanned outcome emphasizes adaptability in valid research design."
+                    ]
+                }
+            ]
         },
         {
             "title": "Chapter 3 Proposal: Research Methodology Basics",
-            "body": "The proposal's third chapter details the <b style='color: forestgreen;'>research method</b> that drives the dissertation. There are different types of research methods, like <b style='color: forestgreen;'>quantitative</b>, <b style='color: forestgreen;'>qualitative</b>, or <b style='color: forestgreen;'>mixed methods</b>, each with distinct philosophies and procedures. To choose the right method, understand <b style='color: forestgreen;'>research paradigms</b>\u2014the philosophical lens guiding your study. Components of these paradigms include <b style='color: forestgreen;'>axiology</b> (beliefs about ethics), <b style='color: forestgreen;'>ontology</b> (beliefs about reality), <b style='color: forestgreen;'>epistemology</b> (researcher\u2019s role), and <b style='color: forestgreen;'>methodology</b> (approach to research questions). Scientists must define their paradigm as quantitative researchers aim for <b style='color: forestgreen;'>objectivity</b> and qualitative researchers seek <b style='color: forestgreen;'>meaning</b> through close participant interaction.\n\nIt is important to identify the study's <b style='color: forestgreen;'>population</b> and establish a <b style='color: forestgreen;'>sample</b> using either <b style='color: forestgreen;'>random</b> (probabilistic) or <b style='color: forestgreen;'>nonrandom</b> (nonprobabilistic) methods.\n\nQuantitative methods usually employ random sampling for <b style='color: forestgreen;'>generalizability</b>, ensuring that the sample represents the whole <b style='color: forestgreen;'>population</b> accurately, thus avoiding <b style='color: forestgreen;'>sampling bias</b> and <b style='color: forestgreen;'>sampling error</b>. Techniques such as <b style='color: forestgreen;'>stratified</b>, <b style='color: forestgreen;'>cluster</b>, and <b style='color: forestgreen;'>systematic sampling</b> help achieve this representativeness. A small demonstration using a hypothetical group illustrated how sampling errors could occur when selecting samples from a population, emphasizing the importance of strategic sampling techniques."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The proposal's third chapter details the **research method** that drives the dissertation.",
+                        "There are different types of research methods, like **quantitative**, **qualitative**, or **mixed methods**, each with distinct philosophies and procedures.",
+                        "To choose the right method, understand **research paradigms**\u2014the philosophical lens guiding your study.",
+                        "Components of these paradigms include **axiology** (beliefs about ethics), **ontology** (beliefs about reality), **epistemology** (researcher\u2019s role), and **methodology** (approach to research questions).",
+                        "Scientists must define their paradigm as quantitative researchers aim for **objectivity** and qualitative researchers seek **meaning** through close participant interaction."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "It is important to identify the study's **population** and establish a **sample** using either **random** (probabilistic) or **nonrandom** (nonprobabilistic) methods."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Quantitative methods usually employ random sampling for **generalizability**, ensuring that the sample represents the whole **population** accurately, thus avoiding **sampling bias** and **sampling error**.",
+                        "Techniques such as **stratified**, **cluster**, and **systematic sampling** help achieve this representativeness.",
+                        "A small demonstration using a hypothetical group illustrated how sampling errors could occur when selecting samples from a population, emphasizing the importance of strategic sampling techniques."
+                    ]
+                }
+            ]
         },
         {
             "title": "Sampling Methods in Research",
-            "body": "When conducting <b style='color: forestgreen;'>research</b>, it\u2019s essential to understand the concepts of <b style='color: forestgreen;'>random</b> and <b style='color: forestgreen;'>nonrandom sampling</b>.\n\n1. <b style='color: forestgreen;'>Simple Random Sampling</b> gives everyone in the population an equal chance to be selected, reducing <b style='color: forestgreen;'>sampling bias</b>. This is useful when polling voters, where demographics like <b style='color: forestgreen;'>political party</b> should be reflected in the sample.\n\n2. Careful <b style='color: forestgreen;'>caveats</b> include ensuring a <b style='color: forestgreen;'>large sample size</b> to reduce <b style='color: forestgreen;'>sampling error</b>, and ensuring every population member has an equal chance of selection, crucial in <b style='color: forestgreen;'>probabilistic sampling</b>.\n\n3. <b style='color: forestgreen;'>Cluster Sampling</b> involves selecting whole groups and is used when true random sampling isn\u2019t feasible. This may introduce bias if groups vary greatly.\n\nThe goal in sampling is to reflect the population while mitigating biases, critical for ethical and accurate research outcomes."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "When conducting **research**, it\u2019s essential to understand the concepts of **random** and **nonrandom sampling**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "1.",
+                        "**Simple Random Sampling** gives everyone in the population an equal chance to be selected, reducing **sampling bias**.",
+                        "This is useful when polling voters, where demographics like **political party** should be reflected in the sample."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "2.",
+                        "Careful **caveats** include ensuring a **large sample size** to reduce **sampling error**, and ensuring every population member has an equal chance of selection, crucial in **probabilistic sampling**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "3.",
+                        "**Cluster Sampling** involves selecting whole groups and is used when true random sampling isn\u2019t feasible.",
+                        "This may introduce bias if groups vary greatly."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The goal in sampling is to reflect the population while mitigating biases, critical for ethical and accurate research outcomes."
+                    ]
+                }
+            ]
         },
         {
             "title": "Types of Quantitative Data",
-            "body": "We delve into different types of numeric <b style='color: forestgreen;'>data</b> in quantitative research, which affects the <b style='color: forestgreen;'>study design</b> and analysis. The four types are: <b style='color: forestgreen;'>nominal data</b>, like gender or ethnicity, which are simple category counts; <b style='color: forestgreen;'>ordinal data</b>, such as class rank, which involves <b style='color: forestgreen;'>ranking</b> but not equal increments; <b style='color: forestgreen;'>interval data</b>, like test scores, where intervals are equal but not necessarily an absolute scale; and <b style='color: forestgreen;'>ratio data</b>, such as weight, where a true <b style='color: forestgreen;'>zero</b> exists and we can compare ratios. Understanding these data types is crucial for researchers to choose the appropriate analysis."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "We delve into different types of numeric **data** in quantitative research, which affects the **study design** and analysis.",
+                        "The four types are: **nominal data**, like gender or ethnicity, which are simple category counts; **ordinal data**, such as class rank, which involves **ranking** but not equal increments; **interval data**, like test scores, where intervals are equal but not necessarily an absolute scale; and **ratio data**, such as weight, where a true **zero** exists and we can compare ratios.",
+                        "Understanding these data types is crucial for researchers to choose the appropriate analysis."
+                    ]
+                }
+            ]
         },
         {
             "title": "Research Design and Validity Control",
-            "body": "<b style='color: forestgreen;'>Quantitative research designs</b> have various forms, and each can control or fail to control <b style='color: forestgreen;'>threats to validity</b>. It introduces <b style='color: forestgreen;'>experimental designs</b> classified as <b style='color: forestgreen;'>pre-experimental</b>, <b style='color: forestgreen;'>quasi-experimental</b>, and <b style='color: forestgreen;'>true experimental designs</b>. Each design varies in terms of control, with <b style='color: forestgreen;'>true experiments</b> offering the highest level of reliability due to random assignment of subjects to groups. This allows hypotheses testing and definite conclusions about causal relationships. <b style='color: forestgreen;'>Pre-experimental designs</b> are noted for their lower control and are often used to explore ideas.\n\n<b style='color: forestgreen;'>Pre-experimental designs</b> are explained with examples such as the <b style='color: forestgreen;'>One-Shot Case Study</b> and <b style='color: forestgreen;'>One-Group Pretest-Posttest Design</b>, each demonstrating differences in group setup and measurement points. A <b style='color: forestgreen;'>static group comparison</b> is highlighted as two groups are only measured after the treatment, lacking pretest data, thus not controlling for many validity threats. For more robust research, <b style='color: forestgreen;'>quasi-experimental designs</b> like <b style='color: forestgreen;'>nonequivalent control group design</b> offer improved internal validity by utilizing pre-existing groups with treatment assignments, mitigating some validity threats. Meanwhile, <b style='color: forestgreen;'>time-series designs</b> analyze data over time, showing changes post-intervention."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Quantitative research designs** have various forms, and each can control or fail to control **threats to validity**.",
+                        "It introduces **experimental designs** classified as **pre-experimental**, **quasi-experimental**, and **true experimental designs**.",
+                        "Each design varies in terms of control, with **true experiments** offering the highest level of reliability due to random assignment of subjects to groups.",
+                        "This allows hypotheses testing and definite conclusions about causal relationships.",
+                        "**Pre-experimental designs** are noted for their lower control and are often used to explore ideas."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Pre-experimental designs** are explained with examples such as the **One-Shot Case Study** and **One-Group Pretest-Posttest Design**, each demonstrating differences in group setup and measurement points.",
+                        "A **static group comparison** is highlighted as two groups are only measured after the treatment, lacking pretest data, thus not controlling for many validity threats.",
+                        "For more robust research, **quasi-experimental designs** like **nonequivalent control group design** offer improved internal validity by utilizing pre-existing groups with treatment assignments, mitigating some validity threats.",
+                        "Meanwhile, **time-series designs** analyze data over time, showing changes post-intervention."
+                    ]
+                }
+            ]
         },
         {
             "title": "Qualitative Research Methods",
-            "body": "<b style='color: forestgreen;'>Qualitative Research Methods</b> differ from <b style='color: forestgreen;'>Quantitative Methods</b> by focusing on understanding the \"<b style='color: forestgreen;'>who?</b>\", \"<b style='color: forestgreen;'>what?</b>\", \"<b style='color: forestgreen;'>when?</b>\", \"<b style='color: forestgreen;'>where?</b>\", and <b style='color: forestgreen;'>\"why?\"</b> questions. Unlike quantitative research that uses numbers to define events, qualitative research gathers text-based data to explore social life through <b style='color: forestgreen;'>Exploratory, Descriptive,</b> and <b style='color: forestgreen;'>Explanatory</b> research. There are six common methodologies: <b style='color: forestgreen;'>Narrative, Phenomenological, Ethnographic, Case Studies, Grounded Theory,</b> and <b style='color: forestgreen;'>Content Analysis</b> research, each providing unique insights into human experiences."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Qualitative Research Methods** differ from **Quantitative Methods** by focusing on understanding the \"**who?**\", \"**what?**\", \"**when?**\", \"**where?**\", and **\"why?\"** questions.",
+                        "Unlike quantitative research that uses numbers to define events, qualitative research gathers text-based data to explore social life through **Exploratory, Descriptive,** and **Explanatory** research.",
+                        "There are six common methodologies: **Narrative, Phenomenological, Ethnographic, Case Studies, Grounded Theory,** and **Content Analysis** research, each providing unique insights into human experiences."
+                    ]
+                }
+            ]
         },
         {
             "title": "Qualitative Data Analysis and Credibility",
-            "body": "<b style='color: forestgreen;'>Analyzing qualitative data</b> involves finding <b style='color: forestgreen;'>patterns</b>, <b style='color: forestgreen;'>concepts</b>, and <b style='color: forestgreen;'>relationships</b> to answer research questions. Unlike quantitative research, there is no <b style='color: forestgreen;'>standard method</b> for analysis. Key aspects include <b style='color: forestgreen;'>reliability</b>, focusing on <b style='color: forestgreen;'>data process dependability</b> - such as consistent interview guidelines and procedure. It's essential to ensure interview transcriptions are accurate, often by checking recordings while reviewing transcripts. This <b style='color: forestgreen;'>familiarization</b> with data is crucial before starting analysis.\n\n<b style='color: forestgreen;'>Qualitative analysis</b> may begin alongside data collection, adjusting interviews and literature reviews as needed. Although no single \"best way\" exists, common approaches include <b style='color: forestgreen;'>narrative analysis</b>\u2014identifying themes in stories; <b style='color: forestgreen;'>phenomenological analysis</b>\u2014understanding experience essence; and <b style='color: forestgreen;'>ethnographic analysis</b>\u2014triangulating data from an insider's perspective. <b style='color: forestgreen;'>Grounded theory</b> involves open coding, axial coding, and developing theories based on data. While these methodologies involve flexibility, <b style='color: forestgreen;'>credibility</b> and <b style='color: forestgreen;'>trustworthiness</b> remain central to a robust qualitative study."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Analyzing qualitative data** involves finding **patterns**, **concepts**, and **relationships** to answer research questions.",
+                        "Unlike quantitative research, there is no **standard method** for analysis.",
+                        "Key aspects include **reliability**, focusing on **data process dependability** - such as consistent interview guidelines and procedure.",
+                        "It's essential to ensure interview transcriptions are accurate, often by checking recordings while reviewing transcripts.",
+                        "This **familiarization** with data is crucial before starting analysis."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Qualitative analysis** may begin alongside data collection, adjusting interviews and literature reviews as needed.",
+                        "Although no single \"best way\" exists, common approaches include **narrative analysis**\u2014identifying themes in stories; **phenomenological analysis**\u2014understanding experience essence; and **ethnographic analysis**\u2014triangulating data from an insider's perspective.",
+                        "**Grounded theory** involves open coding, axial coding, and developing theories based on data.",
+                        "While these methodologies involve flexibility, **credibility** and **trustworthiness** remain central to a robust qualitative study."
+                    ]
+                }
+            ]
         },
         {
             "title": "Participants and Research Procedures",
-            "body": "<b style='color: forestgreen;'>Participants</b> for the research will be females living in NYC homeless shelters. A <b style='color: forestgreen;'>purposive sample</b> of 12-15 will be identified for <b style='color: forestgreen;'>interviews</b> after obtaining institutional approval. The interviews focus on circumstances leading to the shelter stay. Before this, the researcher will <b style='color: forestgreen;'>study homelessness literature</b> in the US. Participants will sign a <b style='color: forestgreen;'>consent form</b> assuring anonymity, volunteer participation, and no interference with their <b style='color: forestgreen;'>government services</b>. The results are to develop a <b style='color: forestgreen;'>theory</b> on homelessness among women."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Participants** for the research will be females living in NYC homeless shelters.",
+                        "A **purposive sample** of 12-15 will be identified for **interviews** after obtaining institutional approval.",
+                        "The interviews focus on circumstances leading to the shelter stay.",
+                        "Before this, the researcher will **study homelessness literature** in the US.",
+                        "Participants will sign a **consent form** assuring anonymity, volunteer participation, and no interference with their **government services**.",
+                        "The results are to develop a **theory** on homelessness among women."
+                    ]
+                }
+            ]
         },
         {
             "title": "Summary of Presentation and Attrition Studies",
-            "body": "A <b style='color: forestgreen;'>plan for presenting results</b> involves sharing the results in a <b style='color: forestgreen;'>dissertation report</b> with tutoring service owners. The <b style='color: forestgreen;'>quantitative and qualitative data</b> will help produce a report to assess the tutors' effectiveness.\n\nIn the <b style='color: forestgreen;'>second section</b>, we learned about a study regarding <b style='color: forestgreen;'>military academy attrition</b>. It aims to create a <b style='color: forestgreen;'>screening tool</b> to improve <b style='color: forestgreen;'>admissions</b> by studying factors leading to students leaving the academy. Qualitative and <b style='color: forestgreen;'>quantitative data</b> will be collected and analyzed to align identified factors."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A **plan for presenting results** involves sharing the results in a **dissertation report** with tutoring service owners.",
+                        "The **quantitative and qualitative data** will help produce a report to assess the tutors' effectiveness."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "In the **second section**, we learned about a study regarding **military academy attrition**.",
+                        "It aims to create a **screening tool** to improve **admissions** by studying factors leading to students leaving the academy.",
+                        "Qualitative and **quantitative data** will be collected and analyzed to align identified factors."
+                    ]
+                }
+            ]
         },
         {
             "title": "Research Methodologies Overview",
-            "body": "Different types of research methodologies include qualitative, quantitative, and mixed methods approaches. For <b style='color: forestgreen;'>qualitative research</b>, <b style='color: forestgreen;'>validity</b> involves ensuring data collection is consistent. <b style='color: forestgreen;'>Triangulation</b> and <b style='color: forestgreen;'>member checking</b> are strategies used for maintaining validity. <b style='color: forestgreen;'>Mixed methods research</b> involves combining qualitative and quantitative data to explore a research question more comprehensively. This approach often requires merging data sets and analyzing them together to provide insights. The design for mixed methods could be <b style='color: forestgreen;'>sequential-exploratory</b>, where qualitative data is gathered first or <b style='color: forestgreen;'>concurrent</b>, where data is collected simultaneously. Understanding both <b style='color: forestgreen;'>sampling methods</b> and <b style='color: forestgreen;'>research design</b> helps guide the study."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Different types of research methodologies include qualitative, quantitative, and mixed methods approaches.",
+                        "For **qualitative research**, **validity** involves ensuring data collection is consistent.",
+                        "**Triangulation** and **member checking** are strategies used for maintaining validity.",
+                        "**Mixed methods research** involves combining qualitative and quantitative data to explore a research question more comprehensively.",
+                        "This approach often requires merging data sets and analyzing them together to provide insights.",
+                        "The design for mixed methods could be **sequential-exploratory**, where qualitative data is gathered first or **concurrent**, where data is collected simultaneously.",
+                        "Understanding both **sampling methods** and **research design** helps guide the study."
+                    ]
+                }
+            ]
         }
     ]
 }

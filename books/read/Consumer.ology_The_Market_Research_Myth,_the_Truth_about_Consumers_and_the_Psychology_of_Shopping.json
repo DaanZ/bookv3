@@ -13,43 +13,171 @@
     "parts": [
         {
             "title": "Understanding the Unconscious Mind",
-            "body": "<h3 style='color: forestgreen;'>Summary of Chapter 1: Understanding the Unconscious Mind</h3>\nConsumer behavior is shaped by our <b style='color: forestgreen;'>unconscious mind</b>. <b style='color: forestgreen;'>Market research</b> is inherently flawed, as it's <b style='color: forestgreen;'>conscious</b>. Example: <b style='color: forestgreen;'>New Coke</b>. Despite research showing preference for a sweeter formula, it failed due to lack of conscious oversight on <b style='color: forestgreen;'>branding</b> and <b style='color: forestgreen;'>consumption habits</b>. Companies believe asking the right questions yields truth, but it rarely captures unconscious motivations. <b style='color: forestgreen;'>Behavior is driven subconsciously</b>, which is not accessed merely by asking questions."
+            "paragraphs": [
+                {
+                    "heading": "Summary of Chapter 1: Understanding the Unconscious Mind",
+                    "sentences": [
+                        "Consumer behavior is shaped by our **unconscious mind**.",
+                        "**Market research** is inherently flawed, as it's **conscious**.",
+                        "Example: **New Coke**.",
+                        "Despite research showing preference for a sweeter formula, it failed due to lack of conscious oversight on **branding** and **consumption habits**.",
+                        "Companies believe asking the right questions yields truth, but it rarely captures unconscious motivations.",
+                        "**Behavior is driven subconsciously**, which is not accessed merely by asking questions."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Influence of the Unconscious Mind in Consumer Behavior",
-            "body": "<b style='color: forestgreen;'>The unconscious mind</b> can't always articulate the reasons behind our <b style='color: forestgreen;'>actions</b> and can be unaware of influencing factors, as seen in <b style='color: forestgreen;'>consumer surveys and purchases</b>. Research has shown that <b style='color: forestgreen;'>environmental cues</b>, like scents or background noise, can shape behavior without our <b style='color: forestgreen;'>conscious</b> awareness. This suggests that relying solely on consumer reports may misunderstand the mechanisms behind decisions, highlighting the necessity of unconscious cues in <b style='color: forestgreen;'>consumer research</b>. \n\n<b style='color: forestgreen;'>Examples</b> of how the <b style='color: forestgreen;'>unconscious mind shapes behavior</b> include studies where people prefer particular products due to subliminal influences like odors or <b style='color: forestgreen;'>background visuals</b>. These findings indicate that despite conscious beliefs, our preferences are often predictably affected by unconscious factors. This challenges the reliability of traditional surveys, implying that real consumer choices are influenced by <b style='color: forestgreen;'>unconscious associations</b> and that market research must factor in these <b style='color: forestgreen;'>unseen influences</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**The unconscious mind** can't always articulate the reasons behind our **actions** and can be unaware of influencing factors, as seen in **consumer surveys and purchases**.",
+                        "Research has shown that **environmental cues**, like scents or background noise, can shape behavior without our **conscious** awareness.",
+                        "This suggests that relying solely on consumer reports may misunderstand the mechanisms behind decisions, highlighting the necessity of unconscious cues in **consumer research**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Examples** of how the **unconscious mind shapes behavior** include studies where people prefer particular products due to subliminal influences like odors or **background visuals**.",
+                        "These findings indicate that despite conscious beliefs, our preferences are often predictably affected by unconscious factors.",
+                        "This challenges the reliability of traditional surveys, implying that real consumer choices are influenced by **unconscious associations** and that market research must factor in these **unseen influences**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Understanding Consumer Behavior",
-            "body": "<b style='color: forestgreen;'>Consciousness</b> evaluation of <b style='color: forestgreen;'>preferences and attitudes</b> is <b style='color: forestgreen;'>limited</b> and influenced by the <b style='color: forestgreen;'>unconscious mind</b>. Consumer research assumes people know their <b style='color: forestgreen;'>own thoughts</b>, which often <b style='color: forestgreen;'>doesn't align</b> with actual behavior. Studies by Timothy Wilson and Daniel Wegner illustrate this <b style='color: forestgreen;'>conscious-unconscious divide</b>. Market research largely fails to capture the unconscious influences that actually drive consumer decisions. Consumers do not always consciously evaluate their choices; many behaviors are driven by <b style='color: forestgreen;'>habit</b>, <b style='color: forestgreen;'>emotion</b>, or <b style='color: forestgreen;'>impulse</b> rather than deliberate consideration. <b style='color: forestgreen;'>Brand perceptions</b> can be shaped by these unconscious processes, leading to <b style='color: forestgreen;'>unexpected consumer behavior</b> that doesn't necessarily reflect their conscious beliefs."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Consciousness** evaluation of **preferences and attitudes** is **limited** and influenced by the **unconscious mind**.",
+                        "Consumer research assumes people know their **own thoughts**, which often **doesn't align** with actual behavior.",
+                        "Studies by Timothy Wilson and Daniel Wegner illustrate this **conscious-unconscious divide**.",
+                        "Market research largely fails to capture the unconscious influences that actually drive consumer decisions.",
+                        "Consumers do not always consciously evaluate their choices; many behaviors are driven by **habit**, **emotion**, or **impulse** rather than deliberate consideration.",
+                        "**Brand perceptions** can be shaped by these unconscious processes, leading to **unexpected consumer behavior** that doesn't necessarily reflect their conscious beliefs."
+                    ]
+                }
+            ]
         },
         {
             "title": "Lessons from New Coke",
-            "body": "The <b style='color: forestgreen;'>New Coke</b> launch provides a critical lesson on consumer behavior. Despite <b style='color: forestgreen;'>Coca-Cola's</b> heavy reliance on <b style='color: forestgreen;'>market research</b> that showed a preference for a new formula, they missed the deeply emotional attachment people had to the original taste. Consumers were led more by <b style='color: forestgreen;'>social proof</b>\u2014indicating widespread dislike\u2014than by the taste itself. This incident underscores the importance of <b style='color: forestgreen;'>first impressions</b>, as the initial response set the audience's mindset, impacting sales negatively regardless of logical taste tests."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **New Coke** launch provides a critical lesson on consumer behavior.",
+                        "Despite **Coca-Cola's** heavy reliance on **market research** that showed a preference for a new formula, they missed the deeply emotional attachment people had to the original taste.",
+                        "Consumers were led more by **social proof**\u2014indicating widespread dislike\u2014than by the taste itself.",
+                        "This incident underscores the importance of **first impressions**, as the initial response set the audience's mindset, impacting sales negatively regardless of logical taste tests."
+                    ]
+                }
+            ]
         },
         {
             "title": "Understanding Consumer Behavior Through Environmental Cues and Observation",
-            "body": "Research from Penn University suggests <b style='color: forestgreen;'>human senses</b> transmit vast amounts information, but our brains only process a small fraction. We long believed <b style='color: forestgreen;'>consciousness drove actions</b>, yet studies illustrate our <b style='color: forestgreen;'>unconscious reactions</b> instead drive decision-making. For instance, when evaluating products like cutlery, the presence of accompanying artwork increases the perception of luxury, unbeknownst to participants. To truly understand why consumers behave a certain way, we must learn to <b style='color: forestgreen;'>read environmental cues</b> as our unconscious mind does. Variables such as light levels, sounds, and layout can subtly influence decision-making. Observing these can unlock hidden insights into behavioral patterns, showing why <b style='color: forestgreen;'>commercial initiatives</b> succeed or fail, beyond traditional market research methods."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Research from Penn University suggests **human senses** transmit vast amounts information, but our brains only process a small fraction.",
+                        "We long believed **consciousness drove actions**, yet studies illustrate our **unconscious reactions** instead drive decision-making.",
+                        "For instance, when evaluating products like cutlery, the presence of accompanying artwork increases the perception of luxury, unbeknownst to participants.",
+                        "To truly understand why consumers behave a certain way, we must learn to **read environmental cues** as our unconscious mind does.",
+                        "Variables such as light levels, sounds, and layout can subtly influence decision-making.",
+                        "Observing these can unlock hidden insights into behavioral patterns, showing why **commercial initiatives** succeed or fail, beyond traditional market research methods."
+                    ]
+                }
+            ]
         },
         {
             "title": "Understanding Survey Flaws and Influences",
-            "body": "<b style='color: forestgreen;'>Asking questions</b> can lead to misleading results if care is not taken to consider how responses are influenced by the context and wording of the questions. The <b style='color: forestgreen;'>Millennium Dome case</b> highlighted problems with predicting consumer behavior through surveys. Often, people <b style='color: forestgreen;'>respond based on current circumstances</b>, which may not reflect their actual behavior later. <b style='color: forestgreen;'>Leading questions</b> can overly prime respondents to focus on irrelevant issues, and artificial focus during surveys can temporarily enhance their engagement, resulting in misleading conclusions. \n\n<b style='color: forestgreen;'>Framing questions correctly</b> impacted surveys as seen in the <b style='color: forestgreen;'>US anti-missile shield poll</b>, where merely adding \"or are you unsure?\" drastically increased uncertainty. The research method determines people\u2019s premature conclusions about products or experiences, often inaccurately reflecting real-world behavior. This is shown in the <b style='color: forestgreen;'>store design survey</b>, where <b style='color: forestgreen;'>customers responded positively</b> to directly prompted features they would otherwise ignore, affecting the store's sales with no notable performance improvement."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Asking questions** can lead to misleading results if care is not taken to consider how responses are influenced by the context and wording of the questions.",
+                        "The **Millennium Dome case** highlighted problems with predicting consumer behavior through surveys.",
+                        "Often, people **respond based on current circumstances**, which may not reflect their actual behavior later.",
+                        "**Leading questions** can overly prime respondents to focus on irrelevant issues, and artificial focus during surveys can temporarily enhance their engagement, resulting in misleading conclusions."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Framing questions correctly** impacted surveys as seen in the **US anti-missile shield poll**, where merely adding \"or are you unsure?\" drastically increased uncertainty.",
+                        "The research method determines people\u2019s premature conclusions about products or experiences, often inaccurately reflecting real-world behavior.",
+                        "This is shown in the **store design survey**, where **customers responded positively** to directly prompted features they would otherwise ignore, affecting the store's sales with no notable performance improvement."
+                    ]
+                }
+            ]
         },
         {
             "title": "Trusting Customer Feedback: Challenges and Cognitive Biases",
-            "body": "Accurately capturing consumer opinions in market research presents challenges. People respond differently based on their <b style='color: forestgreen;'>relationship</b> with others, the <b style='color: forestgreen;'>situation</b>, and their <b style='color: forestgreen;'>mood</b>. One's <b style='color: forestgreen;'>frame of mind</b> significantly impacts their responses, often overlooked in research methodologies. Asking people questions in a <b style='color: forestgreen;'>balanced Adult</b> state, typical in consumer research, doesn\u2019t always reflect their natural reactions. Techniques like <b style='color: forestgreen;'>Parent Shrinking</b> and <b style='color: forestgreen;'>projective methods</b> can shift mindsets during research, leading to unrepresentative insights.\n\nInterestingly, how people <b style='color: forestgreen;'>perceive</b> risk or assess brands is subject to <b style='color: forestgreen;'>cognitive ease</b>; harder tasks can skew perceived risks or values, as seen in examples like heart disease assessments. The <b style='color: forestgreen;'>endowment effect</b> highlights that ownership can inflate valuation\u2014the first cognized in 1980, underlining why customers often give inflated feedback post-purchase. Poll results are often molded by how questions are framed, showcased by the differing BBC license fee survey outcomes. Ultimately, consumer research can significantly distort perceptions if not accounting for these <b style='color: forestgreen;'>cognitive biases</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Accurately capturing consumer opinions in market research presents challenges.",
+                        "People respond differently based on their **relationship** with others, the **situation**, and their **mood**.",
+                        "One's **frame of mind** significantly impacts their responses, often overlooked in research methodologies.",
+                        "Asking people questions in a **balanced Adult** state, typical in consumer research, doesn\u2019t always reflect their natural reactions.",
+                        "Techniques like **Parent Shrinking** and **projective methods** can shift mindsets during research, leading to unrepresentative insights."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Interestingly, how people **perceive** risk or assess brands is subject to **cognitive ease**; harder tasks can skew perceived risks or values, as seen in examples like heart disease assessments.",
+                        "The **endowment effect** highlights that ownership can inflate valuation\u2014the first cognized in 1980, underlining why customers often give inflated feedback post-purchase.",
+                        "Poll results are often molded by how questions are framed, showcased by the differing BBC license fee survey outcomes.",
+                        "Ultimately, consumer research can significantly distort perceptions if not accounting for these **cognitive biases**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Group Influence in Focus Groups",
-            "body": "Viewers watching focus groups are susceptible to <b style='color: forestgreen;'>copying other people's opinions</b> due to <b style='color: forestgreen;'>interactional dynamics</b> that arise in these settings. The priming effect is influential here, and it shows how <b style='color: forestgreen;'>unintended mimicking</b> of choices can occur, even in simple contexts such as picking a product <b style='color: forestgreen;'>after watching others</b>. This <b style='color: forestgreen;'>unconscious mimicking</b> of actions and responses can lead to <b style='color: forestgreen;'>incorrect data</b> being collected if inadequate precautions aren't taken.\n\nMoreover, people's tendency to <b style='color: forestgreen;'>align with the majority opinion</b> indicates how <b style='color: forestgreen;'>group dynamics and pressure</b> can skew results in focus groups. When one voice <b style='color: forestgreen;'>repeatedly presents</b> a view, it can create the false sense that an <b style='color: forestgreen;'>artificial consensus</b> has been reached. This becomes apparent in unsatisfactory scenarios where the <b style='color: forestgreen;'>focus group dynamics,</b> influenced by <b style='color: forestgreen;'>invisible social cues</b> and an inherent need to conform, shape \"consensus,\" possibly diverging from genuine individual preferences."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Viewers watching focus groups are susceptible to **copying other people's opinions** due to **interactional dynamics** that arise in these settings.",
+                        "The priming effect is influential here, and it shows how **unintended mimicking** of choices can occur, even in simple contexts such as picking a product **after watching others**.",
+                        "This **unconscious mimicking** of actions and responses can lead to **incorrect data** being collected if inadequate precautions aren't taken."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Moreover, people's tendency to **align with the majority opinion** indicates how **group dynamics and pressure** can skew results in focus groups.",
+                        "When one voice **repeatedly presents** a view, it can create the false sense that an **artificial consensus** has been reached.",
+                        "This becomes apparent in unsatisfactory scenarios where the **focus group dynamics,** influenced by **invisible social cues** and an inherent need to conform, shape \"consensus,\" possibly diverging from genuine individual preferences."
+                    ]
+                }
+            ]
         },
         {
             "title": "Influence of Observation and Environment on Research Outcomes",
-            "body": "People change behavior when they know they're being <b style='color: forestgreen;'>watched</b>, leading to artificial results. Studies show bright <b style='color: forestgreen;'>lighting</b> and self-consciousness create hyper-aware, unnatural behavior in research settings. Like the Hawthorne effect, participants act differently when observed. Market research often misjudges the <b style='color: forestgreen;'>impact</b> of new products, evidenced by Sony Ericsson's focus group failure with the W600 handset. Group dynamics distort responses; people <b style='color: forestgreen;'>comply</b> with majority opinions and one loud voice can <b style='color: forestgreen;'>sway</b> the group. True consumer insights require understanding real-life <b style='color: forestgreen;'>behavior</b> away from the artificiality of focus groups."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "People change behavior when they know they're being **watched**, leading to artificial results.",
+                        "Studies show bright **lighting** and self-consciousness create hyper-aware, unnatural behavior in research settings.",
+                        "Like the Hawthorne effect, participants act differently when observed.",
+                        "Market research often misjudges the **impact** of new products, evidenced by Sony Ericsson's focus group failure with the W600 handset.",
+                        "Group dynamics distort responses; people **comply** with majority opinions and one loud voice can **sway** the group.",
+                        "True consumer insights require understanding real-life **behavior** away from the artificiality of focus groups."
+                    ]
+                }
+            ]
         },
         {
             "title": "Importance of Realistic Consumer Research",
-            "body": "Different methods of consumer research include a realistic live trial and artificial online surveys. It emphasizes that live trials, like observing a new product in a retail setting, yield more accurate consumer behavior insights than surveys, which often don't reflect real consumer behavior. <b style='color: forestgreen;'>Live trials</b> provide genuine insights as they <b style='color: forestgreen;'>retain authenticity, involve real environments</b>, and allow observation of natural consumer reactions without their awareness. <b style='color: forestgreen;'>Online surveys often miss the mark</b> as they're conducted in <b style='color: forestgreen;'>unnatural settings</b> and can lead consumers to answer in ways that don't replicate actual purchase situations. Therefore, companies are encouraged to lean towards live trials to get accurate and actionable consumer insights, as <b style='color: forestgreen;'>aligning research with real consumer experiences</b> can significantly increase reliability."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Different methods of consumer research include a realistic live trial and artificial online surveys.",
+                        "It emphasizes that live trials, like observing a new product in a retail setting, yield more accurate consumer behavior insights than surveys, which often don't reflect real consumer behavior.",
+                        "**Live trials** provide genuine insights as they **retain authenticity, involve real environments**, and allow observation of natural consumer reactions without their awareness.",
+                        "**Online surveys often miss the mark** as they're conducted in **unnatural settings** and can lead consumers to answer in ways that don't replicate actual purchase situations.",
+                        "Therefore, companies are encouraged to lean towards live trials to get accurate and actionable consumer insights, as **aligning research with real consumer experiences** can significantly increase reliability."
+                    ]
+                }
+            ]
         }
     ]
 }

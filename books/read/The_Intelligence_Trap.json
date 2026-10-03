@@ -13,55 +13,244 @@
     "parts": [
         {
             "title": "Unraveling the Intelligence Trap",
-            "body": "The book explores <b style='color: forestgreen;'>how high intelligence</b> can sometimes lead to <b style='color: forestgreen;'>stupid mistakes</b>, challenging the stereotype of intelligence as a safeguard of good decision-making. The <b style='color: forestgreen;'>story of Kary Mullis</b>, a Nobel laureate with controversial views, highlights how even brilliant minds can hold flawed beliefs. The \"intelligence trap,\" as defined in the book, suggests that without certain mental checks, higher intelligence can result in more confident, yet <b style='color: forestgreen;'>biased reasoning</b>. The author also introduces strategies for avoiding these traps, emphasizing skills like <b style='color: forestgreen;'>cognitive reflection</b> and <b style='color: forestgreen;'>intellectual humility</b>, which are often not measured but are essential for wise thinking."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The book explores **how high intelligence** can sometimes lead to **stupid mistakes**, challenging the stereotype of intelligence as a safeguard of good decision-making.",
+                        "The **story of Kary Mullis**, a Nobel laureate with controversial views, highlights how even brilliant minds can hold flawed beliefs.",
+                        "The \"intelligence trap,\" as defined in the book, suggests that without certain mental checks, higher intelligence can result in more confident, yet **biased reasoning**.",
+                        "The author also introduces strategies for avoiding these traps, emphasizing skills like **cognitive reflection** and **intellectual humility**, which are often not measured but are essential for wise thinking."
+                    ]
+                }
+            ]
         },
         {
             "title": "Beyond IQ: Embracing Diverse Intelligences",
-            "body": "In the midst of exploring and recognizing <b style='color: forestgreen;'>different types of intelligence</b>, it's important to note that <b style='color: forestgreen;'>general intelligence tests like IQ</b> serve to measure certain mental capabilities but do not encompass the breadth of intellectual skillsets necessary for <b style='color: forestgreen;'>real-world success</b>. These classic examinations may predict <b style='color: forestgreen;'>academic performance</b> to some extent, yet they fall short in accounting for <b style='color: forestgreen;'>creative and practical skills</b> that drive success in many professions. Researchers like Sternberg have identified various styles of thinking like <b style='color: forestgreen;'>practical, analytical, and creative intelligence</b>. Sternberg’s theory, supported by empirical research, suggests that appreciating these <b style='color: forestgreen;'>distinct intelligence types</b> can enhance educational methods and allow a more comprehensive prediction of one’s abilities. \n\nIn several studies, Sternberg's <b style='color: forestgreen;'>measures of practical and creative intelligence</b> offered notable insights. Through redefined schooling methods and <b style='color: forestgreen;'>experimental programs</b>, students excelling in <b style='color: forestgreen;'>creative or practical thinking</b> displayed improved education outcomes when taught according to their strengths. This research suggests a significant <b style='color: forestgreen;'>oversight in traditional intelligence testing</b>, showcasing that <b style='color: forestgreen;'>general intelligence scores</b> alone cannot entirely define one's potential or gauge one's capacity to conquer life's challenges. For example, <b style='color: forestgreen;'>intellectual capabilities like practical intelligence</b> prove vital in overcoming <b style='color: forestgreen;'>daily logistical hurdles</b> and social nuances, which are seldom addressed by conventional tests. These insights beckon us to expand our understanding of intelligence beyond <b style='color: forestgreen;'>quantifiable measures</b>, recognizing <b style='color: forestgreen;'>practical skills</b> and <b style='color: forestgreen;'>perceptual acuities</b> as essential components of <b style='color: forestgreen;'>human intellect</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In the midst of exploring and recognizing **different types of intelligence**, it's important to note that **general intelligence tests like IQ** serve to measure certain mental capabilities but do not encompass the breadth of intellectual skillsets necessary for **real-world success**.",
+                        "These classic examinations may predict **academic performance** to some extent, yet they fall short in accounting for **creative and practical skills** that drive success in many professions.",
+                        "Researchers like Sternberg have identified various styles of thinking like **practical, analytical, and creative intelligence**.",
+                        "Sternberg\u2019s theory, supported by empirical research, suggests that appreciating these **distinct intelligence types** can enhance educational methods and allow a more comprehensive prediction of one\u2019s abilities."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "In several studies, Sternberg's **measures of practical and creative intelligence** offered notable insights.",
+                        "Through redefined schooling methods and **experimental programs**, students excelling in **creative or practical thinking** displayed improved education outcomes when taught according to their strengths.",
+                        "This research suggests a significant **oversight in traditional intelligence testing**, showcasing that **general intelligence scores** alone cannot entirely define one's potential or gauge one's capacity to conquer life's challenges.",
+                        "For example, **intellectual capabilities like practical intelligence** prove vital in overcoming **daily logistical hurdles** and social nuances, which are seldom addressed by conventional tests.",
+                        "These insights beckon us to expand our understanding of intelligence beyond **quantifiable measures**, recognizing **practical skills** and **perceptual acuities** as essential components of **human intellect**."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Clash of Houdini and Conan Doyle's Beliefs",
-            "body": "In 1922, <b style='color: forestgreen;'>Houdini</b> and <b style='color: forestgreen;'>Conan Doyle</b> met for a <b style='color: forestgreen;'>séance</b>, hoping that Doyle's wife Jean could contact Houdini's deceased mother. Despite Jean's lengthy, <b style='color: forestgreen;'>emotional messages</b> supposedly from the spirit world, Houdini was skeptical, questioning why the messages came in <b style='color: forestgreen;'>English</b> rather than his mother's native <b style='color: forestgreen;'>Hungarian</b>, and why there was no mention of her birthday. These doubts led to a <b style='color: forestgreen;'>public dispute</b> between Houdini and Conan Doyle, ultimately ending their friendship.\n\nResearch into <b style='color: forestgreen;'>dysrationalia</b>—where intelligence doesn't prevent irrational beliefs—illustrates how a person like <b style='color: forestgreen;'>Conan Doyle</b> can believe in spiritualism and other <b style='color: forestgreen;'>paranormal</b> ideas despite high intelligence. Even though researchers like <b style='color: forestgreen;'>Stanovich</b> found that intelligence and <b style='color: forestgreen;'>rationality</b> are not strongly correlated, that didn't stop Conan Doyle from letting his strong beliefs blind him to evidence. His commitment to <b style='color: forestgreen;'>spiritualism</b> was so intertwined with his identity that any opposing evidence was simply ignored or dismissed."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In 1922, **Houdini** and **Conan Doyle** met for a **s\u00e9ance**, hoping that Doyle's wife Jean could contact Houdini's deceased mother.",
+                        "Despite Jean's lengthy, **emotional messages** supposedly from the spirit world, Houdini was skeptical, questioning why the messages came in **English** rather than his mother's native **Hungarian**, and why there was no mention of her birthday.",
+                        "These doubts led to a **public dispute** between Houdini and Conan Doyle, ultimately ending their friendship."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Research into **dysrationalia**\u2014where intelligence doesn't prevent irrational beliefs\u2014illustrates how a person like **Conan Doyle** can believe in spiritualism and other **paranormal** ideas despite high intelligence.",
+                        "Even though researchers like **Stanovich** found that intelligence and **rationality** are not strongly correlated, that didn't stop Conan Doyle from letting his strong beliefs blind him to evidence.",
+                        "His commitment to **spiritualism** was so intertwined with his identity that any opposing evidence was simply ignored or dismissed."
+                    ]
+                }
+            ]
         },
         {
             "title": "Expertise Errors and Bias in Judgment",
-            "body": "<b style='color: forestgreen;'>Mayfield</b> was erroneously accused of being involved in the <b style='color: forestgreen;'>Madrid bombings</b>. Despite substantial evidence to the contrary, the <b style='color: forestgreen;'>FBI</b> was adamant that his fingerprints were a match. <b style='color: forestgreen;'>Expertise bias</b> blinded the examiners' judgment. Even with glaring discrepancies, biases led to overlooking inconsistencies, influenced by external expectations and emotional beliefs. This highlights the dangerous combination of <b style='color: forestgreen;'>earned dogmatism</b> and top-down processing errors, where experts can miss crucial details due to bias and confidence in their shortcuts. The <b style='color: forestgreen;'>confirmation bias</b> among experts creates <b style='color: forestgreen;'>\"bias cascades\"</b>, escalating errors as each step confirms the previous mistake due to assumed evidence."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Mayfield** was erroneously accused of being involved in the **Madrid bombings**.",
+                        "Despite substantial evidence to the contrary, the **FBI** was adamant that his fingerprints were a match.",
+                        "**Expertise bias** blinded the examiners' judgment.",
+                        "Even with glaring discrepancies, biases led to overlooking inconsistencies, influenced by external expectations and emotional beliefs.",
+                        "This highlights the dangerous combination of **earned dogmatism** and top-down processing errors, where experts can miss crucial details due to bias and confidence in their shortcuts.",
+                        "The **confirmation bias** among experts creates **\"bias cascades\"**, escalating errors as each step confirms the previous mistake due to assumed evidence."
+                    ]
+                }
+            ]
         },
         {
             "title": "Expertise and Oversight in Aviation",
-            "body": "The *curse of expertise* in <b style='color: forestgreen;'>aviation</b> can lead to dangerous oversight. Despite pilots using <b style='color: forestgreen;'>checklists</b> and <b style='color: forestgreen;'>safety protocols</b>, their experience can cause these tasks to become <b style='color: forestgreen;'>automatic</b>, and result in less <b style='color: forestgreen;'>conservative judgment</b>. An example is the tragic <b style='color: forestgreen;'>Comair Flight 5191</b> accident due to pilot error in <b style='color: forestgreen;'>Lexington</b> Kentucky. This shows that even experienced professionals are prone to making significant <b style='color: forestgreen;'>errors</b> when their <b style='color: forestgreen;'>automatic scripts</b> override <b style='color: forestgreen;'>critical checks</b>.\n\nIn <b style='color: forestgreen;'>other industries</b>, like <b style='color: forestgreen;'>nuclear power</b>, steps are taken to counteract expertise-induced complacency, such as swapping the order of safety procedures. <b style='color: forestgreen;'>Aviation</b>, and similar fields, could learn from this to create <b style='color: forestgreen;'>expert-proof</b> systems. By routinely altering procedural patterns, they can keep <b style='color: forestgreen;'>inspectors</b> and pilots <b style='color: forestgreen;'>alert</b>, preventing complacency-related oversights."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The *curse of expertise* in **aviation** can lead to dangerous oversight.",
+                        "Despite pilots using **checklists** and **safety protocols**, their experience can cause these tasks to become **automatic**, and result in less **conservative judgment**.",
+                        "An example is the tragic **Comair Flight 5191** accident due to pilot error in **Lexington** Kentucky.",
+                        "This shows that even experienced professionals are prone to making significant **errors** when their **automatic scripts** override **critical checks**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "In **other industries**, like **nuclear power**, steps are taken to counteract expertise-induced complacency, such as swapping the order of safety procedures.",
+                        "**Aviation**, and similar fields, could learn from this to create **expert-proof** systems.",
+                        "By routinely altering procedural patterns, they can keep **inspectors** and pilots **alert**, preventing complacency-related oversights."
+                    ]
+                }
+            ]
         },
         {
             "title": "Reflective Thinking and Self-distancing for Problem Solving",
-            "body": "Ethan Kross from the University of Michigan recommends a simple approach to help people process their problems using a <b style='color: forestgreen;'>reflective</b>, \"cool\" approach rather than an emotional, \"hot\" one. By adopting this method, individuals were found to use more <b style='color: forestgreen;'>neutral language</b> and seek out the <b style='color: forestgreen;'>underlying causes</b> of their troubles instead of getting caught up in trivial aspects. This shift from a first-person to a <b style='color: forestgreen;'>distanced perspective</b> allows a person to understand their emotions better and make sense of events more objectively. It encourages moving past personal biases into a broader context, helping individuals adopt a more <b style='color: forestgreen;'>inquisitive, open-minded</b> attitude. Examples show how people such as LeBron James and Malala Yousafzai have successfully used self-distancing to handle challenging situations, leading to reduced anxiety. Studies demonstrated benefits in public speaking and relationship counseling through self-distancing practices, proving to enhance <b style='color: forestgreen;'>confidence</b>, <b style='color: forestgreen;'>compromise</b>, and <b style='color: forestgreen;'>communication</b>.\n\nSelf-distancing techniques, like imagining you are explaining a situation to a child, can be even more effective in fostering <b style='color: forestgreen;'>intellectual humility</b> and a willingness to integrate different viewpoints. These techniques could notably improve relationships and resolve biases in people. Beyond personal growth, self-distancing can broaden perspectives on international conflicts and discussions. Increasingly, research suggests these methods refine reasoning by preventing emotion-driven biases and strengthening <b style='color: forestgreen;'>open-minded decision-making</b>. As demonstrated by the \"Socrates Effect,\" nurturing these reflective skills can have profound implications for both personal insights and societal <b style='color: forestgreen;'>objective reasoning</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Ethan Kross from the University of Michigan recommends a simple approach to help people process their problems using a **reflective**, \"cool\" approach rather than an emotional, \"hot\" one.",
+                        "By adopting this method, individuals were found to use more **neutral language** and seek out the **underlying causes** of their troubles instead of getting caught up in trivial aspects.",
+                        "This shift from a first-person to a **distanced perspective** allows a person to understand their emotions better and make sense of events more objectively.",
+                        "It encourages moving past personal biases into a broader context, helping individuals adopt a more **inquisitive, open-minded** attitude.",
+                        "Examples show how people such as LeBron James and Malala Yousafzai have successfully used self-distancing to handle challenging situations, leading to reduced anxiety.",
+                        "Studies demonstrated benefits in public speaking and relationship counseling through self-distancing practices, proving to enhance **confidence**, **compromise**, and **communication**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Self-distancing techniques, like imagining you are explaining a situation to a child, can be even more effective in fostering **intellectual humility** and a willingness to integrate different viewpoints.",
+                        "These techniques could notably improve relationships and resolve biases in people.",
+                        "Beyond personal growth, self-distancing can broaden perspectives on international conflicts and discussions.",
+                        "Increasingly, research suggests these methods refine reasoning by preventing emotion-driven biases and strengthening **open-minded decision-making**.",
+                        "As demonstrated by the \"Socrates Effect,\" nurturing these reflective skills can have profound implications for both personal insights and societal **objective reasoning**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Reflective Competence in Expertise",
-            "body": "Improving <b style='color: forestgreen;'>emotional awareness</b> and incorporating <b style='color: forestgreen;'>reflective thinking</b> in daily routines can address the <b style='color: forestgreen;'>\"curse of expertise\"</b> where experts rely on inaccurate intuitions. In fields like <b style='color: forestgreen;'>medicine</b>, errors in diagnoses are alarming, with thousands of patient deaths possibly linked to these oversights each year. <b style='color: forestgreen;'>Reflective competence</b> is proposed as a new stage beyond traditional expertise levels, emphasizing the balance between <b style='color: forestgreen;'>intuition and rational analysis</b> to <b style='color: forestgreen;'>reduce diagnostic errors</b>. Techniques like <b style='color: forestgreen;'>mindfulness</b> and <b style='color: forestgreen;'>systematic reflection</b> show promise in enhancing decision accuracy, potentially preventing significant medical errors.\n\nSimilarly, professionals in <b style='color: forestgreen;'>legal and other fields</b> are adopting these strategies to <b style='color: forestgreen;'>mitigate biases</b> and improve decision making. By honing skills in <b style='color: forestgreen;'>emotion regulation</b>, and applying <b style='color: forestgreen;'>critical thinking</b>, experts can refine their intuitive reactions, making them more <b style='color: forestgreen;'>effective and less error-prone</b>. This evolution in understanding the role of emotions in <b style='color: forestgreen;'>expert judgment</b> signifies a shift towards becoming better equipped to manage complex, <b style='color: forestgreen;'>environmental challenges</b> while maintaining <b style='color: forestgreen;'>intellectual humility</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Improving **emotional awareness** and incorporating **reflective thinking** in daily routines can address the **\"curse of expertise\"** where experts rely on inaccurate intuitions.",
+                        "In fields like **medicine**, errors in diagnoses are alarming, with thousands of patient deaths possibly linked to these oversights each year.",
+                        "**Reflective competence** is proposed as a new stage beyond traditional expertise levels, emphasizing the balance between **intuition and rational analysis** to **reduce diagnostic errors**.",
+                        "Techniques like **mindfulness** and **systematic reflection** show promise in enhancing decision accuracy, potentially preventing significant medical errors."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Similarly, professionals in **legal and other fields** are adopting these strategies to **mitigate biases** and improve decision making.",
+                        "By honing skills in **emotion regulation**, and applying **critical thinking**, experts can refine their intuitive reactions, making them more **effective and less error-prone**.",
+                        "This evolution in understanding the role of emotions in **expert judgment** signifies a shift towards becoming better equipped to manage complex, **environmental challenges** while maintaining **intellectual humility**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Tools for Guarding Against Misinformation",
-            "body": "<b style='color: forestgreen;'>People's willingness</b> to tame misinformation by <b style='color: forestgreen;'>applying skepticism techniques</b> seems daunting, given <b style='color: forestgreen;'>popular media outlets' credibility issues</b>. Many can't verify everything they encounter. Consequently, teachers are now teaching students <b style='color: forestgreen;'>how to identify the types of arguments</b> typically used to <b style='color: forestgreen;'>mislead people</b>. For instance, they teach <b style='color: forestgreen;'>logical fallacies</b> such as <b style='color: forestgreen;'>appeal to ignorance</b>, <b style='color: forestgreen;'>straw man arguments</b>, or <b style='color: forestgreen;'>false dichotomy</b> to protect people from being swayed by \"truthy\" yet deceptive information. \n\nModern education aims at equipping students with <b style='color: forestgreen;'>tools to question assumptions</b>, considerably <b style='color: forestgreen;'>boosting their thinking skills</b> and reasoning abilities. By learning how to <b style='color: forestgreen;'>apply these critical thinking standards</b>, students foster better decision-making behaviors, thus enhancing their general <b style='color: forestgreen;'>analytical skills</b>. This instruction helps combat misinformation effectively and could significantly <b style='color: forestgreen;'>lessen the impact of biased reasoning</b> even among politically motivated topics. <b style='color: forestgreen;'>Analyzing facts unbiasedly</b> becomes a tool for greater wisdom and intelligent decision-making, contributing to healthier skepticism toward one's assumptions and beliefs."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**People's willingness** to tame misinformation by **applying skepticism techniques** seems daunting, given **popular media outlets' credibility issues**.",
+                        "Many can't verify everything they encounter.",
+                        "Consequently, teachers are now teaching students **how to identify the types of arguments** typically used to **mislead people**.",
+                        "For instance, they teach **logical fallacies** such as **appeal to ignorance**, **straw man arguments**, or **false dichotomy** to protect people from being swayed by \"truthy\" yet deceptive information."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Modern education aims at equipping students with **tools to question assumptions**, considerably **boosting their thinking skills** and reasoning abilities.",
+                        "By learning how to **apply these critical thinking standards**, students foster better decision-making behaviors, thus enhancing their general **analytical skills**.",
+                        "This instruction helps combat misinformation effectively and could significantly **lessen the impact of biased reasoning** even among politically motivated topics.",
+                        "**Analyzing facts unbiasedly** becomes a tool for greater wisdom and intelligent decision-making, contributing to healthier skepticism toward one's assumptions and beliefs."
+                    ]
+                }
+            ]
         },
         {
             "title": "Curiosity and Growth Mindset Benefits",
-            "body": "Richard Feynman's success was <b style='color: forestgreen;'>powered by his unquenchable curiosity</b> and a \"<b style='color: forestgreen;'>growth mind-set</b>,\" allowing him to <b style='color: forestgreen;'>explore new challenges without fear of failure</b>. His method of \"playing\" with ideas led to major breakthroughs like quantum electrodynamics. Feynman embraced mistakes as <b style='color: forestgreen;'>stepping stones</b> rather than setbacks, showing <b style='color: forestgreen;'>intellectual humility</b> even when successful. Similar attributes of <b style='color: forestgreen;'>curiosity</b> and the growth mind-set can <b style='color: forestgreen;'>fortify reasoning</b> and lessen biases.\n\nRemarkably, Dan Kahan's research found that <b style='color: forestgreen;'>curiosity-lessens bias</b>, especially in politically contentious topics. Enthusiasm for acquiring new information helped people look past <b style='color: forestgreen;'>political predispositions</b> to <b style='color: forestgreen;'>consider alternative views</b> more openly. Moreover, growth mind-set is linked with <b style='color: forestgreen;'>intellectual humility</b>; it encourages people to admit they don't know something, enhancing their <b style='color: forestgreen;'>ability to learn from others</b>. These psychological traits foster <b style='color: forestgreen;'>open mindedness</b> and lessen <b style='color: forestgreen;'>dogmatic thinking</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Richard Feynman's success was **powered by his unquenchable curiosity** and a \"**growth mind-set**,\" allowing him to **explore new challenges without fear of failure**.",
+                        "His method of \"playing\" with ideas led to major breakthroughs like quantum electrodynamics.",
+                        "Feynman embraced mistakes as **stepping stones** rather than setbacks, showing **intellectual humility** even when successful.",
+                        "Similar attributes of **curiosity** and the growth mind-set can **fortify reasoning** and lessen biases."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Remarkably, Dan Kahan's research found that **curiosity-lessens bias**, especially in politically contentious topics.",
+                        "Enthusiasm for acquiring new information helped people look past **political predispositions** to **consider alternative views** more openly.",
+                        "Moreover, growth mind-set is linked with **intellectual humility**; it encourages people to admit they don't know something, enhancing their **ability to learn from others**.",
+                        "These psychological traits foster **open mindedness** and lessen **dogmatic thinking**."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Intelligence Problem in Western Education vs. Japanese System",
-            "body": "<b style='color: forestgreen;'>UK</b> and <b style='color: forestgreen;'>US</b> classrooms often simplify lessons to allow quick digestion, which can discourage deeper thought and <b style='color: forestgreen;'>critical thinking</b>. Much like other attempts at educational reform, such as tailoring to a child's specific <b style='color: forestgreen;'>learning style</b>, this can hinder students from grappling with <b style='color: forestgreen;'>complex problems</b> that aren't straightforward. This may explain why <b style='color: forestgreen;'>students</b> from these countries struggle with <b style='color: forestgreen;'>critical thinking</b> and are susceptible to <b style='color: forestgreen;'>misinformation</b>. On the other hand, in places like <b style='color: forestgreen;'>Japan</b>, students are encouraged to tackle <b style='color: forestgreen;'>complexity</b> daily. They learn to explore <b style='color: forestgreen;'>alternative solutions</b>, accepting <b style='color: forestgreen;'>failure</b> as a chance for eventual improvement. This educational model seems to better prepare them for complex real-world problems, reflected by higher scores in open-minded reasoning."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**UK** and **US** classrooms often simplify lessons to allow quick digestion, which can discourage deeper thought and **critical thinking**.",
+                        "Much like other attempts at educational reform, such as tailoring to a child's specific **learning style**, this can hinder students from grappling with **complex problems** that aren't straightforward.",
+                        "This may explain why **students** from these countries struggle with **critical thinking** and are susceptible to **misinformation**.",
+                        "On the other hand, in places like **Japan**, students are encouraged to tackle **complexity** daily.",
+                        "They learn to explore **alternative solutions**, accepting **failure** as a chance for eventual improvement.",
+                        "This educational model seems to better prepare them for complex real-world problems, reflected by higher scores in open-minded reasoning."
+                    ]
+                }
+            ]
         },
         {
             "title": "Too Much Talent Effect in Team Sports",
-            "body": "The researchers found that the <b style='color: forestgreen;'>proportion</b> of star players in a <b style='color: forestgreen;'>team</b> significantly affected the <b style='color: forestgreen;'>team's success</b>. For sports like <b style='color: forestgreen;'>baseball</b>, which require less <b style='color: forestgreen;'>coordination</b>, the \"too-much-talent effect\" didn't appear; buying top talents is useful there. Iceland's victory in Euro 2016 was due to factors like those players not reaching a status that could disrupt team dynamics, unlike England, who had many <b style='color: forestgreen;'>super-rich team players</b>. <b style='color: forestgreen;'>Portugal's subtle strategy</b> using lesser star players with prominent one, <b style='color: forestgreen;'>Cristiano Ronaldo</b>, avoided the negative impact of having too many top-star players.\n\nIn a last experiment, baseball, a sport less about player <b style='color: forestgreen;'>cooperation</b>, didn’t show the negative \"too-much-talent\" <b style='color: forestgreen;'>impact</b>. Teams composed of largely star players didn’t gain advantages unless cooperation was crucial. This suggests that maximizing top talent doesn't always guarantee success and emphasizes the <b style='color: forestgreen;'>value of teamwork</b> and minimal status conflicts. Football requires more of these factors, explaining why excessive star players might undermine performance, as hectic dynamics deter teams from functioning cohesively and collectively."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The researchers found that the **proportion** of star players in a **team** significantly affected the **team's success**.",
+                        "For sports like **baseball**, which require less **coordination**, the \"too-much-talent effect\" didn't appear; buying top talents is useful there.",
+                        "Iceland's victory in Euro 2016 was due to factors like those players not reaching a status that could disrupt team dynamics, unlike England, who had many **super-rich team players**.",
+                        "**Portugal's subtle strategy** using lesser star players with prominent one, **Cristiano Ronaldo**, avoided the negative impact of having too many top-star players."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "In a last experiment, baseball, a sport less about player **cooperation**, didn\u2019t show the negative \"too-much-talent\" **impact**.",
+                        "Teams composed of largely star players didn\u2019t gain advantages unless cooperation was crucial.",
+                        "This suggests that maximizing top talent doesn't always guarantee success and emphasizes the **value of teamwork** and minimal status conflicts.",
+                        "Football requires more of these factors, explaining why excessive star players might undermine performance, as hectic dynamics deter teams from functioning cohesively and collectively."
+                    ]
+                }
+            ]
         },
         {
             "title": "Fostering Rational Decision-Making in Organizations",
-            "body": "<b style='color: forestgreen;'>Organizations</b> can learn from Keith Stanovich's <b style='color: forestgreen;'>rationality quotient</b>, which helps assess employees' susceptibility to <b style='color: forestgreen;'>bias</b>. Additionally, integrating <b style='color: forestgreen;'>critical thinking</b> programs can benefit companies. Analyzing the <b style='color: forestgreen;'>company culture</b> to see if it promotes <b style='color: forestgreen;'>talent growth</b> or a <b style='color: forestgreen;'>fixed mindset</b> can reflect on its success. For instance, Carol Dweck's research shows that companies with a <b style='color: forestgreen;'>growth mindset</b> see <b style='color: forestgreen;'>greater innovation</b> and <b style='color: forestgreen;'>less unethical behavior</b>.\n\nOrganizations should use <b style='color: forestgreen;'>productive struggle</b> during training to help employees engage deeply with content. Wise decision-making involves recognizing one's <b style='color: forestgreen;'>limits and errors</b>, tackling <b style='color: forestgreen;'>ambiguity</b>, staying <b style='color: forestgreen;'>open to new information</b>, and <b style='color: forestgreen;'>questioning everything</b>. This model is beneficial across professions, indicating that acknowledging failures and fostering a secular approach to growth is vital in <b style='color: forestgreen;'>high-risk</b> roles."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Organizations** can learn from Keith Stanovich's **rationality quotient**, which helps assess employees' susceptibility to **bias**.",
+                        "Additionally, integrating **critical thinking** programs can benefit companies.",
+                        "Analyzing the **company culture** to see if it promotes **talent growth** or a **fixed mindset** can reflect on its success.",
+                        "For instance, Carol Dweck's research shows that companies with a **growth mindset** see **greater innovation** and **less unethical behavior**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Organizations should use **productive struggle** during training to help employees engage deeply with content.",
+                        "Wise decision-making involves recognizing one's **limits and errors**, tackling **ambiguity**, staying **open to new information**, and **questioning everything**.",
+                        "This model is beneficial across professions, indicating that acknowledging failures and fostering a secular approach to growth is vital in **high-risk** roles."
+                    ]
+                }
+            ]
         },
         {
             "title": "Collective Intelligence in Teams and Its Impact",
-            "body": "<b style='color: forestgreen;'>The importance of </b>group dynamics<b style='color: forestgreen;'> and collective intelligence in different </b>settings<b style='color: forestgreen;'> such as sports and healthcare is highlighted through research. In </b>sports<b style='color: forestgreen;'>, studies emphasize how teams with less hierarchical structures and inclusive cultures tend to perform better. This is because such environments reduce ego clashes and </b>enhance collaboration<b style='color: forestgreen;'>, as seen in </b>Iceland's football team<b style='color: forestgreen;'> during Euro 2016. Similarly, in </b>healthcare<b style='color: forestgreen;'>, team success is linked to open communication and </b>inclusive collaboration<b style='color: forestgreen;'> which promotes better decision-making and </b>performance<b style='color: forestgreen;'>. References are made to works by </b>Woolley<b style='color: forestgreen;'> and colleagues on these subjects.</b>"
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**The importance of **group dynamics** and collective intelligence in different **settings** such as sports and healthcare is highlighted through research. In **sports**, studies emphasize how teams with less hierarchical structures and inclusive cultures tend to perform better. This is because such environments reduce ego clashes and **enhance collaboration**, as seen in **Iceland's football team** during Euro 2016. Similarly, in **healthcare**, team success is linked to open communication and **inclusive collaboration** which promotes better decision-making and **performance**. References are made to works by **Woolley** and colleagues on these subjects.**"
+                    ]
+                }
+            ]
         }
     ]
 }

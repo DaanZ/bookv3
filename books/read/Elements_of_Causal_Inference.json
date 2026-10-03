@@ -13,43 +13,188 @@
     "parts": [
         {
             "title": "Understanding Causal Models in Statistical Learning",
-            "body": "<b style='color: forestgreen;'>Causal</b> Models *go* beyond <b style='color: forestgreen;'>statistical</b> ones by incorporating a <b style='color: forestgreen;'>structure</b> that explains connections among <b style='color: forestgreen;'>variables</b>. This <b style='color: forestgreen;'>structure</b> allows analysis of <b style='color: forestgreen;'>interventions</b>, providing insights beyond <b style='color: forestgreen;'>correlations</b>. In <b style='color: forestgreen;'>learning</b>, while <b style='color: forestgreen;'>statistical</b> methods handle <b style='color: forestgreen;'>probabilistic</b> models, finding <b style='color: forestgreen;'>causal</b> ones involves solving an additional complex <b style='color: forestgreen;'>ill-posed</b> problem since full <b style='color: forestgreen;'>knowledge</b> of distributions doesn\u2019t reveal <b style='color: forestgreen;'>causal</b> relations. Despite their complexity, <b style='color: forestgreen;'>causal</b> models can inform better <b style='color: forestgreen;'>learning</b> techniques. This book discusses existing <b style='color: forestgreen;'>approaches</b> and proposes ways to <b style='color: forestgreen;'>understand</b> these relations."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Causal** Models *go* beyond **statistical** ones by incorporating a **structure** that explains connections among **variables**.",
+                        "This **structure** allows analysis of **interventions**, providing insights beyond **correlations**.",
+                        "In **learning**, while **statistical** methods handle **probabilistic** models, finding **causal** ones involves solving an additional complex **ill-posed** problem since full **knowledge** of distributions doesn\u2019t reveal **causal** relations.",
+                        "Despite their complexity, **causal** models can inform better **learning** techniques.",
+                        "This book discusses existing **approaches** and proposes ways to **understand** these relations."
+                    ]
+                }
+            ]
         },
         {
             "title": "Causal Structures in Models",
-            "body": "There are two <b style='color: forestgreen;'>causal models</b> involving handwritten digits (X) and class labels (Y). In model (i), labels were given to a <b style='color: forestgreen;'>writer</b> who then created images. Thus, X was a function of Y and some <b style='color: forestgreen;'>noise</b>. If we intervened on X, Y stayed unchanged, showing <b style='color: forestgreen;'>direct causation</b> from Y to X. In model (ii), writers chose which digits to write, making both X and Y outcomes of a <b style='color: forestgreen;'>writer\u2019s intention (Z)</b>. This model could replicate the statistical dependence as model (i), but interventions affected X differently due to the distinct causal underpinning.\n\nWe emphasized that while the <b style='color: forestgreen;'>observational distribution</b> (dependence structure) in both models can look the same, they represent different intervention distributions. Causal models not only describe the current dependencies but also show how variables react to changes. These models are <b style='color: forestgreen;'>structured</b> by factors such as noise and physical mechanisms, and understanding them is key for discerning <b style='color: forestgreen;'>causality</b>. SCMs help us understand <b style='color: forestgreen;'>joint distributions</b> over data and why some statistical models may fail to truly represent causation without clarifying intervention outcomes."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "There are two **causal models** involving handwritten digits (X) and class labels (Y).",
+                        "In model (i), labels were given to a **writer** who then created images.",
+                        "Thus, X was a function of Y and some **noise**.",
+                        "If we intervened on X, Y stayed unchanged, showing **direct causation** from Y to X. In model (ii), writers chose which digits to write, making both X and Y outcomes of a **writer\u2019s intention (Z)**.",
+                        "This model could replicate the statistical dependence as model (i), but interventions affected X differently due to the distinct causal underpinning."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "We emphasized that while the **observational distribution** (dependence structure) in both models can look the same, they represent different intervention distributions.",
+                        "Causal models not only describe the current dependencies but also show how variables react to changes.",
+                        "These models are **structured** by factors such as noise and physical mechanisms, and understanding them is key for discerning **causality**.",
+                        "SCMs help us understand **joint distributions** over data and why some statistical models may fail to truly represent causation without clarifying intervention outcomes."
+                    ]
+                }
+            ]
         },
         {
             "title": "Learning Cause-Effect Models",
-            "body": "The causal inference of systems with only two observed variables can be performed through learning models with appropriate assumptions. The traditional approach of using <b style='color: forestgreen;'>conditional statistical independence</b> cannot be used when only two variables are involved since no non-trivial conditional independences can hold. Hence, strong <b style='color: forestgreen;'>assumptions</b> are required to identify the causal direction between the two variables. Although these assumptions might appear unrealistic in some scenarios, they are necessary, especially in the context of <b style='color: forestgreen;'>high-dimensional</b> data with low sample sizes.\n\nDifferent assumptions can help in identifying causal structures. It discusses structured <b style='color: forestgreen;'>assumptions</b> such as <b style='color: forestgreen;'>linear non-Gaussian additive noise</b>, <b style='color: forestgreen;'>nonlinear additive noise models</b>, <b style='color: forestgreen;'>discrete additive noise models</b>, and <b style='color: forestgreen;'>post-nonlinear models</b> which help in the identifiability of causal directions. Additionally, the text hints at newer methods that leverage <b style='color: forestgreen;'>information-geometric causal inference</b> and <b style='color: forestgreen;'>trace conditions</b> which formalize the <b style='color: forestgreen;'>independency between cause and mechanism</b>, allowing more informed inferences regarding causal structures."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The causal inference of systems with only two observed variables can be performed through learning models with appropriate assumptions.",
+                        "The traditional approach of using **conditional statistical independence** cannot be used when only two variables are involved since no non-trivial conditional independences can hold.",
+                        "Hence, strong **assumptions** are required to identify the causal direction between the two variables.",
+                        "Although these assumptions might appear unrealistic in some scenarios, they are necessary, especially in the context of **high-dimensional** data with low sample sizes."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Different assumptions can help in identifying causal structures.",
+                        "It discusses structured **assumptions** such as **linear non-Gaussian additive noise**, **nonlinear additive noise models**, **discrete additive noise models**, and **post-nonlinear models** which help in the identifiability of causal directions.",
+                        "Additionally, the text hints at newer methods that leverage **information-geometric causal inference** and **trace conditions** which formalize the **independency between cause and mechanism**, allowing more informed inferences regarding causal structures."
+                    ]
+                }
+            ]
         },
         {
             "title": "Introduction to Multivariate Causal Models",
-            "body": "It introduces <b style='color: forestgreen;'>multivariate causal models</b>, specifically focusing on structural causal models (<b style='color: forestgreen;'>SCMs</b>). These are <b style='color: forestgreen;'>systems of equations</b> used to describe <b style='color: forestgreen;'>dependencies</b> between multiple variables and are composed of <b style='color: forestgreen;'>assignments</b> that specify how each variable is generated from other variables and independent noise terms. <b style='color: forestgreen;'>DAGs</b> (<b style='color: forestgreen;'>Directed Acyclic Graphs</b>) are used to represent these models, where each node corresponds to a variable and directed edges indicate causal influences."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "It introduces **multivariate causal models**, specifically focusing on structural causal models (**SCMs**).",
+                        "These are **systems of equations** used to describe **dependencies** between multiple variables and are composed of **assignments** that specify how each variable is generated from other variables and independent noise terms.",
+                        "**DAGs** (**Directed Acyclic Graphs**) are used to represent these models, where each node corresponds to a variable and directed edges indicate causal influences."
+                    ]
+                }
+            ]
         },
         {
             "title": "Structural Causal Models and Interventions",
-            "body": "<b style='color: forestgreen;'>Structural Causal Models</b> (SCMs) involve variables and noise, which are independent and interact according to directed edges in an acyclic graph. This interaction leads to an observational distribution. Through <b style='color: forestgreen;'>ancestral sampling</b>, one can generate a sample from this distribution by using noise samples and the structural assignments.\n\n<b style='color: forestgreen;'>Intervention</b> distributions offer insight into causal relationships, determining how <b style='color: forestgreen;'>variables change</b> when manipulated, different from conditioning. Examples demonstrate how interventions on a variable might affect or not affect another. Causal effects are seen via changes in distribution after intervening, used in real-world applications like <b style='color: forestgreen;'>randomized trials</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Structural Causal Models** (SCMs) involve variables and noise, which are independent and interact according to directed edges in an acyclic graph.",
+                        "This interaction leads to an observational distribution.",
+                        "Through **ancestral sampling**, one can generate a sample from this distribution by using noise samples and the structural assignments."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Intervention** distributions offer insight into causal relationships, determining how **variables change** when manipulated, different from conditioning.",
+                        "Examples demonstrate how interventions on a variable might affect or not affect another.",
+                        "Causal effects are seen via changes in distribution after intervening, used in real-world applications like **randomized trials**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Advancements in Causal Model Identifiability",
-            "body": "Latest research has contributed to several <b style='color: forestgreen;'>identifiability results</b> in the learning of <b style='color: forestgreen;'>causal models</b> from data. These models describe how variables are <b style='color: forestgreen;'>causally dependent</b> on each other in a system. A variety of approaches, such as <b style='color: forestgreen;'>coefficient adjustment models</b> (CAMs) and additive noise models (ANMs), are employed to understand these causal relationships. Identifiability refers to whether we can uniquely determine the <b style='color: forestgreen;'>structure of the causal model</b> from the statistical data available and the assumptions made. In general, <b style='color: forestgreen;'>nonlinear ANMs</b> are difficult because they may not retain a causal form when underlying variables are <b style='color: forestgreen;'>marginalized</b> out. Also, identifiability is sometimes simply impossible, in some cases like Gaussian linear models unless special methods are used to distinguish among graph structures, such as when <b style='color: forestgreen;'>error variances</b> are known or equal."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Latest research has contributed to several **identifiability results** in the learning of **causal models** from data.",
+                        "These models describe how variables are **causally dependent** on each other in a system.",
+                        "A variety of approaches, such as **coefficient adjustment models** (CAMs) and additive noise models (ANMs), are employed to understand these causal relationships.",
+                        "Identifiability refers to whether we can uniquely determine the **structure of the causal model** from the statistical data available and the assumptions made.",
+                        "In general, **nonlinear ANMs** are difficult because they may not retain a causal form when underlying variables are **marginalized** out.",
+                        "Also, identifiability is sometimes simply impossible, in some cases like Gaussian linear models unless special methods are used to distinguish among graph structures, such as when **error variances** are known or equal."
+                    ]
+                }
+            ]
         },
         {
             "title": "Using Causal Structures in Domain Adaptation",
-            "body": "The <b style='color: forestgreen;'>causal structure</b> of a problem can be leveraged to tackle tasks like <b style='color: forestgreen;'>domain adaptation</b> effectively. When data from <b style='color: forestgreen;'>different domains</b> (or environments) are available, identifying a set of features that results in <b style='color: forestgreen;'>invariant prediction</b> across these domains can be beneficial. This property, when a certain set <b style='color: forestgreen;'>S* makes the conditional distribution invariant</b>, can generalize traditional assumptions like <b style='color: forestgreen;'>covariate shift</b>, where a condition is assumed for all features. \n\nIn <b style='color: forestgreen;'>domain generalization</b>, if the set S* is known, it allows us to apply <b style='color: forestgreen;'>covariate shift methods</b> effectively to predict outcomes in a <b style='color: forestgreen;'>new domain</b>. In <b style='color: forestgreen;'>multi-task learning</b>, combining <b style='color: forestgreen;'>pooled information</b> from various tasks with <b style='color: forestgreen;'>task-specific insights</b> is critical. For identifying S*, methods like <b style='color: forestgreen;'>invariant causal prediction</b> can help, choosing sets that maintain predictive power while ensuring invariance over existing domains."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **causal structure** of a problem can be leveraged to tackle tasks like **domain adaptation** effectively.",
+                        "When data from **different domains** (or environments) are available, identifying a set of features that results in **invariant prediction** across these domains can be beneficial.",
+                        "This property, when a certain set **S* makes the conditional distribution invariant**, can generalize traditional assumptions like **covariate shift**, where a condition is assumed for all features."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "In **domain generalization**, if the set S* is known, it allows us to apply **covariate shift methods** effectively to predict outcomes in a **new domain**.",
+                        "In **multi-task learning**, combining **pooled information** from various tasks with **task-specific insights** is critical.",
+                        "For identifying S*, methods like **invariant causal prediction** can help, choosing sets that maintain predictive power while ensuring invariance over existing domains."
+                    ]
+                }
+            ]
         },
         {
             "title": "Time Series and Structural Causal Models Overview",
-            "body": "<b style='color: forestgreen;'>Time Series</b> involve analyzing data over time, making causality more straightforward because events are ordered chronologically. <b style='color: forestgreen;'>Causal Graphs</b> show directed arrows indicating influences, separating effects into those occurring over time and those happening simultaneously (<b style='color: forestgreen;'>instantaneous effects</b>). In time series analysis, understanding whether effects are <b style='color: forestgreen;'>purely instantaneous</b>, meaning they occur only within a single time point, or involve past observations is crucial. <b style='color: forestgreen;'>Full Time Graphs</b> look at infinite numbers of time instances.\n\n<b style='color: forestgreen;'>SCMs (Structural Causal Models)</b> help describe processes by including past observations influencing current states, with models often using <b style='color: forestgreen;'>noise terms</b> to account for randomness. Simplified models like <b style='color: forestgreen;'>Vector Autoregressive Models (VAR)</b> assume linear influences of past values, defining the system dynamics over time. The key elements involve knowing which past values impact the present and using this knowledge to predict future values or understand underlying causal relationships."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Time Series** involve analyzing data over time, making causality more straightforward because events are ordered chronologically.",
+                        "**Causal Graphs** show directed arrows indicating influences, separating effects into those occurring over time and those happening simultaneously (**instantaneous effects**).",
+                        "In time series analysis, understanding whether effects are **purely instantaneous**, meaning they occur only within a single time point, or involve past observations is crucial.",
+                        "**Full Time Graphs** look at infinite numbers of time instances."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**SCMs (Structural Causal Models)** help describe processes by including past observations influencing current states, with models often using **noise terms** to account for randomness.",
+                        "Simplified models like **Vector Autoregressive Models (VAR)** assume linear influences of past values, defining the system dynamics over time.",
+                        "The key elements involve knowing which past values impact the present and using this knowledge to predict future values or understand underlying causal relationships."
+                    ]
+                }
+            ]
         },
         {
             "title": "Subsampling and Learning Causal Models in Time Series",
-            "body": "<b style='color: forestgreen;'>Subsampling</b> in time series occurs when the sampling rate isn't aligned with the causal process's natural timeline. This situation can lead to <b style='color: forestgreen;'>missing variables</b>, which present challenges when attempting to model causal relationships. When only some data points are observed, we must consider how interventions could impact these observed points. If interventions occur at <b style='color: forestgreen;'>unobserved intervals</b>, it becomes challenging to understand and recover the original causal structures. Understanding subsampling is crucial because it affects how <b style='color: forestgreen;'>causal influences</b> are interpreted, as subsampling might hide dependencies that actually exist if viewed on a larger timeline. <b style='color: forestgreen;'>Bongers et al. (2016)</b> discuss how to adjust the model for hidden steps to ensure interventions reflect true causal links. If interventions on unobserved intervals aren\u2019t allowed, we might lose some causal conclusions about the complete system.\n\n<b style='color: forestgreen;'>Learning Causal Models</b> from time series can be approached by relying on <b style='color: forestgreen;'>conditional independence</b> and the application of <b style='color: forestgreen;'>Granger causality</b>. While Granger causality evaluates whether past values of one variable improve predictions of another, conditional independence focuses on how variables relate using theories of statistical independence. Instantaneous effects can lead to instances where knowing the forward-only influence provides a more accurate reflection of causal pathways. If there's no <b style='color: forestgreen;'>instantaneous effect</b>, you can trace causal paths through the complete timeline graph. Yet for complex models with immediate effects, adjusting how we assess influence direction is needed, challenging accurate model construction."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Subsampling** in time series occurs when the sampling rate isn't aligned with the causal process's natural timeline.",
+                        "This situation can lead to **missing variables**, which present challenges when attempting to model causal relationships.",
+                        "When only some data points are observed, we must consider how interventions could impact these observed points.",
+                        "If interventions occur at **unobserved intervals**, it becomes challenging to understand and recover the original causal structures.",
+                        "Understanding subsampling is crucial because it affects how **causal influences** are interpreted, as subsampling might hide dependencies that actually exist if viewed on a larger timeline.",
+                        "**Bongers et al. (2016)** discuss how to adjust the model for hidden steps to ensure interventions reflect true causal links.",
+                        "If interventions on unobserved intervals aren\u2019t allowed, we might lose some causal conclusions about the complete system."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Learning Causal Models** from time series can be approached by relying on **conditional independence** and the application of **Granger causality**.",
+                        "While Granger causality evaluates whether past values of one variable improve predictions of another, conditional independence focuses on how variables relate using theories of statistical independence.",
+                        "Instantaneous effects can lead to instances where knowing the forward-only influence provides a more accurate reflection of causal pathways.",
+                        "If there's no **instantaneous effect**, you can trace causal paths through the complete timeline graph.",
+                        "Yet for complex models with immediate effects, adjusting how we assess influence direction is needed, challenging accurate model construction."
+                    ]
+                }
+            ]
         },
         {
             "title": "Bayesian Networks and Graphical Models Publications",
-            "body": "<b style='color: forestgreen;'>Bayesian Networks</b>: This section of the bibliography lists <b style='color: forestgreen;'>publications</b> on how to search for and learn structures in <b style='color: forestgreen;'>Bayesian networks</b>, which are <b style='color: forestgreen;'>graph-based</b> models used to represent <b style='color: forestgreen;'>probabilistic relationships</b> among variables. <b style='color: forestgreen;'>Bayesian networks</b> utilize <b style='color: forestgreen;'>directed acyclic graphs (DAGs)</b> to model these dependencies. Researchers like <b style='color: forestgreen;'>S. Acid and L. M. de Campos</b> have focused on <b style='color: forestgreen;'>structure learning</b>, examining the <b style='color: forestgreen;'>limitations</b> and exploring the <b style='color: forestgreen;'>concepts</b> of Markov <b style='color: forestgreen;'>equivalence</b> and <b style='color: forestgreen;'>causal interpretation</b>.\n\n<b style='color: forestgreen;'>Graphical Models</b>: Several entries reference works by <b style='color: forestgreen;'>J. Aldrich, R. A. Ali</b>, through to <b style='color: forestgreen;'>J. Berkson</b>, dedicated to the study of <b style='color: forestgreen;'>graphical representations</b> such as <b style='color: forestgreen;'>chain graphs, Markov properties</b>, and the application of <b style='color: forestgreen;'>Bayesian analysis</b>. These contributions lay the groundwork for methods like the <b style='color: forestgreen;'>Independence</b> and <b style='color: forestgreen;'>Intervention</b> analysis in statistics and the exploration of <b style='color: forestgreen;'>latent structures</b>. Notably, <b style='color: forestgreen;'>Markov equivalence</b> research by <b style='color: forestgreen;'>R. A. Ali, T. S. Richardson</b>, and <b style='color: forestgreen;'>P. Spirtes</b> is critical for understanding different but <b style='color: forestgreen;'>equivalent representations</b> of <b style='color: forestgreen;'>causal models</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Bayesian Networks**: This section of the bibliography lists **publications** on how to search for and learn structures in **Bayesian networks**, which are **graph-based** models used to represent **probabilistic relationships** among variables.",
+                        "**Bayesian networks** utilize **directed acyclic graphs (DAGs)** to model these dependencies.",
+                        "Researchers like **S. Acid and L. M. de Campos** have focused on **structure learning**, examining the **limitations** and exploring the **concepts** of Markov **equivalence** and **causal interpretation**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Graphical Models**: Several entries reference works by **J. Aldrich, R. A. Ali**, through to **J. Berkson**, dedicated to the study of **graphical representations** such as **chain graphs, Markov properties**, and the application of **Bayesian analysis**.",
+                        "These contributions lay the groundwork for methods like the **Independence** and **Intervention** analysis in statistics and the exploration of **latent structures**.",
+                        "Notably, **Markov equivalence** research by **R. A. Ali, T. S. Richardson**, and **P. Spirtes** is critical for understanding different but **equivalent representations** of **causal models**."
+                    ]
+                }
+            ]
         }
     ]
 }

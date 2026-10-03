@@ -13,15 +13,43 @@
     "parts": [
         {
             "title": "Hacking Defined and Discussed",
-            "body": "<b style='color: forestgreen;'>\"Hacking Defined and Discussed\"</b> – The introduction clarifies <b style='color: forestgreen;'>hacking's</b> negative connotations, like <b style='color: forestgreen;'>stealing info</b>, but also its positive role in <b style='color: forestgreen;'>network defense</b>. The book introduces key topics, such as differing <b style='color: forestgreen;'>hacker types</b>: <b style='color: forestgreen;'>black hat</b> (malicious), <b style='color: forestgreen;'>white hat</b> (protective), and <b style='color: forestgreen;'>grey hat</b> (curious/neutral). Readers will learn foundational <b style='color: forestgreen;'>hacking skills</b> using <b style='color: forestgreen;'>Python</b>, emphasizing the importance of <b style='color: forestgreen;'>ethical practices</b> over illegal system access. This educational guide aims to demystify hacking, providing insight into <b style='color: forestgreen;'>basic techniques</b> and ways to safeguard personal networks against intruders."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**\"Hacking Defined and Discussed\"** \u2013 The introduction clarifies **hacking's** negative connotations, like **stealing info**, but also its positive role in **network defense**.",
+                        "The book introduces key topics, such as differing **hacker types**: **black hat** (malicious), **white hat** (protective), and **grey hat** (curious/neutral).",
+                        "Readers will learn foundational **hacking skills** using **Python**, emphasizing the importance of **ethical practices** over illegal system access.",
+                        "This educational guide aims to demystify hacking, providing insight into **basic techniques** and ways to safeguard personal networks against intruders."
+                    ]
+                }
+            ]
         },
         {
             "title": "Weakest Link: Password Security",
-            "body": "<b style='color: forestgreen;'>Hackers</b> often target <b style='color: forestgreen;'>passwords</b> as the weakest <b style='color: forestgreen;'>security</b> link. If not obtained through social engineering or physical <b style='color: forestgreen;'>access</b>, hackers use tools like <b style='color: forestgreen;'>Cain and Abel</b>, <b style='color: forestgreen;'>John the Ripper</b>, and <b style='color: forestgreen;'>RainbowCrack</b>. These tools need physical access to the target system for efficiency. Passwords are <b style='color: forestgreen;'>protected</b> using one-way <b style='color: forestgreen;'>hashes</b>, making them difficult for hackers to decipher. <b style='color: forestgreen;'>Linux systems</b> add complexity by using <b style='color: forestgreen;'>salt</b> to randomize hashes."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Hackers** often target **passwords** as the weakest **security** link.",
+                        "If not obtained through social engineering or physical **access**, hackers use tools like **Cain and Abel**, **John the Ripper**, and **RainbowCrack**.",
+                        "These tools need physical access to the target system for efficiency.",
+                        "Passwords are **protected** using one-way **hashes**, making them difficult for hackers to decipher.",
+                        "**Linux systems** add complexity by using **salt** to randomize hashes."
+                    ]
+                }
+            ]
         },
         {
             "title": "Evil Twin Attack Setup and Execution",
-            "body": "<b style='color: forestgreen;'>Setting up an Evil Twin Attack</b> involves creating a fake Wi-Fi access point that looks legitimate. <b style='color: forestgreen;'>Hackers use this</b> to trick users into connecting to it so they can <b style='color: forestgreen;'>intercept and monitor traffic</b>. The process involves using tools like <b style='color: forestgreen;'>Airmon-ng, Airdump-ng</b>, and <b style='color: forestgreen;'>Airbase-ng</b> to start up and conduct this attack, requiring patient waiting for targets to connect and then capturing their information. <b style='color: forestgreen;'>Deauthenticating targets</b> from their current networks and ensuring the strongest signal ensures that they <b style='color: forestgreen;'>connect to the hacker’s fake network</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Setting up an Evil Twin Attack** involves creating a fake Wi-Fi access point that looks legitimate.",
+                        "**Hackers use this** to trick users into connecting to it so they can **intercept and monitor traffic**.",
+                        "The process involves using tools like **Airmon-ng, Airdump-ng**, and **Airbase-ng** to start up and conduct this attack, requiring patient waiting for targets to connect and then capturing their information.",
+                        "**Deauthenticating targets** from their current networks and ensuring the strongest signal ensures that they **connect to the hacker\u2019s fake network**."
+                    ]
+                }
+            ]
         }
     ]
 }

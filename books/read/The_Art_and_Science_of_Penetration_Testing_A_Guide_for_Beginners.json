@@ -11,11 +11,45 @@
     "parts": [
         {
             "title": "Overview of Penetration Testing and Ethical Hacking",
-            "body": "<b style='color: forestgreen;'>Penetration Testing</b> is about learning computer <b style='color: forestgreen;'>security</b> with a focus on <b style='color: forestgreen;'>hacking</b> tools and even <b style='color: forestgreen;'>creating</b> hacking setups. This book is designed to let <b style='color: forestgreen;'>beginners</b> understand the <b style='color: forestgreen;'>basics</b> of <b style='color: forestgreen;'>ethical hacking</b> using <b style='color: forestgreen;'>tools</b> like <b style='color: forestgreen;'>Kali</b> and <b style='color: forestgreen;'>Backtrack</b> Linux. It emphasizes learning <b style='color: forestgreen;'>step by step</b>, moving from <b style='color: forestgreen;'>one task</b> to another on a DIY \"<b style='color: forestgreen;'>target network</b>.\" With this, it shows why <b style='color: forestgreen;'>penetration testing</b> is more than just finding problems, as it involves legally trying to <b style='color: forestgreen;'>exploit</b> a system and how ethical hackers, or \"<b style='color: forestgreen;'>white hats</b>,\" aim to secure systems by thinking like attackers, contrasting them with \"<b style='color: forestgreen;'>black hats</b>\" who have malicious intent."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Penetration Testing** is about learning computer **security** with a focus on **hacking** tools and even **creating** hacking setups.",
+                        "This book is designed to let **beginners** understand the **basics** of **ethical hacking** using **tools** like **Kali** and **Backtrack** Linux.",
+                        "It emphasizes learning **step by step**, moving from **one task** to another on a DIY \"**target network**.\"",
+                        "With this, it shows why **penetration testing** is more than just finding problems, as it involves legally trying to **exploit** a system and how ethical hackers, or \"**white hats**,\" aim to secure systems by thinking like attackers, contrasting them with \"**black hats**\" who have malicious intent."
+                    ]
+                }
+            ]
         },
         {
             "title": "Hacking Lab Setup & Pen Testing Overview",
-            "body": "<h3 style='color: forestgreen;'>Lab Setup and Testing Process Overview</h3>\n\nWhen setting up a <b style='color: forestgreen;'>hacking lab</b>, the key is <b style='color: forestgreen;'>isolation</b> to practice safely. For newcomers, creating a <b style='color: forestgreen;'>sandboxed environment</b> by disconnecting from the Internet is crucial. Using <b style='color: forestgreen;'>VMs</b> has advantages: they're <b style='color: forestgreen;'>portable</b> and <b style='color: forestgreen;'>easy to reset</b>. Within a lab setup, using tools on <b style='color: forestgreen;'>Kali</b> or <b style='color: forestgreen;'>Backtrack</b> aids in penetration testing this book covers. Labs should have at least an <b style='color: forestgreen;'>attacker</b> machine (your Kali or Backtrack VM) and <b style='color: forestgreen;'>targets</b> like <b style='color: forestgreen;'>Metasploitable</b> and <b style='color: forestgreen;'>unpatched Windows XP</b> for exploration of vulnerabilities. It's essential to maintain a <b style='color: forestgreen;'>separate network</b> environment to prevent unauthorized access, keeping any attacks contained.\n\n<h3 style='color: forestgreen;'>Overview of Methodology and Best Practices</h3>\n\nPen testing involves a series of <b style='color: forestgreen;'>methodical steps</b>: <b style='color: forestgreen;'>Reconnaissance, Scanning, Exploitation,</b> and <b style='color: forestgreen;'>Post-Exploitation</b>. These steps are vital, ordered processes—skipping ahead can lead to missed opportunities. In <b style='color: forestgreen;'>recon</b>, gather target data extensively–the more, the better. Following <b style='color: forestgreen;'>scanning</b>, aims to find open <b style='color: forestgreen;'>ports</b> and their <b style='color: forestgreen;'>vulnerabilities</b>. The <b style='color: forestgreen;'>exploitation</b> phase follows, aiming for <b style='color: forestgreen;'>administrator access</b> either <b style='color: forestgreen;'>locally</b> or <b style='color: forestgreen;'>remotely</b>. <b style='color: forestgreen;'>Post-exploitation</b> involves making access more <b style='color: forestgreen;'>persistent</b> if necessary. Essential is also <b style='color: forestgreen;'>reporting</b> findings clearly. While vulnerability scanners aid learning, reliance on them can hinder skill development beyond the basics."
+            "paragraphs": [
+                {
+                    "heading": "Lab Setup and Testing Process Overview",
+                    "sentences": [
+                        "When setting up a **hacking lab**, the key is **isolation** to practice safely.",
+                        "For newcomers, creating a **sandboxed environment** by disconnecting from the Internet is crucial.",
+                        "Using **VMs** has advantages: they're **portable** and **easy to reset**.",
+                        "Within a lab setup, using tools on **Kali** or **Backtrack** aids in penetration testing this book covers.",
+                        "Labs should have at least an **attacker** machine (your Kali or Backtrack VM) and **targets** like **Metasploitable** and **unpatched Windows XP** for exploration of vulnerabilities.",
+                        "It's essential to maintain a **separate network** environment to prevent unauthorized access, keeping any attacks contained."
+                    ]
+                },
+                {
+                    "heading": "Overview of Methodology and Best Practices",
+                    "sentences": [
+                        "Pen testing involves a series of **methodical steps**: **Reconnaissance, Scanning, Exploitation,** and **Post-Exploitation**.",
+                        "These steps are vital, ordered processes\u2014skipping ahead can lead to missed opportunities.",
+                        "In **recon**, gather target data extensively\u2013the more, the better.",
+                        "Following **scanning**, aims to find open **ports** and their **vulnerabilities**.",
+                        "The **exploitation** phase follows, aiming for **administrator access** either **locally** or **remotely**.",
+                        "**Post-exploitation** involves making access more **persistent** if necessary.",
+                        "Essential is also **reporting** findings clearly.",
+                        "While vulnerability scanners aid learning, reliance on them can hinder skill development beyond the basics."
+                    ]
+                }
+            ]
         }
     ]
 }

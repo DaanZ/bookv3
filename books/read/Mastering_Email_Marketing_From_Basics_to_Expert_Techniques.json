@@ -11,15 +11,50 @@
     "parts": [
         {
             "title": "Email Marketing Simplified",
-            "body": "<b style='color: forestgreen;'>Email marketing</b> is a powerful tool for digital marketing, offering low <b style='color: forestgreen;'>costs</b>, full <b style='color: forestgreen;'>control</b>, and precise <b style='color: forestgreen;'>targeting</b>. By using email service providers like <b style='color: forestgreen;'>GetResponse</b>, businesses can easily automate their campaigns, create professional emails, and measure their success, making it ideal for reaching both existing and new audiences effectively. With emails being an <b style='color: forestgreen;'>owned medium</b>, businesses have full <b style='color: forestgreen;'>control</b> over these communications, maximizing <b style='color: forestgreen;'>engagement</b> and ensuring better <b style='color: forestgreen;'>returns</b> on investment. The use of <b style='color: forestgreen;'>automation</b> helps in delivering targeted content efficiently, while also allowing integration with other <b style='color: forestgreen;'>marketing channels</b> to enhance reach."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Email marketing** is a powerful tool for digital marketing, offering low **costs**, full **control**, and precise **targeting**.",
+                        "By using email service providers like **GetResponse**, businesses can easily automate their campaigns, create professional emails, and measure their success, making it ideal for reaching both existing and new audiences effectively.",
+                        "With emails being an **owned medium**, businesses have full **control** over these communications, maximizing **engagement** and ensuring better **returns** on investment.",
+                        "The use of **automation** helps in delivering targeted content efficiently, while also allowing integration with other **marketing channels** to enhance reach."
+                    ]
+                }
+            ]
         },
         {
             "title": "Comparing Email Marketing Options",
-            "body": "GetResponse <b style='color: forestgreen;'>provides</b> a <b style='color: forestgreen;'>free</b> plan for up to <b style='color: forestgreen;'>500 contacts</b> with essential <b style='color: forestgreen;'>email marketing</b> features. Their paid <b style='color: forestgreen;'>plans depend</b> on the size of the <b style='color: forestgreen;'>email list</b> and <b style='color: forestgreen;'>features</b> needed. Basic starts at <b style='color: forestgreen;'>$15/month</b> for up to 1,000 subscribers, Plus at <b style='color: forestgreen;'>$49/month</b>, and Professional at <b style='color: forestgreen;'>$99/month</b>. Mailchimp, a popular tool, <b style='color: forestgreen;'>integrates well</b> with other tools but <b style='color: forestgreen;'>becomes less cost-effective</b> as needs grow. Their <b style='color: forestgreen;'>free plan</b> is useful initially but lacks <b style='color: forestgreen;'>essential actions</b> like scheduling. The Essentials plan is <b style='color: forestgreen;'>$9.99/month</b> for 500 contacts, Standard at <b style='color: forestgreen;'>$14.99/month</b>, and Premium at <b style='color: forestgreen;'>$299/month</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "GetResponse **provides** a **free** plan for up to **500 contacts** with essential **email marketing** features.",
+                        "Their paid **plans depend** on the size of the **email list** and **features** needed.",
+                        "Basic starts at **$15/month** for up to 1,000 subscribers, Plus at **$49/month**, and Professional at **$99/month**.",
+                        "Mailchimp, a popular tool, **integrates well** with other tools but **becomes less cost-effective** as needs grow.",
+                        "Their **free plan** is useful initially but lacks **essential actions** like scheduling.",
+                        "The Essentials plan is **$9.99/month** for 500 contacts, Standard at **$14.99/month**, and Premium at **$299/month**."
+                    ]
+                }
+            ]
         },
         {
             "title": "GetResponse Features and Pricing Overview",
-            "body": "<b style='color: forestgreen;'>A/B Testing</b> helps you find the best email campaigns by experimenting. Use <b style='color: forestgreen;'>spam checker tools</b> to ensure your emails don’t end up in junk folders. Also, avoid buying email lists as they can harm your long-term reputation. \n\n<b style='color: forestgreen;'>GetResponse</b> has a rich history, starting as the first autoresponder in 1997. Today, it supports over <b style='color: forestgreen;'>350K customers worldwide</b>, offering automated tools for businesses. Their pricing is based on list size, with the cheapest at <b style='color: forestgreen;'>$15/month</b> for up to 1000 contacts, including discounts for longer billing periods."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**A/B Testing** helps you find the best email campaigns by experimenting.",
+                        "Use **spam checker tools** to ensure your emails don\u2019t end up in junk folders.",
+                        "Also, avoid buying email lists as they can harm your long-term reputation."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**GetResponse** has a rich history, starting as the first autoresponder in 1997.",
+                        "Today, it supports over **350K customers worldwide**, offering automated tools for businesses.",
+                        "Their pricing is based on list size, with the cheapest at **$15/month** for up to 1000 contacts, including discounts for longer billing periods."
+                    ]
+                }
+            ]
         }
     ]
 }

@@ -12,47 +12,257 @@
     "parts": [
         {
             "title": "The Impact of New Media on Authority",
-            "body": "<b style='color: forestgreen;'>Martin Gurri</b>, former CIA analyst, explores the <b style='color: forestgreen;'>impact of new media</b> and its <b style='color: forestgreen;'>challenges to authority</b> in \"The Revolt of the Public.\" The <b style='color: forestgreen;'>internet</b> and <b style='color: forestgreen;'>social media</b> are transforming politics, eroding elite control over narratives and exposing their <b style='color: forestgreen;'>faults.</b> Without clear plans, this leads to potential <b style='color: forestgreen;'>chaos.</b> Gurri warns of <b style='color: forestgreen;'>tensions</b> as democratized information demands <b style='color: forestgreen;'>adaptation</b> from both elites and the public, suggesting a need for <b style='color: forestgreen;'>localized</b> solutions and greater <b style='color: forestgreen;'>tolerance.</b> This climate affected events like <b style='color: forestgreen;'>Trump's rise</b> and global political shifts."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Martin Gurri**, former CIA analyst, explores the **impact of new media** and its **challenges to authority** in \"The Revolt of the Public.\"",
+                        "The **internet** and **social media** are transforming politics, eroding elite control over narratives and exposing their **faults.**",
+                        "Without clear plans, this leads to potential **chaos.**",
+                        "Gurri warns of **tensions** as democratized information demands **adaptation** from both elites and the public, suggesting a need for **localized** solutions and greater **tolerance.**",
+                        "This climate affected events like **Trump's rise** and global political shifts."
+                    ]
+                }
+            ]
         },
         {
             "title": "Blogging and the Clash of Authority",
-            "body": "<b style='color: forestgreen;'>Hoder</b> was accused of insulting <b style='color: forestgreen;'>Islam</b> and cooperating with <b style='color: forestgreen;'>enemy states</b>. The <b style='color: forestgreen;'>real issue</b> was his defiance of <b style='color: forestgreen;'>authority</b> and establishment by speaking out on <b style='color: forestgreen;'>social media</b>. <b style='color: forestgreen;'>Bloggers</b> and digital communicators, like Hoder, threaten established <b style='color: forestgreen;'>hierarchies</b> by giving a voice to <b style='color: forestgreen;'>ordinary people</b>. This drives <b style='color: forestgreen;'>autocratic</b> regimes to suppress these challenges as they see them as a threat to the <b style='color: forestgreen;'>moral order</b> they claim to uphold.\n\nWhen Hoder was sentenced to <b style='color: forestgreen;'>19½ years</b> in prison, the offense committed was being a moral \"monstrosity\" by the standards of those in <b style='color: forestgreen;'>Iranian authority</b>. This pattern repeats globally with <b style='color: forestgreen;'>governments</b> repressing the voices of <b style='color: forestgreen;'>activists</b> reacting against their <b style='color: forestgreen;'>control</b>. Despite <b style='color: forestgreen;'>democracy</b>, leaders like Turkey's Erdogan show a strong <b style='color: forestgreen;'>backlash</b> against social media, expressing disdain towards public discourse challenging their <b style='color: forestgreen;'>authority</b>, which they perceive as a \"curse\".\n\nHoder's case highlights the broader conflict between <b style='color: forestgreen;'>authority</b> and <b style='color: forestgreen;'>public discourse</b> in the digital age. The old world of <b style='color: forestgreen;'>hierarchical control</b> confronts the dynamic, open world fueled by <b style='color: forestgreen;'>social media</b>. This clash is reflected in movements such as the <b style='color: forestgreen;'>Green Movement</b> in Iran and other uprisings, linked to broader <b style='color: forestgreen;'>information and communication shifts</b> enabled by <b style='color: forestgreen;'>digital technology</b>. The struggle suggests a <b style='color: forestgreen;'>transformation</b> in how <b style='color: forestgreen;'>power</b> and <b style='color: forestgreen;'>authority</b> are negotiated globally."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Hoder** was accused of insulting **Islam** and cooperating with **enemy states**.",
+                        "The **real issue** was his defiance of **authority** and establishment by speaking out on **social media**.",
+                        "**Bloggers** and digital communicators, like Hoder, threaten established **hierarchies** by giving a voice to **ordinary people**.",
+                        "This drives **autocratic** regimes to suppress these challenges as they see them as a threat to the **moral order** they claim to uphold."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "When Hoder was sentenced to **19\u00bd years** in prison, the offense committed was being a moral \"monstrosity\" by the standards of those in **Iranian authority**.",
+                        "This pattern repeats globally with **governments** repressing the voices of **activists** reacting against their **control**.",
+                        "Despite **democracy**, leaders like Turkey's Erdogan show a strong **backlash** against social media, expressing disdain towards public discourse challenging their **authority**, which they perceive as a \"curse\"."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Hoder's case highlights the broader conflict between **authority** and **public discourse** in the digital age.",
+                        "The old world of **hierarchical control** confronts the dynamic, open world fueled by **social media**.",
+                        "This clash is reflected in movements such as the **Green Movement** in Iran and other uprisings, linked to broader **information and communication shifts** enabled by **digital technology**.",
+                        "The struggle suggests a **transformation** in how **power** and **authority** are negotiated globally."
+                    ]
+                }
+            ]
         },
         {
             "title": "Struggle Between Authority and Public",
-            "body": "<h3 style='color: forestgreen;'>Struggle Between Authority and Public</h3>\n\n<b style='color: forestgreen;'>Hossein Derakhshan</b> details a struggle between authority and <b style='color: forestgreen;'>digital public</b>. The old world faces challenges from a new era striving to be born. This ongoing conflict leaves us, caught between systems. Old institutions, like newspapers and political parties, are under pressure. The <b style='color: forestgreen;'>old</b> world’s authority faces a <b style='color: forestgreen;'>networked public</b> using digital tools. Each side uses information as a <b style='color: forestgreen;'>weapon</b> in this \"war of the worlds.\" Familiar structures (like hierarchy from government and universities) stand against <b style='color: forestgreen;'>new networks</b> driven by digital sharing."
+            "paragraphs": [
+                {
+                    "heading": "Struggle Between Authority and Public",
+                    "sentences": [
+                        "**Hossein Derakhshan** details a struggle between authority and **digital public**.",
+                        "The old world faces challenges from a new era striving to be born.",
+                        "This ongoing conflict leaves us, caught between systems.",
+                        "Old institutions, like newspapers and political parties, are under pressure.",
+                        "The **old** world\u2019s authority faces a **networked public** using digital tools.",
+                        "Each side uses information as a **weapon** in this \"war of the worlds.\"",
+                        "Familiar structures (like hierarchy from government and universities) stand against **new networks** driven by digital sharing."
+                    ]
+                }
+            ]
         },
         {
             "title": "Governments and Information",
-            "body": "<b style='color: forestgreen;'>Governments</b>:\n 1. <b style='color: forestgreen;'>Information’s Influence</b> - <b style='color: forestgreen;'>Information</b> can impact <b style='color: forestgreen;'>political power</b> even though it seems \"soft\" compared to the \"hard\" power of force. <b style='color: forestgreen;'>Controlling narratives</b> helps regimes maintain power, showing that political power is not as \"hard\" as it seems. \n\n 2. <b style='color: forestgreen;'>Homo Informaticus vs. Unmediated Man</b> - We are now <b style='color: forestgreen;'>Homo Informaticus</b>, who are literate and informed globally, compared to <b style='color: forestgreen;'>Unmediated Man</b>, who relied on his immediate community for information. <b style='color: forestgreen;'>Homo Informaticus</b> threatens regimes by accessing alternative views that challenge <b style='color: forestgreen;'>government legitimacy</b>.\n\n3. <b style='color: forestgreen;'>Information Sphere</b> - As <b style='color: forestgreen;'>information channels grow</b> beyond state control, governments lose their ability to control narratives. New <b style='color: forestgreen;'>independent information channels</b>, like private newspapers or satellite TV, broaden the public's views, potentially leading to <b style='color: forestgreen;'>radical change</b>, as seen in movements like those in Egypt."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Governments**: 1.",
+                        "**Information\u2019s Influence** - **Information** can impact **political power** even though it seems \"soft\" compared to the \"hard\" power of force.",
+                        "**Controlling narratives** helps regimes maintain power, showing that political power is not as \"hard\" as it seems."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "2.",
+                        "**Homo Informaticus vs. Unmediated Man** - We are now **Homo Informaticus**, who are literate and informed globally, compared to **Unmediated Man**, who relied on his immediate community for information.",
+                        "**Homo Informaticus** threatens regimes by accessing alternative views that challenge **government legitimacy**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "3.",
+                        "**Information Sphere** - As **information channels grow** beyond state control, governments lose their ability to control narratives.",
+                        "New **independent information channels**, like private newspapers or satellite TV, broaden the public's views, potentially leading to **radical change**, as seen in movements like those in Egypt."
+                    ]
+                }
+            ]
         },
         {
             "title": "2011: The Collision of Public Distrust and Authority",
-            "body": "<h3 style='color: forestgreen;'>The Rise of the Distrustful Public</h3>\nIn 2011, there was a dramatic rise in <b style='color: forestgreen;'>distrust</b> between <b style='color: forestgreen;'>the public</b> and <b style='color: forestgreen;'>authoritative institutions</b> globally. The public across countries displayed dissatisfaction with social and political conditions, driving large-scale <b style='color: forestgreen;'>protests</b> despite no clear leadership or demands. These movements, characterized by young, digitally connected groups, demanded radical changes that questioned the effectiveness of current democratic systems. The revolts in Spain, Israel, and the US, alongside the Arab Spring, indicated a desire for <b style='color: forestgreen;'>real democracy</b>, contradicting the function of elected representatives.\n\n<h3 style='color: forestgreen;'>2011: A Year of Phase Change</h3>\nThe year 2011 marked a pivotal moment where existing <b style='color: forestgreen;'>social and political structures</b> faced unprecedented challenges from mass protests and the internet's organizing power. This year highlighted a public frustration with traditional institutions, which <b style='color: forestgreen;'>failed to meet expectations</b> of economic stability and social justice. Protesters sought not just reforms, but a fundamental rethinking of social contracts, driven largely by a global information exchange and distrust in political frameworks. However, despite vast mobilization, there was a lack of <b style='color: forestgreen;'>clear alternatives</b> demonstrated by protestors across borders.\n\n<h3 style='color: forestgreen;'>The Complexity of Mass Movements</h3>\nTwo distinct tendencies sparked the 2011 movements: a tech-savvy generation familiar with digital mobilization, and left-wing ideologies seeking social change. United by <b style='color: forestgreen;'>frustration</b> with the status quo, these groups struggled to propose cohesive solutions. Movements like the <b style='color: forestgreen;'>indignados</b> in Spain and <b style='color: forestgreen;'>Occupy Wall Street</b> critiqued inequality and government compliance with economic elites but offered few constructive pathways forward. This underlined a broader disconnect between societal expectations and governmental capabilities, leaving the future of <b style='color: forestgreen;'>democracy</b> in question as internal and external pressures on traditional systems continued to mount."
+            "paragraphs": [
+                {
+                    "heading": "The Rise of the Distrustful Public",
+                    "sentences": [
+                        "In 2011, there was a dramatic rise in **distrust** between **the public** and **authoritative institutions** globally.",
+                        "The public across countries displayed dissatisfaction with social and political conditions, driving large-scale **protests** despite no clear leadership or demands.",
+                        "These movements, characterized by young, digitally connected groups, demanded radical changes that questioned the effectiveness of current democratic systems.",
+                        "The revolts in Spain, Israel, and the US, alongside the Arab Spring, indicated a desire for **real democracy**, contradicting the function of elected representatives."
+                    ]
+                },
+                {
+                    "heading": "2011: A Year of Phase Change",
+                    "sentences": [
+                        "The year 2011 marked a pivotal moment where existing **social and political structures** faced unprecedented challenges from mass protests and the internet's organizing power.",
+                        "This year highlighted a public frustration with traditional institutions, which **failed to meet expectations** of economic stability and social justice.",
+                        "Protesters sought not just reforms, but a fundamental rethinking of social contracts, driven largely by a global information exchange and distrust in political frameworks.",
+                        "However, despite vast mobilization, there was a lack of **clear alternatives** demonstrated by protestors across borders."
+                    ]
+                },
+                {
+                    "heading": "The Complexity of Mass Movements",
+                    "sentences": [
+                        "Two distinct tendencies sparked the 2011 movements: a tech-savvy generation familiar with digital mobilization, and left-wing ideologies seeking social change.",
+                        "United by **frustration** with the status quo, these groups struggled to propose cohesive solutions.",
+                        "Movements like the **indignados** in Spain and **Occupy Wall Street** critiqued inequality and government compliance with economic elites but offered few constructive pathways forward.",
+                        "This underlined a broader disconnect between societal expectations and governmental capabilities, leaving the future of **democracy** in question as internal and external pressures on traditional systems continued to mount."
+                    ]
+                }
+            ]
         },
         {
             "title": "2011 Riots and the Role of Information and Symbolism",
-            "body": "After the <b style='color: forestgreen;'>2011 riots</b> in Britain, a panel highlighted the importance of controlling <b style='color: forestgreen;'>information</b> and <b style='color: forestgreen;'>communication</b>, pointing out that the media portrayed a <b style='color: forestgreen;'>loss of police control</b>. This reality contrasted sharply with the authorities' attempts to present <b style='color: forestgreen;'>reassurance</b>. A proposal to shut down <b style='color: forestgreen;'>BlackBerry Messaging</b> during the riots showcased governmental belief in <b style='color: forestgreen;'>controlling digital expression</b>, though it revealed a misjudged <b style='color: forestgreen;'>confidence in authority</b> over <b style='color: forestgreen;'>information flows</b>.\n\nBritish rioters showed a <b style='color: forestgreen;'>consistency</b> between their views and actions, unlike other 2011 movements. They rejected government authority through <b style='color: forestgreen;'>violence</b> and <b style='color: forestgreen;'>looting</b>, aligning with the worldview of political protesters. This indicates a more profound <b style='color: forestgreen;'>'nihilism'</b> and picks apart the <b style='color: forestgreen;'>idealistic</b> rhetoric of non-violent protestors of that time, who lacked power to drive change.\n\nThe symbol of <b style='color: forestgreen;'>Guy Fawkes</b> became popular among 2011 protestors, partly due to the <b style='color: forestgreen;'>film 'V for Vendetta.'</b> This fascination with a <b style='color: forestgreen;'>fantasy of revolution</b> highlights how protesters saw themselves, embracing a <b style='color: forestgreen;'>self-dramatizing</b> view detached from genuine change. The mask illustrated an <b style='color: forestgreen;'>idealization</b> of rebellion, suggesting a disconnect between <b style='color: forestgreen;'>words</b>, actions, and <b style='color: forestgreen;'>structural realities</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "After the **2011 riots** in Britain, a panel highlighted the importance of controlling **information** and **communication**, pointing out that the media portrayed a **loss of police control**.",
+                        "This reality contrasted sharply with the authorities' attempts to present **reassurance**.",
+                        "A proposal to shut down **BlackBerry Messaging** during the riots showcased governmental belief in **controlling digital expression**, though it revealed a misjudged **confidence in authority** over **information flows**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "British rioters showed a **consistency** between their views and actions, unlike other 2011 movements.",
+                        "They rejected government authority through **violence** and **looting**, aligning with the worldview of political protesters.",
+                        "This indicates a more profound **'nihilism'** and picks apart the **idealistic** rhetoric of non-violent protestors of that time, who lacked power to drive change."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The symbol of **Guy Fawkes** became popular among 2011 protestors, partly due to the **film 'V for Vendetta.'**",
+                        "This fascination with a **fantasy of revolution** highlights how protesters saw themselves, embracing a **self-dramatizing** view detached from genuine change.",
+                        "The mask illustrated an **idealization** of rebellion, suggesting a disconnect between **words**, actions, and **structural realities**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Crisis of Authority and Antifragile Capitalism",
-            "body": "<b style='color: forestgreen;'>The crisis</b> of <b style='color: forestgreen;'>authority</b> was evident in <b style='color: forestgreen;'>2008</b> as <b style='color: forestgreen;'>right and left</b> blamed different entities for the economic failures, but <b style='color: forestgreen;'>failed to see the larger picture</b>. Nobody accurately predicted events, shaking <b style='color: forestgreen;'>public trust</b>. This resulted in distrust toward politicians like <b style='color: forestgreen;'>Bush</b> and <b style='color: forestgreen;'>Obama</b>, impacting elections. The <b style='color: forestgreen;'>public's trust</b> rapidly deteriorated not only in government but also in <b style='color: forestgreen;'>banks</b> and <b style='color: forestgreen;'>corporations</b>. Cases like <b style='color: forestgreen;'>GoDaddy</b> showed how the <b style='color: forestgreen;'>public</b> could swiftly react, questioning authority and demanding <b style='color: forestgreen;'>personalized interactions</b> instead of being <b style='color: forestgreen;'>treated as a mass</b>.\n\n<b style='color: forestgreen;'>A great paradox</b> exists between the <b style='color: forestgreen;'>perceived failure of capitalism in 2008</b> and the <b style='color: forestgreen;'>thriving shopping centers</b> like <b style='color: forestgreen;'>Tyson’s Galleria</b>: while <b style='color: forestgreen;'>economic activities inside</b> continue unaffected, the <b style='color: forestgreen;'>expert class in authority</b> has been under fire. Although the <b style='color: forestgreen;'>public</b> hasn’t been <b style='color: forestgreen;'>notably anti-capitalist</b>, <b style='color: forestgreen;'>market conditions</b> are marked by <b style='color: forestgreen;'>uncertainty</b> and <b style='color: forestgreen;'>impermanence</b> with businesses failing faster. <b style='color: forestgreen;'>Technological advancements</b> complicate the situation, fueling a speculative \"<b style='color: forestgreen;'>Great Restructuring</b>\" as economic systems struggle to quickly adapt, causing many established <b style='color: forestgreen;'>corporations</b> to fail.\n\n An <b style='color: forestgreen;'>\"antifragile\" capitalism</b> seems more adaptable to failure compared to other institutions. However, companies struggle structurally in a rapidly changing market environment, despite ongoing attempts to innovate. <b style='color: forestgreen;'>Corporate existence</b> seems temporary and <b style='color: forestgreen;'>uncertainty</b> prevails throughout industries and societal structures as the <b style='color: forestgreen;'>public</b> increasingly demands function over traditional hierarchies. This <b style='color: forestgreen;'>intricate dance</b> of adapting and surviving reflects broader <b style='color: forestgreen;'>current societal dilemmas</b> related to authority, manifested as <b style='color: forestgreen;'>cultural and economic impermanence</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**The crisis** of **authority** was evident in **2008** as **right and left** blamed different entities for the economic failures, but **failed to see the larger picture**.",
+                        "Nobody accurately predicted events, shaking **public trust**.",
+                        "This resulted in distrust toward politicians like **Bush** and **Obama**, impacting elections.",
+                        "The **public's trust** rapidly deteriorated not only in government but also in **banks** and **corporations**.",
+                        "Cases like **GoDaddy** showed how the **public** could swiftly react, questioning authority and demanding **personalized interactions** instead of being **treated as a mass**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**A great paradox** exists between the **perceived failure of capitalism in 2008** and the **thriving shopping centers** like **Tyson\u2019s Galleria**: while **economic activities inside** continue unaffected, the **expert class in authority** has been under fire.",
+                        "Although the **public** hasn\u2019t been **notably anti-capitalist**, **market conditions** are marked by **uncertainty** and **impermanence** with businesses failing faster.",
+                        "**Technological advancements** complicate the situation, fueling a speculative \"**Great Restructuring**\" as economic systems struggle to quickly adapt, causing many established **corporations** to fail."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "An **\"antifragile\" capitalism** seems more adaptable to failure compared to other institutions.",
+                        "However, companies struggle structurally in a rapidly changing market environment, despite ongoing attempts to innovate.",
+                        "**Corporate existence** seems temporary and **uncertainty** prevails throughout industries and societal structures as the **public** increasingly demands function over traditional hierarchies.",
+                        "This **intricate dance** of adapting and surviving reflects broader **current societal dilemmas** related to authority, manifested as **cultural and economic impermanence**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Democracy and Nihilism: A Contemporary Crisis",
-            "body": "<b style='color: forestgreen;'>Nihilism</b> in democracy is deepening as the <b style='color: forestgreen;'>old hierarchies</b> lose <b style='color: forestgreen;'>authority</b> in the face of a <b style='color: forestgreen;'>networked public</b>. <b style='color: forestgreen;'>Information</b> spreads quickly, often eclipsing traditional <b style='color: forestgreen;'>political structures</b>, making them appear powerless.\n\nHistorical <b style='color: forestgreen;'>discontent</b> originally directed towards reaching <b style='color: forestgreen;'>utopian ideals</b> like <b style='color: forestgreen;'>revolution</b> has become <b style='color: forestgreen;'>disoriented</b>. <b style='color: forestgreen;'>Democracy</b> feels like a ritualistic process satisfying no deep societal needs. This leads to a feeling of <b style='color: forestgreen;'>alienation</b> where any <b style='color: forestgreen;'>government promise</b> of improvement clashes against perceived <b style='color: forestgreen;'>systemic failures</b>.\n\nIn a <b style='color: forestgreen;'>deviation</b> from modern tradition, <b style='color: forestgreen;'>politicians</b> reflect this <b style='color: forestgreen;'>nihilistic disposition</b>. The <b style='color: forestgreen;'>inability to conceive substantial change</b> diminishes the <b style='color: forestgreen;'>public’s faith</b> in leadership, as <b style='color: forestgreen;'>negation</b> becomes the favored action. This evolving <b style='color: forestgreen;'>nihilism</b> thrives in current technology and communication but lacks any constructive progression forward, leaving democracy at a crossroad, invoking <b style='color: forestgreen;'>hopelessness</b> over <b style='color: forestgreen;'>progress</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Nihilism** in democracy is deepening as the **old hierarchies** lose **authority** in the face of a **networked public**.",
+                        "**Information** spreads quickly, often eclipsing traditional **political structures**, making them appear powerless."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Historical **discontent** originally directed towards reaching **utopian ideals** like **revolution** has become **disoriented**.",
+                        "**Democracy** feels like a ritualistic process satisfying no deep societal needs.",
+                        "This leads to a feeling of **alienation** where any **government promise** of improvement clashes against perceived **systemic failures**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "In a **deviation** from modern tradition, **politicians** reflect this **nihilistic disposition**.",
+                        "The **inability to conceive substantial change** diminishes the **public\u2019s faith** in leadership, as **negation** becomes the favored action.",
+                        "This evolving **nihilism** thrives in current technology and communication but lacks any constructive progression forward, leaving democracy at a crossroad, invoking **hopelessness** over **progress**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Public Discontent & Government's Response",
-            "body": "In the current era, many people are revolting against their governments, believing that democracy has failed to fulfill their high expectations. <b style='color: forestgreen;'>Modern technology</b> has given the public unprecedented <b style='color: forestgreen;'>power and information</b>, which they use to challenge authority. The <b style='color: forestgreen;'>public's expectations</b> of government are <b style='color: forestgreen;'>unrealistic</b>, leading to disappointment and a <b style='color: forestgreen;'>desire to dismantle</b> the existing systems. This era is marked by a conflict between <b style='color: forestgreen;'>personal desires</b> and the realities of political systems, which has not yet found a resolution.\n\n<b style='color: forestgreen;'>Democracy</b> suffers because many believe it should deliver more than it can realistically provide, like economic growth and perfect social justice. As government failures become more evident, the public becomes more disillusioned, which can lead to <b style='color: forestgreen;'>negation and nihilism</b>. This sentiment leaves room for <b style='color: forestgreen;'>political figures</b> like Andrés Breivik to express extreme dissatisfaction through violence. The ongoing friction between the public's <b style='color: forestgreen;'>idealistic goals</b> and the limits of political power keeps creating instability.\n\nDifferent options must be considered to reconcile this conflict. People should focus on <b style='color: forestgreen;'>achievable personal goals</b> rather than relying on the government to address all societal issues. Similarly, governments could increase <b style='color: forestgreen;'>transparency</b> by involving the public in decision-making processes more openly, thus <b style='color: forestgreen;'>aligning expectations</b> more closely with what is feasible. Recognizing personal responsibility in realistic contexts could help reduce dissatisfaction and <b style='color: forestgreen;'>restore some trust</b> in democratic systems."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In the current era, many people are revolting against their governments, believing that democracy has failed to fulfill their high expectations.",
+                        "**Modern technology** has given the public unprecedented **power and information**, which they use to challenge authority.",
+                        "The **public's expectations** of government are **unrealistic**, leading to disappointment and a **desire to dismantle** the existing systems.",
+                        "This era is marked by a conflict between **personal desires** and the realities of political systems, which has not yet found a resolution."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Democracy** suffers because many believe it should deliver more than it can realistically provide, like economic growth and perfect social justice.",
+                        "As government failures become more evident, the public becomes more disillusioned, which can lead to **negation and nihilism**.",
+                        "This sentiment leaves room for **political figures** like Andr\u00e9s Breivik to express extreme dissatisfaction through violence.",
+                        "The ongoing friction between the public's **idealistic goals** and the limits of political power keeps creating instability."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Different options must be considered to reconcile this conflict.",
+                        "People should focus on **achievable personal goals** rather than relying on the government to address all societal issues.",
+                        "Similarly, governments could increase **transparency** by involving the public in decision-making processes more openly, thus **aligning expectations** more closely with what is feasible.",
+                        "Recognizing personal responsibility in realistic contexts could help reduce dissatisfaction and **restore some trust** in democratic systems."
+                    ]
+                }
+            ]
         },
         {
             "title": "Global Democratic Struggles",
-            "body": "In a time of <b style='color: forestgreen;'>worldwide unrest</b>, <b style='color: forestgreen;'>democracy</b> seems to be losing its grip as <b style='color: forestgreen;'>populism</b> and <b style='color: forestgreen;'>authoritarianism</b> rise. In <b style='color: forestgreen;'>France</b>, waves of protests, political shifts, and economic failures challenge the capability of traditional parties. New <b style='color: forestgreen;'>insurgent parties</b> like <b style='color: forestgreen;'>Syriza</b> in Greece and <b style='color: forestgreen;'>Five Star</b> in Italy clash against capitalism and offer alternatives that increasingly appeal to a dissatisfied public. <b style='color: forestgreen;'>Right-wing factions</b> in <b style='color: forestgreen;'>Spain</b> also surge, capitalizing on growing <b style='color: forestgreen;'>anti-EU</b> sentiment. <b style='color: forestgreen;'>Brexit</b> signifies a critical rejection of established norms, driven by a public seeking change with unclear outcomes."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In a time of **worldwide unrest**, **democracy** seems to be losing its grip as **populism** and **authoritarianism** rise.",
+                        "In **France**, waves of protests, political shifts, and economic failures challenge the capability of traditional parties.",
+                        "New **insurgent parties** like **Syriza** in Greece and **Five Star** in Italy clash against capitalism and offer alternatives that increasingly appeal to a dissatisfied public.",
+                        "**Right-wing factions** in **Spain** also surge, capitalizing on growing **anti-EU** sentiment.",
+                        "**Brexit** signifies a critical rejection of established norms, driven by a public seeking change with unclear outcomes."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Changing Media Landscape and Its Impact",
-            "body": "<h3 style='color: forestgreen;'>The Changing Media Landscape and Its Impact</h3>\n\n<b style='color: forestgreen;'>Fake news</b> became a hot topic during and after the 2016 U.S. presidential <b style='color: forestgreen;'>election</b>, particularly due to allegations of Russian <b style='color: forestgreen;'>propaganda support</b> aimed at undermining <b style='color: forestgreen;'>Hillary Clinton</b> and bolstering <b style='color: forestgreen;'>Donald Trump</b>. Journalists noted that the focus on <b style='color: forestgreen;'>collusion</b> with Russia <b style='color: forestgreen;'>shifted attention</b> away from the <b style='color: forestgreen;'>decline</b> of traditional media as a <b style='color: forestgreen;'>trusted authority</b>. This led to an industry shift from mere reporting to <b style='color: forestgreen;'>advocacy</b>, with much of the news coverage of Trump's presidency being <b style='color: forestgreen;'>negative</b>. Consequently, <b style='color: forestgreen;'>public trust</b> in media deteriorated as a broader questioning of reality emerged."
+            "paragraphs": [
+                {
+                    "heading": "The Changing Media Landscape and Its Impact",
+                    "sentences": [
+                        "**Fake news** became a hot topic during and after the 2016 U.S. presidential **election**, particularly due to allegations of Russian **propaganda support** aimed at undermining **Hillary Clinton** and bolstering **Donald Trump**.",
+                        "Journalists noted that the focus on **collusion** with Russia **shifted attention** away from the **decline** of traditional media as a **trusted authority**.",
+                        "This led to an industry shift from mere reporting to **advocacy**, with much of the news coverage of Trump's presidency being **negative**.",
+                        "Consequently, **public trust** in media deteriorated as a broader questioning of reality emerged."
+                    ]
+                }
+            ]
         }
     ]
 }

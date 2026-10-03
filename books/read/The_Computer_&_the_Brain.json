@@ -12,47 +12,205 @@
     "parts": [
         {
             "title": "Introduction: Computer & Brain - General Overview",
-            "body": "The <b style='color: forestgreen;'>Computer & the Brain</b> third edition includes a <b style='color: forestgreen;'>foreword by Ray Kurzweil</b> and features content from previous editions with copywrite belonging to <b style='color: forestgreen;'>Yale University Press</b>. This work is part of the <b style='color: forestgreen;'>Silliman Foundation Lectures</b> aimed to showcase the <b style='color: forestgreen;'>natural world</b> through <b style='color: forestgreen;'>scientific domains</b> like <b style='color: forestgreen;'>astronomy</b> and <b style='color: forestgreen;'>anatomy</b> rather than <b style='color: forestgreen;'>dogmatic theology</b>. Its content encompasses sections on the functioning and structure of <b style='color: forestgreen;'>computers</b> versus <b style='color: forestgreen;'>brains</b>, discussing aspects like <b style='color: forestgreen;'>logic control</b>, <b style='color: forestgreen;'>memory</b>, and <b style='color: forestgreen;'>nerve impulses</b> in comprehensive detail."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **Computer & the Brain** third edition includes a **foreword by Ray Kurzweil** and features content from previous editions with copywrite belonging to **Yale University Press**.",
+                        "This work is part of the **Silliman Foundation Lectures** aimed to showcase the **natural world** through **scientific domains** like **astronomy** and **anatomy** rather than **dogmatic theology**.",
+                        "Its content encompasses sections on the functioning and structure of **computers** versus **brains**, discussing aspects like **logic control**, **memory**, and **nerve impulses** in comprehensive detail."
+                    ]
+                }
+            ]
         },
         {
             "title": "Von Neumann's Impact on Modern Computers",
-            "body": "<b style='color: forestgreen;'>John von Neumann</b> was a <b style='color: forestgreen;'>pioneer</b> in forming the architecture of computers, crucially contributing to the <b style='color: forestgreen;'>information age</b>. <b style='color: forestgreen;'>Turing machines</b> were simple theoretical constructs by <b style='color: forestgreen;'>Alan Turing</b>, capable of <b style='color: forestgreen;'>solving problems</b> that could be encoded into them, foundational to <b style='color: forestgreen;'>computation theory</b>. <b style='color: forestgreen;'>Von Neumann</b> leveraged these ideas to create what we now understand as the <b style='color: forestgreen;'>von Neumann architecture</b>, the structure on which modern computers function, encompassing <b style='color: forestgreen;'>central processing units (CPUs)</b>, <b style='color: forestgreen;'>memory</b>, and more. This architecture supports <b style='color: forestgreen;'>universal programmability</b>, going beyond the specialized computation of earlier machines."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**John von Neumann** was a **pioneer** in forming the architecture of computers, crucially contributing to the **information age**.",
+                        "**Turing machines** were simple theoretical constructs by **Alan Turing**, capable of **solving problems** that could be encoded into them, foundational to **computation theory**.",
+                        "**Von Neumann** leveraged these ideas to create what we now understand as the **von Neumann architecture**, the structure on which modern computers function, encompassing **central processing units (CPUs)**, **memory**, and more.",
+                        "This architecture supports **universal programmability**, going beyond the specialized computation of earlier machines."
+                    ]
+                }
+            ]
         },
         {
             "title": "Key Foundations of Information Technology and Intelligent Machines",
-            "body": "<b style='color: forestgreen;'>Information technologies</b> have dramatically transformed many parts of life, and understanding <b style='color: forestgreen;'>human intelligence</b> is crucial. The book investigates our relationship with <b style='color: forestgreen;'>computers</b>, laying a foundation based on <b style='color: forestgreen;'>von Neumann</b>'s architecture. Despite differences, the human <b style='color: forestgreen;'>brain</b> and a computer are seen as computational systems. The book anticipates the significant <b style='color: forestgreen;'>technological advancements</b> leading to AI surpassing human thinking, expanding the human-machine civilization.\n\nHigh <b style='color: forestgreen;'>accuracy</b> in computation became possible with <b style='color: forestgreen;'>Shannon's theories</b>, allowing digital data transfer without significant errors, solving problems evident in older <b style='color: forestgreen;'>analog systems</b>. Turing's work on <b style='color: forestgreen;'>computation universality</b> established the capability of machines to process information like any computer. His ideas, alongside von Neumann's, promoted the development of modern computers. The design of the <b style='color: forestgreen;'>von Neumann machine</b> is central, handling a variety of computations efficiently, leading to the <b style='color: forestgreen;'>flexibility of stored programs</b> and enabling a true universal computing system."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Information technologies** have dramatically transformed many parts of life, and understanding **human intelligence** is crucial.",
+                        "The book investigates our relationship with **computers**, laying a foundation based on **von Neumann**'s architecture.",
+                        "Despite differences, the human **brain** and a computer are seen as computational systems.",
+                        "The book anticipates the significant **technological advancements** leading to AI surpassing human thinking, expanding the human-machine civilization."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "High **accuracy** in computation became possible with **Shannon's theories**, allowing digital data transfer without significant errors, solving problems evident in older **analog systems**.",
+                        "Turing's work on **computation universality** established the capability of machines to process information like any computer.",
+                        "His ideas, alongside von Neumann's, promoted the development of modern computers.",
+                        "The design of the **von Neumann machine** is central, handling a variety of computations efficiently, leading to the **flexibility of stored programs** and enabling a true universal computing system."
+                    ]
+                }
+            ]
         },
         {
             "title": "Ada Byron & Von Neumann's Computing Vision",
-            "body": "<b style='color: forestgreen;'>Ada Byron</b>, Countess of Lovelace, wrote <b style='color: forestgreen;'>programs</b> for Babbage’s <b style='color: forestgreen;'>Analytical Engine</b> and engaged in \"<b style='color: forestgreen;'>table checking</b>\" to debug, a practice akin to modern <b style='color: forestgreen;'>software engineering</b>. She translated and expanded on Luigi Menabrea’s article, mentioning that <b style='color: forestgreen;'>\"the Engine weaves algebraic patterns\"</b> like a loom, and speculated on <b style='color: forestgreen;'>AI's</b> feasibility but concluded the machine couldn't <b style='color: forestgreen;'>originate</b>. Despite Byron's insights, <b style='color: forestgreen;'>Babbage's ideas</b> faded, while <b style='color: forestgreen;'>von Neumann</b> defined modern computing with his architecture principle.\n\n<b style='color: forestgreen;'>Von Neumann</b> focused on comparing <b style='color: forestgreen;'>computers</b> to the <b style='color: forestgreen;'>human brain</b>, noting that <b style='color: forestgreen;'>neurons</b> use <b style='color: forestgreen;'>digital processing</b> via all-or-nothing axon firing, contrary to the analog soma body and dendritic processes. This view led to <b style='color: forestgreen;'>connectionism</b>, first appearing in Frank Rosenblatt’s <b style='color: forestgreen;'>connectionist system</b> in 1957. Despite neurons’ slow processing, <b style='color: forestgreen;'>parallel processing</b> amplifies the brain's efficiency, a concept confirmed later with visual cortex research. Neumann's discussion of brain versus machine memory capacity highlights <b style='color: forestgreen;'>computers’ recall advantage</b> over natural memory stored in high-level <b style='color: forestgreen;'>pattern recognizers</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Ada Byron**, Countess of Lovelace, wrote **programs** for Babbage\u2019s **Analytical Engine** and engaged in \"**table checking**\" to debug, a practice akin to modern **software engineering**.",
+                        "She translated and expanded on Luigi Menabrea\u2019s article, mentioning that **\"the Engine weaves algebraic patterns\"** like a loom, and speculated on **AI's** feasibility but concluded the machine couldn't **originate**.",
+                        "Despite Byron's insights, **Babbage's ideas** faded, while **von Neumann** defined modern computing with his architecture principle."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Von Neumann** focused on comparing **computers** to the **human brain**, noting that **neurons** use **digital processing** via all-or-nothing axon firing, contrary to the analog soma body and dendritic processes.",
+                        "This view led to **connectionism**, first appearing in Frank Rosenblatt\u2019s **connectionist system** in 1957.",
+                        "Despite neurons\u2019 slow processing, **parallel processing** amplifies the brain's efficiency, a concept confirmed later with visual cortex research.",
+                        "Neumann's discussion of brain versus machine memory capacity highlights **computers\u2019 recall advantage** over natural memory stored in high-level **pattern recognizers**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Von Neumann's Brain Insights and Computational Legacy",
-            "body": "<b style='color: forestgreen;'>John von Neumann</b> has been a pivotal figure in both <b style='color: forestgreen;'>biological and artificial cognition</b> sciences. Despite challenges, he accurately pointed out that the brain is not a <b style='color: forestgreen;'>von Neumann architecture machine</b>, and emphasized its <b style='color: forestgreen;'>parallel processing</b> capabilities. His ideas, though initially limiting, have opened pathways to <b style='color: forestgreen;'>understanding the brain's complexities</b> beyond sequential digital computing. The <b style='color: forestgreen;'>brain's advantage</b> lies in its massive parallel analog structure, capable of high-speed processing, fundamentally differing from <b style='color: forestgreen;'>digital computers</b>.\n\nVon Neumann's work has inspired the creation of vast parallel networks of <b style='color: forestgreen;'>artificial neurons</b>, highlighting our <b style='color: forestgreen;'>future prospects</b> in artificial intelligence. His contributions showcase how <b style='color: forestgreen;'>AOI (Artificial Organic Intelligence)</b> might evolve past classical limitations, being potentially faster and more versatile. Recognized as a transformative figure, his contributions continue to influence computational strategies seeking to mimic <b style='color: forestgreen;'>biological brain functions</b>. His humility before empirical facts reflects a <b style='color: forestgreen;'>legacy</b> of ongoing discovery within neuroscience."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**John von Neumann** has been a pivotal figure in both **biological and artificial cognition** sciences.",
+                        "Despite challenges, he accurately pointed out that the brain is not a **von Neumann architecture machine**, and emphasized its **parallel processing** capabilities.",
+                        "His ideas, though initially limiting, have opened pathways to **understanding the brain's complexities** beyond sequential digital computing.",
+                        "The **brain's advantage** lies in its massive parallel analog structure, capable of high-speed processing, fundamentally differing from **digital computers**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Von Neumann's work has inspired the creation of vast parallel networks of **artificial neurons**, highlighting our **future prospects** in artificial intelligence.",
+                        "His contributions showcase how **AOI (Artificial Organic Intelligence)** might evolve past classical limitations, being potentially faster and more versatile.",
+                        "Recognized as a transformative figure, his contributions continue to influence computational strategies seeking to mimic **biological brain functions**.",
+                        "His humility before empirical facts reflects a **legacy** of ongoing discovery within neuroscience."
+                    ]
+                }
+            ]
         },
         {
             "title": "Johnny von Neumann's Journey in Mathematics and Computing",
-            "body": "Johnny <b style='color: forestgreen;'>crossed</b> the Atlantic in <b style='color: forestgreen;'>1930</b> to lecture at <b style='color: forestgreen;'>Princeton University</b> and decided to make the <b style='color: forestgreen;'>U.S.</b> his home. Initially, his work in <b style='color: forestgreen;'>math</b> and <b style='color: forestgreen;'>quantum theory</b> was theoretical, but the rise of <b style='color: forestgreen;'>World War II</b> shifted his focus to <b style='color: forestgreen;'>applied mathematics</b> for <b style='color: forestgreen;'>defense</b> purposes. He worked on complex <b style='color: forestgreen;'>hydrodynamic</b> problems and was introduced to the <b style='color: forestgreen;'>ENIAC</b>, a high-speed <b style='color: forestgreen;'>computing machine</b>, revolutionizing calculation methods in <b style='color: forestgreen;'>science</b> and <b style='color: forestgreen;'>defense.</b> His work paved the way for future advancements in <b style='color: forestgreen;'>automation</b> and <b style='color: forestgreen;'>computing.</b>\n\nDuring <b style='color: forestgreen;'>World War II</b>, Johnny became deeply involved in scientific efforts in the <b style='color: forestgreen;'>U.S.,</b> believing in the potential of fast <b style='color: forestgreen;'>electronic computing</b> machines to solve complex scientific <b style='color: forestgreen;'>problems.</b> After the war, he helped design the <b style='color: forestgreen;'>JONIAC</b> at the <b style='color: forestgreen;'>Institute for Advanced Study</b>, influencing future <b style='color: forestgreen;'>computers</b>. He explored using <b style='color: forestgreen;'>mathematics</b> and <b style='color: forestgreen;'>neurology</b> to improve machines and delivered many lectures. Ultimately, his research influenced fields like <b style='color: forestgreen;'>meteorology</b> and helped shape nuclear physics. Despite battling <b style='color: forestgreen;'>cancer</b>, he continued his impactful work but sadly couldn't finish his <b style='color: forestgreen;'>Silliman Lectures</b> before passing in <b style='color: forestgreen;'>1957.</b>"
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Johnny **crossed** the Atlantic in **1930** to lecture at **Princeton University** and decided to make the **U.S.** his home.",
+                        "Initially, his work in **math** and **quantum theory** was theoretical, but the rise of **World War II** shifted his focus to **applied mathematics** for **defense** purposes.",
+                        "He worked on complex **hydrodynamic** problems and was introduced to the **ENIAC**, a high-speed **computing machine**, revolutionizing calculation methods in **science** and **defense.**",
+                        "His work paved the way for future advancements in **automation** and **computing.**"
+                    ]
+                },
+                {
+                    "sentences": [
+                        "During **World War II**, Johnny became deeply involved in scientific efforts in the **U.S.,** believing in the potential of fast **electronic computing** machines to solve complex scientific **problems.**",
+                        "After the war, he helped design the **JONIAC** at the **Institute for Advanced Study**, influencing future **computers**.",
+                        "He explored using **mathematics** and **neurology** to improve machines and delivered many lectures.",
+                        "Ultimately, his research influenced fields like **meteorology** and helped shape nuclear physics.",
+                        "Despite battling **cancer**, he continued his impactful work but sadly couldn't finish his **Silliman Lectures** before passing in **1957.**"
+                    ]
+                }
+            ]
         },
         {
             "title": "Logical Processes in Digital Machines",
-            "body": "<b style='color: forestgreen;'>In digital machines</b>, each operation is accompanied by a strict, logical process. For <b style='color: forestgreen;'>addition</b>, a binary system is often used, where each digit follows clear rules. When adding, if two digits differ, the result is <b style='color: forestgreen;'>1</b>; if they are the same, it is <b style='color: forestgreen;'>0</b>. If both digits are <b style='color: forestgreen;'>1</b>, there is a carry-over. <b style='color: forestgreen;'>Subtraction</b> follows similar logic but often involves complementing the subtrahend. In <b style='color: forestgreen;'>multiplication</b>, each digit of the multiplier forms a product, which involves a series of additions. In the binary system, only the digits 0 and 1 exist, simplifying multiplication logic. Digital machines usually have only <b style='color: forestgreen;'>one organ</b> for each arithmetic operation, thus requiring a <b style='color: forestgreen;'>memory</b> to store intermediate results, leading to more complex logical controls than in analog machines."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**In digital machines**, each operation is accompanied by a strict, logical process.",
+                        "For **addition**, a binary system is often used, where each digit follows clear rules.",
+                        "When adding, if two digits differ, the result is **1**; if they are the same, it is **0**.",
+                        "If both digits are **1**, there is a carry-over.",
+                        "**Subtraction** follows similar logic but often involves complementing the subtrahend.",
+                        "In **multiplication**, each digit of the multiplier forms a product, which involves a series of additions.",
+                        "In the binary system, only the digits 0 and 1 exist, simplifying multiplication logic.",
+                        "Digital machines usually have only **one organ** for each arithmetic operation, thus requiring a **memory** to store intermediate results, leading to more complex logical controls than in analog machines."
+                    ]
+                }
+            ]
         },
         {
             "title": "Mixed Numerical Procedures and Pulse Density Systems",
-            "body": "In <b style='color: forestgreen;'>mixed numerical procedures</b>, some computing machines use both <b style='color: forestgreen;'>analog</b> and <b style='color: forestgreen;'>digital principles</b>. This <b style='color: forestgreen;'>flexibility</b> allows parts of a machine to be analog and others digital, enabling them to interact and be controlled under a unified system. In some machines, each step combines analog and digital elements, notably by representing numbers in a mixed way. An example is the <b style='color: forestgreen;'>\"pulse density\" system</b>, where numbers are represented by the <b style='color: forestgreen;'>density of electrical pulses over time</b>. This method demands precise mechanics, as larger quantities of pulses can lower machine speed. Special organs enable arithmetic with this pulse-density approach, although handling negative numbers or logical conditions can be complex. <b style='color: forestgreen;'>Conversion devices</b> help to translate these pulse densities into analog values, aiding in logical control. This setup demonstrates the <b style='color: forestgreen;'>potential</b> for blending methodologies in computing, though large-scale machines rarely employ such mixed techniques."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In **mixed numerical procedures**, some computing machines use both **analog** and **digital principles**.",
+                        "This **flexibility** allows parts of a machine to be analog and others digital, enabling them to interact and be controlled under a unified system.",
+                        "In some machines, each step combines analog and digital elements, notably by representing numbers in a mixed way.",
+                        "An example is the **\"pulse density\" system**, where numbers are represented by the **density of electrical pulses over time**.",
+                        "This method demands precise mechanics, as larger quantities of pulses can lower machine speed.",
+                        "Special organs enable arithmetic with this pulse-density approach, although handling negative numbers or logical conditions can be complex.",
+                        "**Conversion devices** help to translate these pulse densities into analog values, aiding in logical control.",
+                        "This setup demonstrates the **potential** for blending methodologies in computing, though large-scale machines rarely employ such mixed techniques."
+                    ]
+                }
+            ]
         },
         {
             "title": "Comparing Memory Hierarchy and Nervous System",
-            "body": "In <b style='color: forestgreen;'>high-speed computing machines</b>, there are usually three to four levels of a <b style='color: forestgreen;'>memory hierarchy</b>. The <b style='color: forestgreen;'>fastest memory components</b> use electrostatic devices and magnetic core arrays. <b style='color: forestgreen;'>Magnetic drums</b> and <b style='color: forestgreen;'>tapes</b> are used in later levels and have specific <b style='color: forestgreen;'>access limitations</b>. Drums present data successively, while tapes do so linearly, but both can be synchronized with the machine's operations. Ultimately, the \"<b style='color: forestgreen;'>outside world</b>\" represents the last memory stage, using <b style='color: forestgreen;'>punched tapes</b> or <b style='color: forestgreen;'>cards</b> for input-output communication.\n\nAll memory systems use \"<b style='color: forestgreen;'>direct addressing</b>\"; every word has a <b style='color: forestgreen;'>unique numerical address</b>. Access depends on the machine's state, but there's no ambiguity about the address. In contrast, the human <b style='color: forestgreen;'>nervous system</b> functions digitally, with neurons generating complex <b style='color: forestgreen;'>nerve impulses</b>. These processes involve electrical, chemical, and mechanical changes, which are reversible, emphasizing the <b style='color: forestgreen;'>digital character</b> of nerve response. Time characteristics of nerve response reveal reaction times between <b style='color: forestgreen;'>10-4 and 10-2 seconds</b>, showing significant differences compared to <b style='color: forestgreen;'>modern logical computing</b> components like <b style='color: forestgreen;'>vacuum tubes and transistors</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In **high-speed computing machines**, there are usually three to four levels of a **memory hierarchy**.",
+                        "The **fastest memory components** use electrostatic devices and magnetic core arrays.",
+                        "**Magnetic drums** and **tapes** are used in later levels and have specific **access limitations**.",
+                        "Drums present data successively, while tapes do so linearly, but both can be synchronized with the machine's operations.",
+                        "Ultimately, the \"**outside world**\" represents the last memory stage, using **punched tapes** or **cards** for input-output communication."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "All memory systems use \"**direct addressing**\"; every word has a **unique numerical address**.",
+                        "Access depends on the machine's state, but there's no ambiguity about the address.",
+                        "In contrast, the human **nervous system** functions digitally, with neurons generating complex **nerve impulses**.",
+                        "These processes involve electrical, chemical, and mechanical changes, which are reversible, emphasizing the **digital character** of nerve response.",
+                        "Time characteristics of nerve response reveal reaction times between **10-4 and 10-2 seconds**, showing significant differences compared to **modern logical computing** components like **vacuum tubes and transistors**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Understanding Memory in the Nervous System",
-            "body": "The problem of understanding <b style='color: forestgreen;'>memory</b> in the <b style='color: forestgreen;'>nervous system</b> is tricky. Although we don't truly know where or what makes it up, we can guess that it needs to store a significant amount of <b style='color: forestgreen;'>information</b>. We think it might be similar to <b style='color: forestgreen;'>artificial memories</b> in machines, measured in <b style='color: forestgreen;'>bits</b>. A memory that can retain about 1000 eight-place decimal numbers would need to store <b style='color: forestgreen;'>2.66 x 104 bits</b>. The nervous system might need a <b style='color: forestgreen;'>huge capacity</b>, much larger than modern computers, because it likely retains all information for a human's lifetime. There are theories that say memories could be due to changing <b style='color: forestgreen;'>thresholds</b> in <b style='color: forestgreen;'>neurons</b> or by the arrangement of <b style='color: forestgreen;'>synapses</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The problem of understanding **memory** in the **nervous system** is tricky.",
+                        "Although we don't truly know where or what makes it up, we can guess that it needs to store a significant amount of **information**.",
+                        "We think it might be similar to **artificial memories** in machines, measured in **bits**.",
+                        "A memory that can retain about 1000 eight-place decimal numbers would need to store **2.66 x 104 bits**.",
+                        "The nervous system might need a **huge capacity**, much larger than modern computers, because it likely retains all information for a human's lifetime.",
+                        "There are theories that say memories could be due to changing **thresholds** in **neurons** or by the arrangement of **synapses**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Distinctive Memory and Analog-Digital Dynamics in Nervous System",
-            "body": "The <b style='color: forestgreen;'>memory componentry</b> of the nervous system differs significantly from its <b style='color: forestgreen;'>basic active organs</b> (nerve cells). This distinction is crucial because a large-capacity memory <b style='color: forestgreen;'>exists</b> within the nervous system, but the <b style='color: forestgreen;'>actual components</b> responsible for the memory are not yet understood. The nervous system uses <b style='color: forestgreen;'>digital nerve pulses</b> and processes can convert <b style='color: forestgreen;'>back and forth</b> between digital and <b style='color: forestgreen;'>analog forms</b>—like muscle contractions. This <b style='color: forestgreen;'>alternation</b> between digital and analog functions is vital for understanding how processes in the nervous system work.\n\n<b style='color: forestgreen;'>Genes</b> play a role in this digital and analog interaction. They are inherently <b style='color: forestgreen;'>digital</b>, reflecting in their ability to influence the production of <b style='color: forestgreen;'>specific chemicals</b> or enzymes, which is an <b style='color: forestgreen;'>analog process</b>. Thus, they exemplify the seamless <b style='color: forestgreen;'>transition</b> between digital and analog systems within the <b style='color: forestgreen;'>nervous system.</b> Observations about this dynamic serve as a foundation for further studying how <b style='color: forestgreen;'>logical instructions</b> and processes are organized within <b style='color: forestgreen;'>complex systems</b> like the brain."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **memory componentry** of the nervous system differs significantly from its **basic active organs** (nerve cells).",
+                        "This distinction is crucial because a large-capacity memory **exists** within the nervous system, but the **actual components** responsible for the memory are not yet understood.",
+                        "The nervous system uses **digital nerve pulses** and processes can convert **back and forth** between digital and **analog forms**\u2014like muscle contractions.",
+                        "This **alternation** between digital and analog functions is vital for understanding how processes in the nervous system work."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Genes** play a role in this digital and analog interaction.",
+                        "They are inherently **digital**, reflecting in their ability to influence the production of **specific chemicals** or enzymes, which is an **analog process**.",
+                        "Thus, they exemplify the seamless **transition** between digital and analog systems within the **nervous system.**",
+                        "Observations about this dynamic serve as a foundation for further studying how **logical instructions** and processes are organized within **complex systems** like the brain."
+                    ]
+                }
+            ]
         }
     ]
 }

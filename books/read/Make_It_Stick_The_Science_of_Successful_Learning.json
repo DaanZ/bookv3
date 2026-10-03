@@ -12,55 +12,292 @@
     "parts": [
         {
             "title": "Make It Stick: The Science of Successful Learning - Introduction and Key Concepts",
-            "body": "This book, \"Make It Stick: The Science of Successful Learning,\" by Peter C. Brown, Henry L. Roediger III, and Mark A. McDaniel, argues that <b style='color: forestgreen;'>common learning methods are often ineffective</b>.  Based on <b style='color: forestgreen;'>125 years of research</b>, the authors present <b style='color: forestgreen;'>evidence-based strategies</b> that are <b style='color: forestgreen;'>counterintuitive</b> but highly effective. They explain how <b style='color: forestgreen;'>learning and memory work</b> through <b style='color: forestgreen;'>stories of mastery</b>, rather than just reciting research. The book emphasizes that <b style='color: forestgreen;'>learning is deeper when effortful</b>, and <b style='color: forestgreen;'>retrieval practice</b> (recalling information) is more effective than rereading. <b style='color: forestgreen;'>Spaced repetition</b> and <b style='color: forestgreen;'>interleaving different topics</b> improve retention.  They also debunk the idea of <b style='color: forestgreen;'>learning styles</b>, advocating for a <b style='color: forestgreen;'>\"go wide\" approach</b> using all aptitudes. The authors stress the importance of <b style='color: forestgreen;'>identifying underlying principles</b> through <b style='color: forestgreen;'>interleaved and varied practice</b>, and using <b style='color: forestgreen;'>testing as a tool</b> to pinpoint weaknesses.  <b style='color: forestgreen;'>Prior knowledge is crucial</b>, and <b style='color: forestgreen;'>elaboration</b> (connecting new information to existing knowledge) helps overcome the illusion of a \"full brain.\" The book concludes by highlighting that <b style='color: forestgreen;'>intellectual ability is not fixed</b>; every time you learn, you <b style='color: forestgreen;'>change your brain</b>, and <b style='color: forestgreen;'>mistakes are essential for advanced learning</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This book, \"Make It Stick: The Science of Successful Learning,\" by Peter C. Brown, Henry L. Roediger III, and Mark A. McDaniel, argues that **common learning methods are often ineffective**.",
+                        "Based on **125 years of research**, the authors present **evidence-based strategies** that are **counterintuitive** but highly effective.",
+                        "They explain how **learning and memory work** through **stories of mastery**, rather than just reciting research.",
+                        "The book emphasizes that **learning is deeper when effortful**, and **retrieval practice** (recalling information) is more effective than rereading.",
+                        "**Spaced repetition** and **interleaving different topics** improve retention.",
+                        "They also debunk the idea of **learning styles**, advocating for a **\"go wide\" approach** using all aptitudes.",
+                        "The authors stress the importance of **identifying underlying principles** through **interleaved and varied practice**, and using **testing as a tool** to pinpoint weaknesses.",
+                        "**Prior knowledge is crucial**, and **elaboration** (connecting new information to existing knowledge) helps overcome the illusion of a \"full brain.\"",
+                        "The book concludes by highlighting that **intellectual ability is not fixed**; every time you learn, you **change your brain**, and **mistakes are essential for advanced learning**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Effective Learning vs. Illusions of Knowing",
-            "body": "The text highlights <b style='color: forestgreen;'>ineffective study methods</b> like <b style='color: forestgreen;'>rereading</b> and <b style='color: forestgreen;'>repetition</b>, which create an <b style='color: forestgreen;'>illusion of mastery</b>. Studies show that repeated exposure or rereading in close succession doesn't lead to <b style='color: forestgreen;'>durable learning</b> or <b style='color: forestgreen;'>better recall</b> on delayed tests. For example, people often fail to identify a common penny correctly despite seeing it many times, or a fire extinguisher near their office, demonstrating that <b style='color: forestgreen;'>mere repetition</b> doesn't embed information in memory. College students often rely on <b style='color: forestgreen;'>highlighting</b> and <b style='color: forestgreen;'>rereading</b>, leading to <b style='color: forestgreen;'>poor metacognition</b>\u2014they <b style='color: forestgreen;'>overestimate</b> what they know and don't recognize their <b style='color: forestgreen;'>weaknesses</b>.\n\nIn contrast, <b style='color: forestgreen;'>active retrieval</b> or <b style='color: forestgreen;'>testing</b> is presented as a <b style='color: forestgreen;'>powerful learning tool</b>. It strengthens memory, helps identify <b style='color: forestgreen;'>knowledge gaps</b>, and <b style='color: forestgreen;'>reconsolidates memories</b>, making future recall easier. The example of neurosurgeon Mike Ebersold demonstrates how <b style='color: forestgreen;'>reflection</b> and <b style='color: forestgreen;'>repeated retrieval practice</b> turn complex procedures into <b style='color: forestgreen;'>reflexive actions</b>, essential for high-stakes situations. The text argues against the false dichotomy of <b style='color: forestgreen;'>knowledge vs. creativity</b>, asserting that <b style='color: forestgreen;'>strong knowledge</b> is the <b style='color: forestgreen;'>foundation</b> for <b style='color: forestgreen;'>higher-level skills</b> and <b style='color: forestgreen;'>nuanced creativity</b>. <b style='color: forestgreen;'>Testing</b>, when viewed as <b style='color: forestgreen;'>retrieval practice</b> rather than just measurement, is crucial for <b style='color: forestgreen;'>interrupting forgetting</b> and achieving <b style='color: forestgreen;'>durable learning</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The text highlights **ineffective study methods** like **rereading** and **repetition**, which create an **illusion of mastery**.",
+                        "Studies show that repeated exposure or rereading in close succession doesn't lead to **durable learning** or **better recall** on delayed tests.",
+                        "For example, people often fail to identify a common penny correctly despite seeing it many times, or a fire extinguisher near their office, demonstrating that **mere repetition** doesn't embed information in memory.",
+                        "College students often rely on **highlighting** and **rereading**, leading to **poor metacognition**\u2014they **overestimate** what they know and don't recognize their **weaknesses**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "In contrast, **active retrieval** or **testing** is presented as a **powerful learning tool**.",
+                        "It strengthens memory, helps identify **knowledge gaps**, and **reconsolidates memories**, making future recall easier.",
+                        "The example of neurosurgeon Mike Ebersold demonstrates how **reflection** and **repeated retrieval practice** turn complex procedures into **reflexive actions**, essential for high-stakes situations.",
+                        "The text argues against the false dichotomy of **knowledge vs. creativity**, asserting that **strong knowledge** is the **foundation** for **higher-level skills** and **nuanced creativity**.",
+                        "**Testing**, when viewed as **retrieval practice** rather than just measurement, is crucial for **interrupting forgetting** and achieving **durable learning**."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Testing Effect: A Historical Overview of Laboratory Research",
-            "body": "The <b style='color: forestgreen;'>testing effect</b>, first studied in 1917, shows that <b style='color: forestgreen;'>reciting</b> material from memory leads to <b style='color: forestgreen;'>better retention</b> than simply rereading it. Children who spent about 60% of their study time reciting showed the best results. A 1939 study with over three thousand sixth graders found that <b style='color: forestgreen;'>forgetting nearly stopped</b> once a student took a test, and longer delays before the first test led to greater forgetting. However, interest in testing as a learning tool declined around 1940, shifting focus to forgetting.\n\nInterest in the testing effect <b style='color: forestgreen;'>resurfaced in 1967</b>, with studies showing that <b style='color: forestgreen;'>repeated testing</b> is as effective as repeated studying for learning. In 1978, research found that <b style='color: forestgreen;'>cramming</b> (massed studying) leads to faster forgetting compared to <b style='color: forestgreen;'>practicing retrieval</b>. Multiple tests significantly <b style='color: forestgreen;'>boost long-term retention</b>, especially when <b style='color: forestgreen;'>spaced out</b>. Even small efforts like filling in missing letters (<b style='color: forestgreen;'>generation effect</b>) strengthen memory. Delaying retrieval practice can be more effective than immediate practice, as it requires more effort. The <b style='color: forestgreen;'>schedule of testing matters</b>, with spaced retrieval practice leading to stronger long-term retention than massed practice."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **testing effect**, first studied in 1917, shows that **reciting** material from memory leads to **better retention** than simply rereading it.",
+                        "Children who spent about 60% of their study time reciting showed the best results.",
+                        "A 1939 study with over three thousand sixth graders found that **forgetting nearly stopped** once a student took a test, and longer delays before the first test led to greater forgetting.",
+                        "However, interest in testing as a learning tool declined around 1940, shifting focus to forgetting."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Interest in the testing effect **resurfaced in 1967**, with studies showing that **repeated testing** is as effective as repeated studying for learning.",
+                        "In 1978, research found that **cramming** (massed studying) leads to faster forgetting compared to **practicing retrieval**.",
+                        "Multiple tests significantly **boost long-term retention**, especially when **spaced out**.",
+                        "Even small efforts like filling in missing letters (**generation effect**) strengthen memory.",
+                        "Delaying retrieval practice can be more effective than immediate practice, as it requires more effort.",
+                        "The **schedule of testing matters**, with spaced retrieval practice leading to stronger long-term retention than massed practice."
+                    ]
+                }
+            ]
         },
         {
             "title": "Interleaving and Varied Practice: The Path to Deeper Learning",
-            "body": "This text discusses why <b style='color: forestgreen;'>interleaving</b> (mixing up different topics or skills during practice) and <b style='color: forestgreen;'>varied practice</b> are more effective for <b style='color: forestgreen;'>long-term retention</b> and <b style='color: forestgreen;'>mastery</b>, even though they can feel <b style='color: forestgreen;'>sluggish</b> or <b style='color: forestgreen;'>confusing</b> at first.  Teachers and students often dislike interleaving because it doesn't show immediate improvement, unlike <b style='color: forestgreen;'>massed practice</b> (focusing on one topic intensely). However, research, including <b style='color: forestgreen;'>neuroimaging studies</b>, shows that varied practice engages different parts of the brain and leads to a <b style='color: forestgreen;'>more flexible understanding</b> that can be applied to new situations. It helps you develop <b style='color: forestgreen;'>discrimination skills</b> to tell different problems apart.\n\nThe text gives examples, like the <b style='color: forestgreen;'>beanbag study</b> where varied practice led to better results, and athletes who historically used massed practice are slowly adopting varied training. It also highlights how these principles apply to <b style='color: forestgreen;'>cognitive learning</b>, like solving <b style='color: forestgreen;'>anagrams</b> or identifying <b style='color: forestgreen;'>bird species</b>. Even when students experience better results from interleaving, they often <b style='color: forestgreen;'>prefer massed practice</b>, showing how deeply ingrained the <b style='color: forestgreen;'>myths of massed practice</b> are. Ultimately, interleaving and variation are crucial for moving beyond simple memorization to <b style='color: forestgreen;'>higher levels of conceptual learning</b> and <b style='color: forestgreen;'>complex mastery</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This text discusses why **interleaving** (mixing up different topics or skills during practice) and **varied practice** are more effective for **long-term retention** and **mastery**, even though they can feel **sluggish** or **confusing** at first.",
+                        "Teachers and students often dislike interleaving because it doesn't show immediate improvement, unlike **massed practice** (focusing on one topic intensely).",
+                        "However, research, including **neuroimaging studies**, shows that varied practice engages different parts of the brain and leads to a **more flexible understanding** that can be applied to new situations.",
+                        "It helps you develop **discrimination skills** to tell different problems apart."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The text gives examples, like the **beanbag study** where varied practice led to better results, and athletes who historically used massed practice are slowly adopting varied training.",
+                        "It also highlights how these principles apply to **cognitive learning**, like solving **anagrams** or identifying **bird species**.",
+                        "Even when students experience better results from interleaving, they often **prefer massed practice**, showing how deeply ingrained the **myths of massed practice** are.",
+                        "Ultimately, interleaving and variation are crucial for moving beyond simple memorization to **higher levels of conceptual learning** and **complex mastery**."
+                    ]
+                }
+            ]
         },
         {
             "title": "How Learning Occurs: Encoding, Consolidation, and Retrieval",
-            "body": "Learning involves three key stages: <b style='color: forestgreen;'>encoding</b>, <b style='color: forestgreen;'>consolidation</b>, and <b style='color: forestgreen;'>retrieval</b>. <b style='color: forestgreen;'>Encoding</b> is how your brain turns sensory information into <b style='color: forestgreen;'>memory traces</b>, like temporary notes. While some information is short-term and soon forgotten, crucial learning needs to be <b style='color: forestgreen;'>stronger and more durable</b>.\n\n<b style='color: forestgreen;'>Consolidation</b> is the process of strengthening these memory traces for <b style='color: forestgreen;'>long-term memory</b>. It's like refining a rough draft \u2013 the brain reorganizes and stabilizes memories, making connections to existing knowledge. This process takes time and is aided by things like sleep. <b style='color: forestgreen;'>Retrieval</b>, especially after a lapse of time (<b style='color: forestgreen;'>reconsolidation</b>), also strengthens memories, making them easier to access later. Trying to recall information, even if difficult, improves <b style='color: forestgreen;'>long-term retention</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Learning involves three key stages: **encoding**, **consolidation**, and **retrieval**.",
+                        "**Encoding** is how your brain turns sensory information into **memory traces**, like temporary notes.",
+                        "While some information is short-term and soon forgotten, crucial learning needs to be **stronger and more durable**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Consolidation** is the process of strengthening these memory traces for **long-term memory**.",
+                        "It's like refining a rough draft \u2013 the brain reorganizes and stabilizes memories, making connections to existing knowledge.",
+                        "This process takes time and is aided by things like sleep.",
+                        "**Retrieval**, especially after a lapse of time (**reconsolidation**), also strengthens memories, making them easier to access later.",
+                        "Trying to recall information, even if difficult, improves **long-term retention**."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Power of Generative Learning and the Importance of Failure",
-            "body": "Learning is a <b style='color: forestgreen;'>three-step process</b>: <b style='color: forestgreen;'>encoding</b> into short-term memory, <b style='color: forestgreen;'>consolidation</b> into long-term memory (which reorganizes and stabilizes memories, gives them meaning, and connects them to prior knowledge), and <b style='color: forestgreen;'>retrieval</b>, which updates learning and allows for application. Learning always builds on existing knowledge, and <b style='color: forestgreen;'>long-term memory is virtually limitless</b>; more knowledge means more connections for new information. The ability to locate and recall information is crucial, depending on <b style='color: forestgreen;'>repeated use</b> (to strengthen retrieval routes) and <b style='color: forestgreen;'>powerful retrieval cues</b>. Effortful retrieval, especially when learning is a bit rusty, strengthens memory and makes it pliable for reconsolidation, updating and connecting to newer learning.\n\n<b style='color: forestgreen;'>Repeated effortful recall</b> helps integrate learning into <b style='color: forestgreen;'>mental models</b>, allowing for adaptable application. <b style='color: forestgreen;'>Varied practice</b> and <b style='color: forestgreen;'>interleaving</b> improve discrimination, induction, and versatility. Trying to <b style='color: forestgreen;'>generate an answer</b> or solve a problem before being shown the solution (generative learning), even if incorrect but followed by corrective feedback, leads to <b style='color: forestgreen;'>better learning and retention</b> than passive reception. The next topic is avoiding <b style='color: forestgreen;'>illusions of knowing</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Learning is a **three-step process**: **encoding** into short-term memory, **consolidation** into long-term memory (which reorganizes and stabilizes memories, gives them meaning, and connects them to prior knowledge), and **retrieval**, which updates learning and allows for application.",
+                        "Learning always builds on existing knowledge, and **long-term memory is virtually limitless**; more knowledge means more connections for new information.",
+                        "The ability to locate and recall information is crucial, depending on **repeated use** (to strengthen retrieval routes) and **powerful retrieval cues**.",
+                        "Effortful retrieval, especially when learning is a bit rusty, strengthens memory and makes it pliable for reconsolidation, updating and connecting to newer learning."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Repeated effortful recall** helps integrate learning into **mental models**, allowing for adaptable application.",
+                        "**Varied practice** and **interleaving** improve discrimination, induction, and versatility.",
+                        "Trying to **generate an answer** or solve a problem before being shown the solution (generative learning), even if incorrect but followed by corrective feedback, leads to **better learning and retention** than passive reception.",
+                        "The next topic is avoiding **illusions of knowing**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Illusions and Memory Distortions",
-            "body": "Our <b style='color: forestgreen;'>memory</b> is constantly being shaped by a <b style='color: forestgreen;'>hunger for narrative</b> and a desire to <b style='color: forestgreen;'>resolve ambiguity</b>. This means we often try to create a <b style='color: forestgreen;'>cohesive story</b> out of events, even inconsequential ones. A study showed that overhearing one side of a phone conversation was more <b style='color: forestgreen;'>distracting</b> and <b style='color: forestgreen;'>better recalled</b> because people tried to infer the missing parts to form a complete narrative. This need for a rational understanding extends to our <b style='color: forestgreen;'>own lives</b>, where we fit events into a story that explains our circumstances and choices. <b style='color: forestgreen;'>Narrative and memory become one</b>, influencing how we make sense of new experiences and shaping our memories to fit existing constructs. People often rely on <b style='color: forestgreen;'>personal narratives</b> to explain their emotions, even when reading online articles, and are surprisingly <b style='color: forestgreen;'>insensitive to the uniqueness of their own perceptions</b>.\n\nWhile memory's <b style='color: forestgreen;'>changeable nature</b> can skew perceptions, it's also <b style='color: forestgreen;'>essential for learning</b>. Each time we recall a memory, the neural pathways strengthen, allowing us to deepen learning and broaden connections. Memory is like a <b style='color: forestgreen;'>Google search algorithm</b>: the more you connect new information to what you already know and make associations, the easier it is to retrieve later. However, because memory is a <b style='color: forestgreen;'>shape-shifter</b> influenced by emotion, suggestions, and narrative, our <b style='color: forestgreen;'>certainties can be fallible</b>, and even cherished memories may not be entirely accurate. Memory is a <b style='color: forestgreen;'>reconstruction</b>, filling gaps with details consistent with our narrative but not always correct. This can lead to remembering <b style='color: forestgreen;'>implied but unstated things</b> (like the Helen Keller example) and <b style='color: forestgreen;'>imagination inflation</b>, where vividly imagining an event makes us believe it actually happened. <b style='color: forestgreen;'>Suggestion</b> can also distort memory, as seen in the car collision study where wording influenced speed estimates. The act of <b style='color: forestgreen;'>guessing about possible events</b> can lead to creating misinformation, which is why hypnotically-induced testimony is often inadmissible. <b style='color: forestgreen;'>Interference from other events</b> can also distort memory, as shown by the Donald Thomson case where a witness confused a TV personality with an assailant."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Our **memory** is constantly being shaped by a **hunger for narrative** and a desire to **resolve ambiguity**.",
+                        "This means we often try to create a **cohesive story** out of events, even inconsequential ones.",
+                        "A study showed that overhearing one side of a phone conversation was more **distracting** and **better recalled** because people tried to infer the missing parts to form a complete narrative.",
+                        "This need for a rational understanding extends to our **own lives**, where we fit events into a story that explains our circumstances and choices.",
+                        "**Narrative and memory become one**, influencing how we make sense of new experiences and shaping our memories to fit existing constructs.",
+                        "People often rely on **personal narratives** to explain their emotions, even when reading online articles, and are surprisingly **insensitive to the uniqueness of their own perceptions**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "While memory's **changeable nature** can skew perceptions, it's also **essential for learning**.",
+                        "Each time we recall a memory, the neural pathways strengthen, allowing us to deepen learning and broaden connections.",
+                        "Memory is like a **Google search algorithm**: the more you connect new information to what you already know and make associations, the easier it is to retrieve later.",
+                        "However, because memory is a **shape-shifter** influenced by emotion, suggestions, and narrative, our **certainties can be fallible**, and even cherished memories may not be entirely accurate.",
+                        "Memory is a **reconstruction**, filling gaps with details consistent with our narrative but not always correct.",
+                        "This can lead to remembering **implied but unstated things** (like the Helen Keller example) and **imagination inflation**, where vividly imagining an event makes us believe it actually happened.",
+                        "**Suggestion** can also distort memory, as seen in the car collision study where wording influenced speed estimates.",
+                        "The act of **guessing about possible events** can lead to creating misinformation, which is why hypnotically-induced testimony is often inadmissible.",
+                        "**Interference from other events** can also distort memory, as shown by the Donald Thomson case where a witness confused a TV personality with an assailant."
+                    ]
+                }
+            ]
         },
         {
             "title": "Effective Learning: Beyond Preferences to Practical Skills",
-            "body": "This chapter acknowledges <b style='color: forestgreen;'>learning preferences</b> but argues that aligning instruction with these preferences doesn't necessarily lead to better learning. Instead, it focuses on other significant differences in how people learn, introducing the story of <b style='color: forestgreen;'>Bruce Hendry</b> to illustrate these points.\n\nBruce's early life shows his <b style='color: forestgreen;'>proactive learning style</b> and his ability to <b style='color: forestgreen;'>take charge of his own education</b>. From selling string and fireworks to buying real estate and managing properties, he consistently learned from his experiences. The text highlights his ability to extract <b style='color: forestgreen;'>underlying principles</b> (rule learning) and construct <b style='color: forestgreen;'>mental models</b> (structure building) from new information, which are presented as crucial learning differences. He learned to identify key information and disregard irrelevant details, even if it meant facing setbacks, as seen in his early real estate and stock market ventures. His later success in distressed assets, like bonds in bankrupt companies and railroad equipment, stemmed from his deep dive into details, understanding complex structures, and challenging existing power dynamics."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This chapter acknowledges **learning preferences** but argues that aligning instruction with these preferences doesn't necessarily lead to better learning.",
+                        "Instead, it focuses on other significant differences in how people learn, introducing the story of **Bruce Hendry** to illustrate these points."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Bruce's early life shows his **proactive learning style** and his ability to **take charge of his own education**.",
+                        "From selling string and fireworks to buying real estate and managing properties, he consistently learned from his experiences.",
+                        "The text highlights his ability to extract **underlying principles** (rule learning) and construct **mental models** (structure building) from new information, which are presented as crucial learning differences.",
+                        "He learned to identify key information and disregard irrelevant details, even if it meant facing setbacks, as seen in his early real estate and stock market ventures.",
+                        "His later success in distressed assets, like bonds in bankrupt companies and railroad equipment, stemmed from his deep dive into details, understanding complex structures, and challenging existing power dynamics."
+                    ]
+                }
+            ]
         },
         {
             "title": "Rule versus Example Learning",
-            "body": "When learning, some people are <b style='color: forestgreen;'>\"rule learners\"</b> who focus on <b style='color: forestgreen;'>abstracting principles</b>, while others are <b style='color: forestgreen;'>\"example learners\"</b> who tend to <b style='color: forestgreen;'>memorize specific examples</b>. Rule learners can apply underlying rules to <b style='color: forestgreen;'>new situations</b>, but example learners struggle without a grasp of the rules, often generalizing from irrelevant examples. However, example learners can <b style='color: forestgreen;'>improve</b> by <b style='color: forestgreen;'>comparing two different examples</b> to identify similarities and underlying principles. For instance, problems like a general attacking a castle or destroying a tumor both require <b style='color: forestgreen;'>dividing a large force</b> into smaller ones to converge on a target without adverse outcomes. Identifying these commonalities helps students solve other \"convergence problems.\" \n\nLike <b style='color: forestgreen;'>\"high structure-builders\"</b>, <b style='color: forestgreen;'>rule learners are more successful at transferring knowledge</b> to unfamiliar situations. There's a potential link between being a high structure-builder and a rule learner, though more research is needed. This development of structure-building and rule-learning skills is seen in children learning jokes; a three-year-old may miss the joke's structure, but a five-year-old understands the <b style='color: forestgreen;'>\"rule\" that a punchline needs a setup</b>. Bruce Hendry's experience with fireworks and boxcars illustrates how an initial understanding of <b style='color: forestgreen;'>supply and demand</b> evolves into more complex <b style='color: forestgreen;'>\"knowhow\"</b> by integrating various knowledge blocks into a larger structure. <b style='color: forestgreen;'>Knowhow isn't just knowledge; it's understanding underlying principles</b> and fitting them together to enable action. "
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "When learning, some people are **\"rule learners\"** who focus on **abstracting principles**, while others are **\"example learners\"** who tend to **memorize specific examples**.",
+                        "Rule learners can apply underlying rules to **new situations**, but example learners struggle without a grasp of the rules, often generalizing from irrelevant examples.",
+                        "However, example learners can **improve** by **comparing two different examples** to identify similarities and underlying principles.",
+                        "For instance, problems like a general attacking a castle or destroying a tumor both require **dividing a large force** into smaller ones to converge on a target without adverse outcomes.",
+                        "Identifying these commonalities helps students solve other \"convergence problems.\""
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Like **\"high structure-builders\"**, **rule learners are more successful at transferring knowledge** to unfamiliar situations.",
+                        "There's a potential link between being a high structure-builder and a rule learner, though more research is needed.",
+                        "This development of structure-building and rule-learning skills is seen in children learning jokes; a three-year-old may miss the joke's structure, but a five-year-old understands the **\"rule\" that a punchline needs a setup**.",
+                        "Bruce Hendry's experience with fireworks and boxcars illustrates how an initial understanding of **supply and demand** evolves into more complex **\"knowhow\"** by integrating various knowledge blocks into a larger structure.",
+                        "**Knowhow isn't just knowledge; it's understanding underlying principles** and fitting them together to enable action."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Impact of Praise and Growth Mindset",
-            "body": "The <b style='color: forestgreen;'>power of praise</b> influences how people <b style='color: forestgreen;'>approach challenges</b>, drawing on Dweck's research. In one study, <b style='color: forestgreen;'>fifth graders</b> were praised for either being <b style='color: forestgreen;'>smart</b> or for <b style='color: forestgreen;'>working hard</b> after solving a puzzle. The <b style='color: forestgreen;'>majority</b> of those praised for being <b style='color: forestgreen;'>smart</b> chose an <b style='color: forestgreen;'>easier</b> next puzzle, while <b style='color: forestgreen;'>90%</b> of those praised for <b style='color: forestgreen;'>effort</b> chose a <b style='color: forestgreen;'>harder</b> one, showing that emphasizing effort leads to embracing challenges.\n\n<b style='color: forestgreen;'>Praise for intelligence</b> can lead to <b style='color: forestgreen;'>helplessness</b> when faced with failure, as seen in a study where \"smart\" praised students struggled with previously solved puzzles when they believed they were unsolvable. It highlights that <b style='color: forestgreen;'>success</b> relies more on <b style='color: forestgreen;'>grit, curiosity, and persistence</b> than on IQ. The key takeaway from Dweck and others is that a <b style='color: forestgreen;'>growth mindset</b>, <b style='color: forestgreen;'>discipline</b>, and <b style='color: forestgreen;'>grit</b> are crucial for <b style='color: forestgreen;'>higher learning</b> and <b style='color: forestgreen;'>success</b>, emphasizing that the power to <b style='color: forestgreen;'>increase your abilities</b> is largely within your <b style='color: forestgreen;'>own control</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **power of praise** influences how people **approach challenges**, drawing on Dweck's research.",
+                        "In one study, **fifth graders** were praised for either being **smart** or for **working hard** after solving a puzzle.",
+                        "The **majority** of those praised for being **smart** chose an **easier** next puzzle, while **90%** of those praised for **effort** chose a **harder** one, showing that emphasizing effort leads to embracing challenges."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Praise for intelligence** can lead to **helplessness** when faced with failure, as seen in a study where \"smart\" praised students struggled with previously solved puzzles when they believed they were unsolvable.",
+                        "It highlights that **success** relies more on **grit, curiosity, and persistence** than on IQ.",
+                        "The key takeaway from Dweck and others is that a **growth mindset**, **discipline**, and **grit** are crucial for **higher learning** and **success**, emphasizing that the power to **increase your abilities** is largely within your **own control**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Effective Learning Strategies: Generation, Reflection, Calibration, and Mnemonics",
-            "body": "Various <b style='color: forestgreen;'>learning strategies</b> are applied by students and professionals. <b style='color: forestgreen;'>Generation</b> involves trying to answer questions or solve problems *before* being given the answers. This makes the mind more <b style='color: forestgreen;'>receptive to new learning</b>. For instance, filling in missing words in a text or engaging in <b style='color: forestgreen;'>experiential learning</b> (learning by doing) are forms of generation. You can practice this by trying to explain key ideas in new material *before* reading it, which makes you more <b style='color: forestgreen;'>astute at gleaning substance</b>. Solving problems before class in subjects like science or math also falls under generation, and while some students resist, professors find it <b style='color: forestgreen;'>strengthens classroom learning</b>.\n\n<b style='color: forestgreen;'>Reflection</b> is a combination of <b style='color: forestgreen;'>retrieval practice</b> and <b style='color: forestgreen;'>elaboration</b>, adding depth to learning. It involves reviewing recent learning, asking what went well, what could be better, and how it connects to other knowledge. <b style='color: forestgreen;'>Calibration</b> is about aligning your judgment of what you know with <b style='color: forestgreen;'>objective feedback</b> to avoid the \"illusions of mastery.\" Quizzes and practice tests are crucial for this, and it's important to *actually answer* the questions, not just think you know them. <b style='color: forestgreen;'>Mnemonic devices</b> are mental tools that help you store and retrieve arbitrary information, like using an acronym to remember a list. These strategies are not just for students; the text shows how actors like Nathaniel Fuller use them to learn roles and how writer John McPhee uses \"awful blurting\" (a form of generation) to overcome writer's block. Even a pianist like Thelma Hunter uses elaboration, visualizing scores and making mental notes, to deepen her learning."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Various **learning strategies** are applied by students and professionals.",
+                        "**Generation** involves trying to answer questions or solve problems *before* being given the answers.",
+                        "This makes the mind more **receptive to new learning**.",
+                        "For instance, filling in missing words in a text or engaging in **experiential learning** (learning by doing) are forms of generation.",
+                        "You can practice this by trying to explain key ideas in new material *before* reading it, which makes you more **astute at gleaning substance**.",
+                        "Solving problems before class in subjects like science or math also falls under generation, and while some students resist, professors find it **strengthens classroom learning**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Reflection** is a combination of **retrieval practice** and **elaboration**, adding depth to learning.",
+                        "It involves reviewing recent learning, asking what went well, what could be better, and how it connects to other knowledge.",
+                        "**Calibration** is about aligning your judgment of what you know with **objective feedback** to avoid the \"illusions of mastery.\"",
+                        "Quizzes and practice tests are crucial for this, and it's important to *actually answer* the questions, not just think you know them.",
+                        "**Mnemonic devices** are mental tools that help you store and retrieve arbitrary information, like using an acronym to remember a list.",
+                        "These strategies are not just for students; the text shows how actors like Nathaniel Fuller use them to learn roles and how writer John McPhee uses \"awful blurting\" (a form of generation) to overcome writer's block.",
+                        "Even a pianist like Thelma Hunter uses elaboration, visualizing scores and making mental notes, to deepen her learning."
+                    ]
+                }
+            ]
         },
         {
             "title": "Effective Learning Strategies and High-Structure Teaching",
-            "body": "Mary Pat Wenderoth uses <b style='color: forestgreen;'>dense cartoon summaries</b> with <b style='color: forestgreen;'>callouts, blowups, and directional arrows</b> to help students synthesize weekly information and understand <b style='color: forestgreen;'>how systems are connected</b>. She assigns <b style='color: forestgreen;'>low-stakes \u201clearning paragraphs\u201d</b> to stimulate <b style='color: forestgreen;'>retrieval and reflection</b>, asking questions like \u201cHow is the GI tract like the respiratory system?\u201d to prevent procrastination and practice <b style='color: forestgreen;'>clear prose writing</b>. Wenderoth also translates <b style='color: forestgreen;'>Bloom\u2019s taxonomy</b> into her test answer keys, providing different answers for <b style='color: forestgreen;'>knowledge, understanding, and analysis</b> levels, so students can identify their learning level. <b style='color: forestgreen;'>High-structure classes</b> with daily and weekly <b style='color: forestgreen;'>low-stakes exercises</b> significantly <b style='color: forestgreen;'>reduce student failure rates</b> and <b style='color: forestgreen;'>narrow the achievement gap</b> in gateway biology courses, while improving exam results at <b style='color: forestgreen;'>higher Bloom\u2019s taxonomy levels</b>. They emphasize a <b style='color: forestgreen;'>\u201cgrowth mindset\u201d</b>\u2014that <b style='color: forestgreen;'>learning is hard work</b> and <b style='color: forestgreen;'>struggle increases intellectual abilities</b>.\nMichael D. Matthews uses the <b style='color: forestgreen;'>Thayer method</b> which sets <b style='color: forestgreen;'>specific learning objectives</b> and places <b style='color: forestgreen;'>responsibility on students</b>, incorporating <b style='color: forestgreen;'>quizzing and recitation in every class</b>. Students should <b style='color: forestgreen;'>start with questions and read for answers</b> rather than reading every word. His courses have <b style='color: forestgreen;'>little to no lecturing</b>, beginning with a <b style='color: forestgreen;'>quiz on learning objectives</b>. Students often <b style='color: forestgreen;'>\u201ctake to the boards,\u201d</b> collaborating on higher-order questions that require integrating and applying ideas, functioning as <b style='color: forestgreen;'>retrieval practice, generation, and peer instruction</b>. The focus is on <b style='color: forestgreen;'>constructs, not specific facts</b>, and other exercises also aim at understanding and articulating broader concepts. <b style='color: forestgreen;'>Clear learning objectives, daily quizzing, and active problem-solving with feedback</b> keep students engaged. The Thayer method, including daily participation, helps students develop <b style='color: forestgreen;'>effective learning habits</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Mary Pat Wenderoth uses **dense cartoon summaries** with **callouts, blowups, and directional arrows** to help students synthesize weekly information and understand **how systems are connected**.",
+                        "She assigns **low-stakes \u201clearning paragraphs\u201d** to stimulate **retrieval and reflection**, asking questions like \u201cHow is the GI tract like the respiratory system?\u201d to prevent procrastination and practice **clear prose writing**.",
+                        "Wenderoth also translates **Bloom\u2019s taxonomy** into her test answer keys, providing different answers for **knowledge, understanding, and analysis** levels, so students can identify their learning level.",
+                        "**High-structure classes** with daily and weekly **low-stakes exercises** significantly **reduce student failure rates** and **narrow the achievement gap** in gateway biology courses, while improving exam results at **higher Bloom\u2019s taxonomy levels**.",
+                        "They emphasize a **\u201cgrowth mindset\u201d**\u2014that **learning is hard work** and **struggle increases intellectual abilities**.",
+                        "Michael D. Matthews uses the **Thayer method** which sets **specific learning objectives** and places **responsibility on students**, incorporating **quizzing and recitation in every class**.",
+                        "Students should **start with questions and read for answers** rather than reading every word.",
+                        "His courses have **little to no lecturing**, beginning with a **quiz on learning objectives**.",
+                        "Students often **\u201ctake to the boards,\u201d** collaborating on higher-order questions that require integrating and applying ideas, functioning as **retrieval practice, generation, and peer instruction**.",
+                        "The focus is on **constructs, not specific facts**, and other exercises also aim at understanding and articulating broader concepts.",
+                        "**Clear learning objectives, daily quizzing, and active problem-solving with feedback** keep students engaged.",
+                        "The Thayer method, including daily participation, helps students develop **effective learning habits**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Embrace Difficulties",
-            "body": "<b style='color: forestgreen;'>Chapter 4: Embrace Difficulties</b>\n\nThe concept of <b style='color: forestgreen;'>desirable difficulties</b> in learning, emphasizing that making learning tasks harder can lead to <b style='color: forestgreen;'>better retention and understanding</b>. It introduces the three stages of memory: <b style='color: forestgreen;'>encoding</b>, <b style='color: forestgreen;'>storage</b>, and <b style='color: forestgreen;'>retrieval</b>, and explains how issues at any stage can lead to forgetting or false memories. The <b style='color: forestgreen;'>importance of retrieval cues</b> and how <b style='color: forestgreen;'>forgetting</b> can actually aid new learning by prompting more effortful reconsolidation. It also discusses the benefits of <b style='color: forestgreen;'>interleaving</b> and <b style='color: forestgreen;'>generation effects</b>, where active engagement with the material, like solving problems or creating explanations, significantly improves learning.\n\nFurther, the chapter challenges the idea of <b style='color: forestgreen;'>errorless learning</b>, arguing that <b style='color: forestgreen;'>making and correcting errors</b> is crucial for robust learning, especially when paired with <b style='color: forestgreen;'>feedback</b>. It explores how difficulties, such as those presented by <b style='color: forestgreen;'>interfering information</b> or <b style='color: forestgreen;'>disfluent text</b>, can enhance comprehension and memory. The role of <b style='color: forestgreen;'>reconsolidation</b> in strengthening and updating memories after retrieval. Reinforcing the idea that <b style='color: forestgreen;'>active, effortful engagement</b> with challenging material, rather than passive reception, is key to truly embedding knowledge and skills."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Chapter 4: Embrace Difficulties**"
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The concept of **desirable difficulties** in learning, emphasizing that making learning tasks harder can lead to **better retention and understanding**.",
+                        "It introduces the three stages of memory: **encoding**, **storage**, and **retrieval**, and explains how issues at any stage can lead to forgetting or false memories.",
+                        "The **importance of retrieval cues** and how **forgetting** can actually aid new learning by prompting more effortful reconsolidation.",
+                        "It also discusses the benefits of **interleaving** and **generation effects**, where active engagement with the material, like solving problems or creating explanations, significantly improves learning."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Further, the chapter challenges the idea of **errorless learning**, arguing that **making and correcting errors** is crucial for robust learning, especially when paired with **feedback**.",
+                        "It explores how difficulties, such as those presented by **interfering information** or **disfluent text**, can enhance comprehension and memory.",
+                        "The role of **reconsolidation** in strengthening and updating memories after retrieval.",
+                        "Reinforcing the idea that **active, effortful engagement** with challenging material, rather than passive reception, is key to truly embedding knowledge and skills."
+                    ]
+                }
+            ]
         }
     ]
 }

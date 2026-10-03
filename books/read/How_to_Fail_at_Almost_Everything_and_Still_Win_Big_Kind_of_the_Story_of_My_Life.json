@@ -10,55 +10,308 @@
     "parts": [
         {
             "title": "The Time I Was Crazy",
-            "body": "In <b style='color: forestgreen;'>2005</b>, Scott Adams was diagnosed with a <b style='color: forestgreen;'>mental illness</b> by his doctor and a psychologist after he <b style='color: forestgreen;'>lost the ability to speak to humans</b>, though he could speak normally to his cat or when alone. He declined Valium, not feeling crazy, but understood the diagnosis as his behavior <b style='color: forestgreen;'>appeared abnormal</b>. His symptoms included his vocal cords clenching on certain consonants, making speech unintelligible, and a profound sense of <b style='color: forestgreen;'>loneliness</b> from being unable to communicate. Adams, a professional speaker and syndicated cartoonist for Dilbert, faced a scheduled speaking event, risking <b style='color: forestgreen;'>humiliation</b> in front of a thousand people. He informed his client and decided to go through with it to understand the <b style='color: forestgreen;'>pattern</b> of his voice in that context."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In **2005**, Scott Adams was diagnosed with a **mental illness** by his doctor and a psychologist after he **lost the ability to speak to humans**, though he could speak normally to his cat or when alone.",
+                        "He declined Valium, not feeling crazy, but understood the diagnosis as his behavior **appeared abnormal**.",
+                        "His symptoms included his vocal cords clenching on certain consonants, making speech unintelligible, and a profound sense of **loneliness** from being unable to communicate.",
+                        "Adams, a professional speaker and syndicated cartoonist for Dilbert, faced a scheduled speaking event, risking **humiliation** in front of a thousand people.",
+                        "He informed his client and decided to go through with it to understand the **pattern** of his voice in that context."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Day of the Talk & Passion Is Bullshit",
-            "body": "<b style='color: forestgreen;'>The speaker faced a terrifying moment backstage before a talk</b>, struggling to speak to organizers due to a <b style='color: forestgreen;'>voice problem</b>. Despite his vast experience, he wondered if he could even deliver the speech. As he walked on stage, <b style='color: forestgreen;'>his heart pounded</b>, but he managed to start speaking, though his voice was raspy. The <b style='color: forestgreen;'>audience loved his talk</b>, but the moment he left the stage, his ability to speak vanished again, confirming the problem was in his brain. This experience fueled his three-year search for a solution, which forms the core of the book about <b style='color: forestgreen;'>turning failure into success</b>.\n\nHe then delves into the idea that <b style='color: forestgreen;'>passion is often misleading</b>. He recalls his boss advising against lending money to passionate entrepreneurs, preferring those who work hard on spreadsheet-approved ventures. He hypothesizes that while passionate people might achieve huge successes, they also have many failures. He argues that <b style='color: forestgreen;'>success often *causes* passion</b>, rather than the other way around. He also suggests that passion can simply be an indicator of talent, as people enjoy what they're good at."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**The speaker faced a terrifying moment backstage before a talk**, struggling to speak to organizers due to a **voice problem**.",
+                        "Despite his vast experience, he wondered if he could even deliver the speech.",
+                        "As he walked on stage, **his heart pounded**, but he managed to start speaking, though his voice was raspy.",
+                        "The **audience loved his talk**, but the moment he left the stage, his ability to speak vanished again, confirming the problem was in his brain.",
+                        "This experience fueled his three-year search for a solution, which forms the core of the book about **turning failure into success**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "He then delves into the idea that **passion is often misleading**.",
+                        "He recalls his boss advising against lending money to passionate entrepreneurs, preferring those who work hard on spreadsheet-approved ventures.",
+                        "He hypothesizes that while passionate people might achieve huge successes, they also have many failures.",
+                        "He argues that **success often *causes* passion**, rather than the other way around.",
+                        "He also suggests that passion can simply be an indicator of talent, as people enjoy what they're good at."
+                    ]
+                }
+            ]
         },
         {
             "title": "My Spectacular Failure and the Birth of My Systems Mindset",
-            "body": "The author made errors on the way to a job interview during a <b style='color: forestgreen;'>half-blizzard</b>, going without <b style='color: forestgreen;'>a jacket</b> and <b style='color: forestgreen;'>a suit and tie</b>. The interviewer dismissed him for his attire. Driving home, his engine died in the <b style='color: forestgreen;'>Catskill Mountains</b> in <b style='color: forestgreen;'>zero-degree Fahrenheit</b> weather. Stranded without a jacket or cell phone, he faced a <b style='color: forestgreen;'>worst-case scenario</b>. A <b style='color: forestgreen;'>traveling shoe salesman</b> saved him, driving him back to campus. Months later, he traded his car for a <b style='color: forestgreen;'>one-way ticket to northern California</b>, calling it his <b style='color: forestgreen;'>smartest decision</b>. This near-death experience became his <b style='color: forestgreen;'>inspiration to move</b>. He is grateful for the failure and <b style='color: forestgreen;'>no longer fears death outdoors</b>.\n\nThe author flew to <b style='color: forestgreen;'>California</b> for the first time at <b style='color: forestgreen;'>twenty-one</b>, seeking success away from his hometown. He wore his <b style='color: forestgreen;'>first real suit</b> for the flight, fearing denial for improper dress. On the plane, a <b style='color: forestgreen;'>CEO of a screw company</b> offered career advice: always <b style='color: forestgreen;'>look for a better job</b>, making job seeking an <b style='color: forestgreen;'>ongoing process</b>. This was his first exposure to a <b style='color: forestgreen;'>system over a goal</b>. The author learned <b style='color: forestgreen;'>appearance matters</b>, as his suit earned him a potential job offer. <b style='color: forestgreen;'>Systems-driven people generally do better</b> than goal-oriented people, who often feel a continuous sense of failure. He defines a <b style='color: forestgreen;'>goal as a specific, future objective</b> and a <b style='color: forestgreen;'>system as a regular activity increasing long-term happiness</b>. Systems have no deadlines and offer a more consistent path to success."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The author made errors on the way to a job interview during a **half-blizzard**, going without **a jacket** and **a suit and tie**.",
+                        "The interviewer dismissed him for his attire.",
+                        "Driving home, his engine died in the **Catskill Mountains** in **zero-degree Fahrenheit** weather.",
+                        "Stranded without a jacket or cell phone, he faced a **worst-case scenario**.",
+                        "A **traveling shoe salesman** saved him, driving him back to campus.",
+                        "Months later, he traded his car for a **one-way ticket to northern California**, calling it his **smartest decision**.",
+                        "This near-death experience became his **inspiration to move**.",
+                        "He is grateful for the failure and **no longer fears death outdoors**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The author flew to **California** for the first time at **twenty-one**, seeking success away from his hometown.",
+                        "He wore his **first real suit** for the flight, fearing denial for improper dress.",
+                        "On the plane, a **CEO of a screw company** offered career advice: always **look for a better job**, making job seeking an **ongoing process**.",
+                        "This was his first exposure to a **system over a goal**.",
+                        "The author learned **appearance matters**, as his suit earned him a potential job offer.",
+                        "**Systems-driven people generally do better** than goal-oriented people, who often feel a continuous sense of failure.",
+                        "He defines a **goal as a specific, future objective** and a **system as a regular activity increasing long-term happiness**.",
+                        "Systems have no deadlines and offer a more consistent path to success."
+                    ]
+                }
+            ]
         },
         {
             "title": "From Corporate Conflict to Cartooning: The Power of Deciding, Enlightened Selfishness, and Energy Management",
-            "body": "The author discusses a <b style='color: forestgreen;'>workplace conflict</b> where he applied company policy strictly regarding <b style='color: forestgreen;'>smoking</b>, leading to a temporary <b style='color: forestgreen;'>walkout</b> and the expectation of being <b style='color: forestgreen;'>fired</b>. He highlights his attraction to <b style='color: forestgreen;'>controversy</b>. Ultimately, his boss's boss intervened, making most offices <b style='color: forestgreen;'>smoke-free</b> and requiring smokers in senior management to <b style='color: forestgreen;'>close their doors</b>, a result the author considered <b style='color: forestgreen;'>ideal</b>. Later, his career at Pacific Bell was hindered by a <b style='color: forestgreen;'>diversity policy</b> preventing the promotion of <b style='color: forestgreen;'>white males</b>, leading him to feel a sense of <b style='color: forestgreen;'>unwanted freedom</b> and to explore new paths. \n\nThis led him to <b style='color: forestgreen;'>cartooning</b>, despite a lack of <b style='color: forestgreen;'>artistic talent</b>. He started practicing drawing and using <b style='color: forestgreen;'>affirmations</b>, specifically: \"I, Scott Adams, will be a <b style='color: forestgreen;'>famous cartoonist</b>.\" The author introduces <b style='color: forestgreen;'>Chapter Nine: Deciding Versus Wanting</b>, emphasizing that <b style='color: forestgreen;'>success requires paying a price</b>. He contrasts <b style='color: forestgreen;'>wishing</b> with <b style='color: forestgreen;'>deciding</b>, noting that deciding leads to <b style='color: forestgreen;'>action</b>. He then introduces <b style='color: forestgreen;'>Chapter Ten: The Selfishness Illusion</b>, arguing for <b style='color: forestgreen;'>enlightened selfishness</b> as beneficial to society, citing examples like <b style='color: forestgreen;'>taxes</b> and <b style='color: forestgreen;'>job creation</b>. He provides <b style='color: forestgreen;'>permission</b> to prioritize self-care, which ultimately benefits others. Finally, <b style='color: forestgreen;'>Chapter Eleven: The Energy Metric</b> suggests organizing life around maximizing <b style='color: forestgreen;'>personal energy</b> to better manage multiple priorities. He defines this as <b style='color: forestgreen;'>calm, focused energy</b> and explains how it improves work quality, speed, and personal life, using the analogy of a \"Dog Whisperer\" for human interaction. He also contrasts <b style='color: forestgreen;'>simplifiers</b> (like himself) with <b style='color: forestgreen;'>optimizers</b> (like his wife Shelly), highlighting how simplification frees up <b style='color: forestgreen;'>time</b> and <b style='color: forestgreen;'>energy</b>, which he considers a \"superpower\" for his cartooning career. He concludes by recommending matching <b style='color: forestgreen;'>mental state to activity</b>, using specific <b style='color: forestgreen;'>sitting positions</b> for work, maintaining <b style='color: forestgreen;'>tidiness</b>, and overcoming the <b style='color: forestgreen;'>fear of not knowing</b> through quick research."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The author discusses a **workplace conflict** where he applied company policy strictly regarding **smoking**, leading to a temporary **walkout** and the expectation of being **fired**.",
+                        "He highlights his attraction to **controversy**.",
+                        "Ultimately, his boss's boss intervened, making most offices **smoke-free** and requiring smokers in senior management to **close their doors**, a result the author considered **ideal**.",
+                        "Later, his career at Pacific Bell was hindered by a **diversity policy** preventing the promotion of **white males**, leading him to feel a sense of **unwanted freedom** and to explore new paths."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "This led him to **cartooning**, despite a lack of **artistic talent**.",
+                        "He started practicing drawing and using **affirmations**, specifically: \"I, Scott Adams, will be a **famous cartoonist**.\"",
+                        "The author introduces **Chapter Nine: Deciding Versus Wanting**, emphasizing that **success requires paying a price**.",
+                        "He contrasts **wishing** with **deciding**, noting that deciding leads to **action**.",
+                        "He then introduces **Chapter Ten: The Selfishness Illusion**, arguing for **enlightened selfishness** as beneficial to society, citing examples like **taxes** and **job creation**.",
+                        "He provides **permission** to prioritize self-care, which ultimately benefits others.",
+                        "Finally, **Chapter Eleven: The Energy Metric** suggests organizing life around maximizing **personal energy** to better manage multiple priorities.",
+                        "He defines this as **calm, focused energy** and explains how it improves work quality, speed, and personal life, using the analogy of a \"Dog Whisperer\" for human interaction.",
+                        "He also contrasts **simplifiers** (like himself) with **optimizers** (like his wife Shelly), highlighting how simplification frees up **time** and **energy**, which he considers a \"superpower\" for his cartooning career.",
+                        "He concludes by recommending matching **mental state to activity**, using specific **sitting positions** for work, maintaining **tidiness**, and overcoming the **fear of not knowing** through quick research."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Asshole Lifestyle and Prioritizing Personal Energy",
-            "body": "Being an <b style='color: forestgreen;'>asshole</b> can <b style='color: forestgreen;'>pollute group energy</b> and is often seen as a <b style='color: forestgreen;'>lifestyle choice</b> like \"being yourself.\" However, this behavior can have a <b style='color: forestgreen;'>cost to your personal energy</b> due to <b style='color: forestgreen;'>blowback</b> and <b style='color: forestgreen;'>wasted effort</b> in cleaning up messes. Many people adopt this \"asshole lifestyle,\" and it's <b style='color: forestgreen;'>gender-inclusive</b>, encompassing <b style='color: forestgreen;'>selfishness, arrogance, mean-spiritedness</b>, and other flaws. The author defines an asshole as someone who <b style='color: forestgreen;'>unpleasantly impacts others' lives</b> without productive or necessary reasons. Behaviors include <b style='color: forestgreen;'>changing the subject to oneself, dominating conversations, bragging, cheating, lying, disagreeing with everything, using honesty as cruelty, withholding favors</b>, and <b style='color: forestgreen;'>abandoning civil behavior</b>. Asshole behavior might feel good in the short term, like an <b style='color: forestgreen;'>addiction</b>, but it's a <b style='color: forestgreen;'>bad long-term trade-off</b> for personal well-being.\n\nThe author suggests thinking of priorities in <b style='color: forestgreen;'>concentric circles</b>: <b style='color: forestgreen;'>you</b> (health) at the center, then <b style='color: forestgreen;'>economics</b> (job, investments), followed by <b style='color: forestgreen;'>family, friends, and lovers</b>. Outer rings include <b style='color: forestgreen;'>local community, country, and the world</b>. The key is to manage inner circles before focusing on outer ones. Life isn't simple, and priorities <b style='color: forestgreen;'>overlap and conflict</b>. A <b style='color: forestgreen;'>simple rule</b> is to judge options by their influence on your <b style='color: forestgreen;'>personal energy</b>: choices that make you <b style='color: forestgreen;'>stressed, unhealthy, and drained</b> are likely wrong, while <b style='color: forestgreen;'>right choices usually charge you up</b>. Meaningful work, even if demanding, can be energizing, unlike brain-deadening tasks. The author clarifies that priorities aren't about what you love most, but what you <b style='color: forestgreen;'>need to get right</b> for the things you love to thrive. Even bad choices can temporarily energize, but <b style='color: forestgreen;'>long-term negative consequences</b> are often obvious."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Being an **asshole** can **pollute group energy** and is often seen as a **lifestyle choice** like \"being yourself.\"",
+                        "However, this behavior can have a **cost to your personal energy** due to **blowback** and **wasted effort** in cleaning up messes.",
+                        "Many people adopt this \"asshole lifestyle,\" and it's **gender-inclusive**, encompassing **selfishness, arrogance, mean-spiritedness**, and other flaws.",
+                        "The author defines an asshole as someone who **unpleasantly impacts others' lives** without productive or necessary reasons.",
+                        "Behaviors include **changing the subject to oneself, dominating conversations, bragging, cheating, lying, disagreeing with everything, using honesty as cruelty, withholding favors**, and **abandoning civil behavior**.",
+                        "Asshole behavior might feel good in the short term, like an **addiction**, but it's a **bad long-term trade-off** for personal well-being."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The author suggests thinking of priorities in **concentric circles**: **you** (health) at the center, then **economics** (job, investments), followed by **family, friends, and lovers**.",
+                        "Outer rings include **local community, country, and the world**.",
+                        "The key is to manage inner circles before focusing on outer ones.",
+                        "Life isn't simple, and priorities **overlap and conflict**.",
+                        "A **simple rule** is to judge options by their influence on your **personal energy**: choices that make you **stressed, unhealthy, and drained** are likely wrong, while **right choices usually charge you up**.",
+                        "Meaningful work, even if demanding, can be energizing, unlike brain-deadening tasks.",
+                        "The author clarifies that priorities aren't about what you love most, but what you **need to get right** for the things you love to thrive.",
+                        "Even bad choices can temporarily energize, but **long-term negative consequences** are often obvious."
+                    ]
+                }
+            ]
         },
         {
             "title": "My Speaking Career & The Path to Success",
-            "body": "A <b style='color: forestgreen;'>smart friend</b> helped the author start a <b style='color: forestgreen;'>speaking career</b>, advising him to ask for <b style='color: forestgreen;'>$5,000</b> for a speech, which was accepted along with <b style='color: forestgreen;'>first-class travel and hotel</b>. As *Dilbert* grew popular, his speaking fees increased from $10,000 to $45,000, with one offer reaching <b style='color: forestgreen;'>$100,000</b>. This success highlights the value of <b style='color: forestgreen;'>knowing different things</b> from friends. After six months of <b style='color: forestgreen;'>losing his voice</b> in 2005, and doctors being unable to diagnose it, the author turned to the <b style='color: forestgreen;'>Internet</b>. He connected his previous hand problem to his voice issue, leading him to search for \"voice dystonia.\" He found <b style='color: forestgreen;'>spasmodic dysphonia</b>, a condition where vocal cords clench involuntarily, and a video confirmed his exact voice pattern. With a name, he found an expert doctor who confirmed the diagnosis but said <b style='color: forestgreen;'>there was no cure</b>. The author, an optimist, saw this as a challenge to <b style='color: forestgreen;'>find his own cure</b>.\nThe author discusses how to <b style='color: forestgreen;'>recognize your talents</b> and <b style='color: forestgreen;'>when to quit</b>. Childhood <b style='color: forestgreen;'>obsessions</b> (like his compulsive doodling) and <b style='color: forestgreen;'>tolerance for risk</b> (like drawing inappropriate comics) can indicate natural aptitudes. Successful ventures often <b style='color: forestgreen;'>start out well</b> and gain immediate traction. <b style='color: forestgreen;'>Strong reactions from a subset of the public</b> (the \"x factor\") are a better predictor of success than average approval. If your work doesn't excite anyone, it's time to move on; if it does, be prepared to <b style='color: forestgreen;'>fight for it</b>. The author critiques schools for not teaching <b style='color: forestgreen;'>systems of success</b>, proposing a <b style='color: forestgreen;'>Success Formula</b>: \"Every Skill You Acquire Doubles Your Odds of Success.\" This means being \"merely good\" at multiple skills (<b style='color: forestgreen;'>Good + Good > Excellent</b>). He sees himself as an example: mediocre art, business, and writing skills, combined with early Internet knowledge and a good sense of humor, became a <b style='color: forestgreen;'>powerful market force</b>. <b style='color: forestgreen;'>Quantity often beats quality</b> when it comes to skills."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A **smart friend** helped the author start a **speaking career**, advising him to ask for **$5,000** for a speech, which was accepted along with **first-class travel and hotel**.",
+                        "As *Dilbert* grew popular, his speaking fees increased from $10,000 to $45,000, with one offer reaching **$100,000**.",
+                        "This success highlights the value of **knowing different things** from friends.",
+                        "After six months of **losing his voice** in 2005, and doctors being unable to diagnose it, the author turned to the **Internet**.",
+                        "He connected his previous hand problem to his voice issue, leading him to search for \"voice dystonia.\"",
+                        "He found **spasmodic dysphonia**, a condition where vocal cords clench involuntarily, and a video confirmed his exact voice pattern.",
+                        "With a name, he found an expert doctor who confirmed the diagnosis but said **there was no cure**.",
+                        "The author, an optimist, saw this as a challenge to **find his own cure**.",
+                        "The author discusses how to **recognize your talents** and **when to quit**.",
+                        "Childhood **obsessions** (like his compulsive doodling) and **tolerance for risk** (like drawing inappropriate comics) can indicate natural aptitudes.",
+                        "Successful ventures often **start out well** and gain immediate traction.",
+                        "**Strong reactions from a subset of the public** (the \"x factor\") are a better predictor of success than average approval.",
+                        "If your work doesn't excite anyone, it's time to move on; if it does, be prepared to **fight for it**.",
+                        "The author critiques schools for not teaching **systems of success**, proposing a **Success Formula**: \"Every Skill You Acquire Doubles Your Odds of Success.\"",
+                        "This means being \"merely good\" at multiple skills (**Good + Good > Excellent**).",
+                        "He sees himself as an example: mediocre art, business, and writing skills, combined with early Internet knowledge and a good sense of humor, became a **powerful market force**.",
+                        "**Quantity often beats quality** when it comes to skills."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Knowledge Formula: The More You Know, the More You Can Know",
-            "body": "The author emphasizes the importance of <b style='color: forestgreen;'>continuous learning</b> and <b style='color: forestgreen;'>diversifying knowledge</b> across various fields, likening new concepts to understanding a zebra after knowing what a horse is. He advocates for <b style='color: forestgreen;'>daily news consumption</b> from diverse topics like business, health, and science to <b style='color: forestgreen;'>identify patterns</b> and build a foundation for future learning. The key is to start with <b style='color: forestgreen;'>interesting topics</b> to make news reading enjoyable, gradually expanding to other areas, making learning feel <b style='color: forestgreen;'>easy and natural</b>.\n\nHe cautions against dwelling on <b style='color: forestgreen;'>negative news</b>, preferring stories about <b style='color: forestgreen;'>hopeful topics</b> like green technology. The author reads news not for \"truth\" but to <b style='color: forestgreen;'>broaden exposure</b> and <b style='color: forestgreen;'>make his brain more efficient</b>, viewing it as a source of <b style='color: forestgreen;'>energy and optimism</b> rather than just information."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The author emphasizes the importance of **continuous learning** and **diversifying knowledge** across various fields, likening new concepts to understanding a zebra after knowing what a horse is.",
+                        "He advocates for **daily news consumption** from diverse topics like business, health, and science to **identify patterns** and build a foundation for future learning.",
+                        "The key is to start with **interesting topics** to make news reading enjoyable, gradually expanding to other areas, making learning feel **easy and natural**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "He cautions against dwelling on **negative news**, preferring stories about **hopeful topics** like green technology.",
+                        "The author reads news not for \"truth\" but to **broaden exposure** and **make his brain more efficient**, viewing it as a source of **energy and optimism** rather than just information."
+                    ]
+                }
+            ]
         },
         {
             "title": "Business Writing and Accounting",
-            "body": "Learning <b style='color: forestgreen;'>business writing</b> was a game-changer. It's all about getting to the point and cutting out <b style='color: forestgreen;'>unnecessary words</b> and <b style='color: forestgreen;'>passive voice</b>. These techniques make your writing clearer, more <b style='color: forestgreen;'>persuasive</b>, and even funnier. For example, removing a word like \u201calready\u201d often doesn't change the meaning but makes the sentence stronger. Also, using <b style='color: forestgreen;'>direct writing</b> (like \u201cThe boy hit the ball\u201d) is much easier for the brain to process than passive constructions. Mastering these simple rules can make you seem <b style='color: forestgreen;'>smarter</b> and more <b style='color: forestgreen;'>effective</b> in communication.\n\n<b style='color: forestgreen;'>Accounting</b> is crucial for being an effective adult, even if it seems boring. Understanding basic accounting concepts, like <b style='color: forestgreen;'>cash-flow projections</b> and the <b style='color: forestgreen;'>time value of money</b>, is part of the <b style='color: forestgreen;'>vocabulary of business</b>. Many businesses fail because operators lack this fundamental understanding, prioritizing culinary skill over financial viability. Even if you pay others to handle accounting, you need enough knowledge to <b style='color: forestgreen;'>check their work</b> and understand the basics to make informed decisions."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Learning **business writing** was a game-changer.",
+                        "It's all about getting to the point and cutting out **unnecessary words** and **passive voice**.",
+                        "These techniques make your writing clearer, more **persuasive**, and even funnier.",
+                        "For example, removing a word like \u201calready\u201d often doesn't change the meaning but makes the sentence stronger.",
+                        "Also, using **direct writing** (like \u201cThe boy hit the ball\u201d) is much easier for the brain to process than passive constructions.",
+                        "Mastering these simple rules can make you seem **smarter** and more **effective** in communication."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Accounting** is crucial for being an effective adult, even if it seems boring.",
+                        "Understanding basic accounting concepts, like **cash-flow projections** and the **time value of money**, is part of the **vocabulary of business**.",
+                        "Many businesses fail because operators lack this fundamental understanding, prioritizing culinary skill over financial viability.",
+                        "Even if you pay others to handle accounting, you need enough knowledge to **check their work** and understand the basics to make informed decisions."
+                    ]
+                }
+            ]
         },
         {
             "title": "Understanding Theory vs. Hypothesis & The Art of Persuasion",
-            "body": "A <b style='color: forestgreen;'>theory</b> is a <b style='color: forestgreen;'>well-tested scientific explanation</b>, while a <b style='color: forestgreen;'>hypothesis</b> is an <b style='color: forestgreen;'>unproven</b> idea. The author humorously admits to misusing \"theory\" in casual conversation, leading to public complaints. The <b style='color: forestgreen;'>art of persuasion</b> is important in everyday interactions, whether in sales, personal relationships, or professional settings. The author suggests <b style='color: forestgreen;'>reading books on persuasion</b> to understand its depth and effectiveness, highlighting it as a powerful skill that should be used <b style='color: forestgreen;'>judiciously</b> and ethically.\n\nKey persuasive words and phrases include <b style='color: forestgreen;'>\"Because\"</b> (which makes requests seem more reasonable), <b style='color: forestgreen;'>\"Would you mind\u2026?\"</b> (which signals a considerate request), <b style='color: forestgreen;'>\"I\u2019m not interested\"</b> (an effective conversation-stopper), and <b style='color: forestgreen;'>\"I don\u2019t do that\"</b> (a firm rule-like refusal). Other tactics include using <b style='color: forestgreen;'>\"I have a rule\u2026\"</b> to politely decline, <b style='color: forestgreen;'>\"I just wanted to clarify\u2026\"</b> to indirectly address difficult statements, and <b style='color: forestgreen;'>\"Is there anything you can do for me?\"</b> to appeal to someone's helpful nature. The importance of a <b style='color: forestgreen;'>high-quality \"Thank you\"</b>, with specific details, is stressed, likening it to a dog treat that encourages future cooperation. Finally, <b style='color: forestgreen;'>sharing a non-dangerous secret</b> with the phrase <b style='color: forestgreen;'>\"This is just between you and me\"</b> is presented as a fast-track way to build trust and friendship."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A **theory** is a **well-tested scientific explanation**, while a **hypothesis** is an **unproven** idea.",
+                        "The author humorously admits to misusing \"theory\" in casual conversation, leading to public complaints.",
+                        "The **art of persuasion** is important in everyday interactions, whether in sales, personal relationships, or professional settings.",
+                        "The author suggests **reading books on persuasion** to understand its depth and effectiveness, highlighting it as a powerful skill that should be used **judiciously** and ethically."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Key persuasive words and phrases include **\"Because\"** (which makes requests seem more reasonable), **\"Would you mind\u2026?\"**",
+                        "(which signals a considerate request), **\"I\u2019m not interested\"** (an effective conversation-stopper), and **\"I don\u2019t do that\"** (a firm rule-like refusal).",
+                        "Other tactics include using **\"I have a rule\u2026\"** to politely decline, **\"I just wanted to clarify\u2026\"** to indirectly address difficult statements, and **\"Is there anything you can do for me?\"** to appeal to someone's helpful nature.",
+                        "The importance of a **high-quality \"Thank you\"**, with specific details, is stressed, likening it to a dog treat that encourages future cooperation.",
+                        "Finally, **sharing a non-dangerous secret** with the phrase **\"This is just between you and me\"** is presented as a fast-track way to build trust and friendship."
+                    ]
+                }
+            ]
         },
         {
             "title": "Happiness",
-            "body": "This chapter is about <b style='color: forestgreen;'>happiness</b>. The author believes the only <b style='color: forestgreen;'>reasonable goal in life is to maximize your total lifetime experience of happiness</b>. This isn't selfish, as normal people need to treat others well to be happy. Understanding what happiness is and how it works is <b style='color: forestgreen;'>crucial</b>, similar to understanding gardening to grow a successful garden. Happiness is defined as a <b style='color: forestgreen;'>feeling from pleasant sensations produced by your body chemistry</b>. It's not as dependent on circumstances as often thought; for example, amputees often return to their previous happiness levels. Everyone has a <b style='color: forestgreen;'>limited range of happiness</b>, and life circumstances only jiggle them within that range. The good news is that most people can spend more time at the top of their personal range.\n\nThe author treats himself like a \"<b style='color: forestgreen;'>moist robot</b>\" and manipulates his <b style='color: forestgreen;'>body chemistry</b> for happiness, which he sees as <b style='color: forestgreen;'>80% of the solution</b>. While pills and drugs can alter mood, he advocates a more <b style='color: forestgreen;'>natural approach</b>. The biggest trick is <b style='color: forestgreen;'>being able to do what you want, when you want</b>. Timing is more important than intrinsic value; a mediocre meal when starving is better than an extraordinary meal when full. Controlling your schedule is key, as <b style='color: forestgreen;'>flexibility</b> contributes more to happiness than wealth. Parents understand this, as kids remove much schedule flexibility, impacting their happiness despite loving their children."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This chapter is about **happiness**.",
+                        "The author believes the only **reasonable goal in life is to maximize your total lifetime experience of happiness**.",
+                        "This isn't selfish, as normal people need to treat others well to be happy.",
+                        "Understanding what happiness is and how it works is **crucial**, similar to understanding gardening to grow a successful garden.",
+                        "Happiness is defined as a **feeling from pleasant sensations produced by your body chemistry**.",
+                        "It's not as dependent on circumstances as often thought; for example, amputees often return to their previous happiness levels.",
+                        "Everyone has a **limited range of happiness**, and life circumstances only jiggle them within that range.",
+                        "The good news is that most people can spend more time at the top of their personal range."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The author treats himself like a \"**moist robot**\" and manipulates his **body chemistry** for happiness, which he sees as **80% of the solution**.",
+                        "While pills and drugs can alter mood, he advocates a more **natural approach**.",
+                        "The biggest trick is **being able to do what you want, when you want**.",
+                        "Timing is more important than intrinsic value; a mediocre meal when starving is better than an extraordinary meal when full.",
+                        "Controlling your schedule is key, as **flexibility** contributes more to happiness than wealth.",
+                        "Parents understand this, as kids remove much schedule flexibility, impacting their happiness despite loving their children."
+                    ]
+                }
+            ]
         },
         {
             "title": "Quitting Diet Coke and the Science of Eating",
-            "body": "The author used to consume a large amount of Diet Coke but decided to quit as an experiment for this book. The <b style='color: forestgreen;'>first week was challenging</b>, but by substituting coffee, the need for willpower was greatly reduced. After <b style='color: forestgreen;'>eight weeks</b>, the cravings were completely gone, and the author now feels more alert throughout the day. This experiment suggests that <b style='color: forestgreen;'>cravings can be managed and eliminated</b> with a strategic approach, even for long-standing habits.\n\nRegarding healthy eating, the author emphasizes that it needs to be <b style='color: forestgreen;'>convenient</b> to be sustainable. There's a lot of <b style='color: forestgreen;'>uncertainty in nutrition science</b>, and what's considered healthy can change frequently. The author suggests using your body as a <b style='color: forestgreen;'>laboratory</b> to test different foods and observe their effects on your energy and mood. This personal experimentation, combined with insights from science, can help you <b style='color: forestgreen;'>identify patterns</b> that work best for your individual body."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The author used to consume a large amount of Diet Coke but decided to quit as an experiment for this book.",
+                        "The **first week was challenging**, but by substituting coffee, the need for willpower was greatly reduced.",
+                        "After **eight weeks**, the cravings were completely gone, and the author now feels more alert throughout the day.",
+                        "This experiment suggests that **cravings can be managed and eliminated** with a strategic approach, even for long-standing habits."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Regarding healthy eating, the author emphasizes that it needs to be **convenient** to be sustainable.",
+                        "There's a lot of **uncertainty in nutrition science**, and what's considered healthy can change frequently.",
+                        "The author suggests using your body as a **laboratory** to test different foods and observe their effects on your energy and mood.",
+                        "This personal experimentation, combined with insights from science, can help you **identify patterns** that work best for your individual body."
+                    ]
+                }
+            ]
         },
         {
             "title": "Vegetarianism, Coffee, and Fitness as Systems",
-            "body": "The author made a <b style='color: forestgreen;'>choice</b> to be vegetarian, finding it easier in California than Kansas City. He feels lucky not to <b style='color: forestgreen;'>overeat</b> and enjoys guilt-free treats. Being vegetarian is <b style='color: forestgreen;'>easier than it looks</b>, despite initial inconveniences, because of feeling good physically. Coffee offers benefits like increased <b style='color: forestgreen;'>alertness, happiness, and productivity</b> at two to four cups a day. It encourages <b style='color: forestgreen;'>exercise</b> and contains <b style='color: forestgreen;'>antioxidants</b> that reduce the risk of stroke, Parkinson's, and type 2 diabetes. Coffee makes him <b style='color: forestgreen;'>enjoy work</b> without willpower, though <b style='color: forestgreen;'>caffeine addiction</b> is a downside.\n\nThe \"Pleasure Unit Hypothesis\" states that <b style='color: forestgreen;'>happier individuals care less about food taste</b>, simplifying healthy eating. <b style='color: forestgreen;'>Getting your entire life in order</b> helps maintain an ideal weight. The <b style='color: forestgreen;'>nine-point system for no-willpower dieting</b> includes paying attention to <b style='color: forestgreen;'>energy levels</b>, removing <b style='color: forestgreen;'>unhealthy food from home</b>, and stocking <b style='color: forestgreen;'>convenient healthy options</b>. Avoid <b style='color: forestgreen;'>addictive foods</b> and eat <b style='color: forestgreen;'>healthy food freely</b>. Get <b style='color: forestgreen;'>enough sleep</b>, use <b style='color: forestgreen;'>fatty healthy foods</b> for tiredness-induced hunger, choose <b style='color: forestgreen;'>low-calorie options</b> for social eating, and <b style='color: forestgreen;'>season bland healthy foods</b>. This system aims to <b style='color: forestgreen;'>lose cravings without sacrifice</b> because willpower is a \"losing strategy\" for weight loss. The author advises to <b style='color: forestgreen;'>\"Be Active Every Day\"</b> as a simple, effective approach to fitness that does not rely on willpower, as any exercise requiring it is <b style='color: forestgreen;'>unsustainable</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The author made a **choice** to be vegetarian, finding it easier in California than Kansas City.",
+                        "He feels lucky not to **overeat** and enjoys guilt-free treats.",
+                        "Being vegetarian is **easier than it looks**, despite initial inconveniences, because of feeling good physically.",
+                        "Coffee offers benefits like increased **alertness, happiness, and productivity** at two to four cups a day.",
+                        "It encourages **exercise** and contains **antioxidants** that reduce the risk of stroke, Parkinson's, and type 2 diabetes.",
+                        "Coffee makes him **enjoy work** without willpower, though **caffeine addiction** is a downside."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The \"Pleasure Unit Hypothesis\" states that **happier individuals care less about food taste**, simplifying healthy eating.",
+                        "**Getting your entire life in order** helps maintain an ideal weight.",
+                        "The **nine-point system for no-willpower dieting** includes paying attention to **energy levels**, removing **unhealthy food from home**, and stocking **convenient healthy options**.",
+                        "Avoid **addictive foods** and eat **healthy food freely**.",
+                        "Get **enough sleep**, use **fatty healthy foods** for tiredness-induced hunger, choose **low-calorie options** for social eating, and **season bland healthy foods**.",
+                        "This system aims to **lose cravings without sacrifice** because willpower is a \"losing strategy\" for weight loss.",
+                        "The author advises to **\"Be Active Every Day\"** as a simple, effective approach to fitness that does not rely on willpower, as any exercise requiring it is **unsustainable**."
+                    ]
+                }
+            ]
         },
         {
             "title": "A Final Note About Affirmations",
-            "body": "<b style='color: forestgreen;'>Affirmations</b> appear to have a <b style='color: forestgreen;'>beneficial value</b>, even if their mechanism isn't fully understood by science. The author acknowledges that some might see this as <b style='color: forestgreen;'>magic</b> or <b style='color: forestgreen;'>psychic powers</b>, but suggests they are likely a <b style='color: forestgreen;'>phenomenon of the mind</b>, impacting <b style='color: forestgreen;'>psychology</b> and <b style='color: forestgreen;'>perception</b>. Affirmations could influence the <b style='color: forestgreen;'>brain</b> through <b style='color: forestgreen;'>focus</b>, <b style='color: forestgreen;'>motivation</b>, or <b style='color: forestgreen;'>chemical reactions</b>, similar to other forms of <b style='color: forestgreen;'>positive thinking</b> like <b style='color: forestgreen;'>prayers</b> or <b style='color: forestgreen;'>visualization</b>. The author notes that in his experience, affirmations seem to have more power than simple positive thinking, creating an \"illusion\" that the world is changing to satisfy them.\n\nThe author offers several explanations for the <b style='color: forestgreen;'>apparent power of affirmations</b>: <b style='color: forestgreen;'>selective memory</b> (remembering successes, forgetting failures), the possibility that people reporting success are <b style='color: forestgreen;'>liars</b> (though he asserts he isn't), <b style='color: forestgreen;'>false memory</b> (remembering events differently), and that <b style='color: forestgreen;'>optimists</b> (who often practice affirmations) notice more <b style='color: forestgreen;'>opportunities</b> than pessimists. He also suggests that perhaps only those who <b style='color: forestgreen;'>deep down believe in their talent</b> bother with affirmations, or that our <b style='color: forestgreen;'>brains create illusions</b> for <b style='color: forestgreen;'>survival benefits</b>. He even touches on the idea of humans being <b style='color: forestgreen;'>holograms</b> in a <b style='color: forestgreen;'>computer simulation</b>, where affirmations could be a form of <b style='color: forestgreen;'>programming code</b>. Ultimately, he reiterates that he has no <b style='color: forestgreen;'>objective information</b> on their effectiveness but believes they involve a <b style='color: forestgreen;'>deep and consistent focus</b> on what you want. He clarifies that affirmations, when viewed as a system for <b style='color: forestgreen;'>focus</b>, <b style='color: forestgreen;'>optimism</b>, and <b style='color: forestgreen;'>validation</b>, are consistent with his \"systems for winners\" philosophy, recommending <b style='color: forestgreen;'>broad objectives</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Affirmations** appear to have a **beneficial value**, even if their mechanism isn't fully understood by science.",
+                        "The author acknowledges that some might see this as **magic** or **psychic powers**, but suggests they are likely a **phenomenon of the mind**, impacting **psychology** and **perception**.",
+                        "Affirmations could influence the **brain** through **focus**, **motivation**, or **chemical reactions**, similar to other forms of **positive thinking** like **prayers** or **visualization**.",
+                        "The author notes that in his experience, affirmations seem to have more power than simple positive thinking, creating an \"illusion\" that the world is changing to satisfy them."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The author offers several explanations for the **apparent power of affirmations**: **selective memory** (remembering successes, forgetting failures), the possibility that people reporting success are **liars** (though he asserts he isn't), **false memory** (remembering events differently), and that **optimists** (who often practice affirmations) notice more **opportunities** than pessimists.",
+                        "He also suggests that perhaps only those who **deep down believe in their talent** bother with affirmations, or that our **brains create illusions** for **survival benefits**.",
+                        "He even touches on the idea of humans being **holograms** in a **computer simulation**, where affirmations could be a form of **programming code**.",
+                        "Ultimately, he reiterates that he has no **objective information** on their effectiveness but believes they involve a **deep and consistent focus** on what you want.",
+                        "He clarifies that affirmations, when viewed as a system for **focus**, **optimism**, and **validation**, are consistent with his \"systems for winners\" philosophy, recommending **broad objectives**."
+                    ]
+                }
+            ]
         }
     ],
     "chunks": 13

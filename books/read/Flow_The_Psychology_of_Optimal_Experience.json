@@ -12,59 +12,308 @@
     "parts": [
         {
             "title": "Preface",
-            "body": "<b style='color: forestgreen;'>This book</b>, written by <b style='color: forestgreen;'>Mihaly Csikszentmihalyi</b>, summarizes <b style='color: forestgreen;'>decades of research on human experience</b>, focusing on <b style='color: forestgreen;'>joy, creativity, and flow</b>. It's not a self-help book for instant happiness, as a truly joyful life is <b style='color: forestgreen;'>unique to each individual</b>. Instead, it offers <b style='color: forestgreen;'>general principles</b> and <b style='color: forestgreen;'>real-world examples</b> of how people have transformed their lives. To keep it <b style='color: forestgreen;'>user-friendly</b>, academic footnotes are avoided, but <b style='color: forestgreen;'>extensive notes</b> at the end provide scholarly sources for those interested. The author acknowledges the <b style='color: forestgreen;'>significant contributions</b> of his wife Isabella, sons Mark and Christopher, mentor Jacob Getzels, and many friends, colleagues, and former students. <b style='color: forestgreen;'>Crucially</b>, the research was <b style='color: forestgreen;'>generously funded</b> by the <b style='color: forestgreen;'>Spencer Foundation</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**This book**, written by **Mihaly Csikszentmihalyi**, summarizes **decades of research on human experience**, focusing on **joy, creativity, and flow**.",
+                        "It's not a self-help book for instant happiness, as a truly joyful life is **unique to each individual**.",
+                        "Instead, it offers **general principles** and **real-world examples** of how people have transformed their lives.",
+                        "To keep it **user-friendly**, academic footnotes are avoided, but **extensive notes** at the end provide scholarly sources for those interested.",
+                        "The author acknowledges the **significant contributions** of his wife Isabella, sons Mark and Christopher, mentor Jacob Getzels, and many friends, colleagues, and former students.",
+                        "**Crucially**, the research was **generously funded** by the **Spencer Foundation**."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Versatility and Practical Application of Flow Theory",
-            "body": "The concept of <b style='color: forestgreen;'>flow</b>, originating from the Medical School, the University of Milan, Italy, has proven incredibly <b style='color: forestgreen;'>useful</b> across various fields. Psychologists use it to study <b style='color: forestgreen;'>happiness</b>, <b style='color: forestgreen;'>life satisfaction</b>, and <b style='color: forestgreen;'>intrinsic motivation</b>. Sociologists view it as the <b style='color: forestgreen;'>opposite of anomie and alienation</b>. Anthropologists find it relevant to <b style='color: forestgreen;'>collective effervescence</b> and <b style='color: forestgreen;'>rituals</b>. Its implications even extend to understanding <b style='color: forestgreen;'>human evolution</b> and <b style='color: forestgreen;'>religious experience</b>.\n\nBeyond academia, the flow theory is being <b style='color: forestgreen;'>applied practically</b> to improve the <b style='color: forestgreen;'>quality of life</b>. It has inspired <b style='color: forestgreen;'>school curricula</b>, <b style='color: forestgreen;'>executive training</b>, and the design of <b style='color: forestgreen;'>leisure products</b>. Flow is also used in <b style='color: forestgreen;'>clinical psychotherapy</b>, <b style='color: forestgreen;'>juvenile delinquent rehabilitation</b>, organizing <b style='color: forestgreen;'>activities for the elderly</b>, designing <b style='color: forestgreen;'>museum exhibits</b>, and <b style='color: forestgreen;'>occupational therapy for the handicapped</b>. This wide adoption, within just a dozen years of its scholarly appearance, suggests its <b style='color: forestgreen;'>impact will only grow stronger</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The concept of **flow**, originating from the Medical School, the University of Milan, Italy, has proven incredibly **useful** across various fields.",
+                        "Psychologists use it to study **happiness**, **life satisfaction**, and **intrinsic motivation**.",
+                        "Sociologists view it as the **opposite of anomie and alienation**.",
+                        "Anthropologists find it relevant to **collective effervescence** and **rituals**.",
+                        "Its implications even extend to understanding **human evolution** and **religious experience**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Beyond academia, the flow theory is being **applied practically** to improve the **quality of life**.",
+                        "It has inspired **school curricula**, **executive training**, and the design of **leisure products**.",
+                        "Flow is also used in **clinical psychotherapy**, **juvenile delinquent rehabilitation**, organizing **activities for the elderly**, designing **museum exhibits**, and **occupational therapy for the handicapped**.",
+                        "This wide adoption, within just a dozen years of its scholarly appearance, suggests its **impact will only grow stronger**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Pleasure vs. Enjoyment: Defining True Happiness",
-            "body": "We often think <b style='color: forestgreen;'>happiness</b> comes from <b style='color: forestgreen;'>pleasure</b>: good food, sex, comfort, and exotic travel. These are <b style='color: forestgreen;'>pleasant</b> because they meet biological or social expectations, like eating when hungry or relaxing after work. Pleasure helps return our consciousness to order after needs cause chaos. It maintains order but doesn't create <b style='color: forestgreen;'>psychological growth</b> or make us more <b style='color: forestgreen;'>complex</b>.\n\nHowever, <b style='color: forestgreen;'>enjoyment</b> goes beyond pleasure. It happens when we not only meet expectations but also achieve something <b style='color: forestgreen;'>unexpected</b> or <b style='color: forestgreen;'>unimagined</b>. Enjoyable experiences bring a sense of <b style='color: forestgreen;'>novelty</b> and <b style='color: forestgreen;'>accomplishment</b>. While they might not be pleasurable at the moment, afterward we feel like we've <b style='color: forestgreen;'>changed</b> and grown more <b style='color: forestgreen;'>complex</b>. Unlike pleasure, which can be passive, enjoyment requires <b style='color: forestgreen;'>full concentration</b> and <b style='color: forestgreen;'>investment of psychic energy</b>, like a gourmet appreciating a meal or being deeply engaged in a tennis game or conversation. Pleasure is fleeting, while enjoyment actively shapes the self."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "We often think **happiness** comes from **pleasure**: good food, sex, comfort, and exotic travel.",
+                        "These are **pleasant** because they meet biological or social expectations, like eating when hungry or relaxing after work.",
+                        "Pleasure helps return our consciousness to order after needs cause chaos.",
+                        "It maintains order but doesn't create **psychological growth** or make us more **complex**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "However, **enjoyment** goes beyond pleasure.",
+                        "It happens when we not only meet expectations but also achieve something **unexpected** or **unimagined**.",
+                        "Enjoyable experiences bring a sense of **novelty** and **accomplishment**.",
+                        "While they might not be pleasurable at the moment, afterward we feel like we've **changed** and grown more **complex**.",
+                        "Unlike pleasure, which can be passive, enjoyment requires **full concentration** and **investment of psychic energy**, like a gourmet appreciating a meal or being deeply engaged in a tennis game or conversation.",
+                        "Pleasure is fleeting, while enjoyment actively shapes the self."
+                    ]
+                }
+            ]
         },
         {
             "title": "Enjoyment and the Quality of Life",
-            "body": "Enjoyment is <b style='color: forestgreen;'>not</b> just about pleasurable experiences. True enjoyment and a higher <b style='color: forestgreen;'>quality of life</b> come from <b style='color: forestgreen;'>complexity</b>, which means <b style='color: forestgreen;'>investing psychic energy</b> in <b style='color: forestgreen;'>new and challenging goals</b>. This process is evident in children, who are natural \"learning machines,\" constantly trying new things. The <b style='color: forestgreen;'>rapt concentration</b> children show while learning new skills is a clear sign of enjoyment, and each such experience <b style='color: forestgreen;'>adds to the complexity of their developing self</b>.\n\nUnfortunately, this connection between <b style='color: forestgreen;'>growth and enjoyment</b> often fades with time, perhaps because learning becomes an <b style='color: forestgreen;'>external imposition</b> through schooling. People might then settle for easy complacency, thinking that effort into new things is <b style='color: forestgreen;'>wasted without external rewards</b>. This can lead to a lack of life enjoyment, reducing positive experiences to mere pleasure. However, some individuals, like Signor Orsini, a quirky antique dealer, go to great lengths to preserve enjoyment in their work. Orsini, for example, refused to sell valuable putti for an exorbitant price to a buyer who didn't appreciate the <b style='color: forestgreen;'>\"clash of wits\"</b> of bargaining, feeling <b style='color: forestgreen;'>cheated</b> if the transaction wasn't <b style='color: forestgreen;'>fun</b>. This demonstrates that enjoyment, even in business, can be paramount. To truly control one's <b style='color: forestgreen;'>quality of experience</b>, one must learn to <b style='color: forestgreen;'>build enjoyment into daily life</b>, rather than depending on luck or external circumstances."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Enjoyment is **not** just about pleasurable experiences.",
+                        "True enjoyment and a higher **quality of life** come from **complexity**, which means **investing psychic energy** in **new and challenging goals**.",
+                        "This process is evident in children, who are natural \"learning machines,\" constantly trying new things.",
+                        "The **rapt concentration** children show while learning new skills is a clear sign of enjoyment, and each such experience **adds to the complexity of their developing self**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Unfortunately, this connection between **growth and enjoyment** often fades with time, perhaps because learning becomes an **external imposition** through schooling.",
+                        "People might then settle for easy complacency, thinking that effort into new things is **wasted without external rewards**.",
+                        "This can lead to a lack of life enjoyment, reducing positive experiences to mere pleasure.",
+                        "However, some individuals, like Signor Orsini, a quirky antique dealer, go to great lengths to preserve enjoyment in their work.",
+                        "Orsini, for example, refused to sell valuable putti for an exorbitant price to a buyer who didn't appreciate the **\"clash of wits\"** of bargaining, feeling **cheated** if the transaction wasn't **fun**.",
+                        "This demonstrates that enjoyment, even in business, can be paramount.",
+                        "To truly control one's **quality of experience**, one must learn to **build enjoyment into daily life**, rather than depending on luck or external circumstances."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Nature and Potential Pitfalls of Flow",
-            "body": "The concept of <b style='color: forestgreen;'>flow</b>, a state of deep engagement and enjoyment, is contrasted with ordinary, often unfulfilling experiences. The author describes a colleague who could <b style='color: forestgreen;'>reproduce entire classical music pieces</b> vocally, illustrating flow's capacity to transform mundane activities. This skill developed from years of <b style='color: forestgreen;'>forced exposure to classical music</b>, which initially caused boredom but eventually led to an \"ecstatic insight\" into musical structure. This highlights that <b style='color: forestgreen;'>painful listening prepared him for an epiphany</b>, demonstrating how sustained effort, even when initially unpleasurable, can lead to complex skill development and intrinsic reward. However, the text acknowledges that many children never reach this point and come to dislike activities they are forced into, emphasizing the need for <b style='color: forestgreen;'>external incentives to initiate difficult activities</b>.\n\nFlow is described as an <b style='color: forestgreen;'>autotelic experience</b>, meaning it's rewarding in itself, unlike many daily tasks done for external benefits. It contrasts with feelings of alienation and boredom often associated with work and passive leisure. Flow replaces alienation with <b style='color: forestgreen;'>involvement</b>, boredom with <b style='color: forestgreen;'>enjoyment</b>, and helplessness with <b style='color: forestgreen;'>control</b>, reinforcing the sense of self. However, the author cautions about flow's <b style='color: forestgreen;'>potentially addictive power</b>, noting that any power can be misused. Examples include cruelty as a source of enjoyment for those lacking sophisticated skills, the exhilarating yet destructive nature of war, and even criminal activities providing flow. Even highly enjoyable scientific pursuits, like developing the atomic bomb, can have horrifying consequences. This underscores that flow is not inherently \"good\" but has the potential to enrich life, yet its consequences must be evaluated through <b style='color: forestgreen;'>broader social criteria</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The concept of **flow**, a state of deep engagement and enjoyment, is contrasted with ordinary, often unfulfilling experiences.",
+                        "The author describes a colleague who could **reproduce entire classical music pieces** vocally, illustrating flow's capacity to transform mundane activities.",
+                        "This skill developed from years of **forced exposure to classical music**, which initially caused boredom but eventually led to an \"ecstatic insight\" into musical structure.",
+                        "This highlights that **painful listening prepared him for an epiphany**, demonstrating how sustained effort, even when initially unpleasurable, can lead to complex skill development and intrinsic reward.",
+                        "However, the text acknowledges that many children never reach this point and come to dislike activities they are forced into, emphasizing the need for **external incentives to initiate difficult activities**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Flow is described as an **autotelic experience**, meaning it's rewarding in itself, unlike many daily tasks done for external benefits.",
+                        "It contrasts with feelings of alienation and boredom often associated with work and passive leisure.",
+                        "Flow replaces alienation with **involvement**, boredom with **enjoyment**, and helplessness with **control**, reinforcing the sense of self.",
+                        "However, the author cautions about flow's **potentially addictive power**, noting that any power can be misused.",
+                        "Examples include cruelty as a source of enjoyment for those lacking sophisticated skills, the exhilarating yet destructive nature of war, and even criminal activities providing flow.",
+                        "Even highly enjoyable scientific pursuits, like developing the atomic bomb, can have horrifying consequences.",
+                        "This underscores that flow is not inherently \"good\" but has the potential to enrich life, yet its consequences must be evaluated through **broader social criteria**."
+                    ]
+                }
+            ]
         },
         {
             "title": "The People of Flow",
-            "body": "When people are facing <b style='color: forestgreen;'>difficult situations</b>, some manage to <b style='color: forestgreen;'>transform</b> these harrowing conditions into a <b style='color: forestgreen;'>manageable and even enjoyable struggle</b>. These individuals, like those in prison or lost in Antarctica, use strategies similar to <b style='color: forestgreen;'>flow activities</b>. They pay close attention to <b style='color: forestgreen;'>minute details</b>, discovering opportunities for action that match their capabilities. They set <b style='color: forestgreen;'>appropriate goals</b>, monitor <b style='color: forestgreen;'>progress</b>, and constantly <b style='color: forestgreen;'>increase the complexity</b> of challenges.\n\nSurvivors of solitary confinement, like Christopher Burney, Eva Zeisel, and Albert Speer, exemplify this. Burney observed small details in his cell, while Zeisel played chess in her head and memorized poems. Speer imagined walking trips across continents. A pilot imprisoned in North Vietnam maintained his sanity and physical skills by mentally playing golf daily. Poet Tollas Tibor and other Hungarian prisoners organized a poetry translation contest, even carving letters into soap. These examples show how individuals <b style='color: forestgreen;'>reassert control</b> by investing <b style='color: forestgreen;'>psychic energy</b> in new directions, making them <b style='color: forestgreen;'>subjectively free</b> even in objectively degrading situations. This ability to find enjoyment in adversity comes from a <b style='color: forestgreen;'>\"nonself-conscious individualism\"</b>\u2014a strong, intrinsically motivated purpose that isn't focused on self-interest, allowing them to remain undisturbed by external threats and find new opportunities."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "When people are facing **difficult situations**, some manage to **transform** these harrowing conditions into a **manageable and even enjoyable struggle**.",
+                        "These individuals, like those in prison or lost in Antarctica, use strategies similar to **flow activities**.",
+                        "They pay close attention to **minute details**, discovering opportunities for action that match their capabilities.",
+                        "They set **appropriate goals**, monitor **progress**, and constantly **increase the complexity** of challenges."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Survivors of solitary confinement, like Christopher Burney, Eva Zeisel, and Albert Speer, exemplify this.",
+                        "Burney observed small details in his cell, while Zeisel played chess in her head and memorized poems.",
+                        "Speer imagined walking trips across continents.",
+                        "A pilot imprisoned in North Vietnam maintained his sanity and physical skills by mentally playing golf daily.",
+                        "Poet Tollas Tibor and other Hungarian prisoners organized a poetry translation contest, even carving letters into soap.",
+                        "These examples show how individuals **reassert control** by investing **psychic energy** in new directions, making them **subjectively free** even in objectively degrading situations.",
+                        "This ability to find enjoyment in adversity comes from a **\"nonself-conscious individualism\"**\u2014a strong, intrinsically motivated purpose that isn't focused on self-interest, allowing them to remain undisturbed by external threats and find new opportunities."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Importance of Music and the Joys of Taste",
-            "body": "Our culture is <b style='color: forestgreen;'>decreasingly exposing children to musical skills</b>, often cutting music (along with art and physical education) from school budgets. This leads to teenagers <b style='color: forestgreen;'>compensating</b> by investing large amounts of energy into their own music, like forming rock groups. When music is taught, the focus is often on <b style='color: forestgreen;'>performance</b> rather than <b style='color: forestgreen;'>experience</b>, pushing children to excel for external validation (prizes, Carnegie Hall) rather than enjoyment. This can <b style='color: forestgreen;'>pervert</b> music into a source of <b style='color: forestgreen;'>psychic disorder</b> and lead to stress and breakdowns, as seen in the story of child prodigy Lorin Hollander.\n\nThen, there are the <b style='color: forestgreen;'>joys of tasting</b>, drawing parallels between music and food."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Our culture is **decreasingly exposing children to musical skills**, often cutting music (along with art and physical education) from school budgets.",
+                        "This leads to teenagers **compensating** by investing large amounts of energy into their own music, like forming rock groups.",
+                        "When music is taught, the focus is often on **performance** rather than **experience**, pushing children to excel for external validation (prizes, Carnegie Hall) rather than enjoyment.",
+                        "This can **pervert** music into a source of **psychic disorder** and lead to stress and breakdowns, as seen in the story of child prodigy Lorin Hollander."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Then, there are the **joys of tasting**, drawing parallels between music and food."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Joy of Work and Amateur Science",
-            "body": "The text explores how individuals find <b style='color: forestgreen;'>enjoyment</b> in their work, contrasting typical views of work as a <b style='color: forestgreen;'>burden</b> with examples of those who experience it as <b style='color: forestgreen;'>flow</b>. <b style='color: forestgreen;'>Normal scientists</b>, like those described by Kuhn, are driven by solving <b style='color: forestgreen;'>intellectual puzzles</b> and the challenge of their work, comparing it to activities like <b style='color: forestgreen;'>riddling</b> or <b style='color: forestgreen;'>chess</b>. Even more so, <b style='color: forestgreen;'>revolutionary scientists</b> find immense enjoyment in breaking existing paradigms and forging new ones, exemplified by astrophysicist <b style='color: forestgreen;'>Subrahmanyan Chandrasekhar</b>, who continued to teach a demanding seminar for only two students, even commuting long distances, because he loved his work. This dedication eventually led to his <b style='color: forestgreen;'>Nobel Prize</b>.\n\nBreakthroughs often come from individuals playing with ideas, not just large institutions, as shown by the <b style='color: forestgreen;'>superconductivity</b> researchers Muller and Bednorz, and biologist Susumu Tonegawa, who valued <b style='color: forestgreen;'>individual effort</b>. The text argues that the emphasis on <b style='color: forestgreen;'>\u201cBig Science\u201d</b> has exaggerated the need for complex labs and teams, overlooking the contributions of <b style='color: forestgreen;'>amateur scientists</b> throughout history. Figures like <b style='color: forestgreen;'>Copernicus</b>, <b style='color: forestgreen;'>Galileo</b>, <b style='color: forestgreen;'>Newton</b>, <b style='color: forestgreen;'>Lavoisier</b>, <b style='color: forestgreen;'>Galvani</b>, <b style='color: forestgreen;'>Mendel</b>, <b style='color: forestgreen;'>Michelson</b>, and <b style='color: forestgreen;'>Einstein</b> pursued science out of <b style='color: forestgreen;'>fascination</b> and <b style='color: forestgreen;'>enjoyment</b>, often as a hobby, demonstrating that <b style='color: forestgreen;'>advancement in science</b> isn't exclusive to professionals. It emphasizes that the <b style='color: forestgreen;'>mental framework</b> for enjoying science \u2013 <b style='color: forestgreen;'>curiosity, careful observation, disciplined recording, and seeking underlying regularities</b> \u2013 is accessible to everyone, promoting <b style='color: forestgreen;'>lifelong learning</b> and the value of <b style='color: forestgreen;'>amateur scholarship</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The text explores how individuals find **enjoyment** in their work, contrasting typical views of work as a **burden** with examples of those who experience it as **flow**.",
+                        "**Normal scientists**, like those described by Kuhn, are driven by solving **intellectual puzzles** and the challenge of their work, comparing it to activities like **riddling** or **chess**.",
+                        "Even more so, **revolutionary scientists** find immense enjoyment in breaking existing paradigms and forging new ones, exemplified by astrophysicist **Subrahmanyan Chandrasekhar**, who continued to teach a demanding seminar for only two students, even commuting long distances, because he loved his work.",
+                        "This dedication eventually led to his **Nobel Prize**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Breakthroughs often come from individuals playing with ideas, not just large institutions, as shown by the **superconductivity** researchers Muller and Bednorz, and biologist Susumu Tonegawa, who valued **individual effort**.",
+                        "The text argues that the emphasis on **\u201cBig Science\u201d** has exaggerated the need for complex labs and teams, overlooking the contributions of **amateur scientists** throughout history.",
+                        "Figures like **Copernicus**, **Galileo**, **Newton**, **Lavoisier**, **Galvani**, **Mendel**, **Michelson**, and **Einstein** pursued science out of **fascination** and **enjoyment**, often as a hobby, demonstrating that **advancement in science** isn't exclusive to professionals.",
+                        "It emphasizes that the **mental framework** for enjoying science \u2013 **curiosity, careful observation, disciplined recording, and seeking underlying regularities** \u2013 is accessible to everyone, promoting **lifelong learning** and the value of **amateur scholarship**."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Paradox of Work and Leisure",
-            "body": "A <b style='color: forestgreen;'>paradoxical relationship people have with work and leisure</b> exists. While many people wish they weren't working and report <b style='color: forestgreen;'>low motivation</b> on the job, studies show they often experience <b style='color: forestgreen;'>surprisingly low moods</b> during leisure time. Despite this, they continue to desire more leisure. One study, using the Experience Sampling Method, found that <b style='color: forestgreen;'>54% of responses were \"in flow\" at work</b>, meaning people felt <b style='color: forestgreen;'>challenged and used their skills</b>. In contrast, only <b style='color: forestgreen;'>18% of leisure responses were in flow</b>, with most falling into a state of <b style='color: forestgreen;'>apathy</b> characterized by low challenges and skills.\n\nThe study also found differences across occupations: <b style='color: forestgreen;'>managers were in flow at work more often (64%) than clerical (51%) or blue-collar workers (47%)</b>. However, <b style='color: forestgreen;'>blue-collar workers reported more flow in leisure (20%)</b> than clerical workers (16%) and managers (15%). Even so, blue-collar workers still experienced flow more than twice as often at work than in leisure. Interestingly, despite often being in flow at work and feeling positive emotions, people <b style='color: forestgreen;'>wished to be doing something else more often when working than when at leisure</b>, indicating a disconnect between immediate experience and perceived motivation. This suggests that <b style='color: forestgreen;'>cultural stereotypes about work</b> as an imposition might override positive on-the-job experiences."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A **paradoxical relationship people have with work and leisure** exists.",
+                        "While many people wish they weren't working and report **low motivation** on the job, studies show they often experience **surprisingly low moods** during leisure time.",
+                        "Despite this, they continue to desire more leisure.",
+                        "One study, using the Experience Sampling Method, found that **54% of responses were \"in flow\" at work**, meaning people felt **challenged and used their skills**.",
+                        "In contrast, only **18% of leisure responses were in flow**, with most falling into a state of **apathy** characterized by low challenges and skills."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The study also found differences across occupations: **managers were in flow at work more often (64%) than clerical (51%) or blue-collar workers (47%)**.",
+                        "However, **blue-collar workers reported more flow in leisure (20%)** than clerical workers (16%) and managers (15%).",
+                        "Even so, blue-collar workers still experienced flow more than twice as often at work than in leisure.",
+                        "Interestingly, despite often being in flow at work and feeling positive emotions, people **wished to be doing something else more often when working than when at leisure**, indicating a disconnect between immediate experience and perceived motivation.",
+                        "This suggests that **cultural stereotypes about work** as an imposition might override positive on-the-job experiences."
+                    ]
+                }
+            ]
         },
         {
             "title": "ENJOYING SOLITUDE AND OTHER PEOPLE",
-            "body": "Relationships become <b style='color: forestgreen;'>boring routines</b> after initial challenges are met. To restore \"flow,\" couples must find <b style='color: forestgreen;'>new challenges</b> like varying routines or discussing new topics. It is crucial to <b style='color: forestgreen;'>pay attention</b> to a partner's complexity, understanding them at <b style='color: forestgreen;'>deeper levels</b>, and offering <b style='color: forestgreen;'>sympathy and compassion</b> through life's changes. Lifelong commitments, such as raising a family, bring new challenges that demand <b style='color: forestgreen;'>energy and time</b> but offer a great \"payoff in terms of the quality of experience.\"\n\nThe same need for <b style='color: forestgreen;'>increasing challenges and skills</b> applies to relationships with children. Parents should involve themselves in <b style='color: forestgreen;'>understandable and complex activities</b> at home, which children might find engaging. <b style='color: forestgreen;'>Unconditional acceptance</b> is vital, allowing children to explore without fear and develop an \"autotelic personality.\" When a family has a <b style='color: forestgreen;'>common purpose and open communication</b>, offering opportunities in a trusting environment, life becomes an \"enjoyable flow activity.\" Friendships need <b style='color: forestgreen;'>common goals and activities</b> to foster growth and offer <b style='color: forestgreen;'>novelty and opportunities for expressive skills</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Relationships become **boring routines** after initial challenges are met.",
+                        "To restore \"flow,\" couples must find **new challenges** like varying routines or discussing new topics.",
+                        "It is crucial to **pay attention** to a partner's complexity, understanding them at **deeper levels**, and offering **sympathy and compassion** through life's changes.",
+                        "Lifelong commitments, such as raising a family, bring new challenges that demand **energy and time** but offer a great \"payoff in terms of the quality of experience.\""
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The same need for **increasing challenges and skills** applies to relationships with children.",
+                        "Parents should involve themselves in **understandable and complex activities** at home, which children might find engaging.",
+                        "**Unconditional acceptance** is vital, allowing children to explore without fear and develop an \"autotelic personality.\"",
+                        "When a family has a **common purpose and open communication**, offering opportunities in a trusting environment, life becomes an \"enjoyable flow activity.\"",
+                        "Friendships need **common goals and activities** to foster growth and offer **novelty and opportunities for expressive skills**."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Making of Meaning",
-            "body": "To truly find <b style='color: forestgreen;'>meaning</b> in life, it's not enough to experience <b style='color: forestgreen;'>flow</b> in isolated activities. Even if your work or hobbies are rewarding, these separate moments won't protect you from the <b style='color: forestgreen;'>chaos</b> of life when things inevitably change, like career shifts or family losses. The ultimate step in <b style='color: forestgreen;'>controlling consciousness</b> is to make your entire life a unified flow experience. This means pursuing a <b style='color: forestgreen;'>challenging goal</b> that all other goals logically stem from, and dedicating your energy to developing the <b style='color: forestgreen;'>skills</b> needed to reach it. When your actions and feelings align, and every part of your life fits together meaningfully, it provides purpose for the present, past, and future.\n\nWhile some philosophers argue that life has no inherent meaning, the text emphasizes that we can <b style='color: forestgreen;'>create meaning</b>. Whether it's collecting beer bottles or finding a cancer cure, any goal can provide meaning if it offers <b style='color: forestgreen;'>clear objectives</b>, rules for action, and encourages <b style='color: forestgreen;'>concentration</b> and involvement. The author shares an example of Muslim professionals who find peace by believing their lives are \"in God's hands.\" For those without a traditional faith, discovering such a unifying goal becomes a personal journey. This overall purpose is what allows you to experience <b style='color: forestgreen;'>optimal experience</b> and make sense of your life."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "To truly find **meaning** in life, it's not enough to experience **flow** in isolated activities.",
+                        "Even if your work or hobbies are rewarding, these separate moments won't protect you from the **chaos** of life when things inevitably change, like career shifts or family losses.",
+                        "The ultimate step in **controlling consciousness** is to make your entire life a unified flow experience.",
+                        "This means pursuing a **challenging goal** that all other goals logically stem from, and dedicating your energy to developing the **skills** needed to reach it.",
+                        "When your actions and feelings align, and every part of your life fits together meaningfully, it provides purpose for the present, past, and future."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "While some philosophers argue that life has no inherent meaning, the text emphasizes that we can **create meaning**.",
+                        "Whether it's collecting beer bottles or finding a cancer cure, any goal can provide meaning if it offers **clear objectives**, rules for action, and encourages **concentration** and involvement.",
+                        "The author shares an example of Muslim professionals who find peace by believing their lives are \"in God's hands.\"",
+                        "For those without a traditional faith, discovering such a unifying goal becomes a personal journey.",
+                        "This overall purpose is what allows you to experience **optimal experience** and make sense of your life."
+                    ]
+                }
+            ]
         },
         {
             "title": "Transforming Adversity into Meaning and Purpose",
-            "body": "Individuals transform <b style='color: forestgreen;'>adversity</b> into <b style='color: forestgreen;'>meaningful life goals</b>. Gottfried, for example, turned his mother's cancer into a <b style='color: forestgreen;'>personal mission</b> to become a research oncologist, ultimately contributing to the fight against the disease. Similarly, the philosopher Antonio Gramsci, born with significant disadvantages, dedicated his life to <b style='color: forestgreen;'>social change</b> after experiencing family hardship. These stories illustrate how <b style='color: forestgreen;'>personal tragedies</b> can become <b style='color: forestgreen;'>challenges</b> that lead to personal and societal improvement, rather than solely resulting in psychological dysfunction. The author questions the Freudian view of trauma leading only to negative outcomes, suggesting instead that individuals have a <b style='color: forestgreen;'>choice</b> in how they respond to suffering, often transforming it into a <b style='color: forestgreen;'>constructive response</b> and a <b style='color: forestgreen;'>coherent purpose</b>, leading to a state of \"flow.\"\n\nPeople develop <b style='color: forestgreen;'>coherent life themes</b>. It highlights that while external factors like poverty can make it harder, it's not inevitable. Many individuals, from Thomas Edison to Eleanor Roosevelt, faced early difficulties but still built <b style='color: forestgreen;'>powerful and useful lives</b>. The key strategy identified is learning from <b style='color: forestgreen;'>past generations</b>, drawing on accumulated <b style='color: forestgreen;'>knowledge and patterns</b> found in culture (art, music, philosophy, religion) to <b style='color: forestgreen;'>avoid disorder</b> in one's own mind. Rejecting this inherited wisdom and trying to create meaning from scratch is seen as <b style='color: forestgreen;'>\"misguided hubris.\"</b> The importance of parents telling stories and reading to children is emphasized as a way to impart <b style='color: forestgreen;'>meaningful order</b> early in life. Later, admired role models (historical figures or characters in books) can also reveal <b style='color: forestgreen;'>new possibilities for action</b>, helping individuals like the social scientist inspired by *A Tale of Two Cities* or the retired banker by Horatio Alger stories, to find their life's purpose. Literature, music, art, and religion provide <b style='color: forestgreen;'>ordered information</b> and <b style='color: forestgreen;'>models of purpose</b> that help people find hope and navigate the randomness of existence."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Individuals transform **adversity** into **meaningful life goals**.",
+                        "Gottfried, for example, turned his mother's cancer into a **personal mission** to become a research oncologist, ultimately contributing to the fight against the disease.",
+                        "Similarly, the philosopher Antonio Gramsci, born with significant disadvantages, dedicated his life to **social change** after experiencing family hardship.",
+                        "These stories illustrate how **personal tragedies** can become **challenges** that lead to personal and societal improvement, rather than solely resulting in psychological dysfunction.",
+                        "The author questions the Freudian view of trauma leading only to negative outcomes, suggesting instead that individuals have a **choice** in how they respond to suffering, often transforming it into a **constructive response** and a **coherent purpose**, leading to a state of \"flow.\""
+                    ]
+                },
+                {
+                    "sentences": [
+                        "People develop **coherent life themes**.",
+                        "It highlights that while external factors like poverty can make it harder, it's not inevitable.",
+                        "Many individuals, from Thomas Edison to Eleanor Roosevelt, faced early difficulties but still built **powerful and useful lives**.",
+                        "The key strategy identified is learning from **past generations**, drawing on accumulated **knowledge and patterns** found in culture (art, music, philosophy, religion) to **avoid disorder** in one's own mind.",
+                        "Rejecting this inherited wisdom and trying to create meaning from scratch is seen as **\"misguided hubris.\"**",
+                        "The importance of parents telling stories and reading to children is emphasized as a way to impart **meaningful order** early in life.",
+                        "Later, admired role models (historical figures or characters in books) can also reveal **new possibilities for action**, helping individuals like the social scientist inspired by *A Tale of Two Cities* or the retired banker by Horatio Alger stories, to find their life's purpose.",
+                        "Literature, music, art, and religion provide **ordered information** and **models of purpose** that help people find hope and navigate the randomness of existence."
+                    ]
+                }
+            ]
         },
         {
             "title": "Notes and References: Music, Psychology, and Cultural Evolution",
-            "body": "The provided text is a <b style='color: forestgreen;'>list of notes and references</b> for a book, likely organized by page number, offering <b style='color: forestgreen;'>supporting information and sources</b> for various claims and discussions within the main text. These notes cover a wide range of topics, including the <b style='color: forestgreen;'>importance of music</b> in American lives, <b style='color: forestgreen;'>adolescent psychology</b>, the concept of <b style='color: forestgreen;'>\u201ccollective effervescence\u201d</b> (Durkheim) and <b style='color: forestgreen;'>\u201ccommunitas\u201d</b> (Turner), critiques of <b style='color: forestgreen;'>Carlos Castaneda\u2019s writings</b>, the <b style='color: forestgreen;'>stages of musical listening</b>, <b style='color: forestgreen;'>Plato\u2019s views on music</b> (e.g., Dorian and Phrygian harmonies for character building), and a <b style='color: forestgreen;'>defense of Plato</b> by Alan Bloom against modern music. Other points include <b style='color: forestgreen;'>Lorin Hollander\u2019s story</b>, <b style='color: forestgreen;'>eating habits</b> as intrinsically motivated activities for Americans and teenagers, and information about <b style='color: forestgreen;'>Cyrus the Great</b> (Xenophon).\n\nThe notes continue by referencing <b style='color: forestgreen;'>Puritan attitudes towards enjoyment</b>, the <b style='color: forestgreen;'>popularity of reading books</b> as a flow activity (Massimini, Csikszentmihalyi, Delle Fave), the idea that <b style='color: forestgreen;'>science originated in riddling games</b> (Huizinga), the <b style='color: forestgreen;'>chaotic nature of the mind</b> without structured input, the <b style='color: forestgreen;'>negative quality of television viewing</b>, <b style='color: forestgreen;'>mental imagery</b> (Singer), the practice of <b style='color: forestgreen;'>reciting ancestors\u2019 names</b> in tribal societies (Leenharde, Evans-Pritchard), the <b style='color: forestgreen;'>origins of poetry and literacy</b> (Graves), the <b style='color: forestgreen;'>demise of rote learning</b>, the <b style='color: forestgreen;'>control and improvement of memory</b> (Spence), and <b style='color: forestgreen;'>Archytas\u2019s thought experiments</b> (de Santillana). Further discussions include the <b style='color: forestgreen;'>evolution of arithmetic and geometry</b> (Wittfogel), the idea that <b style='color: forestgreen;'>cultural products emerge from enjoyment</b> rather than necessity (Csikszentmihalyi), and how <b style='color: forestgreen;'>institutions like religion and capitalism</b> started as play-forms or adventurous games (Huizinga, Weber). The section concludes with anecdotes about <b style='color: forestgreen;'>Democritus</b> and references to the <b style='color: forestgreen;'>sagas of Iceland</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The provided text is a **list of notes and references** for a book, likely organized by page number, offering **supporting information and sources** for various claims and discussions within the main text.",
+                        "These notes cover a wide range of topics, including the **importance of music** in American lives, **adolescent psychology**, the concept of **\u201ccollective effervescence\u201d** (Durkheim) and **\u201ccommunitas\u201d** (Turner), critiques of **Carlos Castaneda\u2019s writings**, the **stages of musical listening**, **Plato\u2019s views on music** (e.g., Dorian and Phrygian harmonies for character building), and a **defense of Plato** by Alan Bloom against modern music.",
+                        "Other points include **Lorin Hollander\u2019s story**, **eating habits** as intrinsically motivated activities for Americans and teenagers, and information about **Cyrus the Great** (Xenophon)."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The notes continue by referencing **Puritan attitudes towards enjoyment**, the **popularity of reading books** as a flow activity (Massimini, Csikszentmihalyi, Delle Fave), the idea that **science originated in riddling games** (Huizinga), the **chaotic nature of the mind** without structured input, the **negative quality of television viewing**, **mental imagery** (Singer), the practice of **reciting ancestors\u2019 names** in tribal societies (Leenharde, Evans-Pritchard), the **origins of poetry and literacy** (Graves), the **demise of rote learning**, the **control and improvement of memory** (Spence), and **Archytas\u2019s thought experiments** (de Santillana).",
+                        "Further discussions include the **evolution of arithmetic and geometry** (Wittfogel), the idea that **cultural products emerge from enjoyment** rather than necessity (Csikszentmihalyi), and how **institutions like religion and capitalism** started as play-forms or adventurous games (Huizinga, Weber).",
+                        "The section concludes with anecdotes about **Democritus** and references to the **sagas of Iceland**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Meet Mihaly Csikszentmihalyi",
-            "body": "Mihaly Csikszentmihalyi, a <b style='color: forestgreen;'>renowned professor</b> of Psychology and Management at Claremont Graduate University, directs the <b style='color: forestgreen;'>Quality of Life Research Center</b> and previously chaired the Psychology Department at the University of Chicago. With over <b style='color: forestgreen;'>35 years of research</b> into \"flow,\" he has secured funding from the Public Health Service and the Spencer Foundation. His work has gained significant attention, featuring in publications like Psychology Today, The New York Times, and Newsweek. He is the <b style='color: forestgreen;'>author</b> of several influential books, including *Beyond Boredom and Anxiety* and *Creativity*, and co-authored *The Creative Vision* and *The Meaning of Things*.\n\nA distinguished member of the <b style='color: forestgreen;'>American Academy of Arts and Sciences</b> and the <b style='color: forestgreen;'>National Academy of Education</b>, Csikszentmihalyi has also served as a <b style='color: forestgreen;'>Senior Fulbright Fellow</b> and advised the Encyclopaedia Britannica. His insights have reached a global audience through appearances on international television networks such as the BBC and RAI, and segments on Nova. His contributions highlight a career dedicated to understanding and promoting optimal human experience."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Mihaly Csikszentmihalyi, a **renowned professor** of Psychology and Management at Claremont Graduate University, directs the **Quality of Life Research Center** and previously chaired the Psychology Department at the University of Chicago.",
+                        "With over **35 years of research** into \"flow,\" he has secured funding from the Public Health Service and the Spencer Foundation.",
+                        "His work has gained significant attention, featuring in publications like Psychology Today, The New York Times, and Newsweek.",
+                        "He is the **author** of several influential books, including *Beyond Boredom and Anxiety* and *Creativity*, and co-authored *The Creative Vision* and *The Meaning of Things*."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "A distinguished member of the **American Academy of Arts and Sciences** and the **National Academy of Education**, Csikszentmihalyi has also served as a **Senior Fulbright Fellow** and advised the Encyclopaedia Britannica.",
+                        "His insights have reached a global audience through appearances on international television networks such as the BBC and RAI, and segments on Nova.",
+                        "His contributions highlight a career dedicated to understanding and promoting optimal human experience."
+                    ]
+                }
+            ]
         }
     ]
 }

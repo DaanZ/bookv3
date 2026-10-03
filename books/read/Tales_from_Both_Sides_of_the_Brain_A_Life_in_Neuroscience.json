@@ -13,43 +13,189 @@
     "parts": [
         {
             "title": "A Journey of Personal and Scientific Discovery",
-            "body": "<b style='color: forestgreen;'>Young Mike Gazzaniga began his journey in neuroscience drawn by a girl rather than pure science</b>. The allure of nearby Caltech inspired his *curiosity about the brain*, leading him away from the *medical career* his father imagined for him. This chapter reveals how personal and professional influences mesh, emphasizing that *science isn\u2019t pursued in isolation*, but through *social experiences* and shared *curiosity*. Gazzaniga\u2019s journey reflects how *unexpected motivation* and *interpersonal connections* shape a scientific career."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Young Mike Gazzaniga began his journey in neuroscience drawn by a girl rather than pure science**.",
+                        "The allure of nearby Caltech inspired his *curiosity about the brain*, leading him away from the *medical career* his father imagined for him.",
+                        "This chapter reveals how personal and professional influences mesh, emphasizing that *science isn\u2019t pursued in isolation*, but through *social experiences* and shared *curiosity*.",
+                        "Gazzaniga\u2019s journey reflects how *unexpected motivation* and *interpersonal connections* shape a scientific career."
+                    ]
+                }
+            ]
         },
         {
             "title": "Debate and Successful Event Organization Experience",
-            "body": "<b style='color: forestgreen;'>Steve Allen</b>, a popular figure, was <b style='color: forestgreen;'>confident</b> about the <b style='color: forestgreen;'>debate</b> event, telling the concerned author, \"Three thousand people would show up to watch me play tiddlywinks.\" On the night of the event, driven by last-minute ticket buyers, over <b style='color: forestgreen;'>three-thousand</b> attendees arrived in <b style='color: forestgreen;'>Hollywood Palladium</b>. The debate featuring Allen and <b style='color: forestgreen;'>William F. Buckley Jr.</b> saw remarkable participation and enthusiasm. The film recorded actions included controversial comments and creative interactions, such as Buckley\u2019s remark on President Kennedy\u2019s policies being devised by the \"<b style='color: forestgreen;'>Marx Brothers</b>,\" drawing attention to <b style='color: forestgreen;'>Groucho Marx</b>.\n\nThe success encouraged confidence and creativity in organizing further events, with the author noting how this experience influenced their approach in the scientific community. Desiring to pursue innovative ideas and discussions, they became inspired to promote intellectual exchanges both in science and public debate forums, eventually considering books and debate series."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Steve Allen**, a popular figure, was **confident** about the **debate** event, telling the concerned author, \"Three thousand people would show up to watch me play tiddlywinks.\"",
+                        "On the night of the event, driven by last-minute ticket buyers, over **three-thousand** attendees arrived in **Hollywood Palladium**.",
+                        "The debate featuring Allen and **William F. Buckley Jr.** saw remarkable participation and enthusiasm.",
+                        "The film recorded actions included controversial comments and creative interactions, such as Buckley\u2019s remark on President Kennedy\u2019s policies being devised by the \"**Marx Brothers**,\" drawing attention to **Groucho Marx**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The success encouraged confidence and creativity in organizing further events, with the author noting how this experience influenced their approach in the scientific community.",
+                        "Desiring to pursue innovative ideas and discussions, they became inspired to promote intellectual exchanges both in science and public debate forums, eventually considering books and debate series."
+                    ]
+                }
+            ]
         },
         {
             "title": "Exploration of Split-Brain Communication and Compensation",
-            "body": "In split-brain <b style='color: forestgreen;'>research</b>, signs pointed to two independently functioning hemispheres, hinting at two minds in one. The left hemisphere held <b style='color: forestgreen;'>language and speech</b> while the right did <b style='color: forestgreen;'>visual tasks</b>. However, over time, <b style='color: forestgreen;'>cross-cueing strategies</b> were uncovered. Clever methods allowed communication between the two hemispheres, suggesting the brain forms ways to seem connected.\n\nFinding <b style='color: forestgreen;'>interactions</b> between the two halves became essential to understanding the <b style='color: forestgreen;'>brain</b>. They reflected <b style='color: forestgreen;'>goal-directed behavior</b>, using whatever means necessary to <b style='color: forestgreen;'>achieve singular, unitary goals</b>. This insight helped solidify the notion of a modular brain, showing how, in cases of brain surgery or injury, the remaining systems find ways to compensate and communicate, highlighting a <b style='color: forestgreen;'>brain's adaptability</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In split-brain **research**, signs pointed to two independently functioning hemispheres, hinting at two minds in one.",
+                        "The left hemisphere held **language and speech** while the right did **visual tasks**.",
+                        "However, over time, **cross-cueing strategies** were uncovered.",
+                        "Clever methods allowed communication between the two hemispheres, suggesting the brain forms ways to seem connected."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Finding **interactions** between the two halves became essential to understanding the **brain**.",
+                        "They reflected **goal-directed behavior**, using whatever means necessary to **achieve singular, unitary goals**.",
+                        "This insight helped solidify the notion of a modular brain, showing how, in cases of brain surgery or injury, the remaining systems find ways to compensate and communicate, highlighting a **brain's adaptability**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Embracing New York and Unpredictable Paths",
-            "body": "<b style='color: forestgreen;'>New York City</b> was a challenging move from <b style='color: forestgreen;'>California</b>, with the initial heat, traffic, and rudeness making it seem unbearable. Despite the culture shock and tough environment, the city began to grow on the family, with Marin attending <b style='color: forestgreen;'>St. Joseph's Academy</b> and enjoying everyday activities like pressing elevator buttons with her sister. Their routine adapted to the hectic life, <b style='color: forestgreen;'>embracing</b> anything the city threw at them. Over seventeen years, the writer came to love NYC, resonating with Joan Didion's notion that <b style='color: forestgreen;'>Californians never fully unpack</b> when moving there.\n\n<b style='color: forestgreen;'>Life's Narratives</b> don't always follow a straightforward path, and the author's journey in science demonstrates this. At <b style='color: forestgreen;'>NYU</b>, the author broadened their research beyond split-brain subjects to include brain mechanisms and reinforcement, despite feeling that <b style='color: forestgreen;'>hard work and luck</b> play unpredictable roles in success. Notably, a series of lunches with <b style='color: forestgreen;'>Leon Festinger</b> offered intellectual continuity and friendships, often paired with martinis, scampi meals, and stimulating conversation at spots like <b style='color: forestgreen;'>Il Bambino and Dardanelles</b>. These experiences enriched the author's perspective on psychology, highlighting the potential of interruptions to yield new directions."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**New York City** was a challenging move from **California**, with the initial heat, traffic, and rudeness making it seem unbearable.",
+                        "Despite the culture shock and tough environment, the city began to grow on the family, with Marin attending **St. Joseph's Academy** and enjoying everyday activities like pressing elevator buttons with her sister.",
+                        "Their routine adapted to the hectic life, **embracing** anything the city threw at them.",
+                        "Over seventeen years, the writer came to love NYC, resonating with Joan Didion's notion that **Californians never fully unpack** when moving there."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Life's Narratives** don't always follow a straightforward path, and the author's journey in science demonstrates this.",
+                        "At **NYU**, the author broadened their research beyond split-brain subjects to include brain mechanisms and reinforcement, despite feeling that **hard work and luck** play unpredictable roles in success.",
+                        "Notably, a series of lunches with **Leon Festinger** offered intellectual continuity and friendships, often paired with martinis, scampi meals, and stimulating conversation at spots like **Il Bambino and Dardanelles**.",
+                        "These experiences enriched the author's perspective on psychology, highlighting the potential of interruptions to yield new directions."
+                    ]
+                }
+            ]
         },
         {
             "title": "Friendship, Science, and Farewell: Jeff's Legacy",
-            "body": "<b style='color: forestgreen;'>Jeff</b> was an incredibly <b style='color: forestgreen;'>dedicated experimentalist</b>, always striving for <b style='color: forestgreen;'>accuracy</b> in his scientific work. His meticulous nature meant he would spend countless nights worrying over the possible <b style='color: forestgreen;'>flaws</b> in his logic, striving for results that were \"more right than wrong.\" We shared many intense discussions about <b style='color: forestgreen;'>science and logic</b>, often resolved over drinks, affirming that everyone makes mistakes in pursuit of truth.\n\n<b style='color: forestgreen;'>Medicine and life</b> have unexpected turns. Despite a <b style='color: forestgreen;'>fulfilling</b> New York experience\u2014filled with dynamic poles of professional success and deep personal connections\u2014the diagnosis of Jeff's rare and critical condition, <b style='color: forestgreen;'>Wegener's granulomatosis</b>, swiftly turned life upside down. Emotionally overwhelmed, we\u2014his friends and family\u2014were left grappling with profound loss, even as we actively supported the bereaved Ann. The <b style='color: forestgreen;'>bittersweet tribute</b> to Jeff's <b style='color: forestgreen;'>humor</b> and spirit lived on, notably in his daughter who humorously cracked jokes at her wedding. Jeff's rich friendships were his legacy, offering a sense of togetherness, even at his funeral."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Jeff** was an incredibly **dedicated experimentalist**, always striving for **accuracy** in his scientific work.",
+                        "His meticulous nature meant he would spend countless nights worrying over the possible **flaws** in his logic, striving for results that were \"more right than wrong.\"",
+                        "We shared many intense discussions about **science and logic**, often resolved over drinks, affirming that everyone makes mistakes in pursuit of truth."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Medicine and life** have unexpected turns.",
+                        "Despite a **fulfilling** New York experience\u2014filled with dynamic poles of professional success and deep personal connections\u2014the diagnosis of Jeff's rare and critical condition, **Wegener's granulomatosis**, swiftly turned life upside down.",
+                        "Emotionally overwhelmed, we\u2014his friends and family\u2014were left grappling with profound loss, even as we actively supported the bereaved Ann.",
+                        "The **bittersweet tribute** to Jeff's **humor** and spirit lived on, notably in his daughter who humorously cracked jokes at her wedding.",
+                        "Jeff's rich friendships were his legacy, offering a sense of togetherness, even at his funeral."
+                    ]
+                }
+            ]
         },
         {
             "title": "Scientific Meetings and UC Davis Opportunity",
-            "body": "During a <b style='color: forestgreen;'>scientific meeting in Venice</b>, the <b style='color: forestgreen;'>neuroscientist</b> Leo Chalupa shared an <b style='color: forestgreen;'>amusing perspective</b> on name-dropping renowned figures like <b style='color: forestgreen;'>Francis Crick</b>. His jest fostered a more <b style='color: forestgreen;'>refreshing atmosphere</b> among attendees. These dynamics progressed into a <b style='color: forestgreen;'>professional opportunity</b>, as Leo considered Mike Gazzaniga to lead a forthcoming <b style='color: forestgreen;'>neuroscience center</b> at UC Davis. <b style='color: forestgreen;'>Leo, well-connected and trusted</b>, introduced Mike to key <b style='color: forestgreen;'>university administrators</b>. Stability and trust, especially from <b style='color: forestgreen;'>provost Robert Grey</b>, ensured that negotiations were open and reliable. Mike's inclination towards <b style='color: forestgreen;'>leadership</b> emerged, amidst mixed emotions about moving from Dartmouth's <b style='color: forestgreen;'>familiarity</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "During a **scientific meeting in Venice**, the **neuroscientist** Leo Chalupa shared an **amusing perspective** on name-dropping renowned figures like **Francis Crick**.",
+                        "His jest fostered a more **refreshing atmosphere** among attendees.",
+                        "These dynamics progressed into a **professional opportunity**, as Leo considered Mike Gazzaniga to lead a forthcoming **neuroscience center** at UC Davis.",
+                        "**Leo, well-connected and trusted**, introduced Mike to key **university administrators**.",
+                        "Stability and trust, especially from **provost Robert Grey**, ensured that negotiations were open and reliable.",
+                        "Mike's inclination towards **leadership** emerged, amidst mixed emotions about moving from Dartmouth's **familiarity**."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Journey of Relocating and Scientific Progress at Dartmouth",
-            "body": "<b style='color: forestgreen;'>Relocating</b> to a <b style='color: forestgreen;'>new home</b> in Vermont, <b style='color: forestgreen;'>J.W.'s involvement</b> in studies, and the idea that the <b style='color: forestgreen;'>brain interpreter</b> is influenced by <b style='color: forestgreen;'>belief</b> are major points in this narrative. <b style='color: forestgreen;'>Settling</b> into the `Phillips House` in Sharon, Vermont, brought a new <b style='color: forestgreen;'>chapter</b> with many <b style='color: forestgreen;'>family memories</b> such as Francesca's summer <b style='color: forestgreen;'>musicals</b> and Zack's <b style='color: forestgreen;'>outdoor adventures</b>. These events created a deep <b style='color: forestgreen;'>family connection</b> to their home. Meanwhile, much of J.W.'s <b style='color: forestgreen;'>research</b> revolved around his brain's <b style='color: forestgreen;'>ability to see patterns</b>, whether through <b style='color: forestgreen;'>probability games</b> or <b style='color: forestgreen;'>visual recognition tasks</b>. This research <b style='color: forestgreen;'>revealed</b> the <b style='color: forestgreen;'>unique functions</b> of the left hemisphere's <b style='color: forestgreen;'>interpreter</b>, particularly its <b style='color: forestgreen;'>tendency</b> to seek patterns even when unnecessary.\n\n<b style='color: forestgreen;'>Big Science</b> was a driving force for developing <b style='color: forestgreen;'>new resources</b> at Dartmouth, including a push for a <b style='color: forestgreen;'>brain imaging center</b> with its own MRT machine, unique at that time for a <b style='color: forestgreen;'>psychology department</b>. This push came from wanting a <b style='color: forestgreen;'>technological upgrade</b>, achieved with aid from <b style='color: forestgreen;'>Scott T. Grafton</b> joining the team, enhancing the <b style='color: forestgreen;'>center\u2019s capabilities</b>. Meanwhile, errors, like misinterpretations from older machines, were corrected, underpinning the importance of <b style='color: forestgreen;'>accuracy</b> in scientific findings. These ties between <b style='color: forestgreen;'>family and work</b>, along with <b style='color: forestgreen;'>scientific breakthroughs</b>, characterized the dynamic experience of <b style='color: forestgreen;'>relocating</b> and continuing research at Dartmouth."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Relocating** to a **new home** in Vermont, **J.W.'s involvement** in studies, and the idea that the **brain interpreter** is influenced by **belief** are major points in this narrative.",
+                        "**Settling** into the `Phillips House` in Sharon, Vermont, brought a new **chapter** with many **family memories** such as Francesca's summer **musicals** and Zack's **outdoor adventures**.",
+                        "These events created a deep **family connection** to their home.",
+                        "Meanwhile, much of J.W.'s **research** revolved around his brain's **ability to see patterns**, whether through **probability games** or **visual recognition tasks**.",
+                        "This research **revealed** the **unique functions** of the left hemisphere's **interpreter**, particularly its **tendency** to seek patterns even when unnecessary."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Big Science** was a driving force for developing **new resources** at Dartmouth, including a push for a **brain imaging center** with its own MRT machine, unique at that time for a **psychology department**.",
+                        "This push came from wanting a **technological upgrade**, achieved with aid from **Scott T. Grafton** joining the team, enhancing the **center\u2019s capabilities**.",
+                        "Meanwhile, errors, like misinterpretations from older machines, were corrected, underpinning the importance of **accuracy** in scientific findings.",
+                        "These ties between **family and work**, along with **scientific breakthroughs**, characterized the dynamic experience of **relocating** and continuing research at Dartmouth."
+                    ]
+                }
+            ]
         },
         {
             "title": "Celebrating the Split-Brain Studies and Sperry's Impact on Neuroscience",
-            "body": "<b style='color: forestgreen;'>Roger Sperry's</b> contribution to <b style='color: forestgreen;'>neuroscience</b> is <b style='color: forestgreen;'>split-brain studies</b> that earned him part of the <b style='color: forestgreen;'>1981 Nobel Prize</b>. These studies revealed that, after splitting the brain<b style='color: forestgreen;'>\u2019s hemispheres</b>, humans could perform <b style='color: forestgreen;'>integrated activities</b>, but their <b style='color: forestgreen;'>left hemisphere</b> struggled to understand or describe what the <b style='color: forestgreen;'>right hemisphere</b> experienced. This research not only enhanced understanding of <b style='color: forestgreen;'>brain specialization</b> and <b style='color: forestgreen;'>consciousness</b>, but also demonstrated how perceptual and motor functions were integrated across the hemispheres. Importantly, the studies showed each hemisphere could <b style='color: forestgreen;'>specialize</b> in different functions\u2014language for the left and non-verbal processes for the right\u2014 giving insights into <b style='color: forestgreen;'>cognitive styles</b> and hemispherical capabilities."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Roger Sperry's** contribution to **neuroscience** is **split-brain studies** that earned him part of the **1981 Nobel Prize**.",
+                        "These studies revealed that, after splitting the brain**\u2019s hemispheres**, humans could perform **integrated activities**, but their **left hemisphere** struggled to understand or describe what the **right hemisphere** experienced.",
+                        "This research not only enhanced understanding of **brain specialization** and **consciousness**, but also demonstrated how perceptual and motor functions were integrated across the hemispheres.",
+                        "Importantly, the studies showed each hemisphere could **specialize** in different functions\u2014language for the left and non-verbal processes for the right\u2014 giving insights into **cognitive styles** and hemispherical capabilities."
+                    ]
+                }
+            ]
         },
         {
             "title": "Exploring Cognitive Science Questions through Correspondence",
-            "body": "<b style='color: forestgreen;'>This section highlights explanations about scientific questions, particularly through correspondence between </b>Gazzaniga<b style='color: forestgreen;'> and </b>Miller<b style='color: forestgreen;'>, regarding </b>cognitive neuroscience<b style='color: forestgreen;'>. Miller begins with a philosophical query into what </b>cognitive science<b style='color: forestgreen;'> aims to discover, suggesting that it seeks to understand the \"molecular logic of states of knowledge.\" Gazzaniga then proposes this logic involves processes that control various mental constituents in cognitive agents. They explore </b>cognitive function<b style='color: forestgreen;'>, emphasizing a focus on </b>living, conscious systems** and the principles governing them.\n\nMiller, further discussing \"<b style='color: forestgreen;'>knowledge systems</b>,\" postulates a definition for <b style='color: forestgreen;'>cognitive neuroscience</b>, aiming to discover principles governing organic knowledge systems, distinct from <b style='color: forestgreen;'>artificial intelligence</b> or other disciplines. This definition emphasizes behaviors impacted by the state of <b style='color: forestgreen;'>knowledge</b>. They engage in reflecting on <b style='color: forestgreen;'>reductionism</b> and the various levels of scientific explanations, acknowledging the multilayered and loose connections in neuroscience research. These discussions guide understanding and categorization of <b style='color: forestgreen;'>studies in cognitive research</b>, posing questions on methodology and <b style='color: forestgreen;'>scientific organization</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**This section highlights explanations about scientific questions, particularly through correspondence between **Gazzaniga** and **Miller**, regarding **cognitive neuroscience**. Miller begins with a philosophical query into what **cognitive science** aims to discover, suggesting that it seeks to understand the \"molecular logic of states of knowledge.\" Gazzaniga then proposes this logic involves processes that control various mental constituents in cognitive agents. They explore **cognitive function**, emphasizing a focus on **living, conscious systems and the principles governing them."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Miller, further discussing \"**knowledge systems**,\" postulates a definition for **cognitive neuroscience**, aiming to discover principles governing organic knowledge systems, distinct from **artificial intelligence** or other disciplines.",
+                        "This definition emphasizes behaviors impacted by the state of **knowledge**.",
+                        "They engage in reflecting on **reductionism** and the various levels of scientific explanations, acknowledging the multilayered and loose connections in neuroscience research.",
+                        "These discussions guide understanding and categorization of **studies in cognitive research**, posing questions on methodology and **scientific organization**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Sperry's Contributions and Lab Environment",
-            "body": "<h3 style='color: forestgreen;'>Roger Sperry in Neuroscience</h3>\n\n<b style='color: forestgreen;'>Roger Sperry</b> made significant contributions to the understanding of the brain through split-brain research. He is renowned for his work on the <b style='color: forestgreen;'>two minds</b> concept, where he explored how each hemisphere of a split brain functions independently yet complements the other. He was involved in the <b style='color: forestgreen;'>origins of human split-brain</b> studies, revolutionizing <b style='color: forestgreen;'>psychology</b> and building a greater understanding of <b style='color: forestgreen;'>neurospecificity</b>. His background and public persona revealed a commitment to <b style='color: forestgreen;'>emergence</b> theory and <b style='color: forestgreen;'>neurology</b>. His collaboration at the Sperry Laboratory contributed to Gazzaniga\u2019s work and the broader split-brain research community.\n\n<h3 style='color: forestgreen;'>Influence of Workplace Culture and Collaboration</h3>\n\nThe <b style='color: forestgreen;'>Sperry Laboratory at Caltech</b> was a hub for innovative research. It was characterized by a collaborative atmosphere, fostering discoveries in <b style='color: forestgreen;'>nerve growth circuits</b> and the <b style='color: forestgreen;'>basics of split-brain research</b>. Despite challenges like <b style='color: forestgreen;'>interdisciplinary misunderstandings</b> and <b style='color: forestgreen;'>funding issues</b>, the lab served as a critical foundation for pushing forward in understanding how <b style='color: forestgreen;'>senses and motor integration</b> work through novel testing and surgical techniques. <b style='color: forestgreen;'>Networking</b> and <b style='color: forestgreen;'>personal connections</b> played pivotal roles in navigating the <b style='color: forestgreen;'>complex research landscape</b>, especially regarding <b style='color: forestgreen;'>split-brain</b> advancements and <b style='color: forestgreen;'>psychophysical isomorphism</b> studies."
+            "paragraphs": [
+                {
+                    "heading": "Roger Sperry in Neuroscience",
+                    "sentences": [
+                        "**Roger Sperry** made significant contributions to the understanding of the brain through split-brain research.",
+                        "He is renowned for his work on the **two minds** concept, where he explored how each hemisphere of a split brain functions independently yet complements the other.",
+                        "He was involved in the **origins of human split-brain** studies, revolutionizing **psychology** and building a greater understanding of **neurospecificity**.",
+                        "His background and public persona revealed a commitment to **emergence** theory and **neurology**.",
+                        "His collaboration at the Sperry Laboratory contributed to Gazzaniga\u2019s work and the broader split-brain research community."
+                    ]
+                },
+                {
+                    "heading": "Influence of Workplace Culture and Collaboration",
+                    "sentences": [
+                        "The **Sperry Laboratory at Caltech** was a hub for innovative research.",
+                        "It was characterized by a collaborative atmosphere, fostering discoveries in **nerve growth circuits** and the **basics of split-brain research**.",
+                        "Despite challenges like **interdisciplinary misunderstandings** and **funding issues**, the lab served as a critical foundation for pushing forward in understanding how **senses and motor integration** work through novel testing and surgical techniques.",
+                        "**Networking** and **personal connections** played pivotal roles in navigating the **complex research landscape**, especially regarding **split-brain** advancements and **psychophysical isomorphism** studies."
+                    ]
+                }
+            ]
         }
     ]
 }

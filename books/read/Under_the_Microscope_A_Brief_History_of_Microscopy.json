@@ -12,47 +12,250 @@
     "parts": [
         {
             "title": "History and Evolution of Microscopy",
-            "body": "The <b style='color: forestgreen;'>foreword</b> of \"Under the Microscope\" explores the history of humanity's fascination with the <b style='color: forestgreen;'>\"small world\"</b>, from early magnifying lenses to modern sophisticated techniques. The book covers the milestones in <b style='color: forestgreen;'>microscopy</b>, including <b style='color: forestgreen;'>van Leeuwenhoek's</b> high-resolution microscopes and the evolution of <b style='color: forestgreen;'>optical</b> and <b style='color: forestgreen;'>electron microscopes</b>, eventually leading to modern <b style='color: forestgreen;'>scanning probe microscopy</b>. It places significant emphasis on the increasing <b style='color: forestgreen;'>magnification</b> and measurement units such as <b style='color: forestgreen;'>microns</b> and <b style='color: forestgreen;'>nanometers</b> used in today's high-tech <b style='color: forestgreen;'>microscopes</b>, setting a context for the atomic-scale imaging.\n"
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **foreword** of \"Under the Microscope\" explores the history of humanity's fascination with the **\"small world\"**, from early magnifying lenses to modern sophisticated techniques.",
+                        "The book covers the milestones in **microscopy**, including **van Leeuwenhoek's** high-resolution microscopes and the evolution of **optical** and **electron microscopes**, eventually leading to modern **scanning probe microscopy**.",
+                        "It places significant emphasis on the increasing **magnification** and measurement units such as **microns** and **nanometers** used in today's high-tech **microscopes**, setting a context for the atomic-scale imaging."
+                    ]
+                }
+            ]
         },
         {
             "title": "Pioneers of Early Microscopy: Hooke and Leeuwenhoek",
-            "body": "<b style='color: forestgreen;'>Robert Hooke</b> (1635-1703) was a pivotal figure in early <b style='color: forestgreen;'>microscopy</b>. Known for the book \"Micrographia,\" he coined the term <b style='color: forestgreen;'>\"cells\"</b> after observing the structure of <b style='color: forestgreen;'>cork</b>. Despite preferring <b style='color: forestgreen;'>compound microscopes</b>, he acknowledged the clarity of <b style='color: forestgreen;'>single lens instruments</b>. Hooke made major contributions, including <b style='color: forestgreen;'>Hooke's Law</b> of <b style='color: forestgreen;'>elasticity</b> and early theories regarding the <b style='color: forestgreen;'>wave nature</b> of light.\n\nAnother significant contributor was <b style='color: forestgreen;'>Antony van Leeuwenhoek</b>, a <b style='color: forestgreen;'>Dutch draper</b> (<b style='color: forestgreen;'>1632-1723</b>). Despite no formal education, he ground <b style='color: forestgreen;'>microscope lenses</b> and made groundbreaking <b style='color: forestgreen;'>biological observations</b>. Leeuwenhoek discovered <b style='color: forestgreen;'>bacteria</b>, <b style='color: forestgreen;'>sperm cells</b>, and <b style='color: forestgreen;'>blood cells</b>, contributing immensely to the field. Notably, he built over <b style='color: forestgreen;'>500 microscopes</b> and preferred single lens designs, contrary to Hooke's views.\n\nIn his interactions, Leeuwenhoek was known for his meticulous nature and maintained a strong relationship with the <b style='color: forestgreen;'>Royal Society</b> in London. His diverse work experience included roles such as <b style='color: forestgreen;'>surveyor</b> and <b style='color: forestgreen;'>wine assayer</b>. Through dedication, he raised <b style='color: forestgreen;'>scientific awareness</b> and his discoveries caught the attention of many contemporary <b style='color: forestgreen;'>scientists</b>. Known for meticulous methods, his exact surname's pronunciation remains a point of historic curiosity."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Robert Hooke** (1635-1703) was a pivotal figure in early **microscopy**.",
+                        "Known for the book \"Micrographia,\" he coined the term **\"cells\"** after observing the structure of **cork**.",
+                        "Despite preferring **compound microscopes**, he acknowledged the clarity of **single lens instruments**.",
+                        "Hooke made major contributions, including **Hooke's Law** of **elasticity** and early theories regarding the **wave nature** of light."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Another significant contributor was **Antony van Leeuwenhoek**, a **Dutch draper** (**1632-1723**).",
+                        "Despite no formal education, he ground **microscope lenses** and made groundbreaking **biological observations**.",
+                        "Leeuwenhoek discovered **bacteria**, **sperm cells**, and **blood cells**, contributing immensely to the field.",
+                        "Notably, he built over **500 microscopes** and preferred single lens designs, contrary to Hooke's views."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "In his interactions, Leeuwenhoek was known for his meticulous nature and maintained a strong relationship with the **Royal Society** in London.",
+                        "His diverse work experience included roles such as **surveyor** and **wine assayer**.",
+                        "Through dedication, he raised **scientific awareness** and his discoveries caught the attention of many contemporary **scientists**.",
+                        "Known for meticulous methods, his exact surname's pronunciation remains a point of historic curiosity."
+                    ]
+                }
+            ]
         },
         {
             "title": "Historical Foundations of Microscopy and Optics",
-            "body": "<h3 style='color: forestgreen;'>Summary of Key Points: Early Exploration of Light and Optics</h3>\n\nMicroscopy's <b style='color: forestgreen;'>historical development</b> <b style='color: forestgreen;'>began with the Ancient Greeks</b>. It notes early observations such as <b style='color: forestgreen;'>Aristophanes' mention of glass globules</b> in Athens and <b style='color: forestgreen;'>Euclid's foundational work in optics</b>, around <b style='color: forestgreen;'>300 B.C.</b>. These figures laid the groundwork for understanding <b style='color: forestgreen;'>light as a straight line</b> and the phenomenon of <b style='color: forestgreen;'>refraction</b>, where light bends upon entering different media.\n\nImportant concepts like <b style='color: forestgreen;'>refraction</b> are explained with visual aids: a stick appearing bent in water, and soldiers changing direction on uneven terrain, illustrating light's behavior as it travels through <b style='color: forestgreen;'>different densities</b>. The transition from low- to high-density media (e.g., air to glass) further explains <b style='color: forestgreen;'>light bending</b> towards the surface. <b style='color: forestgreen;'>Curved surfaces on glass lead to lens formation</b>, demonstrating early understandings of <b style='color: forestgreen;'>optics and magnification</b>.\n\nThe discovery of a <b style='color: forestgreen;'>plano-convex lens at Nimrod</b> signifies early lens use, presumed to date back <b style='color: forestgreen;'>to the 700s B.C.</b>, though initially thought to be more decorative than functional. By the <b style='color: forestgreen;'>first century A.D.</b>, individuals like <b style='color: forestgreen;'>Seneca</b> discussed magnification through water globes. Innovations like spectacles in <b style='color: forestgreen;'>1280 Florence</b> amplified still-limited but intriguing <b style='color: forestgreen;'>optical knowledge</b>, spreading quickly across the world while laying the foundations for more advanced studies."
+            "paragraphs": [
+                {
+                    "heading": "Summary of Key Points: Early Exploration of Light and Optics",
+                    "sentences": [
+                        "Microscopy's **historical development** **began with the Ancient Greeks**.",
+                        "It notes early observations such as **Aristophanes' mention of glass globules** in Athens and **Euclid's foundational work in optics**, around **300 B.C.**.",
+                        "These figures laid the groundwork for understanding **light as a straight line** and the phenomenon of **refraction**, where light bends upon entering different media."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Important concepts like **refraction** are explained with visual aids: a stick appearing bent in water, and soldiers changing direction on uneven terrain, illustrating light's behavior as it travels through **different densities**.",
+                        "The transition from low- to high-density media (e.g., air to glass) further explains **light bending** towards the surface.",
+                        "**Curved surfaces on glass lead to lens formation**, demonstrating early understandings of **optics and magnification**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The discovery of a **plano-convex lens at Nimrod** signifies early lens use, presumed to date back **to the 700s B.C.**, though initially thought to be more decorative than functional.",
+                        "By the **first century A.D.**, individuals like **Seneca** discussed magnification through water globes.",
+                        "Innovations like spectacles in **1280 Florence** amplified still-limited but intriguing **optical knowledge**, spreading quickly across the world while laying the foundations for more advanced studies."
+                    ]
+                }
+            ]
         },
         {
             "title": "Understanding Crystals' Symmetry and Structure",
-            "body": "Crystals have <b style='color: forestgreen;'>periodically</b> arranged atoms, unlike <b style='color: forestgreen;'>glasses</b> and <b style='color: forestgreen;'>liquids</b> where atoms are <b style='color: forestgreen;'>randomly</b> arranged. This arrangement gives crystals unique <b style='color: forestgreen;'>properties</b>. The <b style='color: forestgreen;'>\"law of constancy of interfacial angles\"</b> states that angles between similar crystal faces are <b style='color: forestgreen;'>constant</b> for the same material. Crystal properties come from their <b style='color: forestgreen;'>internal structure</b>. <b style='color: forestgreen;'>Symmetry operations</b> like rotations and mirrors classify crystals into <b style='color: forestgreen;'>six crystal systems</b> based on their <b style='color: forestgreen;'>axes</b> and <b style='color: forestgreen;'>angles</b>. These systems include cubic, tetragonal, hexagonal, orthorhombic, monoclinic, and triclinic.\nCrystals have <b style='color: forestgreen;'>axes</b>, <b style='color: forestgreen;'>planes</b>, and a <b style='color: forestgreen;'>center</b> of symmetry. These elements lead to <b style='color: forestgreen;'>32 point groups</b> that describe crystal <b style='color: forestgreen;'>morphology</b>. The repetition of the smallest structural unit fits into one of <b style='color: forestgreen;'>14 Bravais lattices</b>, which describe the crystal's spatial arrangement. <b style='color: forestgreen;'>Polarizing microscopes</b> use <b style='color: forestgreen;'>polarized light</b> to reveal crystal properties based on these <b style='color: forestgreen;'>symmetries</b>. Features like <b style='color: forestgreen;'>anisotropy</b> or <b style='color: forestgreen;'>isotropy</b> show how light interacts with crystals of different symmetry, enhancing <b style='color: forestgreen;'>mineralogical</b>, <b style='color: forestgreen;'>geological</b>, and <b style='color: forestgreen;'>chemical</b> study today."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Crystals have **periodically** arranged atoms, unlike **glasses** and **liquids** where atoms are **randomly** arranged.",
+                        "This arrangement gives crystals unique **properties**.",
+                        "The **\"law of constancy of interfacial angles\"** states that angles between similar crystal faces are **constant** for the same material.",
+                        "Crystal properties come from their **internal structure**.",
+                        "**Symmetry operations** like rotations and mirrors classify crystals into **six crystal systems** based on their **axes** and **angles**.",
+                        "These systems include cubic, tetragonal, hexagonal, orthorhombic, monoclinic, and triclinic.",
+                        "Crystals have **axes**, **planes**, and a **center** of symmetry.",
+                        "These elements lead to **32 point groups** that describe crystal **morphology**.",
+                        "The repetition of the smallest structural unit fits into one of **14 Bravais lattices**, which describe the crystal's spatial arrangement.",
+                        "**Polarizing microscopes** use **polarized light** to reveal crystal properties based on these **symmetries**.",
+                        "Features like **anisotropy** or **isotropy** show how light interacts with crystals of different symmetry, enhancing **mineralogical**, **geological**, and **chemical** study today."
+                    ]
+                }
+            ]
         },
         {
             "title": "Polarized Light and Crystal Properties Overview",
-            "body": "<h3 style='color: forestgreen;'>Polarized Light and Crystal Properties</h3>\n\nIn <b style='color: forestgreen;'>crystals</b>, directional and <b style='color: forestgreen;'>value properties</b> can be represented by <b style='color: forestgreen;'>vector surfaces</b>. For example, in <b style='color: forestgreen;'>cubic crystals</b>, <b style='color: forestgreen;'>thermal expansion</b> appears isotropic, forming a <b style='color: forestgreen;'>sphere</b>. However, in <b style='color: forestgreen;'>lower symmetry</b> crystals like <b style='color: forestgreen;'>hexagonal or tetragonal</b>, expansion forms a <b style='color: forestgreen;'>revolution ellipsoid</b>. The <b style='color: forestgreen;'>optical properties</b>, such as the <b style='color: forestgreen;'>velocity of light</b> in a crystal, have vector surfaces like a <b style='color: forestgreen;'>sphere</b> in cubic crystals, making them <b style='color: forestgreen;'>optically isotropic</b>. <b style='color: forestgreen;'>Non-cubic crystals</b> split light into two <b style='color: forestgreen;'>polarized rays</b> \u2014 the <b style='color: forestgreen;'>ordinary ray</b> (spherical vector surface) and the <b style='color: forestgreen;'>extraordinary ray</b> (ellipsoid vector surface)."
+            "paragraphs": [
+                {
+                    "heading": "Polarized Light and Crystal Properties",
+                    "sentences": [
+                        "In **crystals**, directional and **value properties** can be represented by **vector surfaces**.",
+                        "For example, in **cubic crystals**, **thermal expansion** appears isotropic, forming a **sphere**.",
+                        "However, in **lower symmetry** crystals like **hexagonal or tetragonal**, expansion forms a **revolution ellipsoid**.",
+                        "The **optical properties**, such as the **velocity of light** in a crystal, have vector surfaces like a **sphere** in cubic crystals, making them **optically isotropic**.",
+                        "**Non-cubic crystals** split light into two **polarized rays** \u2014 the **ordinary ray** (spherical vector surface) and the **extraordinary ray** (ellipsoid vector surface)."
+                    ]
+                }
+            ]
         },
         {
             "title": "Reflected Light Microscopy Highlights",
-            "body": "<h3 style='color: forestgreen;'>Summary Chunk</h3>\n\n<b style='color: forestgreen;'>Light Microscopy</b>'s history is filled with <b style='color: forestgreen;'>explorations</b> into both <b style='color: forestgreen;'>transparent</b> and <b style='color: forestgreen;'>opaque</b> materials. While <b style='color: forestgreen;'>biological materials</b> were initially more revealing, metals posed challenges due to their surface-level observations. In <b style='color: forestgreen;'>1664, Henry Power</b> documented <b style='color: forestgreen;'>metal surfaces</b>, noting <b style='color: forestgreen;'>irregularities</b> and <b style='color: forestgreen;'>vitrification</b> of sparks, while <b style='color: forestgreen;'>Robert Hooke</b> delved into this phenomenon in his famous <b style='color: forestgreen;'>\"Micrographia\"</b> work. Hooke's <b style='color: forestgreen;'>compound microscope</b> observations nurtured the development of metal study, although his metallurgical insights were limited to external features like <b style='color: forestgreen;'>scratches on a razor</b>. \n\n<h3 style='color: forestgreen;'>Metallurgical Advances</h3>\n\n<b style='color: forestgreen;'>Antonie van Leeuwenhoek</b>, known for his exploration of <b style='color: forestgreen;'>microscopic world</b>, contributed to metals' study by identifying <b style='color: forestgreen;'>crystalline structures</b> in <b style='color: forestgreen;'>the 1700s</b>. Later, <b style='color: forestgreen;'>Henry Clifton Sorby</b>, in <b style='color: forestgreen;'>1850</b>, advanced metal microscopy. Despite limited initial awareness, Sorby refined <b style='color: forestgreen;'>etching techniques</b> and identified <b style='color: forestgreen;'>microstructures in steel</b>, laying foundational <b style='color: forestgreen;'>metallurgical principles</b>. His <b style='color: forestgreen;'>polishing</b> and <b style='color: forestgreen;'>magnification</b> methods were novel, serving as a <b style='color: forestgreen;'>lens into metal's micro-world</b>. Sorby's microscope <b style='color: forestgreen;'>advancements</b> contributed significantly to metallurgy, underpinning modern techniques. \n\n<h3 style='color: forestgreen;'>Reflected Light and Scientific Developments</h3>\n\nThrough advances like <b style='color: forestgreen;'>R. Beck's reflector</b> and <b style='color: forestgreen;'>Lieberkuhn\u2019s mirror</b>, greatly improved <b style='color: forestgreen;'>microscopy of opaque structures</b> emerged. Sorby\u2019s use of <b style='color: forestgreen;'>reflected light</b> techniques distinguished textures and compositions, critical for studying metals like <b style='color: forestgreen;'>iron and steel</b>. As science progressed, tools like <b style='color: forestgreen;'>electron-probe micro-analyzers</b> provided refined ways to analyze opaque minerals, aligned with observed <b style='color: forestgreen;'>optical properties</b> like <b style='color: forestgreen;'>brightness</b> and <b style='color: forestgreen;'>hardness</b>. This led to broader applications in <b style='color: forestgreen;'>Materials Science</b> and <b style='color: forestgreen;'>Forensic Science</b>, revealing the depth and <b style='color: forestgreen;'>complexity of the microstructures</b> in <b style='color: forestgreen;'>metallurgical and other scientific fields</b>."
+            "paragraphs": [
+                {
+                    "heading": "Summary Chunk",
+                    "sentences": [
+                        "**Light Microscopy**'s history is filled with **explorations** into both **transparent** and **opaque** materials.",
+                        "While **biological materials** were initially more revealing, metals posed challenges due to their surface-level observations.",
+                        "In **1664, Henry Power** documented **metal surfaces**, noting **irregularities** and **vitrification** of sparks, while **Robert Hooke** delved into this phenomenon in his famous **\"Micrographia\"** work.",
+                        "Hooke's **compound microscope** observations nurtured the development of metal study, although his metallurgical insights were limited to external features like **scratches on a razor**."
+                    ]
+                },
+                {
+                    "heading": "Metallurgical Advances",
+                    "sentences": [
+                        "**Antonie van Leeuwenhoek**, known for his exploration of **microscopic world**, contributed to metals' study by identifying **crystalline structures** in **the 1700s**.",
+                        "Later, **Henry Clifton Sorby**, in **1850**, advanced metal microscopy.",
+                        "Despite limited initial awareness, Sorby refined **etching techniques** and identified **microstructures in steel**, laying foundational **metallurgical principles**.",
+                        "His **polishing** and **magnification** methods were novel, serving as a **lens into metal's micro-world**.",
+                        "Sorby's microscope **advancements** contributed significantly to metallurgy, underpinning modern techniques."
+                    ]
+                },
+                {
+                    "heading": "Reflected Light and Scientific Developments",
+                    "sentences": [
+                        "Through advances like **R. Beck's reflector** and **Lieberkuhn\u2019s mirror**, greatly improved **microscopy of opaque structures** emerged.",
+                        "Sorby\u2019s use of **reflected light** techniques distinguished textures and compositions, critical for studying metals like **iron and steel**.",
+                        "As science progressed, tools like **electron-probe micro-analyzers** provided refined ways to analyze opaque minerals, aligned with observed **optical properties** like **brightness** and **hardness**.",
+                        "This led to broader applications in **Materials Science** and **Forensic Science**, revealing the depth and **complexity of the microstructures** in **metallurgical and other scientific fields**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Beginnings of Electron Microscopy",
-            "body": "Electron microscopy has many contributors, with <b style='color: forestgreen;'>Max Knoll</b> and <b style='color: forestgreen;'>Ernst Ruska</b> making notable progress in <b style='color: forestgreen;'>1931</b>. They built a <b style='color: forestgreen;'>magnetic lens</b> microscope, leading to advancements in electron microscope development. <b style='color: forestgreen;'>G\u00fcnther R\u00fcdenberg</b> filed a patent for the electron microscope using multiple lenses the same year. The electron microscope's capability to see below atomic levels stems from electrons' <b style='color: forestgreen;'>small size</b> compared to atoms, with techniques like <b style='color: forestgreen;'>Transmission Electron Microscopy (TEM)</b> enhancing this ability. <b style='color: forestgreen;'>Electron guns</b> and <b style='color: forestgreen;'>magnetic lenses</b> form the core of the electron microscope, which captures images through fluorescent materials."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Electron microscopy has many contributors, with **Max Knoll** and **Ernst Ruska** making notable progress in **1931**.",
+                        "They built a **magnetic lens** microscope, leading to advancements in electron microscope development.",
+                        "**G\u00fcnther R\u00fcdenberg** filed a patent for the electron microscope using multiple lenses the same year.",
+                        "The electron microscope's capability to see below atomic levels stems from electrons' **small size** compared to atoms, with techniques like **Transmission Electron Microscopy (TEM)** enhancing this ability.",
+                        "**Electron guns** and **magnetic lenses** form the core of the electron microscope, which captures images through fluorescent materials."
+                    ]
+                }
+            ]
         },
         {
             "title": "Electron Diffraction and its Historical Development",
-            "body": "<b style='color: forestgreen;'>Electron diffraction</b> is a powerful method used in <b style='color: forestgreen;'>electron microscopes</b> to study the properties and structure of <b style='color: forestgreen;'>crystals</b>. It builds upon Max von Laue's discovery of X-ray diffraction in 1912, showing that crystals can diffract X-rays and electrons into a <b style='color: forestgreen;'>periodic pattern</b>, helping identify materials and their characteristics. In 1912, von Laue received a <b style='color: forestgreen;'>Nobel Prize</b> for his work, which was further simplified by <b style='color: forestgreen;'>W.H. Bragg</b> using Bragg's Law, allowing for the precise calculation of crystal structure based on the diffraction pattern."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Electron diffraction** is a powerful method used in **electron microscopes** to study the properties and structure of **crystals**.",
+                        "It builds upon Max von Laue's discovery of X-ray diffraction in 1912, showing that crystals can diffract X-rays and electrons into a **periodic pattern**, helping identify materials and their characteristics.",
+                        "In 1912, von Laue received a **Nobel Prize** for his work, which was further simplified by **W.H. Bragg** using Bragg's Law, allowing for the precise calculation of crystal structure based on the diffraction pattern."
+                    ]
+                }
+            ]
         },
         {
             "title": "Chemical Composition Analysis via Microscopy Techniques",
-            "body": "<b style='color: forestgreen;'>Optical Microscopy</b> uses <b style='color: forestgreen;'>polarized light</b> for analyzing chemical <b style='color: forestgreen;'>composition</b> of small samples, like in forensic or materials science. This technique, once widespread, is becoming obsolete due to the rise of instruments like the <b style='color: forestgreen;'>Electron Probe Microanalyser (EPMA)</b>, which enable precise analysis at higher costs. Unfortunately, <b style='color: forestgreen;'>optical methods</b> are no longer commonly taught in universities, except in certain institutes like the <b style='color: forestgreen;'>McCrone Institute of Chicago</b>.\n\n<b style='color: forestgreen;'>X-Rays and Electrons</b>: The basics of the <b style='color: forestgreen;'>X-Ray process</b> began with Wilhelm Conrad R\u00f6ntgen's discovery, leading to the identification of different <b style='color: forestgreen;'>radiation types</b> like K and L by Barkla. Later, the diffraction works by Max von Laue, and significant contributions by W. H. Bragg, and his son, confirmed the periodic nature of atoms and led to the development of <b style='color: forestgreen;'>X-ray spectrographs</b> for material analysis. <b style='color: forestgreen;'>Henry Moseley</b> revolutionized understanding atomic numbers through his X-ray spectrometry work with elements.\n\n<b style='color: forestgreen;'>Early X-ray Discoveries</b>: Moseley's studies proved the <b style='color: forestgreen;'>periodic table's</b> completeness and helped predict new elements. His pioneering work was cut short due to his early death in World War I. <b style='color: forestgreen;'>EPMA Development</b>: Raymond Castaing developed the <b style='color: forestgreen;'>first microprobe</b> for <b style='color: forestgreen;'>chemical analysis</b> by modifying an electron microscope. Castaing detailed how localized analysis was possible by focusing an <b style='color: forestgreen;'>electron beam</b> and measuring <b style='color: forestgreen;'>secondary X-rays</b>. Despite its age, this technique strikes a balance between <b style='color: forestgreen;'>cost and efficacy</b> for detailed compositional analysis."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Optical Microscopy** uses **polarized light** for analyzing chemical **composition** of small samples, like in forensic or materials science.",
+                        "This technique, once widespread, is becoming obsolete due to the rise of instruments like the **Electron Probe Microanalyser (EPMA)**, which enable precise analysis at higher costs.",
+                        "Unfortunately, **optical methods** are no longer commonly taught in universities, except in certain institutes like the **McCrone Institute of Chicago**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**X-Rays and Electrons**: The basics of the **X-Ray process** began with Wilhelm Conrad R\u00f6ntgen's discovery, leading to the identification of different **radiation types** like K and L by Barkla.",
+                        "Later, the diffraction works by Max von Laue, and significant contributions by W. H. Bragg, and his son, confirmed the periodic nature of atoms and led to the development of **X-ray spectrographs** for material analysis.",
+                        "**Henry Moseley** revolutionized understanding atomic numbers through his X-ray spectrometry work with elements."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Early X-ray Discoveries**: Moseley's studies proved the **periodic table's** completeness and helped predict new elements.",
+                        "His pioneering work was cut short due to his early death in World War I. **EPMA Development**: Raymond Castaing developed the **first microprobe** for **chemical analysis** by modifying an electron microscope.",
+                        "Castaing detailed how localized analysis was possible by focusing an **electron beam** and measuring **secondary X-rays**.",
+                        "Despite its age, this technique strikes a balance between **cost and efficacy** for detailed compositional analysis."
+                    ]
+                }
+            ]
         },
         {
             "title": "Atomic-Level Microscopic Techniques in Modern Studies",
-            "body": "<h3 style='color: forestgreen;'><b style='color: forestgreen;'>Quantum Microscopy and Molecule Imaging</b></h3>\n\nThe <b style='color: forestgreen;'>Scannning Probe Microscopes (SPM)</b>, including the <b style='color: forestgreen;'>Scanning Tunneling Microscope (STM)</b>, revolutionized microscopy by allowing visualization at an <b style='color: forestgreen;'>atomic level</b>. The STM achieves this through an <b style='color: forestgreen;'>atomically sharp probe</b> and quantum tunneling, overcoming limitations of traditional microscopes. Several issues such as vibration isolation, probe sharpening, and precise scanning movements were ingeniously addressed, which allowed visualization of the <b style='color: forestgreen;'>atomic arrangement on surfaces</b>.\n\n<h3 style='color: forestgreen;'><b style='color: forestgreen;'>Atomic Force and New Measurement Modes</b></h3>\n\nThe <b style='color: forestgreen;'>Atomic Force Microscope (AFM)</b> emerged as a derivative of the STM, enabling study of <b style='color: forestgreen;'>non-conductive surfaces</b>. AFM uses an ultra-sharp tip to scan the surface topography and operates in <b style='color: forestgreen;'>contact or tapping modes</b>. It's employed in varied environments including <b style='color: forestgreen;'>liquid</b>, making it useful for biological samples. Besides topography, AFM supports techniques like <b style='color: forestgreen;'>Lateral Force Microscopy</b> or <b style='color: forestgreen;'>Chemical Force Microscopy</b>, which investigate <b style='color: forestgreen;'>frictional forces and molecular interactions</b>.\n\n<h3 style='color: forestgreen;'><b style='color: forestgreen;'>Biofilms and Advanced Imaging Techniques</b></h3>\n\n<b style='color: forestgreen;'>Confocal Microscopy</b> solved the limitations of scattering by employing a confocal setup for better depth resolution, revealing structures like <b style='color: forestgreen;'>biofilms</b> in detail. It aids in studies like drug effect on <b style='color: forestgreen;'>biofilms</b> related to infections and implants. With <b style='color: forestgreen;'>rising demand for compact circuits</b>, the use of microscopes for <b style='color: forestgreen;'>imaging and manipulating molecules</b> anchors the advancement toward <b style='color: forestgreen;'>nanotechnology</b>, where precision control at the molecular level intersects both <b style='color: forestgreen;'>microscopy</b> and <b style='color: forestgreen;'>materials science</b>."
+            "paragraphs": [
+                {
+                    "heading": "Quantum Microscopy and Molecule Imaging",
+                    "sentences": [
+                        "The **Scannning Probe Microscopes (SPM)**, including the **Scanning Tunneling Microscope (STM)**, revolutionized microscopy by allowing visualization at an **atomic level**.",
+                        "The STM achieves this through an **atomically sharp probe** and quantum tunneling, overcoming limitations of traditional microscopes.",
+                        "Several issues such as vibration isolation, probe sharpening, and precise scanning movements were ingeniously addressed, which allowed visualization of the **atomic arrangement on surfaces**."
+                    ]
+                },
+                {
+                    "heading": "Atomic Force and New Measurement Modes",
+                    "sentences": [
+                        "The **Atomic Force Microscope (AFM)** emerged as a derivative of the STM, enabling study of **non-conductive surfaces**.",
+                        "AFM uses an ultra-sharp tip to scan the surface topography and operates in **contact or tapping modes**.",
+                        "It's employed in varied environments including **liquid**, making it useful for biological samples.",
+                        "Besides topography, AFM supports techniques like **Lateral Force Microscopy** or **Chemical Force Microscopy**, which investigate **frictional forces and molecular interactions**."
+                    ]
+                },
+                {
+                    "heading": "Biofilms and Advanced Imaging Techniques",
+                    "sentences": [
+                        "**Confocal Microscopy** solved the limitations of scattering by employing a confocal setup for better depth resolution, revealing structures like **biofilms** in detail.",
+                        "It aids in studies like drug effect on **biofilms** related to infections and implants.",
+                        "With **rising demand for compact circuits**, the use of microscopes for **imaging and manipulating molecules** anchors the advancement toward **nanotechnology**, where precision control at the molecular level intersects both **microscopy** and **materials science**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Acoustic Microscopy and Ultrasonic Imaging",
-            "body": "<b style='color: forestgreen;'>Acoustic Microscopy</b> is a <b style='color: forestgreen;'>technology</b> that uses <b style='color: forestgreen;'>sound waves</b> to produce <b style='color: forestgreen;'>images</b> with <b style='color: forestgreen;'>microscopic resolutions</b>. Initially pioneered by <b style='color: forestgreen;'>Sergei Y. Sokolov</b> in the 1920s, acoustic waves were explored for detecting flaws in metals due to their ability to penetrate <b style='color: forestgreen;'>materials opaque</b> to light. Later advancements allowed these waves to be used in a reflective microscopy setting. Scanning acoustic microscopes (SAMs) have developed to provide <b style='color: forestgreen;'>high-resolution imaging</b> and detect <b style='color: forestgreen;'>internal defects</b> in various materials, including biological tissues and <b style='color: forestgreen;'>opaque materials</b>.\n\nThis <b style='color: forestgreen;'>ultrasonic technique</b> involves sending a <b style='color: forestgreen;'>pulsed sound wave</b> that reflects back, providing details about <b style='color: forestgreen;'>contrast in density</b> changes within the examined materials. Two primary advantages of acoustic microscopy are its ability to examine <b style='color: forestgreen;'>opaque materials</b> and produce contrast based on mechanical properties. Practical uses extend to <b style='color: forestgreen;'>medical imaging</b>, <b style='color: forestgreen;'>non-destructive testing</b>, and <b style='color: forestgreen;'>fetal examinations</b>, showcasing changes in <b style='color: forestgreen;'>tissue density</b> with high contrasts similar to or exceeding those of X-rays.\n\nAs the technology advanced, SAMs evolved from a <b style='color: forestgreen;'>transmission mode</b> to a <b style='color: forestgreen;'>reflection mode</b> focusing on resolving issues of lens alignment. Most modern SAMs use <b style='color: forestgreen;'>surface waves</b> to image features beneath opaque surfaces. These devices have become vital for analyzing <b style='color: forestgreen;'>optically opaque materials</b> and applications like <b style='color: forestgreen;'>quality control</b> in <b style='color: forestgreen;'>integrated circuit manufacture</b>. Acoustic microscopes provide <b style='color: forestgreen;'>non-destructive inspection</b>, examining features such as surface <b style='color: forestgreen;'>cracks</b>, <b style='color: forestgreen;'>defects</b>, and <b style='color: forestgreen;'>boundaries</b>, bridging <b style='color: forestgreen;'>high resolution acoustic</b> methods with conventional testing."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Acoustic Microscopy** is a **technology** that uses **sound waves** to produce **images** with **microscopic resolutions**.",
+                        "Initially pioneered by **Sergei Y. Sokolov** in the 1920s, acoustic waves were explored for detecting flaws in metals due to their ability to penetrate **materials opaque** to light.",
+                        "Later advancements allowed these waves to be used in a reflective microscopy setting.",
+                        "Scanning acoustic microscopes (SAMs) have developed to provide **high-resolution imaging** and detect **internal defects** in various materials, including biological tissues and **opaque materials**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "This **ultrasonic technique** involves sending a **pulsed sound wave** that reflects back, providing details about **contrast in density** changes within the examined materials.",
+                        "Two primary advantages of acoustic microscopy are its ability to examine **opaque materials** and produce contrast based on mechanical properties.",
+                        "Practical uses extend to **medical imaging**, **non-destructive testing**, and **fetal examinations**, showcasing changes in **tissue density** with high contrasts similar to or exceeding those of X-rays."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "As the technology advanced, SAMs evolved from a **transmission mode** to a **reflection mode** focusing on resolving issues of lens alignment.",
+                        "Most modern SAMs use **surface waves** to image features beneath opaque surfaces.",
+                        "These devices have become vital for analyzing **optically opaque materials** and applications like **quality control** in **integrated circuit manufacture**.",
+                        "Acoustic microscopes provide **non-destructive inspection**, examining features such as surface **cracks**, **defects**, and **boundaries**, bridging **high resolution acoustic** methods with conventional testing."
+                    ]
+                }
+            ]
         }
     ]
 }

@@ -10,47 +10,246 @@
     "parts": [
         {
             "title": "Acknowledgments and Contributions",
-            "body": "Individuals and organizations contributed significantly to the development of the book. <b style='color: forestgreen;'>Mortimer Abramowitz</b> expresses <b style='color: forestgreen;'>gratitude</b> to <b style='color: forestgreen;'>Kiichi Hirata</b> and <b style='color: forestgreen;'>George Steares</b> for their leadership at Olympus America. Thanks are also given to <b style='color: forestgreen;'>William Fester</b> for editing, and to <b style='color: forestgreen;'>Michael Davidson</b> and <b style='color: forestgreen;'>Kevin Reid</b> for their work on <b style='color: forestgreen;'>diagrams</b>. The book, published by <b style='color: forestgreen;'>Olympus America Inc.</b>, features <b style='color: forestgreen;'>photos</b> by the author, with cover photos highlighting <b style='color: forestgreen;'>scientific subjects</b> like a stained intestine section and blowfly mouth parts. The book is part of the 'Basics and Beyond' series."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Individuals and organizations contributed significantly to the development of the book.",
+                        "**Mortimer Abramowitz** expresses **gratitude** to **Kiichi Hirata** and **George Steares** for their leadership at Olympus America.",
+                        "Thanks are also given to **William Fester** for editing, and to **Michael Davidson** and **Kevin Reid** for their work on **diagrams**.",
+                        "The book, published by **Olympus America Inc.**, features **photos** by the author, with cover photos highlighting **scientific subjects** like a stained intestine section and blowfly mouth parts.",
+                        "The book is part of the 'Basics and Beyond' series."
+                    ]
+                }
+            ]
         },
         {
             "title": "Introduction to the Compound Microscope",
-            "body": "The introduction to the compound <b style='color: forestgreen;'>microscope</b> presents a glimpse into its significance and functionality. The <b style='color: forestgreen;'>photo</b> of a <b style='color: forestgreen;'>Clematis Stem Thin Section</b> exemplifies the detailed structures observable through this instrument. Initially, the compound microscope serves as a crucial tool for magnifying <b style='color: forestgreen;'>minute objects</b>, crucial in several fields such as biology, medicine, and materials science.\n\nAppreciating the <b style='color: forestgreen;'>design</b> and <b style='color: forestgreen;'>construction</b> of the compound microscope is key. Essential components include the <b style='color: forestgreen;'>objective lens</b> and <b style='color: forestgreen;'>eyepiece</b>, which work together to enlarge images of small specimens. The <b style='color: forestgreen;'>optical</b> and <b style='color: forestgreen;'>mechanical</b> systems combine to create a finely-tuned instrument, allowing researchers to explore the microscopic world.\n\nUnderstanding how to properly use a microscope involves <b style='color: forestgreen;'>calibration</b> and <b style='color: forestgreen;'>focusing</b> of its parts. Correct <b style='color: forestgreen;'>illumination</b> is crucial; methods like <b style='color: forestgreen;'>Koehler Illumination</b> ensure even lighting across the field of view, enhancing image clarity and resolution. Mastery of these elements enables users to capture intricate details of specimens effectively."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The introduction to the compound **microscope** presents a glimpse into its significance and functionality.",
+                        "The **photo** of a **Clematis Stem Thin Section** exemplifies the detailed structures observable through this instrument.",
+                        "Initially, the compound microscope serves as a crucial tool for magnifying **minute objects**, crucial in several fields such as biology, medicine, and materials science."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Appreciating the **design** and **construction** of the compound microscope is key.",
+                        "Essential components include the **objective lens** and **eyepiece**, which work together to enlarge images of small specimens.",
+                        "The **optical** and **mechanical** systems combine to create a finely-tuned instrument, allowing researchers to explore the microscopic world."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Understanding how to properly use a microscope involves **calibration** and **focusing** of its parts.",
+                        "Correct **illumination** is crucial; methods like **Koehler Illumination** ensure even lighting across the field of view, enhancing image clarity and resolution.",
+                        "Mastery of these elements enables users to capture intricate details of specimens effectively."
+                    ]
+                }
+            ]
         },
         {
             "title": "Introduction to the Compound Microscope",
-            "body": "<b style='color: forestgreen;'>An Introduction to the Compound Microscope</b> provides a detailed guide to understanding <b style='color: forestgreen;'>optical instruments</b> with a particular focus on microscopes. A <b style='color: forestgreen;'>compound microscope</b> employs multiple lenses to achieve <b style='color: forestgreen;'>magnification</b>, allowing users to observe minute details not visible to the naked eye. This introduction emphasizes learning the basic <b style='color: forestgreen;'>components</b> and <b style='color: forestgreen;'>functions</b> of the device.\n\nThe guide highlights the importance of proper <b style='color: forestgreen;'>illumination</b> and the correct use of various <b style='color: forestgreen;'>microscope parts</b> to ensure the best observational results. It covers fundamental aspects like <b style='color: forestgreen;'>objectives, eyepieces,</b> and <b style='color: forestgreen;'>condensers</b>, all of which work together to form clear and detailed images. Mastery of these elements is crucial for effective <b style='color: forestgreen;'>microscopy</b>.\n\nFurther sections will delve into more complex topics, such as the minimization of <b style='color: forestgreen;'>aberrations</b> like <b style='color: forestgreen;'>chromatic and spherical aberration</b>, which can affect image clarity. Understanding these phenomena will aid users in achieving high-quality <b style='color: forestgreen;'>resolution</b> and appropriate <b style='color: forestgreen;'>depth of field</b> for their scientific investigations."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**An Introduction to the Compound Microscope** provides a detailed guide to understanding **optical instruments** with a particular focus on microscopes.",
+                        "A **compound microscope** employs multiple lenses to achieve **magnification**, allowing users to observe minute details not visible to the naked eye.",
+                        "This introduction emphasizes learning the basic **components** and **functions** of the device."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The guide highlights the importance of proper **illumination** and the correct use of various **microscope parts** to ensure the best observational results.",
+                        "It covers fundamental aspects like **objectives, eyepieces,** and **condensers**, all of which work together to form clear and detailed images.",
+                        "Mastery of these elements is crucial for effective **microscopy**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Further sections will delve into more complex topics, such as the minimization of **aberrations** like **chromatic and spherical aberration**, which can affect image clarity.",
+                        "Understanding these phenomena will aid users in achieving high-quality **resolution** and appropriate **depth of field** for their scientific investigations."
+                    ]
+                }
+            ]
         },
         {
             "title": "Understanding Microscopes: From Simple to Compound",
-            "body": "<b style='color: forestgreen;'>Simple Microscopes</b> use a single lens to enhance an object's appearance. In the 1600s, Leeuwenhoek managed to see \"animalcules\" and some bacteria. These microscopes displayed images as virtual and had limitations like specimen positioning and <b style='color: forestgreen;'>lens aberrations</b>. The <b style='color: forestgreen;'>Compound Microscope</b>, developed by <b style='color: forestgreen;'>Janssen brothers</b> and Galileo, uses two lenses (objective and eyepiece) for a two-stage magnification process. The image seen through the microscope is not real but a \"<b style='color: forestgreen;'>virtual image</b>.\"\n\nIn a <b style='color: forestgreen;'>compound microscope</b>, light passes through a condenser, then the specimen, and is gathered by an objective which, along with a tube lens, projects the image to the eyepiece. It then reaches the observer's eye. The image appears as if it is 10 inches away. Some microscopes, used specifically in tissue cultures, are <b style='color: forestgreen;'>inverted</b>; their functioning principle remains the same as in upright ones, including the setup of illumination. \n\nA general walkthrough of microscope operation is followed by the main components. <b style='color: forestgreen;'>Infinity-corrected</b> objective systems are highlighted for certain equipment. These systems ensure precise focus and image quality, essential for accurate microscopy observations. <b style='color: forestgreen;'>Microscope setup</b> primarily focuses on achieving flawless specimen view and studying details effectively."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Simple Microscopes** use a single lens to enhance an object's appearance.",
+                        "In the 1600s, Leeuwenhoek managed to see \"animalcules\" and some bacteria.",
+                        "These microscopes displayed images as virtual and had limitations like specimen positioning and **lens aberrations**.",
+                        "The **Compound Microscope**, developed by **Janssen brothers** and Galileo, uses two lenses (objective and eyepiece) for a two-stage magnification process.",
+                        "The image seen through the microscope is not real but a \"**virtual image**.\""
+                    ]
+                },
+                {
+                    "sentences": [
+                        "In a **compound microscope**, light passes through a condenser, then the specimen, and is gathered by an objective which, along with a tube lens, projects the image to the eyepiece.",
+                        "It then reaches the observer's eye.",
+                        "The image appears as if it is 10 inches away.",
+                        "Some microscopes, used specifically in tissue cultures, are **inverted**; their functioning principle remains the same as in upright ones, including the setup of illumination."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "A general walkthrough of microscope operation is followed by the main components.",
+                        "**Infinity-corrected** objective systems are highlighted for certain equipment.",
+                        "These systems ensure precise focus and image quality, essential for accurate microscopy observations.",
+                        "**Microscope setup** primarily focuses on achieving flawless specimen view and studying details effectively."
+                    ]
+                }
+            ]
         },
         {
             "title": "Key Optical and Mechanical Components of a Microscope",
-            "body": "<h3 style='color: forestgreen;'>Understanding Optical Components</h3>\n\nThe <b style='color: forestgreen;'>eyepiece</b> of a microscope plays a vital role by further magnifying the focused image provided by the <b style='color: forestgreen;'>objective</b>. It transforms this image into a virtual one as if it is 10 inches from the eye, enabling clear observation by the viewer. Within the eyepiece, scales, markers, or crosshairs can be integrated for precise measurements while viewing the image. The <b style='color: forestgreen;'>objective</b> is regarded as the most crucial part, responsible for collecting light that passes through the specimen, projecting a real, inverted image. This component may have additional features like an iris for <b style='color: forestgreen;'>darkfield microscopy</b> or a correction collar for <b style='color: forestgreen;'>spherical aberrations</b>."
+            "paragraphs": [
+                {
+                    "heading": "Understanding Optical Components",
+                    "sentences": [
+                        "The **eyepiece** of a microscope plays a vital role by further magnifying the focused image provided by the **objective**.",
+                        "It transforms this image into a virtual one as if it is 10 inches from the eye, enabling clear observation by the viewer.",
+                        "Within the eyepiece, scales, markers, or crosshairs can be integrated for precise measurements while viewing the image.",
+                        "The **objective** is regarded as the most crucial part, responsible for collecting light that passes through the specimen, projecting a real, inverted image.",
+                        "This component may have additional features like an iris for **darkfield microscopy** or a correction collar for **spherical aberrations**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Understanding Light and Refraction",
-            "body": "<h3 style='color: forestgreen;'>Microscopy and Light Refraction Explained</h3>\n\n<b style='color: forestgreen;'>Light</b> travels at different speeds in <b style='color: forestgreen;'>air</b> and <b style='color: forestgreen;'>glass</b>. Its speed in air is faster, which is why it's taken as the standard with a refractive index of 1. When light enters a denser medium like glass, it is <b style='color: forestgreen;'>slowed</b> and <b style='color: forestgreen;'>bent</b>. Importantly, if light moves from a denser medium to a less dense one at too steep an angle (known as the <b style='color: forestgreen;'>critical angle</b>), it is completely internally reflected. This can happen if light travels from <b style='color: forestgreen;'>glass to air</b> at a critical angle, meaning it doesn't pass through but is reflected back. Light passing between mediums with the same <b style='color: forestgreen;'>refractive index</b> is not bent, so when light passes from glass to <b style='color: forestgreen;'>immersion oil</b> (both 1.515), it is not refracted as their indices are identical."
+            "paragraphs": [
+                {
+                    "heading": "Microscopy and Light Refraction Explained",
+                    "sentences": [
+                        "**Light** travels at different speeds in **air** and **glass**.",
+                        "Its speed in air is faster, which is why it's taken as the standard with a refractive index of 1.",
+                        "When light enters a denser medium like glass, it is **slowed** and **bent**.",
+                        "Importantly, if light moves from a denser medium to a less dense one at too steep an angle (known as the **critical angle**), it is completely internally reflected.",
+                        "This can happen if light travels from **glass to air** at a critical angle, meaning it doesn't pass through but is reflected back.",
+                        "Light passing between mediums with the same **refractive index** is not bent, so when light passes from glass to **immersion oil** (both 1.515), it is not refracted as their indices are identical."
+                    ]
+                }
+            ]
         },
         {
             "title": "Objective Lens Characteristics and Identifications",
-            "body": "<h3 style='color: forestgreen;'>Objective Characteristics</h3>\n\n<b style='color: forestgreen;'>Objectives</b> produce images that are <b style='color: forestgreen;'>curved</b>, but lens designers have created \"<b style='color: forestgreen;'>plan</b>\" objectives (plan-achromats, plan-fluorites, plan-apochromats) to ensure <b style='color: forestgreen;'>flat images</b> across the field of view, which is crucial for <b style='color: forestgreen;'>image recording</b>. Each objective has its <b style='color: forestgreen;'>magnification</b> inscribed, an infinity-correction symbol (<b style='color: forestgreen;'>\u221e</b>), assumed cover glass thickness (usually <b style='color: forestgreen;'>0.17 mm</b>), and level of correction for <b style='color: forestgreen;'>fluorites</b> or <b style='color: forestgreen;'>apochromats</b>. If labeled with <b style='color: forestgreen;'>OIL</b>, <b style='color: forestgreen;'>HI</b>, or <b style='color: forestgreen;'>OEL</b>, the objective is for <b style='color: forestgreen;'>oil immersion</b>; without, it's a \"<b style='color: forestgreen;'>dry</b> objective\" using air."
+            "paragraphs": [
+                {
+                    "heading": "Objective Characteristics",
+                    "sentences": [
+                        "**Objectives** produce images that are **curved**, but lens designers have created \"**plan**\" objectives (plan-achromats, plan-fluorites, plan-apochromats) to ensure **flat images** across the field of view, which is crucial for **image recording**.",
+                        "Each objective has its **magnification** inscribed, an infinity-correction symbol (**\u221e**), assumed cover glass thickness (usually **0.17 mm**), and level of correction for **fluorites** or **apochromats**.",
+                        "If labeled with **OIL**, **HI**, or **OEL**, the objective is for **oil immersion**; without, it's a \"**dry** objective\" using air."
+                    ]
+                }
+            ]
         },
         {
             "title": "Understanding Lens Function in Microscopes",
-            "body": "<b style='color: forestgreen;'>Understanding Lenses</b> is key to how microscopes function. Parallel light passing through a <b style='color: forestgreen;'>convex lens</b> focuses at a <b style='color: forestgreen;'>focal point</b> on the <b style='color: forestgreen;'>focal plane</b>. This is similar to using a \"burning glass\". The <b style='color: forestgreen;'>focal distance</b> is the distance from the center of the <b style='color: forestgreen;'>convex lens</b> to the <b style='color: forestgreen;'>focal plane</b>. Different distances of the object from the lens create images that vary in size and orientation. Images can be smaller, same size, or larger than the object, and they are generally <b style='color: forestgreen;'>inverted</b> and <b style='color: forestgreen;'>real</b>. \n\nThe <b style='color: forestgreen;'>Image Formation Process</b> in a microscope involves different <b style='color: forestgreen;'>scenarios</b> or \"Cases\". In <b style='color: forestgreen;'>Case 4</b>, the object is between one and two focal lengths; the image is real, inverted, and magnified, relevant for <b style='color: forestgreen;'>microscopy objectives</b>. In <b style='color: forestgreen;'>Case 5</b>, when the object is at the front focal plane of a <b style='color: forestgreen;'>convex lens</b>, the rays emerge parallel, creating an <b style='color: forestgreen;'>upright virtual image</b>. This is like a <b style='color: forestgreen;'>magnifying glass</b>, crucial for understanding the <b style='color: forestgreen;'>eyepiece</b> function.\n\nFor <b style='color: forestgreen;'>Infinity-Corrected Objectives</b>, the object is positioned at the front focal plane, making <b style='color: forestgreen;'>light rays</b> emerge parallel. A <b style='color: forestgreen;'>tube lens</b> in the microscope then focuses these rays back to the <b style='color: forestgreen;'>eyepiece</b>. This design allows for variance in observation and imaging without altering the lens itself. The <b style='color: forestgreen;'>magnification</b> in such objectives is the focal length of the tube lens divided by the focal length of the objective lens. This setup is frequently used in advanced microscope systems."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Understanding Lenses** is key to how microscopes function.",
+                        "Parallel light passing through a **convex lens** focuses at a **focal point** on the **focal plane**.",
+                        "This is similar to using a \"burning glass\".",
+                        "The **focal distance** is the distance from the center of the **convex lens** to the **focal plane**.",
+                        "Different distances of the object from the lens create images that vary in size and orientation.",
+                        "Images can be smaller, same size, or larger than the object, and they are generally **inverted** and **real**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The **Image Formation Process** in a microscope involves different **scenarios** or \"Cases\".",
+                        "In **Case 4**, the object is between one and two focal lengths; the image is real, inverted, and magnified, relevant for **microscopy objectives**.",
+                        "In **Case 5**, when the object is at the front focal plane of a **convex lens**, the rays emerge parallel, creating an **upright virtual image**.",
+                        "This is like a **magnifying glass**, crucial for understanding the **eyepiece** function."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "For **Infinity-Corrected Objectives**, the object is positioned at the front focal plane, making **light rays** emerge parallel.",
+                        "A **tube lens** in the microscope then focuses these rays back to the **eyepiece**.",
+                        "This design allows for variance in observation and imaging without altering the lens itself.",
+                        "The **magnification** in such objectives is the focal length of the tube lens divided by the focal length of the objective lens.",
+                        "This setup is frequently used in advanced microscope systems."
+                    ]
+                }
+            ]
         },
         {
             "title": "Koehler Illumination & Setup Guide",
-            "body": "<b style='color: forestgreen;'>Koehler Illumination</b>: In a <b style='color: forestgreen;'>microscope</b>, the <b style='color: forestgreen;'>light source</b> focuses on the <b style='color: forestgreen;'>aperture diaphragm</b> of the <b style='color: forestgreen;'>condenser</b>, creating <b style='color: forestgreen;'>parallel rays</b> through the <b style='color: forestgreen;'>specimen</b>, ensuring a grainless and extended light at the specimen plane. The <b style='color: forestgreen;'>aperture diaphragm</b> controls the <b style='color: forestgreen;'>light cone angle</b> to the specimen while the <b style='color: forestgreen;'>field diaphragm</b> manages the <b style='color: forestgreen;'>diameter</b> of the light bundle. The <b style='color: forestgreen;'>intermediate image plane</b> aligns with the fixed diaphragm in the <b style='color: forestgreen;'>eyepiece</b>. A <b style='color: forestgreen;'>diffusing filter</b> before the <b style='color: forestgreen;'>field diaphragm</b> ensures even light. Proper manipulation of both diaphragms achieves <b style='color: forestgreen;'>bright, even illumination</b> and balances <b style='color: forestgreen;'>resolution</b> and <b style='color: forestgreen;'>contrast</b>.\n\n<b style='color: forestgreen;'>Conjugate Planes</b>: In <b style='color: forestgreen;'>Koehler illumination</b>, <b style='color: forestgreen;'>conjugate planes</b> are successive <b style='color: forestgreen;'>focus planes</b> in both <b style='color: forestgreen;'>illumination</b> and <b style='color: forestgreen;'>image</b> paths. These include planes like the <b style='color: forestgreen;'>lamp filament</b>, <b style='color: forestgreen;'>back focal plane</b> of the <b style='color: forestgreen;'>objective</b>, and <b style='color: forestgreen;'>eyepoint</b> of the <b style='color: forestgreen;'>eyepiece</b> in the <b style='color: forestgreen;'>illumination path</b>. In the <b style='color: forestgreen;'>image path</b>, it comprises the <b style='color: forestgreen;'>field diaphragm</b>, specimen, and the <b style='color: forestgreen;'>retina or camera sensor</b>. Adjustments ensure each set of <b style='color: forestgreen;'>planes</b> is in focus across the microscope components, improving the imagery and enhancing detail visibility.\n\n<b style='color: forestgreen;'>Setup & Adjustments</b>: Setting up involves opening <b style='color: forestgreen;'>diaphragms</b>, centering the <b style='color: forestgreen;'>field diaphragm</b>, and adjusting the <b style='color: forestgreen;'>aperture diaphragm</b> based on the <b style='color: forestgreen;'>objective power</b>. Switching to higher objectives like <b style='color: forestgreen;'>40X</b> requires closing and centering the <b style='color: forestgreen;'>field diaphragm</b> and slightly opening the <b style='color: forestgreen;'>condenser aperture diaphragm</b>. The <b style='color: forestgreen;'>numerical aperture scale</b> aids in setting <b style='color: forestgreen;'>desired diaphragm openings</b>. Use <b style='color: forestgreen;'>neutral density filters</b> for adjusting lamp intensity without altering color temperature. Avoid changing brightness by adjusting the <b style='color: forestgreen;'>condenser position</b> or closing the <b style='color: forestgreen;'>aperture diaphragm</b> after setup to maintain optimal illumination."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Koehler Illumination**: In a **microscope**, the **light source** focuses on the **aperture diaphragm** of the **condenser**, creating **parallel rays** through the **specimen**, ensuring a grainless and extended light at the specimen plane.",
+                        "The **aperture diaphragm** controls the **light cone angle** to the specimen while the **field diaphragm** manages the **diameter** of the light bundle.",
+                        "The **intermediate image plane** aligns with the fixed diaphragm in the **eyepiece**.",
+                        "A **diffusing filter** before the **field diaphragm** ensures even light.",
+                        "Proper manipulation of both diaphragms achieves **bright, even illumination** and balances **resolution** and **contrast**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Conjugate Planes**: In **Koehler illumination**, **conjugate planes** are successive **focus planes** in both **illumination** and **image** paths.",
+                        "These include planes like the **lamp filament**, **back focal plane** of the **objective**, and **eyepoint** of the **eyepiece** in the **illumination path**.",
+                        "In the **image path**, it comprises the **field diaphragm**, specimen, and the **retina or camera sensor**.",
+                        "Adjustments ensure each set of **planes** is in focus across the microscope components, improving the imagery and enhancing detail visibility."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Setup & Adjustments**: Setting up involves opening **diaphragms**, centering the **field diaphragm**, and adjusting the **aperture diaphragm** based on the **objective power**.",
+                        "Switching to higher objectives like **40X** requires closing and centering the **field diaphragm** and slightly opening the **condenser aperture diaphragm**.",
+                        "The **numerical aperture scale** aids in setting **desired diaphragm openings**.",
+                        "Use **neutral density filters** for adjusting lamp intensity without altering color temperature.",
+                        "Avoid changing brightness by adjusting the **condenser position** or closing the **aperture diaphragm** after setup to maintain optimal illumination."
+                    ]
+                }
+            ]
         },
         {
             "title": "Understanding Numerical Aperture and Magnification in Microscopy",
-            "body": "<b style='color: forestgreen;'>Diffraction</b> and the <b style='color: forestgreen;'>wave size of light</b> dictate the \"rule of thumb\" for useful magnification, which is <b style='color: forestgreen;'>500-1000X</b> the <b style='color: forestgreen;'>numerical aperture</b> (N.A.) of an objective. This means, for example, an objective with a <b style='color: forestgreen;'>numerical aperture of 0.25</b> has an upper magnification limit of <b style='color: forestgreen;'>250X</b>. For optimal magnification, use <b style='color: forestgreen;'>higher magnification objectives</b> with <b style='color: forestgreen;'>lower magnification eyepieces</b>. The <b style='color: forestgreen;'>numerical aperture (N.A.)</b> represents an objective's ability to capture light rays, linked to its <b style='color: forestgreen;'>angular aperture</b>. Higher angular apertures permit larger cones of light. The formula <b style='color: forestgreen;'>N.A. = n sine \u00b5</b> shows that <b style='color: forestgreen;'>\"n\"</b> is the <b style='color: forestgreen;'>refractive index</b> and <b style='color: forestgreen;'>\u00b5</b> is half the objective's angular aperture. The <b style='color: forestgreen;'>refractive index</b> of common mediums like <b style='color: forestgreen;'>air (1.00+)</b> and <b style='color: forestgreen;'>oil (1.515)</b> indicates that oil immersion objectives can achieve higher N.A."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Diffraction** and the **wave size of light** dictate the \"rule of thumb\" for useful magnification, which is **500-1000X** the **numerical aperture** (N.A.) of an objective.",
+                        "This means, for example, an objective with a **numerical aperture of 0.25** has an upper magnification limit of **250X**.",
+                        "For optimal magnification, use **higher magnification objectives** with **lower magnification eyepieces**.",
+                        "The **numerical aperture (N.A.)** represents an objective's ability to capture light rays, linked to its **angular aperture**.",
+                        "Higher angular apertures permit larger cones of light.",
+                        "The formula **N.A. = n sine \u00b5** shows that **\"n\"** is the **refractive index** and **\u00b5** is half the objective's angular aperture.",
+                        "The **refractive index** of common mediums like **air (1.00+)** and **oil (1.515)** indicates that oil immersion objectives can achieve higher N.A."
+                    ]
+                }
+            ]
         },
         {
             "title": "Understanding Finite and Infinity-Corrected Microscopy Systems",
-            "body": "<b style='color: forestgreen;'>Infinite tube length microscopes</b> lack a tube lens in the optical path, projecting the image at the eyepiece without additional lenses. This differs from infinity-corrected systems, which allow for flexible adaptations like vertical illuminators. Do <b style='color: forestgreen;'>not mix</b> objective types between systems to maintain image quality.\n\nCompensating eyepieces, labeled <b style='color: forestgreen;'>C</b> or <b style='color: forestgreen;'>K</b>, are used in older systems to correct chromatic aberration not handled in the objectives. Modern Olympus, Nikon, Zeiss, and Leica microscopes incorporate these corrections in other components, hence avoiding the need for compensating eyepieces. \n\nThe <b style='color: forestgreen;'>numerical aperture (N.A.)</b> formulas outline how it\u2019s calculated based on <b style='color: forestgreen;'>medium refractive index</b> and <b style='color: forestgreen;'>angular aperture</b>. <b style='color: forestgreen;'>Resolution</b> is determined using the wavelength of light, with an equation detailing the space between <b style='color: forestgreen;'>adjacent points</b> to maintain separation visibility. Key equations also provide means to calculate <b style='color: forestgreen;'>magnification</b> and <b style='color: forestgreen;'>intensity</b> in optical systems."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Infinite tube length microscopes** lack a tube lens in the optical path, projecting the image at the eyepiece without additional lenses.",
+                        "This differs from infinity-corrected systems, which allow for flexible adaptations like vertical illuminators.",
+                        "Do **not mix** objective types between systems to maintain image quality."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Compensating eyepieces, labeled **C** or **K**, are used in older systems to correct chromatic aberration not handled in the objectives.",
+                        "Modern Olympus, Nikon, Zeiss, and Leica microscopes incorporate these corrections in other components, hence avoiding the need for compensating eyepieces."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The **numerical aperture (N.A.)** formulas outline how it\u2019s calculated based on **medium refractive index** and **angular aperture**.",
+                        "**Resolution** is determined using the wavelength of light, with an equation detailing the space between **adjacent points** to maintain separation visibility.",
+                        "Key equations also provide means to calculate **magnification** and **intensity** in optical systems."
+                    ]
+                }
+            ]
         }
     ]
 }

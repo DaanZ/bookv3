@@ -12,31 +12,167 @@
     "parts": [
         {
             "title": "Visible Learning: Lesson Planning - \"Teachers are to DIIE for!\"",
-            "body": "The <b style='color: forestgreen;'>crucial role of lesson planning</b> as a combination of <b style='color: forestgreen;'>competence and attitude</b> is emphasized. It leverages the extensive <b style='color: forestgreen;'>Visible Learning\u00ae research</b> (over 2,300 meta-analyses, 400 million learners) to advocate for <b style='color: forestgreen;'>evidence-based teaching</b>. The authors argue that while almost everything in teaching can promote learning (d>0), true impact is achieved when effects are <b style='color: forestgreen;'>better than average (d>0.4)</b>. This requires teachers to be <b style='color: forestgreen;'>\"activators\"</b>, focusing on their impact and adopting practices like setting challenging goals, providing feedback, and fostering strong teacher-student relationships. <b style='color: forestgreen;'>Expertise</b> is defined by the \"Three Es\" (Excellence, Engagement, Ethics) and is further detailed in \"<b style='color: forestgreen;'>10 Mindframes for Visible Learning</b>,\" which promote a network of consistent thinking and acting. The book stresses that while some high-impact teachers may not have written plans, the <b style='color: forestgreen;'>act of planning itself is vital</b> for clarity, challenge, and adapting to diverse student needs. Planning models, like the <b style='color: forestgreen;'>DIIE model (Diagnosis, Intervention, Implementation, Evaluation)</b>, are shown to be highly effective (d=0.79) in improving planning by offering <b style='color: forestgreen;'>perspectivity, dimensionality, and deeper understanding</b>, ultimately moving from \"Visible Teaching\" to \"Visible Learning.\""
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **crucial role of lesson planning** as a combination of **competence and attitude** is emphasized.",
+                        "It leverages the extensive **Visible Learning\u00ae research** (over 2,300 meta-analyses, 400 million learners) to advocate for **evidence-based teaching**.",
+                        "The authors argue that while almost everything in teaching can promote learning (d>0), true impact is achieved when effects are **better than average (d>0.4)**.",
+                        "This requires teachers to be **\"activators\"**, focusing on their impact and adopting practices like setting challenging goals, providing feedback, and fostering strong teacher-student relationships.",
+                        "**Expertise** is defined by the \"Three Es\" (Excellence, Engagement, Ethics) and is further detailed in \"**10 Mindframes for Visible Learning**,\" which promote a network of consistent thinking and acting.",
+                        "The book stresses that while some high-impact teachers may not have written plans, the **act of planning itself is vital** for clarity, challenge, and adapting to diverse student needs.",
+                        "Planning models, like the **DIIE model (Diagnosis, Intervention, Implementation, Evaluation)**, are shown to be highly effective (d=0.79) in improving planning by offering **perspectivity, dimensionality, and deeper understanding**, ultimately moving from \"Visible Teaching\" to \"Visible Learning.\""
+                    ]
+                }
+            ]
         },
         {
             "title": "The DIIE Model for Effective Lesson Planning",
-            "body": "This text discusses the <b style='color: forestgreen;'>DIIE model</b> (Diagnosis, Intervention, Implementation, Evaluation) for <b style='color: forestgreen;'>effective lesson planning</b> in education. <b style='color: forestgreen;'>Diagnosis</b> involves understanding students' <b style='color: forestgreen;'>prior knowledge</b>, behaviors, and backgrounds *before* teaching, much like asking about dietary needs before a dinner party. This allows for more <b style='color: forestgreen;'>personalized and inclusive teaching</b>, maximizing impact. <b style='color: forestgreen;'>Intervention</b> is the next step, where teachers, armed with knowledge about their students, choose and apply various <b style='color: forestgreen;'>learning strategies</b>. The key is to select the *best* intervention for the *specific context* of the students and learning environment, as almost everything \"works\" but some things work *better*. Teachers should consider having <b style='color: forestgreen;'>multiple interventions</b> available, knowing <b style='color: forestgreen;'>when to apply them</b>, and being able to <b style='color: forestgreen;'>adapt them</b> based on student needs.\n\n<b style='color: forestgreen;'>Implementation</b> means putting these high-impact interventions into practice <b style='color: forestgreen;'>effectively</b>. It's crucial to adapt strategies to the <b style='color: forestgreen;'>local context</b> (face-to-face, hybrid, or virtual) and ensure they are <b style='color: forestgreen;'>clear to all stakeholders</b>. <b style='color: forestgreen;'>Evaluation</b>, the final component, involves assessing the <b style='color: forestgreen;'>impact</b> of teaching strategies on student <b style='color: forestgreen;'>growth and progress</b>, not just achievement. This requires reflection on initial decisions and understanding the expected outcomes. The text emphasizes that <b style='color: forestgreen;'>lesson planning</b> is not just about competence (knowledge and ability) but also <b style='color: forestgreen;'>attitude</b> (willingness and values), suggesting that teachers are truly \"to DIIE for!\" when they integrate these aspects."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This text discusses the **DIIE model** (Diagnosis, Intervention, Implementation, Evaluation) for **effective lesson planning** in education.",
+                        "**Diagnosis** involves understanding students' **prior knowledge**, behaviors, and backgrounds *before* teaching, much like asking about dietary needs before a dinner party.",
+                        "This allows for more **personalized and inclusive teaching**, maximizing impact.",
+                        "**Intervention** is the next step, where teachers, armed with knowledge about their students, choose and apply various **learning strategies**.",
+                        "The key is to select the *best* intervention for the *specific context* of the students and learning environment, as almost everything \"works\" but some things work *better*.",
+                        "Teachers should consider having **multiple interventions** available, knowing **when to apply them**, and being able to **adapt them** based on student needs."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Implementation** means putting these high-impact interventions into practice **effectively**.",
+                        "It's crucial to adapt strategies to the **local context** (face-to-face, hybrid, or virtual) and ensure they are **clear to all stakeholders**.",
+                        "**Evaluation**, the final component, involves assessing the **impact** of teaching strategies on student **growth and progress**, not just achievement.",
+                        "This requires reflection on initial decisions and understanding the expected outcomes.",
+                        "The text emphasizes that **lesson planning** is not just about competence (knowledge and ability) but also **attitude** (willingness and values), suggesting that teachers are truly \"to DIIE for!\" when they integrate these aspects."
+                    ]
+                }
+            ]
         },
         {
             "title": "Analysis of Teacher Professionalism",
-            "body": "The <b style='color: forestgreen;'>analysis of teacher professionalism</b> starts with introspective questions about a teacher's <b style='color: forestgreen;'>impact on student learning</b>, <b style='color: forestgreen;'>teaching quality</b>, and handling <b style='color: forestgreen;'>mistakes</b>. It acknowledges that teachers might feel constrained by existing structures but aims to encourage reflection on these attitudes. The goal is to stimulate the <b style='color: forestgreen;'>professionalization process</b> by considering <b style='color: forestgreen;'>how and why teachers do what they do</b>, rather than prescribing actions.\n\nThe <b style='color: forestgreen;'>Visible Learning dataset</b> related to teachers highlights three key messages. First, some factors like \"Teacher performance pay\" have <b style='color: forestgreen;'>little effect</b> on learning. Second, factors like \"Teacher personality\" are often debated but have <b style='color: forestgreen;'>moderate impact</b>. Third, <b style='color: forestgreen;'>teacher expertise</b> is crucial, encompassing \"Teacher expectations\" (d=0.58), \"Teacher\u2013student relationships\" (d=0.62), and \"Teacher credibility\" (d=1.09). Interestingly, \"Teacher subject matter knowledge\" has a lower effect size (d=0.13) because it needs to be combined with <b style='color: forestgreen;'>pedagogical and didactic competence</b> to be effective. <b style='color: forestgreen;'>Knowledge and ability alone are insufficient</b>; a teacher's <b style='color: forestgreen;'>will and judgment</b> (their attitudes) are equally vital, as exemplified by how teachers view mistakes. <b style='color: forestgreen;'>Collective teacher efficacy</b> (d=1.34) is important, and schools need to foster a culture of <b style='color: forestgreen;'>shared vision, discussion, and continuous improvement</b> based on evidence."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **analysis of teacher professionalism** starts with introspective questions about a teacher's **impact on student learning**, **teaching quality**, and handling **mistakes**.",
+                        "It acknowledges that teachers might feel constrained by existing structures but aims to encourage reflection on these attitudes.",
+                        "The goal is to stimulate the **professionalization process** by considering **how and why teachers do what they do**, rather than prescribing actions."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The **Visible Learning dataset** related to teachers highlights three key messages.",
+                        "First, some factors like \"Teacher performance pay\" have **little effect** on learning.",
+                        "Second, factors like \"Teacher personality\" are often debated but have **moderate impact**.",
+                        "Third, **teacher expertise** is crucial, encompassing \"Teacher expectations\" (d=0.58), \"Teacher\u2013student relationships\" (d=0.62), and \"Teacher credibility\" (d=1.09).",
+                        "Interestingly, \"Teacher subject matter knowledge\" has a lower effect size (d=0.13) because it needs to be combined with **pedagogical and didactic competence** to be effective.",
+                        "**Knowledge and ability alone are insufficient**; a teacher's **will and judgment** (their attitudes) are equally vital, as exemplified by how teachers view mistakes.",
+                        "**Collective teacher efficacy** (d=1.34) is important, and schools need to foster a culture of **shared vision, discussion, and continuous improvement** based on evidence."
+                    ]
+                }
+            ]
         },
         {
             "title": "Lesson Planning: Strategies, Implementation, and Learning",
-            "body": "<b style='color: forestgreen;'>Lesson planning</b> converts <b style='color: forestgreen;'>analysis results</b> into actionable steps, specifically examining <b style='color: forestgreen;'>Teaching strategies</b>, <b style='color: forestgreen;'>Implementation</b>, and <b style='color: forestgreen;'>Learning strategies</b>. Given the <b style='color: forestgreen;'>120 factors</b> across these domains, the goal is to extract <b style='color: forestgreen;'>core teaching practice messages</b> for <b style='color: forestgreen;'>everyday lesson planning</b>, particularly for <b style='color: forestgreen;'>beginners</b>. The discussion unfolds in seven steps: first, preliminary considerations examine the domains to derive <b style='color: forestgreen;'>key messages</b> and <b style='color: forestgreen;'>recommendations</b>. Existing models of teaching quality are deemed too abstract, leading to the introduction of a more practical <b style='color: forestgreen;'>didactic hexagon</b> for planning goals, content, methods, media, space, and time. Second, <b style='color: forestgreen;'>success criteria</b> are explained, emphasizing the importance of <b style='color: forestgreen;'>prior knowledge</b>. <b style='color: forestgreen;'>Content analysis</b> and task formulation are important. <b style='color: forestgreen;'>Methods</b> are significant for <b style='color: forestgreen;'>implementation quality</b> and alignment. <b style='color: forestgreen;'>Media integration</b> focuses on how technology is used rather than the technology itself. Sixth, the <b style='color: forestgreen;'>teaching space</b> is considered, linking its design to learner analysis and prior knowledge. <b style='color: forestgreen;'>Time efficiency</b> integrates with other decision fields.\n\n<b style='color: forestgreen;'>Teaching strategies</b> include five key messages drawn from over 200 meta-analyses. It asserts that <b style='color: forestgreen;'>all teaching methods are empirically effective</b> if implemented well, making the question \"What works?\" misleading. Factors related to <b style='color: forestgreen;'>goal setting</b> like \"Advance organizers\" and \"Appropriately challenging goals\" show <b style='color: forestgreen;'>above-average efficacy</b>. The importance of <b style='color: forestgreen;'>dialogue-based teaching</b> (e.g., \"Questioning,\" \"Peer tutoring,\" \"Classroom discussions\") is highlighted. Procedures for <b style='color: forestgreen;'>visualizing learning content</b> (\"Worked examples,\" \"Concept mapping\") are relevant. <b style='color: forestgreen;'>Diagnosis and teaching-learning strategies</b> like \"Feedback,\" \"Planning and prediction,\" and \"Response to intervention\" are significant. This sets the stage for examining learning strategies and implementation domains before concluding with overall implications for lesson planning."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Lesson planning** converts **analysis results** into actionable steps, specifically examining **Teaching strategies**, **Implementation**, and **Learning strategies**.",
+                        "Given the **120 factors** across these domains, the goal is to extract **core teaching practice messages** for **everyday lesson planning**, particularly for **beginners**.",
+                        "The discussion unfolds in seven steps: first, preliminary considerations examine the domains to derive **key messages** and **recommendations**.",
+                        "Existing models of teaching quality are deemed too abstract, leading to the introduction of a more practical **didactic hexagon** for planning goals, content, methods, media, space, and time.",
+                        "Second, **success criteria** are explained, emphasizing the importance of **prior knowledge**.",
+                        "**Content analysis** and task formulation are important.",
+                        "**Methods** are significant for **implementation quality** and alignment.",
+                        "**Media integration** focuses on how technology is used rather than the technology itself.",
+                        "Sixth, the **teaching space** is considered, linking its design to learner analysis and prior knowledge.",
+                        "**Time efficiency** integrates with other decision fields."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Teaching strategies** include five key messages drawn from over 200 meta-analyses.",
+                        "It asserts that **all teaching methods are empirically effective** if implemented well, making the question \"What works?\" misleading.",
+                        "Factors related to **goal setting** like \"Advance organizers\" and \"Appropriately challenging goals\" show **above-average efficacy**.",
+                        "The importance of **dialogue-based teaching** (e.g., \"Questioning,\" \"Peer tutoring,\" \"Classroom discussions\") is highlighted.",
+                        "Procedures for **visualizing learning content** (\"Worked examples,\" \"Concept mapping\") are relevant.",
+                        "**Diagnosis and teaching-learning strategies** like \"Feedback,\" \"Planning and prediction,\" and \"Response to intervention\" are significant.",
+                        "This sets the stage for examining learning strategies and implementation domains before concluding with overall implications for lesson planning."
+                    ]
+                }
+            ]
         },
         {
             "title": "Lesson Planning, Task Analysis, and Method Selection",
-            "body": "Effective lesson planning uses a <b style='color: forestgreen;'>task analysis matrix</b>. This matrix considers <b style='color: forestgreen;'>sequence of content</b>, <b style='color: forestgreen;'>cognitive level</b>, <b style='color: forestgreen;'>form of representation</b>, <b style='color: forestgreen;'>complexity of the task</b>, and <b style='color: forestgreen;'>connection to real-life problems</b>. \"<b style='color: forestgreen;'>Outlining and summarization</b>\" (effect size 0.62) is crucial. Teachers must model knowledge organization. Develop a <b style='color: forestgreen;'>discussion guide</b> for structured instructions. This links to \"<b style='color: forestgreen;'>Scaffolding and situated learning</b>\" (d = 0.52) and \"<b style='color: forestgreen;'>Cognitive task analysis</b>\" (d = 1.09). <b style='color: forestgreen;'>Reflection</b> on planning is important.  Method planning focuses on <b style='color: forestgreen;'>effectiveness and impact on student learning</b>, not just variety. There is no single \"right\" teaching method. Success depends on achieving learning goals. \"<b style='color: forestgreen;'>Evergreens</b>\" (e.g., Classroom discussion d=0.82), \"<b style='color: forestgreen;'>challengers</b>\" (e.g., Jigsaw method d=1.20), \"<b style='color: forestgreen;'>dialogue promotors</b>\", and \"<b style='color: forestgreen;'>confidence builders</b>\" are effective methods. The \"<b style='color: forestgreen;'>why</b>\" behind method choice, linked to <b style='color: forestgreen;'>learning goals and impact</b>, is critical. The 7 C's framework helps justify choices. <b style='color: forestgreen;'>Differentiation</b> means allowing different ways and times for success. <b style='color: forestgreen;'>Homework</b> has a modest effect size (0.32). Its value is in <b style='color: forestgreen;'>deliberate practice</b> with feedback, not rote drilling. It loses impact if external help is needed or if not integrated with subsequent lessons."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Effective lesson planning uses a **task analysis matrix**.",
+                        "This matrix considers **sequence of content**, **cognitive level**, **form of representation**, **complexity of the task**, and **connection to real-life problems**.",
+                        "\"**Outlining and summarization**\" (effect size 0.62) is crucial.",
+                        "Teachers must model knowledge organization.",
+                        "Develop a **discussion guide** for structured instructions.",
+                        "This links to \"**Scaffolding and situated learning**\" (d = 0.52) and \"**Cognitive task analysis**\" (d = 1.09).",
+                        "**Reflection** on planning is important.",
+                        "Method planning focuses on **effectiveness and impact on student learning**, not just variety.",
+                        "There is no single \"right\" teaching method.",
+                        "Success depends on achieving learning goals.",
+                        "\"**Evergreens**\" (e.g., Classroom discussion d=0.82), \"**challengers**\" (e.g., Jigsaw method d=1.20), \"**dialogue promotors**\", and \"**confidence builders**\" are effective methods.",
+                        "The \"**why**\" behind method choice, linked to **learning goals and impact**, is critical.",
+                        "The 7 C's framework helps justify choices.",
+                        "**Differentiation** means allowing different ways and times for success.",
+                        "**Homework** has a modest effect size (0.32).",
+                        "Its value is in **deliberate practice** with feedback, not rote drilling.",
+                        "It loses impact if external help is needed or if not integrated with subsequent lessons."
+                    ]
+                }
+            ]
         },
         {
             "title": "Visible Learning: Time Planning and Implementation",
-            "body": "<b style='color: forestgreen;'>Visible Learning</b> and <b style='color: forestgreen;'>Lesson Planning</b>, particularly <b style='color: forestgreen;'>time planning</b> and <b style='color: forestgreen;'>implementation</b>, are important topics. It emphasizes that effective time planning isn't just about sticking to a schedule but about <b style='color: forestgreen;'>pedagogical considerations</b>. <b style='color: forestgreen;'>Lesson design</b> (d=0.70) and <b style='color: forestgreen;'>Direct instruction</b> (d=0.56) are highlighted as highly effective factors. Direct instruction, often misunderstood as just teacher talk, is actually about <b style='color: forestgreen;'>clarity of goals</b>, <b style='color: forestgreen;'>learning success</b>, <b style='color: forestgreen;'>methods</b>, and <b style='color: forestgreen;'>media use</b>, and involves <b style='color: forestgreen;'>dialogue</b> and <b style='color: forestgreen;'>exchange</b> to ensure both teachers and learners understand the what, when, why, how, where, and with whom. The <b style='color: forestgreen;'>5E model</b> (Engage, Explore, Explain, Elaborate, Evaluate) is a highly effective <b style='color: forestgreen;'>lesson design</b> framework; models with five phases tend to be more effective than those with three, four, or seven.\n\nThe <b style='color: forestgreen;'>Engage</b> phase focuses on creating a <b style='color: forestgreen;'>conducive atmosphere</b> and <b style='color: forestgreen;'>teacher clarity</b> (d=0.85). <b style='color: forestgreen;'>Explore</b> emphasizes activating <b style='color: forestgreen;'>prior knowledge</b> (d=1.28) and discussing it through <b style='color: forestgreen;'>meta-cognition strategies</b> (d=0.52). <b style='color: forestgreen;'>Explain</b> involves providing additional knowledge, using methods like <b style='color: forestgreen;'>Classroom discussion</b> (d=0.82) and <b style='color: forestgreen;'>Direct instruction</b> (d=0.56) to achieve <b style='color: forestgreen;'>challenging goals</b> (d=0.60). <b style='color: forestgreen;'>Elaborate</b> ensures <b style='color: forestgreen;'>knowledge gain</b> through <b style='color: forestgreen;'>deliberate exercise</b> and <b style='color: forestgreen;'>feedback</b>. <b style='color: forestgreen;'>Evaluate</b> fosters <b style='color: forestgreen;'>independent learners</b> through <b style='color: forestgreen;'>self-reflection</b> and <b style='color: forestgreen;'>meta-cognition strategies</b> (d=0.52), concluding with <b style='color: forestgreen;'>meaningful homework</b> (d=0.29). A structured approach to teaching with <b style='color: forestgreen;'>distinct phases</b>, <b style='color: forestgreen;'>clear pedagogical messages</b>, a <b style='color: forestgreen;'>circular model</b> linking lessons, and <b style='color: forestgreen;'>transparent communication</b> of lesson structure is recommended."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Visible Learning** and **Lesson Planning**, particularly **time planning** and **implementation**, are important topics.",
+                        "It emphasizes that effective time planning isn't just about sticking to a schedule but about **pedagogical considerations**.",
+                        "**Lesson design** (d=0.70) and **Direct instruction** (d=0.56) are highlighted as highly effective factors.",
+                        "Direct instruction, often misunderstood as just teacher talk, is actually about **clarity of goals**, **learning success**, **methods**, and **media use**, and involves **dialogue** and **exchange** to ensure both teachers and learners understand the what, when, why, how, where, and with whom.",
+                        "The **5E model** (Engage, Explore, Explain, Elaborate, Evaluate) is a highly effective **lesson design** framework; models with five phases tend to be more effective than those with three, four, or seven."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The **Engage** phase focuses on creating a **conducive atmosphere** and **teacher clarity** (d=0.85).",
+                        "**Explore** emphasizes activating **prior knowledge** (d=1.28) and discussing it through **meta-cognition strategies** (d=0.52).",
+                        "**Explain** involves providing additional knowledge, using methods like **Classroom discussion** (d=0.82) and **Direct instruction** (d=0.56) to achieve **challenging goals** (d=0.60).",
+                        "**Elaborate** ensures **knowledge gain** through **deliberate exercise** and **feedback**.",
+                        "**Evaluate** fosters **independent learners** through **self-reflection** and **meta-cognition strategies** (d=0.52), concluding with **meaningful homework** (d=0.29).",
+                        "A structured approach to teaching with **distinct phases**, **clear pedagogical messages**, a **circular model** linking lessons, and **transparent communication** of lesson structure is recommended."
+                    ]
+                }
+            ]
         },
         {
             "title": "Evaluation in Teaching and Learning",
-            "body": "This text discusses the <b style='color: forestgreen;'>importance of evaluation</b> in teaching and learning, particularly focusing on <b style='color: forestgreen;'>formative evaluation</b> through <b style='color: forestgreen;'>comprehensive questionnaires</b> that learners can fill out quickly using software. The immediate results highlight that the <b style='color: forestgreen;'>effectiveness</b> of these methods hinges not just on data collection but on its <b style='color: forestgreen;'>evaluation</b>, which sparks a <b style='color: forestgreen;'>dialogue</b> that determines the feedback's impact. An example of <b style='color: forestgreen;'>digital feedback</b> from an app shows a comparison between <b style='color: forestgreen;'>learners' perspectives</b> and the <b style='color: forestgreen;'>teacher's self-perception</b>. This feedback helped identify areas like the \"Clarify\" factor that needed improvement, leading to discussions with learners and colleagues to <b style='color: forestgreen;'>refine teaching strategies</b>.\n\nThe <b style='color: forestgreen;'>critical role of feedback</b> at the end of a lesson is to check if <b style='color: forestgreen;'>goals were achieved</b>, content understood, methods effective, and media useful. Simple methods like <b style='color: forestgreen;'>crossword puzzles</b>, <b style='color: forestgreen;'>learning diaries</b>, or <b style='color: forestgreen;'>homework</b> can facilitate this. It also presents various <b style='color: forestgreen;'>exercises</b> for teachers, including outlining evaluation steps, planning evaluations with colleagues, creating a <b style='color: forestgreen;'>feedback matrix</b> or <b style='color: forestgreen;'>quiz</b>, and using a <b style='color: forestgreen;'>feedback coordinate system</b> or <b style='color: forestgreen;'>online questionnaire</b>. These exercises encourage reflection on <b style='color: forestgreen;'>goals</b>, <b style='color: forestgreen;'>content</b>, <b style='color: forestgreen;'>methods</b>, <b style='color: forestgreen;'>media</b>, <b style='color: forestgreen;'>time</b>, <b style='color: forestgreen;'>room</b>, and <b style='color: forestgreen;'>teacher professionalism</b> (ability, knowledge, willingness, judgment) to plan <b style='color: forestgreen;'>next steps</b> for improvement."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This text discusses the **importance of evaluation** in teaching and learning, particularly focusing on **formative evaluation** through **comprehensive questionnaires** that learners can fill out quickly using software.",
+                        "The immediate results highlight that the **effectiveness** of these methods hinges not just on data collection but on its **evaluation**, which sparks a **dialogue** that determines the feedback's impact.",
+                        "An example of **digital feedback** from an app shows a comparison between **learners' perspectives** and the **teacher's self-perception**.",
+                        "This feedback helped identify areas like the \"Clarify\" factor that needed improvement, leading to discussions with learners and colleagues to **refine teaching strategies**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The **critical role of feedback** at the end of a lesson is to check if **goals were achieved**, content understood, methods effective, and media useful.",
+                        "Simple methods like **crossword puzzles**, **learning diaries**, or **homework** can facilitate this.",
+                        "It also presents various **exercises** for teachers, including outlining evaluation steps, planning evaluations with colleagues, creating a **feedback matrix** or **quiz**, and using a **feedback coordinate system** or **online questionnaire**.",
+                        "These exercises encourage reflection on **goals**, **content**, **methods**, **media**, **time**, **room**, and **teacher professionalism** (ability, knowledge, willingness, judgment) to plan **next steps** for improvement."
+                    ]
+                }
+            ]
         }
     ]
 }

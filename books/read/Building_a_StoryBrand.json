@@ -12,35 +12,178 @@
     "parts": [
         {
             "title": "Introduction to Building a StoryBrand",
-            "body": "This book, \"Building a StoryBrand\" by Donald Miller, emphasizes that <b style='color: forestgreen;'>customers</b> care about their <b style='color: forestgreen;'>own stories</b>, not a company's. The core message is to make the <b style='color: forestgreen;'>customer the hero</b> of the story, not the brand. The book introduces a <b style='color: forestgreen;'>seven-part framework</b> to clarify a business's message, which has helped thousands of businesses stop wasting money on marketing and achieve growth. The author encourages readers to <b style='color: forestgreen;'>read the book</b>, <b style='color: forestgreen;'>filter their message</b> through the framework, and <b style='color: forestgreen;'>clarify their message</b> so more customers listen. It asserts that <b style='color: forestgreen;'>marketing has changed</b>, and businesses that invite customers into a <b style='color: forestgreen;'>heroic story</b> thrive, while others are forgotten."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This book, \"Building a StoryBrand\" by Donald Miller, emphasizes that **customers** care about their **own stories**, not a company's.",
+                        "The core message is to make the **customer the hero** of the story, not the brand.",
+                        "The book introduces a **seven-part framework** to clarify a business's message, which has helped thousands of businesses stop wasting money on marketing and achieve growth.",
+                        "The author encourages readers to **read the book**, **filter their message** through the framework, and **clarify their message** so more customers listen.",
+                        "It asserts that **marketing has changed**, and businesses that invite customers into a **heroic story** thrive, while others are forgotten."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Secret Weapon for Business Growth: Storytelling",
-            "body": "Storytelling is a <b style='color: forestgreen;'>secret weapon</b> for business growth. It simplifies your message into <b style='color: forestgreen;'>seven categories</b>, which helps <b style='color: forestgreen;'>reduce anxiety</b> when talking about your brand and <b style='color: forestgreen;'>attract more customers</b>. Story is <b style='color: forestgreen;'>atomic</b> and can <b style='color: forestgreen;'>hold attention</b> for hours, unlike noise. It is the <b style='color: forestgreen;'>greatest weapon against noise</b> because it engages the brain and makes it remember. Brands that tell a <b style='color: forestgreen;'>clear story</b> are remembered, while those that create noise are forgotten. A good story distills events into <b style='color: forestgreen;'>what really matters</b>. \n\n<b style='color: forestgreen;'>Steve Jobs</b> used story at Apple, changing messaging from technical terms to <b style='color: forestgreen;'>simple, relevant statements</b>. Apple focused on customers as <b style='color: forestgreen;'>heroes</b>, identifying their wants and offering tools for self-expression. The key is to make the story <b style='color: forestgreen;'>about the customer</b>, with the brand as a <b style='color: forestgreen;'>guide</b>. The <b style='color: forestgreen;'>SB7 Framework</b> uses <b style='color: forestgreen;'>seven basic plot points</b>: a <b style='color: forestgreen;'>character</b> wants something, has a <b style='color: forestgreen;'>problem</b>, meets a <b style='color: forestgreen;'>guide</b> with a <b style='color: forestgreen;'>plan</b> and a <b style='color: forestgreen;'>call to action</b>, avoiding <b style='color: forestgreen;'>failure</b> and achieving <b style='color: forestgreen;'>success</b>. This framework helps create a <b style='color: forestgreen;'>StoryBrand BrandScript</b> on one page, simplifying marketing and driving growth."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Storytelling is a **secret weapon** for business growth.",
+                        "It simplifies your message into **seven categories**, which helps **reduce anxiety** when talking about your brand and **attract more customers**.",
+                        "Story is **atomic** and can **hold attention** for hours, unlike noise.",
+                        "It is the **greatest weapon against noise** because it engages the brain and makes it remember.",
+                        "Brands that tell a **clear story** are remembered, while those that create noise are forgotten.",
+                        "A good story distills events into **what really matters**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Steve Jobs** used story at Apple, changing messaging from technical terms to **simple, relevant statements**.",
+                        "Apple focused on customers as **heroes**, identifying their wants and offering tools for self-expression.",
+                        "The key is to make the story **about the customer**, with the brand as a **guide**.",
+                        "The **SB7 Framework** uses **seven basic plot points**: a **character** wants something, has a **problem**, meets a **guide** with a **plan** and a **call to action**, avoiding **failure** and achieving **success**.",
+                        "This framework helps create a **StoryBrand BrandScript** on one page, simplifying marketing and driving growth."
+                    ]
+                }
+            ]
         },
         {
             "title": "The SB7 Framework: Crafting Clear Messages and Identifying the Hero's Desire",
-            "body": "Crafting <b style='color: forestgreen;'>clear, simple, and repeatable messages</b> in marketing is critically important, using the <b style='color: forestgreen;'>SB7 Framework</b>. It warns against <b style='color: forestgreen;'>skipping deliberate thought</b> in each step, comparing it to <b style='color: forestgreen;'>amateur screenwriters</b> who fail to engage audiences because they don't understand the <b style='color: forestgreen;'>underlying rules</b>. Many companies fail not due to <b style='color: forestgreen;'>bad products</b>, but because customers can't grasp how the product <b style='color: forestgreen;'>improves their lives</b>. The author encourages <b style='color: forestgreen;'>commitment to the process</b> to <b style='color: forestgreen;'>outperform competitors</b> who are complacent, stressing that <b style='color: forestgreen;'>clarifying your message</b> leads to <b style='color: forestgreen;'>company growth</b>.\n\nThe first principle of the SB7 Framework is: <b style='color: forestgreen;'>\"The customer is the hero, not your brand.\"</b> A story needs a <b style='color: forestgreen;'>hero who wants something</b> to engage an audience, and similarly, a brand must define what its <b style='color: forestgreen;'>customer wants</b> to create a <b style='color: forestgreen;'>story question</b> in their mind. Examples like a resort offering <b style='color: forestgreen;'>luxury and rest</b> or a university providing a <b style='color: forestgreen;'>hassle-free MBA</b> illustrate how defining a <b style='color: forestgreen;'>single, relevant desire</b> creates <b style='color: forestgreen;'>clarity and direction</b>. This creates a <b style='color: forestgreen;'>\"story gap\"</b>, a powerful mechanism that <b style='color: forestgreen;'>drives human behavior</b> by creating an <b style='color: forestgreen;'>unresolved desire</b> that customers are motivated to close. Brands should focus on a <b style='color: forestgreen;'>single, clear desire</b> initially, ensuring it's tied to the customer's <b style='color: forestgreen;'>sense of survival</b> (e.g., saving money, time, gaining status, community, meaning) to truly resonate."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Crafting **clear, simple, and repeatable messages** in marketing is critically important, using the **SB7 Framework**.",
+                        "It warns against **skipping deliberate thought** in each step, comparing it to **amateur screenwriters** who fail to engage audiences because they don't understand the **underlying rules**.",
+                        "Many companies fail not due to **bad products**, but because customers can't grasp how the product **improves their lives**.",
+                        "The author encourages **commitment to the process** to **outperform competitors** who are complacent, stressing that **clarifying your message** leads to **company growth**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The first principle of the SB7 Framework is: **\"The customer is the hero, not your brand.\"**",
+                        "A story needs a **hero who wants something** to engage an audience, and similarly, a brand must define what its **customer wants** to create a **story question** in their mind.",
+                        "Examples like a resort offering **luxury and rest** or a university providing a **hassle-free MBA** illustrate how defining a **single, relevant desire** creates **clarity and direction**.",
+                        "This creates a **\"story gap\"**, a powerful mechanism that **drives human behavior** by creating an **unresolved desire** that customers are motivated to close.",
+                        "Brands should focus on a **single, clear desire** initially, ensuring it's tied to the customer's **sense of survival** (e.g., saving money, time, gaining status, community, meaning) to truly resonate."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Deeper Meaning, The Guide, Empathy, and Authority",
-            "body": "The <b style='color: forestgreen;'>deeper meaning</b> in stories and brands is that people want to be involved in narratives <b style='color: forestgreen;'>larger than themselves</b>. Brands can add value by giving customers a <b style='color: forestgreen;'>voice</b> in these narratives, addressing <b style='color: forestgreen;'>external, internal, and philosophical problems</b>. Examples include Tesla saving the environment, Nespresso offering sophistication, and Edward Jones providing thoughtful financial advice. Identifying a <b style='color: forestgreen;'>single villain</b> and the problems it causes clarifies the brand's message to make the customer the <b style='color: forestgreen;'>hero</b> in their own story.\n\nIt then shifts to the concept of a <b style='color: forestgreen;'>guide</b> in storytelling and branding. Customers aren't looking for another hero; they're looking for someone to <b style='color: forestgreen;'>help them win</b>. Brands should position themselves as the guide, not the hero, as exemplified by the failure of Tidal, which focused on artists as heroes instead of customers. A guide must demonstrate both <b style='color: forestgreen;'>empathy</b> (understanding the hero's pain) and <b style='color: forestgreen;'>authority</b> (competence and experience). Testimonials, statistics, awards, and logos are effective ways to convey authority without bragging. This approach builds <b style='color: forestgreen;'>trust</b> and <b style='color: forestgreen;'>respect</b>, making a strong first impression."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **deeper meaning** in stories and brands is that people want to be involved in narratives **larger than themselves**.",
+                        "Brands can add value by giving customers a **voice** in these narratives, addressing **external, internal, and philosophical problems**.",
+                        "Examples include Tesla saving the environment, Nespresso offering sophistication, and Edward Jones providing thoughtful financial advice.",
+                        "Identifying a **single villain** and the problems it causes clarifies the brand's message to make the customer the **hero** in their own story."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "It then shifts to the concept of a **guide** in storytelling and branding.",
+                        "Customers aren't looking for another hero; they're looking for someone to **help them win**.",
+                        "Brands should position themselves as the guide, not the hero, as exemplified by the failure of Tidal, which focused on artists as heroes instead of customers.",
+                        "A guide must demonstrate both **empathy** (understanding the hero's pain) and **authority** (competence and experience).",
+                        "Testimonials, statistics, awards, and logos are effective ways to convey authority without bragging.",
+                        "This approach builds **trust** and **respect**, making a strong first impression."
+                    ]
+                }
+            ]
         },
         {
             "title": "Chapter 8: And Calls Them to Action",
-            "body": "Customers won't act unless they are <b style='color: forestgreen;'>challenged</b>. Think of movie characters: they don't act unless a <b style='color: forestgreen;'>major event</b> pushes them. This is because people generally stay at rest unless prompted. Infomercials scream \"<b style='color: forestgreen;'>Call now!</b>\" because they know people need a strong push to overcome daily distractions. My friend, who's bought and sold many companies, emphasizes <b style='color: forestgreen;'>clear and repeated calls to action</b> as the fastest way to grow a business. We often mistakenly assume customers know what we want them to do, but they don't have ESP. We need to be <b style='color: forestgreen;'>bold and clear</b>, like a chainsaw-wielding mattress salesman, without fear of overselling, because most businesses actually <b style='color: forestgreen;'>undersell</b>. Passive selling suggests a lack of belief in your product, which customers will sense.\n\nThere are two main types of calls to action: <b style='color: forestgreen;'>direct</b> and <b style='color: forestgreen;'>transitional</b>. Direct calls, like \"<b style='color: forestgreen;'>Buy Now</b>\" or \"<b style='color: forestgreen;'>Schedule an appointment</b>,\" lead directly to a sale. Transitional calls, however, are lower risk and often offer something for <b style='color: forestgreen;'>free</b>, like a webinar or PDF download. They are like a \"first date\" before asking to \"marry\" the customer. A good transitional call to action helps you <b style='color: forestgreen;'>stake a claim</b> as an expert, creates <b style='color: forestgreen;'>reciprocity</b> by giving free value, and positions you as a <b style='color: forestgreen;'>guide</b>. Examples include free information (white papers, videos), testimonials, samples, or free trials. Combining both direct and transitional calls to action, clearly and frequently, is crucial for growth. Without clear calls to action, customers are confused and won't take the necessary steps to engage with your brand."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Customers won't act unless they are **challenged**.",
+                        "Think of movie characters: they don't act unless a **major event** pushes them.",
+                        "This is because people generally stay at rest unless prompted.",
+                        "Infomercials scream \"**Call now!**\" because they know people need a strong push to overcome daily distractions.",
+                        "My friend, who's bought and sold many companies, emphasizes **clear and repeated calls to action** as the fastest way to grow a business.",
+                        "We often mistakenly assume customers know what we want them to do, but they don't have ESP.",
+                        "We need to be **bold and clear**, like a chainsaw-wielding mattress salesman, without fear of overselling, because most businesses actually **undersell**.",
+                        "Passive selling suggests a lack of belief in your product, which customers will sense."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "There are two main types of calls to action: **direct** and **transitional**.",
+                        "Direct calls, like \"**Buy Now**\" or \"**Schedule an appointment**,\" lead directly to a sale.",
+                        "Transitional calls, however, are lower risk and often offer something for **free**, like a webinar or PDF download.",
+                        "They are like a \"first date\" before asking to \"marry\" the customer.",
+                        "A good transitional call to action helps you **stake a claim** as an expert, creates **reciprocity** by giving free value, and positions you as a **guide**.",
+                        "Examples include free information (white papers, videos), testimonials, samples, or free trials.",
+                        "Combining both direct and transitional calls to action, clearly and frequently, is crucial for growth.",
+                        "Without clear calls to action, customers are confused and won't take the necessary steps to engage with your brand."
+                    ]
+                }
+            ]
         },
         {
             "title": "How Brands Can Offer Status and Completeness to Customers",
-            "body": "Brands can offer <b style='color: forestgreen;'>status</b> to customers by offering <b style='color: forestgreen;'>access</b> (like Starbucks memberships), creating <b style='color: forestgreen;'>scarcity</b> (limited edition items), offering a <b style='color: forestgreen;'>premium</b> (like Diamond Member titles), and enabling <b style='color: forestgreen;'>identity association</b> (Mercedes, Rolex). These methods make customers feel more esteemed, respected, and appealing. It then shifts to how brands can make customers feel <b style='color: forestgreen;'>complete</b> or <b style='color: forestgreen;'>whole</b> by reducing anxiety, workload, or giving them more time. Products can be positioned as solutions that bring closure, ease, or expand time, helping customers overcome feelings of inadequacy or frustration.\n\nBrands can help customers achieve <b style='color: forestgreen;'>self-realization</b> or <b style='color: forestgreen;'>acceptance</b>. This can be done through <b style='color: forestgreen;'>inspiration</b> (associating with achievement, like Red Bull), <b style='color: forestgreen;'>acceptance</b> (like the Dove and Aerie campaigns promoting body positivity), or <b style='color: forestgreen;'>transcendence</b> (participating in a larger movement, like Tom's Shoes or FUBU). The core idea is that brands help people resolve external, internal, and philosophical problems, closing 'story loops.' The advice is to <b style='color: forestgreen;'>keep it simple</b>, focusing on the basic resolution your product offers, and consistently showing how your product <b style='color: forestgreen;'>improves lives</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Brands can offer **status** to customers by offering **access** (like Starbucks memberships), creating **scarcity** (limited edition items), offering a **premium** (like Diamond Member titles), and enabling **identity association** (Mercedes, Rolex).",
+                        "These methods make customers feel more esteemed, respected, and appealing.",
+                        "It then shifts to how brands can make customers feel **complete** or **whole** by reducing anxiety, workload, or giving them more time.",
+                        "Products can be positioned as solutions that bring closure, ease, or expand time, helping customers overcome feelings of inadequacy or frustration."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Brands can help customers achieve **self-realization** or **acceptance**.",
+                        "This can be done through **inspiration** (associating with achievement, like Red Bull), **acceptance** (like the Dove and Aerie campaigns promoting body positivity), or **transcendence** (participating in a larger movement, like Tom's Shoes or FUBU).",
+                        "The core idea is that brands help people resolve external, internal, and philosophical problems, closing 'story loops.'",
+                        "The advice is to **keep it simple**, focusing on the basic resolution your product offers, and consistently showing how your product **improves lives**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Optimizing Your Website & Engaging Employees with StoryBrand",
-            "body": "This text provides <b style='color: forestgreen;'>actionable advice</b> on improving your website and marketing efforts, emphasizing <b style='color: forestgreen;'>clarity and brevity</b>. It suggests cutting <b style='color: forestgreen;'>half the words</b> on your website, replacing text with <b style='color: forestgreen;'>images</b>, and summarizing paragraphs into <b style='color: forestgreen;'>bullet points</b> or <b style='color: forestgreen;'>soundbites</b>. The core idea is that the <b style='color: forestgreen;'>fewer words</b> you use, the <b style='color: forestgreen;'>more likely people will read them</b>. The website should act as a \"drum solo\" of your <b style='color: forestgreen;'>StoryBrand BrandScript</b>, ensuring every word, image, and idea aligns with your core message to avoid customer confusion and \"noise.\" This means sticking to the <b style='color: forestgreen;'>StoryBrand 7-Part Framework</b> to ensure your online presence is cohesive and effective.\n\nThe text also delves into the critical role of a <b style='color: forestgreen;'>StoryBrand BrandScript</b> in <b style='color: forestgreen;'>transforming large organizations</b> and <b style='color: forestgreen;'>employee engagement</b>. It introduces the concept of the \"<b style='color: forestgreen;'>Narrative Void</b>\" \u2013 a lack of a unifying story that leads to employee confusion and disengagement, costing companies billions. Traditional mission statements are deemed insufficient. A <b style='color: forestgreen;'>strong, StoryBrand-inspired narrative</b> expels this void, aligning all stakeholders. The text provides a contrasting example of an employee onboarding experience without and with a BrandScript, showing how it can turn ordinary jobs into \"extraordinary adventures\" and foster a <b style='color: forestgreen;'>united, motivated team</b>. It highlights that an \"<b style='color: forestgreen;'>On-Mission</b>\" company uses its BrandScript to filter out noise, ensuring every team member understands their role and can effectively communicate the company's story, turning the entire team into a <b style='color: forestgreen;'>sales force</b> and deeply valuing their employees' narratives."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This text provides **actionable advice** on improving your website and marketing efforts, emphasizing **clarity and brevity**.",
+                        "It suggests cutting **half the words** on your website, replacing text with **images**, and summarizing paragraphs into **bullet points** or **soundbites**.",
+                        "The core idea is that the **fewer words** you use, the **more likely people will read them**.",
+                        "The website should act as a \"drum solo\" of your **StoryBrand BrandScript**, ensuring every word, image, and idea aligns with your core message to avoid customer confusion and \"noise.\"",
+                        "This means sticking to the **StoryBrand 7-Part Framework** to ensure your online presence is cohesive and effective."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The text also delves into the critical role of a **StoryBrand BrandScript** in **transforming large organizations** and **employee engagement**.",
+                        "It introduces the concept of the \"**Narrative Void**\" \u2013 a lack of a unifying story that leads to employee confusion and disengagement, costing companies billions.",
+                        "Traditional mission statements are deemed insufficient.",
+                        "A **strong, StoryBrand-inspired narrative** expels this void, aligning all stakeholders.",
+                        "The text provides a contrasting example of an employee onboarding experience without and with a BrandScript, showing how it can turn ordinary jobs into \"extraordinary adventures\" and foster a **united, motivated team**.",
+                        "It highlights that an \"**On-Mission**\" company uses its BrandScript to filter out noise, ensuring every team member understands their role and can effectively communicate the company's story, turning the entire team into a **sales force** and deeply valuing their employees' narratives."
+                    ]
+                }
+            ]
         },
         {
             "title": "Lead Generator Placement and Email List Building",
-            "body": "To <b style='color: forestgreen;'>effectively feature</b> your lead generator, implement a <b style='color: forestgreen;'>pop-up</b> on your website that appears after about <b style='color: forestgreen;'>ten seconds</b>. While pop-ups can be annoying, they <b style='color: forestgreen;'>outperform</b> most other internet advertising. The <b style='color: forestgreen;'>ten-second delay</b> is crucial to avoid overwhelming users immediately, similar to a salesperson tackling a customer at a store entrance. Building an engaged email list takes time, but it's a <b style='color: forestgreen;'>valuable investment</b> that will benefit you greatly in the future.\n\nThe author shares a personal anecdote about discovering <b style='color: forestgreen;'>FileMaker Pro</b> at a publishing company, which allowed them to track top customers and send personalized letters."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "To **effectively feature** your lead generator, implement a **pop-up** on your website that appears after about **ten seconds**.",
+                        "While pop-ups can be annoying, they **outperform** most other internet advertising.",
+                        "The **ten-second delay** is crucial to avoid overwhelming users immediately, similar to a salesperson tackling a customer at a store entrance.",
+                        "Building an engaged email list takes time, but it's a **valuable investment** that will benefit you greatly in the future."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The author shares a personal anecdote about discovering **FileMaker Pro** at a publishing company, which allowed them to track top customers and send personalized letters."
+                    ]
+                }
+            ]
         }
     ],
     "chunks": 8

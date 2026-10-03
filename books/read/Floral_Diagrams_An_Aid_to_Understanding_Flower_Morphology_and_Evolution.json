@@ -13,151 +13,695 @@
     "parts": [
         {
             "title": "Definition of Flowers: An Evolutionary Perspective",
-            "body": "<b style='color: forestgreen;'>Flowers</b> can be hard to <b style='color: forestgreen;'>define</b>, with differing <b style='color: forestgreen;'>theories</b> about their <b style='color: forestgreen;'>evolution</b>. Some believe flowers evolved from <b style='color: forestgreen;'>inflorescences</b>\u2014clusters of smaller structures\u2014while others see them arising from a simple axis with floral organs. Regardless, flowers generally consist of <b style='color: forestgreen;'>sepals, petals, stamens,</b> and <b style='color: forestgreen;'>carpels</b> and serve the <b style='color: forestgreen;'>reproductive</b> needs of plants. Composed of specialized leaves, flowers are viewed as modified <b style='color: forestgreen;'>shoots</b>, yet the exact origin, especially of <b style='color: forestgreen;'>stamens</b>, remains debated. Key to <b style='color: forestgreen;'>angiosperms</b> is their enclosed <b style='color: forestgreen;'>ovules</b> within carpels, making them distinct from <b style='color: forestgreen;'>gymnosperms</b>. Study reveals the <b style='color: forestgreen;'>homologous</b> nature of flowers, supporting a single evolutionary event for their <b style='color: forestgreen;'>origin</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Flowers** can be hard to **define**, with differing **theories** about their **evolution**.",
+                        "Some believe flowers evolved from **inflorescences**\u2014clusters of smaller structures\u2014while others see them arising from a simple axis with floral organs.",
+                        "Regardless, flowers generally consist of **sepals, petals, stamens,** and **carpels** and serve the **reproductive** needs of plants.",
+                        "Composed of specialized leaves, flowers are viewed as modified **shoots**, yet the exact origin, especially of **stamens**, remains debated.",
+                        "Key to **angiosperms** is their enclosed **ovules** within carpels, making them distinct from **gymnosperms**.",
+                        "Study reveals the **homologous** nature of flowers, supporting a single evolutionary event for their **origin**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Floral Structures and Pollination",
-            "body": "The <b style='color: forestgreen;'>development and arrangement of floral organs</b> in flowers have a strong connection with their method of <b style='color: forestgreen;'>pollination</b>. Flowers that are pollinated by animals exhibit numerous <b style='color: forestgreen;'>adaptations</b> to attract them and protect themselves. These adaptations include keenly differentiated <b style='color: forestgreen;'>petals</b>, <b style='color: forestgreen;'>sepals</b>, and <b style='color: forestgreen;'>stamen arrangements</b>. <b style='color: forestgreen;'>Animal-pollinated flowers</b> often lead to complex floral forms, while <b style='color: forestgreen;'>wind or water-pollinated flowers</b> tend to have simpler structures with specialized traits such as not having <b style='color: forestgreen;'>petals</b> and producing excess <b style='color: forestgreen;'>pollen</b>. The relationship between floral structure and pollinator types illustrates evolutionary trends in flower complexity, as seen in various plant families."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **development and arrangement of floral organs** in flowers have a strong connection with their method of **pollination**.",
+                        "Flowers that are pollinated by animals exhibit numerous **adaptations** to attract them and protect themselves.",
+                        "These adaptations include keenly differentiated **petals**, **sepals**, and **stamen arrangements**.",
+                        "**Animal-pollinated flowers** often lead to complex floral forms, while **wind or water-pollinated flowers** tend to have simpler structures with specialized traits such as not having **petals** and producing excess **pollen**.",
+                        "The relationship between floral structure and pollinator types illustrates evolutionary trends in flower complexity, as seen in various plant families."
+                    ]
+                }
+            ]
         },
         {
             "title": "Gynoecium Anatomy and Variation",
-            "body": "The gynoecium is the female part of a flower composed of one or more <b style='color: forestgreen;'>carpels</b>. These can be either separate (<b style='color: forestgreen;'>apocarpous gynoecium</b>) or fused (<b style='color: forestgreen;'>syncarpous gynoecium</b>). In apocarpous, carpels are free and lack a developed style, while syncarpous gynoecium has fused carpels, often involving an <b style='color: forestgreen;'>ovule-bearing zone</b> (the <b style='color: forestgreen;'>ovary</b>). Carpels bear <b style='color: forestgreen;'>ovules</b>, attach on a <b style='color: forestgreen;'>placenta</b>, and have styles that may be distinct or fused. The number of carpels can vary, often stabilizing to a single carpel through evolution. <b style='color: forestgreen;'>Pseudomonomerous gynoecia</b> have more than one carpel but only one fertile."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The gynoecium is the female part of a flower composed of one or more **carpels**.",
+                        "These can be either separate (**apocarpous gynoecium**) or fused (**syncarpous gynoecium**).",
+                        "In apocarpous, carpels are free and lack a developed style, while syncarpous gynoecium has fused carpels, often involving an **ovule-bearing zone** (the **ovary**).",
+                        "Carpels bear **ovules**, attach on a **placenta**, and have styles that may be distinct or fused.",
+                        "The number of carpels can vary, often stabilizing to a single carpel through evolution.",
+                        "**Pseudomonomerous gynoecia** have more than one carpel but only one fertile."
+                    ]
+                }
+            ]
         },
         {
             "title": "Monosymmetry, Phyllotaxis, and Merism in Flowers",
-            "body": "<b style='color: forestgreen;'>Monosymmetric</b> flowers tend to evolve from <b style='color: forestgreen;'>polysymmetric</b> origins. Yet, <b style='color: forestgreen;'>polysymmetric</b> flowers still exist in predominantly <b style='color: forestgreen;'>monosymmetric</b> families, hinting at a reversed evolution. <b style='color: forestgreen;'>Flower shape</b> and <b style='color: forestgreen;'>symmetry</b> are crucial for <b style='color: forestgreen;'>pollination</b>, with <b style='color: forestgreen;'>monosymmetry</b> allowing precise strategies. <b style='color: forestgreen;'>Phyllotaxis</b> involves <b style='color: forestgreen;'>spirals</b> and <b style='color: forestgreen;'>whorls</b> in flowers, reflecting the angle and timing of organ development, often described by <b style='color: forestgreen;'>Fibonacci patterns</b>. In contrast, <b style='color: forestgreen;'>whorled</b> flowers show abrupt category transitions. <b style='color: forestgreen;'>Changes</b> in phyllotaxis often occur with size shifts in organs, notably in <b style='color: forestgreen;'>Pentapetalae</b>. <b style='color: forestgreen;'>Whorled phyllotaxis</b> contributed significantly to floral evolution by enabling <b style='color: forestgreen;'>strong synorganization</b> and consistent <b style='color: forestgreen;'>symmetry changes</b>. Phyllotaxis transitions and their evolutionary significance are debated; the shift from <b style='color: forestgreen;'>spiral</b> to <b style='color: forestgreen;'>whorled</b> flowers marked a pivotal floral change, enhancing floral <b style='color: forestgreen;'>organ interaction</b>.\n\n<b style='color: forestgreen;'>Merism</b> denotes the flower's part number per whorl and affects flower <b style='color: forestgreen;'>Bauplan</b>, intertwined with <b style='color: forestgreen;'>phyllotaxis</b> and symmetry. Common in <b style='color: forestgreen;'>basal angiosperms</b> and <b style='color: forestgreen;'>monocots</b> are <b style='color: forestgreen;'>trimerous</b> or <b style='color: forestgreen;'>dimerous</b> flowers, while <b style='color: forestgreen;'>pentamerous</b> forms dominate in <b style='color: forestgreen;'>Pentapetalae</b>. Variations like <b style='color: forestgreen;'>pentamerous</b> evolving from <b style='color: forestgreen;'>trimerous</b> or <b style='color: forestgreen;'>spiral</b> flowers are discussed, indicating potential shifts from <b style='color: forestgreen;'>five</b> (pentamery) to <b style='color: forestgreen;'>six</b> (hexamery) parts due to spatial changes. Higher <b style='color: forestgreen;'>merism</b> is rare, indicating spatial constraints impact flower stability. Some <b style='color: forestgreen;'>families</b> reveal intrinsic merism variations, like <b style='color: forestgreen;'>trimery</b> confusingly appearing as <b style='color: forestgreen;'>tetramery</b>, though actual lineage differences exist. Such merism alterations, interacting with <b style='color: forestgreen;'>syncflower development</b>, impact <b style='color: forestgreen;'>floral stability</b> and organization. These findings reflect complex evolution pathways and the critical role of organ development in shaping <b style='color: forestgreen;'>flower architecture</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Monosymmetric** flowers tend to evolve from **polysymmetric** origins.",
+                        "Yet, **polysymmetric** flowers still exist in predominantly **monosymmetric** families, hinting at a reversed evolution.",
+                        "**Flower shape** and **symmetry** are crucial for **pollination**, with **monosymmetry** allowing precise strategies.",
+                        "**Phyllotaxis** involves **spirals** and **whorls** in flowers, reflecting the angle and timing of organ development, often described by **Fibonacci patterns**.",
+                        "In contrast, **whorled** flowers show abrupt category transitions.",
+                        "**Changes** in phyllotaxis often occur with size shifts in organs, notably in **Pentapetalae**.",
+                        "**Whorled phyllotaxis** contributed significantly to floral evolution by enabling **strong synorganization** and consistent **symmetry changes**.",
+                        "Phyllotaxis transitions and their evolutionary significance are debated; the shift from **spiral** to **whorled** flowers marked a pivotal floral change, enhancing floral **organ interaction**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Merism** denotes the flower's part number per whorl and affects flower **Bauplan**, intertwined with **phyllotaxis** and symmetry.",
+                        "Common in **basal angiosperms** and **monocots** are **trimerous** or **dimerous** flowers, while **pentamerous** forms dominate in **Pentapetalae**.",
+                        "Variations like **pentamerous** evolving from **trimerous** or **spiral** flowers are discussed, indicating potential shifts from **five** (pentamery) to **six** (hexamery) parts due to spatial changes.",
+                        "Higher **merism** is rare, indicating spatial constraints impact flower stability.",
+                        "Some **families** reveal intrinsic merism variations, like **trimery** confusingly appearing as **tetramery**, though actual lineage differences exist.",
+                        "Such merism alterations, interacting with **syncflower development**, impact **floral stability** and organization.",
+                        "These findings reflect complex evolution pathways and the critical role of organ development in shaping **flower architecture**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Floral Diagrams and Floral Formulae Overview",
-            "body": "<h3 style='color: forestgreen;'>Floral Diagrams and Development: A Complicated Canvas</h3>\n\n<b style='color: forestgreen;'>Floral diagrams</b> are essential for showcasing stages in the <b style='color: forestgreen;'>development</b> of flowers, highlighting sequences like <b style='color: forestgreen;'>stamen initiation</b>. Traditional floral <b style='color: forestgreen;'>diagrams</b> often miss internal structures such as reduced organs, showcasing <b style='color: forestgreen;'>theoretical organs</b> that might be lost but were present ancestrally. For example, <b style='color: forestgreen;'>Melianthus</b> initially may have a <b style='color: forestgreen;'>fifth petal</b> which aborts during development, but its existence in ancestral forms can be shown using an asterisk on diagrams. This use of diagrams is crucial as they provide a <b style='color: forestgreen;'>clear representation</b> of hypotheses and developmental sequences in <b style='color: forestgreen;'>flower anatomy</b>.\n\nFloral <b style='color: forestgreen;'>formulae</b> act as complementary tools to diagrams, listing organ types, numbers, symmetry, and geometry. European and American traditions differ in representation, though they aim to convey similar <b style='color: forestgreen;'>information</b>. While formulae can generally describe entire families, individual <b style='color: forestgreen;'>species</b> require specific formula details to capture <b style='color: forestgreen;'>floral variation</b>. Thus, these methods together produce enriched representations of flowers, emphasizing both the <b style='color: forestgreen;'>external</b> and <b style='color: forestgreen;'>hypothetical</b> features that define <b style='color: forestgreen;'>floral evolution</b>."
+            "paragraphs": [
+                {
+                    "heading": "Floral Diagrams and Development: A Complicated Canvas",
+                    "sentences": [
+                        "**Floral diagrams** are essential for showcasing stages in the **development** of flowers, highlighting sequences like **stamen initiation**.",
+                        "Traditional floral **diagrams** often miss internal structures such as reduced organs, showcasing **theoretical organs** that might be lost but were present ancestrally.",
+                        "For example, **Melianthus** initially may have a **fifth petal** which aborts during development, but its existence in ancestral forms can be shown using an asterisk on diagrams.",
+                        "This use of diagrams is crucial as they provide a **clear representation** of hypotheses and developmental sequences in **flower anatomy**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Floral **formulae** act as complementary tools to diagrams, listing organ types, numbers, symmetry, and geometry.",
+                        "European and American traditions differ in representation, though they aim to convey similar **information**.",
+                        "While formulae can generally describe entire families, individual **species** require specific formula details to capture **floral variation**.",
+                        "Thus, these methods together produce enriched representations of flowers, emphasizing both the **external** and **hypothetical** features that define **floral evolution**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Basal Angiosperms and Their Characteristics",
-            "body": "In <b style='color: forestgreen;'>basal angiosperms</b>, the early-diverging lineages include families like <b style='color: forestgreen;'>Amborellaceae</b> and <b style='color: forestgreen;'>Nymphaeales</b>. These plants often show <b style='color: forestgreen;'>primitive</b> traits like spiral or whorled flowers, and undifferentiated perianth. Amborellaceae is considered the most ancient with features such as <b style='color: forestgreen;'>unisexual flowers</b> and a <b style='color: forestgreen;'>hypanthium</b>. Despite being primitive, <b style='color: forestgreen;'>Nymphaeaceae</b> in Nymphaeales exhibits more <b style='color: forestgreen;'>derived</b> traits such as <b style='color: forestgreen;'>whorled phyllotaxis</b> and differentiated sepals and petals, indicating diverse <b style='color: forestgreen;'>evolutionary pathways</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In **basal angiosperms**, the early-diverging lineages include families like **Amborellaceae** and **Nymphaeales**.",
+                        "These plants often show **primitive** traits like spiral or whorled flowers, and undifferentiated perianth.",
+                        "Amborellaceae is considered the most ancient with features such as **unisexual flowers** and a **hypanthium**.",
+                        "Despite being primitive, **Nymphaeaceae** in Nymphaeales exhibits more **derived** traits such as **whorled phyllotaxis** and differentiated sepals and petals, indicating diverse **evolutionary pathways**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Laurales Overview",
-            "body": "<b style='color: forestgreen;'>Laurales</b> is an order consisting of six families that vary greatly in their <b style='color: forestgreen;'>floral structures</b>. Flowers can be <b style='color: forestgreen;'>bisexual</b> or <b style='color: forestgreen;'>unisexual</b> with diverse phyllotaxis, from <b style='color: forestgreen;'>spiral</b> to <b style='color: forestgreen;'>whorled</b> arrangements. <b style='color: forestgreen;'>Merism</b> is typically <b style='color: forestgreen;'>trimerous</b>, with a trend towards flowers having multiple stamen whorls. Staminodes and <b style='color: forestgreen;'>nectariferous glands</b> are common across the order, with <b style='color: forestgreen;'>anthers</b> often dehiscing via <b style='color: forestgreen;'>valvate flaps</b>. The family <b style='color: forestgreen;'>Monimiaceae</b> shows evolutionary trends from <b style='color: forestgreen;'>spiral bisexual flowers</b> to <b style='color: forestgreen;'>specialized unisexual</b> and dimerous flowers. <b style='color: forestgreen;'>Apocarpous gynoecia</b> tend to reduce to monomery but occasionally shift to inferior ovaries, and a characteristic <b style='color: forestgreen;'>hypanthium</b> is present (less so in Lauraceae)."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Laurales** is an order consisting of six families that vary greatly in their **floral structures**.",
+                        "Flowers can be **bisexual** or **unisexual** with diverse phyllotaxis, from **spiral** to **whorled** arrangements.",
+                        "**Merism** is typically **trimerous**, with a trend towards flowers having multiple stamen whorls.",
+                        "Staminodes and **nectariferous glands** are common across the order, with **anthers** often dehiscing via **valvate flaps**.",
+                        "The family **Monimiaceae** shows evolutionary trends from **spiral bisexual flowers** to **specialized unisexual** and dimerous flowers.",
+                        "**Apocarpous gynoecia** tend to reduce to monomery but occasionally shift to inferior ovaries, and a characteristic **hypanthium** is present (less so in Lauraceae)."
+                    ]
+                }
+            ]
         },
         {
             "title": "Aristolochiaceae Floral Characteristics",
-            "body": "Aristolochiaceae is a highly <b style='color: forestgreen;'>specialized</b> family of basal angiosperms, with evolutionary features peaked in <b style='color: forestgreen;'>Aristolochia</b> (gynostemium, monosymmetry, and syncarpy). <b style='color: forestgreen;'>Asarum</b> and <b style='color: forestgreen;'>Saruma</b> flowers appear at shoot ends, enveloped by a bract, suggesting flowers may be terminal. In <b style='color: forestgreen;'>Aristolochia</b>, flowers arise in a <b style='color: forestgreen;'>bract</b> axis. The flower parts and their arrangements vary greatly within the family, showing strong <b style='color: forestgreen;'>synorganization</b>. The perianth's arrangement can either address an ancestral <b style='color: forestgreen;'>biseriate</b> origin with petals <b style='color: forestgreen;'>lost</b> over time or a <b style='color: forestgreen;'>trimerous</b> beginning with secondarily derived petals. This diversity is linked to <b style='color: forestgreen;'>phylogenetic changes</b>, expanding floral structures or diminishing others, affecting stamens and carpels."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Aristolochiaceae is a highly **specialized** family of basal angiosperms, with evolutionary features peaked in **Aristolochia** (gynostemium, monosymmetry, and syncarpy).",
+                        "**Asarum** and **Saruma** flowers appear at shoot ends, enveloped by a bract, suggesting flowers may be terminal.",
+                        "In **Aristolochia**, flowers arise in a **bract** axis.",
+                        "The flower parts and their arrangements vary greatly within the family, showing strong **synorganization**.",
+                        "The perianth's arrangement can either address an ancestral **biseriate** origin with petals **lost** over time or a **trimerous** beginning with secondarily derived petals.",
+                        "This diversity is linked to **phylogenetic changes**, expanding floral structures or diminishing others, affecting stamens and carpels."
+                    ]
+                }
+            ]
         },
         {
             "title": "Flower and Inflorescence Characteristics in Acorus and Spathiphyllum",
-            "body": "<b style='color: forestgreen;'>Acorus</b>: The <b style='color: forestgreen;'>flower</b> structure in Acorus features <b style='color: forestgreen;'>monosymmetry</b> with unique <b style='color: forestgreen;'>unidirectional initiation</b> and often has a <b style='color: forestgreen;'>syncarpous ovary</b> without a <b style='color: forestgreen;'>style.</b> It lacks <b style='color: forestgreen;'>septal nectaries</b>, but contains <b style='color: forestgreen;'>non-secretory septal slits</b>. \n\n<b style='color: forestgreen;'>Spathiphyllum</b>: Flowers are set on a <b style='color: forestgreen;'>spadix</b> with a showy <b style='color: forestgreen;'>spathe</b> and form a <b style='color: forestgreen;'>pseudanthium</b>, lacking <b style='color: forestgreen;'>bracts</b>. Flowers' <b style='color: forestgreen;'>orientation</b> is atypical for monocots, with unisexual arrangements often on different <b style='color: forestgreen;'>spadices</b> and a variable <b style='color: forestgreen;'>tepal presence</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Acorus**: The **flower** structure in Acorus features **monosymmetry** with unique **unidirectional initiation** and often has a **syncarpous ovary** without a **style.**",
+                        "It lacks **septal nectaries**, but contains **non-secretory septal slits**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Spathiphyllum**: Flowers are set on a **spadix** with a showy **spathe** and form a **pseudanthium**, lacking **bracts**.",
+                        "Flowers' **orientation** is atypical for monocots, with unisexual arrangements often on different **spadices** and a variable **tepal presence**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Haemodoraceae Family Overview",
-            "body": "The <b style='color: forestgreen;'>Haemodoraceae</b> family is diverse, with flowers ranging from <b style='color: forestgreen;'>bisexual</b>, polysymmetric to monosymmetric. They feature imbricate tepals and a hypanthial tube. The <b style='color: forestgreen;'>androecium</b> often reduces to <b style='color: forestgreen;'>three stamens</b>. The <b style='color: forestgreen;'>gynoecium</b> has <b style='color: forestgreen;'>axile placentation</b> and can be <b style='color: forestgreen;'>pseudomonomerous</b>. <b style='color: forestgreen;'>Septal nectaries</b> are usually present, providing nectar, and <b style='color: forestgreen;'>enantiostyly</b> occurs in the family. In some species, the style's position varies with the flower's symmetry, affecting pollination."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **Haemodoraceae** family is diverse, with flowers ranging from **bisexual**, polysymmetric to monosymmetric.",
+                        "They feature imbricate tepals and a hypanthial tube.",
+                        "The **androecium** often reduces to **three stamens**.",
+                        "The **gynoecium** has **axile placentation** and can be **pseudomonomerous**.",
+                        "**Septal nectaries** are usually present, providing nectar, and **enantiostyly** occurs in the family.",
+                        "In some species, the style's position varies with the flower's symmetry, affecting pollination."
+                    ]
+                }
+            ]
         },
         {
             "title": "Cyperaceae & Zingiberales Characteristics",
-            "body": "<b style='color: forestgreen;'>Sedges</b> are part of <b style='color: forestgreen;'>Cyperaceae</b>, along with <b style='color: forestgreen;'>Juncaceae</b> and <b style='color: forestgreen;'>Thurniaceae</b>. The flowers of Cyperaceae are <b style='color: forestgreen;'>reduced</b> and arranged in dense <b style='color: forestgreen;'>spikelets</b>. They can be <b style='color: forestgreen;'>bisexual</b> or <b style='color: forestgreen;'>unisexual</b>. The perianth, when present, consists of <b style='color: forestgreen;'>bristles, scales, or hairs</b>. Stamens vary from <b style='color: forestgreen;'>one to three</b>, and the ovary has <b style='color: forestgreen;'>two or three carpels</b> with a <b style='color: forestgreen;'>single basal ovule</b>. Some species have a <b style='color: forestgreen;'>dislocation</b> of the <b style='color: forestgreen;'>ovule</b> and <b style='color: forestgreen;'>carpel wall</b>, leading to a lateral <b style='color: forestgreen;'>shift of styles</b>. In <b style='color: forestgreen;'>Carex brasiliensis</b>, stamens can fluctuate in number, sometimes splitting unequally, and <b style='color: forestgreen;'>female</b> flowers are reduced and enclosed by a structure called a <b style='color: forestgreen;'>utricle</b>.\n\n<b style='color: forestgreen;'>Zingiberales</b> include eight families with <b style='color: forestgreen;'>monosymmetric</b> or <b style='color: forestgreen;'>asymmetric flowers</b>. They often feature a <b style='color: forestgreen;'>hypanthial tube</b> and a <b style='color: forestgreen;'>labellum</b>, which is a conspicuous modified petal. The order includes the <b style='color: forestgreen;'>banana clade</b> (e.g., <b style='color: forestgreen;'>Musaceae</b>) and the <b style='color: forestgreen;'>ginger group</b> (e.g., <b style='color: forestgreen;'>Heliconiaceae</b>), each showing unique floral <b style='color: forestgreen;'>reductions</b> and <b style='color: forestgreen;'>transformations</b>. The <b style='color: forestgreen;'>labellum</b> is notably diverse, reflecting adaptations for <b style='color: forestgreen;'>pollination</b>. Some families feature <b style='color: forestgreen;'>septal nectaries</b>, except in <b style='color: forestgreen;'>Lowiaceae</b>. Floral structures across Zingiberales are varied and adapted for <b style='color: forestgreen;'>unique pollination mechanisms</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Sedges** are part of **Cyperaceae**, along with **Juncaceae** and **Thurniaceae**.",
+                        "The flowers of Cyperaceae are **reduced** and arranged in dense **spikelets**.",
+                        "They can be **bisexual** or **unisexual**.",
+                        "The perianth, when present, consists of **bristles, scales, or hairs**.",
+                        "Stamens vary from **one to three**, and the ovary has **two or three carpels** with a **single basal ovule**.",
+                        "Some species have a **dislocation** of the **ovule** and **carpel wall**, leading to a lateral **shift of styles**.",
+                        "In **Carex brasiliensis**, stamens can fluctuate in number, sometimes splitting unequally, and **female** flowers are reduced and enclosed by a structure called a **utricle**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Zingiberales** include eight families with **monosymmetric** or **asymmetric flowers**.",
+                        "They often feature a **hypanthial tube** and a **labellum**, which is a conspicuous modified petal.",
+                        "The order includes the **banana clade** (e.g., **Musaceae**) and the **ginger group** (e.g., **Heliconiaceae**), each showing unique floral **reductions** and **transformations**.",
+                        "The **labellum** is notably diverse, reflecting adaptations for **pollination**.",
+                        "Some families feature **septal nectaries**, except in **Lowiaceae**.",
+                        "Floral structures across Zingiberales are varied and adapted for **unique pollination mechanisms**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Ranunculaceae Flower Diversity and Evolution",
-            "body": "<b style='color: forestgreen;'>Ranunculaceae</b> exhibit an extraordinary diversity in <b style='color: forestgreen;'>flower structures</b> amongst angiosperms, ranging from <b style='color: forestgreen;'>simple terminal flowers</b> to more complex forms like cymes and racemes. <b style='color: forestgreen;'>Inflorescences</b> may consist of single terminal flowers as in Ranunculus ficaria and complex structures in genres like Aquilegia where terminal flowers are overtopped by lateral branches, leading to unique transitions like pentamery and monosymmetric forms. Their <b style='color: forestgreen;'>perianth diversity</b> includes both undifferentiated tepalar forms and biseriate perianths with distinct sepals and nectar leaves. This variation is linked to the expression of <b style='color: forestgreen;'>AP3\u2212III petal identity genes</b>, and some genera have evolved to wind pollination, losing petals and nectaries as seen in Thalictrum. The family's <b style='color: forestgreen;'>evolutionary novelties</b> stretch to forms like Delphinium, characterized by a pentamerous flower with monosymmetry due to nectar leaf adaptation, creating distinct spurred structures aiding in interaction with pollinators."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Ranunculaceae** exhibit an extraordinary diversity in **flower structures** amongst angiosperms, ranging from **simple terminal flowers** to more complex forms like cymes and racemes.",
+                        "**Inflorescences** may consist of single terminal flowers as in Ranunculus ficaria and complex structures in genres like Aquilegia where terminal flowers are overtopped by lateral branches, leading to unique transitions like pentamery and monosymmetric forms.",
+                        "Their **perianth diversity** includes both undifferentiated tepalar forms and biseriate perianths with distinct sepals and nectar leaves.",
+                        "This variation is linked to the expression of **AP3\u2212III petal identity genes**, and some genera have evolved to wind pollination, losing petals and nectaries as seen in Thalictrum.",
+                        "The family's **evolutionary novelties** stretch to forms like Delphinium, characterized by a pentamerous flower with monosymmetry due to nectar leaf adaptation, creating distinct spurred structures aiding in interaction with pollinators."
+                    ]
+                }
+            ]
         },
         {
             "title": "Early-Diverging Eudicot Floral Structures",
-            "body": "The <b style='color: forestgreen;'>early-diverging eudicots</b> like Buxaceae, Tetracentron, and Trochodendron show interesting variations in flower structure. Buxaceae flowers are simple, <b style='color: forestgreen;'>unisexual</b>, and typically dimerous or <b style='color: forestgreen;'>spiral</b>. While the <b style='color: forestgreen;'>staminate</b> flowers have a dimerous appearance with <b style='color: forestgreen;'>four tepals</b> and stamens, <b style='color: forestgreen;'>pistillate</b> flowers bear two to three <b style='color: forestgreen;'>carpels</b> with bract-like phyllomes. Trochodendron and Tetracentron exhibit reduced or absent perianth and <b style='color: forestgreen;'>nectaries</b> development similar to Buxaceae. The evolution of floral structures shows a trend from <b style='color: forestgreen;'>insect pollination</b> to potential <b style='color: forestgreen;'>wind pollination</b>, impacting the perianth evolution.\n\nIn the <b style='color: forestgreen;'>Gunnerales</b>, a group closely allied to <b style='color: forestgreen;'>Buxales</b> and sharing several similarities, flowers exhibit further reduction and unisexuality. <b style='color: forestgreen;'>Gunneraceae</b>, a part of this order, has flowers with <b style='color: forestgreen;'>reduced petals and stamens</b>, genetically arising from common primordia. Loss of stamens is often linked to petal reduction and unisexual development, emphasizing wind pollination's influence. The arrangements within flowers show a unique <b style='color: forestgreen;'>dimerous</b> pattern with <b style='color: forestgreen;'>median sepals</b>, hydathodes, and a half-inferior ovary, suggesting a complex evolutionary pathway influenced by their ancestral counterparts."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **early-diverging eudicots** like Buxaceae, Tetracentron, and Trochodendron show interesting variations in flower structure.",
+                        "Buxaceae flowers are simple, **unisexual**, and typically dimerous or **spiral**.",
+                        "While the **staminate** flowers have a dimerous appearance with **four tepals** and stamens, **pistillate** flowers bear two to three **carpels** with bract-like phyllomes.",
+                        "Trochodendron and Tetracentron exhibit reduced or absent perianth and **nectaries** development similar to Buxaceae.",
+                        "The evolution of floral structures shows a trend from **insect pollination** to potential **wind pollination**, impacting the perianth evolution."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "In the **Gunnerales**, a group closely allied to **Buxales** and sharing several similarities, flowers exhibit further reduction and unisexuality.",
+                        "**Gunneraceae**, a part of this order, has flowers with **reduced petals and stamens**, genetically arising from common primordia.",
+                        "Loss of stamens is often linked to petal reduction and unisexual development, emphasizing wind pollination's influence.",
+                        "The arrangements within flowers show a unique **dimerous** pattern with **median sepals**, hydathodes, and a half-inferior ovary, suggesting a complex evolutionary pathway influenced by their ancestral counterparts."
+                    ]
+                }
+            ]
         },
         {
             "title": "Geraniales Flowers Characteristics",
-            "body": "<b style='color: forestgreen;'>Pentamery</b> is standard among Geraniales, with some exceptions reaching <b style='color: forestgreen;'>high merism</b>, allowing evolution in stamen number and floral structure. Floral symmetry varies, often <b style='color: forestgreen;'>median monosymmetric</b>, adapting to pollination techniques. \n\nThis clade has <b style='color: forestgreen;'>obdiplostemonous</b> or rare <b style='color: forestgreen;'>haplostemonous</b> conditions, where stamens evolve for diversity or reduction (e.g., <b style='color: forestgreen;'>Erodium</b>, <b style='color: forestgreen;'>Pelargonium</b>). The evolution of <b style='color: forestgreen;'>nectaries</b> shows an <b style='color: forestgreen;'>extrastaminal</b> trait with <b style='color: forestgreen;'>receptacular outgrowths</b>, reflecting pollination shifts, all affecting diverse <b style='color: forestgreen;'>pollination mechanisms</b>. The order continues the trend of <b style='color: forestgreen;'>flower simplification</b> as seen in earlier groups."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Pentamery** is standard among Geraniales, with some exceptions reaching **high merism**, allowing evolution in stamen number and floral structure.",
+                        "Floral symmetry varies, often **median monosymmetric**, adapting to pollination techniques."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "This clade has **obdiplostemonous** or rare **haplostemonous** conditions, where stamens evolve for diversity or reduction (e.g., **Erodium**, **Pelargonium**).",
+                        "The evolution of **nectaries** shows an **extrastaminal** trait with **receptacular outgrowths**, reflecting pollination shifts, all affecting diverse **pollination mechanisms**.",
+                        "The order continues the trend of **flower simplification** as seen in earlier groups."
+                    ]
+                }
+            ]
         },
         {
             "title": "Geraniaceae Floral Characteristics",
-            "body": "<b style='color: forestgreen;'>Geraniaceae</b> flowers are generally <b style='color: forestgreen;'>polysymmetric</b> and <b style='color: forestgreen;'>pentamerous</b>, but certain species like <b style='color: forestgreen;'>Erodium</b> show variation with adaxial petals differing in size and texture. In contrast, <b style='color: forestgreen;'>Pelargonium</b> flowers are <b style='color: forestgreen;'>monosymmetric</b> with distinctive upper petals and a reduced number of stamens. Nectaries differ too: <b style='color: forestgreen;'>Geranium</b> has five equal dorsal bumps, while <b style='color: forestgreen;'>Erodium</b> features unequally sized nectaries. In <b style='color: forestgreen;'>Pelargonium</b>, there's a single adaxial nectary, highlighting the diverse floral structures within the family.\n\nThe <b style='color: forestgreen;'>androecium</b> varies, being <b style='color: forestgreen;'>obdiplostemonous</b> generally, but Erodium develops <b style='color: forestgreen;'>staminodes</b> from certain stamens. <b style='color: forestgreen;'>Pelargonium</b> shows unequal staminode development. In this family, carpels are usually superior and isomerous, with ovules etched distinctly per locule. Uniquely, <b style='color: forestgreen;'>Pelargonium</b> has superposed ovules within its carpels due to limited space, illustrating the anatomical complexities experienced within the Geraniaceae."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Geraniaceae** flowers are generally **polysymmetric** and **pentamerous**, but certain species like **Erodium** show variation with adaxial petals differing in size and texture.",
+                        "In contrast, **Pelargonium** flowers are **monosymmetric** with distinctive upper petals and a reduced number of stamens.",
+                        "Nectaries differ too: **Geranium** has five equal dorsal bumps, while **Erodium** features unequally sized nectaries.",
+                        "In **Pelargonium**, there's a single adaxial nectary, highlighting the diverse floral structures within the family."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The **androecium** varies, being **obdiplostemonous** generally, but Erodium develops **staminodes** from certain stamens.",
+                        "**Pelargonium** shows unequal staminode development.",
+                        "In this family, carpels are usually superior and isomerous, with ovules etched distinctly per locule.",
+                        "Uniquely, **Pelargonium** has superposed ovules within its carpels due to limited space, illustrating the anatomical complexities experienced within the Geraniaceae."
+                    ]
+                }
+            ]
         },
         {
             "title": "Unisexual Flower Variations in Diverse Species",
-            "body": "<b style='color: forestgreen;'>Sapindaceae</b>, a diverse plant family, often features <b style='color: forestgreen;'>unisexual flowers</b> with <b style='color: forestgreen;'>oblique monosymmetry</b>, having <b style='color: forestgreen;'>petal appendages</b> and <b style='color: forestgreen;'>eight stamens</b>. Their <b style='color: forestgreen;'>ovary</b> is usually <b style='color: forestgreen;'>syncarpous</b> and surrounded by an <b style='color: forestgreen;'>extrastaminal disc</b>. For example, <b style='color: forestgreen;'>Acer griseum</b> shows this by possessing <b style='color: forestgreen;'>ten</b> stamens instead of the usual <b style='color: forestgreen;'>eight</b>, offering an increase in floral structures. <b style='color: forestgreen;'>Acer</b> species often demonstrate <b style='color: forestgreen;'>secondary disymmetry</b>, and the addition of stamens corresponds to the <b style='color: forestgreen;'>pressures from sepals</b> during floral development. The <b style='color: forestgreen;'>position and abortion</b> of stamens tend to influence this development process. Some <b style='color: forestgreen;'>Sapindaceae</b> species feature a <b style='color: forestgreen;'>lateral increase</b> in stamens and exhibit an <b style='color: forestgreen;'>oblique monosymmetry</b> due to systems like <b style='color: forestgreen;'>petal loss</b> in flower structure.\n\n<b style='color: forestgreen;'>Anacardiaceae</b> displays <b style='color: forestgreen;'>paniculate inflorescences</b> with <b style='color: forestgreen;'>unisexual flowers</b> through the late development abortion of other sexual organs. For instance, species like <b style='color: forestgreen;'>Pistacia</b> exhibit <b style='color: forestgreen;'>highly reduced flowers</b> with a <b style='color: forestgreen;'>diplostemonous androecium</b>, and fertile <b style='color: forestgreen;'>carpels</b> that are often <b style='color: forestgreen;'>pseudomonomerous</b> \u2013 resulting in one carpel being functional. The fertilized flower part typically occupies a specific <b style='color: forestgreen;'>contralateral position</b> within the flower layout. This <b style='color: forestgreen;'>gynoecium specialization</b> exhibits forms of oblique monosymmetry, evident in <b style='color: forestgreen;'>Toxicodendron</b>, where <b style='color: forestgreen;'>staminodes</b> replace the position of reduced stamens."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Sapindaceae**, a diverse plant family, often features **unisexual flowers** with **oblique monosymmetry**, having **petal appendages** and **eight stamens**.",
+                        "Their **ovary** is usually **syncarpous** and surrounded by an **extrastaminal disc**.",
+                        "For example, **Acer griseum** shows this by possessing **ten** stamens instead of the usual **eight**, offering an increase in floral structures.",
+                        "**Acer** species often demonstrate **secondary disymmetry**, and the addition of stamens corresponds to the **pressures from sepals** during floral development.",
+                        "The **position and abortion** of stamens tend to influence this development process.",
+                        "Some **Sapindaceae** species feature a **lateral increase** in stamens and exhibit an **oblique monosymmetry** due to systems like **petal loss** in flower structure."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Anacardiaceae** displays **paniculate inflorescences** with **unisexual flowers** through the late development abortion of other sexual organs.",
+                        "For instance, species like **Pistacia** exhibit **highly reduced flowers** with a **diplostemonous androecium**, and fertile **carpels** that are often **pseudomonomerous** \u2013 resulting in one carpel being functional.",
+                        "The fertilized flower part typically occupies a specific **contralateral position** within the flower layout.",
+                        "This **gynoecium specialization** exhibits forms of oblique monosymmetry, evident in **Toxicodendron**, where **staminodes** replace the position of reduced stamens."
+                    ]
+                }
+            ]
         },
         {
             "title": "Summary of Fabids and Floral Structures",
-            "body": "<b style='color: forestgreen;'>Brassicaceae</b> and <b style='color: forestgreen;'>Capparaceae</b> are closely related families with unique flower structures. Brassicaceae's flowers generally follow a <b style='color: forestgreen;'>tetramerous</b> and <b style='color: forestgreen;'>dimerous floral structure</b>, typically having four sepals, four petals, and a characteristic <b style='color: forestgreen;'>tetradynamous androecium</b> of six stamens. The family exhibits a high degree of homogeneity in its floral structures. Monosymmetry is rare and occurs due to the variation in <b style='color: forestgreen;'>petal length</b> or <b style='color: forestgreen;'>stamen position</b>. Brassicaceae is differentiated from Capparaceae based on these unique features and chemical composition, indicating distinct evolutionary paths, with Brassicaceae being considered more uniform. Cleomaceae shares some floral traits with Brassicaceae, hinting at shared ancestry. Evolutions in stamen numbers and structures are noted within these families, with examples like <b style='color: forestgreen;'>Iberis amara</b> and <b style='color: forestgreen;'>Lepidium</b> showcasing unique stamen modulations."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Brassicaceae** and **Capparaceae** are closely related families with unique flower structures.",
+                        "Brassicaceae's flowers generally follow a **tetramerous** and **dimerous floral structure**, typically having four sepals, four petals, and a characteristic **tetradynamous androecium** of six stamens.",
+                        "The family exhibits a high degree of homogeneity in its floral structures.",
+                        "Monosymmetry is rare and occurs due to the variation in **petal length** or **stamen position**.",
+                        "Brassicaceae is differentiated from Capparaceae based on these unique features and chemical composition, indicating distinct evolutionary paths, with Brassicaceae being considered more uniform.",
+                        "Cleomaceae shares some floral traits with Brassicaceae, hinting at shared ancestry.",
+                        "Evolutions in stamen numbers and structures are noted within these families, with examples like **Iberis amara** and **Lepidium** showcasing unique stamen modulations."
+                    ]
+                }
+            ]
         },
         {
             "title": "Diverse Structures in Celastraceae",
-            "body": "<b style='color: forestgreen;'>Celastraceae</b> is a complex family, often debated by botanists due to its <b style='color: forestgreen;'>varied floral structures</b> and forms. This family includes several smaller families, like <b style='color: forestgreen;'>Hippocrateaceae</b> and <b style='color: forestgreen;'>Brexiaceae</b>. The flowers are usually <b style='color: forestgreen;'>polysymmetric</b> and often <b style='color: forestgreen;'>haplostemonous</b>, with some exceptions displaying unequal <b style='color: forestgreen;'>petals</b> or <b style='color: forestgreen;'>polyandry</b>. Common features in some genera include a large <b style='color: forestgreen;'>nectary disc</b>, which may be extrastaminal or within the floral structure. The <b style='color: forestgreen;'>gynoecium</b>'s merism influences the <b style='color: forestgreen;'>stamen</b> count, connected to their position relative to the disc nectar. For instance, in <b style='color: forestgreen;'>Hippocrateoideae</b>, the number of <b style='color: forestgreen;'>stamens</b> is reduced to three, aligning with the three <b style='color: forestgreen;'>carpels</b>. Observations also suggest <b style='color: forestgreen;'>congenital fusion</b> among stamens, justifying their positions opposite petals, similar to other plant species. In <b style='color: forestgreen;'>some species</b>, the stamens and carpels can undergo changes that might affect their traditional arrangements, showcasing transition phases between <b style='color: forestgreen;'>pentamerous</b> and <b style='color: forestgreen;'>trimerous</b> arrangements."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Celastraceae** is a complex family, often debated by botanists due to its **varied floral structures** and forms.",
+                        "This family includes several smaller families, like **Hippocrateaceae** and **Brexiaceae**.",
+                        "The flowers are usually **polysymmetric** and often **haplostemonous**, with some exceptions displaying unequal **petals** or **polyandry**.",
+                        "Common features in some genera include a large **nectary disc**, which may be extrastaminal or within the floral structure.",
+                        "The **gynoecium**'s merism influences the **stamen** count, connected to their position relative to the disc nectar.",
+                        "For instance, in **Hippocrateoideae**, the number of **stamens** is reduced to three, aligning with the three **carpels**.",
+                        "Observations also suggest **congenital fusion** among stamens, justifying their positions opposite petals, similar to other plant species.",
+                        "In **some species**, the stamens and carpels can undergo changes that might affect their traditional arrangements, showcasing transition phases between **pentamerous** and **trimerous** arrangements."
+                    ]
+                }
+            ]
         },
         {
             "title": "Floral Morphology in Passifloraceae and Violaceae",
-            "body": "<b style='color: forestgreen;'>Passifloraceae</b>, <b style='color: forestgreen;'>Malesherbiaceae</b>, and <b style='color: forestgreen;'>Turneraceae</b> are related families that may be combined into one, sharing features like the <b style='color: forestgreen;'>hypanthium</b>, <b style='color: forestgreen;'>corona</b>, <b style='color: forestgreen;'>haplostemony</b>, and <b style='color: forestgreen;'>superior ovary</b> with <b style='color: forestgreen;'>parietal placentation</b>. <b style='color: forestgreen;'>Stud</b>ies on <b style='color: forestgreen;'>Malesherbia</b> show how hypanthial growth impacts flower morphology, similar to <b style='color: forestgreen;'>Passiflora</b>. <b style='color: forestgreen;'>Violaceae</b> are diverse with heterogeneity in flower symmetry but share features like <b style='color: forestgreen;'>haplostemony</b>, <b style='color: forestgreen;'>free/fused broad anthers</b>, and <b style='color: forestgreen;'>superior gynoecium</b>. The <b style='color: forestgreen;'>actinomorphy</b> is identified as an ancestral trait, showing multiple symmetry changes across the family."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Passifloraceae**, **Malesherbiaceae**, and **Turneraceae** are related families that may be combined into one, sharing features like the **hypanthium**, **corona**, **haplostemony**, and **superior ovary** with **parietal placentation**.",
+                        "**Stud**ies on **Malesherbia** show how hypanthial growth impacts flower morphology, similar to **Passiflora**.",
+                        "**Violaceae** are diverse with heterogeneity in flower symmetry but share features like **haplostemony**, **free/fused broad anthers**, and **superior gynoecium**.",
+                        "The **actinomorphy** is identified as an ancestral trait, showing multiple symmetry changes across the family."
+                    ]
+                }
+            ]
         },
         {
             "title": "Floral Characteristics in Polygalaceae and Leguminosae",
-            "body": "Polygalaceae flowers resemble Leguminosae but with notable differences. In <b style='color: forestgreen;'>Polygala</b>, the <b style='color: forestgreen;'>keel</b> is made by a single <b style='color: forestgreen;'>abaxial petal</b>, not two like in Legumes. The <b style='color: forestgreen;'>abaxial petal</b> encompasses <b style='color: forestgreen;'>stamens</b>, while <b style='color: forestgreen;'>lateral petals</b> are reduced or absent. These petals merge with the stamen tube to create a nectar chamber. Stamens are mostly fused with fringes of hairs and arranged in two rows, with certain ones missing. Two fused carpels sit on a gynophore, each carrying a <b style='color: forestgreen;'>pendent ovule</b>. A nectary surrounds the ovary, accessible through a furrow in the stamen tube. In contrast, some other genera have standard petals and inconspicuous calyx. Other developmental patterns noted include variations in stamen arrangement, such as missing outer stamens and adaptations for pollen presentationthrough modified style lobes.\n\nLeguminosae can be divided based on molecular data into sub-families that include <b style='color: forestgreen;'>Caesalpinioideae</b>, <b style='color: forestgreen;'>Mimosoideae</b>, and <b style='color: forestgreen;'>Papilionoideae</b>. Leguminosae typically have <b style='color: forestgreen;'>twenty-one floral organs</b> without fused petals and a two-whorled <b style='color: forestgreen;'>androecium</b>. <b style='color: forestgreen;'>Inflorescences</b> are generally racemose with significant variations in floral structure, especially among the Caesalpinioideae. This subfamily exhibits <b style='color: forestgreen;'>open flowers</b>, variable <b style='color: forestgreen;'>zygomorphy</b>, and reduced petals and stamens. The <b style='color: forestgreen;'>Mimosoid Clade</b>, differing by floral orientation and radial symmetry, has a secondary increase in stamens with unique floral developments like fused calyx or petals forming tubes. Meanwhile, <b style='color: forestgreen;'>Papilionoideae</b> flaunt a uniform floral ontology, relying on bees for pollination with adaxial petals being the largest and <b style='color: forestgreen;'>cochleate arrangement</b> of petals, used for pollen deposition on visiting insects."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Polygalaceae flowers resemble Leguminosae but with notable differences.",
+                        "In **Polygala**, the **keel** is made by a single **abaxial petal**, not two like in Legumes.",
+                        "The **abaxial petal** encompasses **stamens**, while **lateral petals** are reduced or absent.",
+                        "These petals merge with the stamen tube to create a nectar chamber.",
+                        "Stamens are mostly fused with fringes of hairs and arranged in two rows, with certain ones missing.",
+                        "Two fused carpels sit on a gynophore, each carrying a **pendent ovule**.",
+                        "A nectary surrounds the ovary, accessible through a furrow in the stamen tube.",
+                        "In contrast, some other genera have standard petals and inconspicuous calyx.",
+                        "Other developmental patterns noted include variations in stamen arrangement, such as missing outer stamens and adaptations for pollen presentationthrough modified style lobes."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Leguminosae can be divided based on molecular data into sub-families that include **Caesalpinioideae**, **Mimosoideae**, and **Papilionoideae**.",
+                        "Leguminosae typically have **twenty-one floral organs** without fused petals and a two-whorled **androecium**.",
+                        "**Inflorescences** are generally racemose with significant variations in floral structure, especially among the Caesalpinioideae.",
+                        "This subfamily exhibits **open flowers**, variable **zygomorphy**, and reduced petals and stamens.",
+                        "The **Mimosoid Clade**, differing by floral orientation and radial symmetry, has a secondary increase in stamens with unique floral developments like fused calyx or petals forming tubes.",
+                        "Meanwhile, **Papilionoideae** flaunt a uniform floral ontology, relying on bees for pollination with adaxial petals being the largest and **cochleate arrangement** of petals, used for pollen deposition on visiting insects."
+                    ]
+                }
+            ]
         },
         {
             "title": "Fagales Traits and Evolutionary Adaptations",
-            "body": "<b style='color: forestgreen;'>The Fagales</b> order consists of families like <b style='color: forestgreen;'>Fagaceae</b>, <b style='color: forestgreen;'>Betulaceae</b>, and <b style='color: forestgreen;'>Juglandaceae</b>. Their <b style='color: forestgreen;'>flowers</b> are mostly <b style='color: forestgreen;'>reduced</b>, adapted for <b style='color: forestgreen;'>wind pollination</b> but some revert to <b style='color: forestgreen;'>insect pollination</b>. They often have <b style='color: forestgreen;'>hexamerous unisexual flowers</b>. Other common traits include a reduction in <b style='color: forestgreen;'>perianth</b> and <b style='color: forestgreen;'>carpels</b>, and interesting <b style='color: forestgreen;'>dispersal mechanisms</b> where <b style='color: forestgreen;'>bracts</b> and <b style='color: forestgreen;'>flowers</b> are fused. Fossils show mixed adaptations. <b style='color: forestgreen;'>Fagales</b> were once thought to be ancestral for flowering plants, but their <b style='color: forestgreen;'>reduced flowers</b> are now seen as derived features.\n\nIn the <b style='color: forestgreen;'>Fagaceae</b> family, flowers are often <b style='color: forestgreen;'>pentamerous to hexamerous</b>, with both staminate and pistillate flowers found on <b style='color: forestgreen;'>catkin-like inflorescences</b>. There is a rich diversity in <b style='color: forestgreen;'>cupule morphology</b>, with '<b style='color: forestgreen;'>dichasium-cupules</b>' and '<b style='color: forestgreen;'>flower-cupules</b>', representing evolutionary adaptations. In <b style='color: forestgreen;'>Nothofagaceae</b>, they have analogously <b style='color: forestgreen;'>derived floral structures</b>, supporting the varied morphological traits observed in the Fagales."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**The Fagales** order consists of families like **Fagaceae**, **Betulaceae**, and **Juglandaceae**.",
+                        "Their **flowers** are mostly **reduced**, adapted for **wind pollination** but some revert to **insect pollination**.",
+                        "They often have **hexamerous unisexual flowers**.",
+                        "Other common traits include a reduction in **perianth** and **carpels**, and interesting **dispersal mechanisms** where **bracts** and **flowers** are fused.",
+                        "Fossils show mixed adaptations.",
+                        "**Fagales** were once thought to be ancestral for flowering plants, but their **reduced flowers** are now seen as derived features."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "In the **Fagaceae** family, flowers are often **pentamerous to hexamerous**, with both staminate and pistillate flowers found on **catkin-like inflorescences**.",
+                        "There is a rich diversity in **cupule morphology**, with '**dichasium-cupules**' and '**flower-cupules**', representing evolutionary adaptations.",
+                        "In **Nothofagaceae**, they have analogously **derived floral structures**, supporting the varied morphological traits observed in the Fagales."
+                    ]
+                }
+            ]
         },
         {
             "title": "Floral Evolution in Polygonaceae and Caryophyllales",
-            "body": "<b style='color: forestgreen;'>Polygonaceae</b> explores the family's <b style='color: forestgreen;'>floral characteristics</b> and <b style='color: forestgreen;'>evolutionary patterns</b>. Flowers show a <b style='color: forestgreen;'>high degree of variability</b>, with arrangements ranging from <b style='color: forestgreen;'>hexamerous</b> to <b style='color: forestgreen;'>pentamerous</b> configurations, often <b style='color: forestgreen;'>missing petals</b>, and are sometimes <b style='color: forestgreen;'>unisexual</b> (e.g., <b style='color: forestgreen;'>Rumex</b>). Notable trends include the <b style='color: forestgreen;'>absence</b> of <b style='color: forestgreen;'>bracteoles</b>, <b style='color: forestgreen;'>axillary inflorescences</b>, and <b style='color: forestgreen;'>wind pollination</b>; flowers may have up to <b style='color: forestgreen;'>twenty-four stamens</b> in some species. The <b style='color: forestgreen;'>gynoecium</b> tends to be <b style='color: forestgreen;'>trimerous</b>. Phylogenetic studies suggest a transition from <b style='color: forestgreen;'>trimerous</b> to <b style='color: forestgreen;'>pentamerous</b> flowers, despite variances seen in <b style='color: forestgreen;'>androecium</b> development, commonly resulting in <b style='color: forestgreen;'>diplostemonous</b> arrangements. This illustrates an ongoing evolution toward a more structured and reduced floral composition. Attempts to link <b style='color: forestgreen;'>trimery</b> as <b style='color: forestgreen;'>ancestral</b> are complicated by molecular evidence placing <b style='color: forestgreen;'>Polygonaceae</b> within <b style='color: forestgreen;'>pentamerous</b> Caryophyllales.\n\nWithin the <b style='color: forestgreen;'>Caryophyllales</b>, <b style='color: forestgreen;'>flower morphology</b> shows remarkable <b style='color: forestgreen;'>diversity</b> despite the basic <b style='color: forestgreen;'>pentamerous</b> structure. <b style='color: forestgreen;'>Petaloid sepals</b> seem to evolve independently across families with variations in <b style='color: forestgreen;'>androecial configurations</b>, especially related to <b style='color: forestgreen;'>diplostemony</b> and <b style='color: forestgreen;'>pseudodiplostemony</b>. <b style='color: forestgreen;'>Stamen arrangement</b> showcases flexibility, with common formations being <b style='color: forestgreen;'>haplostemonous</b> or <b style='color: forestgreen;'>diplostemonous</b>, and is influenced by trends in <b style='color: forestgreen;'>carpel reduction</b> or <b style='color: forestgreen;'>stamen position shifts</b>. Adaptations such as <b style='color: forestgreen;'>centrifugal stamen development</b> or <b style='color: forestgreen;'>varying petaloid appendages</b> contribute to the family's tremendous variability. Such evolution reflects the <b style='color: forestgreen;'>ecological</b> adaptations of the <b style='color: forestgreen;'>Caryophyllales</b>, seen in both <b style='color: forestgreen;'>wind</b> and <b style='color: forestgreen;'>insect-pollinated</b> modes."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Polygonaceae** explores the family's **floral characteristics** and **evolutionary patterns**.",
+                        "Flowers show a **high degree of variability**, with arrangements ranging from **hexamerous** to **pentamerous** configurations, often **missing petals**, and are sometimes **unisexual** (e.g., **Rumex**).",
+                        "Notable trends include the **absence** of **bracteoles**, **axillary inflorescences**, and **wind pollination**; flowers may have up to **twenty-four stamens** in some species.",
+                        "The **gynoecium** tends to be **trimerous**.",
+                        "Phylogenetic studies suggest a transition from **trimerous** to **pentamerous** flowers, despite variances seen in **androecium** development, commonly resulting in **diplostemonous** arrangements.",
+                        "This illustrates an ongoing evolution toward a more structured and reduced floral composition.",
+                        "Attempts to link **trimery** as **ancestral** are complicated by molecular evidence placing **Polygonaceae** within **pentamerous** Caryophyllales."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Within the **Caryophyllales**, **flower morphology** shows remarkable **diversity** despite the basic **pentamerous** structure.",
+                        "**Petaloid sepals** seem to evolve independently across families with variations in **androecial configurations**, especially related to **diplostemony** and **pseudodiplostemony**.",
+                        "**Stamen arrangement** showcases flexibility, with common formations being **haplostemonous** or **diplostemonous**, and is influenced by trends in **carpel reduction** or **stamen position shifts**.",
+                        "Adaptations such as **centrifugal stamen development** or **varying petaloid appendages** contribute to the family's tremendous variability.",
+                        "Such evolution reflects the **ecological** adaptations of the **Caryophyllales**, seen in both **wind** and **insect-pollinated** modes."
+                    ]
+                }
+            ]
         },
         {
             "title": "Cactaceae Floral Structures",
-            "body": "<b style='color: forestgreen;'>Cactaceae</b> is a distinct group within the <b style='color: forestgreen;'>Portulacineae</b> that is not <b style='color: forestgreen;'>pentamerous</b> and lacks a <b style='color: forestgreen;'>bipartite involucre</b> but features <b style='color: forestgreen;'>spiral, indefinite perianth</b>. Their flowers are generally <b style='color: forestgreen;'>polysymmetric</b> and rarely <b style='color: forestgreen;'>monosymmetric</b> due to unique stamen arrangement. Unlike other Portulacineae, <b style='color: forestgreen;'>tepals of Cactaceae</b> might derive from fewer original parts or added bracts within the flower. Leuenbergi and Pereskia show transitions between bracts and petaloids. Typically, the <b style='color: forestgreen;'>ovary in Cactaceae is inferior</b> within vegetative tissue expanse, known as <b style='color: forestgreen;'>pericarpel</b>. The <b style='color: forestgreen;'>androecium</b> is multistaminate, developing <b style='color: forestgreen;'>centrifugally</b> on a <b style='color: forestgreen;'>ring primordium</b>. The <b style='color: forestgreen;'>gynoecium</b> is positioned as <b style='color: forestgreen;'>(half-)inferior</b> with multiple carpels enclosing a central residual <b style='color: forestgreen;'>floral apex</b>. Ovule development is <b style='color: forestgreen;'>basal-laminar</b>, and style system is umbrella-like, similar to other Portulacineae."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Cactaceae** is a distinct group within the **Portulacineae** that is not **pentamerous** and lacks a **bipartite involucre** but features **spiral, indefinite perianth**.",
+                        "Their flowers are generally **polysymmetric** and rarely **monosymmetric** due to unique stamen arrangement.",
+                        "Unlike other Portulacineae, **tepals of Cactaceae** might derive from fewer original parts or added bracts within the flower.",
+                        "Leuenbergi and Pereskia show transitions between bracts and petaloids.",
+                        "Typically, the **ovary in Cactaceae is inferior** within vegetative tissue expanse, known as **pericarpel**.",
+                        "The **androecium** is multistaminate, developing **centrifugally** on a **ring primordium**.",
+                        "The **gynoecium** is positioned as **(half-)inferior** with multiple carpels enclosing a central residual **floral apex**.",
+                        "Ovule development is **basal-laminar**, and style system is umbrella-like, similar to other Portulacineae."
+                    ]
+                }
+            ]
         },
         {
             "title": "Overview of Asterids and Cornales",
-            "body": "The <b style='color: forestgreen;'>Asterids</b> contain a significant portion of angiosperms, split into <b style='color: forestgreen;'>Basal Asterids</b> (Cornales and Ericales) and <b style='color: forestgreen;'>Euasterids</b> (lamiids and campanulids). A distinctive feature in many asterids is <b style='color: forestgreen;'>sympetaly</b> (fusion of petals) along with <b style='color: forestgreen;'>adnate stamens</b> forming a <b style='color: forestgreen;'>stamen-petal tube</b>. <b style='color: forestgreen;'>Basal asterids</b> display a greater variety of floral structures, often lacking some of the consistent sympetaly seen in euasterids. <b style='color: forestgreen;'>Cornales</b>, a basal order, is notable for traits like <b style='color: forestgreen;'>small sepals</b> and a <b style='color: forestgreen;'>half-inferior ovary</b> evolving from -epigyny-, showing an evolving tendency towards <b style='color: forestgreen;'>euasterid floral structures</b>. The <b style='color: forestgreen;'>androecium</b> in many Cornales species varies, with complex stamen development often linked to <b style='color: forestgreen;'>centrifugal</b> and <b style='color: forestgreen;'>centripetal directions</b>. Cornales are linked via floral development patterns, such as the <b style='color: forestgreen;'>'corolla ring primordium'</b>, to the <b style='color: forestgreen;'>euasterids</b>.\n\nIn the <b style='color: forestgreen;'>Basal Asterids</b>, <b style='color: forestgreen;'>Cornales</b> is highlighted for having <b style='color: forestgreen;'>free petals</b> and complex stamen arrangements. These often involve development shifts that alter their growing directions. <b style='color: forestgreen;'>Loasaceae</b>, a family within Cornales, demonstrates this with complex polyandrous flowers and centripetal stamen growth patterns. The presence of a <b style='color: forestgreen;'>cuplike hypanthium</b> connects Cornales to euasterids, indicating broader evolutionary trends."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **Asterids** contain a significant portion of angiosperms, split into **Basal Asterids** (Cornales and Ericales) and **Euasterids** (lamiids and campanulids).",
+                        "A distinctive feature in many asterids is **sympetaly** (fusion of petals) along with **adnate stamens** forming a **stamen-petal tube**.",
+                        "**Basal asterids** display a greater variety of floral structures, often lacking some of the consistent sympetaly seen in euasterids.",
+                        "**Cornales**, a basal order, is notable for traits like **small sepals** and a **half-inferior ovary** evolving from -epigyny-, showing an evolving tendency towards **euasterid floral structures**.",
+                        "The **androecium** in many Cornales species varies, with complex stamen development often linked to **centrifugal** and **centripetal directions**.",
+                        "Cornales are linked via floral development patterns, such as the **'corolla ring primordium'**, to the **euasterids**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "In the **Basal Asterids**, **Cornales** is highlighted for having **free petals** and complex stamen arrangements.",
+                        "These often involve development shifts that alter their growing directions.",
+                        "**Loasaceae**, a family within Cornales, demonstrates this with complex polyandrous flowers and centripetal stamen growth patterns.",
+                        "The presence of a **cuplike hypanthium** connects Cornales to euasterids, indicating broader evolutionary trends."
+                    ]
+                }
+            ]
         },
         {
             "title": "Floral Structure and Evolution in Sapotaceae and Primulaceae",
-            "body": "<h3 style='color: forestgreen;'>The Diverse Floral Structures of Various Plant Families</h3>\n\nThe discussion of plant families like *Sapotaceae* and *Primulaceae* outlines a variety of floral characteristics and evolutionary traits. In <b style='color: forestgreen;'>Sapotaceae</b>, flowers exhibit an <b style='color: forestgreen;'>obhaplostemonous pattern</b>, with <b style='color: forestgreen;'>stamens</b> aligning <b style='color: forestgreen;'>with corolla lobes</b>. Some flowers can become <b style='color: forestgreen;'>obdiplostemonous</b>, which is achieved by the inward movement of antesepalous stamens. Examples include <b style='color: forestgreen;'>Sideroxylon</b> and <b style='color: forestgreen;'>Pouteria</b>. This family has evolved various <b style='color: forestgreen;'>pollination syndromes</b>, with flower types differing significantly, such as those in the <b style='color: forestgreen;'>Labourdonnaisia</b> genus which have trilobed petals leading to enhanced numbers of <b style='color: forestgreen;'>stamens</b> reaching up to 18. A <b style='color: forestgreen;'>nectary</b> might appear around the <b style='color: forestgreen;'>ovary</b> base, though this isn't consistent, while the <b style='color: forestgreen;'>syncarpous gynoecium</b> remains constant, along with a variable number of carpels.\n\nThe <b style='color: forestgreen;'>Primulaceae</b> family, elaborated to include additional subfamilies, also marks a distinct approach towards floral structuring. Historical revisions shifted its classifications, showing significant overlap with <b style='color: forestgreen;'>Myrsinaceae</b>, reflecting the natural <b style='color: forestgreen;'>synapomorphies</b> and morphological support evident in their <b style='color: forestgreen;'>stamen-petal tubes</b> and <b style='color: forestgreen;'>free-central placentation</b>. Their stamens and petals often share primordia, which deviates from typical Asterid structure. Meanwhile, the gynoecium's central column is marked by a simple yet structured <b style='color: forestgreen;'>ovule alignment</b> which can help identify <b style='color: forestgreen;'>carpel numbers</b> despite lack of sepals. Subfamily <b style='color: forestgreen;'>Theophrastoideae</b> features tetra- to pentamerous floral arrangements, irrefutably diverse between species, illustrating unique adaptations particularly visible in genus <b style='color: forestgreen;'>Samolus</b>\u2014noting a half-inferior ovary among distinctive floral aspects."
+            "paragraphs": [
+                {
+                    "heading": "The Diverse Floral Structures of Various Plant Families",
+                    "sentences": [
+                        "The discussion of plant families like *Sapotaceae* and *Primulaceae* outlines a variety of floral characteristics and evolutionary traits.",
+                        "In **Sapotaceae**, flowers exhibit an **obhaplostemonous pattern**, with **stamens** aligning **with corolla lobes**.",
+                        "Some flowers can become **obdiplostemonous**, which is achieved by the inward movement of antesepalous stamens.",
+                        "Examples include **Sideroxylon** and **Pouteria**.",
+                        "This family has evolved various **pollination syndromes**, with flower types differing significantly, such as those in the **Labourdonnaisia** genus which have trilobed petals leading to enhanced numbers of **stamens** reaching up to 18.",
+                        "A **nectary** might appear around the **ovary** base, though this isn't consistent, while the **syncarpous gynoecium** remains constant, along with a variable number of carpels."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The **Primulaceae** family, elaborated to include additional subfamilies, also marks a distinct approach towards floral structuring.",
+                        "Historical revisions shifted its classifications, showing significant overlap with **Myrsinaceae**, reflecting the natural **synapomorphies** and morphological support evident in their **stamen-petal tubes** and **free-central placentation**.",
+                        "Their stamens and petals often share primordia, which deviates from typical Asterid structure.",
+                        "Meanwhile, the gynoecium's central column is marked by a simple yet structured **ovule alignment** which can help identify **carpel numbers** despite lack of sepals.",
+                        "Subfamily **Theophrastoideae** features tetra- to pentamerous floral arrangements, irrefutably diverse between species, illustrating unique adaptations particularly visible in genus **Samolus**\u2014noting a half-inferior ovary among distinctive floral aspects."
+                    ]
+                }
+            ]
         },
         {
             "title": "Pollination Strategies in Apocynaceae and Solanales",
-            "body": "The <b style='color: forestgreen;'>plant families</b> and <b style='color: forestgreen;'>pollination mechanisms</b> discussed are <b style='color: forestgreen;'>Apocynaceae</b> and the <b style='color: forestgreen;'>Solanales</b> order. In Apocynaceae, <b style='color: forestgreen;'>complex flowers</b> adapted to pollination consist of <b style='color: forestgreen;'>long tubular corollas</b> often with a corona, which can be nectar recipients. Flowers can exhibit characteristics such as a <b style='color: forestgreen;'>bicarpellate ovary</b>, and stamens can fuse into a tube around the ovary. Notably, in some <b style='color: forestgreen;'>genera like Nerium</b> and <b style='color: forestgreen;'>Periploca</b>, the <b style='color: forestgreen;'>pollinia</b> (pollen sacs) are attached through a specialized clasping organ, allowing insects to pull them out effectively for <b style='color: forestgreen;'>pollination</b>. This evolutionary adaptation within Apocynaceae is distinctive and highlights their complexity. \n\nThe order <b style='color: forestgreen;'>Solanales</b>, which includes families like <b style='color: forestgreen;'>Solanaceae</b> and <b style='color: forestgreen;'>Convolvulaceae</b>, is marked by features like <b style='color: forestgreen;'>radial symmetry</b> and late sympetaly, a characteristic where the <b style='color: forestgreen;'>corolla</b> fuses later in development. While <b style='color: forestgreen;'>flowers</b> in these families often retain a <b style='color: forestgreen;'>polysymmetric form,</b> occasionally they exhibit oblique monosymmetry, which can be crucial for certain pollination strategies. The <b style='color: forestgreen;'>Solanaceae family</b> in particular involves a <b style='color: forestgreen;'>polysymmetric design</b> with potential variations due to oblique gynoecium and adaptations in stamen structure that show an intricate relationship with pollination methods across plant families."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **plant families** and **pollination mechanisms** discussed are **Apocynaceae** and the **Solanales** order.",
+                        "In Apocynaceae, **complex flowers** adapted to pollination consist of **long tubular corollas** often with a corona, which can be nectar recipients.",
+                        "Flowers can exhibit characteristics such as a **bicarpellate ovary**, and stamens can fuse into a tube around the ovary.",
+                        "Notably, in some **genera like Nerium** and **Periploca**, the **pollinia** (pollen sacs) are attached through a specialized clasping organ, allowing insects to pull them out effectively for **pollination**.",
+                        "This evolutionary adaptation within Apocynaceae is distinctive and highlights their complexity."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The order **Solanales**, which includes families like **Solanaceae** and **Convolvulaceae**, is marked by features like **radial symmetry** and late sympetaly, a characteristic where the **corolla** fuses later in development.",
+                        "While **flowers** in these families often retain a **polysymmetric form,** occasionally they exhibit oblique monosymmetry, which can be crucial for certain pollination strategies.",
+                        "The **Solanaceae family** in particular involves a **polysymmetric design** with potential variations due to oblique gynoecium and adaptations in stamen structure that show an intricate relationship with pollination methods across plant families."
+                    ]
+                }
+            ]
         },
         {
             "title": "Lamiaceae and Aquifoliales Characteristics",
-            "body": "<b style='color: forestgreen;'>Lamiaceae</b>, such as <b style='color: forestgreen;'>Westringia fruticosa</b>, often have recognizable <b style='color: forestgreen;'>square stems</b> with opposite leaves, <b style='color: forestgreen;'>bilabiate flowers</b> with four stamens, and a bicarpellate gynoecium with a gynobasic style. With molecular systematics, the family now includes genera from <b style='color: forestgreen;'>Verbenaceae</b>, adding complexity to their identification. <b style='color: forestgreen;'>Aquifoliales</b> is characterized by <b style='color: forestgreen;'>unisexual flowers,</b> and often lacks styles, typically exhibiting a <b style='color: forestgreen;'>single apical-axile ovule</b> per carpel. <b style='color: forestgreen;'>Ilex</b>, common in Aquifoliales, shows this trend with tetramerous flowers, a short <b style='color: forestgreen;'>valvate calyx</b>, and an imbricate corolla."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Lamiaceae**, such as **Westringia fruticosa**, often have recognizable **square stems** with opposite leaves, **bilabiate flowers** with four stamens, and a bicarpellate gynoecium with a gynobasic style.",
+                        "With molecular systematics, the family now includes genera from **Verbenaceae**, adding complexity to their identification.",
+                        "**Aquifoliales** is characterized by **unisexual flowers,** and often lacks styles, typically exhibiting a **single apical-axile ovule** per carpel.",
+                        "**Ilex**, common in Aquifoliales, shows this trend with tetramerous flowers, a short **valvate calyx**, and an imbricate corolla."
+                    ]
+                }
+            ]
         },
         {
             "title": "Floral Diagrams and Systematic Characters",
-            "body": "Floral <b style='color: forestgreen;'>diagrams</b> provide detailed <b style='color: forestgreen;'>descriptions</b> of flowers, capturing both <b style='color: forestgreen;'>developmental</b> and <b style='color: forestgreen;'>anatomical</b> aspects. These diagrams highlight the <b style='color: forestgreen;'>evolutionary changes</b> in flowers, reflecting the <b style='color: forestgreen;'>Bauplan</b> and allowing comparisons of different <b style='color: forestgreen;'>floral structures</b>. The diagrams show the plant's <b style='color: forestgreen;'>plasticity</b> and <b style='color: forestgreen;'>morphological</b> changes over time, illustrating <b style='color: forestgreen;'>apomorphic tendencies</b> which are unique features that may appear more frequently in a plant family but not necessarily in all members of that family. This also includes <b style='color: forestgreen;'>parallelisms</b> and <b style='color: forestgreen;'>convergent evolution</b>, where similar traits evolve independently in unrelated groups, posing challenges in character recognition and terminology in botanical research."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Floral **diagrams** provide detailed **descriptions** of flowers, capturing both **developmental** and **anatomical** aspects.",
+                        "These diagrams highlight the **evolutionary changes** in flowers, reflecting the **Bauplan** and allowing comparisons of different **floral structures**.",
+                        "The diagrams show the plant's **plasticity** and **morphological** changes over time, illustrating **apomorphic tendencies** which are unique features that may appear more frequently in a plant family but not necessarily in all members of that family.",
+                        "This also includes **parallelisms** and **convergent evolution**, where similar traits evolve independently in unrelated groups, posing challenges in character recognition and terminology in botanical research."
+                    ]
+                }
+            ]
         },
         {
             "title": "Floral Diagrams and Biodiversity Urgency",
-            "body": "<b style='color: forestgreen;'>Floral diagrams</b> are like <b style='color: forestgreen;'>architectural blueprints</b> for understanding and identifying flowers. They show <b style='color: forestgreen;'>organ relationships</b>, which helps predict how flowers interact with <b style='color: forestgreen;'>pollinators</b> and change over time. This isn't an easy task, because flowers are <b style='color: forestgreen;'>dynamic</b> and influenced by <b style='color: forestgreen;'>environmental</b> factors and <b style='color: forestgreen;'>genetic shifts</b>. Despite this complexity, some <b style='color: forestgreen;'>conservative characteristics</b> help identify flower <b style='color: forestgreen;'>families</b>.\n\n<b style='color: forestgreen;'>Floral diagrams</b> are crucial for grasping <b style='color: forestgreen;'>flower complexities</b>, even as <b style='color: forestgreen;'>genetic research</b> evolves. The text stresses the decline in <b style='color: forestgreen;'>knowledge</b> of floral structures due to focus on other areas. Recent <b style='color: forestgreen;'>discoveries</b> in flower structures demand attention, especially in tropical families with rich <b style='color: forestgreen;'>diversity</b> yet to be documented. The <b style='color: forestgreen;'>biodiversity crisis</b> makes these studies urgent, preserving both <b style='color: forestgreen;'>scientific knowledge</b> and <b style='color: forestgreen;'>aesthetic models</b> before they're lost."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Floral diagrams** are like **architectural blueprints** for understanding and identifying flowers.",
+                        "They show **organ relationships**, which helps predict how flowers interact with **pollinators** and change over time.",
+                        "This isn't an easy task, because flowers are **dynamic** and influenced by **environmental** factors and **genetic shifts**.",
+                        "Despite this complexity, some **conservative characteristics** help identify flower **families**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Floral diagrams** are crucial for grasping **flower complexities**, even as **genetic research** evolves.",
+                        "The text stresses the decline in **knowledge** of floral structures due to focus on other areas.",
+                        "Recent **discoveries** in flower structures demand attention, especially in tropical families with rich **diversity** yet to be documented.",
+                        "The **biodiversity crisis** makes these studies urgent, preserving both **scientific knowledge** and **aesthetic models** before they're lost."
+                    ]
+                }
+            ]
         },
         {
             "title": "Glossary of Botanical Terms and References",
-            "body": "<h3 style='color: forestgreen;'>Glossary of Botanical Terms and References</h3>\n\nThis section covers <b style='color: forestgreen;'>botanical terminology</b> and <b style='color: forestgreen;'>references</b>. Terms like <b style='color: forestgreen;'>pseudomonomery</b> describe a gynoecium with a single fertile carpel, while a <b style='color: forestgreen;'>pseudonectary</b> appears like a nectary but doesn't secrete sugar. Flowers with sepals that resemble petals are <b style='color: forestgreen;'>sepaloid</b>; anthers opening by pores are <b style='color: forestgreen;'>poricidal</b>. <b style='color: forestgreen;'>Protandrous</b> flowers release pollen before their stigmas are receptive, opposite to <b style='color: forestgreen;'>protogynous</b> flowers. In botanical literature, <b style='color: forestgreen;'>ring primordium</b> is a circular primordium that develops into stamens or carpels. Understanding these terms is key for grasping plant morphology.\n\nDifferent <b style='color: forestgreen;'>morphological features</b> and <b style='color: forestgreen;'>flowering techniques</b> are highlighted. For instance, a <b style='color: forestgreen;'>trimerous</b> flower has parts in threes, while <b style='color: forestgreen;'>urceolate</b> flowers are urn-shaped. Studies have analyzed evolutionary relationships, anatomical structures, and plant development processes. References include diverse species such as <b style='color: forestgreen;'>Amphipterygium</b> and <b style='color: forestgreen;'>Lacandonia schismatica</b>, and important aspects like <b style='color: forestgreen;'>staminodes</b> and <b style='color: forestgreen;'>floral organogenesis</b>. These discussions aid in comprehending the complexities of plant anatomy, development, and systematics."
+            "paragraphs": [
+                {
+                    "heading": "Glossary of Botanical Terms and References",
+                    "sentences": [
+                        "This section covers **botanical terminology** and **references**.",
+                        "Terms like **pseudomonomery** describe a gynoecium with a single fertile carpel, while a **pseudonectary** appears like a nectary but doesn't secrete sugar.",
+                        "Flowers with sepals that resemble petals are **sepaloid**; anthers opening by pores are **poricidal**.",
+                        "**Protandrous** flowers release pollen before their stigmas are receptive, opposite to **protogynous** flowers.",
+                        "In botanical literature, **ring primordium** is a circular primordium that develops into stamens or carpels.",
+                        "Understanding these terms is key for grasping plant morphology."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Different **morphological features** and **flowering techniques** are highlighted.",
+                        "For instance, a **trimerous** flower has parts in threes, while **urceolate** flowers are urn-shaped.",
+                        "Studies have analyzed evolutionary relationships, anatomical structures, and plant development processes.",
+                        "References include diverse species such as **Amphipterygium** and **Lacandonia schismatica**, and important aspects like **staminodes** and **floral organogenesis**.",
+                        "These discussions aid in comprehending the complexities of plant anatomy, development, and systematics."
+                    ]
+                }
+            ]
         },
         {
             "title": "Overview of Floral Diversity and Ontogeny Studies",
-            "body": "<b style='color: forestgreen;'>Researchers</b> have extensively studied <b style='color: forestgreen;'>floral diversity</b> and <b style='color: forestgreen;'>ontogeny</b> across various plant families. Recent works focus on <b style='color: forestgreen;'>evolutionary changes</b> in floral <b style='color: forestgreen;'>morphology</b> and <b style='color: forestgreen;'>vascular patterns</b>. <b style='color: forestgreen;'>Sympetaly</b> \u2014 where petals are fused \u2014 remains a key area of focus due to its systematic importance in specific plant groups. <b style='color: forestgreen;'>Inflorescence development</b>, which involves the arrangement and structure of a group of flowers on a plant, is another significant topic. Studies analyze the floral development of families looking at the variation in <b style='color: forestgreen;'>flower parts</b> and pollination strategies. <b style='color: forestgreen;'>Understanding</b> these <b style='color: forestgreen;'>variations</b> helps in the analysis of <b style='color: forestgreen;'>phylogenetic relationships</b> among plant groups.Though progress has been made, accurately <b style='color: forestgreen;'>assessing floral morphology</b> in <b style='color: forestgreen;'>systematics</b> poses <b style='color: forestgreen;'>challenges</b>. Detailed studies in <b style='color: forestgreen;'>Pittosporaceae</b> and <b style='color: forestgreen;'>Ranunculaceae</b> provide examples of <b style='color: forestgreen;'>diverse floral structures</b> such as <b style='color: forestgreen;'>portioned pollen release</b> and unique <b style='color: forestgreen;'>gynoecium designs</b>. The <b style='color: forestgreen;'>study</b> of <b style='color: forestgreen;'>caryophyllales</b> \u2014 a large group of flowering plants \u2014 shows developments in <b style='color: forestgreen;'>organ identity</b> and <b style='color: forestgreen;'>resin secretions</b> in plants like <b style='color: forestgreen;'>Clusia</b> that further our <b style='color: forestgreen;'>understanding</b> of their <b style='color: forestgreen;'>evolutionary pathways</b>. These investigations contribute to a <b style='color: forestgreen;'>broader picture</b> of floral <b style='color: forestgreen;'>diversification</b> in <b style='color: forestgreen;'>angiosperms</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Researchers** have extensively studied **floral diversity** and **ontogeny** across various plant families.",
+                        "Recent works focus on **evolutionary changes** in floral **morphology** and **vascular patterns**.",
+                        "**Sympetaly** \u2014 where petals are fused \u2014 remains a key area of focus due to its systematic importance in specific plant groups.",
+                        "**Inflorescence development**, which involves the arrangement and structure of a group of flowers on a plant, is another significant topic.",
+                        "Studies analyze the floral development of families looking at the variation in **flower parts** and pollination strategies.",
+                        "**Understanding** these **variations** helps in the analysis of **phylogenetic relationships** among plant groups.Though progress has been made, accurately **assessing floral morphology** in **systematics** poses **challenges**.",
+                        "Detailed studies in **Pittosporaceae** and **Ranunculaceae** provide examples of **diverse floral structures** such as **portioned pollen release** and unique **gynoecium designs**.",
+                        "The **study** of **caryophyllales** \u2014 a large group of flowering plants \u2014 shows developments in **organ identity** and **resin secretions** in plants like **Clusia** that further our **understanding** of their **evolutionary pathways**.",
+                        "These investigations contribute to a **broader picture** of floral **diversification** in **angiosperms**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Floral Morphology and Evolution Studies",
-            "body": "<h3 style='color: forestgreen;'>Research <b style='color: forestgreen;'>Studies</b> on <b style='color: forestgreen;'>Floral</b> <b style='color: forestgreen;'>Morphology</b> and <b style='color: forestgreen;'>Systematics</b></h3>\n\nThe provided references cover a diverse array of studies focusing on <b style='color: forestgreen;'>floral</b> <b style='color: forestgreen;'>morphology</b> and systematics across various plant families. This collection highlights investigations into specific plant families, like the <b style='color: forestgreen;'>Gentianaceae</b>, <b style='color: forestgreen;'>Leguminosae</b>, and <b style='color: forestgreen;'>Euphorbiaceae</b>, providing insights into their <b style='color: forestgreen;'>flower structures</b> and <b style='color: forestgreen;'>anatomy</b>. These studies aim to enhance understanding of plant <b style='color: forestgreen;'>taxonomy</b> and <b style='color: forestgreen;'>evolution</b>, often reflecting on the <b style='color: forestgreen;'>phylogenetic</b> relationships within specific <b style='color: forestgreen;'>families</b> and subgroups. Publications address <b style='color: forestgreen;'>morphological</b> features such as <b style='color: forestgreen;'>petal identity</b>, <b style='color: forestgreen;'>inflorescence</b> development, and <b style='color: forestgreen;'>gynoecium</b> variations, providing a comparative foundation for classifying and comprehending the evolutionary pathways in these plants.\n\n<h3 style='color: forestgreen;'>Evolutionary <b style='color: forestgreen;'>Patterns</b> and <b style='color: forestgreen;'>Identification</b> in Angiosperms</h3>\n\nSeveral studies focus on evolutionary aspects, such as the analysis of <b style='color: forestgreen;'>plastid genomes</b> across various angiosperms to resolve their <b style='color: forestgreen;'>phylogenetic</b> relationships and uncover genome-scale evolutionary patterns. This includes work on the <b style='color: forestgreen;'>expressions</b> of <b style='color: forestgreen;'>floral</b> <b style='color: forestgreen;'>genes</b> in families such as <b style='color: forestgreen;'>Ranunculaceae</b> and <b style='color: forestgreen;'>Sapotaceae</b>, exploring how these genetic patterns correlate with <b style='color: forestgreen;'>morphological</b> features in <b style='color: forestgreen;'>flowering</b> plants. Notably, these references often compare floral components, offering hypotheses on the <b style='color: forestgreen;'>evolution of flowers</b>, posing questions on traits like <b style='color: forestgreen;'>zygomycy</b> and polyandry, and discussing <b style='color: forestgreen;'>structural</b> homologies across different <b style='color: forestgreen;'>species</b>."
+            "paragraphs": [
+                {
+                    "heading": "Research Studies on Floral Morphology and Systematics",
+                    "sentences": [
+                        "The provided references cover a diverse array of studies focusing on **floral** **morphology** and systematics across various plant families.",
+                        "This collection highlights investigations into specific plant families, like the **Gentianaceae**, **Leguminosae**, and **Euphorbiaceae**, providing insights into their **flower structures** and **anatomy**.",
+                        "These studies aim to enhance understanding of plant **taxonomy** and **evolution**, often reflecting on the **phylogenetic** relationships within specific **families** and subgroups.",
+                        "Publications address **morphological** features such as **petal identity**, **inflorescence** development, and **gynoecium** variations, providing a comparative foundation for classifying and comprehending the evolutionary pathways in these plants."
+                    ]
+                },
+                {
+                    "heading": "Evolutionary Patterns and Identification in Angiosperms",
+                    "sentences": [
+                        "Several studies focus on evolutionary aspects, such as the analysis of **plastid genomes** across various angiosperms to resolve their **phylogenetic** relationships and uncover genome-scale evolutionary patterns.",
+                        "This includes work on the **expressions** of **floral** **genes** in families such as **Ranunculaceae** and **Sapotaceae**, exploring how these genetic patterns correlate with **morphological** features in **flowering** plants.",
+                        "Notably, these references often compare floral components, offering hypotheses on the **evolution of flowers**, posing questions on traits like **zygomycy** and polyandry, and discussing **structural** homologies across different **species**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Studies on Floral Development and Evolution by S.C. Tucker",
-            "body": "<b style='color: forestgreen;'>Tucker, S. C.</b> (1988a, 1988b) discussed <b style='color: forestgreen;'>dioecy</b> and differences between <b style='color: forestgreen;'>floral organ loss vs. suppression</b> in the leguminous plant <b style='color: forestgreen;'>Bauhinia</b>. In other studies, Tucker explored the <b style='color: forestgreen;'>developmental basis for sexual expression</b> in <b style='color: forestgreen;'>Ceratonia siliqua</b> and the evolutionary patterns of floral ontogeny within certain <b style='color: forestgreen;'>Caesalpinioideae</b> genera, like <b style='color: forestgreen;'>Cassia</b>. \n\nFurthering this, in 1997, Tucker proposed a hypothesis on <b style='color: forestgreen;'>floral evolution and development</b>, citing hierarchical significance. Other research into leguminous plants such as <b style='color: forestgreen;'>Petalostylis</b>, <b style='color: forestgreen;'>Labichea</b>, and <b style='color: forestgreen;'>Dialium</b> focused on <b style='color: forestgreen;'>floral reduction</b>, while studies in 1999 and 2000 delved into the <b style='color: forestgreen;'>lability of floral symmetry</b> and the <b style='color: forestgreen;'>evolutionary loss</b> of certain floral parts in various legume taxa."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Tucker, S. C.**",
+                        "(1988a, 1988b) discussed **dioecy** and differences between **floral organ loss vs. suppression** in the leguminous plant **Bauhinia**.",
+                        "In other studies, Tucker explored the **developmental basis for sexual expression** in **Ceratonia siliqua** and the evolutionary patterns of floral ontogeny within certain **Caesalpinioideae** genera, like **Cassia**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Furthering this, in 1997, Tucker proposed a hypothesis on **floral evolution and development**, citing hierarchical significance.",
+                        "Other research into leguminous plants such as **Petalostylis**, **Labichea**, and **Dialium** focused on **floral reduction**, while studies in 1999 and 2000 delved into the **lability of floral symmetry** and the **evolutionary loss** of certain floral parts in various legume taxa."
+                    ]
+                }
+            ]
         },
         {
             "title": "Index Overview - Botanical Diversity",
-            "body": "It contains a <b style='color: forestgreen;'>comprehensive list</b> of plant species and <b style='color: forestgreen;'>families</b>,along with concepts related to plant <b style='color: forestgreen;'>morphology</b> and development. It includes various plant genera like <b style='color: forestgreen;'>Berberidaceae</b>, and terms like <b style='color: forestgreen;'>androecium</b> and <b style='color: forestgreen;'>bract</b>. Specific plants like <b style='color: forestgreen;'>Acer saccharinum</b> and <b style='color: forestgreen;'>Amelanchier</b> are also mentioned. This index provides <b style='color: forestgreen;'>insight</b> into the <b style='color: forestgreen;'>extensive diversity</b> and specialization that plants display in their <b style='color: forestgreen;'>floral structures</b> and their <b style='color: forestgreen;'>evolutionary significance</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "It contains a **comprehensive list** of plant species and **families**,along with concepts related to plant **morphology** and development.",
+                        "It includes various plant genera like **Berberidaceae**, and terms like **androecium** and **bract**.",
+                        "Specific plants like **Acer saccharinum** and **Amelanchier** are also mentioned.",
+                        "This index provides **insight** into the **extensive diversity** and specialization that plants display in their **floral structures** and their **evolutionary significance**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Plants & Genetic Influence: Gentianaceae to Geraniaceae",
-            "body": "In the study of plant taxonomy and morphology, various species and families offer insight into the complexity of the plant kingdom. For instance, <b style='color: forestgreen;'>Gentianaceae</b>, a family related to the order <b style='color: forestgreen;'>Gentianales</b>, exhibits interesting genetic expressions influencing petal identity and notable molecular evidence supporting taxonomic classification. The <b style='color: forestgreen;'>Geraniaceae</b> family, linked to the <b style='color: forestgreen;'>Geraniales</b> order, comprises unique species such as <b style='color: forestgreen;'>Geranium</b>. Evolutionary forces such as <b style='color: forestgreen;'>genetic mutations</b>, gene pathways, and expressions have been studied extensively in these plants, revealing shifts influenced by gene control and mechanical pressures affecting their development and morphology."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In the study of plant taxonomy and morphology, various species and families offer insight into the complexity of the plant kingdom.",
+                        "For instance, **Gentianaceae**, a family related to the order **Gentianales**, exhibits interesting genetic expressions influencing petal identity and notable molecular evidence supporting taxonomic classification.",
+                        "The **Geraniaceae** family, linked to the **Geraniales** order, comprises unique species such as **Geranium**.",
+                        "Evolutionary forces such as **genetic mutations**, gene pathways, and expressions have been studied extensively in these plants, revealing shifts influenced by gene control and mechanical pressures affecting their development and morphology."
+                    ]
+                }
+            ]
         },
         {
             "title": "Floral Structures and Inflorescence Types",
-            "body": "<b style='color: forestgreen;'>Inflorescence</b> types include cyme, <b style='color: forestgreen;'>determinate</b> structures where the terminal flower blooms first, and indeterminate structures like <b style='color: forestgreen;'>racemes</b> and spikelets where the growth continues at the apex of the flower stalk. Specific types include <b style='color: forestgreen;'>umbel</b>, where flowers are arranged in a rounded cluster, and <b style='color: forestgreen;'>spikelets</b>, commonly seen in grasses.\n\nThe <b style='color: forestgreen;'>trimerous</b> flower structure refers to floral parts in <b style='color: forestgreen;'>threes</b>, as seen in monocots, while <b style='color: forestgreen;'>pentamerous</b> structures have floral parts in <b style='color: forestgreen;'>fives</b>, typical in pentapetalae. Floral <b style='color: forestgreen;'>merism</b> refers to the number of parts per whorl of an inflorescence, with variability seen among different plant families."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Inflorescence** types include cyme, **determinate** structures where the terminal flower blooms first, and indeterminate structures like **racemes** and spikelets where the growth continues at the apex of the flower stalk.",
+                        "Specific types include **umbel**, where flowers are arranged in a rounded cluster, and **spikelets**, commonly seen in grasses."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The **trimerous** flower structure refers to floral parts in **threes**, as seen in monocots, while **pentamerous** structures have floral parts in **fives**, typical in pentapetalae.",
+                        "Floral **merism** refers to the number of parts per whorl of an inflorescence, with variability seen among different plant families."
+                    ]
+                }
+            ]
         },
         {
             "title": "Overview of Plant Taxonomy and Characteristics",
-            "body": "The text provides a <b style='color: forestgreen;'>comprehensive overview</b> of various plants and their <b style='color: forestgreen;'>taxonomic families</b>, focusing on characteristics such as <b style='color: forestgreen;'>flower structure</b>, <b style='color: forestgreen;'>stamens</b>, and *inflorescence*. Notable plants include <b style='color: forestgreen;'>Sambucus javanica</b>, *Schefflera subintegra*, and *Stylidium graminifolium*. It includes mentions of <b style='color: forestgreen;'>styles</b>, <b style='color: forestgreen;'>stigmas</b>, and <b style='color: forestgreen;'>pollination mechanisms</b>, indicative of their role in <b style='color: forestgreen;'>plant reproduction</b> and <b style='color: forestgreen;'>classification</b>.\n\nAdditionally, there is a discussion of <b style='color: forestgreen;'>secondary pollen presentation</b>, a feature in certain plant families, and <b style='color: forestgreen;'>floral symmetry</b> aspects like <b style='color: forestgreen;'>zygomorphy</b>. Plants like <b style='color: forestgreen;'>Viburnum grandiflorum</b> demonstrate diverse <b style='color: forestgreen;'>inflorescence patterns</b>, while <b style='color: forestgreen;'>Zea mays</b> (corn) features prominently in the <b style='color: forestgreen;'>Poaceae family</b>. An in-depth analysis aids in the understanding of these <b style='color: forestgreen;'>botanical concepts</b> and their importance in the <b style='color: forestgreen;'>plant kingdom</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The text provides a **comprehensive overview** of various plants and their **taxonomic families**, focusing on characteristics such as **flower structure**, **stamens**, and *inflorescence*.",
+                        "Notable plants include **Sambucus javanica**, *Schefflera subintegra*, and *Stylidium graminifolium*.",
+                        "It includes mentions of **styles**, **stigmas**, and **pollination mechanisms**, indicative of their role in **plant reproduction** and **classification**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Additionally, there is a discussion of **secondary pollen presentation**, a feature in certain plant families, and **floral symmetry** aspects like **zygomorphy**.",
+                        "Plants like **Viburnum grandiflorum** demonstrate diverse **inflorescence patterns**, while **Zea mays** (corn) features prominently in the **Poaceae family**.",
+                        "An in-depth analysis aids in the understanding of these **botanical concepts** and their importance in the **plant kingdom**."
+                    ]
+                }
+            ]
         }
     ]
 }

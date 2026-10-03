@@ -12,71 +12,366 @@
     "parts": [
         {
             "title": "Chapter 1. Introduction and Setup",
-            "body": "This chapter is a <b style='color: forestgreen;'>guide</b> to setting up a Node.js <b style='color: forestgreen;'>development environment</b>. It covers <b style='color: forestgreen;'>core tools</b> like <b style='color: forestgreen;'>VS Code</b>, <b style='color: forestgreen;'>Node.js</b>, and <b style='color: forestgreen;'>Fastify</b>, along with optional components. You'll find various <b style='color: forestgreen;'>installation methods</b> (GUI, third-party, binary) explained for different operating systems. While instructions are tailored, you can use alternatives. The goal is to equip you with a <b style='color: forestgreen;'>solid foundation</b> for coding and running Node.js applications."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This chapter is a **guide** to setting up a Node.js **development environment**.",
+                        "It covers **core tools** like **VS Code**, **Node.js**, and **Fastify**, along with optional components.",
+                        "You'll find various **installation methods** (GUI, third-party, binary) explained for different operating systems.",
+                        "While instructions are tailored, you can use alternatives.",
+                        "The goal is to equip you with a **solid foundation** for coding and running Node.js applications."
+                    ]
+                }
+            ]
         },
         {
             "title": "UNDER THE HOOD",
-            "body": "Fastify is a <b style='color: forestgreen;'>high-performance Node.js framework</b> that uses <b style='color: forestgreen;'>Node\u2019s low-level HTTP module</b> for efficiency, making it <b style='color: forestgreen;'>lightweight and fast</b>. It employs <b style='color: forestgreen;'>schema-based validation and serialization</b> with <b style='color: forestgreen;'>AJV</b> to ensure data format accuracy and efficient output, even <b style='color: forestgreen;'>precompiling these processes</b> for reduced workload. Its <b style='color: forestgreen;'>asynchronous, nonblocking architecture</b>, leveraging Node's <b style='color: forestgreen;'>event loop</b>, allows it to handle <b style='color: forestgreen;'>many simultaneous requests</b> without delays, even during slow operations like database queries. The <b style='color: forestgreen;'>modular plug-in system</b> ensures <b style='color: forestgreen;'>isolated functionality</b>, making applications scalable and maintainable. Fastify also integrates <b style='color: forestgreen;'>Pino</b>, a high-performance logging library, to record events without slowing down the application.\n\nFastify is preferred over Express.js in this book due to its <b style='color: forestgreen;'>performance benefits</b> and <b style='color: forestgreen;'>developer-friendly features</b>, including <b style='color: forestgreen;'>built-in JSON-based API support</b> and <b style='color: forestgreen;'>high-speed request handling</b>. While Express is versatile, Fastify is <b style='color: forestgreen;'>optimized for modern web services</b> and <b style='color: forestgreen;'>high-performance applications</b> that need to scale. A comparison table highlights Fastify's strengths in <b style='color: forestgreen;'>performance</b> and <b style='color: forestgreen;'>schema-based validation</b> for <b style='color: forestgreen;'>high-speed APIs and microservices</b>, while noting Express's versatility and large middleware ecosystem, compared to other popular Node frameworks like Express, Koa, and Hapi. The book aims to use Fastify as a <b style='color: forestgreen;'>foundational framework</b> to teach scalable, responsive, and high-performance service building."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Fastify is a **high-performance Node.js framework** that uses **Node\u2019s low-level HTTP module** for efficiency, making it **lightweight and fast**.",
+                        "It employs **schema-based validation and serialization** with **AJV** to ensure data format accuracy and efficient output, even **precompiling these processes** for reduced workload.",
+                        "Its **asynchronous, nonblocking architecture**, leveraging Node's **event loop**, allows it to handle **many simultaneous requests** without delays, even during slow operations like database queries.",
+                        "The **modular plug-in system** ensures **isolated functionality**, making applications scalable and maintainable.",
+                        "Fastify also integrates **Pino**, a high-performance logging library, to record events without slowing down the application."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Fastify is preferred over Express.js in this book due to its **performance benefits** and **developer-friendly features**, including **built-in JSON-based API support** and **high-speed request handling**.",
+                        "While Express is versatile, Fastify is **optimized for modern web services** and **high-performance applications** that need to scale.",
+                        "A comparison table highlights Fastify's strengths in **performance** and **schema-based validation** for **high-speed APIs and microservices**, while noting Express's versatility and large middleware ecosystem, compared to other popular Node frameworks like Express, Koa, and Hapi.",
+                        "The book aims to use Fastify as a **foundational framework** to teach scalable, responsive, and high-performance service building."
+                    ]
+                }
+            ]
         },
         {
             "title": "Building a Node Web Server with Fastify and EJS",
-            "body": "This document outlines the process of building a <b style='color: forestgreen;'>Node.js web server</b> using the <b style='color: forestgreen;'>Fastify framework</b>. It starts by explaining the basic setup, including <b style='color: forestgreen;'>initializing a Node.js project</b> with `npm init` and <b style='color: forestgreen;'>installing Fastify</b> (`npm install fastify`). The core idea is to create a simple web application that can display a landing page, menu, and operating hours for a restaurant. <b style='color: forestgreen;'>Fastify's role</b> in simplifying web server creation and managing HTTP requests is emphasized, as is the <b style='color: forestgreen;'>single-threaded, asynchronous nature of Node.js's event loop</b> for efficient request handling, even under varying loads.\n\nNext, the document guides through <b style='color: forestgreen;'>adding routes and data</b> to the Fastify application. This involves defining separate routes for the menu and operating hours, and then structuring the menu and hours data into <b style='color: forestgreen;'>JavaScript-friendly modules</b> (`menuItems.js` and `operatingHours.js`). Finally, it introduces <b style='color: forestgreen;'>server-side rendering (SSR)</b> using <b style='color: forestgreen;'>Embedded JavaScript (EJS) templates</b> with Fastify. This involves installing the `@fastify/view` and `ejs` packages, configuring Fastify to use EJS, and creating `.ejs` files for each page (index, menu, and hours) to dynamically display content, showcasing how to build a basic user interface with dynamic data."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This document outlines the process of building a **Node.js web server** using the **Fastify framework**.",
+                        "It starts by explaining the basic setup, including **initializing a Node.js project** with `npm init` and **installing Fastify** (`npm install fastify`).",
+                        "The core idea is to create a simple web application that can display a landing page, menu, and operating hours for a restaurant.",
+                        "**Fastify's role** in simplifying web server creation and managing HTTP requests is emphasized, as is the **single-threaded, asynchronous nature of Node.js's event loop** for efficient request handling, even under varying loads."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Next, the document guides through **adding routes and data** to the Fastify application.",
+                        "This involves defining separate routes for the menu and operating hours, and then structuring the menu and hours data into **JavaScript-friendly modules** (`menuItems.js` and `operatingHours.js`).",
+                        "Finally, it introduces **server-side rendering (SSR)** using **Embedded JavaScript (EJS) templates** with Fastify.",
+                        "This involves installing the `@fastify/view` and `ejs` packages, configuring Fastify to use EJS, and creating `.ejs` files for each page (index, menu, and hours) to dynamically display content, showcasing how to build a basic user interface with dynamic data."
+                    ]
+                }
+            ]
         },
         {
             "title": "Enhancing UI and Server-Side Development with Fastify",
-            "body": "This section discusses enhancing the <b style='color: forestgreen;'>UI</b> of your Fastify application, even though the primary focus for Node engineers is often the <b style='color: forestgreen;'>backend</b>. While being fluent in <b style='color: forestgreen;'>HTML, CSS</b>, or related frameworks isn't a strict requirement, adding some basic styling can significantly improve the user experience. To quickly add <b style='color: forestgreen;'>CSS libraries</b>, you'll need to create a <b style='color: forestgreen;'>public folder</b> at your project's root and install the <b style='color: forestgreen;'>@fastify/static</b> plug-in using `npm install @fastify/static@^7.0.4`. This plug-in, once registered in your `index.js` file, allows you to <b style='color: forestgreen;'>serve static assets</b> like CSS files and images from the public directory. You can then link these resources in your <b style='color: forestgreen;'>EJS files</b> using `<link rel=\"stylesheet\" href=\"public/stylesheets/style.css\" />`. This integration process is demonstrated with `fastifyStatic` and `path.join` to create a robust system for managing static content.\n\nSeveral <b style='color: forestgreen;'>exercises</b> reinforce your understanding. These include <b style='color: forestgreen;'>adding a new \"about\" page</b> with an EJS template and a new GET route in `index.js`, and <b style='color: forestgreen;'>enhancing the \"hours\" page</b> to highlight the current day using `new Date().getDay()` and CSS. These tasks focus on rendering <b style='color: forestgreen;'>dynamic data</b> from the server to EJS templates, which is a crucial skill in server-side web development. Key learning points, such as building a <b style='color: forestgreen;'>Fastify web server</b>, configuring <b style='color: forestgreen;'>routes for dynamic content</b>, implementing <b style='color: forestgreen;'>server-side rendering with EJS</b>, and integrating <b style='color: forestgreen;'>Fastify plug-ins</b>, are summarized."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This section discusses enhancing the **UI** of your Fastify application, even though the primary focus for Node engineers is often the **backend**.",
+                        "While being fluent in **HTML, CSS**, or related frameworks isn't a strict requirement, adding some basic styling can significantly improve the user experience.",
+                        "To quickly add **CSS libraries**, you'll need to create a **public folder** at your project's root and install the **@fastify/static** plug-in using `npm install @fastify/static@^7.0.4`.",
+                        "This plug-in, once registered in your `index.js` file, allows you to **serve static assets** like CSS files and images from the public directory.",
+                        "You can then link these resources in your **EJS files** using ``.",
+                        "This integration process is demonstrated with `fastifyStatic` and `path.join` to create a robust system for managing static content."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Several **exercises** reinforce your understanding.",
+                        "These include **adding a new \"about\" page** with an EJS template and a new GET route in `index.js`, and **enhancing the \"hours\" page** to highlight the current day using `new Date().getDay()` and CSS.",
+                        "These tasks focus on rendering **dynamic data** from the server to EJS templates, which is a crucial skill in server-side web development.",
+                        "Key learning points, such as building a **Fastify web server**, configuring **routes for dynamic content**, implementing **server-side rendering with EJS**, and integrating **Fastify plug-ins**, are summarized."
+                    ]
+                }
+            ]
         },
         {
             "title": "Password Manager Enhancements and Introduction to Content Aggregation",
-            "body": "It outlines <b style='color: forestgreen;'>chapter exercises</b> for a password manager application and introduces the <b style='color: forestgreen;'>concept of a content aggregator</b>. For the password manager, the first exercise focuses on making the <b style='color: forestgreen;'>hashing process configurable</b>. Users should be prompted for a <b style='color: forestgreen;'>salt rounds</b> value when creating their master password, which will be stored with the hash in `authCollection`. This value will then be reused for <b style='color: forestgreen;'>password verification</b>, allowing for experimentation with different salt rounds to observe the impact on security vs. performance. The second exercise adds a new CLI option to <b style='color: forestgreen;'>retrieve passwords by source name</b>, where users can query the `passwords` collection and receive the corresponding username and password or a \"No password saved for that source\" message if no match is found.\n\nIt shifts to <b style='color: forestgreen;'>Content Aggregation</b>, detailing how to build a <b style='color: forestgreen;'>real-time feed reader using Node</b>. This involves <b style='color: forestgreen;'>parsing and displaying data from RSS feeds</b> and fetching content from <b style='color: forestgreen;'>multiple sources using modern APIs</b>. The chapter aims to create a <b style='color: forestgreen;'>unified content aggregator</b> for food-related articles and updates from both RSS feeds and APIs, normalising data from various formats (XML for RSS, JSON for APIs) into a consistent structure for display. It introduces tools like <b style='color: forestgreen;'>Node.js, Fastify, and VS Code</b> and explains the basic architecture of an aggregator, including how to fetch, parse, and display content from sources like Bon App\u00e9tit's RSS feed."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "It outlines **chapter exercises** for a password manager application and introduces the **concept of a content aggregator**.",
+                        "For the password manager, the first exercise focuses on making the **hashing process configurable**.",
+                        "Users should be prompted for a **salt rounds** value when creating their master password, which will be stored with the hash in `authCollection`.",
+                        "This value will then be reused for **password verification**, allowing for experimentation with different salt rounds to observe the impact on security vs. performance.",
+                        "The second exercise adds a new CLI option to **retrieve passwords by source name**, where users can query the `passwords` collection and receive the corresponding username and password or a \"No password saved for that source\" message if no match is found."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "It shifts to **Content Aggregation**, detailing how to build a **real-time feed reader using Node**.",
+                        "This involves **parsing and displaying data from RSS feeds** and fetching content from **multiple sources using modern APIs**.",
+                        "The chapter aims to create a **unified content aggregator** for food-related articles and updates from both RSS feeds and APIs, normalising data from various formats (XML for RSS, JSON for APIs) into a consistent structure for display.",
+                        "It introduces tools like **Node.js, Fastify, and VS Code** and explains the basic architecture of an aggregator, including how to fetch, parse, and display content from sources like Bon App\u00e9tit's RSS feed."
+                    ]
+                }
+            ]
         },
         {
             "title": "Natural Language Processor Sentiment Analysis",
-            "body": "Building a <b style='color: forestgreen;'>sentiment analysis app</b> uses <b style='color: forestgreen;'>Node.js</b> and <b style='color: forestgreen;'>Natural Language Processing (NLP)</b>. You will learn to <b style='color: forestgreen;'>interpret emotional tone</b> from text using <b style='color: forestgreen;'>machine learning (ML)</b>, gaining <b style='color: forestgreen;'>practical experience</b> with ML in JavaScript. ML is becoming crucial across industries, leveraging <b style='color: forestgreen;'>math and statistics</b> on <b style='color: forestgreen;'>real-world data</b> to create functions that provide results like sentiment scores based on learned patterns. ML models, trained by data scientists, generalize well to <b style='color: forestgreen;'>new, unseen inputs</b>.\n\nHistorically, technology relied on <b style='color: forestgreen;'>manual conditions</b>; however, <b style='color: forestgreen;'>Python</b> emerged as a leader in ML tooling. Now, <b style='color: forestgreen;'>JavaScript engineers</b> can use <b style='color: forestgreen;'>Node.js</b> to build comparable ML models for tasks like <b style='color: forestgreen;'>object recognition</b>, <b style='color: forestgreen;'>dynamic pricing</b>, or <b style='color: forestgreen;'>NLP text analysis</b>. Becoming an <b style='color: forestgreen;'>ML engineer</b> and developing your own <b style='color: forestgreen;'>ML-driven Node.js app</b> is possible."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Building a **sentiment analysis app** uses **Node.js** and **Natural Language Processing (NLP)**.",
+                        "You will learn to **interpret emotional tone** from text using **machine learning (ML)**, gaining **practical experience** with ML in JavaScript.",
+                        "ML is becoming crucial across industries, leveraging **math and statistics** on **real-world data** to create functions that provide results like sentiment scores based on learned patterns.",
+                        "ML models, trained by data scientists, generalize well to **new, unseen inputs**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Historically, technology relied on **manual conditions**; however, **Python** emerged as a leader in ML tooling.",
+                        "Now, **JavaScript engineers** can use **Node.js** to build comparable ML models for tasks like **object recognition**, **dynamic pricing**, or **NLP text analysis**.",
+                        "Becoming an **ML engineer** and developing your own **ML-driven Node.js app** is possible."
+                    ]
+                }
+            ]
         },
         {
             "title": "Project Goal: Building a Sentiment Analysis App for Journal Entries",
-            "body": "An app is built for a therapy clinic, Woes Disposed, to <b style='color: forestgreen;'>analyze journal text</b> and <b style='color: forestgreen;'>visualize sentiment analysis</b>. Clients write journal entries, and the app will provide <b style='color: forestgreen;'>immediate feedback</b> on whether entries are <b style='color: forestgreen;'>positive or negative</b> to help track moods.\n\nThe project aims to create an app that outputs if an input string is positive or negative. While it could eventually be a web client, it will start as a <b style='color: forestgreen;'>Command Line Interface (CLI)</b>. The app needs to <b style='color: forestgreen;'>break down sentences</b>, analyze word arrangements, and return a <b style='color: forestgreen;'>numeric sentiment score</b>. Since traditional programming languages aren't great at natural language, the app will use <b style='color: forestgreen;'>Machine Learning (ML) models</b> for <b style='color: forestgreen;'>Natural Language Processing (NLP)</b>. The process involves <b style='color: forestgreen;'>cleaning input text</b> through steps like spelling correction, stop word removal, stemming, and tokenization before analysis."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "An app is built for a therapy clinic, Woes Disposed, to **analyze journal text** and **visualize sentiment analysis**.",
+                        "Clients write journal entries, and the app will provide **immediate feedback** on whether entries are **positive or negative** to help track moods."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The project aims to create an app that outputs if an input string is positive or negative.",
+                        "While it could eventually be a web client, it will start as a **Command Line Interface (CLI)**.",
+                        "The app needs to **break down sentences**, analyze word arrangements, and return a **numeric sentiment score**.",
+                        "Since traditional programming languages aren't great at natural language, the app will use **Machine Learning (ML) models** for **Natural Language Processing (NLP)**.",
+                        "The process involves **cleaning input text** through steps like spelling correction, stop word removal, stemming, and tokenization before analysis."
+                    ]
+                }
+            ]
         },
         {
             "title": "Marketing Mailer: Building an Email Engagement App with Node.js",
-            "body": "A <b style='color: forestgreen;'>Marketing Mailer</b> app is built with <b style='color: forestgreen;'>Node.js</b> to send emails, manage recipient logic, and track engagement. You'll explore email protocols beyond HTTP and learn how Node can handle both large-scale APIs and micro-tasks like email sending. Features are incrementally added for an email marketing service, starting with configuring a <b style='color: forestgreen;'>well-known package for external mail sending</b>, then building an <b style='color: forestgreen;'>API for email collection and verification</b>, and finally, adding logic for <b style='color: forestgreen;'>automatically scheduling marketing emails</b> to subscriber groups.\n\nThe project aims to build an app for a virtual gym, Inn Box, to collect and verify prospective participants' emails for sending membership info, updates, and promotions. You'll use <b style='color: forestgreen;'>Fastify</b> for handling web interactions, a <b style='color: forestgreen;'>Scheduler</b> for automated tasks, and a <b style='color: forestgreen;'>Mailer</b> for sending emails. The app will store crucial data like email addresses, verification statuses, and engaged marketing campaigns in a database, providing Inn Box with valuable <b style='color: forestgreen;'>leads and engagement behavior</b>. The setup involves initializing a Node app, installing `nodemailer` for email sending, configuring a mail transporter (e.g., with Google App Passwords), and defining email content and a `sendMail` function. You'll then integrate <b style='color: forestgreen;'>Fastify</b> to create an API endpoint (`/subscribe`) to collect emails, save them to a <b style='color: forestgreen;'>SQLite database using Sequelize ORM</b>, and dynamically send welcome/confirmation emails. The process includes defining a `Lead` model in the database with email validation and a `/verify:email` route to update lead verification status. <b style='color: forestgreen;'>Dynamic HTML templates</b> are created for emails and linked to the verification route, preparing for tracking email engagement."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A **Marketing Mailer** app is built with **Node.js** to send emails, manage recipient logic, and track engagement.",
+                        "You'll explore email protocols beyond HTTP and learn how Node can handle both large-scale APIs and micro-tasks like email sending.",
+                        "Features are incrementally added for an email marketing service, starting with configuring a **well-known package for external mail sending**, then building an **API for email collection and verification**, and finally, adding logic for **automatically scheduling marketing emails** to subscriber groups."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The project aims to build an app for a virtual gym, Inn Box, to collect and verify prospective participants' emails for sending membership info, updates, and promotions.",
+                        "You'll use **Fastify** for handling web interactions, a **Scheduler** for automated tasks, and a **Mailer** for sending emails.",
+                        "The app will store crucial data like email addresses, verification statuses, and engaged marketing campaigns in a database, providing Inn Box with valuable **leads and engagement behavior**.",
+                        "The setup involves initializing a Node app, installing `nodemailer` for email sending, configuring a mail transporter (e.g., with Google App Passwords), and defining email content and a `sendMail` function.",
+                        "You'll then integrate **Fastify** to create an API endpoint (`/subscribe`) to collect emails, save them to a **SQLite database using Sequelize ORM**, and dynamically send welcome/confirmation emails.",
+                        "The process includes defining a `Lead` model in the database with email validation and a `/verify:email` route to update lead verification status.",
+                        "**Dynamic HTML templates** are created for emails and linked to the verification route, preparing for tracking email engagement."
+                    ]
+                }
+            ]
         },
         {
             "title": "Email Marketing and Campaign Tracking",
-            "body": "The content is about <b style='color: forestgreen;'>email marketing</b> and how to <b style='color: forestgreen;'>track user engagement</b>. It starts by explaining that while email clients are private, <b style='color: forestgreen;'>technology helps</b> understand if people are <b style='color: forestgreen;'>engaging</b> with your emails. A key method discussed is the <b style='color: forestgreen;'>tracking pixel</b>, a tiny image that helps record when an email is <b style='color: forestgreen;'>opened</b> and which <b style='color: forestgreen;'>campaign</b> it's part of. This information is <b style='color: forestgreen;'>crucial</b> for businesses to make <b style='color: forestgreen;'>decisions</b> about what marketing campaigns are <b style='color: forestgreen;'>working</b> and ultimately attract more <b style='color: forestgreen;'>paying customers</b>. You'll learn to create a new route in your application to handle these tracking pixels, updating a user's `lastCampaign` field when they open an email, giving a clear picture of <b style='color: forestgreen;'>who opened what</b>.\n\nThe chapter then guides you on how to create an <b style='color: forestgreen;'>email template</b> for these campaigns, embedding the tracking pixel URL. It also covers a critical step: <b style='color: forestgreen;'>automating</b> the email sending process using the `node-schedule` package. Instead of sending emails manually, you'll learn to <b style='color: forestgreen;'>schedule tasks</b> to send emails at specific times, making the marketing process much <b style='color: forestgreen;'>smoother</b>. Finally, the chapter presents exercises to expand your knowledge, including adding <b style='color: forestgreen;'>unsubscribe support</b> and tracking <b style='color: forestgreen;'>clicks on promotional links</b> within emails. This lays a <b style='color: forestgreen;'>solid foundation</b> for managing email campaigns, tracking engagement, and automating the outreach."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The content is about **email marketing** and how to **track user engagement**.",
+                        "It starts by explaining that while email clients are private, **technology helps** understand if people are **engaging** with your emails.",
+                        "A key method discussed is the **tracking pixel**, a tiny image that helps record when an email is **opened** and which **campaign** it's part of.",
+                        "This information is **crucial** for businesses to make **decisions** about what marketing campaigns are **working** and ultimately attract more **paying customers**.",
+                        "You'll learn to create a new route in your application to handle these tracking pixels, updating a user's `lastCampaign` field when they open an email, giving a clear picture of **who opened what**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The chapter then guides you on how to create an **email template** for these campaigns, embedding the tracking pixel URL.",
+                        "It also covers a critical step: **automating** the email sending process using the `node-schedule` package.",
+                        "Instead of sending emails manually, you'll learn to **schedule tasks** to send emails at specific times, making the marketing process much **smoother**.",
+                        "Finally, the chapter presents exercises to expand your knowledge, including adding **unsubscribe support** and tracking **clicks on promotional links** within emails.",
+                        "This lays a **solid foundation** for managing email campaigns, tracking engagement, and automating the outreach."
+                    ]
+                }
+            ]
         },
         {
             "title": "TOOLS AND APPLICATIONS USED IN THIS CHAPTER",
-            "body": "Journey Doc, a travel-planning app, needs a <b style='color: forestgreen;'>secure authentication system</b>. The current system lacks secure passwords, making user itineraries publicly accessible. To fix this, you'll <b style='color: forestgreen;'>iterate on authentication measures</b>, requiring users to log in before creating or accessing travel plans. The goal is to build an efficient and secure system for handling new account requests and frequent password verifications. You'll use <b style='color: forestgreen;'>Node.js and Fastify</b> for the app server and a <b style='color: forestgreen;'>SQLite database</b> to store account information. The process will involve users signing up to register their accounts, storing usernames and <b style='color: forestgreen;'>encrypted passwords</b> in the database. When logging in, a Fastify route handler will use authentication logic to compare the username and password to grant access. The project will start with basic API endpoints for user accounts and a login page, connecting to a database to store username and password information, and utilizing the <b style='color: forestgreen;'>Passport.js library</b> for authentication protocols.\n\nTo begin, you'll <b style='color: forestgreen;'>create an `app_authentication` folder</b> and initialize a Node app using `npm init`. Then, create an `index.js` file as the app's entry point. Essential packages like <b style='color: forestgreen;'>Fastify, `@fastify/formbody`, `@fastify/view`, and Handlebars</b> will be installed for handling HTTP requests, form data, and server-side rendering (SSR). SSR, facilitated by `@fastify/view`, dynamically builds HTML pages on the server using template languages like <b style='color: forestgreen;'>Handlebars</b> for user-specific data (e.g., \"Welcome, Jon!\"). Handlebars uses double braces for variables (`{{nameVar}}`) and conditional blocks (`{{#if boolStatement}}`). The `index.js` file will configure Fastify, register plugins, and define a `PORT` (3000). Fastify's plugin architecture and route lifecycle hooks enable efficient request processing. To locate templates, the `@fastify/view` plugin will be configured with a `root` pointing to a `views` folder. You'll define a basic GET route for `/` to test the setup and start the server, confirming it's ready to accept requests."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Journey Doc, a travel-planning app, needs a **secure authentication system**.",
+                        "The current system lacks secure passwords, making user itineraries publicly accessible.",
+                        "To fix this, you'll **iterate on authentication measures**, requiring users to log in before creating or accessing travel plans.",
+                        "The goal is to build an efficient and secure system for handling new account requests and frequent password verifications.",
+                        "You'll use **Node.js and Fastify** for the app server and a **SQLite database** to store account information.",
+                        "The process will involve users signing up to register their accounts, storing usernames and **encrypted passwords** in the database.",
+                        "When logging in, a Fastify route handler will use authentication logic to compare the username and password to grant access.",
+                        "The project will start with basic API endpoints for user accounts and a login page, connecting to a database to store username and password information, and utilizing the **Passport.js library** for authentication protocols."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "To begin, you'll **create an `app_authentication` folder** and initialize a Node app using `npm init`.",
+                        "Then, create an `index.js` file as the app's entry point.",
+                        "Essential packages like **Fastify, `@fastify/formbody`, `@fastify/view`, and Handlebars** will be installed for handling HTTP requests, form data, and server-side rendering (SSR).",
+                        "SSR, facilitated by `@fastify/view`, dynamically builds HTML pages on the server using template languages like **Handlebars** for user-specific data (e.g., \"Welcome, Jon!\").",
+                        "Handlebars uses double braces for variables (`{{nameVar}}`) and conditional blocks (`{{#if boolStatement}}`).",
+                        "The `index.js` file will configure Fastify, register plugins, and define a `PORT` (3000).",
+                        "Fastify's plugin architecture and route lifecycle hooks enable efficient request processing.",
+                        "To locate templates, the `@fastify/view` plugin will be configured with a `root` pointing to a `views` folder.",
+                        "You'll define a basic GET route for `/` to test the setup and start the server, confirming it's ready to accept requests."
+                    ]
+                }
+            ]
         },
         {
             "title": "Scalability with Queues in Node.js",
-            "body": "Using <b style='color: forestgreen;'>queuing systems</b> can <b style='color: forestgreen;'>improve Node.js application scalability</b>. Node's event loop, while efficient, can become a bottleneck with CPU-intensive or numerous tasks. Queues help by <b style='color: forestgreen;'>offloading tasks</b>, balancing workloads, and <b style='color: forestgreen;'>improving response times</b>, ensuring critical processes aren't overwhelmed. A coffee order manager is built for a company called JavaShipped, which is experiencing <b style='color: forestgreen;'>overwhelming online orders</b> due to its success. The initial approach involves an <b style='color: forestgreen;'>internal queue</b> to buffer requests, with later sections introducing more robust solutions like <b style='color: forestgreen;'>Redis</b> for temporary storage and <b style='color: forestgreen;'>RabbitMQ</b> for advanced, scaled queues.\n\nThe project, named `coffee_queue`, starts with setting up a basic Fastify server. A `/slow-order` route simulates a <b style='color: forestgreen;'>long-running, blocking operation</b> to highlight the scalability problem. This route demonstrates how a simple task, like processing a drink order, can <b style='color: forestgreen;'>slow down the entire server</b> if not managed properly. The next step involves creating a <b style='color: forestgreen;'>simple in-memory queue</b> using JavaScript arrays, with `/order` to add items and `/process-order` to remove them. This naive queue, while illustrative, has limitations like <b style='color: forestgreen;'>data loss on server crash</b>, setting the stage for more advanced queuing solutions."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Using **queuing systems** can **improve Node.js application scalability**.",
+                        "Node's event loop, while efficient, can become a bottleneck with CPU-intensive or numerous tasks.",
+                        "Queues help by **offloading tasks**, balancing workloads, and **improving response times**, ensuring critical processes aren't overwhelmed.",
+                        "A coffee order manager is built for a company called JavaShipped, which is experiencing **overwhelming online orders** due to its success.",
+                        "The initial approach involves an **internal queue** to buffer requests, with later sections introducing more robust solutions like **Redis** for temporary storage and **RabbitMQ** for advanced, scaled queues."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The project, named `coffee_queue`, starts with setting up a basic Fastify server.",
+                        "A `/slow-order` route simulates a **long-running, blocking operation** to highlight the scalability problem.",
+                        "This route demonstrates how a simple task, like processing a drink order, can **slow down the entire server** if not managed properly.",
+                        "The next step involves creating a **simple in-memory queue** using JavaScript arrays, with `/order` to add items and `/process-order` to remove them.",
+                        "This naive queue, while illustrative, has limitations like **data loss on server crash**, setting the stage for more advanced queuing solutions."
+                    ]
+                }
+            ]
         },
         {
             "title": "Building a Blockchain Music Marketplace",
-            "body": "This guide helps you <b style='color: forestgreen;'>build a blockchain marketplace</b> for music, allowing artists to sell and buyers to resell limited-edition songs. The goal is to create a system that <b style='color: forestgreen;'>securely tracks ownership transfers</b> and <b style='color: forestgreen;'>manages resale limits</b> without constant manual oversight from the music studio. It emphasizes a <b style='color: forestgreen;'>decentralized and distributed database</b> approach, ensuring <b style='color: forestgreen;'>authenticity through cryptography</b> and a <b style='color: forestgreen;'>transparent record</b> of all transactions.\n\nThe project involves creating core blockchain components like <b style='color: forestgreen;'>Block</b>, <b style='color: forestgreen;'>Blockchain</b>, <b style='color: forestgreen;'>Transaction</b>, and <b style='color: forestgreen;'>MarketplaceNode</b> classes. You'll start by setting up a <b style='color: forestgreen;'>Fastify web server</b> in Node.js, configuring it to handle JSON and dynamic port assignments. This initial setup is crucial for enabling new nodes to join the blockchain marketplace, with `http://localhost:3000` serving as the <b style='color: forestgreen;'>main entry point</b> for new participants."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This guide helps you **build a blockchain marketplace** for music, allowing artists to sell and buyers to resell limited-edition songs.",
+                        "The goal is to create a system that **securely tracks ownership transfers** and **manages resale limits** without constant manual oversight from the music studio.",
+                        "It emphasizes a **decentralized and distributed database** approach, ensuring **authenticity through cryptography** and a **transparent record** of all transactions."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The project involves creating core blockchain components like **Block**, **Blockchain**, **Transaction**, and **MarketplaceNode** classes.",
+                        "You'll start by setting up a **Fastify web server** in Node.js, configuring it to handle JSON and dynamic port assignments.",
+                        "This initial setup is crucial for enabling new nodes to join the blockchain marketplace, with `http://localhost:3000` serving as the **main entry point** for new participants."
+                    ]
+                }
+            ]
         },
         {
             "title": "Building a Decentralized Marketplace with MarketplaceNode",
-            "body": "To create a <b style='color: forestgreen;'>decentralized music marketplace</b> in Node.js, you'll need to define the `MarketplaceNode` class, which handles a node's <b style='color: forestgreen;'>URL, peers, blockchain reference, balance, and songs</b>. It also includes a `broadcastSelf` function to inform other nodes of its existence. The system uses an asynchronous `broadcast` function with <b style='color: forestgreen;'>axios</b> to make HTTP requests to peer nodes, skipping its own URL, and ensuring all nodes have a consistent list of participants. This `broadcast` function is crucial for network transparency and consistency, central to blockchain operations.\n\nThe `MarketplaceNode` class includes `broadcastSelf` to announce a node's entry and `registerNode` to add new nodes and sync peer lists across the network. In `index.js`, you'll <b style='color: forestgreen;'>initialize a `MarketplaceNode`</b> with a URL and initial peers, and define Fastify endpoints like `/register-node` and `/sync-peers` to handle node registration and peer synchronization. This setup allows new nodes to join, register, and sync with the existing network, forming a <b style='color: forestgreen;'>distributed marketplace</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "To create a **decentralized music marketplace** in Node.js, you'll need to define the `MarketplaceNode` class, which handles a node's **URL, peers, blockchain reference, balance, and songs**.",
+                        "It also includes a `broadcastSelf` function to inform other nodes of its existence.",
+                        "The system uses an asynchronous `broadcast` function with **axios** to make HTTP requests to peer nodes, skipping its own URL, and ensuring all nodes have a consistent list of participants.",
+                        "This `broadcast` function is crucial for network transparency and consistency, central to blockchain operations."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The `MarketplaceNode` class includes `broadcastSelf` to announce a node's entry and `registerNode` to add new nodes and sync peer lists across the network.",
+                        "In `index.js`, you'll **initialize a `MarketplaceNode`** with a URL and initial peers, and define Fastify endpoints like `/register-node` and `/sync-peers` to handle node registration and peer synchronization.",
+                        "This setup allows new nodes to join, register, and sync with the existing network, forming a **distributed marketplace**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Node Cheat Sheet and Project Initialization",
-            "body": "This document provides a <b style='color: forestgreen;'>comprehensive guide</b> to setting up a <b style='color: forestgreen;'>Node.js project</b>, understanding its <b style='color: forestgreen;'>manifest file (package.json)</b>, and working with <b style='color: forestgreen;'>modern JavaScript syntax</b>. It begins by explaining how to <b style='color: forestgreen;'>initialize a Node project using npm</b> (or Yarn) and details the importance of the `package.json` file in defining project metadata, dependencies, and scripts. npm is contrasted with Yarn, highlighting Yarn's advanced features like <b style='color: forestgreen;'>Plug'n'play (PnP)</b> and <b style='color: forestgreen;'>Zero Install</b>; it is explained how to enable it using Node's built-in <b style='color: forestgreen;'>Corepack</b>.\n\nFurthermore, the guide outlines <b style='color: forestgreen;'>growth areas for Node engineers</b> and emphasizes the significance of <b style='color: forestgreen;'>project manifests</b> for effective collaboration and automation. It touches upon <b style='color: forestgreen;'>dependency management</b> with npm, including how it uses the <b style='color: forestgreen;'>npm registry</b>, <b style='color: forestgreen;'>local cache</b>, and <b style='color: forestgreen;'>lock files</b> to ensure consistent environments. The overall aim is to equip developers with the foundational knowledge to efficiently <b style='color: forestgreen;'>set up and manage Node.js applications</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This document provides a **comprehensive guide** to setting up a **Node.js project**, understanding its **manifest file (package.json)**, and working with **modern JavaScript syntax**.",
+                        "It begins by explaining how to **initialize a Node project using npm** (or Yarn) and details the importance of the `package.json` file in defining project metadata, dependencies, and scripts. npm is contrasted with Yarn, highlighting Yarn's advanced features like **Plug'n'play (PnP)** and **Zero Install**; it is explained how to enable it using Node's built-in **Corepack**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Furthermore, the guide outlines **growth areas for Node engineers** and emphasizes the significance of **project manifests** for effective collaboration and automation.",
+                        "It touches upon **dependency management** with npm, including how it uses the **npm registry**, **local cache**, and **lock files** to ensure consistent environments.",
+                        "The overall aim is to equip developers with the foundational knowledge to efficiently **set up and manage Node.js applications**."
+                    ]
+                }
+            ]
         },
         {
             "title": "RabbitMQ: Queue-Based Messaging for Node Apps",
-            "body": "RabbitMQ is a <b style='color: forestgreen;'>message broker</b> that helps your Node.js application <b style='color: forestgreen;'>scale</b> by offloading tasks to <b style='color: forestgreen;'>background workers</b>. Instead of blocking your main application for time-consuming operations, you can <b style='color: forestgreen;'>publish messages</b> to a queue, allowing other services to process them asynchronously. This significantly <b style='color: forestgreen;'>improves performance</b> and <b style='color: forestgreen;'>decouples</b> different parts of your system, making it more robust and maintainable.\n\nTo get started, you'll need to <b style='color: forestgreen;'>install RabbitMQ</b> (which usually includes the Erlang runtime). Installation instructions are provided for <b style='color: forestgreen;'>macOS (Homebrew)</b>, <b style='color: forestgreen;'>Ubuntu/Debian</b>, and <b style='color: forestgreen;'>Windows (via WSL or Docker)</b>. After installation, you can <b style='color: forestgreen;'>verify RabbitMQ is running</b> and optionally <b style='color: forestgreen;'>enable the web-based management UI</b> (accessible at `http://localhost:15672` with default `guest` credentials) to monitor your queues and exchanges."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "RabbitMQ is a **message broker** that helps your Node.js application **scale** by offloading tasks to **background workers**.",
+                        "Instead of blocking your main application for time-consuming operations, you can **publish messages** to a queue, allowing other services to process them asynchronously.",
+                        "This significantly **improves performance** and **decouples** different parts of your system, making it more robust and maintainable."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "To get started, you'll need to **install RabbitMQ** (which usually includes the Erlang runtime).",
+                        "Installation instructions are provided for **macOS (Homebrew)**, **Ubuntu/Debian**, and **Windows (via WSL or Docker)**.",
+                        "After installation, you can **verify RabbitMQ is running** and optionally **enable the web-based management UI** (accessible at `http://localhost:15672` with default `guest` credentials) to monitor your queues and exchanges."
+                    ]
+                }
+            ]
         },
         {
             "title": "Integrating a Robust Messaging System (RabbitMQ)",
-            "body": "To use <b style='color: forestgreen;'>RabbitMQ</b> with Node.js, first <b style='color: forestgreen;'>install Erlang runtime</b> and then the <b style='color: forestgreen;'>RabbitMQ installer</b>. After installation, enable the <b style='color: forestgreen;'>management plugin</b> and <b style='color: forestgreen;'>start the service</b>. You can access the <b style='color: forestgreen;'>management UI</b> at `http://localhost:15672`. For Node.js, use the <b style='color: forestgreen;'>`amqplib` package</b> to send and receive messages. Connect to RabbitMQ using `amqp.connect('amqp://localhost')`, create a <b style='color: forestgreen;'>channel</b>, and assert a <b style='color: forestgreen;'>queue</b>. To send a message, use `channel.sendToQueue(queue, Buffer.from('message'))`. To consume messages, use `channel.consume(queue, msg => { ... })` and remember to <b style='color: forestgreen;'>acknowledge the message</b> with `channel.ack(msg)`.\n\n<b style='color: forestgreen;'>RabbitMQ</b> is useful for <b style='color: forestgreen;'>passing messages between microservices</b>, <b style='color: forestgreen;'>offloading work from your main server</b>, or <b style='color: forestgreen;'>implementing task queues</b>. It's crucial for <b style='color: forestgreen;'>managing background jobs</b> and <b style='color: forestgreen;'>inter-service communication</b> in more complex systems. Ensure you have at least one <b style='color: forestgreen;'>database engine and driver installed</b> before proceeding with the book, or use the <b style='color: forestgreen;'>preconfigured services in `docker-compose.yml`</b> if running projects in Docker. Chapters may require a database or queueing system, so setting one up early will help you follow along smoothly. This appendix covered setting up databases like <b style='color: forestgreen;'>MongoDB, PostgreSQL, and SQLite</b>, and when to use supporting tools like <b style='color: forestgreen;'>Redis and RabbitMQ</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "To use **RabbitMQ** with Node.js, first **install Erlang runtime** and then the **RabbitMQ installer**.",
+                        "After installation, enable the **management plugin** and **start the service**.",
+                        "You can access the **management UI** at `http://localhost:15672`.",
+                        "For Node.js, use the **`amqplib` package** to send and receive messages.",
+                        "Connect to RabbitMQ using `amqp.connect('amqp://localhost')`, create a **channel**, and assert a **queue**.",
+                        "To send a message, use `channel.sendToQueue(queue, Buffer.from('message'))`.",
+                        "To consume messages, use `channel.consume(queue, msg => { ...",
+                        "})` and remember to **acknowledge the message** with `channel.ack(msg)`."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**RabbitMQ** is useful for **passing messages between microservices**, **offloading work from your main server**, or **implementing task queues**.",
+                        "It's crucial for **managing background jobs** and **inter-service communication** in more complex systems.",
+                        "Ensure you have at least one **database engine and driver installed** before proceeding with the book, or use the **preconfigured services in `docker-compose.yml`** if running projects in Docker.",
+                        "Chapters may require a database or queueing system, so setting one up early will help you follow along smoothly.",
+                        "This appendix covered setting up databases like **MongoDB, PostgreSQL, and SQLite**, and when to use supporting tools like **Redis and RabbitMQ**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Key Concepts, Technologies, and Applications in Node.js Development",
-            "body": "This document outlines various <b style='color: forestgreen;'>challenges</b>, <b style='color: forestgreen;'>solutions</b>, and <b style='color: forestgreen;'>technologies</b> discussed across different chapters of a book, likely related to Node.js development. It highlights how <b style='color: forestgreen;'>Fastify</b> is leveraged for <b style='color: forestgreen;'>efficient web application development</b>, offering <b style='color: forestgreen;'>modular plug-in systems</b> and <b style='color: forestgreen;'>low-overhead architecture</b> for projects like a <b style='color: forestgreen;'>Coffee Order Manager</b> and an <b style='color: forestgreen;'>AI-powered learning assistant</b>. Key themes include <b style='color: forestgreen;'>handling multiple tasks concurrently</b>, <b style='color: forestgreen;'>event-driven architectures</b> supported by <b style='color: forestgreen;'>Redis pub/sub</b>, and <b style='color: forestgreen;'>authentication</b> using <b style='color: forestgreen;'>JWTs</b> and <b style='color: forestgreen;'>Passport.js</b>.\n\nPractical applications include <b style='color: forestgreen;'>building login forms</b>, <b style='color: forestgreen;'>scraping web pages</b>, and <b style='color: forestgreen;'>managing user accounts</b>. It explores different <b style='color: forestgreen;'>Node.js frameworks</b> like <b style='color: forestgreen;'>Express</b>, <b style='color: forestgreen;'>Koa</b>, and <b style='color: forestgreen;'>Hapi</b>, comparing them to Fastify. Furthermore, it covers <b style='color: forestgreen;'>database integration</b> (SQL and NoSQL, including <b style='color: forestgreen;'>MongoDB</b> and <b style='color: forestgreen;'>SQLite</b>), <b style='color: forestgreen;'>natural language processing (NLP)</b> for <b style='color: forestgreen;'>sentiment analysis</b>, and <b style='color: forestgreen;'>blockchain concepts</b>. The overarching goal is to equip developers with the tools and knowledge to build <b style='color: forestgreen;'>robust</b>, <b style='color: forestgreen;'>scalable</b>, and <b style='color: forestgreen;'>secure</b> Node.js applications."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This document outlines various **challenges**, **solutions**, and **technologies** discussed across different chapters of a book, likely related to Node.js development.",
+                        "It highlights how **Fastify** is leveraged for **efficient web application development**, offering **modular plug-in systems** and **low-overhead architecture** for projects like a **Coffee Order Manager** and an **AI-powered learning assistant**.",
+                        "Key themes include **handling multiple tasks concurrently**, **event-driven architectures** supported by **Redis pub/sub**, and **authentication** using **JWTs** and **Passport.js**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Practical applications include **building login forms**, **scraping web pages**, and **managing user accounts**.",
+                        "It explores different **Node.js frameworks** like **Express**, **Koa**, and **Hapi**, comparing them to Fastify.",
+                        "Furthermore, it covers **database integration** (SQL and NoSQL, including **MongoDB** and **SQLite**), **natural language processing (NLP)** for **sentiment analysis**, and **blockchain concepts**.",
+                        "The overarching goal is to equip developers with the tools and knowledge to build **robust**, **scalable**, and **secure** Node.js applications."
+                    ]
+                }
+            ]
         }
     ]
 }

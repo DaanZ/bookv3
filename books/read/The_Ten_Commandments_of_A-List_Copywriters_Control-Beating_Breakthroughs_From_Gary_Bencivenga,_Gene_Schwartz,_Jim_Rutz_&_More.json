@@ -11,11 +11,35 @@
     "parts": [
         {
             "title": "Secrets of A-List Copywriting Summarized",
-            "body": "<b style='color: forestgreen;'>A-list copywriters</b> are like <b style='color: forestgreen;'>Hollywood stars</b>, but instead of acting, they transform products into blockbusters with their words, staying successful for decades. This book delves into key \"commandments\" or secrets from these top-notch copywriters, teaching techniques and career principles that can improve sales letters and enhance careers. The <b style='color: forestgreen;'>first commandment</b> highlights the importance of <b style='color: forestgreen;'>proof</b> in advertising, above flashy promises, to combat reader skepticism, with insights from legendary copywriters like Gary Bencivenga, who used concrete examples and results as solid evidence within ads."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**A-list copywriters** are like **Hollywood stars**, but instead of acting, they transform products into blockbusters with their words, staying successful for decades.",
+                        "This book delves into key \"commandments\" or secrets from these top-notch copywriters, teaching techniques and career principles that can improve sales letters and enhance careers.",
+                        "The **first commandment** highlights the importance of **proof** in advertising, above flashy promises, to combat reader skepticism, with insights from legendary copywriters like Gary Bencivenga, who used concrete examples and results as solid evidence within ads."
+                    ]
+                }
+            ]
         },
         {
             "title": "Building Belief Through Gradualization",
-            "body": "<b style='color: forestgreen;'>Gene's ad</b> for repairing TVs <b style='color: forestgreen;'>didn't start</b> with telling people <b style='color: forestgreen;'>how easy</b> it is to fix or <b style='color: forestgreen;'>how much money</b> they could save. Instead, it began with an <b style='color: forestgreen;'>intriguing headline</b>: \"<b style='color: forestgreen;'>Why Haven't TV Owners Been Told These Facts?</b>\". It systematically introduced the idea of easily fixing a TV <b style='color: forestgreen;'>by twisting knobs</b>, laying the groundwork for the reader to eventually accept <b style='color: forestgreen;'>they could do it too</b>. This illustrates <b style='color: forestgreen;'>gradualization</b>, building credibility by <b style='color: forestgreen;'>sequencing claims logically</b> to increase belief in each step.\n\nSimilarly, in <b style='color: forestgreen;'>Parris Lampropoulos’s ad</b>, the process moved from the fact that <b style='color: forestgreen;'>doctors seldom wash hands</b>, to <b style='color: forestgreen;'>using herbs and remedies</b> for personal wellness. This <b style='color: forestgreen;'>indirectly built trust</b> by starting with <b style='color: forestgreen;'>reliable facts</b> the audience would find surprising and believable, leading them to consider other <b style='color: forestgreen;'>bolder claims</b>. The technique shows how <b style='color: forestgreen;'>preparing the reader</b> with carefully arranged facts <b style='color: forestgreen;'>enhances persuasion</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Gene's ad** for repairing TVs **didn't start** with telling people **how easy** it is to fix or **how much money** they could save.",
+                        "Instead, it began with an **intriguing headline**: \"**Why Haven't TV Owners Been Told These Facts?**\".",
+                        "It systematically introduced the idea of easily fixing a TV **by twisting knobs**, laying the groundwork for the reader to eventually accept **they could do it too**.",
+                        "This illustrates **gradualization**, building credibility by **sequencing claims logically** to increase belief in each step."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Similarly, in **Parris Lampropoulos\u2019s ad**, the process moved from the fact that **doctors seldom wash hands**, to **using herbs and remedies** for personal wellness.",
+                        "This **indirectly built trust** by starting with **reliable facts** the audience would find surprising and believable, leading them to consider other **bolder claims**.",
+                        "The technique shows how **preparing the reader** with carefully arranged facts **enhances persuasion**."
+                    ]
+                }
+            ]
         }
     ]
 }

@@ -10,47 +10,233 @@
     "parts": [
         {
             "title": "The Elephant in the Brain: An Introduction to Hidden Motives",
-            "body": "This book explores the idea that <b style='color: forestgreen;'>humans are designed to act on hidden motives</b>, often unconsciously, to appear less selfish to others. This <b style='color: forestgreen;'>self-deception is strategic</b>, allowing us to pursue self-interest while maintaining a good image. The authors introduce the concept of the \"<b style='color: forestgreen;'>elephant in the brain</b>\" \u2013 our collective reluctance to acknowledge our selfish, competitive, and deceptive biological impulses. They argue that understanding these <b style='color: forestgreen;'>hidden motives</b> is crucial for clearly analyzing human behavior and institutions. The book draws on microsociology, cognitive psychology, primatology, and economic puzzles to show how we often act on motives we don't consciously acknowledge, affecting everything from personal interactions to large social institutions like medicine and education. The authors aim to shed light on these <b style='color: forestgreen;'>unacknowledged agendas</b> to better understand and potentially reform our world, inviting readers to take the \"red pill\" and confront uncomfortable truths about human nature."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This book explores the idea that **humans are designed to act on hidden motives**, often unconsciously, to appear less selfish to others.",
+                        "This **self-deception is strategic**, allowing us to pursue self-interest while maintaining a good image.",
+                        "The authors introduce the concept of the \"**elephant in the brain**\" \u2013 our collective reluctance to acknowledge our selfish, competitive, and deceptive biological impulses.",
+                        "They argue that understanding these **hidden motives** is crucial for clearly analyzing human behavior and institutions.",
+                        "The book draws on microsociology, cognitive psychology, primatology, and economic puzzles to show how we often act on motives we don't consciously acknowledge, affecting everything from personal interactions to large social institutions like medicine and education.",
+                        "The authors aim to shed light on these **unacknowledged agendas** to better understand and potentially reform our world, inviting readers to take the \"red pill\" and confront uncomfortable truths about human nature."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Evolutionary Roots of Human Intelligence: Cooperation or Competition?",
-            "body": "Humans have <b style='color: forestgreen;'>large brains</b> and are <b style='color: forestgreen;'>behaviorally flexible</b>, but the reasons for this are debated. While some argue it's due to <b style='color: forestgreen;'>ecological challenges</b> and the need for <b style='color: forestgreen;'>cooperation</b>, other signs suggest our intelligence evolved more from <b style='color: forestgreen;'>social challenges</b> and <b style='color: forestgreen;'>competition</b> among ourselves. We often prefer explanations that portray us positively, leading us to downplay the competitive aspects of our evolution.\n\nLike <b style='color: forestgreen;'>redwood trees</b> competing for sunlight, humans have been in an evolutionary <b style='color: forestgreen;'>arms race</b> against each other for resources like <b style='color: forestgreen;'>food, sex, and social status</b>. This idea, known as the <b style='color: forestgreen;'>social brain hypothesis</b> or <b style='color: forestgreen;'>Machiavellian intelligence hypothesis</b>, suggests our brains grew to navigate complex social and political scenarios. This chapter will focus on three key competitive \"games\": <b style='color: forestgreen;'>sex, social status, and politics</b>, emphasizing the less flattering, competitive aspects of our history."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Humans have **large brains** and are **behaviorally flexible**, but the reasons for this are debated.",
+                        "While some argue it's due to **ecological challenges** and the need for **cooperation**, other signs suggest our intelligence evolved more from **social challenges** and **competition** among ourselves.",
+                        "We often prefer explanations that portray us positively, leading us to downplay the competitive aspects of our evolution."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Like **redwood trees** competing for sunlight, humans have been in an evolutionary **arms race** against each other for resources like **food, sex, and social status**.",
+                        "This idea, known as the **social brain hypothesis** or **Machiavellian intelligence hypothesis**, suggests our brains grew to navigate complex social and political scenarios.",
+                        "This chapter will focus on three key competitive \"games\": **sex, social status, and politics**, emphasizing the less flattering, competitive aspects of our history."
+                    ]
+                }
+            ]
         },
         {
             "title": "Norms, Cheating, and Self-Deception",
-            "body": "This text explores <b style='color: forestgreen;'>norms</b> and <b style='color: forestgreen;'>self-deception</b>, drawing connections between our ancestral forager lifestyle and modern human behavior. Foragers maintained <b style='color: forestgreen;'>egalitarianism</b> by being vigilant against individuals seeking dominance, using <b style='color: forestgreen;'>collective enforcement</b> (supported by <b style='color: forestgreen;'>deadly weapons</b>) as the essence of norms. Unlike animals, human norm-following involves worrying about <b style='color: forestgreen;'>third-party reprisals</b>, not just direct consequences. <b style='color: forestgreen;'>Gossip</b> and <b style='color: forestgreen;'>reputation</b> are crucial for enforcing norms, especially against powerful individuals, and can even lead to the <b style='color: forestgreen;'>meta-norm</b>: punishing those who don't punish cheaters.\n\nThe text then delves into <b style='color: forestgreen;'>cheating</b>, arguing that everyone does it, often violating subtle norms like <b style='color: forestgreen;'>bragging</b> or <b style='color: forestgreen;'>currying favor</b>. Humans have developed <b style='color: forestgreen;'>adaptations for detecting cheaters</b> and for <b style='color: forestgreen;'>evading norms</b>, such as being attuned to others' gaze and feeling <b style='color: forestgreen;'>shame</b>. A key concept for understanding cheating is <b style='color: forestgreen;'>common knowledge</b>, which is information known by everyone, and everyone knows that everyone else knows it. Cheaters use <b style='color: forestgreen;'>discretion</b> (pretexts, discreet communication, skirting norms, subtlety) to prevent their violations from becoming common knowledge, thus making enforcement difficult. This competitive arms race between norm-evaders and enforcers drives the need for complex human intelligence."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This text explores **norms** and **self-deception**, drawing connections between our ancestral forager lifestyle and modern human behavior.",
+                        "Foragers maintained **egalitarianism** by being vigilant against individuals seeking dominance, using **collective enforcement** (supported by **deadly weapons**) as the essence of norms.",
+                        "Unlike animals, human norm-following involves worrying about **third-party reprisals**, not just direct consequences.",
+                        "**Gossip** and **reputation** are crucial for enforcing norms, especially against powerful individuals, and can even lead to the **meta-norm**: punishing those who don't punish cheaters."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The text then delves into **cheating**, arguing that everyone does it, often violating subtle norms like **bragging** or **currying favor**.",
+                        "Humans have developed **adaptations for detecting cheaters** and for **evading norms**, such as being attuned to others' gaze and feeling **shame**.",
+                        "A key concept for understanding cheating is **common knowledge**, which is information known by everyone, and everyone knows that everyone else knows it.",
+                        "Cheaters use **discretion** (pretexts, discreet communication, skirting norms, subtlety) to prevent their violations from becoming common knowledge, thus making enforcement difficult.",
+                        "This competitive arms race between norm-evaders and enforcers drives the need for complex human intelligence."
+                    ]
+                }
+            ]
         },
         {
             "title": "Self-Deception and the Brain's \"Press Secretary\"",
-            "body": "The concept of <b style='color: forestgreen;'>self-deception</b> and <b style='color: forestgreen;'>rationalization</b> explains how our minds subtly protect our ego and social image. We often <b style='color: forestgreen;'>deceive ourselves</b> to better <b style='color: forestgreen;'>deceive others</b>, whether to intimidate (Madman), gain trust (Loyalist), influence beliefs (Cheerleader), or avoid suspicion (Cheater). These roles are not mutually exclusive and can serve multiple purposes simultaneously, like a mother convinced of her son's innocence acting as both Loyalist and Cheerleader.\n\nHowever, self-deception comes at a cost: <b style='color: forestgreen;'>suboptimal decision-making</b>. <b style='color: forestgreen;'>Modularity</b> in the brain means different parts can hold conflicting beliefs. Our brains are designed to keep unpleasant truths from conscious awareness, especially if those truths threaten our social standing. This phenomenon, called <b style='color: forestgreen;'>self-discretion</b>, involves downplaying damaging information and highlighting positive aspects of ourselves, allowing us to maintain a favorable self-image and influence others' perceptions without explicit conscious effort."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The concept of **self-deception** and **rationalization** explains how our minds subtly protect our ego and social image.",
+                        "We often **deceive ourselves** to better **deceive others**, whether to intimidate (Madman), gain trust (Loyalist), influence beliefs (Cheerleader), or avoid suspicion (Cheater).",
+                        "These roles are not mutually exclusive and can serve multiple purposes simultaneously, like a mother convinced of her son's innocence acting as both Loyalist and Cheerleader."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "However, self-deception comes at a cost: **suboptimal decision-making**.",
+                        "**Modularity** in the brain means different parts can hold conflicting beliefs.",
+                        "Our brains are designed to keep unpleasant truths from conscious awareness, especially if those truths threaten our social standing.",
+                        "This phenomenon, called **self-discretion**, involves downplaying damaging information and highlighting positive aspects of ourselves, allowing us to maintain a favorable self-image and influence others' perceptions without explicit conscious effort."
+                    ]
+                }
+            ]
         },
         {
             "title": "Nonverbal Communication, Social Status, and the Mysteries of Laughter and Conversation",
-            "body": "Nonverbal communication signals <b style='color: forestgreen;'>sex, politics, and status</b>. For instance, a boss standing first signals a meeting's end. Language also carries such signals, like \"turn our backs\" for betrayal. Greetings have political meaning: a <b style='color: forestgreen;'>handshake</b> is <b style='color: forestgreen;'>egalitarian</b>, but a <b style='color: forestgreen;'>hand-kiss</b> shows <b style='color: forestgreen;'>submission</b>. Individuals of <b style='color: forestgreen;'>high-status</b> are relaxed, while <b style='color: forestgreen;'>lower-status</b> people are vigilant. <b style='color: forestgreen;'>Dominance</b> comes from intimidation, while <b style='color: forestgreen;'>prestige</b> comes from impressive traits. Our nonverbal signaling is <b style='color: forestgreen;'>unconscious</b> to allow for <b style='color: forestgreen;'>discretion</b> in sensitive areas. Body language is <b style='color: forestgreen;'>ambiguous</b>, letting people deny intentions, like a man <b style='color: forestgreen;'>nonverbally marginalizing</b> a rival or <b style='color: forestgreen;'>flirting</b>. This <b style='color: forestgreen;'>strategic unawareness</b> protects from accountability and allows for <b style='color: forestgreen;'>illicit agendas</b>. \n<b style='color: forestgreen;'>Laughter</b> is an <b style='color: forestgreen;'>involuntary social behavior</b>. It's <b style='color: forestgreen;'>innate</b> and <b style='color: forestgreen;'>universal</b>, appearing in infants. Research by Robert Provine showed we laugh <b style='color: forestgreen;'>30 times more often in social settings</b>, and <b style='color: forestgreen;'>speakers laugh more than listeners</b>. <b style='color: forestgreen;'>Laughter is a play signal</b>, marking the <b style='color: forestgreen;'>boundary of seriousness</b>. This allows animals and humans to <b style='color: forestgreen;'>explore</b> and <b style='color: forestgreen;'>practice skills</b> safely. The <b style='color: forestgreen;'>play-signal theory</b> explains why <b style='color: forestgreen;'>danger</b> enhances humor and why we don't laugh at genuine accidents. The <b style='color: forestgreen;'>dark side of laughter</b> involves <b style='color: forestgreen;'>norms</b> and <b style='color: forestgreen;'>psychological distance</b>. Laughter at norm violations can <b style='color: forestgreen;'>weaken</b> them. The <b style='color: forestgreen;'>less we care</b> about people, the easier it is to laugh at their pain. Laughter helps gauge and calibrate <b style='color: forestgreen;'>social boundaries</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Nonverbal communication signals **sex, politics, and status**.",
+                        "For instance, a boss standing first signals a meeting's end.",
+                        "Language also carries such signals, like \"turn our backs\" for betrayal.",
+                        "Greetings have political meaning: a **handshake** is **egalitarian**, but a **hand-kiss** shows **submission**.",
+                        "Individuals of **high-status** are relaxed, while **lower-status** people are vigilant.",
+                        "**Dominance** comes from intimidation, while **prestige** comes from impressive traits.",
+                        "Our nonverbal signaling is **unconscious** to allow for **discretion** in sensitive areas.",
+                        "Body language is **ambiguous**, letting people deny intentions, like a man **nonverbally marginalizing** a rival or **flirting**.",
+                        "This **strategic unawareness** protects from accountability and allows for **illicit agendas**.",
+                        "**Laughter** is an **involuntary social behavior**.",
+                        "It's **innate** and **universal**, appearing in infants.",
+                        "Research by Robert Provine showed we laugh **30 times more often in social settings**, and **speakers laugh more than listeners**.",
+                        "**Laughter is a play signal**, marking the **boundary of seriousness**.",
+                        "This allows animals and humans to **explore** and **practice skills** safely.",
+                        "The **play-signal theory** explains why **danger** enhances humor and why we don't laugh at genuine accidents.",
+                        "The **dark side of laughter** involves **norms** and **psychological distance**.",
+                        "Laughter at norm violations can **weaken** them.",
+                        "The **less we care** about people, the easier it is to laugh at their pain.",
+                        "Laughter helps gauge and calibrate **social boundaries**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Conversation: Text, Subtext, and the Backpack",
-            "body": "In social interactions, a speaker conveys both a <b style='color: forestgreen;'>text</b> (new information) and a <b style='color: forestgreen;'>subtext</b> (\"I'm the kind of person who knows such things\"). While the <b style='color: forestgreen;'>text</b> is sometimes more important, the <b style='color: forestgreen;'>subtext</b> often takes precedence, especially when evaluating someone's potential as a teammate or ally, such as in a <b style='color: forestgreen;'>job interview</b>. Listeners are assessing a speaker's \"<b style='color: forestgreen;'>backpack</b>\"\u2014the valuable tools and skills they possess, rather than just the specific information shared. This highlights that conversations are like <b style='color: forestgreen;'>mutual job interviews</b>, where individuals \"apply\" for roles like friend, lover, or leader.\n\nThis \"<b style='color: forestgreen;'>backpack</b>\" view of conversation explains why people <b style='color: forestgreen;'>jockey to speak</b> and don't track <b style='color: forestgreen;'>conversational debts</b>; the act of speaking is a reward, showcasing one's value. It also clarifies why <b style='color: forestgreen;'>relevance</b> is crucial: it demonstrates a <b style='color: forestgreen;'>generic facility with information</b> rather than just memorized trivia. Listeners want speakers who can impress them in <b style='color: forestgreen;'>any conversational direction</b>. This perspective also explains why listeners give <b style='color: forestgreen;'>credit</b> for insightful remarks, not in kind, but in <b style='color: forestgreen;'>respect</b>, as they are evaluating potential allies, not just trading partners."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In social interactions, a speaker conveys both a **text** (new information) and a **subtext** (\"I'm the kind of person who knows such things\").",
+                        "While the **text** is sometimes more important, the **subtext** often takes precedence, especially when evaluating someone's potential as a teammate or ally, such as in a **job interview**.",
+                        "Listeners are assessing a speaker's \"**backpack**\"\u2014the valuable tools and skills they possess, rather than just the specific information shared.",
+                        "This highlights that conversations are like **mutual job interviews**, where individuals \"apply\" for roles like friend, lover, or leader."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "This \"**backpack**\" view of conversation explains why people **jockey to speak** and don't track **conversational debts**; the act of speaking is a reward, showcasing one's value.",
+                        "It also clarifies why **relevance** is crucial: it demonstrates a **generic facility with information** rather than just memorized trivia.",
+                        "Listeners want speakers who can impress them in **any conversational direction**.",
+                        "This perspective also explains why listeners give **credit** for insightful remarks, not in kind, but in **respect**, as they are evaluating potential allies, not just trading partners."
+                    ]
+                }
+            ]
         },
         {
             "title": "Art as a Fitness Display: Intrinsic vs. Extrinsic Properties",
-            "body": "Art is often seen as a way to <b style='color: forestgreen;'>challenge</b>, <b style='color: forestgreen;'>push boundaries</b>, and effect <b style='color: forestgreen;'>political change</b>. However, a key motive for making art is <b style='color: forestgreen;'>\"showing off\"</b>, which also influences artistic instincts. Both artists want to show off, and consumers use art to <b style='color: forestgreen;'>judge the artist</b>, seeing it as a <b style='color: forestgreen;'>fitness display</b>.\n\nTo understand art fully, we need to consider how artists and consumers benefit. This is especially true given the <b style='color: forestgreen;'>effort and attention</b> art demands. A useful distinction is between <b style='color: forestgreen;'>intrinsic properties</b> (what's directly perceivable in the artwork, like colors or brushstrokes) and <b style='color: forestgreen;'>extrinsic properties</b> (factors outside the art, such as the artist's identity or effort). The <b style='color: forestgreen;'>conventional view</b> focuses on intrinsic properties and their resulting experiences, like beauty. However, the <b style='color: forestgreen;'>fitness-display theory</b> argues that extrinsic properties are <b style='color: forestgreen;'>crucial</b>. Art acts as a statement about the <b style='color: forestgreen;'>artist's virtuosity</b>, with extrinsic factors often determining its perceived value, such as an artwork being less valued if it was made too easily, even if intrinsically beautiful. The disdain for replicas and the preference for the ashes of the original \"Mona Lisa\" highlight the importance of these extrinsic qualities, showing that art is more than just a trigger for sensory experiences. Our appreciation of art heavily relies on understanding the <b style='color: forestgreen;'>skill and effort</b> involved in its creation, and we prioritize <b style='color: forestgreen;'>originality</b> as a sign of the artist's talent."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Art is often seen as a way to **challenge**, **push boundaries**, and effect **political change**.",
+                        "However, a key motive for making art is **\"showing off\"**, which also influences artistic instincts.",
+                        "Both artists want to show off, and consumers use art to **judge the artist**, seeing it as a **fitness display**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "To understand art fully, we need to consider how artists and consumers benefit.",
+                        "This is especially true given the **effort and attention** art demands.",
+                        "A useful distinction is between **intrinsic properties** (what's directly perceivable in the artwork, like colors or brushstrokes) and **extrinsic properties** (factors outside the art, such as the artist's identity or effort).",
+                        "The **conventional view** focuses on intrinsic properties and their resulting experiences, like beauty.",
+                        "However, the **fitness-display theory** argues that extrinsic properties are **crucial**.",
+                        "Art acts as a statement about the **artist's virtuosity**, with extrinsic factors often determining its perceived value, such as an artwork being less valued if it was made too easily, even if intrinsically beautiful.",
+                        "The disdain for replicas and the preference for the ashes of the original \"Mona Lisa\" highlight the importance of these extrinsic qualities, showing that art is more than just a trigger for sensory experiences.",
+                        "Our appreciation of art heavily relies on understanding the **skill and effort** involved in its creation, and we prioritize **originality** as a sign of the artist's talent."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Signaling Model of Education and Its Implications",
-            "body": "This text discusses the <b style='color: forestgreen;'>signaling model</b> of education, arguing that its primary value isn't always <b style='color: forestgreen;'>learning</b>, but rather <b style='color: forestgreen;'>certification</b>\u2014showing off a student's existing attractive qualities like diligence and reliability. Good grades and degrees from prestigious institutions signal a student's ability to <b style='color: forestgreen;'>get things done</b> and manage workload, rather than just retaining information. The text uses an analogy of selling a diamond: education can either *improve* the diamond (traditional view) or *certify* its existing quality (signaling model). While some learning occurs, especially in technical fields, signaling is often more important and can account for a significant portion of education's perceived value.\n\nThe signaling model helps explain several puzzles: why credentials matter more than learning, why impractical curricula and forgetting aren't major concerns, and the <b style='color: forestgreen;'>sheepskin effect</b> (diploma value exceeding individual years of learning). It suggests that school being <b style='color: forestgreen;'>boring and arduous</b> is actually a feature, as it helps separate capable students from less motivated ones. If learning could be fast-forwarded, the need for credentialing through tests would remain. The model also explains why nations don't benefit as much from increased schooling as individuals do; for individuals, education is a <b style='color: forestgreen;'>competition</b> to distinguish themselves as better workers, rather than a cooperative effort for mutual betterment. This competitive aspect is highlighted by critics like Peter Thiel, who see higher education as a <b style='color: forestgreen;'>hierarchy</b> that sorts and excludes."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This text discusses the **signaling model** of education, arguing that its primary value isn't always **learning**, but rather **certification**\u2014showing off a student's existing attractive qualities like diligence and reliability.",
+                        "Good grades and degrees from prestigious institutions signal a student's ability to **get things done** and manage workload, rather than just retaining information.",
+                        "The text uses an analogy of selling a diamond: education can either *improve* the diamond (traditional view) or *certify* its existing quality (signaling model).",
+                        "While some learning occurs, especially in technical fields, signaling is often more important and can account for a significant portion of education's perceived value."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The signaling model helps explain several puzzles: why credentials matter more than learning, why impractical curricula and forgetting aren't major concerns, and the **sheepskin effect** (diploma value exceeding individual years of learning).",
+                        "It suggests that school being **boring and arduous** is actually a feature, as it helps separate capable students from less motivated ones.",
+                        "If learning could be fast-forwarded, the need for credentialing through tests would remain.",
+                        "The model also explains why nations don't benefit as much from increased schooling as individuals do; for individuals, education is a **competition** to distinguish themselves as better workers, rather than a cooperative effort for mutual betterment.",
+                        "This competitive aspect is highlighted by critics like Peter Thiel, who see higher education as a **hierarchy** that sorts and excludes."
+                    ]
+                }
+            ]
         },
         {
             "title": "The Do-Right Citizen: Ideal vs. Reality in Politics",
-            "body": "In politics, citizens often act like <b style='color: forestgreen;'>\"Do-Rights\"</b>, motivated by a desire to improve society. However, this ideal contrasts with reality. <b style='color: forestgreen;'>Voting</b>, for example, is often <b style='color: forestgreen;'>costly</b> and has <b style='color: forestgreen;'>minimal personal impact</b>, yet people still participate. Studies show voters are <b style='color: forestgreen;'>not primarily driven by self-interest</b>; they don't necessarily vote for policies that benefit them directly. This suggests a disconnect between the ideal of the altruistic Do-Right and the practical realities of political engagement, hinting at <b style='color: forestgreen;'>other, less visible motives</b> at play in our political behavior.\n\nFurther analysis reveals several puzzles: voters show <b style='color: forestgreen;'>little concern for vote decisiveness</b>, meaning they vote regardless of whether their vote will actually make a difference. Many voters are also <b style='color: forestgreen;'>uninformed</b> about policies and politicians' records, and display more interest in <b style='color: forestgreen;'>personalities and drama</b> than substantive issues. Additionally, people tend to hold <b style='color: forestgreen;'>entrenched opinions</b> and exhibit <b style='color: forestgreen;'>strong emotions</b> in political discussions, resisting new evidence or changing their minds. These behaviors challenge the Do-Right model and suggest that <b style='color: forestgreen;'>emotional and social factors</b> often outweigh rational, outcome-oriented decision-making in politics."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In politics, citizens often act like **\"Do-Rights\"**, motivated by a desire to improve society.",
+                        "However, this ideal contrasts with reality.",
+                        "**Voting**, for example, is often **costly** and has **minimal personal impact**, yet people still participate.",
+                        "Studies show voters are **not primarily driven by self-interest**; they don't necessarily vote for policies that benefit them directly.",
+                        "This suggests a disconnect between the ideal of the altruistic Do-Right and the practical realities of political engagement, hinting at **other, less visible motives** at play in our political behavior."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Further analysis reveals several puzzles: voters show **little concern for vote decisiveness**, meaning they vote regardless of whether their vote will actually make a difference.",
+                        "Many voters are also **uninformed** about policies and politicians' records, and display more interest in **personalities and drama** than substantive issues.",
+                        "Additionally, people tend to hold **entrenched opinions** and exhibit **strong emotions** in political discussions, resisting new evidence or changing their minds.",
+                        "These behaviors challenge the Do-Right model and suggest that **emotional and social factors** often outweigh rational, outcome-oriented decision-making in politics."
+                    ]
+                }
+            ]
         },
         {
             "title": "Notes and References",
-            "body": "This is a <b style='color: forestgreen;'>detailed reference section</b> for a book, listing <b style='color: forestgreen;'>numerous sources</b> cited throughout its chapters. It includes <b style='color: forestgreen;'>footnotes</b> for an introduction, nine chapters (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17), and a comprehensive <b style='color: forestgreen;'>bibliography</b>.\n\nThe citations cover a <b style='color: forestgreen;'>wide range of topics</b>, from evolutionary psychology, social behavior, and economics to education, medicine, and politics. Key authors like <b style='color: forestgreen;'>Dunbar, Miller, Trivers, Haidt, and Caplan</b> are frequently referenced, alongside various <b style='color: forestgreen;'>academic papers, books, websites (Wikiquote, Wikipedia, Etymology Online), and news articles</b>."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This is a **detailed reference section** for a book, listing **numerous sources** cited throughout its chapters.",
+                        "It includes **footnotes** for an introduction, nine chapters (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17), and a comprehensive **bibliography**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The citations cover a **wide range of topics**, from evolutionary psychology, social behavior, and economics to education, medicine, and politics.",
+                        "Key authors like **Dunbar, Miller, Trivers, Haidt, and Caplan** are frequently referenced, alongside various **academic papers, books, websites (Wikiquote, Wikipedia, Etymology Online), and news articles**."
+                    ]
+                }
+            ]
         },
         {
             "title": "Bibliography of Diverse Academic and Popular Works",
-            "body": "This text provides a <b style='color: forestgreen;'>comprehensive bibliography</b> of academic and popular works. It includes sources on various topics like <b style='color: forestgreen;'>economics, psychology, sociology, politics, and evolutionary biology</b>. The entries are listed alphabetically by author and include publication details and, where available, URLs for online access. This resource is valuable for <b style='color: forestgreen;'>researchers</b> looking for foundational and contemporary works across multiple disciplines.\n\nThe bibliography covers diverse subjects such as <b style='color: forestgreen;'>altruism, advertising, art, cheating, charity, consumption, education, laughter, medicine, norms, religion, self-deception, social status, and political behavior</b>. Many entries focus on the <b style='color: forestgreen;'>evolutionary and psychological underpinnings</b> of human actions and beliefs. Key themes include the role of <b style='color: forestgreen;'>signals, hidden motives, and social dynamics</b> in shaping individual and group behavior."
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This text provides a **comprehensive bibliography** of academic and popular works.",
+                        "It includes sources on various topics like **economics, psychology, sociology, politics, and evolutionary biology**.",
+                        "The entries are listed alphabetically by author and include publication details and, where available, URLs for online access.",
+                        "This resource is valuable for **researchers** looking for foundational and contemporary works across multiple disciplines."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The bibliography covers diverse subjects such as **altruism, advertising, art, cheating, charity, consumption, education, laughter, medicine, norms, religion, self-deception, social status, and political behavior**.",
+                        "Many entries focus on the **evolutionary and psychological underpinnings** of human actions and beliefs.",
+                        "Key themes include the role of **signals, hidden motives, and social dynamics** in shaping individual and group behavior."
+                    ]
+                }
+            ]
         }
     ],
     "chunks": 11
