@@ -24,6 +24,7 @@ import {
   paletteFor,
   phraseCounter,
   progressOf,
+  sentencesOf,
   tokensOf,
   weights,
 } from '../src/lib/reading.js';
@@ -68,6 +69,34 @@ describe('normaliseBody', () => {
 
   test('treats a missing body as empty', () => {
     assert.equal(normaliseBody(undefined), '');
+  });
+});
+
+describe('sentencesOf', () => {
+  test('does not end a sentence at a title or an abbreviation', () => {
+    assert.deepEqual(sentencesOf('Methods by Dr. Campbell Morfit work. St. Paulinus wrote of it. It is used in Ess. Bouquet.'), [
+      'Methods by Dr. Campbell Morfit work.',
+      'St. Paulinus wrote of it.',
+      'It is used in Ess. Bouquet.',
+    ]);
+  });
+
+  test('keeps initials with the name they belong to', () => {
+    assert.deepEqual(sentencesOf('Robert W. Galvin led it. J. Edgar Hoover objected.'), [
+      'Robert W. Galvin led it.',
+      'J. Edgar Hoover objected.',
+    ]);
+  });
+
+  test('never starts a sentence with a lowercase word', () => {
+    assert.deepEqual(sentencesOf('Fossils of H. habilis were found. Rivals e.g. rivers matter.'), [
+      'Fossils of H. habilis were found.',
+      'Rivals e.g. rivers matter.',
+    ]);
+  });
+
+  test('still splits ordinary sentences, including after a highlight', () => {
+    assert.deepEqual(sentencesOf('One <b>thing</b>. Two things? Three!'), ['One <b>thing</b>.', 'Two things?', 'Three!']);
   });
 });
 

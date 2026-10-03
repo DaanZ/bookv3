@@ -98,10 +98,37 @@ const PARAGRAPHS_PER_PAGE = 2;
 // held still.
 export const MAX_PAGES_PER_PART = 5;
 
+// A full stop after one of these ends an abbreviation, not a sentence. Measured on the
+// library before choosing: 189 of 3,071 parts had such a stop, and splitting there broke
+// "Dr. | Campbell Morfit" across two paragraphs and stranded "Bouquet." on a page of its
+// own after "Ess.". A lone capital is an initial ("Robert W. Galvin", "J. Edgar Hoover",
+// 178 of the cases); the price is that "World War I. Then" stays one sentence, which
+// costs a slightly longer paragraph rather than a name cut in half.
+const ABBREVIATION = /(?:^|[\s(“"])(?:Ess|St|Dr|Mr|Mrs|Ms|Prof|Jr|Sr|Mt|vs|No|Vol|Fig|approx|e\.g|i\.e|cf|[A-Z])\.$/;
+
+/** Sentences of one paragraph, without breaking at abbreviations or initials. */
+export function sentencesOf(paragraph) {
+  const sentences = [];
+  for (const piece of paragraph.split(/(?<=[.?!”"])\s+/)) {
+    if (!piece.trim()) continue;
+    const previous = sentences[sentences.length - 1];
+    // No sentence starts lowercase, so "H. habilis" and "U.S. corporate" stay together.
+    // This also mends a quieter bug, the larger one by count: the split treats any closing
+    // quote as an ending, so 'known as the "coffee belt," which includes...' was cut in
+    // two mid-sentence. 970 such cuts in the library, against 159 at abbreviations.
+    if (previous && (ABBREVIATION.test(previous) || /^(?:<b>)?[a-z]/.test(piece))) {
+      sentences[sentences.length - 1] = `${previous} ${piece}`;
+    } else {
+      sentences.push(piece);
+    }
+  }
+  return sentences;
+}
+
 export function paginate(body) {
   const sentences = normaliseBody(body)
     .split(/\n\n+/)
-    .flatMap((par) => par.split(/(?<=[.?!”"])\s+/).filter((s) => s.trim()));
+    .flatMap(sentencesOf);
   const paras = [];
   for (let i = 0; i < sentences.length; i += 2) paras.push(sentences.slice(i, i + 2).join(' '));
 

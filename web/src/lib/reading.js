@@ -22,6 +22,7 @@ export {
   normaliseBody,
   paginate,
   progressOf,
+  sentencesOf,
   tokensOf,
   weights,
 } from './pages.js';
