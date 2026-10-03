@@ -65,6 +65,32 @@ def trim_to_last_sentence(text):
     return trimmed, re.sub(r"<[^>]+>|\*\*", "", dropped).strip()
 
 
+# A pointer at the book's layout, which a reader of the summary cannot follow: "In CHAPTER
+# FIVE, the author...", "(Figure 21)", "as illustrated in Fig. 27.2", "see page 45". 99
+# committed parts had one. A number is required, so "figures like Henry Ford" and "turned
+# the tables on GE" are not caught; only "previous/next chapter" and the like go without.
+_NUMBER = (r"(?:\d+(?:\.\d+)*[a-z]?|[IVXLC]+|one|two|three|four|five|six|seven|eight|nine|ten|"
+           r"eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)")
+_LAYOUT = re.compile(
+    rf"\b(?:fig(?:ure)?s?\.?|tables?|charts?|diagrams?|exhibits?|appendix|plates?)\s+{_NUMBER}\b"
+    r"|\b(?:pages?|pp?\.)\s+\d+"
+    rf"|\bchapters?\s+{_NUMBER}\b"
+    r"|\bsections?\s+\d+(?:\.\d+)*\b"
+    r"|\b(?:previous|next|following|preceding|earlier|later|last|first|final|opening|subsequent"
+    r"|initial|introductory|remaining|closing|concluding)\s+chapters?\b",
+    re.IGNORECASE,
+)
+
+
+def points_at_layout(text):
+    return bool(_LAYOUT.search(re.sub(r"<[^>]+>|\*\*", "", text)))
+
+
+def needs_direct(text):
+    """Reports on the text, or points at its layout: both are fixed by `make_direct`."""
+    return describes_the_text(text) or points_at_layout(text)
+
+
 def word_count(text):
     return len(re.sub(r"<[^>]+>", " ", text).split())
 

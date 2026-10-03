@@ -8,8 +8,8 @@ from util.split import page_chunk_bounds
 from util.summary_checks import (
     MAX_SUMMARY_WORDS,
     clean_title,
-    describes_the_text,
     is_finished,
+    needs_direct,
     trim_to_last_sentence,
     word_count,
 )
@@ -43,7 +43,12 @@ def get_page_chunks(pages, num_chunks: int = 10):
 # Dropping "This text discusses" is the point; dropping "allegedly" from a claim about a
 # real person is a different and much worse thing.
 HEDGES = "Keep every hedge and attribution the material gives a claim: words like 'alleged', 'suspicious', 'reportedly', 'may', and who makes the claim ('Grabbe suggests', 'according to the author') stay whenever the claim is disputed, unproven or one person's view."
-DIRECT = "Write every sentence as content from the material itself, as if teaching it, and begin with the first concrete point: no opening sentence that announces or lists what follows. Never report on the text as a document: no 'This text', 'This section', 'In this chapter', 'The text discusses', 'provides an overview', 'Topics covered include', and no reporting passives such as 'is discussed', 'are explored', 'are provided' or 'is detailed'. " + HEDGES
+#
+# LAYOUT is the same problem pointed elsewhere: "In CHAPTER FIVE, the author...", "(Figure
+# 21)", "as illustrated in Fig. 27.2". The reader of a summary has no chapters, figures or
+# pages to turn to, so each one is a reference to nothing. 99 committed parts had one.
+LAYOUT = "Never refer to the book's layout, which the reader cannot see: no chapter numbers or chapter names, figures, tables, pages or sections ('In Chapter Five', 'see Figure 1.5', '(Fig. 3)'). Say what is there instead."
+DIRECT = "Write every sentence as content from the material itself, as if teaching it, and begin with the first concrete point: no opening sentence that announces or lists what follows. Never report on the text as a document: no 'This text', 'This section', 'In this chapter', 'The text discusses', 'provides an overview', 'Topics covered include', and no reporting passives such as 'is discussed', 'are explored', 'are provided' or 'is detailed'. " + LAYOUT + " " + HEDGES
 
 
 class DisabilityBookFirstChunk(BaseModel):
@@ -67,12 +72,12 @@ class CondensedChunk(BaseModel):
 # sentences, each with a replacement, and `make_direct` swaps those exact strings: every
 # other word of the summary is untouched by construction.
 class SentenceFix(BaseModel):
-    original: str = Field(..., description="One sentence copied exactly, character for character and including its ** marks, from the summary, that reports on the text instead of stating its content: 'This text explores...', 'The text argues that...', 'In this section, ...', 'The chapter emphasizes...', 'Topics covered include...', '... are discussed'.")
-    replacement: str = Field(..., description="That sentence rewritten to state its content directly, keeping every specific name, fact and ** highlight. 'The text argues that mastering these abilities is essential for success' becomes 'Mastering these abilities is essential for success'. " + HEDGES + " 'The text discusses the suspicious circumstances of his death' becomes 'The circumstances of his death are suspicious', never 'His death was murder'. Empty only when the sentence names nothing specific at all, such as 'This text provides a detailed overview of various topics.'")
+    original: str = Field(..., description="One sentence copied exactly, character for character and including its ** marks, from the summary, that reports on the text instead of stating its content ('This text explores...', 'The text argues that...', 'In this section, ...', 'The chapter emphasizes...', 'Topics covered include...', '... are discussed'), or that points at the book's layout, which the reader cannot see ('In CHAPTER FIVE, the author...', 'Chapter 3 explains...', '... as illustrated in Fig. 27.2.', '... growth (Figure 21).').")
+    replacement: str = Field(..., description="That sentence rewritten to state its content directly, keeping every specific name, fact and ** highlight. 'The text argues that mastering these abilities is essential for success' becomes 'Mastering these abilities is essential for success'. " + HEDGES + " 'The text discusses the suspicious circumstances of his death' becomes 'The circumstances of his death are suspicious', never 'His death was murder'. A reference to a chapter, figure, table, page or section is taken out and the content kept: 'In CHAPTER FIVE, the author made errors on the way to an interview' becomes 'The author made errors on the way to an interview', and 'OKRs drive growth (Figure 21).' becomes 'OKRs drive growth.'. The replacement never names the text in another way ('The text is about...', 'This book covers...'): it says the content itself. Empty only when the sentence names nothing specific at all, such as 'This text provides a detailed overview of various topics.'")
 
 
 class DirectFixes(BaseModel):
-    fixes: list[SentenceFix] = Field(..., description="Every sentence of the summary that reports on the text rather than stating its content, each with its direct replacement. Sentences that already state content are not listed.")
+    fixes: list[SentenceFix] = Field(..., description="Every sentence of the summary that reports on the text rather than stating its content, or that refers to a chapter, figure, table, page or section, each with its direct replacement. Sentences that already state content are not listed. A sentence that says whose view something is ('The author believes...', 'He suggests that...', 'Ball challenges the notion that...', 'which he sees as...') is content, not a report on the text: it is not listed, because without the attribution an opinion would read as fact.")
 
 
 def _rewrite(summary, base_model, model=None):
@@ -104,6 +109,13 @@ def make_direct(summary, model=None):
         if (
             not original
             or original not in result
+            # Only a sentence the checks themselves flag may change, and its replacement
+            # must pass them. Told in words to leave attribution alone, the model still
+            # turned "He also suggests that perhaps..." into "Perhaps..." and "which he
+            # sees as" into "is", making Scott Adams' opinions read as fact; in code it
+            # cannot. It also stops "This chapter is about" becoming "The text is about".
+            or not needs_direct(original)
+            or needs_direct(replacement)
             or "\n" in original
             or "\n" in replacement
             or original.count("**") % 2
@@ -187,8 +199,8 @@ def highlight_chunk(pages, first=True, model=None):
     if word_count(summary) > MAX_SUMMARY_WORDS:
         print(f"Summary ran to {word_count(summary)} words; condensing.")
         summary = condense(summary, model=model)
-    if describes_the_text(summary):
-        print("Summary describes the text instead of its content; rewriting it directly.")
+    if needs_direct(summary):
+        print("Summary reports on the text or points at its layout; fixing those sentences.")
         summary = make_direct(summary, model=model)
     return {"title": clean_title(response.summary_title), "body": format_text(summary)}
 

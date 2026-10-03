@@ -91,7 +91,11 @@ A summary that reports on the text ("This text explores…", "In this section…
 library) gets `make_direct`, which is **surgical, never a rewrite**: the model returns only
 the offending sentences with replacements, and the swap is refused if a paragraph, a `**`
 pair or any HTML tag would change. A whole-summary rewrite was tried first and dropped the
-point of *Deep Work* part 2. Two rules in `DIRECT`/`HEDGES` pull against each other on
+point of *Deep Work* part 2. References to the book's layout ("In CHAPTER FIVE", "(Figure 21)", "Page 87 elaborates";
+99 parts) are fixed the same way, by `points_at_layout`. **A sentence may only change if the
+checks themselves flag it, and its replacement must pass them** — told in words to leave
+attribution alone, the model still turned "He also suggests that perhaps…" into "Perhaps…".
+Two rules in `DIRECT`/`HEDGES` pull against each other on
 purpose: drop the text-as-document framing, **keep every hedge and attribution** ("alleged",
 "Grabbe suggests"). Without the second, "the suspicious circumstances of Vince Foster's
 death" became a flat claim about a real person.

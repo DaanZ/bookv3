@@ -2,8 +2,8 @@
 
 `chunks.highlight_chunk` checks every new summary: one cut off mid-sentence is asked for
 again or trimmed to its last sentence, an overlong one is condensed, one that describes
-the text ("This text explores...", "In this section, ...") is rewritten to say it
-directly, and markdown is stripped from the title. This applies the same checks to books
+the text ("This text explores...", "In this section, ...") or points at its layout
+("In CHAPTER FIVE", "(Figure 21)") has those sentences rewritten to say it directly, and markdown is stripped from the title. This applies the same checks to books
 summarised before that. Condensing and rewriting cost one model call each; trimming a
 cut-off part and cleaning a title cost nothing.
 
@@ -27,8 +27,8 @@ from util.files import json_read_file, json_write_file
 from util.summary_checks import (
     MAX_SUMMARY_WORDS,
     clean_title,
-    describes_the_text,
     is_finished,
+    needs_direct,
     trim_to_last_sentence,
     word_count,
 )
@@ -60,7 +60,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--write", action="store_true", help="fix and save; without it nothing is spent or changed")
     parser.add_argument("--book", default="", help="only books whose file name contains this (case-insensitive)")
-    parser.add_argument("--only", choices=["cutoff", "long", "openers"], help="fix one kind of problem only")
+    parser.add_argument("--only", choices=["cutoff", "long", "openers"], help="fix one kind of problem only (openers covers layout references too)")
     args = parser.parse_args()
     do_cutoff = args.only in (None, "cutoff")
     do_long = args.only in (None, "long")
@@ -105,7 +105,7 @@ def main():
 
             before = word_count(body)
             is_long = do_long and before > MAX_SUMMARY_WORDS
-            is_opener = do_openers and describes_the_text(body)
+            is_opener = do_openers and needs_direct(body)
             if not (is_long or is_opener):
                 continue
             if not round_trips(body):
