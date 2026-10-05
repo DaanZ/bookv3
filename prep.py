@@ -1,6 +1,7 @@
 import math
 import os
 import shutil
+from datetime import datetime, timezone
 
 from pypdf.errors import PdfStreamError
 
@@ -22,6 +23,10 @@ def summarize_book(pdf_path, output_folder):
 
         # Extract metadata
         meta_info = get_book_meta(pages, min(5, len(pages)))
+        # The shelf's "Recently added" sorts on this; without it the reader falls back to
+        # the file's mtime, which every later tidy pass rewrites.
+        meta_info["addedAt"] = datetime.now(timezone.utc).isoformat()
+        meta_info["addedFrom"] = "prep"
         book_info = {"meta": meta_info, "parts": []}
 
         # Highlight chunks

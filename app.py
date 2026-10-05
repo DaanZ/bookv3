@@ -1,5 +1,6 @@
 import copy
 import os
+from datetime import datetime, timezone
 
 import rootpath
 import streamlit as st
@@ -53,6 +54,9 @@ def upload_stage():
                 print(st.session_state.page_chunks)
 
             meta_info = get_book_meta(st.session_state.pages, min(5, len(st.session_state.pages)))
+            # Same as prep.py: the shelf sorts on it, and mtime moves with every tidy pass.
+            meta_info["addedAt"] = datetime.now(timezone.utc).isoformat()
+            meta_info["addedFrom"] = "streamlit"
             st.session_state.book_info = {"meta": meta_info, "parts": []}
             st.success(f"Summarizing {meta_info['title']} by {meta_info['author']} from {meta_info['publisher']}...")
         except PdfStreamError:

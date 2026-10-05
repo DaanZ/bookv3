@@ -5,7 +5,9 @@
         "category": "Neurobic Exercises",
         "publisher": "Workman Publishing Company",
         "pages": 80,
-        "isbn": "9780761110521"
+        "isbn": "9780761110521",
+        "addedAt": "2026-09-09T11:01:26+02:00",
+        "addedFrom": "git"
     },
     "parts": [
         {

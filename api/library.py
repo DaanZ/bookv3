@@ -71,14 +71,6 @@ def index() -> dict[str, dict]:
     return found
 
 
-def _file_added(path: str) -> str | None:
-    """Last resort for a book with no `meta.addedAt`: when the file was last written."""
-    try:
-        return datetime.fromtimestamp(os.path.getmtime(path), timezone.utc).isoformat()
-    except OSError:
-        return None
-
-
 def _load(entry: dict) -> dict | None:
     data = json_read_file(entry["path"])
     if not isinstance(data, dict) or "parts" not in data:
@@ -170,12 +162,12 @@ def summarise(key: str, entry: dict, data: dict, position: dict | None,
         "family": family_of(category),
         "pages": meta.get("pages") or 0,
         "isbn": meta.get("isbn"),
-        # When the book joined the library. `meta.addedAt` is the answer whenever there
-        # is one — written at ingest, or dug out of git by tools/backfill_added.py. The
-        # fallback is the file's own mtime, which is only trustworthy for the handful of
-        # books added since the last commit: a git restore flattens it for everything
-        # else, which is exactly why the date is stored in the JSON at all.
-        "addedAt": meta.get("addedAt") or _file_added(entry["path"]),
+        # When the book joined the library: `meta.addedAt`, written at ingest by all three
+        # paths (jobs.py, prep.py, app.py) or dug out of git by tools/backfill_added.py.
+        # There is deliberately no fallback. The file's mtime used to stand in, and it
+        # answers "when was this last rewritten" — so a tidy pass over five old books put
+        # them above everything added that morning. No date sorts last, which is honest.
+        "addedAt": meta.get("addedAt"),
         "partCount": len(parts),
         "patch": patch_for(category),
         "state": state,
@@ -241,11 +233,6 @@ def shelf(profile: dict) -> list[dict]:
                       looked_up=looked_up, owner=owner)
         )
 
-    # Newest first. The shelf is filtered by state rather than paged, so the state rank
-    # only decides the order of the three groups on a screen that shows one of them at a
-    # time; within a group, the question a reader actually asks is "what turned up
-    # lately?". A book with no date at all sorts last rather than first, since an unknown
-    # date is not evidence of a recent one.
     # Newest first. The shelf is filtered by state rather than paged, so the state rank
     # only orders the three groups on a screen that shows one at a time; within a group
     # the question a reader actually asks is "what turned up lately?".

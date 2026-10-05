@@ -5,7 +5,9 @@
         "category": "Cognitive psychology",
         "publisher": "Oxford University Press",
         "pages": 261,
-        "isbn": "9780190495992"
+        "isbn": "9780190495992",
+        "addedAt": "2026-09-09T11:01:26+02:00",
+        "addedFrom": "git"
     },
     "parts": [
         {

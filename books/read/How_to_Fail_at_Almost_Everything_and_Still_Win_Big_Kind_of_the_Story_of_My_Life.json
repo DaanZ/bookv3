@@ -5,7 +5,9 @@
         "category": "Self-help",
         "publisher": "Penguin",
         "pages": 304,
-        "isbn": "9780241968703"
+        "isbn": "9780241968703",
+        "addedAt": "2026-09-09T11:01:26+02:00",
+        "addedFrom": "git"
     },
     "parts": [
         {
