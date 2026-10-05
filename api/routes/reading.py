@@ -7,8 +7,9 @@ from pydantic import BaseModel, Field
 
 from api import enrich as enriching
 from api import library, positions, profiles
+from api import quest_reroll
 from api import quests as quest_store
-from api.deps import reader
+from api.deps import admin, reader
 from hardcover.request import mark_book_as_read
 
 router = APIRouter()
@@ -25,6 +26,11 @@ class ReflectionIn(BaseModel):
     happened: str = Field(max_length=quest_store.REFLECTION_MAX)
     wentWrong: str = Field(max_length=quest_store.REFLECTION_MAX)
     why: str = Field(max_length=quest_store.REFLECTION_MAX)
+
+
+class RerollIn(BaseModel):
+    # Which way the new quests should lean, in the reader's words; empty for no steer.
+    direction: str | None = Field(None, max_length=quest_store.DIRECTION_MAX)
 
 
 class AmbienceIn(BaseModel):
@@ -78,6 +84,8 @@ def get_quests(key: str, profile: dict = Depends(reader)):
         "started": quest_store.started(profile["id"]).get(key, {}),
         # The ones they did, with what they made of each: {"medium": {doneAt, happened, ...}}.
         "done": quest_store.done(profile["id"]).get(key, {}),
+        # A reroll running or failed for this book, which the screen polls while it runs.
+        "reroll": quest_reroll.status(key),
     }
 
 
@@ -102,6 +110,28 @@ def start_quest(key: str, size: str, profile: dict = Depends(reader)):
 def unstart_quest(key: str, size: str, profile: dict = Depends(reader)):
     _quest_size(key, size)
     return {"started": quest_store.set_started(profile["id"], key, size, None)}
+
+
+@router.post("/api/books/{key}/quests/reroll", status_code=202)
+def reroll_quests(key: str, body: RerollIn | None = None, profile: dict = Depends(admin)):
+    """Make new quests for the sizes nobody has started, or a first set for a book without.
+
+    The owner's: it spends API credit, and the set is one per book, so it changes what
+    every reader is offered. The quests it replaces are recorded as passed on, and later
+    rerolls are kept from proposing them again.
+    """
+    entry = library.index().get(key)
+    if entry is None:
+        raise HTTPException(status_code=404, detail="No such book.")
+    if not quest_reroll.has_key():
+        raise HTTPException(status_code=503, detail="OPENROUTER_API_KEY is not set, so no quests can be made.")
+    if quest_store.load(key) and quest_store.claimed_sizes(key) >= set(quest_store.SIZES):
+        raise HTTPException(status_code=409, detail="Every quest here is started or done; there is nothing to replace.")
+    direction = ((body.direction if body else None) or "").strip() or None
+    started = quest_reroll.submit(key, entry["path"], profile["id"], direction)
+    if started is None:
+        raise HTTPException(status_code=409, detail="New quests are already being made for this book.")
+    return {"reroll": started}
 
 
 @router.put("/api/books/{key}/quests/{size}/done")

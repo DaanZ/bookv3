@@ -288,11 +288,20 @@ and anything `prep.py` writes get covers. Four things about that are deliberate:
   before, and no request handler waits on any of it.
 
 **Quests on the finish screen.** `quests.py --book <substring> --write` makes three quests
-per book: small (minutes, with what is in the house), medium (an evening), large (several
-days). It first lists the *methods the summary itself describes*, with their parts, and
-every quest must name one, checked in code, plus three different ones when the list has
-three. Asked in words, both Gemini Flash and GPT-4o built quests on topics the summary only
-names (a worm bin from "building living soil"). A second call (`review`, GPT-4o) then
+per book, one for each moment: the reader's **next break** (5 to 15 minutes, nothing to
+buy), **tonight** (one evening at home) and **this weekend** (four hours or more, ending in
+something done). A goal is concrete when it says when; Daan asked for moments over sizes.
+They are stored as `small`, `medium` and `large`, the keys starts, reflections and passed
+lists already use, and the model is given the weekday so "tonight" is a real night. The
+judge checks `fits_moment` beside season, food safety and practice. It first lists the book's *methods and topics*, with their parts, and every
+quest must name one, checked in code, plus three different ones when the list has three.
+A quest may go past what the summary describes as long as it stays on that subject: the
+list was methods-only at first (a worm bin was proposed from "building living soil" once),
+and Daan chose topic over page. A quest happens where the subject is practised: for a
+business or self-help book the reader's own work and projects, never household chores in
+the book's words, which is what The Invincible Company got until the prompt said so. Steps
+that open with a verb of thought ("Think of", "Consider") are rejected in code
+(`thinking_steps`), because the description forbidding them was ignored. A second call (`review`, GPT-4o) then
 judges season, food safety and practice-not-decoration, and a failing set is asked for
 again with the reasons, three tries, else nothing is saved. It still lets an out-of-season
 quest through sometimes (Three Sisters in October). Stored in `data/quests/<key>.json`
@@ -301,6 +310,29 @@ quest through sometimes (Three Sisters in October). Stored in `data/quests/<key>
 row of three; the picked one joins its plan like a tab. "Start this quest" records the
 start per reader in `data/quests-started/<profile>.json`: the hand-off a daily quest list,
 here or in Roads, will read. Nothing generates quests when a book is finished yet.
+
+**Rerolling keeps what was taken up and remembers what was turned down.** The owner can
+ask for new quests on the finish screen (`POST /api/books/{key}/quests/reroll`, 202, then
+the screen polls `GET .../quests` for `reroll`); a book with no set gets its first one the
+same way. It runs `quests.reroll` on its own one-thread worker (`api/quest_reroll.py`,
+pipeline imported inside, as in `jobs.py`). Sizes **any** reader started or finished are
+kept, re-read just before saving, because starts and reflections point at a size and
+replacing one would hand them to a different quest. The replaced quests go into the book
+file's `passed` list, and every later reroll is told them and checked against them in code
+(`too_close`: half the title words in common), since asked in words alone a model rewords
+its favourite. The refresh icon first asks for an optional **direction** ("indoor plants"
+for Homesteading for Health): the model follows it past what the book covers but must tie
+each quest to a listed method or topic, the three-different-anchors rule is waived, and the
+quest keeps `direction` so the plan can say so. Each quest is checked on its own
+(`quest_problems`: its moment's minutes, steps, a listed anchor, no thinking verbs, no
+repeat; then the judge), and a retry keeps every quest that passed and rewrites only the
+rest (`locked`). Rewriting all three let one stubborn quest sink sets whose other two had
+passed three times, and let a new "Consider…" step turn up somewhere else each attempt.
+Anchors match by `method_key`, ignoring the "(part 3)" the model copies from the list. Eight live runs took
+10 to 64 seconds, the spread being retries, so the screen says "usually 15 to 60 seconds"
+and counts up. `quests.py --force` goes through the same function. GPT-4o writes as well as
+judging (`QUEST_MODEL`), not `OPENROUTER_MODEL`: Gemini Flash built quests on topics the
+summary only names.
 
 **A quest ends in a reflection, not a tick.** "I did it" opens three questions inside the
 plan: what happened, what went wrong, and why the book asks for it this way. All three

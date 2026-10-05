@@ -213,13 +213,24 @@ export const putAmbience = (key, settings) =>
 
 export const getBook = (key) => request(`/books/${encodeURIComponent(key)}`);
 
-/** The book's three quests for its finish screen: {quests: {small, medium, large} | null, started, done}. */
+/** The book's three quests for its finish screen: {quests: {small, medium, large} | null, started, done, reroll}. */
 export const getQuests = (key) => request(`/books/${encodeURIComponent(key)}/quests`);
 
 /** Start one quest (or, with `on` false, undo it). Answers with that book's {started}. */
 export const startQuest = (key, size, on = true) =>
   request(`/books/${encodeURIComponent(key)}/quests/${encodeURIComponent(size)}/start`, {
     method: on ? 'POST' : 'DELETE',
+  });
+
+/**
+ * Make new quests for the sizes nobody has started (or a first set), leaning towards
+ * `direction` when one is given ("indoor plants"). The owner's; answers 202 at once with
+ * {reroll: {state: 'running'}}, and getQuests reports how it went.
+ */
+export const rerollQuests = (key, direction = '') =>
+  request(`/books/${encodeURIComponent(key)}/quests/reroll`, {
+    method: 'POST',
+    body: JSON.stringify({ direction: direction.trim() || null }),
   });
 
 /**

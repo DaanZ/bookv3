@@ -61,6 +61,13 @@ button { font-family: inherit; }
 .coal-1 { animation: coal-breathe 4.2s ease-in-out infinite; }
 .coal-0 { animation: coal-breathe 6.5s ease-in-out infinite; }
 
+/* Quests. A new card fades in where the old one stood: opacity only, since surfaces never
+   lift, scale or glow. The refresh icon turns while new quests are being made. */
+@keyframes quest-arrive { from { opacity: 0; } to { opacity: 1; } }
+.quest-new { animation: quest-arrive 700ms var(--ease-move, ease) both; }
+@keyframes quest-turn { to { transform: rotate(360deg); } }
+.quest-turning { animation: quest-turn 1.1s linear infinite; transform-origin: 50% 50%; }
+
 /* Reduced motion completes, it does not skip. */
 @media (prefers-reduced-motion: reduce) {
   .para, .fill, .row { transition-duration: 0.01ms !important; }
@@ -74,4 +81,8 @@ button { font-family: inherit; }
 
   /* The coals keep their glow and stop breathing. */
   .coal { animation: none !important; }
+
+  /* A new quest card is simply there; the refresh icon holds still while it waits. */
+  .quest-new { animation-duration: 0.01ms !important; }
+  .quest-turning { animation: none !important; }
 }

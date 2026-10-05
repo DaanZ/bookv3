@@ -7,8 +7,9 @@ from unittest import mock
 
 from fastapi.testclient import TestClient
 
-from api import library, quests
-from api.deps import reader
+import quests as maker
+from api import library, quest_reroll, quests
+from api.deps import admin, reader
 from api.main import app
 
 QUEST = {
@@ -130,6 +131,148 @@ class QuestDoneRoute(TempStore):
     def test_an_unknown_size_is_not_found(self):
         body = {"happened": "a", "wentWrong": "b", "why": "c"}
         self.assertEqual(self.client.put("/api/books/Book/quests/huge/done", json=body).status_code, 404)
+
+
+def quest(title):
+    return dict(QUEST, title=title, short=f"{title}, briefly.")
+
+
+class Reroll(TempStore):
+    """New quests replace only what nobody started, and remember what was passed on."""
+
+    def setUp(self):
+        super().setUp()
+        self.old = {"small": quest("Citrus peel oil"), "medium": quest("Soap bars"), "large": quest("Enfleurage")}
+        quests.save("Book", self.old, model="m", generated_at="t")
+        self.asked = {}
+
+        def fake_make(book, model, keep=None, avoid=None, direction=None):
+            self.asked = {"keep": dict(keep or {}), "avoid": [q["title"] for q in avoid or []], "direction": direction}
+            fresh = {"small": quest("Rose water"), "medium": quest("Lavender sachets"), "large": quest("Herb tincture")}
+            return {**fresh, **(keep or {})}, "openai/gpt-4o"
+
+        patch = mock.patch.object(maker, "make_quests", fake_make)
+        patch.start()
+        self.addCleanup(patch.stop)
+
+    def test_a_started_quest_is_kept_and_the_rest_are_passed_on(self):
+        quests.set_started("anna", "Book", "medium", "2026-10-05T08:00:00+00:00")
+        maker.reroll("Book", {}, "owner")
+        now = quests.load("Book")
+        self.assertEqual([now[s]["title"] for s in quests.SIZES], ["Rose water", "Soap bars", "Herb tincture"])
+        self.assertEqual(sorted(p["title"] for p in quests.passed("Book")), ["Citrus peel oil", "Enfleurage"])
+        self.assertEqual(set(self.asked["keep"]), {"medium"})
+
+    def test_a_reflected_quest_from_another_reader_is_kept_too(self):
+        quests.set_done("bob", "Book", "large", {"happened": "a", "wentWrong": "b", "why": "c"}, "t")
+        maker.reroll("Book", {}, "owner")
+        self.assertEqual(quests.load("Book")["large"]["title"], "Enfleurage")
+
+    def test_the_next_reroll_is_told_everything_passed_on_so_far(self):
+        maker.reroll("Book", {}, "owner")
+        maker.reroll("Book", {}, "owner")
+        self.assertEqual(sorted(self.asked["avoid"]), sorted(
+            ["Citrus peel oil", "Soap bars", "Enfleurage", "Rose water", "Lavender sachets", "Herb tincture"]))
+        self.assertEqual(len(quests.passed("Book")), 6)
+
+    def test_nothing_to_replace_is_refused_before_any_model_call(self):
+        for size in quests.SIZES:
+            quests.set_started("owner", "Book", size, "t")
+        with self.assertRaises(maker.QuestsRejected):
+            maker.reroll("Book", {}, "owner")
+        self.assertEqual(self.asked, {})
+
+    def test_a_direction_reaches_the_model(self):
+        maker.reroll("Book", {}, "owner", direction="indoor plants")
+        self.assertEqual(self.asked["direction"], "indoor plants")
+
+    def test_making_a_set_again_keeps_the_passed_list(self):
+        maker.reroll("Book", {}, "owner")
+        quests.save("Book", self.old, model="m", generated_at="t")
+        self.assertEqual(len(quests.passed("Book")), 3)
+
+
+class ThinkingSteps(unittest.TestCase):
+    def test_a_step_that_only_asks_for_thought_is_caught(self):
+        steps = ["Think of one alternative.", "Consider the costs.", "List every expense.",
+                 "Write down two changes.", "Send the plan to one person."]
+        self.assertEqual(maker.thinking_steps(steps), ["Think of one alternative.", "Consider the costs."])
+
+
+class QuestProblems(unittest.TestCase):
+    """Each quest is checked on its own, so a retry can keep the ones that passed."""
+
+    def quest(self, **fields):
+        base = {"method": "Living soil", "title": "Compost a pot", "short": "Mix compost into one pot.",
+                "steps": ["Fill a bowl.", "Mix in compost.", "Repot the plant."], "minutes": 15}
+        return maker.SimpleNamespace(**{**base, **fields})
+
+    def test_a_good_next_break_quest_has_no_problems(self):
+        self.assertEqual(maker.quest_problems("small", self.quest(), {"living soil"}, []), [])
+
+    def test_each_moment_has_its_own_minutes(self):
+        self.assertTrue(maker.quest_problems("small", self.quest(minutes=45), {"living soil"}, []))
+        self.assertEqual(maker.quest_problems("medium", self.quest(minutes=90), {"living soil"}, []), [])
+        self.assertTrue(maker.quest_problems("large", self.quest(minutes=180), {"living soil"}, []))
+
+    def test_a_method_named_with_its_part_still_matches(self):
+        self.assertEqual(maker.quest_problems("small", self.quest(method="Living Soil (part 1)"), {"living soil"}, []), [])
+
+    def test_a_thinking_step_an_unknown_method_and_a_repeat_are_all_named(self):
+        found = maker.quest_problems("small", self.quest(method="Feng shui", steps=["Consider the pot.", "Repot.", "Water."]),
+                                     {"living soil"}, ["Compost the pot"])
+        self.assertEqual(len(found), 3)
+
+
+class TooClose(unittest.TestCase):
+    def test_a_reworded_title_is_a_repeat_and_a_new_activity_is_not(self):
+        self.assertEqual(maker.too_close("Make Citrus Peel Oil", ["Extract Citrus Peel Oil"]), "Extract Citrus Peel Oil")
+        self.assertIsNone(maker.too_close("Create a Floral Enfleurage", ["Create Scented Soap Bars"]))
+
+
+class RerollRoute(TempStore):
+    def setUp(self):
+        super().setUp()
+        quests.save("Book", {size: dict(QUEST) for size in quests.SIZES})
+        patches = [
+            mock.patch.object(library, "index", lambda: {"Book": {"path": "book.json", "finished": True}}),
+            mock.patch.object(quest_reroll, "has_key", lambda: True),
+            mock.patch.object(quest_reroll, "submit", self.submitted),
+        ]
+        for patch in patches:
+            patch.start()
+            self.addCleanup(patch.stop)
+        app.dependency_overrides[admin] = lambda: {"id": "owner", "owner": True}
+        self.addCleanup(app.dependency_overrides.pop, admin, None)
+        self.client = TestClient(app)
+
+    def submitted(self, key, path, by, direction=None):
+        self.direction = direction
+        return {"state": "running", "startedAt": "t"}
+
+    def test_a_direction_is_trimmed_and_an_empty_one_is_none(self):
+        self.client.post("/api/books/Book/quests/reroll", json={"direction": "  indoor plants "})
+        self.assertEqual(self.direction, "indoor plants")
+        self.client.post("/api/books/Book/quests/reroll", json={"direction": "   "})
+        self.assertIsNone(self.direction)
+
+    def test_a_direction_is_kept_on_the_quest(self):
+        quests.save("Book", {size: dict(QUEST, direction="indoor plants") for size in quests.SIZES})
+        self.assertEqual(quests.load("Book")["small"]["direction"], "indoor plants")
+
+    def test_a_reroll_is_accepted_and_runs_in_the_background(self):
+        response = self.client.post("/api/books/Book/quests/reroll")
+        self.assertEqual(response.status_code, 202, response.text)
+        self.assertEqual(response.json()["reroll"]["state"], "running")
+
+    def test_a_book_whose_quests_are_all_taken_has_nothing_to_reroll(self):
+        for size in quests.SIZES:
+            quests.set_started("owner", "Book", size, "t")
+        self.assertEqual(self.client.post("/api/books/Book/quests/reroll").status_code, 409)
+
+    def test_without_a_key_nothing_is_queued(self):
+        with mock.patch.object(quest_reroll, "has_key", lambda: False):
+            self.assertEqual(self.client.post("/api/books/Book/quests/reroll").status_code, 503)
 
 
 if __name__ == "__main__":

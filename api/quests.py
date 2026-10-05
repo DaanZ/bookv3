@@ -7,9 +7,9 @@ waits on a model and runs without a key.
 
 A quest has a title and a one-line `short` for its card, then the plan the card opens
 into: the `source` in the book, what it `needs`, its `steps`, a `doneWhen` that can be
-checked, and an estimate in minutes. The sizes are fixed so the finish screen can always
-offer a way in that fits the day: a few minutes now, an evening this week, or a weekend
-project.
+checked, and an estimate in minutes. The three are moments rather than sizes, so a goal
+says when: `small` is the reader's next break, `medium` tonight, `large` this weekend.
+The keys kept their old names because starts, reflections and passed lists use them.
 """
 import json
 import os
@@ -37,11 +37,14 @@ def _clean(quest) -> dict | None:
         # card would have nothing to open into.
         return None
     minutes = quest.get("minutes")
+    direction = quest.get("direction")
     return {
         **{f: quest[f].strip() for f in TEXT_FIELDS},
         "needs": [n.strip() for n in quest.get("needs") or [] if isinstance(n, str) and n.strip()],
         "steps": steps,
         "minutes": minutes if isinstance(minutes, int) and minutes > 0 else None,
+        # The direction the reader asked for when this quest was made, if any.
+        **({"direction": direction.strip()[:DIRECTION_MAX]} if isinstance(direction, str) and direction.strip() else {}),
     }
 
 
@@ -77,6 +80,9 @@ DONE_DIR = os.path.join(ROOT, "data", "quests-done")
 # The three questions, in the order they are asked. The keys are the stored field names.
 REFLECTION_FIELDS = ("happened", "wentWrong", "why")
 REFLECTION_MAX = 2000
+
+# The reader's own steer for a reroll, as in "indoor plants". Short: a direction, not a brief.
+DIRECTION_MAX = 120
 
 
 def _profile_path(folder: str, profile_id: str) -> str:
@@ -154,12 +160,66 @@ def open_count(profile_id: str) -> dict:
     return counts
 
 
-def save(key: str, quests: dict, model: str | None = None, generated_at: str | None = None) -> str:
+def passed(key: str) -> list[dict]:
+    """The quests readers passed on for this book: replaced by a reroll before anyone
+    started them. Every later reroll is told to stay away from them, so "none of these"
+    is a signal that carries forward instead of a dice throw that can land on them again."""
+    try:
+        with open(path_for(key), encoding="utf-8") as file:
+            stored = json.load(file)
+    except (FileNotFoundError, ValueError, OSError):
+        return []
+    found = stored.get("passed") if isinstance(stored, dict) else None
+    return [p for p in found if isinstance(p, dict) and p.get("title")] if isinstance(found, list) else []
+
+
+def claimed_sizes(key: str) -> set[str]:
+    """Sizes of this book that any reader has started or done.
+
+    A reroll keeps these. The set is one per book while starts and reflections are per
+    reader, and both point at a size: replacing a quest somebody started would quietly
+    hand their start, or their reflection, to a different quest.
+    """
+    claimed = set()
+    for folder in (STARTED_DIR, DONE_DIR):
+        try:
+            names = os.listdir(folder)
+        except OSError:
+            continue
+        for name in names:
+            if name.endswith(".json"):
+                claimed.update((_read(folder, name[:-5]).get(key) or {}).keys())
+    return claimed & set(SIZES)
+
+
+def merge_reroll(old: dict | None, fresh: dict, claimed: set, by: str, at: str) -> tuple[dict, list]:
+    """The new set — claimed sizes from the old one, the rest fresh — and the quests passed on."""
+    quests, gone = {}, []
+    for size in SIZES:
+        if old and size in claimed:
+            quests[size] = old[size]
+            continue
+        quests[size] = fresh[size]
+        # The very same quest when its start was undone while the new set was being made:
+        # it was kept going in, so nobody passed on it. Identity, not equality — a fresh
+        # quest that happens to match an old one was still a quest the reader turned down.
+        if old and fresh[size] is not old[size]:
+            gone.append({"size": size, "title": old[size]["title"], "short": old[size]["short"],
+                         "source": old[size]["source"], "passedAt": at, "by": by})
+    return quests, gone
+
+
+def save(key: str, quests: dict, model: str | None = None, generated_at: str | None = None,
+         passed_on: list | None = None) -> str:
+    """Write a book's set. `passed_on` replaces the passed list; None keeps the one on disk,
+    so making a set again from the command line does not forget what readers turned down."""
+    keep_passed = passed(key) if passed_on is None else passed_on
     os.makedirs(STORE_DIR, exist_ok=True)
     path = path_for(key)
     record = {size: quests[size] for size in SIZES}
     record["model"] = model
     record["generatedAt"] = generated_at
+    record["passed"] = keep_passed
     tmp = path + ".tmp"
     with open(tmp, "w", encoding="utf-8") as file:
         json.dump(record, file, indent=4)

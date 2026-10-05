@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import Patch from '../components/Patch';
 import { Button, Chip, QuietLink } from '../components/ui';
-import { finishQuest, getQuests, resyncHardcover, startQuest } from '../lib/api';
+import { finishQuest, getQuests, rerollQuests, resyncHardcover, startQuest } from '../lib/api';
 
+// When each quest is for. Stored as small, medium and large, shown as the moment: a goal
+// is concrete when it says when.
 const QUEST_SIZES = [
-  ['small', 'today'],
-  ['medium', 'this week'],
-  ['large', 'a project'],
+  ['small', 'next break'],
+  ['medium', 'tonight'],
+  ['large', 'this weekend'],
 ];
 
 /** "15 min", "1½ h", "5 h": an estimate, said the way a person would. */
@@ -120,6 +122,143 @@ function Reflection({ answers }) {
   );
 }
 
+/** Two arrows chasing round: "make these again". Drawn, not an emoji, so it takes the ink. */
+function RefreshIcon({ turning }) {
+  return (
+    <svg
+      className={turning ? 'quest-turning' : undefined}
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M20 11a8 8 0 0 0-14.3-4.9L4 8" />
+      <path d="M4 3v5h5" />
+      <path d="M4 13a8 8 0 0 0 14.3 4.9L20 16" />
+      <path d="M20 21v-5h-5" />
+    </svg>
+  );
+}
+
+// Measured on the running reader, October 2026, eight runs: 10, 13, 13, 13, 25, 28, 30
+// and 64 seconds. The spread is retries: a set that fails a check is asked for again, up
+// to three times, and a direction ("indoor plants") makes the checks fail more often.
+const REROLL_ESTIMATE = 'usually 15 to 60 seconds';
+
+/**
+ * Asking for new quests, and how that is going. The owner's alone: it spends API credit
+ * and changes the set every reader is offered. Started and finished quests are kept by
+ * the server, and the ones replaced are remembered as passed on, so they do not return.
+ *
+ * An icon rather than a sentence; the sentence is its tooltip and accessible name, and
+ * `withLabel` shows it as well where the button would otherwise be unexplained.
+ */
+function RerollButton({ status, error, label, onReroll, withLabel = false }) {
+  const running = status?.state === 'running';
+  // Asking which way the new quests should lean, before anything is spent.
+  const [asking, setAsking] = useState(false);
+  const [direction, setDirection] = useState('');
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    if (!running) return undefined;
+    const timer = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(timer);
+  }, [running]);
+
+  const quiet = { font: "400 12px 'Space Grotesk', system-ui", color: 'var(--text-muted)' };
+  const icon = {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    minWidth: 34,
+    height: 34,
+    padding: withLabel ? '0 12px' : 0,
+    borderRadius: 17,
+    border: '1px solid var(--border-default)',
+    background: 'transparent',
+    color: 'var(--text-secondary)',
+    font: "500 12.5px 'Space Grotesk', system-ui",
+    cursor: running ? 'default' : 'pointer',
+  };
+
+  if (running) {
+    const seconds = status.startedAt ? Math.max(0, Math.round((now - Date.parse(status.startedAt)) / 1000)) : 0;
+    return (
+      <span style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+        <span style={quiet}>
+          new quests · {seconds} s · {seconds > 30 ? 'a set failed a check, asking again' : REROLL_ESTIMATE}
+        </span>
+        <span style={icon} aria-hidden="true">
+          <RefreshIcon turning />
+        </span>
+      </span>
+    );
+  }
+  if (asking) {
+    const go = () => {
+      setAsking(false);
+      onReroll(direction);
+    };
+    return (
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          go();
+        }}
+        style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}
+      >
+        <input
+          autoFocus
+          value={direction}
+          maxLength={120}
+          placeholder="Which way? (optional) e.g. indoor plants"
+          aria-label="Which way should the new quests lean? Optional."
+          onChange={(event) => setDirection(event.target.value)}
+          onKeyDown={(event) => event.key === 'Escape' && setAsking(false)}
+          style={{
+            width: 260,
+            padding: '8px 12px',
+            borderRadius: 'var(--radius-input)',
+            border: '1px solid var(--border-strong)',
+            background: 'transparent',
+            color: 'var(--text-primary)',
+            font: "400 13px 'Space Grotesk', system-ui",
+            outline: 'none',
+          }}
+        />
+        <Button size="sm" type="submit">
+          New quests
+        </Button>
+        <QuietLink onClick={() => setAsking(false)}>Cancel</QuietLink>
+      </form>
+    );
+  }
+
+  const failed = error || (status?.state === 'failed' ? status.error : null);
+  return (
+    <span style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
+      {failed && <span style={{ ...quiet, color: 'var(--chip-expired-fg)' }}>{failed}</span>}
+      <button
+        type="button"
+        className="row"
+        onClick={() => setAsking(true)}
+        title={failed ? 'Try again' : `${label} · ${REROLL_ESTIMATE}`}
+        aria-label={failed ? 'Try again' : label}
+        style={icon}
+      >
+        <RefreshIcon />
+        {withLabel && <span>{failed ? 'Try again' : label}</span>}
+      </button>
+    </span>
+  );
+}
+
 /**
  * Three quests in a row; the one picked opens into its plan beneath it.
  *
@@ -132,7 +271,7 @@ function Reflection({ answers }) {
  * back to it days later is the book itself: the shelf marks a read book with a quest
  * still open, and opening a read book lands here.
  */
-function Quests({ quests, started, done, open, onOpen, onStart, starting, onDone, saving, saveError }) {
+function Quests({ quests, started, done, open, onOpen, onStart, starting, onDone, saving, saveError, action, fresh, replacing }) {
   const [writing, setWriting] = useState(false);
   useEffect(() => setWriting(false), [open]);
 
@@ -150,16 +289,27 @@ function Quests({ quests, started, done, open, onOpen, onStart, starting, onDone
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 24 }}>
-      <span style={EYEBROW}>three ways to use it · pick one to see the plan</span>
+      <div style={{ display: 'flex', gap: 12, alignItems: 'baseline', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+        <span style={EYEBROW}>try it · in your next break, tonight or this weekend</span>
+        {action}
+      </div>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 12, alignItems: 'stretch' }}>
           {QUEST_SIZES.map(([size, when]) => {
             const quest = quests[size];
             const chosen = size === open;
-            const state = done[size] ? ['current', 'done'] : started[size] ? ['claimed', 'started'] : ['neutral', size];
+            // The chip says the moment, until the quest is started or done; then it says that,
+            // and the moment moves to the line beside it.
+            const taken = done[size] ? ['current', 'done'] : started[size] ? ['claimed', 'started'] : null;
+            // Just replaced by a reroll: marked "new" until the next one or another book.
+            const isNew = fresh.has(size) && !taken;
+            // Being replaced right now: faded, so it is clear which cards are about to change.
+            const going = replacing && !taken;
             return (
               <button
-                key={size}
+                // Keyed on the title so a replaced card mounts afresh and fades in.
+                key={`${size}:${quest.title}`}
+                className={isNew ? 'quest-new' : undefined}
                 type="button"
                 aria-expanded={chosen}
                 onClick={() => onOpen(chosen ? null : size)}
@@ -180,12 +330,20 @@ function Quests({ quests, started, done, open, onOpen, onStart, starting, onDone
                   marginBottom: chosen ? -1 : open ? 12 : 0,
                   position: 'relative',
                   zIndex: chosen ? 1 : 0,
+                  opacity: going ? 0.4 : 1,
+                  transition: 'opacity var(--dur-instant, 90ms) var(--ease-move, ease)',
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <Chip tone={state[0]}>{state[1]}</Chip>
+                  {isNew ? (
+                    <Chip style={{ background: 'var(--accent)', color: 'var(--accent-on)' }}>new</Chip>
+                  ) : taken ? (
+                    <Chip tone={taken[0]}>{taken[1]}</Chip>
+                  ) : (
+                    <Chip tone="neutral">{when}</Chip>
+                  )}
                   <span style={{ font: "400 11px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
-                    {[when, duration(quest.minutes)].filter(Boolean).join(' · ')}
+                    {[taken || isNew ? when : null, duration(quest.minutes)].filter(Boolean).join(' · ')}
                   </span>
                 </span>
                 <span style={{ fontFamily: 'var(--font-display-wide)', fontSize: 15.5, fontWeight: 600, lineHeight: 1.3 }}>
@@ -213,6 +371,7 @@ function Quests({ quests, started, done, open, onOpen, onStart, starting, onDone
           >
             <span style={{ font: "400 12.5px 'Space Grotesk', system-ui", color: 'var(--text-muted)' }}>
               From the book: {active.source}
+              {active.direction && ` · your direction: ${active.direction}`}
             </span>
             {active.needs.length > 0 && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -335,21 +494,68 @@ export default function Finished({
   const [done, setDone] = useState({});
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState(null);
+  // New quests being made for this book, {state: 'running' | 'failed', error?}, or null.
+  const [reroll, setReroll] = useState(null);
+  const [rerollError, setRerollError] = useState(null);
+  // Sizes a reroll just replaced, so their cards can say so.
+  const [fresh, setFresh] = useState(() => new Set());
+  // The titles as they were when a reroll began; compared with the set that lands.
+  const before = useRef(null);
+
+  const apply = (answer) => {
+    const next = answer?.quests || null;
+    if (before.current && !answer?.reroll) {
+      setFresh(new Set(QUEST_SIZES.map(([size]) => size).filter((size) => next?.[size]?.title !== before.current[size])));
+      before.current = null;
+    }
+    setQuests(next);
+    setStarted(answer?.started || {});
+    setDone(answer?.done || {});
+    setReroll(answer?.reroll || null);
+  };
+
   useEffect(() => {
     let live = true;
     setOpen(null);
+    setRerollError(null);
+    setFresh(new Set());
+    before.current = null;
     getQuests(book.key)
-      .then((answer) => {
-        if (!live) return;
-        setQuests(answer?.quests || null);
-        setStarted(answer?.started || {});
-        setDone(answer?.done || {});
-      })
+      .then((answer) => live && apply(answer))
       .catch(() => {});
     return () => {
       live = false;
     };
   }, [book.key]);
+
+  // While new quests are being made, ask every few seconds; the new set replaces the old
+  // in place when it lands, and an open card shows its new quest.
+  useEffect(() => {
+    if (reroll?.state !== 'running') return undefined;
+    let live = true;
+    const timer = setInterval(() => {
+      getQuests(book.key)
+        .then((answer) => live && apply(answer))
+        .catch(() => {});
+    }, 3000);
+    return () => {
+      live = false;
+      clearInterval(timer);
+    };
+  }, [reroll?.state, book.key]);
+
+  const startReroll = async (direction = '') => {
+    setRerollError(null);
+    setFresh(new Set());
+    before.current = Object.fromEntries(QUEST_SIZES.map(([size]) => [size, quests?.[size]?.title ?? null]));
+    try {
+      const answer = await rerollQuests(book.key, direction);
+      setReroll(answer?.reroll || null);
+    } catch (ex) {
+      before.current = null;
+      setRerollError(ex.message);
+    }
+  };
 
   const toggleStart = async (size) => {
     setStarting(true);
@@ -398,6 +604,18 @@ export default function Finished({
   // Named for what it is: not the owner. There is no guest any more, and this was
   // never about one — it is about whose Hardcover account the key opens.
   const notOwner = who ? !who.owner : false;
+
+  // Sizes this reader has taken up; the server also keeps any another reader took up.
+  const taken = QUEST_SIZES.filter(([size]) => started[size] || done[size]).length;
+  const rerollAction =
+    who?.owner && taken < QUEST_SIZES.length ? (
+      <RerollButton
+        status={reroll}
+        error={rerollError}
+        label={taken ? 'New quests for the ones not started' : 'New quests'}
+        onReroll={startReroll}
+      />
+    ) : null;
 
   const recheck = async () => {
     setSyncing(true);
@@ -552,6 +770,9 @@ export default function Finished({
           no quests yet keeps the list. */}
       {quests ? (
         <Quests
+          action={rerollAction}
+          fresh={fresh}
+          replacing={reroll?.state === 'running'}
           quests={quests}
           started={started}
           done={done}
@@ -575,6 +796,9 @@ export default function Finished({
         >
           what you kept
         </span>
+        {who?.owner && (
+          <RerollButton status={reroll} error={rerollError} label="Make three quests from this book" onReroll={startReroll} withLabel />
+        )}
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           {titles.map((title, i) => (
             <div
