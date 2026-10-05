@@ -19,7 +19,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from api.routes import collection, hardcover, ingest, profiles, reading, session
+from api.routes import activity, collection, hardcover, ingest, profiles, reading, session
 
 # The reader itself needs no key, but this process reports whether one is present and
 # reads OPENROUTER_MODEL for the default estimate. Nothing else here loads .env: the
@@ -59,7 +59,7 @@ async def no_store_api(request, call_next):
 # In the order they were written in, when this was one file. No two of them claim the
 # same method and path, so the order does not decide anything today — but the SPA
 # fallback below must stay after all of them.
-for area in (session, profiles, reading, hardcover, collection, ingest):
+for area in (session, profiles, reading, hardcover, collection, ingest, activity):
     app.include_router(area.router)
 
 

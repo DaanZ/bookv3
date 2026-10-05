@@ -44,6 +44,10 @@ no PIN. The last is opt-in for a reason - behind nginx every proxied request arr
 from 127.0.0.1, so setting it on a public deployment would hand the owner's account to
 the internet. `api/profiles.py`'s `trusted_profile_for` says so at length.
 
+`BOOKS_ACTIVITY_KEY` switches on `GET /api/activity/today` for other apps: send it as
+`Authorization: Bearer <key>`. Unset, the route answers 404, so a deployment that never
+asked for it has no new way in. See "Activity for other apps" below.
+
 ## Architecture
 
 **Pipeline (PDF → JSON summary).** `fragments.read_book_pages` loads a PDF into LangChain `Document`
@@ -253,6 +257,16 @@ Five more rules, about the readers themselves:
 
 `data/positions.json`, the single store this replaced, is *moved* onto `data/positions/owner.json`
 the first time `positions.py` loads, so history from before profiles belongs to whoever made it.
+
+**Activity for other apps.** `routes/activity.py` is the one route that is not a reader's: a
+calendar or dashboard has no tablet and no PIN, so it authenticates with `BOOKS_ACTIVITY_KEY`
+instead of `Depends(reader)` (the "a route with none is open" check above does not apply —
+the key is its guard). Read-only, 404 when the key is unset. `?tz=Europe/Amsterdam` cuts the
+day (default: this machine's clock), `?profile=<id>|all` picks readers (default `owner`),
+`?date=YYYY-MM-DD` asks about another day. What it can say is bounded by `positions.py`,
+which keeps only `lastReadAt` and `finishedAt`: `finished` is exact for any day, but
+`touched` is only trustworthy for today, because a later save overwrites the date and there
+is no per-day log. `tests/test_activity.py` pins this.
 
 `enrich.py` is the Hardcover cache — cover, rating, genres and the link out, in
 `data/hardcover.json`, beside the books and never inside them. Nobody asks for a lookup by hand:
