@@ -96,8 +96,24 @@ Everything below was run, not assumed:
 - [x] Logs contain the wrapper's lines *and* uvicorn's startup output
 - [ ] Reboot — the only test of the trigger itself, and the one you have to do
 
-## Not done
+## Two triggers: logon and unlock
 
-No tray icon. The playbook's is optional, `pystray` and `Pillow` are not
-installed here, and a books tray wants its own design — colour for reachable /
-working / error, tooltip for the count. Worth having; not written yet.
+The task runs at logon (after 30s) **and** when the session is unlocked. The second
+exists because a logon run can die before it does anything: on 2 October the machine
+came back from an unexpected shutdown, the logon run exited `0xC000013A` without
+writing a line to `autostart.log`, and nothing ran until it was started by hand.
+`RestartCount` did not help — it covers a task that fails to start, not an action that
+exits badly. An unlock while the reader is up costs nothing: `IgnoreNew` drops the
+trigger while the task runs, and the runner declines a busy port.
+
+There is deliberately no repeating trigger. Every repetition starts a hidden
+PowerShell, which can flash a console, every few minutes for ever.
+
+## The tray
+
+`scripts/tray.py`, started by the runner with `-WithTray` (the default). It needs
+`pip install pystray pillow`. Graphite tile with the mark when up, a pale bar along
+the foot while a book is summarising, red when a job failed, grey when unreachable.
+Its crashes go to `logs\tray.err.log`, which is the first place to look when the icon
+is missing — from 23 September to 2 October it died at every start with
+`NameError: TrayState`, because a redesign deleted the class but not its use.

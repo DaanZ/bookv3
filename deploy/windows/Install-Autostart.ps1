@@ -78,6 +78,22 @@ $trigger = New-ScheduledTaskTrigger -AtLogOn -User "$env:USERDOMAIN\$env:USERNAM
 # ISO-8601 duration; the cmdlet has no -Delay parameter for a logon trigger.
 $trigger.Delay = "PT${DelaySeconds}S"
 
+# Also at unlock, because a logon run can die before it does anything. On 2 October
+# the machine came back from an unexpected shutdown, the logon run was killed
+# (0xC000013A) before writing a single log line, and RestartCount never stepped in:
+# it covers a task that fails to *start*, not an action that exits badly. Nothing ran
+# until it was started by hand. Unlocking is the moment someone sits down to read, and
+# it costs nothing while the reader is up: MultipleInstances IgnoreNew drops the
+# trigger when the task is already running, and the runner declines when the port is
+# taken. No repeating trigger instead - each repetition would start a hidden
+# PowerShell, which can flash a console window, every few minutes for ever.
+$unlockClass = Get-CimClass -Namespace "Root/Microsoft/Windows/TaskScheduler" `
+    -ClassName "MSFT_TaskSessionStateChangeTrigger"
+$unlock = New-CimInstance -CimClass $unlockClass -ClientOnly
+$unlock.StateChange = 8   # TASK_SESSION_UNLOCK
+$unlock.UserId = "$env:USERDOMAIN\$env:USERNAME"
+$unlock.Enabled = $true
+
 $principal = New-ScheduledTaskPrincipal -UserId "$env:USERDOMAIN\$env:USERNAME" `
     -LogonType Interactive -RunLevel Limited
 
@@ -102,7 +118,7 @@ if (Get-ScheduledTask -TaskName $TaskName -ErrorAction SilentlyContinue) {
 }
 
 Register-ScheduledTask -TaskName $TaskName `
-    -Action $action -Trigger $trigger -Principal $principal `
+    -Action $action -Trigger @($trigger, $unlock) -Principal $principal `
     -Settings $settings -Description $description | Out-Null
 
 Write-Output @"

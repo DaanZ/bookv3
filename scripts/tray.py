@@ -111,6 +111,24 @@ def make_icon(colour, working=False):
     return image
 
 
+class TrayState:
+    """The last reading, shared between the poller and the menu callbacks."""
+
+    def __init__(self):
+        self.lock = threading.Lock()
+        self.health = None
+        self.error = None
+
+    def update(self, health=None, error=None):
+        with self.lock:
+            self.health = health
+            self.error = error
+
+    def read(self):
+        with self.lock:
+            return self.health, self.error
+
+
 def describe(health, error, base):
     """(colour key, working, tooltip). Tooltips cap around 128 characters."""
     if error or health is None:
