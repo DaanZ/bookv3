@@ -213,13 +213,23 @@ export const putAmbience = (key, settings) =>
 
 export const getBook = (key) => request(`/books/${encodeURIComponent(key)}`);
 
-/** The book's three quests for its finish screen: {quests: {small, medium, large} | null, started}. */
+/** The book's three quests for its finish screen: {quests: {small, medium, large} | null, started, done}. */
 export const getQuests = (key) => request(`/books/${encodeURIComponent(key)}/quests`);
 
 /** Start one quest (or, with `on` false, undo it). Answers with that book's {started}. */
 export const startQuest = (key, size, on = true) =>
   request(`/books/${encodeURIComponent(key)}/quests/${encodeURIComponent(size)}/start`, {
     method: on ? 'POST' : 'DELETE',
+  });
+
+/**
+ * Mark a quest done with what the reader made of it — {happened, wentWrong, why} — or, with
+ * `reflection` null, undo that. Answers with that book's {done}.
+ */
+export const finishQuest = (key, size, reflection) =>
+  request(`/books/${encodeURIComponent(key)}/quests/${encodeURIComponent(size)}/done`, {
+    method: reflection ? 'PUT' : 'DELETE',
+    ...(reflection ? { body: JSON.stringify(reflection) } : {}),
   });
 
 export const putPosition = (key, part, page) =>

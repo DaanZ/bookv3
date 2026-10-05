@@ -9,6 +9,9 @@ const CHIPS = {
   new: ['not started', 'var(--chip-neutral-bg)', 'var(--chip-neutral-fg)'],
   reading: [null, 'var(--chip-claimed-bg)', 'var(--chip-claimed-fg)'],
   read: ['read', 'var(--chip-current-bg)', 'var(--chip-current-fg)'],
+  // A read book with a quest started and not yet reflected on. It takes the place of
+  // "read" because it names what is left to do, and opening the book lands on the quest.
+  questOpen: ['quest open', 'var(--chip-claimed-bg)', 'var(--chip-claimed-fg)'],
 };
 
 function metaLine(book, donePct) {
@@ -27,7 +30,8 @@ function metaLine(book, donePct) {
 }
 
 function BookRow({ book, gradient, onOpen, narrow }) {
-  const [chipWord, chipBg, chipFg] = CHIPS[book.state] || CHIPS.new;
+  const chipKey = book.state === 'read' && book.questsOpen ? 'questOpen' : book.state;
+  const [chipWord, chipBg, chipFg] = CHIPS[chipKey] || CHIPS.new;
   const chip = chipWord ?? `part ${book.at + 1} of ${book.partCount}`;
   const done = book.state === 'read' ? 1 : cum(book.partCount, book.at);
   const donePct = Math.round(done * 100);

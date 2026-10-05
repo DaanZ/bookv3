@@ -19,6 +19,14 @@ class PositionIn(BaseModel):
     page: int = Field(ge=0)
 
 
+class ReflectionIn(BaseModel):
+    """What the reader made of a quest. All three are asked for: the point of the step is
+    the mistakes and the why, so "it went fine" alone is not a reflection."""
+    happened: str = Field(max_length=quest_store.REFLECTION_MAX)
+    wentWrong: str = Field(max_length=quest_store.REFLECTION_MAX)
+    why: str = Field(max_length=quest_store.REFLECTION_MAX)
+
+
 class AmbienceIn(BaseModel):
     bed: str | None = None
     level: float | None = None
@@ -32,6 +40,12 @@ def get_shelf(profile: dict = Depends(reader)):
     # that predate the automatic pass, and anything prep.py wrote without going through
     # the API. Returns immediately — the requests happen one at a time on another thread.
     enriching.queue_missing(books)
+
+    # A quest started and not yet reflected on, per book, so the shelf can point back to
+    # it: the way to a quest days later is the book, and the book is on the shelf.
+    open_quests = quest_store.open_count(profile["id"])
+    for book in books:
+        book["questsOpen"] = open_quests.get(book["key"], 0)
 
     return {
         "books": books,
@@ -62,6 +76,8 @@ def get_quests(key: str, profile: dict = Depends(reader)):
         "quests": quest_store.load(key),
         # When this reader started each of them, if they did: {"medium": "<timestamp>"}.
         "started": quest_store.started(profile["id"]).get(key, {}),
+        # The ones they did, with what they made of each: {"medium": {doneAt, happened, ...}}.
+        "done": quest_store.done(profile["id"]).get(key, {}),
     }
 
 
@@ -86,6 +102,24 @@ def start_quest(key: str, size: str, profile: dict = Depends(reader)):
 def unstart_quest(key: str, size: str, profile: dict = Depends(reader)):
     _quest_size(key, size)
     return {"started": quest_store.set_started(profile["id"], key, size, None)}
+
+
+@router.put("/api/books/{key}/quests/{size}/done")
+def finish_quest(key: str, size: str, body: ReflectionIn, profile: dict = Depends(reader)):
+    """Mark a quest done with the reader's reflection: what happened, what went wrong, why."""
+    _quest_size(key, size)
+    reflection = {field: getattr(body, field).strip() for field in quest_store.REFLECTION_FIELDS}
+    empty = [field for field, text in reflection.items() if not text]
+    if empty:
+        raise HTTPException(status_code=422, detail=f"Answer every question: {', '.join(empty)}.")
+    stamp = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    return {"done": quest_store.set_done(profile["id"], key, size, reflection, stamp)}
+
+
+@router.delete("/api/books/{key}/quests/{size}/done")
+def unfinish_quest(key: str, size: str, profile: dict = Depends(reader)):
+    _quest_size(key, size)
+    return {"done": quest_store.set_done(profile["id"], key, size, None)}
 
 
 @router.put("/api/books/{key}/position")

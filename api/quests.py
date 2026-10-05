@@ -67,41 +67,91 @@ def load(key: str) -> dict | None:
 # was started rather than the book's three suggestions.
 STARTED_DIR = os.path.join(ROOT, "data", "quests-started")
 
+# Which quests a reader has done, and what they made of it. Finishing a quest is not
+# ticking a box: the reader says what happened, what went wrong and why they think the
+# book asks for it this way, because doing it and learning from the mistakes is where
+# the reading turns into knowing. A separate file from the starts, so a done quest keeps
+# its reflection even if its start is undone, and the started file keeps its old shape.
+DONE_DIR = os.path.join(ROOT, "data", "quests-done")
 
-def _started_path(profile_id: str) -> str:
+# The three questions, in the order they are asked. The keys are the stored field names.
+REFLECTION_FIELDS = ("happened", "wentWrong", "why")
+REFLECTION_MAX = 2000
+
+
+def _profile_path(folder: str, profile_id: str) -> str:
     # Profile ids come from profiles.json via the reader dependency, never from the URL.
-    return os.path.join(STARTED_DIR, f"{profile_id}.json")
+    return os.path.join(folder, f"{profile_id}.json")
 
 
-def started(profile_id: str) -> dict:
-    """{"<book key>": {"<size>": "<startedAt>"}} for one reader."""
+def _read(folder: str, profile_id: str) -> dict:
     try:
-        with open(_started_path(profile_id), encoding="utf-8") as file:
+        with open(_profile_path(folder, profile_id), encoding="utf-8") as file:
             data = json.load(file)
         return data if isinstance(data, dict) else {}
     except (FileNotFoundError, ValueError, OSError):
         return {}
 
 
-def set_started(profile_id: str, key: str, size: str, at: str | None) -> dict:
-    """Start (at = a timestamp) or un-start (at = None) one quest; returns that book's starts."""
-    data = started(profile_id)
+def _put(folder: str, profile_id: str, key: str, size: str, value) -> dict:
+    """Set (value) or clear (None) one size of one book; returns that book's entries."""
+    data = _read(folder, profile_id)
     book = dict(data.get(key) or {})
-    if at:
-        book[size] = at
+    if value is not None:
+        book[size] = value
     else:
         book.pop(size, None)
     if book:
         data[key] = book
     else:
         data.pop(key, None)
-    os.makedirs(STARTED_DIR, exist_ok=True)
-    path = _started_path(profile_id)
+    os.makedirs(folder, exist_ok=True)
+    path = _profile_path(folder, profile_id)
     tmp = path + ".tmp"
     with open(tmp, "w", encoding="utf-8") as file:
         json.dump(data, file, indent=4)
     os.replace(tmp, path)
     return book
+
+
+def started(profile_id: str) -> dict:
+    """{"<book key>": {"<size>": "<startedAt>"}} for one reader."""
+    return _read(STARTED_DIR, profile_id)
+
+
+def set_started(profile_id: str, key: str, size: str, at: str | None) -> dict:
+    """Start (at = a timestamp) or un-start (at = None) one quest; returns that book's starts."""
+    return _put(STARTED_DIR, profile_id, key, size, at or None)
+
+
+def done(profile_id: str) -> dict:
+    """{"<book key>": {"<size>": {"doneAt", "happened", "wentWrong", "why"}}} for one reader."""
+    return _read(DONE_DIR, profile_id)
+
+
+def set_done(profile_id: str, key: str, size: str, reflection: dict | None, at: str | None = None) -> dict:
+    """Record a quest as done with its reflection, or undo that (reflection = None).
+
+    Editing a reflection keeps the date it was first done: the day you did the thing
+    does not move because you later wrote more about it.
+    """
+    if reflection is None:
+        return _put(DONE_DIR, profile_id, key, size, None)
+    before = (done(profile_id).get(key) or {}).get(size) or {}
+    record = {"doneAt": before.get("doneAt") or at}
+    record.update({field: reflection[field] for field in REFLECTION_FIELDS})
+    return _put(DONE_DIR, profile_id, key, size, record)
+
+
+def open_count(profile_id: str) -> dict:
+    """{"<book key>": n} — quests this reader started and has not yet reflected on."""
+    starts, dones = started(profile_id), done(profile_id)
+    counts = {}
+    for key, sizes in starts.items():
+        n = sum(1 for size in sizes if size not in (dones.get(key) or {}))
+        if n:
+            counts[key] = n
+    return counts
 
 
 def save(key: str, quests: dict, model: str | None = None, generated_at: str | None = None) -> str:

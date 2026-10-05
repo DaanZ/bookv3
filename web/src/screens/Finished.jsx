@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import Patch from '../components/Patch';
 import { Button, Chip, QuietLink } from '../components/ui';
-import { getQuests, resyncHardcover, startQuest } from '../lib/api';
+import { finishQuest, getQuests, resyncHardcover, startQuest } from '../lib/api';
 
 const QUEST_SIZES = [
   ['small', 'today'],
@@ -32,6 +32,94 @@ const EYEBROW = {
   color: 'var(--text-muted)',
 };
 
+// The three questions after a quest, in order: what you did, what went wrong, and why
+// the book asks for it this way. Doing it and learning from the mistakes is where the
+// reading turns into knowing, so the mistakes and the why are asked for, not optional.
+const QUESTIONS = [
+  ['happened', 'What did you do, and what happened?', 'Say what you actually did, not what the plan said.', 'what happened'],
+  ['wentWrong', 'What went wrong, or not as planned?', 'The mistakes are the useful part. “Nothing” is rarely true.', 'what went wrong'],
+  ['why', 'Why do you think the book asks for it this way?', 'What is each step for? What would you change next time?', 'why it asks this'],
+];
+
+/** "3 October": the day, said plainly. */
+function day(iso) {
+  return new Date(iso).toLocaleDateString(undefined, { day: 'numeric', month: 'long' });
+}
+
+const ANSWER_TEXT = {
+  fontFamily: "'Lexend Deca', 'Lexend', system-ui",
+  fontSize: 14,
+  lineHeight: 1.55,
+  color: 'var(--text-primary)',
+};
+
+/** The three questions, inside the plan, where its footer was. */
+function ReflectionForm({ initial, onSave, onCancel, saving, error }) {
+  const [answers, setAnswers] = useState(() =>
+    Object.fromEntries(QUESTIONS.map(([field]) => [field, initial?.[field] || ''])),
+  );
+  const complete = QUESTIONS.every(([field]) => answers[field].trim());
+
+  return (
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        if (complete && !saving) onSave(answers);
+      }}
+      style={{ display: 'flex', flexDirection: 'column', gap: 16, paddingTop: 14, borderTop: '1px solid var(--border-subtle)' }}
+    >
+      {QUESTIONS.map(([field, question, hint], i) => (
+        <label key={field} style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+          <span style={{ font: "500 14px 'Space Grotesk', system-ui", lineHeight: 1.4 }}>{question}</span>
+          <textarea
+            autoFocus={i === 0}
+            rows={3}
+            value={answers[field]}
+            placeholder={hint}
+            maxLength={2000}
+            onChange={(event) => setAnswers((a) => ({ ...a, [field]: event.target.value }))}
+            style={{
+              ...ANSWER_TEXT,
+              boxSizing: 'border-box',
+              width: '100%',
+              minHeight: 76,
+              padding: '10px 12px',
+              borderRadius: 'var(--radius-input)',
+              border: '1px solid var(--border-strong)',
+              background: 'transparent',
+              resize: 'vertical',
+              outline: 'none',
+            }}
+          />
+        </label>
+      ))}
+      {error && (
+        <span style={{ font: "400 12px 'Space Grotesk', system-ui", color: 'var(--chip-expired-fg)' }}>{error}</span>
+      )}
+      <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
+        <Button size="lg" type="submit" disabled={!complete || saving} style={{ minHeight: 48 }}>
+          {saving ? 'Saving…' : 'Save'}
+        </Button>
+        <QuietLink onClick={onCancel}>Cancel</QuietLink>
+      </div>
+    </form>
+  );
+}
+
+/** A done quest's reflection, read back. */
+function Reflection({ answers }) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12, paddingTop: 14, borderTop: '1px solid var(--border-subtle)' }}>
+      {QUESTIONS.map(([field, , , label]) => (
+        <div key={field} style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+          <span style={EYEBROW}>{label}</span>
+          <span style={{ ...ANSWER_TEXT, whiteSpace: 'pre-wrap' }}>{answers[field]}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 /**
  * Three quests in a row; the one picked opens into its plan beneath it.
  *
@@ -39,11 +127,26 @@ const EYEBROW = {
  * the Quests canvas): the card drops its bottom edge and overlaps the plan's top border
  * by a pixel, the plan's corner under it goes square, and the other two cards lift away.
  * So the plan does not repeat the card's title: it starts where the card ends.
+ *
+ * A quest moves through start → "I did it" → a reflection, all inside the plan. The way
+ * back to it days later is the book itself: the shelf marks a read book with a quest
+ * still open, and opening a read book lands here.
  */
-function Quests({ quests, started, open, onOpen, onStart, starting }) {
+function Quests({ quests, started, done, open, onOpen, onStart, starting, onDone, saving, saveError }) {
+  const [writing, setWriting] = useState(false);
+  useEffect(() => setWriting(false), [open]);
+
   const index = QUEST_SIZES.findIndex(([size]) => size === open);
   const active = open ? quests[open] : null;
+  const reflection = open ? done[open] : null;
   const planRadius = ['0 14px 14px 14px', '14px', '14px 0 14px 14px'][index] || '14px';
+
+  const save = async (answers) => {
+    if (await onDone(open, answers)) setWriting(false);
+  };
+  const undoDone = () => {
+    if (window.confirm('Remove this reflection? What you wrote is not kept.')) onDone(open, null);
+  };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 24 }}>
@@ -53,6 +156,7 @@ function Quests({ quests, started, open, onOpen, onStart, starting }) {
           {QUEST_SIZES.map(([size, when]) => {
             const quest = quests[size];
             const chosen = size === open;
+            const state = done[size] ? ['current', 'done'] : started[size] ? ['claimed', 'started'] : ['neutral', size];
             return (
               <button
                 key={size}
@@ -79,7 +183,7 @@ function Quests({ quests, started, open, onOpen, onStart, starting }) {
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <Chip tone={started[size] ? 'current' : 'neutral'}>{started[size] ? 'started' : size}</Chip>
+                  <Chip tone={state[0]}>{state[1]}</Chip>
                   <span style={{ font: "400 11px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>
                     {[when, duration(quest.minutes)].filter(Boolean).join(' · ')}
                   </span>
@@ -146,25 +250,50 @@ function Quests({ quests, started, open, onOpen, onStart, starting }) {
               <span style={{ ...EYEBROW, flex: 'none' }}>done when</span>
               <span style={{ font: "500 13.5px 'Space Grotesk', system-ui", lineHeight: 1.5 }}>{active.doneWhen}</span>
             </div>
-            <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-              {started[open] ? (
-                <>
-                  <Chip tone="current">started</Chip>
-                  <span style={{ font: "400 12.5px 'Space Grotesk', system-ui", color: 'var(--text-secondary)' }}>
-                    on {new Date(started[open]).toLocaleDateString(undefined, { day: 'numeric', month: 'long' })}
-                  </span>
-                  <QuietLink onClick={starting ? undefined : () => onStart(open)}>
-                    {starting ? 'undoing…' : 'Undo'}
-                  </QuietLink>
-                </>
-              ) : (
-                <Button size="lg" onClick={starting ? undefined : () => onStart(open)} style={{ minHeight: 48 }}>
-                  {starting ? 'Starting…' : 'Start this quest'}
-                </Button>
-              )}
-              <span style={{ flexGrow: 1 }} />
-              <QuietLink onClick={() => onOpen(null)}>Close</QuietLink>
-            </div>
+
+            {writing ? (
+              <ReflectionForm
+                initial={reflection}
+                onSave={save}
+                onCancel={() => setWriting(false)}
+                saving={saving}
+                error={saveError}
+              />
+            ) : (
+              <>
+                {reflection && <Reflection answers={reflection} />}
+                <div style={{ display: 'flex', gap: 14, alignItems: 'center', flexWrap: 'wrap' }}>
+                  {reflection ? (
+                    <>
+                      <Chip tone="current">done</Chip>
+                      <span style={{ font: "400 12.5px 'Space Grotesk', system-ui", color: 'var(--text-secondary)' }}>
+                        on {day(reflection.doneAt)}
+                      </span>
+                      <QuietLink onClick={() => setWriting(true)}>Edit</QuietLink>
+                      <QuietLink onClick={saving ? undefined : undoDone}>Undo</QuietLink>
+                    </>
+                  ) : started[open] ? (
+                    <>
+                      <Button size="lg" onClick={() => setWriting(true)} style={{ minHeight: 48 }}>
+                        I did it
+                      </Button>
+                      <span style={{ font: "400 12.5px 'Space Grotesk', system-ui", color: 'var(--text-secondary)' }}>
+                        started {day(started[open])}
+                      </span>
+                      <QuietLink onClick={starting ? undefined : () => onStart(open)}>
+                        {starting ? 'undoing…' : 'Undo start'}
+                      </QuietLink>
+                    </>
+                  ) : (
+                    <Button size="lg" onClick={starting ? undefined : () => onStart(open)} style={{ minHeight: 48 }}>
+                      {starting ? 'Starting…' : 'Start this quest'}
+                    </Button>
+                  )}
+                  <span style={{ flexGrow: 1 }} />
+                  <QuietLink onClick={() => onOpen(null)}>Close</QuietLink>
+                </div>
+              </>
+            )}
           </div>
         )}
       </div>
@@ -202,6 +331,10 @@ export default function Finished({
   // The card that is open. One at a time, and none until the reader picks one.
   const [open, setOpen] = useState(null);
   const [starting, setStarting] = useState(false);
+  // The ones they did, {size: {doneAt, happened, wentWrong, why}}: what they made of it.
+  const [done, setDone] = useState({});
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState(null);
   useEffect(() => {
     let live = true;
     setOpen(null);
@@ -210,6 +343,7 @@ export default function Finished({
         if (!live) return;
         setQuests(answer?.quests || null);
         setStarted(answer?.started || {});
+        setDone(answer?.done || {});
       })
       .catch(() => {});
     return () => {
@@ -224,6 +358,23 @@ export default function Finished({
       setStarted(answer?.started || {});
     } finally {
       setStarting(false);
+    }
+  };
+
+  // Save a reflection (or remove it, with null). True when it was saved, so the form
+  // closes only on success and keeps what was typed when the request failed.
+  const recordDone = async (size, reflection) => {
+    setSaving(true);
+    setSaveError(null);
+    try {
+      const answer = await finishQuest(book.key, size, reflection);
+      setDone(answer?.done || {});
+      return true;
+    } catch (ex) {
+      setSaveError(ex.message);
+      return false;
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -403,10 +554,14 @@ export default function Finished({
         <Quests
           quests={quests}
           started={started}
+          done={done}
           open={open}
           onOpen={setOpen}
           onStart={toggleStart}
           starting={starting}
+          onDone={recordDone}
+          saving={saving}
+          saveError={saveError}
         />
       ) : (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 26 }}>

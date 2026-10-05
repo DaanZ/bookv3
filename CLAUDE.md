@@ -302,6 +302,16 @@ row of three; the picked one joins its plan like a tab. "Start this quest" recor
 start per reader in `data/quests-started/<profile>.json`: the hand-off a daily quest list,
 here or in Roads, will read. Nothing generates quests when a book is finished yet.
 
+**A quest ends in a reflection, not a tick.** "I did it" opens three questions inside the
+plan: what happened, what went wrong, and why the book asks for it this way. All three
+are required (the route answers 422 on a blank one), because the product's bet is that
+doing, getting it wrong and asking why is what turns a summary into knowing; a bare
+checkbox would reward finishing over learning. Stored per reader in
+`data/quests-done/<profile>.json`, apart from the starts, and an edit keeps the day it
+was first done. The way back days later is the book: the shelf sends `questsOpen` per
+book and swaps a read book's chip for "quest open", and opening a read book lands on its
+finish screen.
+
 `POST /api/books/{key}/enrich` stays for the one case the pass cannot serve: asking again about a
 book it matched to the wrong edition.
 
