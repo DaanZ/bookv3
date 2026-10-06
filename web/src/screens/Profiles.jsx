@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Button, Chip, QuietLink } from '../components/ui';
+import { Button, Chip, QuietLink, Sheet } from '../components/ui';
 
 // Who is reading.
 //
@@ -493,7 +493,10 @@ export default function Profiles({
         </div>
       )}
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 26 }}>
+      {/* The sheet: the readers to choose between, on the graphite page inside the
+          indigo frame, the way the shelf holds its books. */}
+      <Sheet grow style={{ marginTop: 26 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 18 }}>
         {profiles.map((profile) => (
           <ProfileRow
             key={profile.id}
@@ -546,6 +549,7 @@ export default function Profiles({
         </Button>
       </form>
       )}
+      </Sheet>
 
       <div
         style={{
@@ -553,7 +557,7 @@ export default function Profiles({
           alignItems: 'center',
           justifyContent: 'flex-end',
           gap: 16,
-          marginTop: 'auto',
+          marginTop: 22,
           paddingTop: 26,
           borderTop: '1px solid var(--border-subtle)',
         }}

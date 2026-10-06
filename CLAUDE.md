@@ -458,7 +458,8 @@ accent, the mark's orange `#F68318`: the book you are reading on the shelf, Next
 reader, the next-break quest on the finish screen. `Sheet` in `components/ui.jsx` is the
 graphite panel; the reader's swipe surface is its own sheet because it also clips the page
 turn. The sheet stays neutral on purpose, so the coals are still the only colour in the text.
-The library and profiles screens have no sheet yet and sit on the frame. The canvas the
+The library and profiles screens put their working area on a sheet too (the drop target
+through the collection; the readers and the add form). The canvas the
 choice was made on: https://claude.ai/artifact/BE4oKLA919zaMgE4TWPJUg The desk is its own token,
 `--bg-desk`, painted on `<body>` by `app.css`; for that to flip, `.shore` goes on `<body>` as
 well as on the app's root (`App.jsx`, `Design.jsx`), because the desk sits outside the card.

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { Button, QuietLink } from '../components/ui';
+import { Button, QuietLink, Sheet } from '../components/ui';
 import {
   clearJobs,
   deleteBook,
@@ -380,6 +380,10 @@ export default function Library({ books, counts, palette, day, onShelf, onChange
         </div>
       )}
 
+      {/* The sheet: everything you work on here, from the drop target to the collection,
+          on the graphite page inside the indigo frame. The title and notices stay on the
+          frame, as on the shelf. */}
+      <Sheet grow style={{ marginTop: 24 }}>
       {/* Drop target. A dashed edge is the one place the design's hairline rule bends —
           it has to read as "incomplete until you put something here". */}
       <div
@@ -661,6 +665,7 @@ export default function Library({ books, counts, palette, day, onShelf, onChange
           </span>
         )}
       </div>
+      </Sheet>
 
       <div
         style={{
@@ -668,7 +673,7 @@ export default function Library({ books, counts, palette, day, onShelf, onChange
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: 16,
-          marginTop: 'auto',
+          marginTop: 22,
           paddingTop: 26,
           borderTop: '1px solid var(--border-subtle)',
         }}
