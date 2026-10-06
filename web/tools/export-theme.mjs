@@ -58,15 +58,18 @@ function swatchRow(colours) {
 }
 
 const colorsCss = readFileSync(join(REPO, 'web/src/ds/tokens/colors.css'), 'utf8');
-const readingJs = readFileSync(join(REPO, 'web/src/lib/reading.js'), 'utf8');
+// reading.js is an index now; its constants live in the modules it re-exports from.
+const readingJs = ['reading.js', 'colour.js', 'palettes.js', 'coals.js', 'pages.js']
+  .map((file) => readFileSync(join(REPO, 'web/src/lib', file), 'utf8'))
+  .join('\n');
 
-/** A `const NAME = value;` out of reading.js, so the constants table cannot drift from
- *  the code it describes — which is the whole claim this file makes at the top. */
+/** A `const NAME = value;` out of the reading model, so the constants table cannot drift
+ *  from the code it describes — which is the whole claim this file makes at the top. */
 function constantIn(name) {
   // Doubled backslashes: this is a template literal, so `\s` would collapse to a bare
   // `s` before RegExp ever saw it, and the pattern would hunt for "consts+NAME".
   const match = readingJs.match(new RegExp(`const\\s+${name}\\s*=\\s*([^;]+);`));
-  if (!match) throw new Error(`${name} is no longer in reading.js — fix this exporter.`);
+  if (!match) throw new Error(`${name} is no longer in the reading model (web/src/lib) — fix this exporter.`);
   return match[1].trim();
 }
 
