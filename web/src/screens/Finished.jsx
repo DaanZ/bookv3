@@ -661,7 +661,7 @@ export default function Finished({
         flexDirection: 'column',
         minHeight: 1112,
         boxSizing: 'border-box',
-        padding: '40px 44px 34px',
+        padding: '32px 44px 22px',
       }}
     >
       <span
@@ -717,12 +717,15 @@ export default function Finished({
         {book.author} · {book.pages} pages{sittings}
       </p>
 
+      {/* The sheet: everything to do with the book from here on — its Hardcover entry, the
+          quests and the next book — on the graphite page inside the indigo frame. */}
+      <Sheet grow style={{ marginTop: 24 }}>
       <div
         style={{
           display: 'flex',
           flexDirection: 'column',
           gap: 11,
-          marginTop: 26,
+          marginTop: 18,
           padding: '18px 20px',
           borderRadius: 13,
           background: 'var(--bg-surface-hover)',
@@ -783,9 +786,6 @@ export default function Finished({
       {/* The book's last word: three things to do with it, from a few minutes to a
           project. They take the place of the part list, which only recaps; a book with
           no quests yet keeps the list. */}
-      {/* The sheet: everything to do with the book from here on, on the graphite page
-          inside the indigo frame. */}
-      <Sheet grow style={{ marginTop: 26 }}>
       {quests ? (
         <Quests
           action={rerollAction}
@@ -917,8 +917,8 @@ export default function Finished({
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: 16,
-          marginTop: 22,
-          paddingTop: 22,
+          marginTop: 14,
+          paddingTop: 16,
         }}
       >
         <span style={{ font: "400 11.5px 'IBM Plex Mono', monospace", color: 'var(--text-muted)' }}>

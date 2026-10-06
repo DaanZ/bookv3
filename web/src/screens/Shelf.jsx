@@ -166,7 +166,7 @@ export default function Shelf({
         flexDirection: 'column',
         minHeight: narrow ? 0 : 1112,
         boxSizing: 'border-box',
-        padding: narrow ? '26px 18px 24px' : '40px 44px 34px',
+        padding: narrow ? '26px 18px 24px' : '32px 44px 22px',
       }}
     >
       <span
@@ -211,6 +211,10 @@ export default function Shelf({
       </p>
       )}
 
+      {/* The sheet: the list and its filters, on the graphite page inside the indigo
+          frame. The filters moved onto it from the frame, where they made the header band
+          — and the frame — taller than its 30. */}
+      <Sheet grow narrow={narrow} style={{ marginTop: 22 }}>
       {/* The design was drawn against three books; this shelf holds hundreds, so the
           rows are filtered rather than paged — one unit of work per screen still holds. */}
       <div
@@ -220,7 +224,7 @@ export default function Shelf({
           justifyContent: 'space-between',
           flexWrap: 'wrap',
           gap: narrow ? 8 : 12,
-          marginTop: 24,
+          marginTop: 18,
         }}
       >
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
@@ -262,8 +266,7 @@ export default function Shelf({
         )}
       </div>
 
-      <Sheet grow narrow={narrow} style={{ marginTop: 20 }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginTop: 18 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginTop: 20 }}>
         {books.length === 0 ? (
           <span
             style={{ font: "400 12.5px 'Space Grotesk', system-ui", color: 'var(--text-muted)' }}
@@ -286,8 +289,8 @@ export default function Shelf({
           justifyContent: 'space-between',
           flexWrap: 'wrap',
           gap: 16,
-          marginTop: narrow ? 28 : 22,
-          paddingTop: 26,
+          marginTop: narrow ? 28 : 14,
+          paddingTop: 16,
           borderTop: '1px solid var(--border-subtle)',
         }}
       >

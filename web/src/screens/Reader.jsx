@@ -123,7 +123,7 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
         flexDirection: 'column',
         minHeight: 1112,
         boxSizing: 'border-box',
-        padding: '36px 44px 32px',
+        padding: '30px 44px 22px',
       }}
     >
       <div
@@ -244,9 +244,9 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
           flexDirection: 'column',
           overflow: 'hidden',
           marginTop: 22,
-          marginLeft: -22,
-          marginRight: -22,
-          paddingInline: 22,
+          marginLeft: -32,
+          marginRight: -32,
+          paddingInline: 32,
           paddingBottom: 26,
           borderRadius: 12,
           background: 'var(--bg-sheet)',
@@ -308,7 +308,7 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
         </div>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 13, marginTop: 'auto', paddingTop: 26 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 13, marginTop: 'auto', paddingTop: 18 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
           {pages.map((_, i) => (
             <div

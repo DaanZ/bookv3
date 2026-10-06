@@ -132,11 +132,13 @@ export function Card({ children, elevation = 'table', style, ...rest }) {
  *
  * The 60-30-10 split: the sheet is the 60 (where you read), the frame round it the 30
  * (`--bg-frame`, with the desk), and the one next action on each screen the 10. The
- * sheet reaches halfway into the card's side padding, so its content keeps the same
- * left edge as the header above it, and `grow` runs it down to the footer.
+ * sheet reaches most of the way into the card's 44px side padding, leaving a 12px
+ * strip of frame, and pads itself by the same amount so its content keeps the header's
+ * left edge; `grow` runs it down to the footer. The reach was 22 at first, and the frame
+ * measured 38% of the screen against the rule's 30.
  */
 export function Sheet({ children, grow = false, narrow = false, style }) {
-  const reach = narrow ? 10 : 22;
+  const reach = narrow ? 10 : 32;
   return (
     <div
       style={{

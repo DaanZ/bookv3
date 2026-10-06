@@ -449,7 +449,8 @@ look quiet, so read the `tests N / pass N` line rather than the absence of a red
 
 Colours, type and spacing come from the vendored token layer in `web/src/ds/` — edit tokens, not
 hard-coded values. **The screens follow 60-30-10** (October 2026; before it every screen
-measured about 93 · 5 · 1.5, one ground with nothing in the 30): the **sheet** you read on is
+measured about 93 · 5 · 1.5, one ground with nothing in the 30; after, across six screens at
+tablet size, 57 · 33 · 4.5, with text and highlights the rest): the **sheet** you read on is
 graphite (`--bg-sheet`, `#1C1C1C`; paper by day), the **frame** round it, meaning the card's
 header, footer and margins plus the desk, is indigo (`--bg-frame` `#1A1C48`, `--bg-desk`
 `#0E1030`; lavender by day), taken from the sunset palette's darkest band and darkened so cream

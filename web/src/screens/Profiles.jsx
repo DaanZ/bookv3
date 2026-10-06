@@ -437,7 +437,7 @@ export default function Profiles({
         flexDirection: 'column',
         minHeight: 1112,
         boxSizing: 'border-box',
-        padding: '40px 44px 34px',
+        padding: '32px 44px 22px',
       }}
     >
       <span
@@ -557,8 +557,8 @@ export default function Profiles({
           alignItems: 'center',
           justifyContent: 'flex-end',
           gap: 16,
-          marginTop: 22,
-          paddingTop: 26,
+          marginTop: 14,
+          paddingTop: 16,
           borderTop: '1px solid var(--border-subtle)',
         }}
       >

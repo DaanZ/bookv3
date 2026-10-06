@@ -302,7 +302,7 @@ export default function Library({ books, counts, palette, day, onShelf, onChange
         flexDirection: 'column',
         minHeight: 1112,
         boxSizing: 'border-box',
-        padding: '40px 44px 34px',
+        padding: '32px 44px 22px',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 20 }}>
@@ -673,8 +673,8 @@ export default function Library({ books, counts, palette, day, onShelf, onChange
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: 16,
-          marginTop: 22,
-          paddingTop: 26,
+          marginTop: 14,
+          paddingTop: 16,
           borderTop: '1px solid var(--border-subtle)',
         }}
       >
