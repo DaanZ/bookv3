@@ -60,8 +60,16 @@ survives a change of palette; `--shore-500` is a fact about one ramp.
 | `--graphite-950` | `#141414` | the desk around the card |
 | `--graphite-900` | `#1C1C1C` | the card |
 | `--graphite-800` | `#252422` | a raised strip, a hovered row |
-| `--bg-page` | `var(--graphite-950)` |  |
+| `--indigo-950` | `#0E1030` | the desk |
+| `--indigo-900` | `#1A1C48` | the card's frame: header, footer, the margin round the sheet |
+| `--indigo-200` | `#CACCE6` | the desk, by day |
+| `--indigo-100` | `#E0E1F2` | the frame, by day |
+| `--bg-desk` | `var(--indigo-950)` |  |
+| `--bg-page` | `var(--indigo-950)` |  |
 | `--bg-shell` | `var(--graphite-900)` |  |
+| `--bg-frame` | `var(--indigo-900)` |  |
+| `--bg-sheet` | `var(--graphite-900)` |  |
+| `--border-sheet` | `rgba(142,146,220,.22)` |  |
 | `--bg-surface` | `var(--graphite-900)` |  |
 | `--bg-surface-hover` | `var(--graphite-800)` |  |
 | `--border-subtle` | `rgba(253,246,234,.07)` |  |
@@ -70,6 +78,7 @@ survives a change of palette; `--shore-500` is a fact about one ramp.
 | `--text-primary` | `var(--shore-50)` |  |
 | `--text-secondary` | `rgba(253,246,234,.78)` |  |
 | `--text-muted` | `rgba(253,246,234,.5)` |  |
+| `--text-quiet` | `rgba(253,246,234,.6)` |  |
 | `--accent` | `#F68318` |  |
 | `--accent-on` | `var(--ink-900)` |  |
 | `--accent-hover` | `var(--shore-400)` |  |
@@ -100,8 +109,12 @@ Only what changes is redefined; everything else inherits from `:root` above.
 
 | Token | Value | |
 | --- | --- | --- |
+| `--bg-desk` | `var(--indigo-200)` |  |
 | `--bg-page` | `var(--paper)` |  |
 | `--bg-shell` | `var(--paper)` |  |
+| `--bg-frame` | `var(--indigo-100)` |  |
+| `--bg-sheet` | `var(--card)` |  |
+| `--border-sheet` | `rgba(49,53,117,.14)` |  |
 | `--bg-surface` | `var(--card)` |  |
 | `--bg-surface-hover` | `#F7F0E4` |  |
 | `--border-subtle` | `rgba(20,32,31,.08)` |  |
@@ -110,6 +123,7 @@ Only what changes is redefined; everything else inherits from `:root` above.
 | `--text-primary` | `var(--ink-900)` |  |
 | `--text-secondary` | `var(--ink-500)` |  |
 | `--text-muted` | `var(--ink-400)` |  |
+| `--text-quiet` | `rgba(20,32,31,.6)` |  |
 | `--accent` | `var(--shore-600)` |  |
 | `--accent-on` | `#FFFFFF` |  |
 | `--accent-hover` | `#8A3C08` |  |

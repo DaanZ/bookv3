@@ -448,9 +448,18 @@ look quiet, so read the `tests N / pass N` line rather than the absence of a red
   regenerate it whenever a palette or a constant above changes.
 
 Colours, type and spacing come from the vendored token layer in `web/src/ds/` — edit tokens, not
-hard-coded values. The night register is **graphite** (`--graphite-*` in `colors.css`: desk
-`#141414`, card `#1C1C1C`), not Tide's deep-water teal: a neutral ground so the coals are the
-only colour in the room. The accent is the mark's orange, `#F68318`. The desk is its own token,
+hard-coded values. **The screens follow 60-30-10** (October 2026; before it every screen
+measured about 93 · 5 · 1.5, one ground with nothing in the 30): the **sheet** you read on is
+graphite (`--bg-sheet`, `#1C1C1C`; paper by day), the **frame** round it, meaning the card's
+header, footer and margins plus the desk, is indigo (`--bg-frame` `#1A1C48`, `--bg-desk`
+`#0E1030`; lavender by day), taken from the sunset palette's darkest band and darkened so cream
+text and the progress bar stay clear, and the **one next action** on a screen wears the
+accent, the mark's orange `#F68318`: the book you are reading on the shelf, Next part in the
+reader, the next-break quest on the finish screen. `Sheet` in `components/ui.jsx` is the
+graphite panel; the reader's swipe surface is its own sheet because it also clips the page
+turn. The sheet stays neutral on purpose, so the coals are still the only colour in the text.
+The library and profiles screens have no sheet yet and sit on the frame. The canvas the
+choice was made on: https://claude.ai/artifact/BE4oKLA919zaMgE4TWPJUg The desk is its own token,
 `--bg-desk`, painted on `<body>` by `app.css`; for that to flip, `.shore` goes on `<body>` as
 well as on the app's root (`App.jsx`, `Design.jsx`), because the desk sits outside the card.
 Screens use the semantic tokens (`--text-*`, `--border-*`, `--bg-*`), which follow the

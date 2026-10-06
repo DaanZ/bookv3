@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import Patch from '../components/Patch';
-import { Button, Chip, QuietLink } from '../components/ui';
+import { Button, Chip, QuietLink, Sheet } from '../components/ui';
 import { finishQuest, getQuests, rerollQuests, resyncHardcover, startQuest } from '../lib/api';
 
 // When each quest is for. Stored as small, medium and large, shown as the moment: a goal
@@ -42,6 +42,17 @@ const QUESTIONS = [
   ['wentWrong', 'What went wrong, or not as planned?', 'The mistakes are the useful part. “Nothing” is rarely true.', 'what went wrong'],
   ['why', 'Why do you think the book asks for it this way?', 'What is each step for? What would you change next time?', 'why it asks this'],
 ];
+
+// The lead quest's colours: the accent, with its own ink for every text and chip on it.
+const LEAD = {
+  background: 'var(--accent)',
+  borderColor: 'var(--accent)',
+  '--text-primary': 'var(--accent-on)',
+  '--text-secondary': 'var(--accent-on)',
+  '--text-muted': 'var(--accent-on)',
+  '--chip-neutral-bg': 'rgba(20,32,31,.16)',
+  '--chip-neutral-fg': 'var(--accent-on)',
+};
 
 /** "3 October": the day, said plainly. */
 function day(iso) {
@@ -288,7 +299,7 @@ function Quests({ quests, started, done, open, onOpen, onStart, starting, onDone
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 24 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 18 }}>
       <div style={{ display: 'flex', gap: 12, alignItems: 'baseline', justifyContent: 'space-between', flexWrap: 'wrap' }}>
         <span style={EYEBROW}>try it · in your next break, tonight or this weekend</span>
         {action}
@@ -305,6 +316,9 @@ function Quests({ quests, started, done, open, onOpen, onStart, starting, onDone
             const isNew = fresh.has(size) && !taken;
             // Being replaced right now: faded, so it is clear which cards are about to change.
             const going = replacing && !taken;
+            // The next-break quest is the screen's one next action while nobody has taken it
+            // up: it wears the accent, the 10 of the 60-30-10 split.
+            const lead = size === 'small' && !taken && !chosen;
             return (
               <button
                 // Keyed on the title so a replaced card mounts afresh and fades in.
@@ -332,11 +346,12 @@ function Quests({ quests, started, done, open, onOpen, onStart, starting, onDone
                   zIndex: chosen ? 1 : 0,
                   opacity: going ? 0.4 : 1,
                   transition: 'opacity var(--dur-instant, 90ms) var(--ease-move, ease)',
+                  ...(lead ? LEAD : null),
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   {isNew ? (
-                    <Chip style={{ background: 'var(--accent)', color: 'var(--accent-on)' }}>new</Chip>
+                    <Chip style={lead ? { background: 'var(--accent-on)', color: 'var(--accent)' } : { background: 'var(--accent)', color: 'var(--accent-on)' }}>new</Chip>
                   ) : taken ? (
                     <Chip tone={taken[0]}>{taken[1]}</Chip>
                   ) : (
@@ -768,6 +783,9 @@ export default function Finished({
       {/* The book's last word: three things to do with it, from a few minutes to a
           project. They take the place of the part list, which only recaps; a book with
           no quests yet keeps the list. */}
+      {/* The sheet: everything to do with the book from here on, on the graphite page
+          inside the indigo frame. */}
+      <Sheet grow style={{ marginTop: 26 }}>
       {quests ? (
         <Quests
           action={rerollAction}
@@ -785,7 +803,7 @@ export default function Finished({
           saveError={saveError}
         />
       ) : (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 26 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 18 }}>
         <span
           style={{
             font: "600 9.5px 'IBM Plex Mono', monospace",
@@ -891,6 +909,7 @@ export default function Finished({
           </div>
         </div>
       )}
+      </Sheet>
 
       <div
         style={{
@@ -898,7 +917,7 @@ export default function Finished({
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: 16,
-          marginTop: 'auto',
+          marginTop: 22,
           paddingTop: 22,
         }}
       >

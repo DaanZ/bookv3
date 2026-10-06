@@ -127,6 +127,35 @@ export function Card({ children, elevation = 'table', style, ...rest }) {
   );
 }
 
+/**
+ * The graphite page a screen's body sits on, inside the indigo frame of the card.
+ *
+ * The 60-30-10 split: the sheet is the 60 (where you read), the frame round it the 30
+ * (`--bg-frame`, with the desk), and the one next action on each screen the 10. The
+ * sheet reaches halfway into the card's side padding, so its content keeps the same
+ * left edge as the header above it, and `grow` runs it down to the footer.
+ */
+export function Sheet({ children, grow = false, narrow = false, style }) {
+  const reach = narrow ? 10 : 22;
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        flex: grow ? 1 : 'none',
+        marginInline: -reach,
+        padding: `4px ${reach}px ${reach}px`,
+        borderRadius: 12,
+        background: 'var(--bg-sheet)',
+        border: '1px solid var(--border-sheet)',
+        ...style,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
 // A 4px track with a fill that transitions its width in 260ms. Used on all three screens.
 /**
  * @param gradient  the reading palette's stops. Given them, the bar wears the book's own

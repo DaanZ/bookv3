@@ -231,20 +231,26 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
         </div>
       )}
 
-      {/* The swipe surface. Title and body travel together — a page turn moves the
-          whole page, not its paragraphs. The clip lives on the wrapper so the leaving
-          page disappears at the card's edge instead of over the chrome.
-          It takes the slack below the text (flex: 1) so a short part is just as
-          draggable as a full one — the empty space under three lines is still page. */}
+      {/* The swipe surface, and the sheet: the graphite page inside the indigo frame.
+          Title and body travel together — a page turn moves the whole page, not its
+          paragraphs. The clip lives on the sheet so the leaving page disappears at its
+          edge instead of over the chrome. It takes the slack below the text (flex: 1)
+          so a short part is just as draggable as a full one — the empty space under
+          three lines is still page. */}
       <div
         style={{
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
-          marginLeft: -44,
-          marginRight: -44,
-          paddingInline: 44,
+          marginTop: 22,
+          marginLeft: -22,
+          marginRight: -22,
+          paddingInline: 22,
+          paddingBottom: 26,
+          borderRadius: 12,
+          background: 'var(--bg-sheet)',
+          border: '1px solid var(--border-sheet)',
         }}
       >
         <div {...swipe.handlers} style={{ ...swipe.style, flex: 1 }}>

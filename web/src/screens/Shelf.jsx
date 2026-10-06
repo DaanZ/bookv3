@@ -1,5 +1,5 @@
 import Patch from '../components/Patch';
-import { ProgressBar, QuietLink } from '../components/ui';
+import { ProgressBar, QuietLink, Sheet } from '../components/ui';
 import { useNarrow } from '../lib/prefs';
 import { cum, paletteFor } from '../lib/reading';
 
@@ -29,9 +29,22 @@ function metaLine(book, donePct) {
   return `${book.partCount} parts${sittings}`;
 }
 
-function BookRow({ book, gradient, onOpen, narrow }) {
+// The book you are reading is the shelf's one next action, so it wears the accent: the 10
+// of the 60-30-10 split. Its text and chip switch to the accent's own ink.
+const NEXT = {
+  background: 'var(--accent)',
+  '--bg-surface-hover': 'var(--accent)',
+  '--text-primary': 'var(--accent-on)',
+  '--text-secondary': 'var(--accent-on)',
+  '--text-muted': 'var(--accent-on)',
+  '--border-subtle': 'rgba(20,32,31,.16)',
+};
+
+function BookRow({ book, gradient, onOpen, narrow, next = false }) {
   const chipKey = book.state === 'read' && book.questsOpen ? 'questOpen' : book.state;
-  const [chipWord, chipBg, chipFg] = CHIPS[chipKey] || CHIPS.new;
+  const [chipWord, chipBg, chipFg] = next
+    ? [CHIPS[chipKey]?.[0], 'rgba(20,32,31,.16)', 'var(--accent-on)']
+    : CHIPS[chipKey] || CHIPS.new;
   const chip = chipWord ?? `part ${book.at + 1} of ${book.partCount}`;
   const done = book.state === 'read' ? 1 : cum(book.partCount, book.at);
   const donePct = Math.round(done * 100);
@@ -45,8 +58,9 @@ function BookRow({ book, gradient, onOpen, narrow }) {
         borderRadius: 14,
         background: 'var(--bg-surface-hover)',
         border: `1px solid ${
-          book.state === 'reading' ? 'var(--border-strong)' : 'var(--border-default)'
+          next ? 'var(--accent)' : book.state === 'reading' ? 'var(--border-strong)' : 'var(--border-default)'
         }`,
+        ...(next ? NEXT : null),
       }}
     >
       <div style={{ display: 'flex', gap: narrow ? 14 : 20, alignItems: 'flex-start' }}>
@@ -133,6 +147,8 @@ export default function Shelf({
 
   // Filters are the controls a phone reaches for most, so there they are full touch
   // targets (44px) rather than the tablet's compact chips.
+  // The first book in progress is the one to pick up: the shelf's single accent.
+  const nextKey = books.find((book) => book.state === 'reading')?.key;
   const control = (on) => ({
     width: 'auto',
     padding: narrow ? '12px 16px' : '7px 13px',
@@ -246,7 +262,8 @@ export default function Shelf({
         )}
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginTop: 20 }}>
+      <Sheet grow narrow={narrow} style={{ marginTop: 20 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginTop: 18 }}>
         {books.length === 0 ? (
           <span
             style={{ font: "400 12.5px 'Space Grotesk', system-ui", color: 'var(--text-muted)' }}
@@ -256,10 +273,11 @@ export default function Shelf({
         ) : (
           books.map((book) => (
             <BookRow key={book.key} book={book} gradient={gradient} narrow={narrow}
-                     onOpen={() => onOpen(book.key)} />
+                     next={book.key === nextKey} onOpen={() => onOpen(book.key)} />
           ))
         )}
       </div>
+      </Sheet>
 
       <div
         style={{
@@ -268,7 +286,7 @@ export default function Shelf({
           justifyContent: 'space-between',
           flexWrap: 'wrap',
           gap: 16,
-          marginTop: narrow ? 28 : 'auto',
+          marginTop: narrow ? 28 : 22,
           paddingTop: 26,
           borderTop: '1px solid var(--border-subtle)',
         }}

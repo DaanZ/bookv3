@@ -443,7 +443,7 @@ export default function App() {
       <div style={{ width: 'min(834px, 100%)' }}>
         <Card
           elevation="shelf"
-          style={{ padding: 0, overflow: 'hidden', width: '100%', gap: 0 }}
+          style={{ padding: 0, overflow: 'hidden', width: '100%', gap: 0, background: 'var(--bg-frame)' }}
         >
           {screen === 'shelf' && (
             <Shelf
