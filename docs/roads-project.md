@@ -8,9 +8,9 @@ skills and the things you are about to unlock.
 bookv3 stays what it is, the place content is summarised and read. Roads is built on top of it and
 reaches it only through its API.
 
-Design reference: the "Quests" canvas, page "Proposals · roadmap and Roads" (roadmap, reflection,
-next book, character sheet, quest map, video and article readers).
-https://claude.ai/artifact/FLAwCnvJUED1qWSi6rW4jw
+Design reference: the "Snippers design" canvas, page "Ideas · Roads and the roadmap" (roadmap,
+reflection, next book, character sheet, quest map, video and article readers).
+https://claude.ai/artifact/CvG6T9GPCVny3YnfwWrqYQ
 
 ## Why
 

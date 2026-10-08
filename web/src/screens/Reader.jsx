@@ -171,7 +171,12 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
           <QuietLink onClick={() => setSoundOpen((v) => !v)}>
             {ambience.on ? 'Sound on' : 'Sound'}
           </QuietLink>
-          <QuietLink onClick={onShelf}>Shelf</QuietLink>
+          {/* A real button, not a quiet link: "Shelf" in dotted 12px did not read as the
+              way out of a book. Secondary, because Next part stays the screen's one
+              accent; 44px tall, the tablet's touch target. */}
+          <Button variant="secondary" onClick={onShelf} style={{ minHeight: 44 }}>
+            Back to shelf
+          </Button>
         </div>
       </div>
 

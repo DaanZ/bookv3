@@ -171,6 +171,15 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // The aura's three colours: the start, middle and end of the reader's palette, from its
+  // bright (night) stops in both registers, at an alpha low enough that cream text on the
+  // frame keeps its contrast at night and ink keeps it on lavender by day.
+  const aura = useMemo(() => {
+    const [first, , middle, , last] = paletteFor(prefs.palette || 'sunset', false, 5);
+    const alpha = day ? '33' : '29';
+    return { '--aura-1': first + alpha, '--aura-2': middle + alpha, '--aura-3': last + alpha };
+  }, [prefs.palette, day]);
+
   // The desk is outside the card, so the register goes on <body> too: app.css paints
   // it var(--bg-desk), which only flips if .shore is on an ancestor of the body itself.
   useEffect(() => {
@@ -383,8 +392,9 @@ export default function App() {
   return (
     // A register change is never animated — night to day is a different room; it loads.
     <div
-      className={day ? 'shore' : ''}
+      className={day ? 'shore aura aura-desk' : 'aura aura-desk'}
       style={{
+        ...aura,
         minHeight: '100vh',
         background: 'var(--bg-desk)',
         display: 'flex',
@@ -443,6 +453,7 @@ export default function App() {
       <div style={{ width: 'min(834px, 100%)' }}>
         <Card
           elevation="shelf"
+          className="aura"
           style={{ padding: 0, overflow: 'hidden', width: '100%', gap: 0, background: 'var(--bg-frame)' }}
         >
           {screen === 'shelf' && (

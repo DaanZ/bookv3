@@ -460,8 +460,18 @@ reader, the next-break quest on the finish screen. `Sheet` in `components/ui.jsx
 graphite panel; the reader's swipe surface is its own sheet because it also clips the page
 turn. The sheet stays neutral on purpose, so the coals are still the only colour in the text.
 The library and profiles screens put their working area on a sheet too (the drop target
-through the collection; the readers and the add form). The canvas the
-choice was made on: https://claude.ai/artifact/BE4oKLA919zaMgE4TWPJUg The desk is its own token,
+through the collection; the readers and the add form). The frame and desk carry an
+**aura**: three soft blobs from the start, middle and end of the reader's palette, at
+16% alpha by night and 20% by day, drifting over a minute or more (`.aura` in `app.css`,
+colours set in `App.jsx`). It moves by transform only, so it composites instead of
+repainting, and it holds still under reduced motion. The sheet never gets it: the text
+sits on a still, neutral page.
+
+**The design canvas** is https://claude.ai/artifact/CvG6T9GPCVny3YnfwWrqYQ ("Snippers
+design"): every screen as built, captured from the running reader, on a page per feature
+(shelf, reading, quests, library, profiles), then the unbuilt ideas (quests through the
+reader, choosing quests, Roads) and the 60-30-10 history the frame was chosen on. It
+replaced three earlier canvases; recapture its screens when a screen changes. The desk is its own token,
 `--bg-desk`, painted on `<body>` by `app.css`; for that to flip, `.shore` goes on `<body>` as
 well as on the app's root (`App.jsx`, `Design.jsx`), because the desk sits outside the card.
 Screens use the semantic tokens (`--text-*`, `--border-*`, `--bg-*`), which follow the
