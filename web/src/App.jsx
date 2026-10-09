@@ -50,15 +50,18 @@ export default function App() {
   // Shuffled by default, so the shelf keeps offering something not yet noticed. The seed
   // is drawn once per visit: a new order every time the app opens, but a stable one while
   // you switch filters, so a book does not jump away from under your finger.
-  const [sort, setSort] = useState('shuffled');
+  // The order and the spiral bands are the reader's, saved on their profile (prefs.js),
+  // so the shelf opens the way they left it.
+  const sort = prefs.shelfSort || 'shuffled';
+  const setSort = useCallback((shelfSort) => setPrefs({ shelfSort }), [setPrefs]);
   // The band of the spiral each filter is narrowed to, {new, read}: [low, high], or
   // null for all of them, which is the default. Separate per filter, because the read
   // and unread books span different grades.
-  const [spiralRanges, setSpiralRanges] = useState({ new: null, read: null });
-  const spiralRange = spiralRanges[filter] ?? null;
+  const spiralBands = prefs.spiralBands || { new: null, read: null };
+  const spiralRange = spiralBands[filter] ?? null;
   const setSpiralRange = useCallback(
-    (range) => setSpiralRanges((all) => ({ ...all, [filter]: range })),
-    [filter],
+    (range) => setPrefs({ spiralBands: { ...spiralBands, [filter]: range } }),
+    [setPrefs, spiralBands, filter],
   );
   const [shuffleSeed] = useState(() => Math.floor(Math.random() * 2 ** 31));
   const [screen, setScreen] = useState('shelf');

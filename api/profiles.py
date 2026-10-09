@@ -89,14 +89,21 @@ TONES = ["#1F6F6B", "#B4592B", "#4B5FA8", "#7A6A2F", "#8C3F63", "#3C7A45"]
 MAX_PROFILES = 12
 MAX_NAME = 40
 
-# What a reader owns. The same four the design lists as settings belonging to the reader
-# rather than the app — and the same defaults `web/src/lib/prefs.js` started from, so a
-# profile that has never changed anything looks exactly like the app did before.
+# What a reader owns. The settings the design lists as belonging to the reader rather
+# than the app, plus how they last left the shelf: its order and the spiral bands they
+# narrowed it to. The same defaults `web/src/lib/prefs.js` starts from, so a profile
+# that has never changed anything looks exactly like the app did before.
 PREF_DEFAULTS = {
     "theme": "night",
     "palette": "sunset",
     "maxHighlights": 8,
+    "shelfSort": "shuffled",
+    "spiralBands": {"new": None, "read": None},
 }
+
+SHELF_SORTS = ("shuffled", "added", "spiral-low", "spiral-high")
+# The shelf filters that carry a spiral slider; "reading" has none.
+SPIRAL_FILTERS = ("new", "read")
 
 THEMES = ("day", "night")
 
@@ -171,8 +178,8 @@ def _owner_row() -> dict:
 
 
 def clean_prefs(patch: dict | None) -> dict:
-    """Keep the four settings, drop everything else, and make each one the shape it is
-    meant to be.
+    """Keep the reader's settings, drop everything else, and make each one the shape it
+    is meant to be.
 
     A whitelist rather than a merge: this comes off the wire, it is written to a file
     the whole app reads, and a browser is free to send anything at all.
@@ -192,7 +199,24 @@ def clean_prefs(patch: dict | None) -> dict:
             out["maxHighlights"] = max(0, min(24, int(patch["maxHighlights"])))
         except (TypeError, ValueError):
             pass
+    if patch.get("shelfSort") in SHELF_SORTS:
+        out["shelfSort"] = patch["shelfSort"]
+    if isinstance(patch.get("spiralBands"), dict):
+        out["spiralBands"] = {f: _band(patch["spiralBands"].get(f)) for f in SPIRAL_FILTERS}
     return out
+
+
+def _band(value) -> list | None:
+    """A spiral band as [low, high] in tenths within 3 to 8, or None for the whole range.
+    Anything else from the wire is None, never an error: the worst a bad band can do is
+    show every book."""
+    if not isinstance(value, (list, tuple)) or len(value) != 2:
+        return None
+    try:
+        low, high = (round(min(8.0, max(3.0, float(v))), 1) for v in value)
+    except (TypeError, ValueError):
+        return None
+    return [low, high] if low <= high else None
 
 
 def _ensure(rows: list) -> list:

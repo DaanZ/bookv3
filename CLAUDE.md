@@ -210,11 +210,14 @@ a deploy is a restart.
 
 Five more rules, about the readers themselves:
 
-- **The settings are the reader's too.** Register, palette, pointer focus and the highlight cap
-  live on the profile row, not in localStorage — `PUT /api/profiles/{id}/prefs`, whitelisted by
+- **The settings are the reader's too.** Register, palette, pointer focus, the highlight cap,
+  and how they left the shelf (its order, `shelfSort`, and the spiral band per filter,
+  `spiralBands`) live on the profile row, not in localStorage — `PUT /api/profiles/{id}/prefs`, whitelisted by
   `clean_prefs` because it comes off the wire. The browser keeps a copy for the first paint only:
   the profile's settings arrive a round-trip after mount, and without a cache the app would open
   in the default register and then swap, which is the one thing the design says is never animated.
+  Saves wait half a second after the last change (`SAVE_DELAY`), because the spiral slider
+  sends one for every tenth it passes.
 - **The books are one shelf; the reading is not.** `books/available` and `books/read` are the
   house's filing. A book's `state` is the *reader's* — finished by them, or in progress — while
   `filed` is where the JSON actually sits. The owner is the exception the folder exists for: the
