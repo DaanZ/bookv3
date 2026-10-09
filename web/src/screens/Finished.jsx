@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import Patch from '../components/Patch';
+import IntelligencePill from '../components/IntelligencePill';
 import SpiralPill from '../components/SpiralPill';
 import { Button, Chip, QuietLink, Sheet } from '../components/ui';
 import { useNarrow } from '../lib/prefs';
@@ -721,9 +722,10 @@ export default function Finished({
       >
         {book.author} · {book.pages} pages{sittings}
       </p>
-      {book.spiral && (
-        <div style={{ marginTop: 10 }}>
+      {(book.spiral || book.intelligence) && (
+        <div style={{ marginTop: 10, display: 'flex', gap: 6, flexWrap: 'wrap' }}>
           <SpiralPill spiral={book.spiral} />
+          <IntelligencePill intelligence={book.intelligence} />
         </div>
       )}
 
@@ -900,7 +902,8 @@ export default function Finished({
                   background: 'var(--bg-surface-hover)',
                 }}
               >
-                <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, width: '100%' }}>
+                {/* Wraps: a transition's pill with its place runs wider than a narrow card. */}
+                <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, width: '100%' }}>
                   <Patch patch={other.patch} size={28} />
                   <SpiralPill spiral={other.spiral} />
                 </span>

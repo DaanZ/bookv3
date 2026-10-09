@@ -27,11 +27,13 @@ const DEFAULTS = {
   // settings above, so the shelf opens as they left it, on this tablet or another.
   shelfSort: 'shuffled',
   spiralBands: { new: null, read: null },
+  // One of the nine intelligences the shelf is narrowed to, or null for every book.
+  shelfIntelligence: null,
 };
 
 // The keys that belong to the reader and travel to the server. `profile` is not one:
 // it is this tablet's answer to "who is holding me".
-const OWNED = ['theme', 'palette', 'maxHighlights', 'shelfSort', 'spiralBands'];
+const OWNED = ['theme', 'palette', 'maxHighlights', 'shelfSort', 'spiralBands', 'shelfIntelligence'];
 
 // Changes are sent this long after the last one. A slider sends a change for every tenth
 // it passes, and a drag across the spiral was a dozen requests for one decision.

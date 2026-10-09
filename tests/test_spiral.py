@@ -23,20 +23,22 @@ class SpiralStore(unittest.TestCase):
     def test_a_grade_comes_back_with_its_name(self):
         spiral.save("deep_work", {"level": 5, "reason": "Results through focus.", "model": "m", "gradedAt": "t"})
         self.assertEqual(spiral.badge("deep_work"),
-                         {"score": 5.0, "level": 5, "name": "Orange", "meme": "StriveDrive",
-                          "theme": "achievement", "reason": "Results through focus."})
+                         {"score": 5.0, "band": [5, 5], "label": "StriveDrive", "dot": 5,
+                          "name": "Orange", "theme": "achievement", "reason": "Results through focus."})
 
-    def test_a_decimal_shows_as_its_whole_level(self):
+    def test_a_transition_names_both_levels(self):
         spiral.save("leaning", {"level": 5.6, "reason": ""})
-        spiral.save("low", {"level": 6.4, "reason": ""})
-        self.assertEqual((spiral.badge("leaning")["level"], spiral.badge("leaning")["meme"]), (5, "StriveDrive"))
-        self.assertEqual(spiral.badge("leaning")["score"], 5.6)
-        self.assertEqual(spiral.badge("low")["level"], 6)
+        badge = spiral.badge("leaning")
+        self.assertEqual(badge["label"], "StriveDrive → HumanBond")
+        self.assertEqual((badge["band"], badge["dot"], badge["name"]), ([5, 6], 6, "Orange to Green"))
+        self.assertEqual(badge["score"], 5.6)
 
-    def test_the_tenths_never_reach_the_next_level(self):
-        for score, level in [(5.9, 5), (5.5, 5), (5.0, 5), (6.0, 6), (5.999999999999999, 6),
-                             (6.000000000000001, 6), (3.0, 3), (7.9, 7), (8.0, 8)]:
-            self.assertEqual(spiral.level_of(score), level, score)
+    def test_cores_sit_around_a_level_and_transitions_between(self):
+        # Daan's split: 4.8 to 5.2 is Orange, 5.3 to 5.7 is Orange to Green.
+        for score, band in [(4.8, (5, 5)), (5.0, (5, 5)), (5.2, (5, 5)), (5.3, (5, 6)), (5.7, (5, 6)),
+                            (5.8, (6, 6)), (4.7, (4, 5)), (5.199999999999999, (5, 5)),
+                            (5.300000000000001, (5, 6)), (3.0, (3, 3)), (7.7, (7, 8)), (8.0, (8, 8))]:
+            self.assertEqual(spiral.band_of(score), band, score)
 
     def test_a_level_outside_three_to_eight_is_not_shown(self):
         spiral.save("odd", {"level": 2.9, "reason": ""})
@@ -99,7 +101,7 @@ class GradeAndSave(unittest.TestCase):
             saved = self.script.grade_and_save("new_book", {"meta": {}, "parts": []})
         self.assertEqual(saved["runs"], [5.4, 5.6, 6.6])
         self.assertEqual(saved["level"], 5.5)  # 6.6 is the outlier
-        self.assertEqual(spiral.badge("new_book")["meme"], "StriveDrive")
+        self.assertEqual(spiral.badge("new_book")["label"], "StriveDrive → HumanBond")
 
     def test_a_missing_answer_saves_nothing(self):
         with self.answers(5.4, None, 5.6):

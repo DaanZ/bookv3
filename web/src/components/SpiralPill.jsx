@@ -1,8 +1,9 @@
-// A book's Spiral Dynamics level, as a chip: a dot in the level's colour and the level's
-// canonical name beside it, "StriveDrive" for 5 Orange. The dot says the colour and the
-// name says the level, so no number or colour word is written; the name is also why
-// colour is never the only signal. Graded by spiral.py, sent by the shelf as `book.spiral`;
-// the hover gives the number, the colour and the decimal grade.
+// A book's Spiral Dynamics level, as a chip: a dot in the level's colour and its canonical
+// name, "StriveDrive" for Orange. A grade between two levels names both, "StriveDrive →
+// HumanBond", with the dot in the higher one's colour (api/spiral.py `band_of`: cores run
+// .8 below a level to .2 above, transitions .3 to .7). The name is why colour is never the
+// only signal. Graded by spiral.py, sent by the shelf as `book.spiral`; the hover gives
+// the decimal grade and the colours.
 
 export const SPIRAL_MEMES = {
   3: 'PowerGods',
@@ -22,13 +23,28 @@ export const SPIRAL_DOTS = {
   8: '#22B0AC', // Turquoise
 };
 
+/** The band a grade shows as, [low, high], as api/spiral.py `band_of` works it out. */
+export function bandOf(score) {
+  const tenths = Math.round(score * 10);
+  const whole = Math.floor(tenths / 10);
+  const tenth = tenths - whole * 10;
+  if (tenth <= 2) return [whole, whole];
+  if (tenth >= 8) return [whole + 1, whole + 1];
+  return [whole, whole + 1];
+}
+
+/** The pill's text for a band. */
+export function labelOf([low, high]) {
+  return low === high ? SPIRAL_MEMES[low] : `${SPIRAL_MEMES[low]} → ${SPIRAL_MEMES[high]}`;
+}
+
 export default function SpiralPill({ spiral, onAccent = false }) {
   if (!spiral) return null;
   return (
     <span
-      // The pill shows the whole level the grade sits in; the decimal grade is kept for the
-      // progression from one book to the next and is in the hover text.
-      title={`Spiral Dynamics ${spiral.score ?? spiral.level}: level ${spiral.level}, ${spiral.name}, ${spiral.meme} (${spiral.theme}). ${spiral.reason}`}
+      // The decimal grade is kept for the progression from one book to the next and is in
+      // the hover text.
+      title={`Spiral Dynamics ${spiral.score}: ${spiral.name} (${spiral.theme}). ${spiral.reason}`}
       style={{
         flex: 'none',
         display: 'inline-flex',
@@ -54,11 +70,11 @@ export default function SpiralPill({ spiral, onAccent = false }) {
           width: 7,
           height: 7,
           borderRadius: '50%',
-          background: SPIRAL_DOTS[spiral.level],
+          background: SPIRAL_DOTS[spiral.dot],
           boxShadow: onAccent ? '0 0 0 1px rgba(20,32,31,.35)' : 'none',
         }}
       />
-      {spiral.meme || spiral.name}
+      {spiral.label}
     </span>
   );
 }

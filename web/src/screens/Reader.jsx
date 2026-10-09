@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
 import AmbiencePlayer from '../components/AmbiencePlayer';
+import IntelligencePill from '../components/IntelligencePill';
 import SpiralPill from '../components/SpiralPill';
 import Patch from '../components/Patch';
 import Spinner from '../components/Spinner';
@@ -166,9 +167,10 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
             >
               {book.author} · {book.category} · {book.pages} pages
             </span>
-            {book.spiral && (
-              <span style={{ marginTop: 4 }}>
+            {(book.spiral || book.intelligence) && (
+              <span style={{ marginTop: 4, display: 'flex', gap: 6, flexWrap: 'wrap' }}>
                 <SpiralPill spiral={book.spiral} />
+                <IntelligencePill intelligence={book.intelligence} />
               </span>
             )}
           </div>

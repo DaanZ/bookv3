@@ -1,4 +1,5 @@
 import Patch from '../components/Patch';
+import IntelligencePill, { INTELLIGENCES } from '../components/IntelligencePill';
 import SpiralPill from '../components/SpiralPill';
 import SpiralRange from '../components/SpiralRange';
 import { Button, ProgressBar, QuietLink, Sheet } from '../components/ui';
@@ -125,6 +126,7 @@ function BookRow({ book, gradient, onOpen, narrow, next = false }) {
                 {chip}
               </span>
               <SpiralPill spiral={book.spiral} onAccent={next} />
+              <IntelligencePill intelligence={book.intelligence} onAccent={next} />
             </div>
           </div>
           <ProgressBar pct={`${donePct}%`} gradient={gradient} />
@@ -152,6 +154,9 @@ export default function Shelf({
   spiralRange,
   spiralScores = [],
   onSpiralRange,
+  intelligence = null,
+  intelligenceCounts = null,
+  onIntelligence,
   onLibrary,
   onProfiles,
   onLock,
@@ -280,13 +285,32 @@ export default function Shelf({
             that swapped between two orders; with the spiral grades there are four, so it
             is a select. Not on a phone: there the three filters get the line to
             themselves, and the order is the default shuffle. */}
+        {/* Which intelligence, beside the order: a narrowing, but one with nine answers,
+            so a select like the order rather than nine more chips. Each says how many
+            books here ask for it. Hidden until books are graded, and on a phone. */}
+        {!narrow && intelligenceCounts && onIntelligence && (
+        <select
+          value={intelligence || ''}
+          onChange={(e) => onIntelligence(e.target.value || null)}
+          aria-label="Intelligence the books ask for"
+          className="tap"
+          style={{ ...control(Boolean(intelligence)), marginLeft: 'auto', cursor: 'pointer', background: intelligence ? 'var(--accent)' : 'var(--bg-sheet)' }}
+        >
+          <option value="">Every intelligence</option>
+          {INTELLIGENCES.map(([key, name]) => (
+            <option key={key} value={key}>
+              {name} ({intelligenceCounts[key]})
+            </option>
+          ))}
+        </select>
+        )}
         {!narrow && (
         <select
           value={sort}
           onChange={(e) => onSort(e.target.value)}
           aria-label="Order of the books"
           className="tap"
-          style={{ ...control(false), marginLeft: 'auto', cursor: 'pointer', background: 'var(--bg-sheet)' }}
+          style={{ ...control(false), marginLeft: intelligenceCounts ? 0 : 'auto', cursor: 'pointer', background: 'var(--bg-sheet)' }}
         >
           <option value="shuffled">Shuffled</option>
           <option value="added">Recently added</option>

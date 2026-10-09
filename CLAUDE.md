@@ -348,7 +348,7 @@ book and swaps a read book's chip for "quest open", and opening a read book land
 finish screen.
 
 **Every book has a Spiral Dynamics level**, 3 Red (power) to 8 Turquoise (wholeness),
-shown as a pill (a dot in the level's colour and its canonical name, StriveDrive for 5 Orange) on the shelf row, the reader header, the finish screen and the "More like
+shown as a pill (a dot in the level's colour and its canonical name, StriveDrive for Orange, or both names between two levels) on the shelf row, the reader header, the finish screen and the "More like
 this" cards. `spiral.py --write` grades from the summary (gpt-4o-mini, three calls a book, about
 $0.001 together; `--book`, `--force`), and `api/spiral.py` keeps the grades in
 `data/spiral.json`, beside the books like the Hardcover cache; the shelf sends
@@ -357,13 +357,34 @@ descriptions let the model call strategy books Yellow and the Stoics Yellow; it 
 grades conservatively (most non-fiction is 4, 5 or 6; innovation and self-improvement are
 5, virtue and discipline 4; 7 and 8 only when the book itself integrates worldviews or
 argues the unity of life). Grades are decimals, 3.0 to 8.0, so a progression inside a
-level shows (5.6 is Orange well on the way to Green); the pill shows the whole number
-(`level_of`), so 5.6 is StriveDrive. It rounded to the nearest level at first, which
-showed books the grader called "Green reaching toward Yellow" as Yellow. Each book is graded three
+level shows (5.6 is Orange well on the way to Green). The pill names a band
+(`band_of`): a level's core runs from .8 below it to .2 above (4.8 to 5.2 is
+StriveDrive), and between two cores a transition names both (5.3 to 5.7 is "StriveDrive →
+HumanBond", the dot in the higher level's colour). Daan chose these bands after a
+whole-number pill put 200 of 280 books under StriveDrive; rounding to the nearest level
+before that showed books the grader called "Green reaching toward Yellow" as Yellow. The
+slider's track is solid across each core and blends across each transition. A rank in the
+library ("top 20%") was tried after the name and removed: it made the pill too long, and
+the grades take few distinct values (100 books are exactly 5.5), so it separated groups
+on steps inside the grader's own noise. Each book is graded three
 times on gpt-4o-mini, and `combine` averages the runs unless one is more than 0.5 from
 the other two, which is dropped: single runs moved by up to a whole level. A new book is graded as the last step of ingest (`api/jobs.py`, and `prep.py`) by the
 same `grade_and_save`, so it arrives with its pill; a failure there leaves it ungraded,
 never fails the job, and `spiral.py --write` picks it up later.
+
+**Each book has a fit with the nine intelligences**: Gardner's eight plus existential,
+named and explained as on the canvas's "Ways in" page and in `docs/roads-project.md`
+(linguistic, logical-mathematical, visual-spatial, musical, bodily-kinesthetic,
+naturalist, interpersonal, intrapersonal, existential). `intelligences.py --write` rates
+each 0 to 3 from the summary's first three parts (`SYNOPSIS_PARTS`; as good as twelve on
+the benchmark, at half the cost) and picks a `primary`, one gpt-4o-mini call a book; `api/intelligences.py` keeps them in
+`data/intelligences.json` and the shelf sends `book.intelligence`. The pill (outlined, no
+dot, so it never reads as the spiral one) shows the primary on the shelf, the reader and
+the finish screen. A select beside the order narrows the shelf to books with a fit of 2
+or 3 for one intelligence, those with a 3 first, saved per reader as `shelfIntelligence`;
+it is hidden until books are graded. Benchmarked on the ten "Ways in" books (October
+2026): Gemini 2.5 Flash matched the canvas's intelligence on 7, gpt-4o-mini on 6, and
+gpt-4o-mini rated linguistic 3 on most books whatever they were about.
 
 `POST /api/books/{key}/enrich` stays for the one case the pass cannot serve: asking again about a
 book it matched to the wrong edition.
@@ -375,6 +396,16 @@ pipeline — chunks are contiguous and non-overlapping, so the whole book is sen
 once* whatever the chunk count (the first five pages go twice, for `get_book_meta`). More parts
 therefore cost almost nothing extra; a longer book costs linearly more. Output constants are
 measured from 254 committed summaries, not guessed; the header of that file shows the figures.
+
+**A book is cut into one part per 25 pages, never more than 20** (`util/split.py`
+`default_parts`, used by the estimate, `jobs.py` and `prep.py`; a part count somebody
+chooses still stands). Without the cap Godel, Escher, Bach (821 pages) came out as 33
+parts and 10,000 words. Its first part was also 2,684 words, because `condense` refused
+any answer under a quarter of the original, which a real shortening of a very long part
+always is; the floor is now a quarter or a third of `MAX_SUMMARY_WORDS`, whichever is
+smaller (`CONDENSE_FLOOR`), which still refuses the 65-from-374 cut-off it was for. GEB
+was then mended by hand: part 1 redone from page 5, past the cover, copyright and
+dedication, and the parts merged pairwise from 33 to 17 (4,336 words).
 
 `jobs.py` is the exception — it *writes* books, by running the ingest pipeline for an uploaded PDF.
 One thing there is easy to undo by accident: **the pipeline is imported inside the worker, not at

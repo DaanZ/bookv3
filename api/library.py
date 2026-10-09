@@ -10,7 +10,7 @@ import re
 import shutil
 from datetime import datetime, timezone
 
-from api import enrich, spiral
+from api import enrich, intelligences, spiral
 from api.patches import coals_for, family_of, patch_for
 from api.positions import all_positions, finish_ordinal
 from util.files import json_read_file
@@ -125,7 +125,7 @@ def tidy_name(name: str | None) -> str | None:
 def summarise(key: str, entry: dict, data: dict, position: dict | None,
               with_part_titles: bool = False, everyone: dict | None = None,
               looked_up: dict | None = None, owner: bool = True,
-              grades: dict | None = None) -> dict:
+              grades: dict | None = None, minds: dict | None = None) -> dict:
     """`position` and `everyone` are one profile's reading, so every field derived from
     them — state, progress, sittings, the finish number — is that reader's and nobody
     else's. `owner` says whether they are the profile the shelf itself belongs to.
@@ -197,6 +197,10 @@ def summarise(key: str, entry: dict, data: dict, position: dict | None,
 
     # The value system the book speaks from, graded by spiral.py; absent until graded.
     level = spiral.badge(key, grades)
+    # The intelligences it asks of the reader, graded by intelligences.py; absent until then.
+    mind = intelligences.badge(key, minds)
+    if mind:
+        summary["intelligence"] = mind
     if level:
         summary["spiral"] = level
 
@@ -230,6 +234,7 @@ def shelf(profile: dict) -> list[dict]:
     owner = bool(profile.get("owner"))
     looked_up = enrich.lookups()
     grades = spiral.load()
+    minds = intelligences.load()
     out = []
     for key, entry in index().items():
         data = _load(entry)
@@ -237,7 +242,7 @@ def shelf(profile: dict) -> list[dict]:
             continue
         out.append(
             summarise(key, entry, data, positions.get(key), everyone=positions,
-                      looked_up=looked_up, owner=owner, grades=grades)
+                      looked_up=looked_up, owner=owner, grades=grades, minds=minds)
         )
 
     # Newest first. The shelf is filtered by state rather than paged, so the state rank

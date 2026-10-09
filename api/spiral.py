@@ -3,10 +3,15 @@
 Spiral Dynamics (Graves, Beck and Cowan) orders value systems as levels, each named by a
 colour. A grade is a decimal, 3.0 to 8.0: the whole number is the level that carries the
 book, the tenths how far it reaches toward the next, so 5.6 is Orange well on the way to
-Green and a progression from one book to the next can be seen inside a level. The pill
-shows the whole number, the level that carries the book, so 5.6 shows as 5, Orange: it
-rounded to the nearest level at first, and that showed a book the grader had called
-"Orange on the way to Green" as Green. A book is graded on the one it speaks from and asks its reader to take up, not on
+Green and a progression from one book to the next can be seen inside a level.
+
+The pill names a band, not a number (`band_of`). Around each level sits its core, from
+.8 below to .2 above (4.8 to 5.2 is Orange, StriveDrive), and between two cores a
+transition named by both (5.3 to 5.7 is "StriveDrive → HumanBond"). Daan chose this
+after a whole-number pill put 200 of 280 books under one name; rounding to the nearest
+level before that showed books the grader called "Orange on the way to Green" as Green.
+
+A book is graded on the one it speaks from and asks its reader to take up, not on
 its subject: a business book can be Orange (win, optimise) or Green (people before
 profit), and a book about history can be written from any of them. Levels 1 and 2 (Beige
 survival, Purple tribe) are left out: nothing on a reading shelf argues from them.
@@ -49,24 +54,50 @@ def load() -> dict:
     return data if isinstance(data, dict) else {}
 
 
-def level_of(score: float) -> int:
-    """The level a score shows as: its whole number, the level that carries the book; the
-    tenths are only how far it reaches toward the next. 5.9 is still Orange. Taken in
-    tenths first, since an average can arrive as 5.999999999999999 for 6.0."""
-    return int(math.floor(round(score * 10) / 10))
+def band_of(score: float) -> tuple[int, int]:
+    """The band a score shows as, (low, high): the same level twice for a core band, two
+    neighbours for a transition. Cores run .8 below a level to .2 above it, transitions
+    .3 to .7 between two levels: 5.2 is (5, 5), 5.3 (5, 6), 5.8 (6, 6). Taken in whole
+    tenths, since an average can arrive as 5.199999999999999 for 5.2."""
+    tenths = round(score * 10)
+    whole, tenth = divmod(tenths, 10)
+    if tenth <= 2:
+        return whole, whole
+    if tenth >= 8:
+        return whole + 1, whole + 1
+    return whole, whole + 1
 
 
-def badge(key: str, grades: dict | None = None) -> dict | None:
-    """What the shelf sends for one book: {"score", "level", "name", "meme", "theme", "reason"},
-    `score` the decimal grade and `level` the whole level it shows as; or None."""
-    grade = (load() if grades is None else grades).get(key)
+def label_of(band: tuple[int, int]) -> str:
+    """The pill's text: the level's own name, or both for a transition."""
+    low, high = band
+    return MEMES[low] if low == high else f"{MEMES[low]} → {MEMES[high]}"
+
+
+def _score(grade) -> float | None:
+    """A stored grade's score, or None for anything that is not one."""
     score = grade.get("level") if isinstance(grade, dict) else None
     if isinstance(score, bool) or not isinstance(score, (int, float)) or not 3 <= score <= 8:
         return None
-    level = level_of(score)
-    name, theme = LEVELS[level]
-    return {"score": round(float(score), 1), "level": level, "name": name, "meme": MEMES[level],
-            "theme": theme, "reason": grade.get("reason", "")}
+    return round(float(score), 1)
+
+
+def badge(key: str, grades: dict | None = None) -> dict | None:
+    """What the shelf sends for one book, or None: `score` the decimal grade, `band` the
+    two levels it shows between (the same twice for a core), `label` the pill's text,
+    `dot` the level whose colour the dot wears (the higher of a transition), and `name`
+    and `theme` of the band's levels for the hover."""
+    grades = load() if grades is None else grades
+    grade = grades.get(key)
+    score = _score(grade)
+    if score is None:
+        return None
+    low, high = band_of(score)
+    names = [LEVELS[low][0]] if low == high else [LEVELS[low][0], LEVELS[high][0]]
+    themes = [LEVELS[low][1]] if low == high else [LEVELS[low][1], LEVELS[high][1]]
+    return {"score": score, "band": [low, high], "label": label_of((low, high)),
+            "dot": high, "name": " to ".join(names), "theme": " to ".join(themes),
+            "reason": grade.get("reason", "")}
 
 
 def save(key: str, grade: dict) -> None:

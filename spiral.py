@@ -159,8 +159,8 @@ def main():
             print(f"  failed       {key[:70]}: {type(ex).__name__}: {ex}")
             continue
         score = saved["level"]
-        name, _ = store.LEVELS[store.level_of(score)]
-        print(f"  {score:.1f} {name:<9} {key[:60]}  -  {saved['reason']}", flush=True)
+        label = store.label_of(store.band_of(score))
+        print(f"  {score:.1f} {label:<24} {key[:50]}  -  {saved['reason']}", flush=True)
 
 
 if __name__ == "__main__":

@@ -66,6 +66,7 @@ import time
 import uuid
 from datetime import datetime, timedelta, timezone
 
+from api.intelligences import INTELLIGENCES
 from util.files import json_read_file, json_write_file
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -99,6 +100,8 @@ PREF_DEFAULTS = {
     "maxHighlights": 8,
     "shelfSort": "shuffled",
     "spiralBands": {"new": None, "read": None},
+    # One of the nine intelligences the shelf is narrowed to, or None for every book.
+    "shelfIntelligence": None,
 }
 
 SHELF_SORTS = ("shuffled", "added", "spiral-low", "spiral-high")
@@ -201,6 +204,9 @@ def clean_prefs(patch: dict | None) -> dict:
             pass
     if patch.get("shelfSort") in SHELF_SORTS:
         out["shelfSort"] = patch["shelfSort"]
+    if "shelfIntelligence" in patch and (patch["shelfIntelligence"] is None
+                                         or patch["shelfIntelligence"] in INTELLIGENCES):
+        out["shelfIntelligence"] = patch["shelfIntelligence"]
     if isinstance(patch.get("spiralBands"), dict):
         out["spiralBands"] = {f: _band(patch["spiralBands"].get(f)) for f in SPIRAL_FILTERS}
     return out

@@ -26,6 +26,7 @@ import {
 import { PALETTE_NAMES, paletteFor } from './lib/reading';
 import { useNarrow, usePrefs } from './lib/prefs';
 import { useAmbience } from './lib/useAmbience';
+import { INTELLIGENCES, fitOf } from './components/IntelligencePill';
 import { recommendations } from './lib/recommend';
 import Finished from './screens/Finished';
 import Library from './screens/Library';
@@ -62,6 +63,12 @@ export default function App() {
   const setSpiralRange = useCallback(
     (range) => setPrefs({ spiralBands: { ...spiralBands, [filter]: range } }),
     [setPrefs, spiralBands, filter],
+  );
+  // The intelligence the shelf is narrowed to (one of the nine), or null for every book.
+  const intelligence = prefs.shelfIntelligence || null;
+  const setIntelligence = useCallback(
+    (shelfIntelligence) => setPrefs({ shelfIntelligence }),
+    [setPrefs],
   );
   const [shuffleSeed] = useState(() => Math.floor(Math.random() * 2 ** 31));
   const [screen, setScreen] = useState('shelf');
@@ -397,18 +404,35 @@ export default function App() {
       const [low, high] = spiralRange;
       rows = rows.filter((b) => b.spiral && b.spiral.score >= low - 1e-9 && b.spiral.score <= high + 1e-9);
     }
+    // An intelligence keeps the books that ask for it in earnest, a fit of 2 or 3.
+    if (intelligence) rows = rows.filter((b) => fitOf(b, intelligence) >= 2);
     if (sort === 'spiral-low' || sort === 'spiral-high') {
       // Ungraded books go last either way; ties keep the shelf's own order.
       const sign = sort === 'spiral-low' ? 1 : -1;
-      return [...rows].sort((a, b) => {
+      rows = [...rows].sort((a, b) => {
         if (!a.spiral || !b.spiral) return (a.spiral ? 0 : 1) - (b.spiral ? 0 : 1);
         return sign * (a.spiral.score - b.spiral.score);
       });
+    } else if (sort === 'shuffled') {
+      rows = shuffled(rows, shuffleSeed);
     }
     // 'added' is the order the shelf endpoint already sorted them into, so leave it
     // alone rather than re-deriving it here from a date the client would have to parse.
-    return sort === 'shuffled' ? shuffled(rows, shuffleSeed) : rows;
-  }, [shelf.books, filter, sort, shuffleSeed, spiralRange]);
+    // With an intelligence chosen, the books that are mostly about it (a fit of 3) come
+    // first; within each fit the order above stands, since the sort is stable.
+    if (intelligence) rows = [...rows].sort((a, b) => fitOf(b, intelligence) - fitOf(a, intelligence));
+    return rows;
+  }, [shelf.books, filter, sort, shuffleSeed, spiralRange, intelligence]);
+
+  // How many books under this filter ask for each intelligence (a fit of 2 or 3), for the
+  // choice of intelligence; empty until any book is graded, which hides the choice.
+  const intelligenceCounts = useMemo(() => {
+    const rows = shelf.books.filter((b) => b.state === filter && b.intelligence);
+    if (!rows.length) return null;
+    return Object.fromEntries(
+      INTELLIGENCES.map(([key]) => [key, rows.filter((b) => fitOf(b, key) >= 2).length]),
+    );
+  }, [shelf.books, filter]);
 
   // Every graded book's score under this filter, before the band narrows them: what
   // the slider's range is drawn from.
@@ -526,6 +550,9 @@ export default function App() {
               onSort={setSort}
               spiralRange={spiralRange}
               spiralScores={filterScores}
+              intelligence={intelligence}
+              intelligenceCounts={intelligenceCounts}
+              onIntelligence={setIntelligence}
               onSpiralRange={setSpiralRange}
               onOpen={openBook}
               onLibrary={() => setScreen('library')}

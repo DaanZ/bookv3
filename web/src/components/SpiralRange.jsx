@@ -8,13 +8,10 @@
 
 import { useMemo } from 'react';
 
-import { SPIRAL_DOTS, SPIRAL_MEMES } from './SpiralPill';
+import { bandOf, labelOf, SPIRAL_DOTS } from './SpiralPill';
 
 const MONO = "'IBM Plex Mono', monospace";
 
-// The level a grade shows as, as the pill shows it (api/spiral.py `level_of`): its whole
-// number. Taken in tenths first, since 6.0 can arrive as 5.999999999999999.
-const levelOf = (score) => Math.floor(Math.round(score * 10) / 10);
 const tenths = (score) => Math.round(score * 10);
 
 /**
@@ -41,14 +38,19 @@ export default function SpiralRange({ scores, value, onChange, count }) {
   // Back to null when the band covers everything, so "the whole range" stays one state.
   const set = (l, h) => onChange(l <= min && h >= max ? null : [l, h]);
 
-  // The chosen band's colour: each level's colour across the part of the track it covers.
-  const stops = bins.map((b) => `${SPIRAL_DOTS[levelOf(b.at)]} ${pct(b.at)}%`).join(', ');
+  // The chosen band's colour: each level's colour solid across its core, blending from one
+  // to the next across a transition (no stops there, so the gradient does the blend).
+  const stops = bins
+    .map((b) => [bandOf(b.at), b.at])
+    .filter(([[lo, hi]]) => lo === hi)
+    .map(([[lo], at]) => `${SPIRAL_DOTS[lo]} ${pct(at)}%`);
+  const ramp = stops.length > 1 ? stops.join(', ') : `${stops[0] || SPIRAL_DOTS[bandOf(min)[1]]} 0%, ${stops[0] || SPIRAL_DOTS[bandOf(max)[1]]} 100%`;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 16 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12 }}>
         <span style={{ font: `400 11.5px ${MONO}`, color: 'var(--text-muted)' }}>
-          spiral {low.toFixed(1)} {SPIRAL_MEMES[levelOf(low)]} to {high.toFixed(1)} {SPIRAL_MEMES[levelOf(high)]}
+          spiral {low.toFixed(1)} ({labelOf(bandOf(low))}) to {high.toFixed(1)} ({labelOf(bandOf(high))})
           {` · ${count} ${count === 1 ? 'book' : 'books'}`}
         </span>
         {!whole && (
@@ -73,7 +75,7 @@ export default function SpiralRange({ scores, value, onChange, count }) {
               position: 'absolute',
               inset: 0,
               borderRadius: 2,
-              background: `linear-gradient(90deg, ${stops})`,
+              background: `linear-gradient(90deg, ${ramp})`,
               clipPath: `inset(0 ${100 - pct(high)}% 0 ${pct(low)}%)`,
             }}
           />
