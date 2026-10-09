@@ -344,6 +344,22 @@ was first done. The way back days later is the book: the shelf sends `questsOpen
 book and swaps a read book's chip for "quest open", and opening a read book lands on its
 finish screen.
 
+**Every book has a Spiral Dynamics level**, 3 Red (power) to 8 Turquoise (wholeness),
+shown as a pill (a dot in the level's colour and its canonical name, StriveDrive for 5 Orange) on the shelf row, the reader header, the finish screen and the "More like
+this" cards. `spiral.py --write` grades from the summary (gpt-4o-mini, three calls a book, about
+$0.001 together; `--book`, `--force`), and `api/spiral.py` keeps the grades in
+`data/spiral.json`, beside the books like the Hardcover cache; the shelf sends
+`book.spiral`. It grades the value system a book *argues from*, not its subject. The first
+descriptions let the model call strategy books Yellow and the Stoics Yellow; it now
+grades conservatively (most non-fiction is 4, 5 or 6; innovation and self-improvement are
+5, virtue and discipline 4; 7 and 8 only when the book itself integrates worldviews or
+argues the unity of life). Grades are decimals, 3.0 to 8.0, so a progression inside a
+level shows (5.6 is Orange well on the way to Green); the pill rounds to the nearest
+level and keeps the lower one at exactly x.5 (`nearest_level`). Each book is graded three
+times on gpt-4o-mini, and `combine` averages the runs unless one is more than 0.5 from
+the other two, which is dropped: single runs moved by up to a whole level. A newly ingested book has no level until `spiral.py --write`
+runs again.
+
 `POST /api/books/{key}/enrich` stays for the one case the pass cannot serve: asking again about a
 book it matched to the wrong edition.
 
@@ -377,11 +393,22 @@ up. Nothing resumes a failed job, so a re-run still pays for every part again.
 `src/lib/recommend.js` holds the finish screen's suggestion, `recommendations`, which offers
 the book *furthest* from the one just put down, because switching topics beats stopping.
 `uncategorised` is a stop word there: it is `library.py`'s fallback for the 68 books with no
-category, and two books sharing it share nothing. The shelf has no suggestion any more — it
+category, and two books sharing it share nothing. Above it, **More like this** offers up to
+three unread books *nearest* the finished one, so the screen ends in a choice: a quest, a
+book on the same subject, or a switch. Nearness comes from `api/similar.py`
+(`GET /api/books/{key}/similar`): a TF-IDF vector over each summary's words, highlights
+and title counting extra, compared by cosine, built once and rebuilt when a file changes.
+Category words could not do it: 67 books have none, and "Homesteading" or "Stoicism" stand
+alone, so a category match found nothing for exactly the books that needed it. The shelf has no suggestion any more — it
 had `fromLibrary`, the unread book nearest what the reader had finished, and it was removed in
 favour of shuffling: the shelf's default order is `shuffled` (App.jsx), a new order each time
 the app opens and a stable one while filters change, so there is always something new in
-view. "Recently added" is the other order; A–Z is gone. On a phone (`useNarrow`, below
+view. "Recently added" is the other order, and "Spiral, low to high" / "high to low" sort by the
+Spiral Dynamics grade (ungraded books last); A–Z is gone. The order is a select now, not a
+swap button. On "Not started" and "Read" a two-handled slider, its band kept per filter, (`components/SpiralRange.jsx`,
+in tenths, from the lowest grade among that filter's books to the highest, the band coloured by
+level; a histogram above it was tried and removed) narrows them to a band of the spiral; a narrowed band leaves out
+ungraded books, and "Whole spiral" resets it. On a phone (`useNarrow`, below
 600px) the shelf drops its introduction and the order toggle, leaving the three filters.
 
 `src/lib/reading.js` is the model and the part worth understanding. It is an index over four

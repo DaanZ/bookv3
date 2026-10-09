@@ -10,6 +10,7 @@ import {
   getProfiles,
   getSession,
   getShelf,
+  getSimilar,
   putPosition,
   renameProfile,
   setProfile,
@@ -50,6 +51,15 @@ export default function App() {
   // is drawn once per visit: a new order every time the app opens, but a stable one while
   // you switch filters, so a book does not jump away from under your finger.
   const [sort, setSort] = useState('shuffled');
+  // The band of the spiral each filter is narrowed to, {new, read}: [low, high], or
+  // null for all of them, which is the default. Separate per filter, because the read
+  // and unread books span different grades.
+  const [spiralRanges, setSpiralRanges] = useState({ new: null, read: null });
+  const spiralRange = spiralRanges[filter] ?? null;
+  const setSpiralRange = useCallback(
+    (range) => setSpiralRanges((all) => ({ ...all, [filter]: range })),
+    [filter],
+  );
   const [shuffleSeed] = useState(() => Math.floor(Math.random() * 2 ** 31));
   const [screen, setScreen] = useState('shelf');
   const [book, setBook] = useState(null);
@@ -376,16 +386,61 @@ export default function App() {
   }, [book, toShelf]);
 
   const visible = useMemo(() => {
-    const rows = shelf.books.filter((b) => b.state === filter);
+    let rows = shelf.books.filter((b) => b.state === filter);
+    // The spiral band narrows the unread books, to choose what to start, and the read
+    // ones, to look back over a kind of book. A narrowed band leaves out books with no
+    // grade, since they cannot be in it.
+    if (filter !== 'reading' && spiralRange) {
+      const [low, high] = spiralRange;
+      rows = rows.filter((b) => b.spiral && b.spiral.score >= low - 1e-9 && b.spiral.score <= high + 1e-9);
+    }
+    if (sort === 'spiral-low' || sort === 'spiral-high') {
+      // Ungraded books go last either way; ties keep the shelf's own order.
+      const sign = sort === 'spiral-low' ? 1 : -1;
+      return [...rows].sort((a, b) => {
+        if (!a.spiral || !b.spiral) return (a.spiral ? 0 : 1) - (b.spiral ? 0 : 1);
+        return sign * (a.spiral.score - b.spiral.score);
+      });
+    }
     // 'added' is the order the shelf endpoint already sorted them into, so leave it
     // alone rather than re-deriving it here from a date the client would have to parse.
     return sort === 'shuffled' ? shuffled(rows, shuffleSeed) : rows;
-  }, [shelf.books, filter, sort, shuffleSeed]);
+  }, [shelf.books, filter, sort, shuffleSeed, spiralRange]);
+
+  // Every graded book's score under this filter, before the band narrows them: what
+  // the slider's range is drawn from.
+  const filterScores = useMemo(
+    () => shelf.books.filter((b) => b.state === filter && b.spiral).map((b) => b.spiral.score),
+    [shelf.books, filter],
+  );
 
   const recs = useMemo(
     () => (book ? recommendations(shelf.books, book.key, book.category, book.family) : []),
     [shelf.books, book],
   );
+  // Books like the one just finished, by what their summaries say (api/similar.py),
+  // narrowed to the ones this reader has not read. Asked for when the finish screen
+  // opens; an empty list while it loads or if it fails, which simply hides the section.
+  const [nearKeys, setNearKeys] = useState([]);
+  const finishKey = screen === 'finish' ? book?.key : null;
+  useEffect(() => {
+    setNearKeys([]);
+    if (!finishKey) return undefined;
+    let cancelled = false;
+    getSimilar(finishKey)
+      .then((answer) => !cancelled && setNearKeys((answer?.similar || []).map((row) => row.key)))
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [finishKey]);
+  const alike = useMemo(() => {
+    const byKey = new Map(shelf.books.map((b) => [b.key, b]));
+    return nearKeys
+      .map((key) => byKey.get(key))
+      .filter((b) => b && b.state !== 'read')
+      .slice(0, 3);
+  }, [nearKeys, shelf.books]);
 
   const themeLabel = day ? 'day · cane paper' : 'night · by the fire';
 
@@ -466,6 +521,9 @@ export default function App() {
               onFilter={setFilter}
               sort={sort}
               onSort={setSort}
+              spiralRange={spiralRange}
+              spiralScores={filterScores}
+              onSpiralRange={setSpiralRange}
               onOpen={openBook}
               onLibrary={() => setScreen('library')}
               onProfiles={() => setScreen('profiles')}
@@ -535,6 +593,8 @@ export default function App() {
               counts={shelf.counts}
               onOpenRec={() => openBook(recs[recIndex % recs.length].key)}
               onNextRec={() => setRecIndex((i) => i + 1)}
+              similar={alike}
+              onOpenBook={openBook}
               onShelf={toShelf}
               onReset={onUnfinish}
             />

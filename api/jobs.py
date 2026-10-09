@@ -15,6 +15,7 @@ Two constraints shape this module:
 """
 
 import os
+import re
 import threading
 import traceback
 import uuid
@@ -302,6 +303,27 @@ def _read_pages(path):
     return read_book_pages(path)
 
 
+# Values a file's own metadata carries when nobody filled it in. The model is told to trust
+# the file over the page, so one of these got through as the book: ProQuest Ebook
+# Central's PDFs say /Title "someTitle" and /Author "someAuthor", and Spinoza's *Ethics*
+# was being filed under them while its title page said ETHICS, BENEDICTUS DE SPINOZA.
+PLACEHOLDER_VALUES = {"sometitle", "someauthor", "untitled", "unknown", "anonymous",
+                      "title", "author", "none", "null", "n/a", "na", "-", "user",
+                      "administrator", "admin", "owner"}
+PLACEHOLDER_PREFIXES = ("microsoft word - ", "untitled-", "untitled ")
+# "Document", "Document1": a word processor's default name, not "Documenting Hate".
+PLACEHOLDER_PATTERN = re.compile(r"^(document|book|title)\s*\d*$")
+
+
+def is_placeholder(value: str | None) -> bool:
+    """True for metadata nobody actually wrote: empty, a known default, or a file name."""
+    text = (value or "").strip().lower()
+    if (not text or text in PLACEHOLDER_VALUES or text.startswith(PLACEHOLDER_PREFIXES)
+            or PLACEHOLDER_PATTERN.match(text)):
+        return True
+    return text.endswith((".pdf", ".doc", ".docx", ".indd", ".epub"))
+
+
 def _declared_metadata(path):
     """The title and author the file carries about itself.
 
@@ -318,11 +340,12 @@ def _declared_metadata(path):
         from pypdf import PdfReader
 
         info = PdfReader(path).metadata or {}
-        return {
+        found = {
             key: str(info.get(f"/{key.capitalize()}")).strip()
             for key in ("title", "author")
             if info.get(f"/{key.capitalize()}")
         }
+        return {key: value for key, value in found.items() if not is_placeholder(value)}
     except Exception:
         # Never worth failing an ingest over: it is a hint, and the pages are still there.
         return {}

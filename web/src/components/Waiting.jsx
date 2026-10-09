@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
 
-import Spinner from './Spinner';
 import { Chip } from './ui';
 import { paletteFor } from '../lib/reading';
 import { chunkWeights, cumulativeWeight, pageRange } from '../lib/waiting';
@@ -14,10 +13,11 @@ import { chunkWeights, cumulativeWeight, pageRange } from '../lib/waiting';
 const MONO = "'IBM Plex Mono', monospace";
 
 /**
- * w1 · Summarising — the rim tracing the chunk cascade.
+ * w1 · Summarising — the chunk cascade.
  *
- * One composite, not two loaders: the mark traces its own hexagon while the bars fill
- * behind it. The bars are **weighted by knowledge, not pages** — the first third of the
+ * The bars alone. The handoff drew the mark tracing its hexagon beside them, and on the
+ * library screen it read as an eye watching the row (Daan, October 2026), so it is gone
+ * from both waiting states; the live bar's breathing is the only motion. The bars are **weighted by knowledge, not pages** — the first third of the
  * parts carries 80% of the book, so finishing part 4 of 11 visibly fills most of the
  * row, because it did. That is the whole reason the design exists, and it is why the two
  * text lines carry different numbers: pages are narrow at the front, knowledge is dense
@@ -35,8 +35,6 @@ export function Summarising({ done, total, bounds, palette = 'sunset', day = fal
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-      <Spinner variant="mark" size={46} palette={palette} />
-
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 9, minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, height: 48 }}>
           {weights.map((weight, i) => {
@@ -94,7 +92,6 @@ export function Summarising({ done, total, bounds, palette = 'sunset', day = fal
 export function Indexing({ total }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-      <Spinner variant="seam" size={68} />
       <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
         <Chip tone="claimed">indexing</Chip>
         <span

@@ -214,6 +214,8 @@ export const putAmbience = (key, settings) =>
 export const getBook = (key) => request(`/books/${encodeURIComponent(key)}`);
 
 /** The book's three quests for its finish screen: {quests: {small, medium, large} | null, started, done, reroll}. */
+// Books whose summaries are nearest this one's, nearest first, read or not.
+export const getSimilar = (key) => request(`/books/${encodeURIComponent(key)}/similar`);
 export const getQuests = (key) => request(`/books/${encodeURIComponent(key)}/quests`);
 
 /** Start one quest (or, with `on` false, undo it). Answers with that book's {started}. */

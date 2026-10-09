@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
 import AmbiencePlayer from '../components/AmbiencePlayer';
+import SpiralPill from '../components/SpiralPill';
 import Patch from '../components/Patch';
 import Spinner from '../components/Spinner';
 import { Button, ProgressBar, QuietLink } from '../components/ui';
@@ -165,6 +166,11 @@ export default function Reader({ book, part, page, prefs, ambience, canFinish = 
             >
               {book.author} · {book.category} · {book.pages} pages
             </span>
+            {book.spiral && (
+              <span style={{ marginTop: 4 }}>
+                <SpiralPill spiral={book.spiral} />
+              </span>
+            )}
           </div>
         </div>
         <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>

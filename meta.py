@@ -71,5 +71,14 @@ def get_book_meta(pages: List[Document], n: int = 5, model: str = None, declared
         "the publisher's imprint or a line from the front matter."
     )
     meta: BookMeta = llm_strict(history, model_name=model, base_model=BookMeta)
-    return {"title": meta.title, "author": meta.author, "category": meta.category,
-            "publisher": meta.publisher, "pages": len(pages)}
+    return {"title": meta.title, "author": meta.author, "category": _stated(meta.category),
+            "publisher": _stated(meta.publisher), "pages": len(pages)}
+
+
+# What a model writes into a required field it has no answer for. Saved as text, "null"
+# became Spinoza's category on the shelf; None is what the reader already handles.
+NOT_STATED = {"", "null", "none", "unknown", "n/a", "na", "not stated", "not specified"}
+
+
+def _stated(value):
+    return None if (value or "").strip().lower() in NOT_STATED else value.strip()

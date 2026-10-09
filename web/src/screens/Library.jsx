@@ -330,7 +330,11 @@ export default function Library({ books, counts, palette, day, onShelf, onChange
             Your library
           </h1>
         </div>
-        <QuietLink onClick={onShelf}>Shelf</QuietLink>
+        {/* At the top, as a real button: the collection runs to hundreds of rows, and the
+            way back used to be a dotted link at its far end. */}
+        <Button variant="secondary" onClick={onShelf} style={{ minHeight: 44, flex: 'none' }}>
+          Back to shelf
+        </Button>
       </div>
 
       <p

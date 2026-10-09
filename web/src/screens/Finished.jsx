@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
 import Patch from '../components/Patch';
+import SpiralPill from '../components/SpiralPill';
 import { Button, Chip, QuietLink, Sheet } from '../components/ui';
+import { useNarrow } from '../lib/prefs';
 import { finishQuest, getQuests, rerollQuests, resyncHardcover, startQuest } from '../lib/api';
 
 // When each quest is for. Stored as small, medium and large, shown as the moment: a goal
@@ -487,12 +489,15 @@ export default function Finished({
   counts,
   onOpenRec,
   onNextRec,
+  similar = [],
+  onOpenBook,
   onShelf,
   onReset,
 }) {
   // The result of the call just made, or the outcome recorded when it was finished
   // before. undefined/null means neither exists — say that, do not guess.
   // A re-sync supersedes both: it is the most recent thing Hardcover said.
+  const narrow = useNarrow();
   const [resync, setResync] = useState(null);
   const [syncing, setSyncing] = useState(false);
   const [resetting, setResetting] = useState(false);
@@ -716,6 +721,11 @@ export default function Finished({
       >
         {book.author} · {book.pages} pages{sittings}
       </p>
+      {book.spiral && (
+        <div style={{ marginTop: 10 }}>
+          <SpiralPill spiral={book.spiral} />
+        </div>
+      )}
 
       {/* The sheet: everything to do with the book from here on — its Hardcover entry, the
           quests and the next book — on the graphite page inside the indigo frame. */}
@@ -854,6 +864,66 @@ export default function Finished({
       </div>
       )}
 
+      {/* The other way on from a book: stay with the subject. Up to three unread books
+          whose summaries are nearest this one's (api/similar.py); the row below stays
+          the way out to something else entirely. So the screen ends in a choice: do
+          something with this book, read another like it, or switch. */}
+      {similar.length > 0 && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 22 }}>
+          <span
+            style={{
+              font: "600 9.5px 'IBM Plex Mono', monospace",
+              letterSpacing: 'var(--track-eyebrow)',
+              textTransform: 'uppercase',
+              color: 'var(--text-muted)',
+            }}
+          >
+            more like this · read one part
+          </span>
+          <div style={{ display: 'grid', gridTemplateColumns: narrow ? 'minmax(0, 1fr)' : `repeat(${similar.length}, minmax(0, 1fr))`, gap: 10 }}>
+            {similar.map((other) => (
+              <button
+                key={other.key}
+                type="button"
+                className="tap row"
+                onClick={() => onOpenBook(other.key)}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  gap: 10,
+                  minHeight: 44,
+                  padding: '14px 16px',
+                  borderRadius: 12,
+                  textAlign: 'left',
+                  border: '1px solid var(--border-default)',
+                  background: 'var(--bg-surface-hover)',
+                }}
+              >
+                <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, width: '100%' }}>
+                  <Patch patch={other.patch} size={28} />
+                  <SpiralPill spiral={other.spiral} />
+                </span>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-display-wide)',
+                    fontSize: 14,
+                    fontWeight: 600,
+                    lineHeight: 1.3,
+                    color: 'var(--text-primary)',
+                  }}
+                >
+                  {other.title}
+                </span>
+                <span style={{ font: "400 11.5px 'Space Grotesk', system-ui", color: 'var(--text-secondary)' }}>
+                  {other.author} · {other.partCount} parts
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* One slim row, so the quests above have the room: the open plan and this used
           to push the screen past the tablet's height. Same two actions as before. */}
       {recommendation && (
@@ -881,7 +951,7 @@ export default function Finished({
                   color: 'var(--text-muted)',
                 }}
               >
-                as far from {book.category} as your shelf goes
+                {similar.length ? 'or something else entirely' : `as far from ${book.category} as your shelf goes`}
               </span>
               <span
                 style={{

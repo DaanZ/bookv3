@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field
 
 from api import enrich as enriching
-from api import library, positions, profiles
+from api import library, positions, profiles, similar
 from api import quest_reroll
 from api import quests as quest_store
 from api.deps import admin, reader
@@ -71,6 +71,15 @@ def get_book(key: str, profile: dict = Depends(reader)):
     if detail is None:
         raise HTTPException(status_code=404, detail="No such book.")
     return detail
+
+
+@router.get("/api/books/{key}/similar")
+def get_similar(key: str, profile: dict = Depends(reader)):
+    """Books whose summaries are nearest this one's, nearest first. Every book, read or
+    not: the reader's shelf already knows which they have read, and filters there."""
+    if key not in library.index():
+        raise HTTPException(status_code=404, detail="No such book.")
+    return {"similar": [{"key": other, "score": round(score, 3)} for other, score in similar.nearest(key)]}
 
 
 @router.get("/api/books/{key}/quests")
