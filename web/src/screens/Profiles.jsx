@@ -472,10 +472,12 @@ export default function Profiles({
           color: 'var(--text-secondary)',
         }}
       >
-        The catalogue is open to anyone. A profile is what makes it yours: your own page
-        in every book, how many sittings it took, which ones you finished — and books
-        suggested from the ones you have read. A PIN on your name means the tablet asks
-        for it before it opens your shelf.
+        {/* It opened "The catalogue is open to anyone", which stopped being true when
+            every request had to name a reader. */}
+        Every book here is read under a name. Yours keeps your own page in every book,
+        how many sittings it took, which ones you finished, your quests and what you
+        made of them, and the shelf the way you left it. A PIN on your name means the
+        tablet asks for it before it opens your shelf.
       </p>
 
       {error && (
