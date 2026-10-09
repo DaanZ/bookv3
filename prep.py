@@ -44,6 +44,16 @@ def summarize_book(pdf_path, output_folder):
         json_write_file(output_path, book_info)
         print(f"Summary saved to {output_path}")
 
+        # Its Spiral Dynamics grade, as the reader's ingest does it (api/jobs.py): three
+        # gpt-4o-mini calls, about $0.001. A failure leaves the book ungraded, never lost.
+        try:
+            from spiral import grade_and_save
+
+            key = os.path.splitext(os.path.basename(output_path))[0]
+            print(f"Spiral grade: {grade_and_save(key, book_info)['level']}")
+        except Exception as ex:
+            print(f"Spiral grade skipped: {type(ex).__name__}: {ex}")
+
     except PdfStreamError:
         print(f"Error: Unable to read the book {pdf_path}. Please verify the file.")
     except UnreadableCharactersError:

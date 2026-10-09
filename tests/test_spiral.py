@@ -75,5 +75,40 @@ class Combine(unittest.TestCase):
         self.assertEqual(self.combine([5.0, 5.6, 6.2]), 5.6)
 
 
+class GradeAndSave(unittest.TestCase):
+    """What ingest calls for a new book: three runs, combined, saved. The model is mocked,
+    so this spends nothing and needs no API key."""
+
+    def setUp(self):
+        import spiral as script
+        self.script = script
+        self.tmp = tempfile.TemporaryDirectory()
+        self.patch = mock.patch.object(spiral, "STORE", os.path.join(self.tmp.name, "spiral.json"))
+        self.patch.start()
+
+    def tearDown(self):
+        self.patch.stop()
+        self.tmp.cleanup()
+
+    def answers(self, *levels):
+        # None is what llm_strict returns when the model gave no answer.
+        replies = iter(None if level is None else mock.Mock(level=level, reason=f"reason {level}")
+                       for level in levels)
+        return mock.patch.object(self.script, "grade", lambda book, model: next(replies))
+
+    def test_three_runs_are_combined_and_saved(self):
+        with self.answers(5.4, 5.6, 6.6):
+            saved = self.script.grade_and_save("new_book", {"meta": {}, "parts": []})
+        self.assertEqual(saved["runs"], [5.4, 5.6, 6.6])
+        self.assertEqual(saved["level"], 5.5)  # 6.6 is the outlier
+        self.assertEqual(spiral.badge("new_book")["meme"], "StriveDrive")
+
+    def test_a_missing_answer_saves_nothing(self):
+        with self.answers(5.4, None, 5.6):
+            with self.assertRaises(self.script.NoGrade):
+                self.script.grade_and_save("new_book", {"meta": {}, "parts": []})
+        self.assertIsNone(spiral.badge("new_book"))
+
+
 if __name__ == "__main__":
     unittest.main()

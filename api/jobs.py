@@ -553,6 +553,19 @@ def _run(job_id):
         # to be clicked. Read-only, and nothing here waits for it.
         enrich.queue(key, meta_info.get("title") or key, meta_info.get("author"), isbn)
 
+        # Grade it on Spiral Dynamics, so it reaches the shelf with its pill rather than
+        # waiting for a manual `spiral.py --write`. Three gpt-4o-mini calls, about $0.001
+        # and a few seconds, the same as the library was graded with. Never a reason to
+        # fail a book that is already written and paid for: a failure leaves it ungraded,
+        # which the shelf handles, and `spiral.py --write` picks it up later.
+        _update(job_id, step="placing it on the spiral")
+        try:
+            from spiral import grade_and_save
+
+            grade_and_save(key, book_info)
+        except Exception:
+            traceback.print_exc()
+
         # The original PDF is parked in pdfs/, exactly as prep.py does it.
         os.makedirs(ARCHIVE_DIR, exist_ok=True)
         try:

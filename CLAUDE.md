@@ -357,8 +357,9 @@ argues the unity of life). Grades are decimals, 3.0 to 8.0, so a progression ins
 level shows (5.6 is Orange well on the way to Green); the pill rounds to the nearest
 level and keeps the lower one at exactly x.5 (`nearest_level`). Each book is graded three
 times on gpt-4o-mini, and `combine` averages the runs unless one is more than 0.5 from
-the other two, which is dropped: single runs moved by up to a whole level. A newly ingested book has no level until `spiral.py --write`
-runs again.
+the other two, which is dropped: single runs moved by up to a whole level. A new book is graded as the last step of ingest (`api/jobs.py`, and `prep.py`) by the
+same `grade_and_save`, so it arrives with its pill; a failure there leaves it ungraded,
+never fails the job, and `spiral.py --write` picks it up later.
 
 `POST /api/books/{key}/enrich` stays for the one case the pass cannot serve: asking again about a
 book it matched to the wrong edition.

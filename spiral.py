@@ -116,6 +116,27 @@ def grade(book: dict, model: str) -> SpiralGrade:
     return llm_strict(history, model_name=model, base_model=SpiralGrade)
 
 
+class NoGrade(Exception):
+    """The model gave fewer answers than runs asked for; nothing is saved."""
+
+
+def grade_and_save(key: str, book: dict, model: str = SPIRAL_MODEL) -> dict:
+    """Grade one book RUNS times, combine the runs and save the grade. Returns what was
+    saved. Used by the command below and by the reader's ingest (api/jobs.py), which
+    grades every new book as its last step so it arrives on the shelf with a pill."""
+    results = [r for r in (grade(book, model) for _ in range(RUNS)) if r is not None]
+    if len(results) < RUNS:
+        raise NoGrade(f"{len(results)} of {RUNS} runs answered")
+    runs = [round(r.level, 1) for r in results]
+    score = combine(runs)
+    # The reason from the run nearest the combined grade.
+    result = min(results, key=lambda r: abs(r.level - score))
+    saved = {"level": score, "runs": runs, "reason": result.reason, "model": model,
+             "gradedAt": datetime.now(timezone.utc).isoformat(timespec="seconds")}
+    store.save(key, saved)
+    return saved
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--book", help="books whose file name contains this (case-insensitive)")
@@ -132,24 +153,14 @@ def main():
         if not args.write:
             print(f"  would grade  {key[:70]}")
             continue
-        book = json_read_file(path)
         try:
-            results = [grade(book, args.model) for _ in range(RUNS)]
+            saved = grade_and_save(key, json_read_file(path), args.model)
         except Exception as ex:  # one bad book must not stop the library
             print(f"  failed       {key[:70]}: {type(ex).__name__}: {ex}")
             continue
-        results = [r for r in results if r is not None]
-        if len(results) < RUNS:
-            print(f"  no answer    {key[:70]}")
-            continue
-        runs = [round(r.level, 1) for r in results]
-        score = combine(runs)
-        # The reason from the run nearest the combined grade.
-        result = min(results, key=lambda r: abs(r.level - score))
-        store.save(key, {"level": score, "runs": runs, "reason": result.reason, "model": args.model,
-                         "gradedAt": datetime.now(timezone.utc).isoformat(timespec="seconds")})
+        score = saved["level"]
         name, _ = store.LEVELS[store.nearest_level(score)]
-        print(f"  {score:.1f} {name:<9} {key[:60]}  -  {result.reason}", flush=True)
+        print(f"  {score:.1f} {name:<9} {key[:60]}  -  {saved['reason']}", flush=True)
 
 
 if __name__ == "__main__":
