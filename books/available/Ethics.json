@@ -1,0 +1,535 @@
+{
+    "meta": {
+        "title": "Ethics",
+        "author": "Baruch Spinoza",
+        "category": "Philosophy",
+        "publisher": "The Floating Press",
+        "pages": 400,
+        "isbn": "9781775413653",
+        "addedAt": "2026-10-09T02:39:00.715563+00:00",
+        "addedFrom": "ingest"
+    },
+    "parts": [
+        {
+            "title": "Definitions, Axioms, and Propositions on Substance and God",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Something is **self-caused** if its essence involves **existence**.",
+                        "A thing is **finite** if another thing of the **same nature** can limit it.",
+                        "A **body** is finite because a greater body can be imagined, and a **thought** is limited by another thought.",
+                        "A body is **not limited by thought**, nor is a thought by a body.",
+                        "A **substance** exists and is conceived **in itself**.",
+                        "An **attribute** is what the intellect perceives as constituting the **essence of substance**.",
+                        "A **mode** is a modification of substance, existing and conceived through **something else**.",
+                        "God is an **absolutely infinite being**, a substance with infinite attributes, each expressing **eternal and infinite essentiality**.",
+                        "An **absolutely infinite** being contains all reality and involves **no negation**.",
+                        "A thing is **free** if its existence and action are determined solely by its **own nature**.",
+                        "A thing is **necessary or constrained** if determined by **something external**.",
+                        "**Eternity** is existence necessarily following from the **definition of the eternal**, representing an **eternal truth**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Everything exists **either in itself or in something else**.",
+                        "What cannot be conceived through something else **must be conceived through itself**.",
+                        "An **effect necessarily follows** from a definite cause, and its **knowledge involves the knowledge of its cause**.",
+                        "Things with **nothing in common** cannot be understood by means of each other.",
+                        "A **true idea** corresponds with its object.",
+                        "If a thing can be conceived as **non-existing**, its essence does not involve existence.",
+                        "**Substance is prior to its modifications**, and two substances with **different attributes** have nothing in common.",
+                        "There cannot be **two or more substances of the same nature** or attribute in the universe.",
+                        "A substance cannot be produced by **anything external** to itself.",
+                        "The **existence of substance** is part of its nature, meaning its essence necessarily involves existence.",
+                        "Every substance is **necessarily infinite** and **indivisible**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "The Nature of Substance and God's Attributes",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "No **substance**, including extended substance, is **divisible**.",
+                        "A part of substance is **finite substance**, which is a **contradiction** because the nature of substance is **infinite**.",
+                        "Only **God** can be **granted** or **conceived** as substance, as God is an **absolutely infinite** being with every attribute of substance.",
+                        "If another substance existed, it would share an attribute with God, which is **absurd**.",
+                        "Therefore, **God is one**, the only substance, and this substance is **absolutely infinite**.",
+                        "Both **extension and thought** are either **attributes of God** or **accidents** of his attributes.",
+                        "All things **exist within God**, and nothing can exist or be conceived without him.",
+                        "Modes must be in and conceived through the **divine nature**.",
+                        "This means **everything is in God**.",
+                        "Some people mistakenly believe God has a body, but divine nature denies this.",
+                        "They think corporeal substance is separate from God, which shows they **do not understand their own words**.",
+                        "No substance besides God can be granted or conceived.",
+                        "Therefore, **extended substance is one of God's infinite attributes**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Opponents argue that extended substance, being composed of parts, cannot be **infinite** or belong to God.",
+                        "They suggest absurdities arise from dividing infinite extended substance, like an infinite being composed of **finite parts**.",
+                        "They also claim that God cannot be **passive**, but divisible extended substance is passive.",
+                        "These arguments are based on the **absurd hypothesis** that extended substance is composed of parts.",
+                        "Infinite quantity is **not measurable** and **cannot be composed of finite parts**.",
+                        "Dividing quantity is a human tendency when viewed through **imagination**, making it seem finite and divisible.",
+                        "When quantity is understood as **substance** through the intellect, it is **infinite, one, and indivisible**.",
+                        "Matter's parts are only distinguishable **modally**, not really.",
+                        "Water, as **extended substance**, is neither separated nor divisible.",
+                        "God is the **efficient cause** of all things, and individual things are **modifications of God's attributes**.",
+                        "God acts solely by the **laws of his own nature**, making him the **sole free cause**.",
+                        "God and all his attributes are **eternal**.",
+                        "God's intellect and will are the **cause of things' essence and existence**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Divine Conditioning and the Nature of Existence",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A thing **conditioned by God** cannot become unconditioned.",
+                        "Everything **finite** and with a **conditioned existence** needs another finite cause, and this chain extends **infinitely**.",
+                        "Finite things come from God's attributes only when those attributes are **modified** by a **finite, conditioned modification**.",
+                        "This modification is also **conditioned by another finite cause**, and so on, **infinitely**.",
+                        "God is the **immediate cause** of things produced directly by his **absolute nature**.",
+                        "Nothing in the universe is **contingent**; everything is **conditioned** by the **necessity of the divine nature**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Nature viewed as **active (natura naturans)** represents God as a **free cause**.",
+                        "Nature viewed as **passive (natura naturata)** includes all that follows from the **necessity of God's nature**.",
+                        "Intellect, will, and desire are modes of thinking and belong to **passive nature**, not active nature.",
+                        "Will is not a **free cause** but a **necessary cause**, requiring a **conditioning cause**.",
+                        "God does not act according to **freedom of the will**.",
+                        "Things could not have been created by God in **any other manner or order** than they are."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Imagination, Perception, and the Nature of Mind",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "People judge things based on their **brain's state** or, more accurately, mistake the **forms of their imagination** for actual things.",
+                        "This leads to disagreements where one person's **\"good\"** is another's **\"bad\"**, or one's **\"orderly\"** is another's **\"confused\"**.",
+                        "These differing perceptions explain the rise of **controversies and skepticism**.",
+                        "Common sayings like \"So many men, so many minds\" illustrate that people **imagine** more than they **understand**.",
+                        "If people truly **understood phenomena**, they would be convinced by mathematical reasoning.",
+                        "All common explanations of nature are merely **modes of imagining** and do not reveal the **true nature of anything**.",
+                        "These imaginary entities, despite having names, are **not real**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Arguments about **imperfections in nature**, such as decay or evil, are easily refuted.",
+                        "The **perfection of things** is judged by their own nature and power, not by how they affect human senses or serve humanity.",
+                        "God's nature is so **vast** that it can produce everything conceivable by an **infinite intelligence**.",
+                        "The author undertakes to note these **misconceptions** and believes they can be dissipated with reflection.",
+                        "The discussion then moves to the **nature and origin of the mind**, explaining concepts that stem from the **essence of God**.",
+                        "Key terms are defined: **Body** is a mode expressing God's essence as an extended thing, and something belongs to a thing's essence if its presence or absence **necessarily implies** the thing's presence or absence.",
+                        "An **idea** is a mental conception, distinct from perception as it implies **activity of the mind**.",
+                        "An **adequate idea** possesses all the intrinsic marks of a true idea, excluding external agreement with an object."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "The Human Mind and Body: Union and Nature",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **human mind**'s object is the **body**, specifically a **mode of extension** that truly exists.",
+                        "If the body were not the mind's object, ideas of **bodily modifications** would not be in **God** as he constitutes our mind.",
+                        "We **do** possess ideas of bodily modifications.",
+                        "The mind's object is the **actually existing body** and nothing else.",
+                        "To understand the mind fully, you need **adequate knowledge of the body's nature**.",
+                        "An idea of **everything** exists in God, like the human body's idea.",
+                        "To understand how the **human mind** differs, its object's nature, the **human body**, must be known."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "A body fit for many actions makes its **mind** fitted for many **simultaneous perceptions**.",
+                        "If a body's actions depend more on itself, its mind is more capable of **distinct comprehension**.",
+                        "Bodies are distinguished by **motion, rest, quickness, and slowness**, not **substance**.",
+                        "A body in motion stays in motion until another body makes it rest.",
+                        "Bodies are in **union** when compelled to remain in contact or move with a **fixed mutual relation**, forming one individual body.",
+                        "If parts of a composite body are replaced by equal parts of the same nature, the individual **preserves its nature**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Knowledge, Falsity, and Perception",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **human mind** does not have **adequate knowledge** of the **human body**.",
+                        "The **idea of each modification** of the human body does not provide **adequate knowledge** of an **external body**, as such knowledge resides in **God**.",
+                        "The **human mind perceives external bodies** only through the **ideas of its body's modifications**.",
+                        "When the **mind imagines** an external body, it **lacks adequate knowledge** of it.",
+                        "The **idea of a modification** of the human body does not offer **adequate knowledge** of the **human body itself**.",
+                        "Ideas of human body modifications, when referred only to the **human mind**, are **confused**, not **clear and distinct**.",
+                        "The **idea of the idea** of each body modification does not imply **adequate knowledge** of the **human mind**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The **human mind** only has **confused and fragmentary knowledge** of itself, its body, and external bodies when it perceives things in the **common order of nature**.",
+                        "This occurs when the mind is **determined from without** by circumstances, not **from within** by understanding multiple things at once.",
+                        "The **duration of our body** and other **particular things** can only be known **very inadequately**.",
+                        "This means all **particular things are contingent and perishable**.",
+                        "All **ideas in God are true**.",
+                        "There is **nothing positive in ideas that makes them false**.",
+                        "Falsity is the **privation of knowledge** found in **inadequate, fragmentary, or confused ideas**.",
+                        "**Inadequate and confused ideas** follow with the **same necessity** as **adequate ones**.",
+                        "Things **common to all bodies**, and equally present in parts and the whole, do not form the **essence of any particular thing**.",
+                        "These **common things** can only be conceived **adequately**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Reason, God's Essence, and the Nature of Will",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Reason perceives things as **necessary**, not **contingent**.",
+                        "This **necessity** is the **eternal nature of God**.",
+                        "Therefore, reason views things under a **form of eternity**.",
+                        "The bases of reason are **notions** common to all things, conceived **without relation to time**.",
+                        "Every idea of an existing particular thing necessarily involves the **eternal and infinite essence of God**.",
+                        "Particular things cannot be conceived without **God**.",
+                        "Their ideas involve the **conception of God's attributes**, which is His **eternal and infinite essence**.",
+                        "Existence here does not mean duration but the **very nature of existence**.",
+                        "This nature is assigned to things because they follow from the **eternal necessity of God's nature**.",
+                        "The force by which each particular thing perseveres in existing follows from **God's eternal necessity**.",
+                        "The knowledge of **God's eternal and infinite essence** that every idea involves is **adequate and perfect**.",
+                        "This knowledge is common to all, equally in the part and in the whole, thus making it **adequate**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The **human mind** has an **adequate knowledge** of **God's eternal and infinite essence**.",
+                        "This is derived from its ideas of itself, its body, and external bodies.",
+                        "The **infinite essence** and **eternity of God** are known to all.",
+                        "Many things can be adequately known from this knowledge, leading to a **third kind of knowledge**.",
+                        "Men have a less clear knowledge of God than of general notions because they cannot **imagine God as bodies**.",
+                        "They associate God's name with **images of things they see**, leading to errors.",
+                        "Errors arise from not applying **names to things rightly** or misinterpreting meanings.",
+                        "The mind has **no absolute or free will**.",
+                        "The mind is determined to wish by a cause, which is determined by another cause, extending to **infinity**.",
+                        "There is **no absolute faculty of understanding, desiring, loving** in the mind.",
+                        "These faculties are abstract terms from particular things.",
+                        "The will to affirm and decide is a **faculty**, not a desire.",
+                        "It is the faculty by which the mind affirms or denies what is true or false."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Mind and Body: Activity, Passivity, and Interplay",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A mind with **adequate ideas** is **active**.",
+                        "A mind with **inadequate ideas** is **passive**.",
+                        "The **mind's activity** depends on its **adequate ideas**.",
+                        "The **mind's passivity** depends on its **inadequate ideas**.",
+                        "The **body cannot make the mind think**.",
+                        "The **mind cannot make the body move**.",
+                        "All **thinking** comes from **God** as a **thinking thing**.",
+                        "What influences the mind is a **mode of thought**, not the **body**.",
+                        "All **body motion** comes from **another body**.",
+                        "Everything in a body comes from **God** as an **extended mode**.",
+                        "It **cannot originate from the mind**.",
+                        "Mind and body are **one thing** with two attributes: **thought** and **extension**.",
+                        "Their **activity and passivity** are the **same**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "People often believe the **mind controls the body**.",
+                        "However, no one knows the **limits of the body's power** by **natural laws alone**.",
+                        "**Animals** and **somnambulists** show the body can do **many wonders** without the mind.",
+                        "People mistakenly credit the mind for physical actions when they **don't know the true cause**.",
+                        "If the **mind is unfit for thinking**, the **body is inert**.",
+                        "If the **body is inactive**, the **mind is unfit for thinking**.",
+                        "The **mind's fitness** changes with the **body's fitness** to be stimulated.",
+                        "People believe they are free because they are **conscious of actions** but **unconscious of their causes**.",
+                        "Mental decisions are **appetites** that change with the **body's state**.",
+                        "A **mental decision** and a **bodily appetite** are the **same thing**, seen differently."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Emotions of Love, Hate, and Their Effects",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "If you imagine that the object of your **love is destroyed**, you will feel **pain**.",
+                        "Conversely, if you imagine it is **preserved**, you will feel **pleasure**.",
+                        "When you imagine that the object of your **hate is destroyed**, you will feel **pleasure**.",
+                        "If you conceive that the object of your **love** experiences **pleasure or pain**, you will feel that same **pleasure or pain** yourself.",
+                        "This emotional response is **greater or lesser** depending on the intensity of the emotion in the loved object.",
+                        "If something brings **pleasure** to an object of your love, you will feel **love towards that thing**.",
+                        "If it brings **pain**, you will feel **hatred**.",
+                        "Pity is defined as **pain arising from another's hurt**.",
+                        "Approval is the **love** felt towards someone who benefits another, and **indignation** is the **hatred** for someone who harms another.",
+                        "You feel **pity** not only for loved things but also for things resembling yourself, even if previously unregarded."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "If you imagine an object of your **hatred is painfully affected**, you will feel **pleasure**.",
+                        "If it is **pleasurably affected**, you will feel **pain**.",
+                        "These emotions vary with the intensity of the opposite emotion in the hated object.",
+                        "Hatred, especially envy, makes a person **rejoice in another's hurt** and **grieve at their advantage**.",
+                        "We strive to **affirm** things that bring us or our loved ones **pleasure** and to **negative** things that cause **pain**.",
+                        "We also try to **affirm** things that bring **pain** to what we hate and **deny** what brings it **pleasure**.",
+                        "It is possible to **overestimate** oneself or a loved one, or **underestimate** a hated object.",
+                        "Pride is **pleasure** from thinking too highly of oneself, a kind of **madness** where one believes they can achieve anything they conceive.",
+                        "Over-esteem is **pleasure** from thinking too highly of another, while disdain is **pleasure** from thinking too little of another."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Emotions and Their Causes",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A man who **conceives** someone has **injured** him out of **hatred** will seek **retaliation**.",
+                        "He will then **hate** his enemy and try to **injure** them.",
+                        "The **endeavor** to injure someone hated is **Anger**, and to repay injury is **Revenge**.",
+                        "Believing one is loved without cause leads to reciprocal **love**.",
+                        "Reciprocal **love** and desire to **benefit** the lover is **gratitude**.",
+                        "Men often seek **vengeance** more than returning **benefits**.",
+                        "If **hatred** is stronger than love for someone who loves you, one tries to injure them; this is **cruelty**.",
+                        "Giving a benefit from **love** or **honor** causes **pain** if received without **gratitude**.",
+                        "**Hatred** increases when reciprocated but can be destroyed by **love**.",
+                        "**Hatred** overcome by **love** transforms into greater **love**.",
+                        "Joy from destroying something hated comes with some **pain** from seeing something similar to oneself suffer.",
+                        "**Love** or **hatred** is greater for a free entity, seen as the sole cause.",
+                        "People feel more **love** or **hatred** towards each other, believing they are **free**.",
+                        "**Repentance** is **pain** with oneself as the cause, while **self-complacency** is **pleasure** with oneself as the cause."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Wonder** is imagining a unique thing; if by fear, it's **Consternation**; if by love, it's **Devotion**.",
+                        "**Contempt** denies qualities that cause wonder, love, or fear.",
+                        "**Derision** comes from contempt for a hated or feared thing, **Scorn** from contempt of folly.",
+                        "The mind feels **pleasure** regarding its activity, especially when praised by others.",
+                        "It feels **pain** contemplating its weakness, fostered if blamed by others.",
+                        "This pain is **humility**, and pleasure from self-contemplation is **self-love**.",
+                        "Men are naturally **envious**, rejoicing in equals' shortcomings and pained by their virtues.",
+                        "No one envies a non-**equal**.",
+                        "Many kinds of **pleasure**, **pain**, and **desire** exist, reflecting diverse objects.",
+                        "All emotions relate to **desire**, **pleasure**, or **pain**.",
+                        "**Desire** is an individual's nature.",
+                        "**Pleasure** and **pain** are passive states that change one's power to persist.",
+                        "**Pleasure** and **desire** are also attributable when we are **active**.",
+                        "Actions from emotions attributed to the understanding mind are **strength of character**, including **courage** and **highmindedness**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "The Nature and Definitions of Emotions",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **emotions** can be **compounded** in many ways, leading to **numerous variations** that are beyond calculation.",
+                        "Only the **most important** emotions are listed, as enumerating all variations would be more **curious than profitable**.",
+                        "When enjoying something longed for, the body acquires a **new disposition**, which changes how the mind conceives and desires.",
+                        "For example, enjoying food fills the stomach, causing the body to dispose of it differently.",
+                        "This **new disposition** can lead to **repugnance** for the food previously desired, a feeling called **satiety or weariness**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Desire** is defined as the **actual essence of man**, determined by a **modification of itself** for a particular activity.",
+                        "This definition encompasses **appetite, will, desire, or impulse**, which vary by individual disposition.",
+                        "**Pleasure** is the **transition** from a lesser to a **greater perfection**, and **pain** is the transition from a greater to a **lesser perfection**.",
+                        "Perfection itself is not pleasure; if one were born with perfect contentment, the emotion of pleasure would not exist.",
+                        "Pain is not merely the absence of greater perfection, but an **activity of transition** that **lessens or constrains** one's power of action.",
+                        "**Wonder** is the mind's conception of something that causes it to **pause**, as the concept has **no connection** to other existing concepts.",
+                        "The mind will remain fixated on the **new image** until other factors prompt it to consider something else."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Human Bondage and the Nature of Perfection, Good, and Evil",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Human infirmity in moderating emotions is called **bondage**.",
+                        "A person becomes a **prey to emotions** and not their own master.",
+                        "They often follow what is **worse**, even when seeing what is better.",
+                        "This happens because **perfection and imperfection**, and **good and evil** are misunderstood.",
+                        "A work is **perfect** if it reaches its author's **intention and aim**.",
+                        "If the author's aim is unknown, the work cannot be judged.",
+                        "Men form **general ideas** and call **perfect** what aligns with their type.",
+                        "Natural phenomena are also judged based on these human **general ideas**.",
+                        "People believe Nature has these types in view, and if something does not conform, they say Nature has **blundered** or left work **incomplete**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Nature does not work with an **end in view**.",
+                        "God or Nature acts by the same **necessity** as that by which it exists.",
+                        "A **final cause** is merely **human desire** considered as the origin of something.",
+                        "Men are **ignorant** of the causes determining their desires.",
+                        "Claims about Nature's imperfections are based on **prejudices**, not true knowledge.",
+                        "**Perfection and imperfection** are actually **modes of thinking**, comparing individuals of the same species.",
+                        "**Reality and perfection** mean the same thing, referring all individual things to the category of **Being**.",
+                        "Things with more **being or reality** are considered more **perfect**.",
+                        "**Good and bad** are also **modes of thinking**, not positive qualities in things themselves.",
+                        "A man passes from lesser to greater **perfection** when his **power of action** is increased."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "The Nature of Virtue and Self-Preservation",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Every person, by their nature, **desires** what is useful and **avoids** what is harmful.",
+                        "The more someone tries to **preserve their being**, the more **virtuous** they are.",
+                        "Virtue is **human power**, defined by the effort to **persist** in one's own being.",
+                        "No one neglects their good unless **external causes** overcome them.",
+                        "People do not naturally shrink from food or kill themselves unless **compelled** by outside forces.",
+                        "Such compulsion can be direct force, escaping a **greater evil**, or external causes **disordering** imagination and body.",
+                        "It is impossible for a person to naturally seek non-existence."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "No one desires **blessedness** or to **act rightly** without also wishing to **exist**.",
+                        "The desire for right living is the **essence of man**, which is the **endeavor to preserve being**.",
+                        "No virtue can exist **prior** to the effort of **self-preservation**.",
+                        "This effort is the **first and only foundation of virtue**.",
+                        "Acting from **inadequate ideas** is not acting virtuously; acting from **understanding** is.",
+                        "To act virtuously means to act in accordance with **reason** and **self-interest**.",
+                        "No one wishes to preserve their being for **anything else's sake**.",
+                        "What we endeavor to do in obedience to reason is to **understand**.",
+                        "The mind considers useful only what **conduces to understanding**.",
+                        "We only know things as good or evil if they **promote or hinder understanding**.",
+                        "The mind's highest good and virtue is the **knowledge of God**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Emotions, Reason, and Human Conduct",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Thinking only of **gain** or **money** is not seen as madness, because these people are often **harmful** and seen as worthy of **hatred**.",
+                        "However, **Avarice**, **Ambition**, and **Lust** are types of **madness**, even if not called diseases.",
+                        "Hatred is **never** good; hating someone means trying to **destroy** them, which is a **bad** act.",
+                        "Envy, derision, contempt, anger, and revenge, which come from hatred, are also **bad**.",
+                        "Any desire driven by hatred is **base** and **unjust** in a State.",
+                        "Laughter and joking are forms of **pleasure** and are **good** if not too much.",
+                        "People should enjoy themselves with **moderate** and **pleasant** food, drink, perfumes, plants, clothes, music, sports, and theaters, without harming others.",
+                        "The body needs **varied nourishment** for all parts to work well, helping the mind understand many things at **once**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "A person using **reason** will try to give **love** or **kindness** for hatred, anger, or contempt, because hatred grows when returned but can end with love.",
+                        "Those who try to **conquer hatred with love** fight with joy and confidence.",
+                        "Hope and fear are not good because they need **pain** to exist.",
+                        "These feelings show **defective knowledge** and weak mental power.",
+                        "More reason means less dependence on hope and fear, aiming to control **fortune** with wisdom.",
+                        "Over-esteem and disparagement are always **bad** feelings because they go against reason.",
+                        "Pity is **bad** and **useless** for someone led by reason, as it is a pain; actions to help should come from reason, not emotion.",
+                        "Understanding **nature's necessity** means not feeling hatred, derision, contempt, or pity.",
+                        "Approval aligns with reason, coming from **love** for good deeds.",
+                        "Self-approval, especially from **reason** and seeing one's true power, is the **highest** goal.",
+                        "Humility and repentance are not virtues; they are forms of **pain** or **infirmity**.",
+                        "For those without reason, humility, repentance, hope, and fear can be helpful, stopping worse acts and possibly leading to **reason**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Notes on Goodwill, Ingratitude, Freedom, and Reason",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Goodwill among men driven by **blind desire** is often a **bargaining** or **enticement**, not pure goodwill.",
+                        "Ingratitude is not an emotion but is **base** as it shows **excessive hatred, anger, pride, or avarice**.",
+                        "A person who does not know how to return benefits due to **folly** is not ungrateful.",
+                        "Similarly, one who is not swayed by a courtesan's gifts or a thief's bribes shows a **constant mind**.",
+                        "Such a person cannot be corrupted to their own or the **general hurt**.",
+                        "The **free man** never acts **fraudulently**, but always in **good faith**.",
+                        "If breaking faith would save a man from **present death**, his plan of **self-preservation** might persuade him to deceive.",
+                        "However, if reason persuaded him to act thus, it would persuade all men to do so.",
+                        "This would mean reason would persuade men not to **agree in good faith** to unite forces or have **common laws**, which is **absurd**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "A man guided by **reason** is **more free** in a **State** with a general system of law than in **solitude**.",
+                        "Such a man does not obey through **fear**.",
+                        "He desires to order his life according to the **general good** and the **laws of his country**.",
+                        "Therefore, to enjoy greater freedom, the **free man** desires **general rights of citizenship**.",
+                        "These observations on true freedom relate to **strength**, specifically **courage** and **nobility of character**.",
+                        "A strong person **hates no man**, is **angry with no man**, **envies no man**, is **indignant with no man**, **despises no man**, and is least of all **proud**.",
+                        "These points are proven by overcoming **hatred with love** and desiring for others the good one seeks for oneself.",
+                        "The strong man recognizes that all things follow from the **necessity of the divine nature**.",
+                        "What seems **hurtful, evil, impious, horrible, unjust, and base** appears so due to a **disordered, fragmentary, and confused view of the universe**.",
+                        "He strives to conceive things as they truly are and remove hindrances to **true knowledge**, such as **hatred, anger, envy, derision, and pride**.",
+                        "He endeavors to do good and go on his way **rejoicing**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "The Power of the Mind Over Emotions and the Eternal Love of God",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Those who **criticize** the misuse of **honor** often **desire** it most.",
+                        "This is common in **unfortunate** and **spiritually weak** people.",
+                        "A **miserly poor person** talks about the **vices of the rich**, showing **intolerance** of their **own poverty**.",
+                        "Those rejected by a woman focus on **inconstancy**, but forget it when **accepted**.",
+                        "Someone controlling emotions through **love of freedom** seeks **knowledge of virtues**.",
+                        "This brings **joy** and prevents dwelling on **men's faults**.",
+                        "Observing these precepts allows one to **direct actions** by **reason**.",
+                        "A **mental image** referred to **more objects** is more frequent and vivid.",
+                        "This is because more causes **arouse** it, and the mind **contemplates them simultaneously**.",
+                        "Mental images are **easily associated** with things **clearly understood**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Things **clearly understood** are common properties and are **often aroused**.",
+                        "A **mental image** is more vivid when **associated with more other images**.",
+                        "The **mind can refer** all **bodily modifications** to the **idea of God**.",
+                        "One who **understands himself** and his **emotions loves God**, and this love **increases with understanding**.",
+                        "This **love towards God** holds the **chief place in the mind** as it is fostered by **all bodily modifications**.",
+                        "**God is without passions** and does not **love or hate anyone**.",
+                        "No one can **hate God** because the idea of God is **adequate**, leading to **activity** and no pain.",
+                        "This **love towards God** is constant and **cannot be destroyed** unless the **body is destroyed**.",
+                        "The mind's power over emotions comes from **knowing them** and understanding them **distinctly**.",
+                        "**Spiritual unhealthiness** comes from **excessive love** for **variable things**.",
+                        "**Clear knowledge**, especially of God, influences emotions, making them occupy a **small part of the mind**.",
+                        "This fosters **love towards an immutable and eternal thing**."
+                    ]
+                }
+            ]
+        }
+    ],
+    "chunks": 16
+}

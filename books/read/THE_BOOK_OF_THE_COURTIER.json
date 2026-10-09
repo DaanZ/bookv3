@@ -1,0 +1,615 @@
+{
+    "meta": {
+        "title": "THE BOOK OF THE COURTIER",
+        "author": "COUNT BALDESAR CASTIGLIONE",
+        "category": "Book",
+        "publisher": "CHARLES SCRIBNER'S SONS",
+        "pages": 520,
+        "isbn": "9781420964073",
+        "addedAt": "2026-10-09T01:11:39.405927+00:00",
+        "addedFrom": "ingest"
+    },
+    "parts": [
+        {
+            "title": "The Book of the Courtier: Publication and Translation",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This version of **The Book of the Courtier** by **Count Baldesar Castiglione** was **translated from Italian by Leonard Eckstein Opdycke** and published in **1903** by **Charles Scribner's Sons** in New York.",
+                        "It includes **twelve portraits and fifteen autographs**.",
+                        "The original book was written between **1508 and 1516** and first printed in **April 1528**.",
+                        "Over **140 editions** have since been published, with the first Spanish, French, English, Latin, and German versions appearing between **1534 and 1566**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The translator updated this old book due to its **long-standing esteem** and its **prominent rank in Italian literature**.",
+                        "Previous English versions were either **too antiquated** or **seldom available** to the general reader.",
+                        "Castiglione's work describes the **accomplished Courtier**, capturing the **finest aspirations of his era**.",
+                        "Despite some **gross and violent aspects of life** at the time, the book and **Renaissance art** reveal a **lofty standard of thought and conduct**.",
+                        "The translator aimed for **clarity** and provided **notes** to explain **obscure passages** and reduce the need for **external reference**.",
+                        "The translator thanked **Miss Grace Norton** for encouraging the project and acknowledged **Dr. Luigi Roversi**, **Signor Leopoldo Jung**, **Professor Hastings Crossley**, and **Signor Alessandro Luzio** for their help.",
+                        "The **second issue** of this translation incorporates **corrections**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "The Urbino Court: A Gathering of Wit and Virtue",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In 1507, the **Court of Urbino** was a place of **honourable and pleasant exercises**, both for the body and the mind.",
+                        "After supper, everyone gathered with **Duchess Elisabetta Gonzaga** and her companion, **Emilia Pia**, who was known for her **lively wit** and **judgment**.",
+                        "This assembly was filled with **gentle discussions** and **innocent pleasantries**, creating an **abode of mirth** and strong companionship.",
+                        "The Duchess fostered an atmosphere of **free and honourable interaction** among all, yet her wishes commanded such **reverence** that it also served as a **great check** on behavior.",
+                        "Everyone aimed to please her, finding it the **utmost pleasure**, and was deeply pained to displease her.",
+                        "Her **decorous manners** and **lofty modesty** in all her actions, words, and gestures, even in jest, made her recognized as a **lady of noblest rank**.",
+                        "She **attuned everyone** around her to her own quality, inspiring them to follow her pattern of **beautiful behaviour**.",
+                        "Her rare virtues, including **prudence** and **strength of soul**, were revealed through **adversities** and **calamities**, proving these qualities could exist even in a woman of **singular beauty**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The gentlemen of the court would gather after supper with the **Duchess**, enjoying **pleasant pastimes**, **music**, and **dancing**.",
+                        "Sometimes, **neat questions** were posed or **ingenious games** were devised, allowing company members to express their thoughts to those they admired.",
+                        "Other times, **discussions** arose on various topics, and **witty retorts** were exchanged.",
+                        "The court was filled with **noble talents**, including **Ottaviano Fregoso**, **Federico Fregoso**, **Giuliano de' Medici**, **Pietro Bembo**, and **Count Ludovico da Canossa**, among many other **noble cavaliers**.",
+                        "Even those who didn't reside there constantly, such as **Bernardo Bibbiena** and the **Unico Aretino**, spent much time at the court, drawing **poets**, **musicians**, and other **excellent agreeable men** from across Italy."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Evening Games and the Perfect Courtier",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In Urbino, after the **Pope and his court** departed, **pastimes and diversions** continued, with new games proposed almost **every evening**.",
+                        "The Duchess, Elisabetta Gonzaga, usually let **Emilia** manage these games.",
+                        "Emilia proposed that **everyone suggest a new game**, and the group would choose the best one.",
+                        "Lord Gaspar Pallavicino suggested a game about **love**, where each person would describe the **greatest virtue** and **most excusable fault** they would want in their beloved.",
+                        "The Duchess excused the other ladies from inventing games, noting there were enough men to propose them."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Messer Cesare Gonzaga proposed a game where each person would identify the **kind of folly** they thought they would exhibit if they were to act foolishly, based on their daily actions.",
+                        "This game aimed to help participants **learn their defects** and guard against them.",
+                        "Fra Serafino suggested a game about **why women hate rats but like snakes**, claiming he knew the secret.",
+                        "The Unico Aretino, however, proposed a game to interpret the **meaning of the letter 'S'** worn by the Duchess on her brow, believing it might reveal her secret desire to harm others.",
+                        "Lord Ottaviano Fregoso proposed a game asking what **cause of anger** they would prefer from their beloved, hoping to find sweetness in such anger.",
+                        "Messer Pietro Bembo refined this, asking whether they would prefer their beloved's anger to stem from **her fault or their own**.",
+                        "Messer Federico Fregoso then suggested a game to **portray a perfect Courtier**, detailing all necessary qualities, with others allowed to contradict points they disagreed with."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "The Courtier's Conduct and Qualities",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A true Courtier has **perfect loyalty** and **unconquered courage**, which are often seen in **small things**.",
+                        "Some men show courage publicly due to **shame** or **social pressure**, but truly brave men are ardent even when **unobserved**.",
+                        "The ideal Courtier is **bold** and **stern** in battle, always among the first to fight.",
+                        "Otherwise, he is **gentle**, **modest**, and **reserved**.",
+                        "He should **avoid ostentation** and **impudent self-praise** because these cause hatred.",
+                        "However, acknowledging one's worth when **unrecognized** by the ignorant is acceptable.",
+                        "Fame is a reward for effort, and even ancient authors praised themselves.",
+                        "The Count suggests that **modest self-praise** can be more convincing than praise from others.",
+                        "Avoiding annoyance or envy when praising oneself requires **discretion**.",
+                        "True art in self-praise means speaking so naturally that it seems **unavoidable**.",
+                        "This is unlike boasters who tell **exaggerated stories**, such as one who claimed a spear wound felt like a fly's sting."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Messer Cesare Gonzaga notes that even **Alexander the Great** boasted when he wept for not conquering all worlds.",
+                        "This suggests that **extraordinary men** are pardoned for self-assertion due to their great deeds.",
+                        "The Courtier needs **daring** and **self-confidence**, but must be **modest in speech** to avoid rashness.",
+                        "His physical appearance should be **graceful** and **manly**, not soft or effeminate.",
+                        "He should avoid affectations like curling hair or glossing faces, which are like **wanton women**.",
+                        "The body should be of **moderate height**, well-built, shapely, strong, light, and supple.",
+                        "He needs a **perfect knowledge of weapons** and the ability to wrestle.",
+                        "He must understand quarrels, seize advantages, and show **courage** and **prudence**, fighting only when **honor demands it**.",
+                        "In peacetime, the Courtier should be an **excellent horseman** and excel in **Italian riding**, **French combat arts**, and **Spanish stick-throwing** and **bull-fighting**.",
+                        "He should always act with **good judgment** and **grace**.",
+                        "Other manly exercises include **hunting**, **swimming**, **leaping**, **running**, and **tennis**.",
+                        "He should avoid skills like **somersaults** that suit mountebanks.",
+                        "The Courtier should **diversify occupations** with quieter activities, laughing, jesting, and dancing with **geniality** and **discretion**, always maintaining **grace**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Good Custom and Imitation in Language",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A **good custom** in speech comes from **talented people** with **good judgment** from study and experience.",
+                        "These people **agree** on words recognized by **innate judgment**, not by art or rules.",
+                        "**Figures of speech** are **infringements of grammar rules**, but usage accepts them because they bring **pleasure**.",
+                        "This **good custom** is possible for Romans, Neapolitans, Lombards, and Tuscans alike.",
+                        "**Ease, good order, richness, beautiful sentences, and harmonious periods** are always good in any language.",
+                        "Some words become **antiquated**, while others gain strength, and **usage revives others**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Usage is the **mistress** of both vernacular and Latin.",
+                        "**Ancient speech** means **ancient usage**, and liking it just to speak like the past is silly.",
+                        "Petrarch and Boccaccio's real masters were their **aptitude** and **native judgment**.",
+                        "The summit of excellence can be reached by **diverse roads**.",
+                        "Painters like Leonardo da Vinci and Michelangelo are all **excellent** but **unlike**.",
+                        "Masters should consider pupils' **nature** and guide them towards their **natural inclination**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "The Courtier's Knowledge of Painting and Interrupted Discussion",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A **knowledge of painting** is **fitting** for a **Courtier**.",
+                        "It is **honourable** and **useful**, and was **highly prized** in **older times**.",
+                        "It helps in **judging the merit** of **ancient and modern statues** and **vases**.",
+                        "It also enables one to **appreciate the beauty of living bodies**, both in their **delicacy of face** and **symmetry of all other parts**.",
+                        "This knowledge is a source of **very great pleasure**.",
+                        "Those who **delight in contemplating a woman's beauty** would experience **even greater pleasure** if they could **paint**, because they would **more perfectly appreciate** that beauty.",
+                        "Messer Cesare Gonzaga remarked he is **no painter**, yet he experiences **greater pleasure** looking at a woman than the painter **Apelles** would.",
+                        "The Count explained this pleasure is not derived **wholly from beauty**, but from the **affection** one bears her.",
+                        "He suggested that the **first time** seeing a woman, the pleasure felt is **much less** than afterwards, even if her beauty remains the same.",
+                        "This shows that **affection** contributes more to pleasure than beauty.",
+                        "Messer Cesare countered that **affection is born of beauty**, thus beauty is still the cause of his pleasure.",
+                        "The Count acknowledged that **many other causes** besides beauty, such as **manners** and **knowledge**, also inflame minds, and these can also be considered **beauties**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "A **great trampling of feet** and **loud talking** interrupted the discussion, as **my lord Prefect** arrived with a **numerous and noble company**.",
+                        "He had returned from attending the **pope** and came to **hear the discussion**.",
+                        "He asked everyone to be seated and expressed concern about **interrupting** such a **fine discussion**.",
+                        "Count Ludovico, feeling **weary of speaking**, suggested appointing **someone else** to continue.",
+                        "Magnifico Giuliano insisted that the Count fulfill his promise to explain **how the Courtier must use his good qualities**.",
+                        "My lord Prefect stated that he had arrived **just in time** to hear how the Courtier uses his qualities.",
+                        "The Count attributed the obligation to **Lady Emilia**, who then assigned the task to **Messer Federico Fregoso**.",
+                        "Messer Federico argued that separating the **way**, **manner**, and **time** from the Courtier's good qualities is impossible.",
+                        "He suggested the **Count should continue**, but Lady Emilia told him to **account himself as the Count**.",
+                        "Calmeta proposed postponing the discussion until the next day and spending the remaining time in **some other quiet diversion**.",
+                        "My lady Duchess approved.",
+                        "**Madonna Margarita** and **madonna Costanza Fregosa** danced to the music of **Barletta**.",
+                        "Afterward, my lady Duchess rose, and everyone took their leave to sleep."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Musicality and Conduct for Courtiers of Different Ages",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Keyed instruments are **pleasing** because they produce **perfect consonances** and allow for **musical delight**.",
+                        "The **stringed quartet** is also **sweet** and **exquisite**.",
+                        "The **human voice** adds **ornament** and **grace** to these instruments.",
+                        "Music is best enjoyed in **familiar company**, especially when **ladies are present**.",
+                        "Their presence makes the heart more **sensitive** to the music and **quickens the musician's soul**.",
+                        "It is **unseemly** for an **old man** to play the viol and sing **amorous songs** in front of ladies, as **love** is seen as **ridiculous** in old age."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "One view is that old men should sing and play the viol **in secret** to **drive away painful thoughts** and find **rapture** in music.",
+                        "Someone who **practices harmony** will appreciate music **better**.",
+                        "This is the **pleasure** old men should take in music and dancing; these activities should be given up **before age forces it**.",
+                        "**Older men are more prudent, continent, and wiser**, but they can also be **garrulous, miserly, querulous, and timid**.",
+                        "**Young men are spirited, generous, and frank**, but also **prone to quarrel, voluble, and eager in their pleasures**.",
+                        "**Manhood** is the most **temperate** age.",
+                        "Old men should **guard against self-praise**, use their **prudence and knowledge** from experience, and speak with **grace and humor** to be **good Courtiers**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Judging Others and the Nature of Friendship",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "One should **judge** others not just by their **words and actions**, but also by their **dress and manners**.",
+                        "Messer Federico suggests that **outward appearances** often **reveal inner qualities**.",
+                        "For example, a **frivolous man** might be identified by his **walk and demeanor**.",
+                        "Conversely, someone with a **dull gaze** or **stupid laugh** might be seen as a **simpleton**, even without speaking.",
+                        "Our choice of **friends** also significantly impacts our **reputation**, as people assume friends share similar qualities.",
+                        "Therefore, one should be **careful in forming friendships**, as a friend's **qualities** can reflect on oneself."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Messer Pietro Bembo emphasizes the **importance of choosing like-minded friends**, not only for **reputation** but because **true friends are rare**.",
+                        "He notes that even long-standing friendships can end in **deceit, jealousy, or fickleness**.",
+                        "Based on personal experience, he suggests it's **wise not to trust anyone completely** or **reveal all thoughts**, as human minds have **dark corners**.",
+                        "Federico disagrees, believing that **perfect friendship** is essential for **happiness** and should not be discarded due to the faults of a few.",
+                        "He advises the Courtier to have **one special, sincere friend** and to **treat all others with respect** according to their worth.",
+                        "The Courtier should be **courteous, kind, generous**, and **active in safeguarding friends' honor**, while also **tolerating their natural defects** and **correcting his own**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Rules and Types of Pleasantries",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A **courtier** needs to use **laughter-exciting means** within **bounds**, not like **fools** or **drunken men**.",
+                        "They must **diligently consider** the **limits of derision** and **who** they **ridicule**.",
+                        "**Laughter** is not aroused by **jeering** at the **poor** or a **rascal**.",
+                        "The **rascal** seems to **merit greater punishment** than **ridicule**.",
+                        "The **mind** is not prone to **flout the wretched** unless they **boast of wretchedness**.",
+                        "It's proper to **flout** and **laugh** at **vices** of those **not wretched enough for pity**, **not wicked enough for capital punishment**, and **not so great that their wrath can do much harm**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "There are **three varieties** of **pleasantries**.",
+                        "The first is **long narrative**.",
+                        "The second is a **swift** and **keen single phrase**.",
+                        "The third is **practical joking**, which combines **long narratives**, **short sayings**, and **action**.",
+                        "The **first** kind, **continuous talk**, is like **story-telling**.",
+                        "The **courtier** should **fabricate** as much as he **pleases** without blame.",
+                        "They should **adorn truth** with a **little falsity**.",
+                        "Perfect **grace** and **cleverness** involve **picturing** what they **wish to say** with **words** and **gesture**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Forms of Witticism and Practical Jokes",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A **witticism** with **irony** is suitable for **great men** because it is **dignified** and **sharp**.",
+                        "It can be used in both **jocose** and **serious** matters.",
+                        "Many **ancients**, including **Cato**, **Scipio Africanus the Younger**, and **Socrates**, excelled in this, as did **King Alfonso I of Aragon**.",
+                        "King Alfonso I once gave **precious rings** to a servant while washing his hands.",
+                        "Nearly a year later, when the servant asked for the rings, the king replied, \"Let the **first ones suffice thee**, because **these will do for someone else**.\"",
+                        "This response was **biting**, **clever**, and **dignified**.",
+                        "Another method, similar to irony, describes an **evil thing in polite terms**.",
+                        "The **Great Captain** once said, \"Have no more fear of storm, for **Saint Elmo has appeared**,\" to mean danger had passed."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Witty remarks** can also come from taking something an **interlocutor does not mean**.",
+                        "When **Duke Valentino** took San Leo, the castellan claimed he had \"**heart to take measures for the recovery of San Leo**.\"",
+                        "The Duke replied, \"Trouble yourself no more about the matter, for the **mere loss of it was a measure that rendered its recovery possible**.\"",
+                        "Some sayings involve a **clever person** saying something that seems like **foolishness**, like Messer Camillo Paleotto saying of someone, \"He was such a **fool that he died as soon as he began to grow rich**.\"",
+                        "A **spicy and keen dissimulation** involves pretending not to understand what one does, like the **Marquess Federico of Mantua** with the man complaining about doves.",
+                        "It is also clever when a man is **struck in the same place he first struck**, as when **Alonso Carillo** replied to a lady joking about him being hanged by saying he hoped she would **ask him to be her husband**.",
+                        "**Raphael** similarly replied to cardinals criticizing his painting, stating the figures were red from **shame at the Church being governed by such men**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "The Court Lady: A Challenge to Describe Perfection",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A character suggests that a fair contest would require someone as **eloquent** as Count Ludovico and Messer Federico to describe a **Court Lady** with all the **perfections proper to woman**, just as they described the Courtier.",
+                        "With **truth** as an ally, it could be proven that **women** are as full of **virtue** as **men**.",
+                        "Lady Emilia jokes that **virtue** is **feminine** and **vice** is **masculine**.",
+                        "Messer Niccolo Frisio expresses **pity** for Lord Magnifico, who was **beguiled** by Lady Emilia.",
+                        "The Duchess proposes postponing the matter until the next day, suggesting that a **Court Lady** should be described with all her **perfections** before entering the controversy.",
+                        "Lady Emilia agrees to trust Lord Magnifico to describe the **highest perfection** that can be desired in **woman**, using his **cleverness** and **good sense**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The Magnifico expresses **doubt** about his ability to undertake such an **important enterprise**.",
+                        "He offers to bear the burden on the condition that **everyone may contradict him**.",
+                        "The Duchess hopes his talk will be such that **little may be found to contradict** and urges him to describe a **woman** who will make adversaries **ashamed** to say she is not equal to the Courtier.",
+                        "Messer Federico states he has little left to say about the Courtier.",
+                        "The Duchess suggests they **reconvene early the next day** to address both matters."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "The Necessity and Perfection of Women",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "It is **denied** that **nature does not aim to bring forth women**, as the **human species cannot be preserved without them**.",
+                        "Both **male and female are necessary** for the **union** that **brings forth children**, ensuring the **preservation of humanity** and granting **immortality to mortals** by continuously replacing generations.",
+                        "Therefore, one is **not made more by chance than the other**.",
+                        "If nature were to **always bring forth males**, it would be an **imperfection**, as a **compound of male and female preserves the species**.",
+                        "Just as man is a **more noble compound** of body and soul, the **union of male and female** is essential, as **neither can exist without the other**.",
+                        "Old theologians **attribute both sexes to God**, and **Holy Writ states God formed men male and female in his own likeness**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "It is argued that **man resembles form and woman resembles matter**, and since **form is more perfect than matter**, man is **more perfect than woman**.",
+                        "A philosopher reportedly states that a **woman naturally loves the man who first made love to her**, while a **man hates the woman who was first to give herself to him**, because **woman receives perfection from man** and **man receives imperfection from woman**.",
+                        "Furthermore, it is argued that **every woman desires to be a man** due to a **natural instinct** for **perfection**.",
+                        "However, women desire to be men not for perfection, but for **liberty** and to **escape the dominion men have usurped**.",
+                        "The analogy of matter and form is **not entirely applicable**, as **woman does not receive her being from man**; instead, **both make each other perfect** and **join in procreation**.",
+                        "The reason for a woman's lasting love for her first partner and a man's hatred for his is attributed to **woman's firmness and constancy** versus **man's inconstancy**.",
+                        "This is linked to their **natural temperaments**: the **male's warmth** leads to **lightness and inconstancy**, while the **female's frigidity** leads to **quietness, gravity, and fixed impressions**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "The Worth and Chastity of Women",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In **Spain**, **Queen Isabella** made nearly all **great and famous men** so, including **Consalvo Ferdinando**, the Great Captain.",
+                        "**Admirable ladies** in **Italy** include two **remarkable queens in Naples** and the deceased Queen of Hungary.",
+                        "**Duchess Isabella of Aragon** showed **virtue and worth amid storms of fortune**, like **gold in the fire**.",
+                        "In **Lombardy**, **Isabella, Marchioness of Mantua**, possesses **admirable virtues**.",
+                        "Her sister, **Duchess Beatrice of Milan**, was so capable that one would **never marvel at woman's capacity** again.",
+                        "Their mother, **Eleanora of Aragon, Duchess of Ferrara**, was so virtuous she **deserved to be queen over a much greater realm**.",
+                        "**Queen Isabella of Naples** endured **cruel blows of fortune** with patience and **still showed herself to be a queen** despite poverty.",
+                        "Countless **women of low degree** also displayed **generous daring**, like the **Pisan women**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The speaker **does not wish to select instances** of excellent women in arts, as these are **well known to all**.",
+                        "Women are **not inferior in worth and merits** to men and often **correct men's errors**.",
+                        "Great queens like **Tomyris** or **Cleopatra** may be absent now, but so are **men like Caesar or Alexander**.",
+                        "Lord Gaspar asserts that **men are not more incontinent than women**, and **women's incontinence causes countless evils**.",
+                        "The Magnifico argues that **loose living should be as disgraceful for men as for women**.",
+                        "Men have **arrogated a license** to themselves, deeming **same sins trivial or praiseworthy for them** but **severely punishable for women**.",
+                        "Those who **falsely cast infamy on women** should be severely punished, and every **noble cavalier is bound to defend the truth**, especially against **false accusations of unchastity**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "The Art of Love and Secrecy",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Messer Roberto **objects** again, but the Duchess supports Magnifico's argument, stating that the **Court Lady** he described is on par with, or even superior to, the **Courtier**.",
+                        "She notes that he taught the Lady **how to love**, a topic the gentlemen did not cover for the Courtier.",
+                        "The Unico Aretino suggests it is **fitting to teach women to love**, as they often display **cruelty and ingratitude** towards faithful suitors, instead favoring silly or unworthy men.",
+                        "He proposes that women first learn **how to choose a deserving man** and then how to love him, a skill men already possess.",
+                        "The Unico uses his own experience, claiming he was taught love only by the **divine beauty** of a Lady, needing no other guide.",
+                        "He concludes that the Courtier should be taught **how to make himself loved**, rather than how to love."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Mylady Emilia then asks the Unico to **discourse on making oneself loved**.",
+                        "The Unico believes that ladies' favor is won by **serving and pleasing them**, but that what pleases them must be learned from ladies themselves, as their desires are often **strange and unknown** even to themselves.",
+                        "He asks Mylady Emilia, as a woman, to share this knowledge.",
+                        "Mylady Emilia counters that the Unico's **success with women** proves he already knows how to win their grace, suggesting he should be the one to teach.",
+                        "The Unico warns that a lover should avoid having Mylady Emilia's influence over the lady he pursues, as her influence has made him **hated**, despite his good qualities and sincere love.",
+                        "Mylady Emilia reassures him she would not seek to make him hated, and then states that to be loved, one must **love and be lovable**.",
+                        "She expresses doubt about the Unico's sincerity, suggesting his **many lovers** dilute his love and that his constant complaints are a ploy to **hide real affections** and assure his current lovers of his discretion."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "The Purpose of the Courtier and the Virtues of a Prince",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "My lord Ottaviano, **approving** of the previous discourse, explains that **good things** are of two types: those inherently good, like **temperance** and **fortitude**, and those good for a specific purpose, like **laws** and **riches**.",
+                        "The **perfect Courtier** is good not inherently but for the **end** to which he is directed.",
+                        "Without a good end, the Courtier's **accomplishments** like dancing and singing would be **follies**.",
+                        "The **true aim** of the perfect Courtier is to **win the favor** of his prince to speak **truth** and **oppose wrongdoings**, guiding the prince towards **virtue**.",
+                        "Music and festivals are the **flower**, but leading the prince towards **right** is the **fruit** of Courtiership.",
+                        "A Courtier's actions should ensure his prince is **not deceived** by flatterers and can **distinguish good and evil**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The **greatest faults** of many princes are **ignorance** and **self-esteem**, stemming from **falsehood**.",
+                        "Princes often hear only **flatteries**, leading to **ignorance** of themselves and the world.",
+                        "This ignorance fosters **boundless self-esteem**, making princes reject **advice** and believe ruling is easy, leading them to **hatred of reason and justice**.",
+                        "Such princes are like **colossi** filled with rags, appearing great but internally **unbalanced** and prone to **ruin**.",
+                        "It is monstrous for subjects to be **wiser** than their rulers.",
+                        "Princes who are **ignorant of government** cause immense suffering, yet are not ashamed to rule.",
+                        "The Courtier's gentle qualities can help him win the prince's **goodwill** and **charm** his mind, allowing him to **disclose truth** and instil **virtue**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Maintaining a Prince's Love and Good Governance",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A prince must **love those near him according to their degree**, maintaining **equality in justice and liberty**.",
+                        "A prince also needs to exercise **judicious inequality** in generosity, rewarding, and distributing honors based on **merits**.",
+                        "Merits should always be **exceeded by their rewards**.",
+                        "This approach helps the prince be not only **loved but almost adored** by his subjects.",
+                        "He will **not need to rely on foreigners** for protection, as his own people will guard him for their own benefit.",
+                        "People will **gladly obey laws** if the prince himself **obeys them** and is their **incorruptible minister**.",
+                        "Even if the prince occasionally infringes laws for a good end, his subjects will **still respect his wishes as law**.",
+                        "Subjects' minds should be tempered so that the **good do not seek more than needed** and the **bad cannot**.",
+                        "Excessive riches can lead to ruin, as seen in Italy, which is exposed to foreign nations due to **bad government and great wealth**.",
+                        "It is best to have most citizens **neither very rich nor very poor**.",
+                        "The rich can be insolent, and the poor, dishonest.",
+                        "Those with **moderate fortune** are more powerful and less likely to conspire or sow sedition, making it wholesome to **preserve a mean in all things**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "A prince should use **precautions to prevent subjects from desiring change** of government.",
+                        "Such changes are often driven by **gain, honor, loss, or shame**.",
+                        "Unrest is caused by **hatred and anger** from wrongs due to superiors' avarice, insolence, cruelty, or lust, or by **contempt** for the prince's neglect or unworthiness.",
+                        "These errors are avoided by **winning the people's love and obedience** through benefiting and rewarding the good, and prudently **precluding the bad and seditious from gaining power**.",
+                        "It is easier to prevent sedition than to remove power once acquired.",
+                        "To prevent subjects from error, it is best to **keep them from evil practices**, especially those that spread secretly.",
+                        "The prince should keep his subjects in a **tranquil state**, providing them with blessings of **mind, body, and fortune**.",
+                        "The **blessings of the mind** are the most profitable.",
+                        "If subjects are good and well-directed, their prince is a **great lord** with true and great dominion."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "The Nature of Beauty, Love, and Courtly Conduct",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Beauty **springs from God**, with goodness as its **center**, so there can be **no beauty without goodness**.",
+                        "A wicked soul rarely lives in a beautiful body, as outward beauty is a sign of **inward goodness**.",
+                        "Ugly people are **wicked**, and beautiful people are **good**, with beauty being the **pleasant face of good** and ugliness the **sad face of evil**.",
+                        "Good and useful things possess a **charm of beauty**, like the **well-ordered fabric of the world** or the **skillfully composed** bodies of humans and animals.",
+                        "Even in art, things necessary for use also have **comeliness** and **beauty**.",
+                        "Beauty does not make women **proud or cruel**; men's **immoderate appetites** cause the enmities attributed to beautiful women."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Messer Cesare suggests beautiful women are **more chaste** as they are often wooed but refuse.",
+                        "A Courtier must use **reason** when seeing a beautiful woman to arm his heart and shut out sense and appetite.",
+                        "If desire remains, the Courtier must shun **vulgar love** and seek **divine love**.",
+                        "Beauty is an incorporeal, heavenly beam, not from the body, and is enjoyed through the **sense of vision**, not touch.",
+                        "The Courtier should enjoy the lady's splendor and grace with his eyes and her voice with his hearing, feeding his soul on these senses that are **ministers of reason**.",
+                        "He must love her **mind's beauty** as much as her body's, leading her to **modesty, temperance, and chastity**.",
+                        "A kiss is the **union of body and soul**, opening a passage between souls to make them mingle."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Isabella d'Este's Compassion and Ottaviano Fregoso's Public Service",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "In **1520**, Isabella d'Este, **Dowager Marchioness of Mantua**, entrusted **Bibbiena** with the task of gently informing **Castiglione** about the sudden death of his young wife.",
+                        "Bibbiena recounted that they delivered the **sad news** as best they could, and all present **wept together** for some time."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Ottaviano Fregoso**, who died in **1524**, hailed from a noble Genoese family, notable for providing several **doges** to the Republic.",
+                        "He served in his uncle's court at Urbino, providing **military services** during conflicts with Cesare Borgia, and was rewarded with the **lordship of Santa Agata**.",
+                        "Fregoso commanded **papal forces** and later, in **1513**, ended French domination in Genoa, being elected **doge** and ruling beneficently for two years.",
+                        "Despite Castiglione's intercession, he was **treated harshly** after Genoa was captured in **1522** and died in Ischia."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Notes on The Courtier's First and Second Books",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A **grotesque** was an **ornament** with human figures ending in scrolls or foliage, combined with **animal forms** and **impossible flowers**.",
+                        "This style was used as early as **1502**.",
+                        "**Zeuxis**, a Greek painter, was known for **sensuous beauty** and **accurate imitation of nature**.",
+                        "His painting of **Helen of Troy** inspired the maxim, \"**Art must perfect Nature**.\"",
+                        "The **Marquesses Febus** and **Gerardino di Ceva** had a **poor reputation**; Gerardino stabbed himself to avoid punishment, and Febus also died in distress.",
+                        "**Collo Vincenzio Calmeta** was a **courtly poet** and **prose writer** whose poetry is considered **mediocre** despite its **esteem**.",
+                        "**Orazio Florido** was **tortured** by **Leo X** but remained **faithful to his master**.",
+                        "**Margarita Gonzaga** was an ornament of the Urbino court, known for her **beauty**, **wit**, and **gay disposition**.",
+                        "The **dana abassa** was a Spanish dance with **sliding steps**.",
+                        "\"**Complexion**\" refers to **temperament** or **constitution**, not skin color.",
+                        "**Duke Filippo Maria Visconti** was **ugly**, sensitive, and mistrusted his generals.",
+                        "He read **Dante**, **Petrarch**, and **French romances**.",
+                        "**Duke Borso d'Este** was **kind** and **just**, adored by the Ferrarese, and **patronized arts** and **letters**.",
+                        "His rule was remembered as a **golden age**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Niccol\u00f2 Piccinino** was a renowned soldier and friend to **Duke Federico of Urbino**, known for his **rough wit**.",
+                        "Machiavelli noted the **corruption prevalent in Italy**.",
+                        "**Brawls** were animated figure dances of Spanish origin.",
+                        "The **viol** was a generic name for bowed instruments preceding the violin, with a **penetrating tone**.",
+                        "**Pythagoreans** believed intervals between heavenly bodies were determined by **musical harmony**, creating the \"**music of the spheres**\" which was inaudible to humans.",
+                        "Renaissance thinkers delighted in wit, praising things like flies and baldness.",
+                        "**Titus Manlius** executed his son for engaging in single combat against orders.",
+                        "**Darius III's** sword story predicted the transfer of the **Persian empire**.",
+                        "**Giacopo Sannazaro** excelled in Latin and Greek, and his work **L'Arcadia** is said to have originated the idea of **Greek Arcadia** as a home for pastoral poetry.",
+                        "He wrote **anti-Borgian epigrams** that contributed to the legend of Lucrezia's crimes.",
+                        "A **motet** is a piece of church music set to Latin words.",
+                        "**Josquin des Prez** is considered the \"**father of harmony**\" and was active when music printing began.",
+                        "Contemporary evidence confirms the **occasional grossness of table manners** of the period.",
+                        "**Paolo Niccol\u00f2 Vernia** was known for his wit."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Notes on Historical Figures and Terms",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Castiglione** wrote to his mother about going to Our Lady of **Loreto** to fulfill a vow.",
+                        "Loreto is a **small hill town** with a **pilgrimage shrine** of the Sacred House, believed to be the **Virgin's dwelling**.",
+                        "This house was reportedly transported by angels.",
+                        "**Acquapendente** is a town north-west of Rome.",
+                        "**Monsignor of San Pietro ad Vincula** was Cardinal Galeotto della Rovere.",
+                        "**Monsignor of Aragon** was Cardinal Ludovico of Aragon.",
+                        "**The Banchi** was a Roman street with papal Curia offices.",
+                        "**The Chancery** served as public offices and Cardinal Galeotto della Rovere's residence.",
+                        "**San Celso** was a street and church near the Banks.",
+                        "The **knavish student** was likely Caio Caloria Ponzio.",
+                        "The only belfry in Padua matching the description is **San Giacomo**.",
+                        "**Gonnella** refers to a famous jester of the d'Este family.",
+                        "The next buffoon mentioned was probably **Ludovico Meliolo**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The word **calunnia** means a **malicious accusation** without truth.",
+                        "The **queen mentioned** is Isabella the Catholic.",
+                        "The **Countess of Castagnet** was Brazaida de Almada, who attended Queen Isabella.",
+                        "Her husband participated in the **conquest of Granada**.",
+                        "One legend says **Orpheus's grief** led Thracian women to tear him apart.",
+                        "**Braccesque leave** means to dismiss someone with blows, from captain Braccio Fortebracci.",
+                        "**Castiglione** uses **virtu** as \"manliness\" or \"worth,\" also as our \"virtue.\"",
+                        "To **Machiavelli**, **virt\u00f9** meant strength, courage, tenacity, and cunning to achieve goals."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Notes 461-466: Charles V, Federico Gonzaga, and Courtly Debates",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **Castiglione** passage is **consistent** with an earlier text where **Castiglione** pretends to have been **absent in England** during the **Courtier dialogues**.",
+                        "An older **MS. version** states that \"as we are told by our friend Castiglione, who has just **returned from England**,\".",
+                        "This aligns with the **fact** mentioned in **note 23**.",
+                        "**Don Carlos**, who later became **Emperor Charles V**, was born in 1500 and died in 1558.",
+                        "He was the son of **Emperor Maximilian's son Philip of Austria** and **Juana**, daughter of **Ferdinand and Isabella the Catholic**.",
+                        "Born in the **Low Countries**, he was educated partly by the future **pope Adrian VI**.",
+                        "He showed **less taste for study** than for **military exercises** and did not know **Spanish** when he became king in **1516**.",
+                        "Through his grandmother, **Mary of Burgundy**, he held the **Netherlands**.",
+                        "As a representative of the **House of Aragon**, he was king of **Naples and Sicily**.",
+                        "After his **grandfather Maximilian's death** in 1519, he inherited **Austria** and was chosen **Emperor**.",
+                        "He achieved a **vaster dominion** than any in Europe since **Charlemagne**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "An older **MS. version** says **messer Bernardo Bibbiena** believed no one present, except him, had seen **Don Carlos**.",
+                        "Bibbiena added that Carlos, having recently lost his father, **King Don Philip**, showed **courage and wisdom** before his **tenth year**.",
+                        "Bibbiena thought Carlos could rule all his **hereditary possessions** and that the **Empire of Christendom** would **grow in power and dignity** under him.",
+                        "**Federico Gonzaga**, the first **Duke of Mantua**, was born in 1500 and died in 1540.",
+                        "He was the son of **Marquess Gianfrancesco Gonzaga** and **Isabella d'Este**.",
+                        "At ten, he was a **hostage-guest** to **Julius II** in **Rome**, where he was treated well.",
+                        "**Raphael** included the boy's face in **Vatican frescoes** and later painted his portrait.",
+                        "After becoming marquess in **1519**, he fought for **Leo X** against the **French**.",
+                        "In 1527, he joined the **league of Italian princes** against **Charles V**, but in 1529, he switched to the **Emperor's side** and was made **Duke of Mantua**.",
+                        "In 1531, he married **Margarita Paleologus**, and both **Giulio Romano** and **Benvenuto Cellini** worked for him.",
+                        "The lines mentioned were written after **Ottaviano Fregoso's election as Doge of Genoa**."
+                    ]
+                }
+            ]
+        }
+    ],
+    "chunks": 21
+}
