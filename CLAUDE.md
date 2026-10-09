@@ -357,8 +357,9 @@ descriptions let the model call strategy books Yellow and the Stoics Yellow; it 
 grades conservatively (most non-fiction is 4, 5 or 6; innovation and self-improvement are
 5, virtue and discipline 4; 7 and 8 only when the book itself integrates worldviews or
 argues the unity of life). Grades are decimals, 3.0 to 8.0, so a progression inside a
-level shows (5.6 is Orange well on the way to Green); the pill rounds to the nearest
-level and keeps the lower one at exactly x.5 (`nearest_level`). Each book is graded three
+level shows (5.6 is Orange well on the way to Green); the pill shows the whole number
+(`level_of`), so 5.6 is StriveDrive. It rounded to the nearest level at first, which
+showed books the grader called "Green reaching toward Yellow" as Yellow. Each book is graded three
 times on gpt-4o-mini, and `combine` averages the runs unless one is more than 0.5 from
 the other two, which is dropped: single runs moved by up to a whole level. A new book is graded as the last step of ingest (`api/jobs.py`, and `prep.py`) by the
 same `grade_and_save`, so it arrives with its pill; a failure there leaves it ungraded,

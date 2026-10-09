@@ -26,7 +26,7 @@ export default function SpiralPill({ spiral, onAccent = false }) {
   if (!spiral) return null;
   return (
     <span
-      // The pill shows the nearest whole level; the decimal grade is kept for the
+      // The pill shows the whole level the grade sits in; the decimal grade is kept for the
       // progression from one book to the next and is in the hover text.
       title={`Spiral Dynamics ${spiral.score ?? spiral.level}: level ${spiral.level}, ${spiral.name}, ${spiral.meme} (${spiral.theme}). ${spiral.reason}`}
       style={{

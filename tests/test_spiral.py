@@ -26,19 +26,17 @@ class SpiralStore(unittest.TestCase):
                          {"score": 5.0, "level": 5, "name": "Orange", "meme": "StriveDrive",
                           "theme": "achievement", "reason": "Results through focus."})
 
-    def test_a_decimal_shows_as_the_nearest_level(self):
+    def test_a_decimal_shows_as_its_whole_level(self):
         spiral.save("leaning", {"level": 5.6, "reason": ""})
-        spiral.save("half", {"level": 4.5, "reason": ""})
         spiral.save("low", {"level": 6.4, "reason": ""})
-        self.assertEqual((spiral.badge("leaning")["level"], spiral.badge("leaning")["name"]), (6, "Green"))
+        self.assertEqual((spiral.badge("leaning")["level"], spiral.badge("leaning")["meme"]), (5, "StriveDrive"))
         self.assertEqual(spiral.badge("leaning")["score"], 5.6)
-        self.assertEqual(spiral.badge("half")["level"], 4)
         self.assertEqual(spiral.badge("low")["level"], 6)
 
-    def test_exactly_half_keeps_the_lower_level(self):
-        for score, level in [(5.5, 5), (7.5, 7), (5.6, 6), (5.4, 5), (5.499999999999999, 5),
-                             (5.500000000000001, 5), (3.0, 3), (8.0, 8)]:
-            self.assertEqual(spiral.nearest_level(score), level, score)
+    def test_the_tenths_never_reach_the_next_level(self):
+        for score, level in [(5.9, 5), (5.5, 5), (5.0, 5), (6.0, 6), (5.999999999999999, 6),
+                             (6.000000000000001, 6), (3.0, 3), (7.9, 7), (8.0, 8)]:
+            self.assertEqual(spiral.level_of(score), level, score)
 
     def test_a_level_outside_three_to_eight_is_not_shown(self):
         spiral.save("odd", {"level": 2.9, "reason": ""})

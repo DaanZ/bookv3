@@ -12,8 +12,9 @@ import { SPIRAL_DOTS, SPIRAL_MEMES } from './SpiralPill';
 
 const MONO = "'IBM Plex Mono', monospace";
 
-// The level a grade shows as, as the pill shows it: the lower one at exactly x.5.
-const levelOf = (score) => Math.ceil(Math.round(score * 10) / 10 - 0.5);
+// The level a grade shows as, as the pill shows it (api/spiral.py `level_of`): its whole
+// number. Taken in tenths first, since 6.0 can arrive as 5.999999999999999.
+const levelOf = (score) => Math.floor(Math.round(score * 10) / 10);
 const tenths = (score) => Math.round(score * 10);
 
 /**

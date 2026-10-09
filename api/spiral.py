@@ -4,8 +4,9 @@ Spiral Dynamics (Graves, Beck and Cowan) orders value systems as levels, each na
 colour. A grade is a decimal, 3.0 to 8.0: the whole number is the level that carries the
 book, the tenths how far it reaches toward the next, so 5.6 is Orange well on the way to
 Green and a progression from one book to the next can be seen inside a level. The pill
-rounds it to the nearest level (5.6 shows as 6, Green), and a book at exactly x.5 keeps the
-lower one (5.5 stays 5, Orange). A book is graded on the one it speaks from and asks its reader to take up, not on
+shows the whole number, the level that carries the book, so 5.6 shows as 5, Orange: it
+rounded to the nearest level at first, and that showed a book the grader had called
+"Orange on the way to Green" as Green. A book is graded on the one it speaks from and asks its reader to take up, not on
 its subject: a business book can be Orange (win, optimise) or Green (people before
 profit), and a book about history can be written from any of them. Levels 1 and 2 (Beige
 survival, Purple tribe) are left out: nothing on a reading shelf argues from them.
@@ -48,22 +49,21 @@ def load() -> dict:
     return data if isinstance(data, dict) else {}
 
 
-def nearest_level(score: float) -> int:
-    """The level a score shows as: the nearest one, and the lower one at exactly x.5. A book
-    halfway between two levels has not yet reached the next, so 5.5 stays 5, Orange, and
-    5.6 shows as 6. Compared in tenths, since 5.5 may arrive as 5.499999999999999 or
-    5.500000000000001 after averaging, and Python's round() would send 4.5 down but 5.5 up."""
-    return int(math.ceil(round(score * 10) / 10 - 0.5))
+def level_of(score: float) -> int:
+    """The level a score shows as: its whole number, the level that carries the book; the
+    tenths are only how far it reaches toward the next. 5.9 is still Orange. Taken in
+    tenths first, since an average can arrive as 5.999999999999999 for 6.0."""
+    return int(math.floor(round(score * 10) / 10))
 
 
 def badge(key: str, grades: dict | None = None) -> dict | None:
     """What the shelf sends for one book: {"score", "level", "name", "meme", "theme", "reason"},
-    `score` the decimal grade and `level` the nearest whole level it shows as; or None."""
+    `score` the decimal grade and `level` the whole level it shows as; or None."""
     grade = (load() if grades is None else grades).get(key)
     score = grade.get("level") if isinstance(grade, dict) else None
     if isinstance(score, bool) or not isinstance(score, (int, float)) or not 3 <= score <= 8:
         return None
-    level = nearest_level(score)
+    level = level_of(score)
     name, theme = LEVELS[level]
     return {"score": round(float(score), 1), "level": level, "name": name, "meme": MEMES[level],
             "theme": theme, "reason": grade.get("reason", "")}
