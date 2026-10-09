@@ -1,4 +1,3 @@
-import math
 import os
 import shutil
 from datetime import datetime, timezone
@@ -6,6 +5,7 @@ from datetime import datetime, timezone
 from pypdf.errors import PdfStreamError
 
 from chunks import get_page_chunks, highlight_chunk
+from util.split import default_parts
 from fragments import read_book_pages
 from meta import get_book_meta, UnreadableCharactersError
 from util.files import json_write_file, sanitize_filename
@@ -17,7 +17,7 @@ def summarize_book(pdf_path, output_folder):
         print(f"Processing: {pdf_path}")
         # Read book pages
         pages = read_book_pages(pdf_path)
-        amount_chunks = int(math.ceil(len(pages) / 25))
+        amount_chunks = default_parts(len(pages))
         page_chunks = get_page_chunks(pages, amount_chunks)
         print(f"Split book into {len(page_chunks)} chunks.")
 

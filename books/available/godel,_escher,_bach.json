@@ -1,0 +1,539 @@
+{
+    "meta": {
+        "title": "godel, escher, bach",
+        "author": "an eternal golden braid (1999)",
+        "category": "Metamathematics",
+        "publisher": "Basic Books",
+        "pages": 821,
+        "isbn": "9780465026562",
+        "addedAt": "2026-10-09T06:37:30.402627+00:00",
+        "addedFrom": "ingest"
+    },
+    "parts": [
+        {
+            "title": "Strange Loops, Meaning, and GEB's Evolution",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "Inanimate matter can create **animate beings** through **strange loops**, which are **swirly, twisty, vortex-like patterns**.",
+                        "M.C. Escher's art shows these **strange loops**, and the **inspiration** for this idea came from **Kurt G\u00f6del's incompleteness theorem**.",
+                        "**G\u00f6del's strange loop** lets mathematical systems **\"perceive themselves\"** and become **\"self-aware\"** from **meaningless symbols**.",
+                        "**Meaning** arises when patterns **accurately track** things in the world.",
+                        "The author believes **complex self-mirroring patterns** in brains create **strange loops of consciousness**.",
+                        "**Strange loops** are the mark of a **self**, connecting inanimate to animate.",
+                        "A **\"twisted loop of selfhood\"** in a brain has **causal power**.",
+                        "An **\"I\"** forms when brain patterns mirror themselves, like a **TV camera pointed at a TV screen**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The dialogue between the **Author** and **God** became the **\"Six-part Ricercar\"** in **GEB**.",
+                        "Translating **GEB** into other languages offered a chance to address the **sexist sin** of the original.",
+                        "Translations faced challenges due to **wordplay** and **\"structural puns\"**.",
+                        "The author spent a year annotating **GEB** for translators.",
+                        "A key challenge was translating **\"Mr. Tortoise\"** into **French** because the noun **tortue** is feminine.",
+                        "The author **unthinkingly** assumed the **Tortoise** was male, showing how **sexism** can subtly pervade thinking.",
+                        "**Jacqueline Henry** and **Bob French** changed the **Tortoise's sex** to **female**, resulting in **\"Madame Tortue\"**.",
+                        "This felt faithful to **Carroll's** sexually neutral **tortoise**, and **Italian** translators followed suit."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "From Formal Systems to Paradoxes: A Journey of Thought",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "This book was conceived over nearly **twenty years**, starting when the author was **thirteen years** old.",
+                        "An early fascination was taking **three 3's** and operating on **3 with itself**.",
+                        "The author's **parents** were **pillars of support**, **guided**, **inspired**, **encouraged**, and **sustained** him.",
+                        "This book is **dedicated** to them.",
+                        "Friends Robert Boeninger and Peter Jones helped **mold ways of thought**, and Charles Brenner taught programming.",
+                        "**Ernest Nagel** was a **long-time friend** and **mentor**.",
+                        "Scott Kim exerted a **gigantic influence** through his **art**, **music**, and **new perspectives**.",
+                        "Don Byrd knew the book **forwards and backwards** and provided **good ideas**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "In the **nineteenth century**, logicians codified **deductive reasoning** patterns.",
+                        "**Gottlob Frege**, **Giuseppe Peano**, and **David Hilbert** worked to clarify the meaning of \"**proof**\".",
+                        "**Georg Cantor** developed **set theory**, introducing **different types of infinities**.",
+                        "This **powerful and beautiful** theory led to **set-theoretical paradoxes** which were **disturbing**.",
+                        "The **most famous paradox** is **Russell's paradox**, concerning whether a **set contains itself**.",
+                        "The paradox arises when considering \"R: the set of all run-of-the-mill sets.\"",
+                        "These paradoxes share a common culprit: **self-reference**, or \"**Strange Loopiness**.\"",
+                        "**Russell and Whitehead's** _Principia Mathematica_ aimed to eliminate these loops using a **theory of types**.",
+                        "This theory created a **hierarchy of sets** but was seen as an \"**overkill**\" that sacrificed **interesting complexity**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Decision Procedures and Number Systems",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A **decision procedure** determines if a string is a **theorem** in a formal system.",
+                        "It is **guaranteed to terminate**.",
+                        "This provides **certitude** for theoremhood, unlike the **MIU-system**.",
+                        "The **pq-system** exemplifies formal systems using 'p', 'q', and **hyphens**.",
+                        "It has an **infinite number of axioms** and one **production rule**.",
+                        "A **decision procedure** for its theorems determines if the lengths of the first two hyphen-groups sum to the third, a property preserved by the rule."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Formal systems can capture **addition** and **multiplication**.",
+                        "The **tq-system** represents multiplication where **X times Y equals Z** by using hyphens.",
+                        "A **composite number** of hyphens for Z means a C-system theorem if **x-ty-qz** is a theorem.",
+                        "A rule stating \"if **Cx** is not a theorem, then **Px** is a theorem\" is flawed.",
+                        "This is because checking for non-theorems is not a **typographical operation**.",
+                        "Formal systems need **explicit typographical rules**.",
+                        "The C-system's non-theorems, which have a **prime number** of hyphens, are **negatively defined**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Contracrostipunctus and the Little Harmonic Labyrinth",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **Contracrostipunctus** illustrates its own themes of **backfirings**, with its design mirroring the events it shows.",
+                        "Each part of the **Contracrostipunctus** is like a copy of **G\u00f6del's Theorem**, using two levels of meaning in number theory.",
+                        "The connection between the **Contracrostipunctus** and **G\u00f6del's Theorem** involves concepts where a **phonograph** acts like an **axiomatic system** and a **record** is like a **string** in that system.",
+                        "For instance, a song title \"I Cannot Be Played on Record Player X\" maps to \"I Cannot Be Derived in Formal System X\", showing their **isomorphism**.",
+                        "**Consistency** means every **theorem** is a **true statement** when interpreted.",
+                        "**Completeness** means every **true statement** in the system's notation is a **theorem**.",
+                        "A system can be **consistent** but **incomplete**, where **symbols** and their **interpretations** do not fully match.",
+                        "The **modified pq-system** is an example, being **consistent** but **incomplete**.",
+                        "To achieve both, one might **tighten the interpretation** or **add new rules**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The Tortoise and Achilles drink **pushing-potion** to enter **Escher's Convex and Concave**, using a **gondola**.",
+                        "**Escher pictures are connected**, allowing travel between them.",
+                        "Achilles grabs a **magic copper lamp** guarded by **lizards**, who turn mortals into pickles, and is left **dangling**.",
+                        "A **boy** rescues Achilles, puts the lizards to sleep, and Achilles gets the lamp.",
+                        "The lamp contains a **genie**, and Achilles wishes for **a hundred wishes**, but the Genie calls this a **meta-wish**.",
+                        "A **recursive chain of djinns** is summoned by a **Meta-Genie** and **Meta-Meta-Genie** from nested lamps.",
+                        "This defines **GOD** as **\"GOD Over Djinn\"**, a hierarchy of djinns.",
+                        "Achilles uses his **Typeless Wish** to wish for his wish **not to be granted**, causing a **paradox** that makes the **\"System crash\"**.",
+                        "They are transported to **Tumbolia**, then reappear in Escher's **Reptiles** picture.",
+                        "They enter the **Little Harmonic Labyrinth**, a **Bach organ piece** with musical grooves.",
+                        "The **Majotaur** laughs victims to death.",
+                        "They **pop** back to normal size and out of the labyrinth after eating what they hope is popcorn.",
+                        "Lizards can exit pictures by moving **perpendicularly** to the plane, a method they use to return to the Tortoise's house."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Recursive Structures, Processes, and Meaning",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A **recursive definition** uses **simpler versions** of itself to define something, which avoids **infinite regress**.",
+                        "Recursion is like **nesting** stories or Russian dolls.",
+                        "Computer scientists use **push**, **pop**, and **stack** to describe recursion.",
+                        "To **push** means suspending a task to start a new, **lower-level** one.",
+                        "To **pop** means finishing a task and resuming the one left off, one level higher.",
+                        "A **stack** stores information like **return addresses**.",
+                        "News reports use recursion when reporters switch to correspondents.",
+                        "In music, listeners have a **mental stack of keys**, expecting **reverse order retracing** back to the tonic.",
+                        "Bach's **Little Harmonic Labyrinth** disorients listeners with **quick key changes**.",
+                        "Language uses **push-down stacks** for grammar, like the German **verb-at-the-end**.",
+                        "**Recursive Transition Networks (RTNs)** use diagrams of **nodes** and **arcs** to describe recursive structures.",
+                        "**True recursion** in RTNs is when an RTN calls itself, such as **FANCY NOUN** calling **FANCY NOUN**.",
+                        "Recursion avoids **infinite regress** because at least one pathway **avoids self-reference** and can **bottom out**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Music can have **nested loops**, like a **scale** played with **pitch displacement**.",
+                        "Prokofiev and Rachmaninoff use **fast, medium, and slow scale-loops** played **simultaneously**.",
+                        "A **subroutine** or **procedure** is a group of operations treated as a **single unit with a name**.",
+                        "Procedures can **call each other by name**, creating **concise sequences of operations** and **modularity**.",
+                        "Modularity is found in **hierarchically organized systems**.",
+                        "Procedures often need to act **variably based on context**, using **memory** or **parameters**.",
+                        "When an RTN adds **parameters and conditions**, it becomes an **Augmented Transition Network (ATN)**.",
+                        "ATNs can generate **sensible English sentences** using **semantic constraints**.",
+                        "Choosing the **\"best\" chess move** is a recursive procedure with parameters.",
+                        "Evaluating a move involves pretending it's made and assessing the board from the **opponent's perspective**.",
+                        "The **recursive definition of \"best move\"** can go **several levels deep**.",
+                        "It **bottoms out** by evaluating board positions without further look-ahead, using criteria like **number of pieces**.",
+                        "A **look-ahead parameter** decreases with each recursive call, leading to a **non-recursive evaluation** when zero.",
+                        "Game-playing programs create a **\"look-ahead tree\"**.",
+                        "**Hofstadter's Law** states tasks always take longer than expected, even when accounting for the law itself, suggesting **recursive unpredictability**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Intelligence, Meaning, and Formal Systems",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The concept of **meaning** may depend on the **type of intelligence** perceiving it. To define intelligence beyond human views, **independent characteristics** are needed. Progress in cognitive psychology, AI, and neuroscience may synthesize an **objective definition of intelligence**, even if human-centric. This definition could characterize the **essence of intelligence** abstractly, reducing anthropocentric bias. Contact with an **alien civilization** would suggest human intelligence is not a fluke, implying meaning could be an **inherent property**.",
+                        "A **rectangular plaque** with **two dots** cannot effectively convey meaning. A second plaque with a **sequence of dots** representing **Fibonacci numbers** reveals a rule. This **\"long genotype\"** provides enough information to infer the underlying recursive rule. **\"Short genotypes\"** are triggers, assuming the rule is already built into the intelligence. The **clarity of an outer message** depends on its length."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Using **derived rules** in **Propositional Calculus** speeds up derivations but **sacrifices formality** because these rules are derived **informally**. Formal systems were created for **every explicit step** of a proof to be **mechanically checked**. Abandoning this for **shortcuts** defeats the system's purpose. Formalizing the metatheory makes **derived rules** into **theorems** of a larger system, legitimizing their use. This leads to the idea of **metametatheories**, implying that **shortcuts** will always be sought at the highest level. Distinguishing between **working in the system** (M-mode) and **thinking about the system** (I-mode) is crucial. Assuming that **symbols** can be freely exchanged between the formal system's language and its **metalanguage** is a **dangerous practice**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "TNT Axioms, Zen, Escher, and the MIU-System",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **five axioms of TNT** concern the number **0** and the operations of **addition** and **multiplication**.",
+                        "These are similar to **Peano's five postulates** for natural numbers from **1889**.",
+                        "Peano's postulates use \"djinn\" for natural numbers, with \"Genie\" and \"meta\" as other undefined terms.",
+                        "**Genie is a djinn**, and every djinn has a **meta** that is also a djinn.",
+                        "**Genie is not the meta** of any djinn, and **different djinns have different metas**.",
+                        "The fifth postulate, or **principle of mathematical induction**, states that if Genie has property X and every djinn relays X to its meta, then **all djinns get X**.",
+                        "The **Rule of Specification** allows dropping a **universal quantifier** and replacing the variable with a term, if the term does not contain a quantified variable.",
+                        "The **Rule of Generalization** adds a **universal quantifier** to a theorem with a free variable.",
+                        "The **Rule of Interchange** permits swapping universal and existential quantifiers, such as \"Va:~\" and \"~\u2203a:\".",
+                        "The **Rule of Existence** replaces terms in a theorem with a new variable and adds an **existential quantifier**.",
+                        "Rules for **Equality** include **Symmetry** and **Transitivity**.",
+                        "Rules for **Successorship** include **Add S** and **Drop S**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Zen **koans** are designed to **bewilder** and encourage **nonlogical** thought, moving beyond **dualism**.",
+                        "Dualism is the conceptual and **perceptual division** of the world into **categories**, with **words** at its core.",
+                        "Zen opposes **reliance on words** because they are inherently dualistic.",
+                        "The goal is to suppress **perception** and **logical, verbal thinking**, leading to an **Un-mode** of being.",
+                        "Zen emphasizes **holism**, suggesting the world cannot be divided into parts, and the **borderlines between self and universe** should dissolve.",
+                        "The Zen monk **Bassui** describes this as a snowflake melting, its essence remaining in **Tumbolia**.",
+                        "Zen acknowledges its **limitations**, similar to mathematicians recognizing limits of **axiomatic methods** for truth.",
+                        "**M.C. Escher's art**, with its contradictory images, shares a spirit with Zen by **breaking the mind of logic**.",
+                        "Escher's work, like **Day and Night** or **Three Spheres II**, explores **interconnectedness** and **unity in opposition**.",
+                        "The **MIU-system** can be applied to **number theory**.",
+                        "The **I-count** (number of 'I's) in MIU theorems is never zero and never a **multiple of 3**.",
+                        "Rules **I and IV** do not change the I-count.",
+                        "Rule **III** reduces the I-count by **3**, and rule **II** doubles it."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "MU-Puzzle, Godel-Numbering, and Levels of Description",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **I-count** cannot become a **multiple of 3** because the **MIU-system rules** never create one from the starting **I-count** of **1**.",
+                        "Therefore, **MU** is **not a theorem** of the **MIU-system**.",
+                        "This **MU-puzzle** was solved using a **simple number-theoretical argument**.",
+                        "A **Godel-numbering** embeds **formal system problems**, like the **MIU-system**, into **number theory** using an **isomorphism**.",
+                        "Each **MIU-system** symbol maps to a **number**: **M** to **3**, **I** to **1**, and **U** to **0**.",
+                        "A multiletter string's **Godel number** is formed by concatenating the **Cadet numbers** of its symbols.",
+                        "This mapping is an **information-preserving transformation**.",
+                        "A **derivation** can be represented in both **typographical** and **numerical notations**, with the **numerical representation** having a **dual nature**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**GODEL'S STRING G** and a **Bach fugue** can be understood on **different levels**.",
+                        "Humans can be described by **trillions of cells** or **molecules**.",
+                        "We accept these **different pictures** by **disconnecting them** and **storing separate representations**.",
+                        "We rarely compare these **different concepts**.",
+                        "A **major problem** in **Artificial Intelligence** is bridging the gap between **different descriptions**.",
+                        "Progress in **computer chess** shows this challenge, as early attempts focused on **looking further ahead**.",
+                        "Studies show **chess masters perceive patterns** as **chunks**, unlike novices.",
+                        "Masters quickly reproduce board positions, indicating a **higher-level mental image** and sensitivity to **recurring patterns**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Chunked Laws, Brains, and Thought",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A **gas** obeys precise, deterministic laws due to **canceling effects**.",
+                        "These **chunked laws** treat the gas as a **whole**.",
+                        "The **microscopic** and **macroscopic** gas descriptions use entirely different terms.",
+                        "The law **pV = cT** relates temperature, pressure, and volume.",
+                        "High-level laws cannot be stated in **low-level vocabulary**.",
+                        "**Pressure** and **temperature** are new terms.",
+                        "**Epiphenomena** are visible consequences of overall system organization.",
+                        "A computer's performance degradation at 35 users is an **epiphenomenon**.",
+                        "A sprinter's 9.3-second time is a result of interacting factors, not a stored number.",
+                        "In the **human brain**, **gullibility** is an epiphenomenon.",
+                        "The text questions if **consciousness** is an epiphenomenon."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Computers** create \"thinking\" machines, offering new perspectives on **thought**.",
+                        "This shows human thought's **idiosyncrasies**, weaknesses, and powers.",
+                        "**Thought** needs representing reality in the brain.",
+                        "The brain uses **active symbols** with rules mixed in.",
+                        "A **calculus of descriptions** is central to thinking.",
+                        "**Neurons** decide to fire if inputs exceed a threshold.",
+                        "**Larger structures** of neurons likely handle concepts.",
+                        "Memories might be **coded locally but redundantly**.",
+                        "The idea of a single \"**grandmother cell**\" for complex concepts is not accepted.",
+                        "The brain has a **columnar organization** in the visual cortex.",
+                        "**Modules** (neural complexes) are hypothesized for each concept.",
+                        "These **symbols** can be dormant or active.",
+                        "Thinking involves **classes** and **instances**.",
+                        "New symbols can form when unlinked symbols activate consistently."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Brain Symbols and Translation Challenges",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "To count symbols in a brain, one would need to include all **dormant symbols**.",
+                        "The existence of \"potential symbols\" shows that viewing the brain as a collection of symbols in well-defined states is an **oversimplification**.",
+                        "Symbol **overlapping** is probably the rule, with each neuron potentially functioning as part of **hundreds of symbols**.",
+                        "A theory based on symbols can still work even if they **physically overlap**, like different waves on a **pond's surface**.",
+                        "Distinguishing symbol activations might involve identifying the **precise timing** of their firing.",
+                        "Artificial Intelligence suggests intelligence can be realized in **different hardware**, making it a **software property**.",
+                        "This implies consciousness and intelligence are **high-level phenomena** with their own laws, separable from lower levels, a concept referred to as **\"liftability\"**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Translating broken Russian with a German accent into English is challenging.",
+                        "Using an **analogous phrase** risks a \"Campbell's soup\" blunder, while a word-by-word translation sounds **alien**.",
+                        "Warren Weaver suggested that a Russian article is \"really written in English, but it has been coded in some strange symbols.\"",
+                        "Weaver's remark implies there is an **objectively describable meaning** hidden in symbols that a well-programmed computer could **decode**.",
+                        "Comparing programs requires determining the correct **level of comparison**.",
+                        "A **higher, more chunked view** is needed to perceive **chunks of program** that show the programmer's goals.",
+                        "An **abstract \"conceptual skeleton\"** must be extracted from low levels for a **meaningful comparison** of programs."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "BlooP Language and TNT's Incompleteness",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A **BlooP** procedure has one input **parameter** and uses **block structure**, where portions are **units**.",
+                        "Each block has a **number** and is delimited by **BEGIN** and **END**.",
+                        "A **LOOP** statement executes a block repeatedly, and blocks can be **nested**.",
+                        "The **algorithm** calculates 2^(3N), using **CELL(0)** multiplied by 3 **N times**, and **CELL(1)** multiplied by 2 **CELL(0)** times.",
+                        "The **OUTPUT** variable stores the **value**, defaulting to **0** at the start.",
+                        "BlooP has **IF-statements** and **branching**.",
+                        "The **MINUS** procedure subtracts **N** from **M**; if **M < N**, it **QUITS BLOCK 0**, resulting in **0**.",
+                        "Otherwise, it increments **OUTPUT** in **LOOP 1** until **OUTPUT + N = M**, then **ABORTS LOOP 1**.",
+                        "**QUIT** pertains to **blocks**, while **ABORT** pertains to **loops**.",
+                        "**QUIT BLOCK n** jumps to the **last line** of **BLOCK n**, and **ABORT LOOP n** jumps just **below** the **last line** of **BLOCK n**.",
+                        "The **AT MOST** keyword indicates a loop may be **aborted early**.",
+                        "Once defined, a procedure can be called in **later definitions**.",
+                        "Some **BlooP procedures** can output **YES** or **NO** as **tests**, with names ending in a **question mark** and **OUTPUT** defaulting to **NO**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The **Church-Turing Thesis** suggests that what is **human-computable is also FlooP-computable**.",
+                        "FlooP-computable functions are either **general recursive** (terminating) or **partial recursive** (non-terminating).",
+                        "A **proof-pair** translates TNT statements into **number theory**, consisting of two natural numbers: the **Godel number of a TNT derivation** and the **Godel number of the derivation's bottom line**.",
+                        "This proof-pair property is **primitive recursive** and **representable in TNT** by a formula.",
+                        "The **substitution relationship** is also **primitive recursive** and **representable in TNT**.",
+                        "The **incompleteness of TNT** is shown by string G, which states \"**G is not a theorem of TNT**\".",
+                        "If G is a TNT-theorem, it creates a **contradiction**.",
+                        "If G is a nontheorem, then a **true statement is not provable in TNT**.",
+                        "TNT cannot prove its own **consistency**; if it could, it would be **inconsistent**.",
+                        "TNT is **w-incomplete**, meaning a **summarizing string is a nontheorem**, while an **infinite family of related true strings are theorems**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Supernatural Numbers, Self-Reproducing Systems, and Art",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The string \"-G\" asserts a **truth** in one number theory context, while \"G\" asserts a **falsity** in another.",
+                        "In **standard number theory**, the opposite is true, and no **supernatural numbers** exist.",
+                        "A **supernatural theorem** in **TNT** may assert a falsity, but all **natural theorems** still assert truths.",
+                        "Supernaturals are indexed by a trio of **ordinary integers**.",
+                        "It is possible to calculate the index for the **sum** of two supernaturals under some **indexing schemes**, or for their **product** under others.",
+                        "No **single indexing scheme** allows for the recursive calculation of both **sum** and **product** indices.",
+                        "Nonstandard analysis, using **supernatural real numbers** and **infinitesimals**, can provide a new foundation for **calculus** and more intuitive proofs.",
+                        "The question of which **number theory** is \"correct\" is difficult because different theories use the same terms but refer to **different concepts**.",
+                        "The meanings of terms like \"number\" are defined by the **axiomatic system** they are used in."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "Achilles notes that **Rene Magritte** and **M.C. Escher** both use **realism to explore paradox and illusion**, have **visual symbols**, and possess **graceful lines**.",
+                        "Crab shows a painting that depicts a **normal pipe with a tiny tree**, not a giant pipe with a tree.",
+                        "Crab removes the pipe from the painting, revealing it to be real, and smokes it.",
+                        "He recites Bach's poem, \"Edifying Thoughts of a Tobacco Smoker,\" which compares **life and death to a pipe's existence**.",
+                        "Crab plays a record on his **Tortoise-chomping record player**, designed to **destroy records made by Mr. Tortoise**.",
+                        "Mr. Tortoise's records previously targeted a **stable disassembly-reassembly subunit** in Crab's phonographs.",
+                        "Crab learned about **\"spontaneous self-assembly\"** hoping to create an indestructible phonograph, but this failed due to something like \"Godel's Theorem.\"",
+                        "He now aims for a **survivable phonograph** that only plays his records using a **labeling technique** and **style-screening process**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Typogenetics, Real Genetics, and Biological Parallels",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "**Typogenetics** uses special **enzymes** on **strands** of letters.",
+                        "Each enzyme has **three-letter operations** and binds to a preferred letter.",
+                        "Enzymes **quit** if they move off a strand.",
+                        "Some enzymes search for **pyrimidines** or **purines** and enter \"Copy mode\".",
+                        "In **Copy mode**, letters copy onto another strand as **complementary bases**.",
+                        "The **two complementary strands** then separate to create new ones.",
+                        "The **Typogenetic Code** translates **duplets** into amino acids.",
+                        "**Ribosomes** read strands and produce coded enzymes.",
+                        "An enzyme's **tertiary structure** determines its **binding preference**.",
+                        "**Real genetics** uses **DNA** made of **adenine (A), guanine (G), cytosine (C), or thymine (T)**.",
+                        "DNA forms a **double strand** where A pairs with T, and C pairs with G.",
+                        "**Messenger RNA (mRNA)** carries genetic information from **DNA** to **ribosomes**.",
+                        "**Ribosomes** create **proteins** by translating mRNA sequences.",
+                        "The **Genetic Code** translates **triplets of nucleotides** into amino acids.",
+                        "A protein's **tertiary structure** determines its function."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The **Central Dogma** shows how strands define enzymes, and enzymes act on strands.",
+                        "The **Central Dogmap** shows **mathematical logic** and **molecular biology** share an **abstract structure**.",
+                        "Both systems have **\"loops\"** of complexity, where **proteins** act on other proteins, and **statements** are about other statements.",
+                        "An **Immunity Theorem** in molecular biology is like **G\u00f6del's Theorem**.",
+                        "It says you can design a **DNA strand** a cell cannot reproduce, possibly causing the cell to **destroy itself**.",
+                        "**Viruses** are like \"Henkin sentences\"; **self-assembling viruses** are implicit.",
+                        "**Complex viruses** are explicit, coding for enzymes to direct their assembly.",
+                        "**Cellular differentiation** and **morphogenesis** are key biological problems involving **feedback** and **feedforward mechanisms**.",
+                        "Cells regulate protein production by **inhibition** or **repression** using **repressors**.",
+                        "**Inducers** can counteract repressors to allow gene expression.",
+                        "The **Church-Turing Thesis** suggests any number-sorting method can be described by a **FlooP program**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Church-Turing Thesis, Ramanujan, and SHRDLU",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "The **Church-Turing Thesis** is a **hypothesis** about how **human brains** process information.",
+                        "The **Public-Processes Version** states that if a **sentient being** uses a method that always gives a **finite-time answer** and can be **communicated reliably**, then a **terminating FlooP program** gives the **same answers**.",
+                        "This suggests **public methods** can be \"FlooPified\" but makes **no claims** about **private methods**.",
+                        "The **Isomorphism Version** claims a sentient being's **mental processes** can be **isomorphically mirrored** in a **FlooP program** at some level.",
+                        "The **Microscopic Version** suggests **living components' behavior** can be **simulated by a computer**.",
+                        "The **Reductionist's Version** states **all brain processes** come from a **computable substrate**, supporting **Artificial Intelligence**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "SHRDLU handles **logical connectives** like \"and\" and \"or\" using its **grammar** and **semantics**.",
+                        "It understands words like \"littlest\" by interpreting their **root forms**.",
+                        "SHRDLU asks for **clarification** on \"on top of\" when **disambiguation heuristics** are not clear.",
+                        "It deduces events from its **memory** and relates them in **time**, understanding **complex tenses**.",
+                        "SHRDLU remembers **immediately previous sentences** to answer questions like \"why?\" and understands its own motives by tracking **subgoal trees**.",
+                        "It checks statements about **basic object properties** and **location** against its complete information.",
+                        "SHRDLU understands syntactically ambiguous commands by choosing the interpretation that makes **sense in the current scene**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "AI: Problem Solving and Knowledge Representation",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A **tree-like structure** of subgoals for problem-solving does not always guarantee a resolution if **knowledge is unavailable**.",
+                        "Such a system might respond with \"I do not know,\" like the **incompleteness** in some formal systems.",
+                        "This **deductive awareness** allows logical conclusions but lacks **analogical awareness**, which spots similarities.",
+                        "Early logic systems did not capture **analogical thought**, though modern systems allow **complex comparisons**.",
+                        "Representing knowledge is different from storing numbers; a computer's \"memory\" is not what it \"knows\" without **access procedures**.",
+                        "Knowledge can be **inaccessible** or \"forgotten\" at a high level, even if present at a low level, depending on how experiences are stored."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "The **complexity of human knowledge representation** became clear while developing a program to **generate English sentences**.",
+                        "The goal was to program **creative acts**, inspired by \"Computer Haiku.\"",
+                        "A **flexible and recursive grammar** was created, leading to a Recursive Transition Network (RTN) grammar.",
+                        "Word selection started randomly with the **overall sentence structure** and went down to word and letter levels.",
+                        "Early versions produced **humorous nonsense sentences** with complex structures.",
+                        "The output became stale as its **limits of behavior space** became apparent.",
+                        "Achieving truly humorous output needed more **subtlety**, using words in line with **real-world realities**, which introduced **knowledge representation**.",
+                        "In Bongard problems, creating a **template** is challenging due to **variety**, needing **higher-level abstraction**.",
+                        "The program uses **meta-descriptions**, which describe descriptions, to identify **common features**.",
+                        "For example, in BP 91, the meta-description of box I-E shows \"**3 copies**\" of a specific line segment as a **recurring concept**.",
+                        "A **sameness-detector** then identifies \"**three-ness**\" for Class I boxes and \"**four-ness**\" for Class II boxes by checking meta-descriptions.",
+                        "This **meta-description** approach provides **flexibility** for solving problems in different ways.",
+                        "When **preprocessing** shows too much diversity, it means **higher-level concepts** are involved.",
+                        "**Throwing away information** involves **focusing** on parts of a drawing and **filtering** out all but certain concepts.",
+                        "Inspecting a **simple box** helps in **discovering features** for template building."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "AI, Free Will, and the Sloth Canon",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "AI programs will likely have **greater differences** from people than people do from each other.",
+                        "An AI's **\"body\"** would give it **different perspectives**.",
+                        "An understandable AI program would likely seem **alien**, making it hard to tell from a **\"weird\" program**.",
+                        "Humans likely have the best possible **intuitive understanding** of intelligence, consciousness, and free will, similar to how one appreciates music.",
+                        "Achilles and the Tortoise discuss Zeno's paradox and a race where Achilles **could not catch up**.",
+                        "Achilles plays a \"sloth-piano\" with **inverted melodies**, like **sloths** who do things about **half as fast**.",
+                        "Bach's \"Canon per augmentationem, contrario motu\" also has **slowed-down and inverted** melodies, with the letters \"SAT\" preceding the staves.",
+                        "This is called the **\"Sloth Canon\"**."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "A **marble rolling down a bumpy hill** does not make choices, even if its path is **unpredictable**.",
+                        "Calculators or chess programs are like \"fancy marbles\" because their outcomes are **repeatable**.",
+                        "These programs lack **self-awareness** and do not have a sense of free will.",
+                        "A robot in a T-maze making choices based on the square root of 2's digits **models the situation with symbols**.",
+                        "The robot does not know its next turn, as its decider is a **black box** to it.",
+                        "The robot does not make choices if its mind does not **affect the outcome**.",
+                        "When a robot's **self-symbol** affects its decisions, it resembles human choice, and **meaning enters the picture**.",
+                        "Qualities like \"**will**,\" \"**intuition**,\" and \"**consciousness**\" can emerge from such programs.",
+                        "This balance between **self-knowledge and self-ignorance** creates the feeling of free will.",
+                        "A system is a \"**choice maker**\" when we can identify with its **high-level description**."
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Bibliography: Key Works in Artificial Intelligence and Related Fields",
+            "paragraphs": [
+                {
+                    "sentences": [
+                        "A **bibliography** includes asterisks indicating **prime motivators** (two asterisks) or **special features/quirks** (one asterisk) of a book.",
+                        "Instead of **direct pointers** to **technical literature**, the bibliography offers **meta-pointers** to books that contain such pointers.",
+                        "**John Allen's The Anatomy of LISP** is the **most comprehensive book on LISP**, a **computer language** that dominated **Artificial Intelligence research** for two decades."
+                    ]
+                },
+                {
+                    "sentences": [
+                        "**Margaret Boden's Artificial Intelligence and Natural Man** is the **best book** on **AI aspects**, covering both **technical** and **philosophical questions**.",
+                        "It is known for its **clear thinking** and **extensive technical bibliography**.",
+                        "Her other book, **Purposive Explanation in Psychology**, is considered an **extended footnote** to the AI book."
+                    ]
+                }
+            ]
+        }
+    ],
+    "chunks": 33
+}

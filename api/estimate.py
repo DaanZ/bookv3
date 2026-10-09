@@ -30,7 +30,7 @@ import time
 
 import requests
 
-from util.split import page_chunk_bounds
+from util.split import MAX_PARTS_PER_BOOK, page_chunk_bounds
 
 try:  # Same OS-trust-store fix as util/chatgpt.py; the pricing call is HTTPS too.
     import truststore
@@ -220,7 +220,7 @@ def estimate_tokens(page_texts, chunks=None, pages_per_chunk=25):
     if page_count == 0:
         raise ValueError("This PDF has no pages.")
 
-    total = chunks if chunks else -(-page_count // pages_per_chunk)  # ceil
+    total = chunks if chunks else min(-(-page_count // pages_per_chunk), MAX_PARTS_PER_BOOK)  # ceil
     total = max(1, min(int(total), page_count))
 
     per_page, method = count_tokens(page_texts)

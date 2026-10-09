@@ -137,22 +137,32 @@ def make_direct(paragraphs, model=None):
     return result
 
 
+# The fewest words a condensed summary may keep: a quarter of the original, but never more
+# than this. The floor was a quarter alone, which caught a cut-off answer (65 words from
+# 374) and also refused every real condensing of a very long part: Godel, Escher, Bach's
+# first part ran to 2,684 words, a summary near the 350-word cap is an eighth of that, and
+# the 2,684 words were kept.
+CONDENSE_FLOOR = MAX_SUMMARY_WORDS / 3
+
+
 def condense(paragraphs, model=None):
     """One more call that shortens overlong paragraphs, keeping their ** highlights.
 
     The answer has to look finished before it replaces anything. Two One Nation Under
     Blackmail parts came back cut off mid-sentence ("...with CIA officials being"), one of
     them at 65 words from 374, and were saved like that. So a result whose last sentence
-    is unfinished, or that keeps under a quarter of the words, gets one more try, and
-    after that the long version stands: too long is a nuisance, cut off is wrong.
+    is unfinished, or that is too short to be a whole summary (`CONDENSE_FLOOR`), gets one
+    more try, and after that the long version stands: too long is a nuisance, cut off is
+    wrong.
     """
+    floor = min(_words(paragraphs) / 4, CONDENSE_FLOOR)
     for _ in range(2):
         history = History()
         history.system(_as_text(paragraphs))
         shorter = paragraphs_from_model(
             llm_strict(history, model_name=model, base_model=CondensedChunk).summary_paragraphs
         )
-        if shorter and last_sentence_finished(shorter) and _words(shorter) >= _words(paragraphs) / 4:
+        if shorter and last_sentence_finished(shorter) and _words(shorter) >= floor:
             return shorter
     return paragraphs
 

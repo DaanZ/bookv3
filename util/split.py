@@ -9,9 +9,21 @@ half of a Gaussian CDF, so parts are dense near the front of the book and widen 
 the end. The reader's front-weighted progress bar is the other half of the same idea.
 """
 
-from math import floor
+from math import ceil, floor
 
 import numpy as np
+
+# One part per this many pages, by default...
+PAGES_PER_PART = 25
+# ...and never more parts than this. Without it parts grew with page count: Godel, Escher,
+# Bach (821 pages) came out as 33 parts and 10,000 words, seven times the library's
+# median. A long book now gets wider parts rather than more of them.
+MAX_PARTS_PER_BOOK = 20
+
+
+def default_parts(page_count: int) -> int:
+    """How many parts a book is cut into when nobody chose: one per 25 pages, 1 to 20."""
+    return max(1, min(ceil(page_count / PAGES_PER_PART), MAX_PARTS_PER_BOOK))
 
 
 def page_chunk_bounds(page_count: int, num_chunks: int = 10):

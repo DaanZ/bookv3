@@ -32,9 +32,6 @@ ARCHIVE_DIR = os.path.join(ROOT, "pdfs")        # where the original is parked
 OUTPUT_DIR = os.path.join(ROOT, "books", "available")
 STORE_PATH = os.path.join(ROOT, "data", "jobs.json")
 
-# Pages per chunk, matching prep.py's `ceil(len(pages) / 25)`.
-PAGES_PER_CHUNK = 25
-
 # How many parts may come back with nothing highlighted before the model is judged unable
 # to do it. Front matter, an index or a page of references can honestly have nothing worth
 # marking, so one is not evidence; three is.
@@ -360,8 +357,6 @@ def _run(job_id):
     try:
         # Imported here, not at module scope: util/chatgpt.py wants OPENAI_API_KEY at
         # import time, and the reader has to keep working without one.
-        import math
-
         from pypdf.errors import PdfStreamError
 
         from chunks import get_page_chunks, highlight_chunk
@@ -387,7 +382,9 @@ def _run(job_id):
             raise UnreadableCharactersError(details="no pages")
 
         requested = job.get("chunksRequested")
-        total = int(requested) if requested else int(math.ceil(len(pages) / PAGES_PER_CHUNK))
+        from util.split import default_parts
+
+        total = int(requested) if requested else default_parts(len(pages))
         total = max(1, min(total, len(pages)))
         page_chunks = get_page_chunks(pages, total)
         # The waiting state names the pages each part covers. They come from here rather
